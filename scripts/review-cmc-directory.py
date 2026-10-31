@@ -14,6 +14,17 @@ assert len(data) == review['bytes']
 assert sha256(data).hexdigest() == review['sha256'], 'Original PDF changed'
 original = json.loads((ROOT / 'docs/reviews/problem-pdfs-2026-10-25.json').read_text())
 assert review['sha256'] == next(f['sha256'] for f in original['files'] if f['file'] == pdf.name)
+version_report = subprocess.run(['pdftotext', '-v'], capture_output=True, text=True, check=True)
+version_match = re.search(r'pdftotext version (\S+)', version_report.stderr + version_report.stdout)
+assert version_match, 'Cannot identify PDF text extractor'
+poppler_version = version_match[1]
+# These historical text hashes were reviewed with Poppler 24.02.0. Newer
+# Poppler releases can change glyph reading order even after whitespace is
+# removed. The complete PDF byte hash above always locks the original content;
+# headings, page ranges, links and whole-paper uniqueness are checked below
+# with every extractor version. Compare the old text hashes only with their
+# original extractor, rather than treating an extraction change as a new PDF.
+reference_poppler_version = '24.02.0'
 pages = subprocess.check_output(['pdftotext', '-layout', str(pdf), '-']).decode().split('\f')[:-1]
 assert len(pages) == review['pages'] == 175
 assert re.search(r'60\s*套试卷', pages[0])
@@ -51,7 +62,8 @@ for i, e in enumerate(entries):
         assert text[-1] == str(n - 4), (n, 'printed page mismatch')
         content += [s for s in text[1:-1] if normalize(s) != normalize(title)]
     fingerprint = sha256(normalize('\n'.join(content)).encode()).hexdigest()
-    assert fingerprint == e['paper_text_sha256'], title
+    if poppler_version == reference_poppler_version:
+        assert fingerprint == e['paper_text_sha256'], title
     fingerprints.append(fingerprint)
 assert len(set(fingerprints)) == 60, 'Duplicate whole-paper text'
 assert dict(Counter(e['stage'] for e in entries)) == review['stage_counts'] == {'初赛': 30, '决赛': 30}
@@ -59,4 +71,5 @@ missing = [{'edition': n, 'stage': s} for n in range(1, 18) for s in ('初赛', 
            if not any(e['edition'] == n and e['stage'] == s for e in entries)]
 assert missing == review['missing_stages'] == []
 assert review['duplicate_titles'] == review['duplicate_full_papers'] == review['toc_mismatches'] == []
-print('Verified 175 pages / 60 paper titles, ranges and links / 17 editions / 30 preliminaries + 30 finals; original bytes preserved.')
+print('Verified 175 pages / 60 paper titles, ranges and links / 17 editions / 30 preliminaries + 30 finals; original bytes preserved.'
+      f' Text extractor: Poppler {poppler_version}; reference: {reference_poppler_version}.')
