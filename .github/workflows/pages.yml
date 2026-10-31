@@ -1,0 +1,74 @@
+name: Publish mathematics website
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published, edited, deleted, released, unreleased]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  # Only an explicit recovery push interrupts an older publication.
+  cancel-in-progress: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[restart-pages]') }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install standard LaTeX rendering tools
+        timeout-minutes: 12
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          # Avoid the slow Azure HTTP mirror; keep Ubuntu's signed packages.
+          if [[ -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i \
+              -e 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+              -e 's|http://archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+              -e 's|http://security.ubuntu.com/ubuntu|https://security.ubuntu.com/ubuntu|g' \
+              /etc/apt/apt-mirrors.txt
+          fi
+          apt_network=(-o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30)
+          sudo apt-get "${apt_network[@]}" update
+          sudo --preserve-env=DEBIAN_FRONTEND apt-get "${apt_network[@]}" install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-fonts-recommended poppler-utils poppler-data
+      - uses: actions/cache@v4
+        with:
+          path: .latex-cache
+          key: latex-${{ runner.os }}-${{ hashFiles('src/latexMath.ts', 'assets/fonts/fandol/*.otf', 'content/**/*.md') }}
+          restore-keys: latex-${{ runner.os }}-
+      - name: Install pinned dependencies
+        run: npm ci
+      - run: npm run check
+      - name: Verify required math fonts before compiling all equations
+        run: node --import tsx --test --test-name-pattern="standard LaTeX" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=./scripts/github-test-reporter.mjs --test-reporter-destination=stdout scripts/math.test.ts
+      - name: Test with actionable failure annotations
+        run: node --import tsx --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=./scripts/github-test-reporter.mjs --test-reporter-destination=stdout scripts/*.test.ts
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm run verify
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4
