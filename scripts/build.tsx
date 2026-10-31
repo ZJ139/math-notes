@@ -9,6 +9,7 @@ import {sections,compareRecentEntries,type Section} from '../src/model';
 import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,MathOverview,WritingLibrary} from '../src/components';
 import {WritingPracticeIndex,WritingPracticePage,practiceExams} from '../src/WritingPractice';
 import config from '../site.config.json';
+import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
 import {copyLatexMathAssets} from '../src/latexMath';
@@ -85,6 +86,7 @@ for(const collection of populatedCollections(items)){
   if(target!==route)await redirect(route.slice(1),target);
   else await page(route.slice(1),collection.title,<ProblemLibrary items={items} collection={collection.id}/>);
 }
+for(const chapter of louChapters(items))await page(louChapterUrl(chapter.number).slice(1),`${chapter.title} · 楼红卫 B 组解答`,<LouChapterPage items={items} chapter={chapter.number}/>);
 for(const cohort of new Set(finalExamEntries(items).map(e=>e.category.slice(-4)))){
   const route=cohortRoute(cohort),target=cohortDestination(items,cohort);
   if(target!==route)await redirect(route.slice(1),target);
