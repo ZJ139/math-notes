@@ -1,0 +1,621 @@
+{
+  "date": "2026-10-26",
+  "file": "content/problems/数学类CMC真题汇总.pdf",
+  "entry": "content/problems/cmc-mathematics-papers.md",
+  "sha256": "878c6818c934ecac8629ea6f46033431876ce4dc5300fe0f6048f24ab1a1b7f0",
+  "bytes": 545336,
+  "pages": 175,
+  "front_matter_pages": 4,
+  "paper_count": 60,
+  "stage_counts": {
+    "初赛": 30,
+    "决赛": 30
+  },
+  "missing_stages": [],
+  "duplicate_titles": [],
+  "duplicate_full_papers": [],
+  "toc_mismatches": [],
+  "scope": "核对本文件的目录、书签、正文标题与页码；不以外部历届真题推断完整性。整套去重依据去除标题、页眉、页脚和空白后的全文散列，不表示各套之间没有共用题。",
+  "entries": [
+    {
+      "edition": 1,
+      "stage": "初赛",
+      "title": "第 1 届初赛·数学类",
+      "pdf_start": 5,
+      "pdf_end": 6,
+      "printed_start": 1,
+      "printed_end": 2,
+      "paper_text_sha256": "cc6229868ddaf0ae01fd576d808ba307e2223e1c7cae9adf068c9cdc082e16bc"
+    },
+    {
+      "edition": 1,
+      "stage": "决赛",
+      "title": "第 1 届决赛·数学类",
+      "pdf_start": 7,
+      "pdf_end": 9,
+      "printed_start": 3,
+      "printed_end": 5,
+      "paper_text_sha256": "f1c4f627574130f2e602aed989699829474f139093781e7d793674ef25d9453e"
+    },
+    {
+      "edition": 2,
+      "stage": "初赛",
+      "title": "第 2 届初赛·数学类",
+      "pdf_start": 10,
+      "pdf_end": 12,
+      "printed_start": 6,
+      "printed_end": 8,
+      "paper_text_sha256": "1b8213d51c3d6e6fa01e29e3f458adcdb4e5fc35d4300f04f2b6891f6e0a79c1"
+    },
+    {
+      "edition": 2,
+      "stage": "决赛",
+      "title": "第 2 届决赛·数学类",
+      "pdf_start": 13,
+      "pdf_end": 14,
+      "printed_start": 9,
+      "printed_end": 10,
+      "paper_text_sha256": "45c3f6bb4917427be2ec06811d64d5491e04e81ffa6920a9cafa9fcb1626010c"
+    },
+    {
+      "edition": 3,
+      "stage": "初赛",
+      "title": "第 3 届初赛·数学类",
+      "pdf_start": 15,
+      "pdf_end": 16,
+      "printed_start": 11,
+      "printed_end": 12,
+      "paper_text_sha256": "da07eed0431b7a9a78a59a358b2a4dc75b365933c8daafc95f03237c4efd2915"
+    },
+    {
+      "edition": 3,
+      "stage": "决赛",
+      "title": "第 3 届决赛·数学类",
+      "pdf_start": 17,
+      "pdf_end": 19,
+      "printed_start": 13,
+      "printed_end": 15,
+      "paper_text_sha256": "62b9ad07fa7938e5d54f01b1ee87a8cfdd737d99db7772ce202eb7f3206ccede"
+    },
+    {
+      "edition": 4,
+      "stage": "初赛",
+      "title": "第 4 届初赛·数学类",
+      "pdf_start": 20,
+      "pdf_end": 21,
+      "printed_start": 16,
+      "printed_end": 17,
+      "paper_text_sha256": "a21aab1e7c1e4085f78429ff353139347396942d871119e43dac484ced580b0c"
+    },
+    {
+      "edition": 4,
+      "stage": "决赛",
+      "title": "第 4 届决赛·数学类",
+      "pdf_start": 22,
+      "pdf_end": 23,
+      "printed_start": 18,
+      "printed_end": 19,
+      "paper_text_sha256": "b182cb8b62f0162f5c0562788f647f15220319bbf4e4cba38531b07b146f4c60"
+    },
+    {
+      "edition": 5,
+      "stage": "初赛",
+      "title": "第 5 届初赛·数学类",
+      "pdf_start": 24,
+      "pdf_end": 25,
+      "printed_start": 20,
+      "printed_end": 21,
+      "paper_text_sha256": "5ad3205221f72af7fd57cebac560b43ed9c5bd1f06c436498011c2369d06d79e"
+    },
+    {
+      "edition": 5,
+      "stage": "决赛",
+      "title": "第 5 届决赛·数学类 (低年级)",
+      "pdf_start": 26,
+      "pdf_end": 28,
+      "printed_start": 22,
+      "printed_end": 24,
+      "paper_text_sha256": "04d56e825dff94dc63e53f3cd07f4fda5fca4e92ceb4a2310c7b106b8498b0dc"
+    },
+    {
+      "edition": 5,
+      "stage": "决赛",
+      "title": "第 5 届决赛·数学类 (高年级)",
+      "pdf_start": 29,
+      "pdf_end": 32,
+      "printed_start": 25,
+      "printed_end": 28,
+      "paper_text_sha256": "307e034951d0a0f4d1aec5908370687bd9adfeee50e0820a9054c7718eb32d6d"
+    },
+    {
+      "edition": 6,
+      "stage": "初赛",
+      "title": "第 6 届初赛·数学类",
+      "pdf_start": 33,
+      "pdf_end": 35,
+      "printed_start": 29,
+      "printed_end": 31,
+      "paper_text_sha256": "e7d188970c3abb422d9f006656d6f86bc71b26cf3902f2570dfa6a0145f5bbcb"
+    },
+    {
+      "edition": 6,
+      "stage": "决赛",
+      "title": "第 6 届决赛·数学类 (低年级)",
+      "pdf_start": 36,
+      "pdf_end": 38,
+      "printed_start": 32,
+      "printed_end": 34,
+      "paper_text_sha256": "f1d673102a09ac30e0fa63953d302bf96cec115617583e68306d8beb87215039"
+    },
+    {
+      "edition": 6,
+      "stage": "决赛",
+      "title": "第 6 届决赛·数学类 (高年级)",
+      "pdf_start": 39,
+      "pdf_end": 42,
+      "printed_start": 35,
+      "printed_end": 38,
+      "paper_text_sha256": "6dffed8de4d4ff3d5d71c8659b2c6fe4c96aef04d66c993b766a1d456a0c5a5c"
+    },
+    {
+      "edition": 7,
+      "stage": "初赛",
+      "title": "第 7 届初赛·数学类",
+      "pdf_start": 43,
+      "pdf_end": 44,
+      "printed_start": 39,
+      "printed_end": 40,
+      "paper_text_sha256": "c31cd04e7770ef7fa0179841e9f604353b13744f2926b4570f2186bae977be21"
+    },
+    {
+      "edition": 7,
+      "stage": "决赛",
+      "title": "第 7 届决赛·数学类 (低年级)",
+      "pdf_start": 45,
+      "pdf_end": 46,
+      "printed_start": 41,
+      "printed_end": 42,
+      "paper_text_sha256": "23f45709723759c20d7f87bed9645a00ca9d9ff95b55c143e9af1fe6b65560d9"
+    },
+    {
+      "edition": 7,
+      "stage": "决赛",
+      "title": "第 7 届决赛·数学类 (高年级)",
+      "pdf_start": 47,
+      "pdf_end": 49,
+      "printed_start": 43,
+      "printed_end": 45,
+      "paper_text_sha256": "645496d71a4aa96c15de4d7581ac1c2ca2c6e12a093d34b1299ab0335629a472"
+    },
+    {
+      "edition": 8,
+      "stage": "初赛",
+      "title": "第 8 届初赛·数学类",
+      "pdf_start": 50,
+      "pdf_end": 51,
+      "printed_start": 46,
+      "printed_end": 47,
+      "paper_text_sha256": "24bb68d0dcbe9931f7e349d4ea29cb42ea513c16f43693dbce92a782ee1be24d"
+    },
+    {
+      "edition": 8,
+      "stage": "决赛",
+      "title": "第 8 届决赛·数学类 (低年级)",
+      "pdf_start": 52,
+      "pdf_end": 54,
+      "printed_start": 48,
+      "printed_end": 50,
+      "paper_text_sha256": "ab74dab8bf086a7455463a9ebda4b4e388c834076a196efb306e73610c1a275b"
+    },
+    {
+      "edition": 8,
+      "stage": "决赛",
+      "title": "第 8 届决赛·数学类 (高年级)",
+      "pdf_start": 55,
+      "pdf_end": 58,
+      "printed_start": 51,
+      "printed_end": 54,
+      "paper_text_sha256": "7de5d0d4a437b5d3640b1d21f7fc58a99816cba8f041e4fedc2d2d80868fc959"
+    },
+    {
+      "edition": 9,
+      "stage": "初赛",
+      "title": "第 9 届初赛·数学类",
+      "pdf_start": 59,
+      "pdf_end": 60,
+      "printed_start": 55,
+      "printed_end": 56,
+      "paper_text_sha256": "0dc2729a2d4636deaa2ecf0ca1abbc654a2d43999a01bec884d5b01b4517b847"
+    },
+    {
+      "edition": 9,
+      "stage": "决赛",
+      "title": "第 9 届决赛·数学类 (低年级)",
+      "pdf_start": 61,
+      "pdf_end": 63,
+      "printed_start": 57,
+      "printed_end": 59,
+      "paper_text_sha256": "7fcf2271029567f7b01de4d1017b900077792a062b89a39651afc59e10b55781"
+    },
+    {
+      "edition": 9,
+      "stage": "决赛",
+      "title": "第 9 届决赛·数学类 (高年级)",
+      "pdf_start": 64,
+      "pdf_end": 67,
+      "printed_start": 60,
+      "printed_end": 63,
+      "paper_text_sha256": "c8e2361cb5694a1403e89622ffb8ceef29914d56cf546a4229fb02a841f4a67c"
+    },
+    {
+      "edition": 10,
+      "stage": "初赛",
+      "title": "第 10 届初赛·数学类",
+      "pdf_start": 68,
+      "pdf_end": 70,
+      "printed_start": 64,
+      "printed_end": 66,
+      "paper_text_sha256": "0c013fc1d05d6b90f641b94c95f230fcc97c6613fa8e2bc3f583091e4c130fba"
+    },
+    {
+      "edition": 10,
+      "stage": "决赛",
+      "title": "第 10 届决赛·数学类 (低年级)",
+      "pdf_start": 71,
+      "pdf_end": 73,
+      "printed_start": 67,
+      "printed_end": 69,
+      "paper_text_sha256": "cd6e891b4a49b271b2e9333475ade942c72a757989951460ef599a5beef757c3"
+    },
+    {
+      "edition": 10,
+      "stage": "决赛",
+      "title": "第 10 届决赛·数学类 (高年级)",
+      "pdf_start": 74,
+      "pdf_end": 77,
+      "printed_start": 70,
+      "printed_end": 73,
+      "paper_text_sha256": "4b153e3540424b24b5c4a68d9b5a2e890f49e54b036e9690f8cc50ac8d55f9d0"
+    },
+    {
+      "edition": 11,
+      "stage": "初赛",
+      "title": "第 11 届初赛·数学 A 类",
+      "pdf_start": 78,
+      "pdf_end": 79,
+      "printed_start": 74,
+      "printed_end": 75,
+      "paper_text_sha256": "6304ff65c0cb71eb604d2073a2eaffdae02a7b2b0b3ba9ea98a2d26eb1cc1345"
+    },
+    {
+      "edition": 11,
+      "stage": "初赛",
+      "title": "第 11 届初赛·数学 B 类",
+      "pdf_start": 80,
+      "pdf_end": 82,
+      "printed_start": 76,
+      "printed_end": 78,
+      "paper_text_sha256": "d2242c36cc05bd3e763ff17896ec301dfc822f8c59901ab18fbc33c0043b5550"
+    },
+    {
+      "edition": 11,
+      "stage": "决赛",
+      "title": "第 11 届决赛·数学类 (低年级)",
+      "pdf_start": 83,
+      "pdf_end": 85,
+      "printed_start": 79,
+      "printed_end": 81,
+      "paper_text_sha256": "196921effcde9f756683bc138c23c499e06c837a6754357ab7348ad9b880631a"
+    },
+    {
+      "edition": 11,
+      "stage": "决赛",
+      "title": "第 11 届决赛·数学类 (高年级)",
+      "pdf_start": 86,
+      "pdf_end": 89,
+      "printed_start": 82,
+      "printed_end": 85,
+      "paper_text_sha256": "93916bde6621ac19296b631d945f47a2bbea8aea8e966b4b2008a38674455fce"
+    },
+    {
+      "edition": 12,
+      "stage": "初赛",
+      "title": "第 12 届初赛·数学 A 类",
+      "pdf_start": 90,
+      "pdf_end": 91,
+      "printed_start": 86,
+      "printed_end": 87,
+      "paper_text_sha256": "bd6d53647e2d0220d8e13522802aca87ed13ba21721fb625f25516e855701eee"
+    },
+    {
+      "edition": 12,
+      "stage": "初赛",
+      "title": "第 12 届初赛·数学 B 类",
+      "pdf_start": 92,
+      "pdf_end": 93,
+      "printed_start": 88,
+      "printed_end": 89,
+      "paper_text_sha256": "be3d2902ae7ee0d1512baaff7d660a57c1106d45d6318c27ad281480abf58bf1"
+    },
+    {
+      "edition": 12,
+      "stage": "决赛",
+      "title": "第 12 届决赛·数学类 (低年级)",
+      "pdf_start": 94,
+      "pdf_end": 96,
+      "printed_start": 90,
+      "printed_end": 92,
+      "paper_text_sha256": "e02646a56f50b22b35ac4a40069412659d632053da4cc57b78c24a0cd910e4e6"
+    },
+    {
+      "edition": 12,
+      "stage": "决赛",
+      "title": "第 12 届决赛·数学类 (高年级)",
+      "pdf_start": 97,
+      "pdf_end": 100,
+      "printed_start": 93,
+      "printed_end": 96,
+      "paper_text_sha256": "6aee7d6daef791636c77c76f4192824be90b9228aca475aff87857916bcdb23f"
+    },
+    {
+      "edition": 13,
+      "stage": "初赛",
+      "title": "第 13 届初赛·数学 A 类",
+      "pdf_start": 101,
+      "pdf_end": 102,
+      "printed_start": 97,
+      "printed_end": 98,
+      "paper_text_sha256": "f52fde37c6751f0fac94b787627c4fa49c9e75d0f0bae929258d66b60330aea6"
+    },
+    {
+      "edition": 13,
+      "stage": "初赛",
+      "title": "第 13 届初赛·数学 B 类",
+      "pdf_start": 103,
+      "pdf_end": 104,
+      "printed_start": 99,
+      "printed_end": 100,
+      "paper_text_sha256": "9a0a4b04e7ac0e0424e6b2cde1e9838fc8b3ce9d4ade8a034d052591ba96accb"
+    },
+    {
+      "edition": 13,
+      "stage": "初赛",
+      "title": "第 13 届初赛 (补赛) ·数学 A 类",
+      "pdf_start": 105,
+      "pdf_end": 106,
+      "printed_start": 101,
+      "printed_end": 102,
+      "paper_text_sha256": "b5941aac12148b4e0e2dda812e3cb489c52ca44aa4421a6ada4baf45ea8724ff"
+    },
+    {
+      "edition": 13,
+      "stage": "初赛",
+      "title": "第 13 届初赛 (补赛) ·数学 B 类",
+      "pdf_start": 107,
+      "pdf_end": 108,
+      "printed_start": 103,
+      "printed_end": 104,
+      "paper_text_sha256": "3d30d587431add5bccad9a2fd8bc7c45c664d3f4210f5d6c770f639b1c0a16af"
+    },
+    {
+      "edition": 13,
+      "stage": "决赛",
+      "title": "第 13 届决赛·数学类 (低年级)",
+      "pdf_start": 109,
+      "pdf_end": 111,
+      "printed_start": 105,
+      "printed_end": 107,
+      "paper_text_sha256": "e36fe7a554c3036f30bb1873dbb1f0c98aaea82a7cfe84dabac2a776ff2a7db9"
+    },
+    {
+      "edition": 13,
+      "stage": "决赛",
+      "title": "第 13 届决赛·数学类 (高年级)",
+      "pdf_start": 112,
+      "pdf_end": 115,
+      "printed_start": 108,
+      "printed_end": 111,
+      "paper_text_sha256": "178713041a6178c04b5279a228c79496876bb63504b00b23c2456e58cb0ecff5"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛·数学 A 类",
+      "pdf_start": 116,
+      "pdf_end": 117,
+      "printed_start": 112,
+      "printed_end": 113,
+      "paper_text_sha256": "2a6875a56b440130feb434959c057a1d4925c63279ce3abd4a408d65f888c4e3"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛·数学 B 类",
+      "pdf_start": 118,
+      "pdf_end": 119,
+      "printed_start": 114,
+      "printed_end": 115,
+      "paper_text_sha256": "2b6ff057806aecb6e848694e106e076a14883c3e131994101f02b6f724b1e172"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛 (补赛一) ·数学 A 类",
+      "pdf_start": 120,
+      "pdf_end": 121,
+      "printed_start": 116,
+      "printed_end": 117,
+      "paper_text_sha256": "77443931b653fb387a963bb97fe2b35ebb12b6c93fc7be74c11ff033005c70c5"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛 (补赛一) ·数学 B 类",
+      "pdf_start": 122,
+      "pdf_end": 123,
+      "printed_start": 118,
+      "printed_end": 119,
+      "paper_text_sha256": "f03184ff66465e3be987de237f00667058dc28bf4d7f18e143b2582a6e3de6f4"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛 (补赛二) ·数学 A 类",
+      "pdf_start": 124,
+      "pdf_end": 125,
+      "printed_start": 120,
+      "printed_end": 121,
+      "paper_text_sha256": "ef089aa023fb127e21e8b675a8f4bc31fdcb2c41df9162baabc8cc0c31aaadd9"
+    },
+    {
+      "edition": 14,
+      "stage": "初赛",
+      "title": "第 14 届初赛 (补赛二) ·数学 B 类",
+      "pdf_start": 126,
+      "pdf_end": 127,
+      "printed_start": 122,
+      "printed_end": 123,
+      "paper_text_sha256": "f7d728c912ac0b51434f111699892e4211ec8f14008ec97111eb0c9fe39df5a3"
+    },
+    {
+      "edition": 14,
+      "stage": "决赛",
+      "title": "第 14 届决赛·数学类 (低年级)",
+      "pdf_start": 128,
+      "pdf_end": 131,
+      "printed_start": 124,
+      "printed_end": 127,
+      "paper_text_sha256": "2c9411ae20fc1029a6eef9beb262e9d56e7d09e777defac6946c452ee2dbda13"
+    },
+    {
+      "edition": 14,
+      "stage": "决赛",
+      "title": "第 14 届决赛·数学类 (高年级)",
+      "pdf_start": 132,
+      "pdf_end": 136,
+      "printed_start": 128,
+      "printed_end": 132,
+      "paper_text_sha256": "8a6bf89c2422f1ee443483c0b43354d1ad8cc8565e7a7d5163799a00f442280b"
+    },
+    {
+      "edition": 15,
+      "stage": "初赛",
+      "title": "第 15 届初赛·数学 A 类",
+      "pdf_start": 137,
+      "pdf_end": 138,
+      "printed_start": 133,
+      "printed_end": 134,
+      "paper_text_sha256": "87c88c757f2ec5c17c8a70fc02f8895980d1b0bdd1d09e10606339edf30fcf3d"
+    },
+    {
+      "edition": 15,
+      "stage": "初赛",
+      "title": "第 15 届初赛·数学 B 类",
+      "pdf_start": 139,
+      "pdf_end": 140,
+      "printed_start": 135,
+      "printed_end": 136,
+      "paper_text_sha256": "e662d413466c0acbf210244606f2b647c24e9e805cc0c9ff02c2460bb12c9f1d"
+    },
+    {
+      "edition": 15,
+      "stage": "决赛",
+      "title": "第 15 届决赛·数学类 (低年级)",
+      "pdf_start": 141,
+      "pdf_end": 143,
+      "printed_start": 137,
+      "printed_end": 139,
+      "paper_text_sha256": "96b59b07203ecc66cb080c4579db895dd755fab914a99afec5e4b83c55f289d6"
+    },
+    {
+      "edition": 15,
+      "stage": "决赛",
+      "title": "第 15 届决赛·数学类 (高年级)",
+      "pdf_start": 144,
+      "pdf_end": 147,
+      "printed_start": 140,
+      "printed_end": 143,
+      "paper_text_sha256": "883a52cd0d9c025dba345cf0802496e54d7951a4680c6d0f0d39b234b998c2cf"
+    },
+    {
+      "edition": 16,
+      "stage": "初赛",
+      "title": "第 16 届初赛·数学 A 类",
+      "pdf_start": 148,
+      "pdf_end": 149,
+      "printed_start": 144,
+      "printed_end": 145,
+      "paper_text_sha256": "ac8daa0ab625b5ec987ea7cbcf3557e79e046f7b2b6a717fbbdf707fcf9b14d8"
+    },
+    {
+      "edition": 16,
+      "stage": "初赛",
+      "title": "第 16 届初赛·数学 B 类",
+      "pdf_start": 150,
+      "pdf_end": 152,
+      "printed_start": 146,
+      "printed_end": 148,
+      "paper_text_sha256": "232e99f8aea1daef22a468d6747d252b2e2155ac3f319800f1c6c213e73ac360"
+    },
+    {
+      "edition": 16,
+      "stage": "决赛",
+      "title": "第 16 届决赛·数学类 (低年级)",
+      "pdf_start": 153,
+      "pdf_end": 156,
+      "printed_start": 149,
+      "printed_end": 152,
+      "paper_text_sha256": "b4dd85791a361dfc894003eb1103c742352c195b77758b062afa3035e6dd95eb"
+    },
+    {
+      "edition": 16,
+      "stage": "决赛",
+      "title": "第 16 届决赛·数学类 (高年级)",
+      "pdf_start": 157,
+      "pdf_end": 161,
+      "printed_start": 153,
+      "printed_end": 157,
+      "paper_text_sha256": "ad71ec42a95c63ad068694a1c99a4d9dd513a8cadb7be807eca135618935f682"
+    },
+    {
+      "edition": 17,
+      "stage": "初赛",
+      "title": "第 17 届初赛·数学 A 类",
+      "pdf_start": 162,
+      "pdf_end": 164,
+      "printed_start": 158,
+      "printed_end": 160,
+      "paper_text_sha256": "0486e1b8409385069ae17638eaa3caf03b811b163051f1170a182ceac73f10ea"
+    },
+    {
+      "edition": 17,
+      "stage": "初赛",
+      "title": "第 17 届初赛·数学 B 类",
+      "pdf_start": 165,
+      "pdf_end": 167,
+      "printed_start": 161,
+      "printed_end": 163,
+      "paper_text_sha256": "1e68e056e86c122eb8f369a72a0b8b3adb33e82d69d69fdf3a4c49bc2a8fecd7"
+    },
+    {
+      "edition": 17,
+      "stage": "决赛",
+      "title": "第 17 届决赛·数学类 (低年级)",
+      "pdf_start": 168,
+      "pdf_end": 170,
+      "printed_start": 164,
+      "printed_end": 166,
+      "paper_text_sha256": "6612c6046c5bceecd3f0ac2b242742e34f365c9b3b458521a008e580cbf40ce3"
+    },
+    {
+      "edition": 17,
+      "stage": "决赛",
+      "title": "第 17 届决赛·数学类 (高年级)",
+      "pdf_start": 171,
+      "pdf_end": 175,
+      "printed_start": 167,
+      "printed_end": 171,
+      "paper_text_sha256": "6e43245168dc2119653805ed86afd92e38ae8c31b38375bd985c80ce551af845"
+    }
+  ]
+}

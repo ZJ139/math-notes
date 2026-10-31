@@ -1,0 +1,3218 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-27",
+  "selection": "Each 2008–2026 Part A article was read; the selection prioritizes distinct syntactic difficulties and useful expressions. All 74 legacy lessons are retained.",
+  "sentenceCount": 307,
+  "exerciseCount": 614,
+  "examPdfSha256": {
+    "2006": "06689e55d86a814c38b2f0313cd8c5354c5dc3748e084ec32d0033b5306f7a56",
+    "2007": "62716b08b3147dd49deae10efa55ced30c938d9db674515575e1c04f88804855",
+    "2008": "71c147d52570f2708d23460e6c77572fedcab307a663cf3c3650dc7bda1a59b6",
+    "2009": "1e6111c5b134f29fbdaa7b56b4256406beb7e9728d27e08a78386ac3cdcf194d",
+    "2010": "77b8356bc460b6e2ed630f6a2a8be3f83c731a91293ed87e5b82c4024a7c2134",
+    "2011": "3b40e8da1b11a823987d0ecde9d5a465c296b78af2ccf06792245ce9acfbc7a3",
+    "2012": "30f265cce7bf703901847d1cfb9b4c5d6d61c0d1e3bceb698d74f6b66f53407c",
+    "2013": "01878c842862e402b64c0e124c52afc211b7c82ce010c67e43e303040128cab9",
+    "2014": "b96f60880181ab989935154788f56790f3e7845c00dd6f4e6f7293630d32eeab",
+    "2015": "8241287dd5e5c6119c79edd1060228ba7b053045876aaa8b0b010d106d1e25d0",
+    "2016": "6a51325a4c365f1962646c72be89cf6cd8dc28f3dffe20e8b6d754d763a0ecda",
+    "2017": "086671ba6b734faa9fec62bbccb53964ec5df4df83b4395566f02fa27b7ebae8",
+    "2018": "d6b1bfb96709d65ea8a76985eab93ef00385476c7f87e6784e872a903e1b9dbf",
+    "2019": "4f9fd361fbc39a9dca4850526c793ff972de4f2c977ed037d8ed15692e7728bf",
+    "2020": "041d2799cc26dd746342adb38fd2688a6055a2b9039f28c3fff116765c541d8b",
+    "2021": "4d4ccb602f1c91381fb366be0bef3e8646689098e1889b6b2738977419ccd54d",
+    "2022": "913b3b0c03627067bc0d6e915e88c47bf7525174808bec0895d3d4683067a6da",
+    "2023": "1bd74b58df996cafa01ffbe7d90e161378b942f791c3b998565846781c5655e8",
+    "2024": "f9e418389f89be9036a2f7bab4f23ffe0a9313d36420329ea5cfe6b293990450",
+    "2025": "0eccd5b7a3c10f36c6170a8dcc438cfcabc532c0825817894f79a131f2e7cae0",
+    "2026": "fd3e4b26b902be20982d1bb28632fded1b05b35c3ca8821fa763213e110b5a7d"
+  },
+  "articles": [
+    {
+      "year": 2006,
+      "text": 1,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2006,
+      "text": 2,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2006,
+      "text": 3,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2006,
+      "text": 4,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2007,
+      "text": 1,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2007,
+      "text": 2,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2007,
+      "text": 3,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2007,
+      "text": 4,
+      "sentenceCount": 2
+    },
+    {
+      "year": 2008,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2008,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2008,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2008,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2009,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2009,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2009,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2009,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2010,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2010,
+      "text": 2,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2010,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2010,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2011,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2011,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2011,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2011,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2012,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2012,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2012,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2012,
+      "text": 4,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2013,
+      "text": 1,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2013,
+      "text": 2,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2013,
+      "text": 3,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2013,
+      "text": 4,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2014,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2014,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2014,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2014,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2015,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2015,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2015,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2015,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2016,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2016,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2016,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2016,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2017,
+      "text": 1,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2017,
+      "text": 2,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2017,
+      "text": 3,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2017,
+      "text": 4,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2018,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2018,
+      "text": 2,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2018,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2018,
+      "text": 4,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2019,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2019,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2019,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2019,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2020,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2020,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2020,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2020,
+      "text": 4,
+      "sentenceCount": 3
+    },
+    {
+      "year": 2021,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2021,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2021,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2021,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2022,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2022,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2022,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2022,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2023,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2023,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2023,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2023,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2024,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2024,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2024,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2024,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2025,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2025,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2025,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2025,
+      "text": 4,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2026,
+      "text": 1,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2026,
+      "text": 2,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2026,
+      "text": 3,
+      "sentenceCount": 4
+    },
+    {
+      "year": 2026,
+      "text": 4,
+      "sentenceCount": 4
+    }
+  ],
+  "entries": [
+    {
+      "path": "english/sentences/reading-sentence-2008-t1-03.md",
+      "year": 2008,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "cbb14be22f07f99f903883336054eacc7e0bbeac41cbb2a7b3dcb151ec56661b",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t1-04.md",
+      "year": 2008,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "fd133c1d25cf78ccb3caf1f7efb153821d78e383aa46873f670018aad5a6c225",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t2-03.md",
+      "year": 2008,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "c33cce1ee8a81d3c8f3bbffb30d2c309716ef542466911df3cd6bbe905980e65",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t2-04.md",
+      "year": 2008,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "b0d96a1f2232767f817d878555cda6b9fba034f1985906595e1ec641c996d42a",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t3-03.md",
+      "year": 2008,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "9e6ad94a3fcba9df9021e3e179b3e7a71a8b22d631963b66ebac5e127a5a4665",
+      "wordCount": 14,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t3-04.md",
+      "year": 2008,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "a4b1c296911bd59ee23f6683cd3e54917d1b96333b526120daa2e5099de7709f",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t4-03.md",
+      "year": 2008,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "6b409dba1fc22343f83c6f77f5e4d35c38c91d7815b9a24171ea702bbaf02069",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2008-t4-04.md",
+      "year": 2008,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "748de59546b5272a846e24ab637be28e89172dd5c9ab86f2b4f1a36e3e202496",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t1-03.md",
+      "year": 2009,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "1f49e49f6e08b17e68ab3e16dbd935754d1b019b443d82cdb5e25db21b0aac21",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t1-04.md",
+      "year": 2009,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "aaf4548c55aaf734fe43e92be6c54a359f26194d1eb6aced72a2a2765930047d",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t2-03.md",
+      "year": 2009,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "6d2a2cb0e2454a1561f1b9a175f6d0a74837e892ad286b050c6e5944fa946dc4",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t2-04.md",
+      "year": 2009,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "b9ef3644adef99cf6cce2ed90a2a96aca940310cba2e8ff0b84d0048c70ac7a5",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t3-03.md",
+      "year": 2009,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "73d5521b46c57545100a15e191fbbc66107f9a2cc6b0e685b84136f403b44e83",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t3-04.md",
+      "year": 2009,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "63ef50bcd94a3dd30f1eac2e8eeaad4c3bc6478f0a682fbacb9b85baaf7aa4e3",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t4-03.md",
+      "year": 2009,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "31d7e2cd9c76b910ab0da8fa8b92d5c57e2140906fbce3cfc4003156c1ba8ad4",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2009-t4-04.md",
+      "year": 2009,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "ab101e73b97541eee25192d119beadfed00ed72342f4d08ae397c70c6fee8af9",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t1-01.md",
+      "year": 2010,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "a2e410d9bc71327250cdbd21e7e0d7a4b595d28c8efef9980865b298eab7788c",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t1-02.md",
+      "year": 2010,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "3a48ad8f999feb77dc8c7b926655641e3a2c543906bd8703afb659362d69e528",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t1-03.md",
+      "year": 2010,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "14531e123174ebf30e51f4d09dd44be5c893e8e95fe25c1e00201ddde5070c35",
+      "wordCount": 24,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t1-04.md",
+      "year": 2010,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "94563f0145a6c2da8c0013283672b7f97ea2861d6507f99d8b824d4e955d5406",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t2-01.md",
+      "year": 2010,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "d59a188668cff50591ac56b99d82058434112f128260a8087f0fecf3a8674df8",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t2-02.md",
+      "year": 2010,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "8ea12e1c695e72581c0fe2d1a9136393b9157dc9a43017fdee75f52be8f3a44c",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t2-03.md",
+      "year": 2010,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "70d3e94bfe11ae702a62bfb4aa4f00dadd26cdf78bf06179a9f1b38d2e641009",
+      "wordCount": 46,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t3-01.md",
+      "year": 2010,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "c798687495c80ba8ccf5a79c6986c23216eb10c247036647294d01ba5025a1e5",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t3-02.md",
+      "year": 2010,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "9785709bb84516818da63d05fbca1ed8307f712f581c2f25d32dd99e5082b666",
+      "wordCount": 48,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t3-03.md",
+      "year": 2010,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "b97dc7ef3921bf3266519167b4b34a0c2223cc187257403967120f4e587b00ff",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t3-04.md",
+      "year": 2010,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "4bbe1f382ca2f676c71da4cc65dc152ee7576a2245df6281c460e4bfdaed1eb7",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t4-01.md",
+      "year": 2010,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "039ec3a2a2b320680e03746fa96c69aaa0c6720dfac51a3b4b007acfeb890830",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t4-02.md",
+      "year": 2010,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "0725239255773aee1c58e687509faffab76eb5a0028e0f44e99bd84857dc5058",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t4-03.md",
+      "year": 2010,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "7914b7b11004cf81b974df452dc382e68aa71080fe7f6f4477ac8543bcda30e7",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2010-t4-04.md",
+      "year": 2010,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "5233943ec8205326dabb25b90dc21dc7af3b3d1e4c0fa2d911297281eba34c0b",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t1-01.md",
+      "year": 2011,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "1dbd8c00c764670b2f43a55240fec2c9874c7a7f884d99e5556da58094daf38b",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t1-02.md",
+      "year": 2011,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d56ce6c36f98f97153994e711d0da248da256dd8e707c4e41c49e61b06d04fe1",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t1-03.md",
+      "year": 2011,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "76061923704da8339ef6b415170ae799ca697177868f0245b01dcc05eaea5289",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t1-04.md",
+      "year": 2011,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "8fc080d5515077b05f3be8799fa23ac4c93f68ba6fc8cdf1ef8457bf6169d48e",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t2-01.md",
+      "year": 2011,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "48528398ee65249aa9115ad0c9d4557c16f37d26b9c72196b410323d9b6d0748",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t2-02.md",
+      "year": 2011,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "e52dd2677a5629b815c87e1f6133ae1331604449ef58fed168e0a8e8b3e311ec",
+      "wordCount": 16,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t2-03.md",
+      "year": 2011,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "866b3181f8691d640d56bf3c41621d6cfe22e34a38267e77e7e8a688380d8323",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t2-04.md",
+      "year": 2011,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "543800d968819ccaccab218c0e777d9c2cae0eea618002716e3e56aeff22c58b",
+      "wordCount": 14,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t3-01.md",
+      "year": 2011,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "91f5fb26d16db034d35f9fd60d9ea2fe76d88f13500dfc2017d42b337d876b1b",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t3-02.md",
+      "year": 2011,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "f56ed643c855c4b8fddedfa0992c310589eec0242a06e473a4ca444279459e00",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t3-03.md",
+      "year": 2011,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "3713378e2bb48a4f72f03a0ab9641400fe8268d33637b36d441441e2291f6e12",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t3-04.md",
+      "year": 2011,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "bc9f57cdaa96a8711b8a812ff0972a7ebebe3fdbe2151ebfd4cef9b131347319",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t4-01.md",
+      "year": 2011,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "390fa098edd41374b6472f90fe8c6096c6ea5f1f537ac4088f6683cde3b2c129",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t4-02.md",
+      "year": 2011,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "2ef922456dd80f9df09e86a0ac57ca1d7c193f24ee2bbaaba31e491440aae523",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t4-03.md",
+      "year": 2011,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "222b69f52c090e27ecefc6ab2e2389ba5b2998ab1bf45848c92d81cc0962d273",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2011-t4-04.md",
+      "year": 2011,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "6c7c03f03e64cbddd3fef3c815525700b37e0a3f85621aaacb4852fcd1106a9c",
+      "wordCount": 56,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t1-01.md",
+      "year": 2012,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "093dd2e17ff2ea3c03698eb0c583eaf8567f8c75646fa5a2a4753da8dc1ab011",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t1-02.md",
+      "year": 2012,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "9653ac11541ddc14e81c37be4c9bf09b7566e02b094b48c1e60d89a246075fa4",
+      "wordCount": 48,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t1-03.md",
+      "year": 2012,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "c3aa8932ae5f7cec115a169dd30e9efb2d18a63ab1bf8122240802c39655040d",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t1-04.md",
+      "year": 2012,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "4803a827516826af64a635b906c8f0c6f58e675b4b00627f1ba7fd64d89d6a0e",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t2-01.md",
+      "year": 2012,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "ea2032effc428c8f864d54b9f8a830507ccbb857e4bd2eaeb3f974434a1d9776",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t2-02.md",
+      "year": 2012,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "cb25d0d49fad9f0f12a6fe93d979f72b114333cc66e81ab2cfee776fcd96e4fe",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t2-03.md",
+      "year": 2012,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "1ddd3c1e66ecfae9aa96de654d3ff55a2fefa3b266d1bd1020636a0eda6de235",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t2-04.md",
+      "year": 2012,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "2d2377454927189855dfad464f94210c451f7d69c5f85e5ae19ef7c8f2c2d741",
+      "wordCount": 13,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t3-01.md",
+      "year": 2012,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "7c580f9fb35e7bc3e13af332735cdc26fc61a04c19cf0bb8ac4823f14660b759",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t3-02.md",
+      "year": 2012,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "a030ad44fb7aaa762d18291376eca44ef5dacb9e2a05ac378076e46ac1ec3369",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t3-03.md",
+      "year": 2012,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "a93351be3a55b5b049feb43387f4bdfe8e39dcb5e1c9a7f1d8c058fd0c33345c",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t3-04.md",
+      "year": 2012,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "2ef2374f15873baf31f0205c58b3b07d6e4e3646fa0784e9760c90e0a5825a88",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t4-01.md",
+      "year": 2012,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "c92fa599606606cfcd3b3880372be9213ee753f8505d3b09ad0605a2c063e311",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t4-02.md",
+      "year": 2012,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "b663c6b82f88701fffc0fb6aaf8aa22a2fa12a30369859bf2eb094e991c389a6",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2012-t4-03.md",
+      "year": 2012,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "ee1d0e5ca545f80972e96b035f62b6ad9293663f9387e3ad99e5678a3bc10986",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t1-01.md",
+      "year": 2013,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "f340ccf361e001a75447fed3e0c066b764ef92df43919e6a6b14d4baba294d77",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t1-02.md",
+      "year": 2013,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d839f2922ab2ec71674631c286d196aed46cbec2025c30e3e0a5267e08b67f73",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t1-03.md",
+      "year": 2013,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d36b105ab7e2ce4f8f937f76109f8e80702ea1f7a931c913f94fc6050a48dcc5",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t2-01.md",
+      "year": 2013,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "a10b9e23ac1d053e5b758c3dfb1965777061de52d9cc1e732770f80aa8006856",
+      "wordCount": 12,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t2-02.md",
+      "year": 2013,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "97622a9f40a101ae6c9222ad4fa98eeaac458c4daf3835ec9988588a1345c392",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t2-03.md",
+      "year": 2013,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "110237c1806cf70c391eb84203dcb9a1c149c629a4ff9bf6bf191e0eb7c0d32a",
+      "wordCount": 9,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t3-01.md",
+      "year": 2013,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "ee849b4b93cb8e04ebbd403ce4ac1c5615f7a8ff7f658ac02385b9ae0b5a7439",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t3-02.md",
+      "year": 2013,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "3e34d40ddd9df5ffa544850748846af1204b2ca150b9dcb01a466cd355e6cb2f",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t3-03.md",
+      "year": 2013,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "e71c8d67ddb4dbd3448e6e9ac4c278842bbd169e351453076f358a5106d90fef",
+      "wordCount": 43,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t4-01.md",
+      "year": 2013,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "d1b79f43f13602d1d21117689fc890ca3e593d09b163b134021e72b4567f1121",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t4-02.md",
+      "year": 2013,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "f376bab059ab247843d5e2a61aed78686d52430470fd565e04d43db0930bf65a",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2013-t4-03.md",
+      "year": 2013,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "e493a14b4a280970d3eb8b9f8b5b8130b4fa257116928b7c567a512d31e1e583",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t1-03.md",
+      "year": 2014,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "8c5011897d2a2c1e0daf9928e063a459c1337f637ccf3ebbc8c0966dbd11533f",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t1-04.md",
+      "year": 2014,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "e20bb66fbe46c4617f5b908af4a9cb0798758d76c6f40f616eae4d57efe78c85",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t2-03.md",
+      "year": 2014,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "6bab2e136edd7365315cb6fa768aa4bc082683b7eaa2a834ec09e61a4cde2a09",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t2-04.md",
+      "year": 2014,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "5360e545b26735859ded3032eedaaf1d97517a79920b89edab0b22e34abc5166",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t3-03.md",
+      "year": 2014,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "bd51a87c4165447b0c275c229c72f37c1ad1ffa9d9010b2bb2e8ad7774c4d5db",
+      "wordCount": 15,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t3-04.md",
+      "year": 2014,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "2416a34e71bb169d75df92ffec8ff805828b965e3144a52feefeab4cf3d292ae",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t4-03.md",
+      "year": 2014,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "ff4f8c074112cf01a331c29fd7f55733436f02f6ada16d4f59da5879521614b5",
+      "wordCount": 46,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2014-t4-04.md",
+      "year": 2014,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "d54f91768ae8bb1a1ba2e34f37b469fd9bf29b1389873683b8290c554ce73508",
+      "wordCount": 54,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t1-03.md",
+      "year": 2015,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "da18845b4263935d81d29ddae7b5a9e2581bf6f79f1e51e8184a29a9456518db",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t1-04.md",
+      "year": 2015,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "4d668a12b71925b4e7d18190b3731d057a84ae1fa00ef523df300f43d4800160",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t2-03.md",
+      "year": 2015,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "deecd8196aa54941a14d5a450b0651aedf7835eb19fa3da735225ec138996c3b",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t2-04.md",
+      "year": 2015,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "8931c05c46bb88e07dcbaf1ba8cf7af58549401c09e604f62a954a842793810c",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t3-03.md",
+      "year": 2015,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "3dc0fff88e8c0bf8d83c4d6f26e77997785f43d459519bcccfccdcba3189581f",
+      "wordCount": 48,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t3-04.md",
+      "year": 2015,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "99e84bd115050eea2b6fa67237f4a92acee1d3e7b62b74835190bf3b16491e44",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t4-03.md",
+      "year": 2015,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "ce9982e177cf5f51ea6cf37ec70f5f3dbb3031abc7dacd028ff8b6f27ef95ce3",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2015-t4-04.md",
+      "year": 2015,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "0b2a4e59aeb0f696c0d0762215e57ee018df80588bdc8d0ddb80ba759385e5f6",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t1-01.md",
+      "year": 2016,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "41bdedf029599e80bde24d39629f8dda01a0999a9d62daafbe8a3723115d8971",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t1-02.md",
+      "year": 2016,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "97b69ed3c9106178ef5feac8332bac46ba6abdc7fd34f31820b136bc90e18829",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t2-01.md",
+      "year": 2016,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "da65ed4b0d1fd39b631420dd655961f0437a28ed77dbb0e2c7b7c345271e8ad5",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t2-02.md",
+      "year": 2016,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "00f289e2395fb7692a1d19fd4e54ef68fed529d97653e97f6378d7cbedc02a64",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t3-01.md",
+      "year": 2016,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "73ee1c398aa2e3cee922e07a3b23f3f0d837f6060406620d5be7877f96924c31",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t3-02.md",
+      "year": 2016,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "7d6e786c1f0015949e8cb005b6ad308fa9a5747e901bca72d2e1a56a42f783ac",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t4-01.md",
+      "year": 2016,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "4020711e2408f974c34b1f8dfbef3839a4d5ede62ebf4fb5f2f1fea840fd9e69",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2016-t4-02.md",
+      "year": 2016,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "bcfd8c9e361f161f8d5d3508896ff958acb2464c3f04ff41f5323d72febf4025",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t1-01.md",
+      "year": 2017,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "9e54d9b0ea30e68a36e61c72a2dabd26c28a9c0f9f86520dfd2951405fc0f1fa",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t1-02.md",
+      "year": 2017,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "c907a790afc5377e3cda11babccf8acafcc21c9531e622ea3d391b580269fd46",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t1-03.md",
+      "year": 2017,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "de26ec035b09b4d600198de9d8ba0a2bffedc4988034df751ffbec953ef52da1",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t2-01.md",
+      "year": 2017,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4ee3e3c500f98dd1159bdef7e49fa57c6b79f3b16bcbfc97601f2bfefb68f2fb",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t2-02.md",
+      "year": 2017,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "22f8bd4af7f300260e578c42ae755bd785eb97e3f0350ee4427fc5c46b0f9851",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t2-03.md",
+      "year": 2017,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "60c577416bb2a472db40a1de0e5a43e33548faa106458637f168988ddc54f9d7",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t3-01.md",
+      "year": 2017,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "b3ab4c8fd10baa4c1d5d63c231f33831e2d36d19f5f2313f042691e61f9e439f",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t3-02.md",
+      "year": 2017,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "1f336fc12bcd24b503752d3671e8ed582460c07f192d720203a516aaea3f03b9",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t3-03.md",
+      "year": 2017,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "9b8f71e25300f2e14809920decbcbcd4f185b990ff677b23fd7b7b0eea0a667b",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t4-01.md",
+      "year": 2017,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "b28dfb15cf896aa061727b50a17ac403e41e49a8b300af20eb128ccfd9a67356",
+      "wordCount": 24,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t4-02.md",
+      "year": 2017,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "49a91be696916cfd33975107c8fa881033d566192f6af8b225c1814e62bb1f09",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2017-t4-03.md",
+      "year": 2017,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "9c1ab49ca9276242eee5626e2a376a2d06f49f7a006b24c286fd9a9f549b2c7f",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t1-01.md",
+      "year": 2018,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "bd36d410a014f0be9b40c164f08452cc6058db7ad304769d97fd2919e0d2689c",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t1-02.md",
+      "year": 2018,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "52d570d4ac807743263e5566ae11e552483b4f04d9f266496158d0b1e1325633",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t2-01.md",
+      "year": 2018,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "37a420e33938904e3985ffee4fb950065693bb0c9ec2eea879d73c876d6c12f7",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t2-02.md",
+      "year": 2018,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "8fa2d712d5ffeb678b557d0f6d4c863db40e5295c52d0ceceaca575261f7481b",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t2-03.md",
+      "year": 2018,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "1d1c30476f8a8b55c0bdcdcd35325aafad9e259984cf361b8c515ed10f2af72e",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t3-01.md",
+      "year": 2018,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "14f5a8b68f577b505608d9aeeb9b0a53b9c432f3d8e6bb0cebde04ddd2110eaf",
+      "wordCount": 60,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t3-02.md",
+      "year": 2018,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "30a902be2d3d9b01d537582bb9cd555de7fa6565f65bfeb481784edfde322667",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t3-03.md",
+      "year": 2018,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "1df7281cdd90a5cd0efa613dbf1b21aa449351dda86b30102494c0b255f61916",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t3-04.md",
+      "year": 2018,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "22a47a405d99b8c4c106f469a7f5cdc7099f484446ea9ba42d6e2bc336710f05",
+      "wordCount": 17,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t4-01.md",
+      "year": 2018,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "723dfc4d3a0f96ffbb8fd636bd3457a3c363eda0bf62a658ece332c918ef9841",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t4-02.md",
+      "year": 2018,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "8c39ec7376391ac6d459ec229f478411d7ef96840d1260f82d2368b66015d70a",
+      "wordCount": 40,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2018-t4-03.md",
+      "year": 2018,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "6c15aedbb8b7cf3a6c99390fde219606eb42a6b6a56c489bb4f73b97a391815f",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t1-01.md",
+      "year": 2019,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "07626889a7e539cac42a5a9b2e9db7b26bcea83dc46498d41db0eecf7b912ba5",
+      "wordCount": 40,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t1-02.md",
+      "year": 2019,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "e3a76a601a85a39a6d0d6b96fed2783b8e4653349c863dd812b4671e3a33aea7",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t2-01.md",
+      "year": 2019,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "9387bdcb14c425dccd07a22bd7af0592c5663ec407aeaae6860247dd96359d32",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t2-02.md",
+      "year": 2019,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "763eb65304472ef410c033da81f84890cbd02304b1b2c2a8a70810c9d026a4bd",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t3-01.md",
+      "year": 2019,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "7ad5ad415a9228a011a39e93100497d82a31950b8b028672cdea11f84c9d5877",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t3-02.md",
+      "year": 2019,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "ddcdb260c2097080eafb0c9387f61c6ae2071ab45b1956dc0bc25be6633303f3",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t4-01.md",
+      "year": 2019,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "fa1c5d25e45505038c7f1fefce924582f23d40fe0c48869b4d1c4b7e29e01058",
+      "wordCount": 43,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2019-t4-02.md",
+      "year": 2019,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "755851a0f0ef9af28beee35d0c1f6b78c3d82750ecd74b98624f78eeaeca8984",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t1-01.md",
+      "year": 2020,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "294ea7e4dbc38b8f19f5ca36cd22937b142fb62bd3620e1e58047bc7aca5145e",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t1-02.md",
+      "year": 2020,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "2271271d4e3ac97e4b0115a3ce373dc1e236b2d80f49046497a26b232a2ee7f2",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t2-01.md",
+      "year": 2020,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "18f72525b34626fcb924b2c43f2b2008c5b6739803caaacd50c27428bd70c9ab",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t2-02.md",
+      "year": 2020,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "c51bb8e0f3455063f9dfcaa3cf42397504b93cb47ea25572f8ecfc90c37c0170",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t3-01.md",
+      "year": 2020,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "fabe3602748ed791826ea91f9bbab7625bd290676a9419e53ce3ec2e467a62ed",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t3-02.md",
+      "year": 2020,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "6045f7b458088f3798185c038f90f32c9ebff0fa3dc1b3c318399d09addd76a8",
+      "wordCount": 50,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2020-t4-01.md",
+      "year": 2020,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "dbca583f9ac6877e022c2e1e844aaeb205c2983cd50b961399a5d69dd6d6749e",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t1-01.md",
+      "year": 2021,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "dbbe1d30dfe2c3b68dbef1f19c331c7056dff86e75cf73688de796a7dc005e27",
+      "wordCount": 40,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t1-02.md",
+      "year": 2021,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "050bcb5d919cb333970b813c9ac6fe5bbc2f0d45829c724b46acf5ef73495b36",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t1-03.md",
+      "year": 2021,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "398ef9d429b848eb2e68945691096ab0db70e7fab829b14cf39a0c4562faeee7",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t1-04.md",
+      "year": 2021,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "0e345d69a1e55ec34037a138a4e06421ee1d1a0c350c630352a6582f7a6ae732",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t2-01.md",
+      "year": 2021,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "0d5adbe8e599d2283455a7f7cd311a74d8da2b2bd5328b6f423d61b6c93cb020",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t2-02.md",
+      "year": 2021,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "ba760886f76ba34dc0841fd885a19cf022f61f097a3328aea9024ffa00b5aeb8",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t2-03.md",
+      "year": 2021,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "1f4632113284e9600fe1c805d638bf10dfb00706a699aff51d01bc4a82c2b3fb",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t2-04.md",
+      "year": 2021,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "eb316010113dfcf4db45c806a78c303358a6883ad21fdb7cba7ca12336dc2fc6",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t3-01.md",
+      "year": 2021,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "bfbf06980770a5bcbf9177d37c0e7078cd633f5da06e6e29683481a6f7c938ad",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t3-02.md",
+      "year": 2021,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "1b204281bb2e7636b90db47c0d9988a89b6e4395499b9e5161c686f376aceb0a",
+      "wordCount": 52,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t3-03.md",
+      "year": 2021,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "144bfc6ef17e6af33cdcd1dc7143325d5ba73c5f84e37cc7624695de43b41f73",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t3-04.md",
+      "year": 2021,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "381edc94877cb7faaca32938348a2f4042aaa8a8f254c12d4c4eed173cfa891e",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t4-01.md",
+      "year": 2021,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "a53e7a2df098db0769190b4136d7db535e0688394291c5cf86138ad2fdd55da2",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t4-02.md",
+      "year": 2021,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "5ef20010f09ef5df45366b8b20f5ec04b6a2eb4995d1c1aca219980ae444c6bb",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t4-03.md",
+      "year": 2021,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "891629f86b894e03f63a5b64d05a232234028e0cf3c06142fcadbcc715a7ac17",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2021-t4-04.md",
+      "year": 2021,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "810ee094d379806ef5f0db6cc0d2807e3ef3f9798b3ab0207d2a63e4c362f856",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t1-01.md",
+      "year": 2022,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "dbe5743b6ddd6487b9246221e9559e6792655e4e2dfeb1c0b93abdcc513f87e3",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t1-02.md",
+      "year": 2022,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "9caaf80853370897b18cefe037fc5941ef165a10ccc0fdb1ce80481d0118c9f8",
+      "wordCount": 17,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t1-03.md",
+      "year": 2022,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "cf00371e3c10fd2a8581ef65b28be759d5aff472c31feb2a43c931394e0e5a0f",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t1-04.md",
+      "year": 2022,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d24cc0b2483fcf70ec959ad30f352f8ebd87262494e4ab7e9e511e3ee38feba2",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t2-01.md",
+      "year": 2022,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "eba374988e1473cfb23bacbf2d62911e4d838cbbe83bbd7b910b5d9c40ae4d2d",
+      "wordCount": 50,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t2-02.md",
+      "year": 2022,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "77d98545c1295b005724fec23766c511b34dae76b326ad513b283d5140ad0473",
+      "wordCount": 43,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t2-03.md",
+      "year": 2022,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "be1467d99144532fde3248254cbbd213e958b16cf3737a481b1b74791cf67ee2",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t2-04.md",
+      "year": 2022,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "a8835464539c1f779b4ae96318d667268af56ca3dca93ee816142f285dc61926",
+      "wordCount": 40,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t3-01.md",
+      "year": 2022,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "549579895d09f2120d58c78186879d90013037a752782cbcd99f263cb07fecf5",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t3-02.md",
+      "year": 2022,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "15ad5ace68efc46bf3d488cc20f3f040b9602ae10a77e34bb9ebc36268f9ef8b",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t3-03.md",
+      "year": 2022,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "533a3aedd5186d3669e5d5906614dd0454245a7585b8df030da22f4245c997e8",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t3-04.md",
+      "year": 2022,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "3d3ce1c261df1ef168d304e98e8b821045fb20df6e00a97f3c39009a5ca9ad15",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t4-01.md",
+      "year": 2022,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "cdb20e939a1f9422f605449e2e18090f05088b8fdd05ee11cb12a96f19df3cf9",
+      "wordCount": 15,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t4-02.md",
+      "year": 2022,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "949225eafc5faec09c25f2898eafc7a16d0976ab221d28146dea6397ded19b22",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t4-03.md",
+      "year": 2022,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "1af18130d594806c2131ed13dc92cb8f152da7c7605348978a4fe5a1c342bdeb",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2022-t4-04.md",
+      "year": 2022,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "d96ff46792f90b3b0849f501cb1ffe98f85d6246115e824d60e3e78ee5d1bd5d",
+      "wordCount": 17,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t1-01.md",
+      "year": 2023,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "2c6f72b9685b9fc94c4dfc992b195e655f1dde1da42fd90dfda5c4aa632004ca",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t1-02.md",
+      "year": 2023,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "dc8826d83e6d43232e3ebf206bbebee62cf5bac92e84a457be642ac6bca2d2b3",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t1-03.md",
+      "year": 2023,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "0413024479859c1787218723f103a0482d5ad0edfc824c9e59245194e5c730ea",
+      "wordCount": 50,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t1-04.md",
+      "year": 2023,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "41c29478ff7b41984bdbc63c817e7eac52dfc8f67014bb231a78034e064b1f62",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t2-01.md",
+      "year": 2023,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "2be396d29d48c570becad3ed438c8050cba36c02210ed5c2417cd7c7728827c7",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t2-02.md",
+      "year": 2023,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "811a3a0c69d47892a631adac9c4ad35892cee5ad88448cfac7ddd6a687de5be4",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t2-03.md",
+      "year": 2023,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "66e4010deb254f549264db86e9c2b8a0d94393f1e8aa0f7707810db885547577",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t2-04.md",
+      "year": 2023,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "cc366a7284ead5888883a7ecd860dc4ee54f7ff1c139bef79a96fa7a4cc984c5",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t3-01.md",
+      "year": 2023,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "d26852150265ba43f46e8a86a2b310a1522e8ff5075857a46407d24574a83c59",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t3-02.md",
+      "year": 2023,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "ded4988eaa009254b61b438cd81c06abb8ef1ba74037b197aa965d222a616f72",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t3-03.md",
+      "year": 2023,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "24c1ee2382c5490d64b67ea58b2f08e711313ed8adc1afc494ea44fdc92de499",
+      "wordCount": 53,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t3-04.md",
+      "year": 2023,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "82018690c2e791d73013f549ae466f28dc01f7272d4460f26a1a05d9bdd43724",
+      "wordCount": 23,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t4-01.md",
+      "year": 2023,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "8b6a31fc254165f899b5b5271e8d5999afd28d137e6615aa47fdcd52bbc79f15",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t4-02.md",
+      "year": 2023,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "ddc4b04c422079942cfc9c194a4b8210dbdc6eae580ce9925cf9f3f6df942417",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t4-03.md",
+      "year": 2023,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "25f5bf005bfd192c9840e0906ba5b4828746e571852532182814ea4af0be5e9f",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2023-t4-04.md",
+      "year": 2023,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "6cd849e23c0813c6b542bd7cfb5eda8417946ef45eaadcb4ecef9fa5d9d473ae",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t1-01.md",
+      "year": 2024,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "667f1d6598d0c76d625f2f1774252725fed2a4576a79baa4e8f8c5d09940ce86",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t1-02.md",
+      "year": 2024,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "15de67c8407609c871ec948e04c7f132f34a73dea6e2bd3cac0502d948b1a31f",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t1-03.md",
+      "year": 2024,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d3a73124d1af0357cbb9b44f887856f0a9336f82cd53e4bbd2f477ac20814818",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t1-04.md",
+      "year": 2024,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "c3e4a8b8572a4c1d6d8c800eda14c94f98a3352c4518719e4a11dccc70ef4a69",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t2-01.md",
+      "year": 2024,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "134075cd850d44a2bf83195e5efd342ea58f5b907d4e97e24a48aa234377be36",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t2-02.md",
+      "year": 2024,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "ecdeae2f9a5e14dbc07a7349ce95746e677edd470778d5fa52be4482f3a5259b",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t2-03.md",
+      "year": 2024,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "91f35a29b1b0a1d10684b1d0ecf1d3d1a813c2183d2e37e9ad3cf642672cd9da",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t2-04.md",
+      "year": 2024,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "f7e923d4ec32f7d7e5aa49f1694aef726c2e86959f65d2dce46a4d2b58964ef5",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t3-01.md",
+      "year": 2024,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "e5b7a235c38634ca97f499bd605d917c8799747fa532d0dd99f735e46aea217d",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t3-02.md",
+      "year": 2024,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "3388fcfcd161bca80cc794e967a5926fc2f7fa8f0a5f25ba0dcfdcccc11b5c2a",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t3-03.md",
+      "year": 2024,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "b3a183654c3d45b83943980ed9786e33f2597ff3ec2ffa0db8c8318032e9c22a",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t3-04.md",
+      "year": 2024,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "212ab57a134f19616e24ad15dc347115dae2627f0a2c7e0f77a7d2e4ea68de44",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t4-01.md",
+      "year": 2024,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "d21857cbefe1b35dbf8fe8ad4f81e2cf67dbe97a35952482946df471e1b49382",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t4-02.md",
+      "year": 2024,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "69f5d075c0ba4a263d4bd4b227c7c3c742e108b5dc16705c68350a4ae8fe0429",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t4-03.md",
+      "year": 2024,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "6502fae6f14b2504535530ea15ba1da64ce0aea6fe6825c8fbf7eafe6d8b8802",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2024-t4-04.md",
+      "year": 2024,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "54a28bf9f3f484270f104344637d70ae8f24d070d060ff48c56f905e8c289695",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t1-01.md",
+      "year": 2025,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "fac3dea52dc757424ddf47a2dac5aa1f9e04844dcb3bfb34a6543b12a4c9e3db",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t1-02.md",
+      "year": 2025,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d93cf3e7a6d1f377b023d17533f76d5e0c5b13ef0c8fa958864fafe0e8d3e72b",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t1-03.md",
+      "year": 2025,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "44269023bb63de60919428eb6fc5dfc802377d29876d49d2c86161fff228f05e",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t1-04.md",
+      "year": 2025,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "827b7965dab2f26abc57baf4ec801834ab9de5261e87ff681c1a8f6a8ed63f6c",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t2-01.md",
+      "year": 2025,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "bcc3ad8aa3c24afa246e4ac212be18a4f1380da0e20bec4aa211f001eabc40c0",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t2-02.md",
+      "year": 2025,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4f5eb146f1eac7d252745ad4e3f8bf5920965e7299c0e1982cd3fab3e1f03ea9",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t2-03.md",
+      "year": 2025,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "496360985309476a7a6177d3ff15dbafa60a647f84af37bed960d3ceb74b4547",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t2-04.md",
+      "year": 2025,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "be4f9fc97ab776649756eac328762e93402f756c30655c3ef121eab6e0e85974",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t3-01.md",
+      "year": 2025,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "78d025238570927ccf89d1b6872bcb340d88249463e257ca9a01e62d4462886f",
+      "wordCount": 51,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t3-02.md",
+      "year": 2025,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "8ef7d70d87439a0b9f19468f9273c23f14b0add8534a2b7584da96725f93c075",
+      "wordCount": 45,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t3-03.md",
+      "year": 2025,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "4b30fd28c9c7cbceec8b2d587abf603fe25cde91e0ab2393cd6a707966c19472",
+      "wordCount": 44,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t3-04.md",
+      "year": 2025,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "67ba22d454eb607911eff7f3e6a6d58cdad19a552810f5ba1c6d17ba8b5f2c62",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t4-01.md",
+      "year": 2025,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "d776850ac44fb3a552b119c8d03a0b03d3e7ab87ae823a4e1daf94fa969b01a4",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t4-02.md",
+      "year": 2025,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "4a4c0b89412f3b26281b905c4cfcdd69661f6bf7ce90707f99f9515ef9db9fb2",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t4-03.md",
+      "year": 2025,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "e7b06ef3e6d43a83c130684dbfb2e863892b17b571c39c22833247ab88bd9f12",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2025-t4-04.md",
+      "year": 2025,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "a30a5199c145238e04177e1467f8ff2085c644b8991eb41360c5883c12b4c29e",
+      "wordCount": 39,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t1-01.md",
+      "year": 2026,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "90a6c11cdc5fabe0bc8db0db30c689a9397378c2a2011721a4b54ef37141492d",
+      "wordCount": 15,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t1-02.md",
+      "year": 2026,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "089cd75ad8af6de3eab85e3add4d5550dfc86f7c1316518525e12caca563878b",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t1-03.md",
+      "year": 2026,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "9633db6f5f77abcffd42267460366605a575c35a6883eb1dc2ae7a0b4f863565",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t1-04.md",
+      "year": 2026,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "e42b9210c91cb44e49e12df5b9e84fd5b3b46cd1334bd7ea9dfd372783995783",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t2-01.md",
+      "year": 2026,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "74015e3a41651f751d05f67dc4ef7ca717cff3d740b43d52e7117239b97c8798",
+      "wordCount": 43,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t2-02.md",
+      "year": 2026,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4d6f0457218b355de2ae1166aed281618c543b49e1ddb598736beb77e11809c0",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t2-03.md",
+      "year": 2026,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "61194aef36290e286e9ef1bc4ad0a082f77224c475442a23dac718c46ae94fef",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t2-04.md",
+      "year": 2026,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4ef17d1dbeb75f55b9b0b137e6f64b028d3e6b3f9ba308807262388816b61768",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t3-01.md",
+      "year": 2026,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "bfdc442a00f5afef7e930d1b4d7a9832d4fa8279b3a3a6cabee7903dc2bbbbe2",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t3-02.md",
+      "year": 2026,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "7e4945b00e5fd446797f7d9e72c28364c2727ea5d599db79c30f9d3a6dc17d36",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t3-03.md",
+      "year": 2026,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "4d68f7a5bcde18fae9587365cf8a31a5bfdc7aa3d23eefadc395be614158dbad",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t3-04.md",
+      "year": 2026,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "c2712f6d413a6bb32effd8a2ba504a0538ce2a84f1788be65cbcad74caef7e93",
+      "wordCount": 38,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t4-01.md",
+      "year": 2026,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "69d871d82e8a7c0c4cae8edbd702447b70fd95d633e35fa7e6255e84085c47bd",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t4-02.md",
+      "year": 2026,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "f3248a6133dbdd3b0aebfb1a2f2590914b0259fa7ac26d23df2a5e06de5e7482",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t4-03.md",
+      "year": 2026,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "eafa3c331189f9369981422aa98a7c43a46f37d819d83e079efacb30836cb939",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/reading-sentence-2026-t4-04.md",
+      "year": 2026,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "9d5fd3eb6dd86cc2e297814546244266f64b6bc9a50cdc819e1930a557145885",
+      "wordCount": 28,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f01-2006-text-1.md",
+      "year": 2006,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "8dfcfc45173c9474eded04cacca5b8e9f7320d35114a2b86c783f4dbd01a933b",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f02-2006-text-2.md",
+      "year": 2006,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "3d4b8d475db7927267ad0d9d6d1d5a1b287c11fe07e6066ed1a817c5181e339f",
+      "wordCount": 4,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f03-2006-text-3.md",
+      "year": 2006,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "43065ef0ded96293f6744675dd81272de06b2e9478348d57eeae26e6dc7cfe08",
+      "wordCount": 13,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f04-2006-text-4.md",
+      "year": 2006,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "12c140d2408fab719a2cb53d3940a5e08e0c79ee51e0f7ce47a73a5f376ca39e",
+      "wordCount": 15,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f05-2007-text-1.md",
+      "year": 2007,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "aadaf117e8a8a3565116d554f59505b4db660c6e7740e5ac52e373efcf2890bd",
+      "wordCount": 9,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f06-2007-text-2.md",
+      "year": 2007,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "46107b457dc42c3be002aeb3d1000c5e7ad2568d3db8689c3ec7e34338a92a4d",
+      "wordCount": 10,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f07-2007-text-3.md",
+      "year": 2007,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "d00ed4d747d5849f60433f8a3e3f4a44835ff0e8cbcc036ec5cb823821d70a73",
+      "wordCount": 12,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f08-2007-text-4.md",
+      "year": 2007,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "3e3ff672cd333f3ee8cd2ba5557daf034b2c964dc9933b28576978c15d87c604",
+      "wordCount": 6,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f09-2008-text-1.md",
+      "year": 2008,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "f513afe2fc0a6da08f9e1a58b9944532d3112c70b525fe616e4782102b709e3d",
+      "wordCount": 11,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f10-2008-text-2.md",
+      "year": 2008,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "034b915e57e453652ffcbbd5d968ec38729a5f545024bd8255a74389eb159a0e",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f11-2008-text-3.md",
+      "year": 2008,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "2cd300b4d91674c5fa5597c9ab2936f4bb96fded63b2b52ed9fa9f57f28a74cc",
+      "wordCount": 16,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f12-2008-text-4.md",
+      "year": 2008,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "9567c43382d0372446d124d3f6827364f2b9e1a366eded7007f01018e959351d",
+      "wordCount": 13,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f13-2009-text-1.md",
+      "year": 2009,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "ad4f6fe2056ff7e940fe292442ba83baec427a5ffb710cdf18b549da6c91a7ca",
+      "wordCount": 8,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f14-2009-text-2.md",
+      "year": 2009,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "6f9604b8b3468e195e72e54f1ec15be2a4566acc1c063854edd2b9d431ecc20e",
+      "wordCount": 11,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f15-2009-text-3.md",
+      "year": 2009,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "809ec6f1981f88fbc17e9a63c60144d89b651d685f89f162d9f1ef2ab5f4df7c",
+      "wordCount": 7,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f16-2009-text-4.md",
+      "year": 2009,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "7ccbd17e40a9d8cd1e982978f6ef04cc83143a039e908623b29418155662de47",
+      "wordCount": 7,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f17-2014-text-1.md",
+      "year": 2014,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "b75cbabf78709ee3a8dcc7c96df106718fb30e5f3b7e922b4a85dc726dd7fc23",
+      "wordCount": 5,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f18-2014-text-2.md",
+      "year": 2014,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "a948015cc11890a2ec8ecd782d6b9a7995b71e38cddfc15a863c33f099ba25d2",
+      "wordCount": 7,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f19-2014-text-3.md",
+      "year": 2014,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "1159d4899631973c7b9a7f9415d29102a0789e6adb71492d825e0cd8ae885c7a",
+      "wordCount": 8,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f20-2014-text-4.md",
+      "year": 2014,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "38f95511b50a54f1caa9521299d524fdefd9d51d12136a9f17a7507fcda65533",
+      "wordCount": 32,
+      "exerciseCount": 2,
+      "extractionNote": "The source PDF has a damaged numeral glyph/text layer; 2½ follows the separately reviewed legacy translation material."
+    },
+    {
+      "path": "english/sentences/sentence-v1-f21-2015-text-1.md",
+      "year": 2015,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "3b8e049e99f82599e7bcc28e5b85e38faeefec63eec24ce2c5c172e60b4f020d",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f22-2015-text-2.md",
+      "year": 2015,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "e9ba93f85d79254142829c36c898784126acca725f0bd19d50253f655e6594bb",
+      "wordCount": 11,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f23-2015-text-3.md",
+      "year": 2015,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "51e5737ad94b0a6ca76f632d9c2b4efd809f6088a3cf64a9ae75c14a75f1a09a",
+      "wordCount": 16,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f24-2015-text-4.md",
+      "year": 2015,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "59df967b69fb35651de9040756cea024c3e2e772c9133a99cb7f4ceaa115f5a1",
+      "wordCount": 5,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f25-2016-text-1.md",
+      "year": 2016,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "a3b5df189da4fbf90e9323c65209f44f3614277c3da9f6c6c8f2c9651af6088a",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f26-2016-text-2.md",
+      "year": 2016,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "c903a4fc83c6fcb5ac8158f0868320807e97afa62da8543b126853cca07c89f8",
+      "wordCount": 16,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f27-2016-text-3.md",
+      "year": 2016,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "a9cfda22fbb1021fe4ba4f6478b009bd2210e97671a6a80daea2b74fb4f9a524",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f28-2016-text-4.md",
+      "year": 2016,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "b32d41f91c24ed8d29bcabe6eafc2727e4f67436c232085c1a99a4b01ad69a47",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f29-2018-text-1.md",
+      "year": 2018,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "8e2a6317b55f2560d4b55020bca283e5da719aa3c0ca0ca5e535b81cee55a06c",
+      "wordCount": 10,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f30-2019-text-1.md",
+      "year": 2019,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "dee9731606fca181df60a8758e2a617858dfd9675bc15317b4138ac6ea7e92a1",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f31-2019-text-2.md",
+      "year": 2019,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "7606693c20fb1daba869bb992574a4dcfd0607cbfde57d4fbf77eff104c273f1",
+      "wordCount": 10,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f32-2019-text-3.md",
+      "year": 2019,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "a63398941c8b03b4ed9ba814d6a6f97c942901d13b443f5ad7559545aabf40d9",
+      "wordCount": 12,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f33-2019-text-4.md",
+      "year": 2019,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "1bfda9f7f0e372a58689546774ccb550cd529ceec22a842bc8f37804f14d8102",
+      "wordCount": 11,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f34-2020-text-1.md",
+      "year": 2020,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "ae5fc917d6997abbdfedea54f2fb3983928343e7b77f0840be41cf82dc52b750",
+      "wordCount": 13,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f35-2020-text-2.md",
+      "year": 2020,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4f18c497dd50a5b10d5867d95c1ffabd88f146b03cc9f27a64d908233779c0b2",
+      "wordCount": 10,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f36-2020-text-3.md",
+      "year": 2020,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "0213059d4f4ce94092107cb1d74a69cccbe6d90f30a65d8696f0ad44a0722520",
+      "wordCount": 20,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-f37-2020-text-4.md",
+      "year": 2020,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "4f6f912e4e2184d582c50143e1aba583206f8ba6c475e825d57bcd44ba73de78",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l01-2006-text-1.md",
+      "year": 2006,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "d9d5535f4ecba5f635efe78e0b0a716a56ae5bbf9a9d383d08394c6881c7c298",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l02-2006-text-2.md",
+      "year": 2006,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "07d3f4228dbe59755af9aebc139cfee5008dc550b75057b0624068a40b5616ca",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l03-2006-text-3.md",
+      "year": 2006,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "10ee258c1213aea8e850625adaa64bfe05b154deee3a9e328ee0930da3116c3e",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l04-2006-text-4.md",
+      "year": 2006,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "23410067664a01a9a5e3d451dc3b43762df30eba5378c0f14a4c2ae4248d340d",
+      "wordCount": 18,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l05-2007-text-1.md",
+      "year": 2007,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "a4da22024c2937feba6f71b302a5cf28c34e6ea6801bbdc0e8667e4b209e90e1",
+      "wordCount": 27,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l06-2007-text-2.md",
+      "year": 2007,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "dc8e7a9e3e924d6f227515e3929674b54f494e18336a983c6fc54c6201925c60",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l07-2007-text-3.md",
+      "year": 2007,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "d60133cdd9c2eefe0b403b2364dbdccd5c16603b1cf84aacc3b07b5259030dfd",
+      "wordCount": 36,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l08-2007-text-4.md",
+      "year": 2007,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "9c540e793b2836388226d27abdc4fa185893e70b1664f4b5da6e9bd4fbfa33bd",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l09-2008-text-1.md",
+      "year": 2008,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "22e9581b225d76e334bfd2064f4f30ba214f455f8f1042697c3a9fe0cccd8341",
+      "wordCount": 24,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l10-2008-text-2.md",
+      "year": 2008,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "3d5b75499d7540e25c094b966fad1bea73c5d3a581f86a2c924a62fb8970ac1e",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l11-2008-text-3.md",
+      "year": 2008,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "ea5ded3c4fbd8c5ce575abb33f142d239df8991c3b6feb2df7240651ffa9fba5",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l12-2008-text-4.md",
+      "year": 2008,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "51c9bbad16826db69e9ffb9bc1dc18298a392fb85b6286e18c467084b8dda6a3",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l13-2009-text-1.md",
+      "year": 2009,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "11cbb949e6151b54e88cfdbb051634e9b685d1697e39f9a60359e67e11eb482a",
+      "wordCount": 33,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l14-2009-text-2.md",
+      "year": 2009,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "4f7073c113dca49f2ca8bba37cf1940c6546239f3014ab538c4e123d02f01d7c",
+      "wordCount": 21,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l15-2009-text-3.md",
+      "year": 2009,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "2d64408cc0506389e91e9c10575da83768fbb1fb1b8b84ae9be674cb0dbca850",
+      "wordCount": 19,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l16-2009-text-4.md",
+      "year": 2009,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "1301336160d5b88de0ee6fbf9eb8724784de0078742d15f4dcee918dd77a5e58",
+      "wordCount": 26,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l17-2014-text-1.md",
+      "year": 2014,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "0b7b951871d9549b6c61e5f93439cb3829f02d19038c9754db161c9d36b4ffc1",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l18-2014-text-2.md",
+      "year": 2014,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "7b633abdad8da078f2a71560956923fd10f2edba513a82ee95f18a4ca92e0e6e",
+      "wordCount": 24,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l19-2014-text-3.md",
+      "year": 2014,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "08e70b505e7084b24a9be659c52e2f32cbc2074e435e26bf219d4460fadffbd6",
+      "wordCount": 50,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l20-2014-text-4.md",
+      "year": 2014,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "3201cc7b93ecaffad184a6054ffc36dd8e6c2e5a076eabf73ac451d1ed542bf5",
+      "wordCount": 42,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l21-2015-text-1.md",
+      "year": 2015,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "1bb7e24bfab313d24e9d696510141b5fd5efd48e2e90ac17e7be610d7ca61f7d",
+      "wordCount": 24,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l22-2015-text-2.md",
+      "year": 2015,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "0b3ed8af4060395fdbcba2e2c91d65aa72a20105182ddf738ffb7e17ec7418d9",
+      "wordCount": 62,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l23-2015-text-3.md",
+      "year": 2015,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "d127b88155c34759d6de68653b97e14ef8e7cd4e577d601eaf34e929f7c7960c",
+      "wordCount": 30,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l24-2015-text-4.md",
+      "year": 2015,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "29ba72a55c1354938da4bb08dc22cc6981c6b0bf979908ee68749e89bfe12ffb",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l25-2016-text-1.md",
+      "year": 2016,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "852a9e0574145a7ede8ba4da3f904b14bad5c614f95e8cd1d7b2beb7d8ac4b13",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l26-2016-text-2.md",
+      "year": 2016,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "48daa9ef9d30c86b0c3e5d1d16649736ee4fcc305c64bcb49bf9969e05253dd7",
+      "wordCount": 31,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l27-2016-text-3.md",
+      "year": 2016,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "4228caa8024058f404b6b452a106373d1e8c36054855179988921ecc9c9dd9c3",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l28-2016-text-4.md",
+      "year": 2016,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "1942751077ee342b0869774fac1f925d4fedbb6e2f3319ec8725d1e2edcded3d",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l29-2018-text-1.md",
+      "year": 2018,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "fa148e8cdf06996a97c84043e7107cf175e5f8704fae176edbd0863350ee757a",
+      "wordCount": 29,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l30-2019-text-1.md",
+      "year": 2019,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "86dcd0f8f9d2d5acf3f2085b8a1ceb584d8b94c7f04164b29108a286d86b1e63",
+      "wordCount": 25,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l31-2019-text-2.md",
+      "year": 2019,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "d0a3dc0483e58fbb3ce1abbab762c55a15122528b937a31fbd1f56a0d407665b",
+      "wordCount": 35,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l32-2019-text-3.md",
+      "year": 2019,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "876a2bf19c776115e39fbca5494dfe0f7429c35b40ac2712edff4de8b76e7a48",
+      "wordCount": 22,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l33-2019-text-4.md",
+      "year": 2019,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "39af019e3e442c0e844bf06e7e256448e32d21f9ed9130412545b786af3b571a",
+      "wordCount": 34,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l34-2020-text-1.md",
+      "year": 2020,
+      "text": 1,
+      "pdfPage": 2,
+      "originalSha256": "fa2deccb3a3261186b282740bebce6b289a41d11e8b8f2cf1ebfef0b6017444a",
+      "wordCount": 41,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l35-2020-text-2.md",
+      "year": 2020,
+      "text": 2,
+      "pdfPage": 3,
+      "originalSha256": "91d0516b2cc4ea6c1f2f62f9742da86fa0636e9ce63f7691503b64e304993bed",
+      "wordCount": 37,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l36-2020-text-3.md",
+      "year": 2020,
+      "text": 3,
+      "pdfPage": 4,
+      "originalSha256": "ee73ef97e430ca5519590dff67a5730d0179ca1fec08058c137d1757813216e8",
+      "wordCount": 32,
+      "exerciseCount": 2
+    },
+    {
+      "path": "english/sentences/sentence-v1-l37-2020-text-4.md",
+      "year": 2020,
+      "text": 4,
+      "pdfPage": 5,
+      "originalSha256": "9202f21e5a9315192eb35a305eb437543bbbcc6acf3cb23c0b02366cdf8df20e",
+      "wordCount": 40,
+      "exerciseCount": 2
+    }
+  ]
+}

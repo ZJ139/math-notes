@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-25",
+  "files": [
+    {
+      "file": "科大数分习题-v1.pdf",
+      "entry": "problems/ustc-analysis-v1.md",
+      "collection": "ustc-analysis",
+      "pages": 72,
+      "bytes": 621774,
+      "sha256": "924e121cd9198a370baf6f8450e30419bdaf6aab11aed2bce2065dea41e549f5"
+    },
+    {
+      "file": "高等代数绿皮习题-v0.pdf",
+      "entry": "problems/green-algebra-v0.md",
+      "collection": "green-algebra",
+      "pages": 64,
+      "bytes": 564394,
+      "sha256": "ba69d5d6647c79bb7a892874b5b208a637160098fe40cb0274138adec2454fb4"
+    },
+    {
+      "file": "楼分析习题-v1.pdf",
+      "entry": "problems/lou-analysis-v1.md",
+      "collection": "lou-analysis",
+      "pages": 43,
+      "bytes": 441710,
+      "sha256": "a85b3bb455a12e38515b26091725c951e0493d5366bbf35891ab0d60ec079e54"
+    },
+    {
+      "file": "qws高代习题-v2.pdf",
+      "entry": "problems/qws-algebra-v2.md",
+      "collection": "qws-algebra",
+      "pages": 54,
+      "bytes": 540191,
+      "sha256": "fd43960c84171c55cf4c861b1a87e967009f53626667ca760bc933e54a88cc49"
+    },
+    {
+      "file": "解析几何-问题.pdf",
+      "entry": "problems/analytic-geometry-problems.md",
+      "collection": "analytic-geometry",
+      "pages": 26,
+      "bytes": 358340,
+      "sha256": "463f94d6455b95d7927af3529b8c0b7e8c248fdd82a7987946884fd8a73f98ae"
+    },
+    {
+      "file": "楼分析习题-v2.pdf",
+      "entry": "problems/lou-analysis-v2.md",
+      "collection": "lou-analysis",
+      "pages": 43,
+      "bytes": 570216,
+      "sha256": "f1fd68a6ede8ff7c0459364cdb8677c3ddcb69ade57a1bd8c320062435972af3"
+    },
+    {
+      "file": "数学类CMC真题汇总.pdf",
+      "entry": "problems/cmc-mathematics-papers.md",
+      "collection": "cmc-mathematics",
+      "pages": 175,
+      "bytes": 545336,
+      "sha256": "878c6818c934ecac8629ea6f46033431876ce4dc5300fe0f6048f24ab1a1b7f0"
+    }
+  ],
+  "total_pages": 477,
+  "original_bytes_preserved": true,
+  "validation": {
+    "check": "passed",
+    "tests_passed": 60,
+    "build_pages": 397,
+    "verified_local_links_and_assets": 24259,
+    "pdf_copies_byte_identical": 7
+  }
+}

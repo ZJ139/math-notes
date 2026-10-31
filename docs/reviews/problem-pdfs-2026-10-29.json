@@ -1,0 +1,23 @@
+[
+  {
+    "file": "科大数分习题-v2(2).pdf",
+    "pages": 49,
+    "bytes": 605938,
+    "sha256": "792a191efa463f850ba426656445fad871541d9db4071b100b2007b2913e8391",
+    "git_blob_sha": "9d07cce5b08fdbe559f9b0951d6d03498789f22d"
+  },
+  {
+    "file": "xhm数分习题-v1(1).pdf",
+    "pages": 75,
+    "bytes": 750848,
+    "sha256": "d882bd581e039efb2313549000a0c9e9e605e68da04976503b1f2ccd2a9066b0",
+    "git_blob_sha": "5ce52db796c5c07b7abb9977ebe3436fe39a5508"
+  },
+  {
+    "file": "解析几何-qws.pdf",
+    "pages": 76,
+    "bytes": 839075,
+    "sha256": "10e6200f699cb67c1dcfaf9ba147c69e7586a94c795326e7348853f3e25afc40",
+    "git_blob_sha": "249cfee2796dcc522f1f795416280e05c5f85e19"
+  }
+]

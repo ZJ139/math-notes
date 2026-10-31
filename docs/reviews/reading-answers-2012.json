@@ -1,0 +1,158 @@
+{
+  "review_date": "2026-10-30",
+  "source_commit": "e3a1ee3d55613248a1d91846048f332ddd19d9be",
+  "source_pdf": "content/english/exams/2012英一.pdf",
+  "source_pdf_sha256": "30f265cce7bf703901847d1cfb9b4c5d6d61c0d1e3bceb698d74f6b66f53407c",
+  "source_pdf_pages": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "source_text_comparison": "Full passages, 20 prompts and 80 options match the source after Unicode decomposition and removal of punctuation/spacing; no omitted or duplicated passage text. Removed extraction artifacts (an underscore and repeated quotation mark) only. Original Szent-Gyérgyi and but is bad wording retained.",
+  "answer_basis": "Independently reasoned from the user-designated source passages; not represented as an official answer key.",
+  "texts": [
+    {
+      "text": 1,
+      "questions": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "answers": [
+        "D",
+        "B",
+        "A",
+        "C",
+        "D"
+      ],
+      "paragraphs": 6,
+      "options": 20,
+      "passage_matches_source": true,
+      "questions_and_options_match_source": true,
+      "path": "content/english/reading-answers/2012-reading-text-1.md",
+      "sha256": "4080da2678b293531ec29e670e77f7faea940e4c762459d5f691a52d435b83a2",
+      "highlighted_spans": 8,
+      "per_question_sections": [
+        "共同证据与直译",
+        "上下文分析",
+        "作答逻辑",
+        "生词策略",
+        "本题规律"
+      ]
+    },
+    {
+      "text": 2,
+      "questions": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "answers": [
+        "C",
+        "D",
+        "A",
+        "D",
+        "A"
+      ],
+      "paragraphs": 6,
+      "options": 20,
+      "passage_matches_source": true,
+      "questions_and_options_match_source": true,
+      "path": "content/english/reading-answers/2012-reading-text-2.md",
+      "sha256": "994c43b2c10a630d12b079349f96bdf1a2e4d3b84611f19fe2bbebeb438683cd",
+      "highlighted_spans": 6,
+      "per_question_sections": [
+        "共同证据与直译",
+        "上下文分析",
+        "作答逻辑",
+        "生词策略",
+        "本题规律"
+      ]
+    },
+    {
+      "text": 3,
+      "questions": [
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "answers": [
+        "A",
+        "B",
+        "B",
+        "D",
+        "C"
+      ],
+      "paragraphs": 5,
+      "options": 20,
+      "passage_matches_source": true,
+      "questions_and_options_match_source": true,
+      "path": "content/english/reading-answers/2012-reading-text-3.md",
+      "sha256": "fe790650efea8656fb7abc4da82dc21edf30343328a472c1745266ddbb60ce40",
+      "highlighted_spans": 7,
+      "per_question_sections": [
+        "共同证据与直译",
+        "上下文分析",
+        "作答逻辑",
+        "生词策略",
+        "本题规律"
+      ]
+    },
+    {
+      "text": 4,
+      "questions": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "answers": [
+        "C",
+        "D",
+        "B",
+        "C",
+        "A"
+      ],
+      "paragraphs": 7,
+      "options": 20,
+      "passage_matches_source": true,
+      "questions_and_options_match_source": true,
+      "path": "content/english/reading-answers/2012-reading-text-4.md",
+      "sha256": "2258f05db253ed1bb18781d858aaf96506851d700ea0adee3ee8420a8d165d38",
+      "highlighted_spans": 7,
+      "per_question_sections": [
+        "共同证据与直译",
+        "上下文分析",
+        "作答逻辑",
+        "生词策略",
+        "本题规律"
+      ]
+    }
+  ],
+  "editorial_checks": [
+    "Every option has English text, direct Chinese translation, correct/incorrect judgment, reason and error-pattern label.",
+    "Each passage has full paragraph translation, contextual/grammar notes and concluding summary.",
+    "Q24 explains why C is direct evidence without falsely denying that negative habits can spread.",
+    "Q25 distinguishes spontaneous peer influence from externally arranged peer interventions.",
+    "Q27 separates 2002 purchase approval from future operating-license extension.",
+    "Q32 and Q35 compare close distractors without falsely treating collective scrutiny as irrelevant.",
+    "Q40 distinguishes Donahue’s direct statement from the author’s subsequent elaboration."
+  ],
+  "validation": {
+    "typecheck": "npm run check: passed",
+    "full_suite": "node --import tsx --test scripts/*.test.ts: 94 passed, 0 failed",
+    "post_highlight_suite": "node --import tsx --test scripts/reading-answer-layout.test.ts scripts/reading-answers-directory.test.ts: 5 passed",
+    "build": "node --import tsx scripts/build.tsx: passed",
+    "links": "node scripts/verify.mjs: 781 HTML pages, 48773 links/assets passed",
+    "runner_note": "Used the node --import tsx entry point because the tsx CLI IPC pipe is unavailable in the managed executor; same source test/build entry points.",
+    "browser": "All four entries reachable from the 2012 directory, each with 5 questions and 20 options; pink evidence rendered; no missing fragment targets or horizontal overflow in the inspected desktop viewport. Text 1 marker→question→evidence and a single Back returned to the year directory."
+  }
+}

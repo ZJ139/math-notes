@@ -1,0 +1,101 @@
+{
+  "reviewed_on": "2026-10-26",
+  "source_commit": "347804248faf23d4c885ec40ce4f5801e1374375",
+  "article": "content/english/writing/writing-comparison-2010-2014.md",
+  "article_sha256": "e428d2f225bdfc8b043ebd4ad907373f2135f9b7784e8a0997743fe834299e88",
+  "coverage": {
+    "years": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014
+    ],
+    "task_groups": 10,
+    "comparison_pairs": 23,
+    "exact_source_quotations": 46,
+    "original_exercises_with_answers": 6
+  },
+  "source_files": [
+    {
+      "path": "content/english/writing/article-v0-long-2010.md",
+      "blob_sha": "d77d779598d53859a2a469aba2c0232c1ad7c09a"
+    },
+    {
+      "path": "content/english/writing/article-v0-long-2011.md",
+      "blob_sha": "132e2027a2ebe695a1dd0d53d2beed35bd68d2b9"
+    },
+    {
+      "path": "content/english/writing/article-v0-long-2012.md",
+      "blob_sha": "6119e36979e4ba0800a82ef0e5d3f8775ec9f399"
+    },
+    {
+      "path": "content/english/writing/article-v0-long-2013.md",
+      "blob_sha": "4f8082270317c5579c256d71ee6746c2de02d955"
+    },
+    {
+      "path": "content/english/writing/article-v0-long-2014.md",
+      "blob_sha": "893da5465f8485f7e46e0aa148f948a8d3bad0e8"
+    },
+    {
+      "path": "content/english/writing/article-v0-short-2010.md",
+      "blob_sha": "fc1056a747200cfc38e9fd0007967ffadc3e5507"
+    },
+    {
+      "path": "content/english/writing/article-v0-short-2011.md",
+      "blob_sha": "0db932d32a5c0219587bf98d479297ca37064e13"
+    },
+    {
+      "path": "content/english/writing/article-v0-short-2012.md",
+      "blob_sha": "5ec320621057dbdb926c5a110b0bee106c6b1693"
+    },
+    {
+      "path": "content/english/writing/article-v0-short-2013.md",
+      "blob_sha": "560ebb145f8117de8490e9dbb078a7a6a90e5c76"
+    },
+    {
+      "path": "content/english/writing/article-v0-short-2014.md",
+      "blob_sha": "9ff4d69f02f4999428e23c8ea89417b1ee343a2a"
+    },
+    {
+      "path": "content/english/writing/writing-4000-2010.md",
+      "blob_sha": "95662e4682ca6c0e9a954da83a77aa38ae21effa"
+    },
+    {
+      "path": "content/english/writing/writing-4000-2011.md",
+      "blob_sha": "028bdbb1b3de7d38e939ff30d6fbf81ff2d92bdd"
+    },
+    {
+      "path": "content/english/writing/writing-4000-2012.md",
+      "blob_sha": "f56798c906fe08e6013bc53db44150eb2be1c4d8"
+    },
+    {
+      "path": "content/english/writing/writing-4000-2013.md",
+      "blob_sha": "48fc9b929bcfaa10e01e67ee8bf67264bef83586"
+    },
+    {
+      "path": "content/english/writing/writing-4000-2014.md",
+      "blob_sha": "62cff84749375758f3b86404e837c73932209db8"
+    }
+  ],
+  "editorial_review": [
+    "All ten groups compare prompt coverage, paragraph logic, lexical accuracy, naturalness and transferability.",
+    "All 46 quotations are checked against the original model sections, not templates or commentary.",
+    "Chinese literal translations, grammar, register, semantic changes and original alternative expressions accompany every pair.",
+    "Modal strength, only-as-necessary-condition, recommend-film differences, suggest meanings, temporal viewpoint and implicit subjects are distinguished.",
+    "No numeric grading or automatic score benefit from complexity is asserted.",
+    "Six original exercises have reference answers; the final model paragraph has 52 whitespace-delimited words."
+  ],
+  "preservation": {
+    "unchanged_existing_writing_files": 40,
+    "existing_models": 42,
+    "directory_components_changed": false
+  },
+  "validation": {
+    "typecheck": "npm run check: passed",
+    "tests": "node --import tsx --test scripts/*.test.ts: 75 passed",
+    "build": "node --import tsx scripts/build.tsx: 415 pages, 301 entries",
+    "verify": "npm run verify: passed"
+  },
+  "local_runner_note": "tsx CLI IPC is blocked by this environment; equivalent node --import tsx entry points used for test/build. GitHub Actions uses the repository workflow unchanged."
+}

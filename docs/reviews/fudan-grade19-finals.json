@@ -1,0 +1,58 @@
+{
+  "file": "19级期末大题解答.pdf",
+  "pages": 5,
+  "bytes": 148081,
+  "sha256": "cb8375471d6526a69380e2aa0eb2e9a7c58d32480c6444c785e8c27f58c68aad",
+  "source": {
+    "title": "复旦大学高等代数习题集（谢启鸿，2023版）",
+    "section": "2.7",
+    "printed_page": 157
+  },
+  "questions": [
+    {
+      "id": "19级高代 I 期末 06",
+      "page": 1
+    },
+    {
+      "id": "19级高代 I 期末 07",
+      "page": 2
+    },
+    {
+      "id": "19级高代 I 期末 08",
+      "page": 3
+    },
+    {
+      "id": "19级高代 II 期末 07",
+      "page": 4
+    },
+    {
+      "id": "19级高代 II 期末 08",
+      "page": 5
+    }
+  ],
+  "fonts": [
+    "CMEX10",
+    "CMMI10",
+    "CMMI6",
+    "CMMI8",
+    "CMMIB10",
+    "CMR10",
+    "CMR6",
+    "CMR8",
+    "CMSS8",
+    "CMSY10",
+    "CMSY6",
+    "CMSY8",
+    "FandolSong-Bold",
+    "FandolSong-Regular",
+    "LMRoman10-Regular",
+    "LMRoman12-Bold",
+    "MSAM10",
+    "MSBM10"
+  ],
+  "review": {
+    "proofs": "Five proofs checked, including noninvertible inverse images, isolated components and complex eigenvalues.",
+    "layout": "Every page rendered and visually checked; original problem numbers retained.",
+    "typography": "11pt, 1.12 baseline stretch, 23mm margins; Fandol Song and Computer Modern; Fourier-inversion reference."
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "date": "2026-10-28",
+  "source_commit": "cbf1db97f7effb1eb9c358b7889c6bce8e955fe9",
+  "source_page": 8,
+  "visual_review": "Rendered and visually checked the full writing page of all three original PDFs, including labels and every displayed value.",
+  "word_count_method": "English words with internal apostrophes or hyphens count as one; integers, decimals and percentages count as one. Short-body counts exclude Dear Paul, Yours, and Li Ming; complete-email counts include these five words.",
+  "original_model_count": 6,
+  "annual_page_count": 3,
+  "audience": "Approximately 3500–4000-word learner vocabulary; topic vocabulary is glossed. This is an editorial difficulty target, not a certified word-list coverage score.",
+  "exams": [
+    {
+      "year": 2024,
+      "pdf": "content/english/exams/2024英一.pdf",
+      "pdf_sha256": "f9e418389f89be9036a2f7bab4f23ffe0a9313d36420329ea5cfe6b293990450",
+      "writing_page": 8,
+      "short_requirement": {
+        "words": "about 100",
+        "points": 10,
+        "addressee": "Paul",
+        "signature": "Li Ming",
+        "genre": "reply email",
+        "task": "Reply as Li Ming to international student Paul, who needs advice preparing a class oral report about an ancient Chinese scientist."
+      },
+      "long_requirement": {
+        "word_min": 160,
+        "word_max": 200,
+        "points": 20,
+        "task": "Describe both the picture and the chart briefly; interpret the implied meaning; give comments."
+      },
+      "data": {
+        "type": "picture and bar chart",
+        "scope": "a city, not named",
+        "unit": "parks",
+        "picture": "Residents exercise in a nearby newly built park; one resident praises it.",
+        "values": {
+          "2020": 406,
+          "2021": 532,
+          "2022": 670
+        }
+      },
+      "content_path": "content/english/writing/writing-4000-2024.md",
+      "url": "/english/7eb019a8a8757c480244cfd5/",
+      "models": [
+        {
+          "kind": "short",
+          "words": 102,
+          "complete_words": 107,
+          "paragraph_words": [
+            22,
+            48,
+            32
+          ],
+          "text_sha256": "22bb0dd37dd31ce1a0ca618ee92b22f3ccccd6bcbdb41af937e86d7cde7288c8"
+        },
+        {
+          "kind": "long",
+          "words": 178,
+          "complete_words": 178,
+          "paragraph_words": [
+            56,
+            66,
+            56
+          ],
+          "text_sha256": "ccf990c1412c93323b8bd318624b91dcb067f8100e272380373f79ceccdaf1e6"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "pdf": "content/english/exams/2025英一.pdf",
+      "pdf_sha256": "0eccd5b7a3c10f36c6170a8dcc438cfcabc532c0825817894f79a131f2e7cae0",
+      "writing_page": 8,
+      "short_requirement": {
+        "words": "about 100",
+        "points": 10,
+        "addressee": "Paul",
+        "signature": "Li Ming",
+        "genre": "reply email",
+        "task": "Reply as Li Ming to classmate Paul: explain what the invited young craftsmen will demonstrate on campus and give him concrete preparation tasks."
+      },
+      "long_requirement": {
+        "word_min": 160,
+        "word_max": 200,
+        "points": 20,
+        "task": "Describe the table briefly; interpret the table; give comments."
+      },
+      "data": {
+        "type": "table",
+        "scope": "China, nationwide residents",
+        "unit": "units per 100 households at year end, not percent of households",
+        "columns": [
+          "air conditioners",
+          "washing machines",
+          "refrigerators or freezers"
+        ],
+        "rows": {
+          "2014": [
+            75.2,
+            83.7,
+            85.5
+          ],
+          "2017": [
+            96.1,
+            91.7,
+            95.3
+          ],
+          "2020": [
+            117.7,
+            96.7,
+            101.8
+          ],
+          "2023": [
+            145.9,
+            98.2,
+            103.4
+          ]
+        }
+      },
+      "content_path": "content/english/writing/writing-4000-2025.md",
+      "url": "/english/d46f52b773bbe363f0174aa5/",
+      "models": [
+        {
+          "kind": "short",
+          "words": 96,
+          "complete_words": 101,
+          "paragraph_words": [
+            25,
+            31,
+            40
+          ],
+          "text_sha256": "c08bed5700e314c399a2a817aa8f87d416ac169ec1b28d8d4d54a6b47287bd7d"
+        },
+        {
+          "kind": "long",
+          "words": 181,
+          "complete_words": 181,
+          "paragraph_words": [
+            62,
+            63,
+            56
+          ],
+          "text_sha256": "9e697df4154b079a775afb6cc1a2d1dd78227f7a8a7ce1b92382aba00dfb710b"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "pdf": "content/english/exams/2026英一.pdf",
+      "pdf_sha256": "fd3e4b26b902be20982d1bb28632fded1b05b35c3ca8821fa763213e110b5a7d",
+      "writing_page": 8,
+      "short_requirement": {
+        "words": "about 100",
+        "points": 10,
+        "addressee": "Paul",
+        "signature": "Li Ming",
+        "genre": "reply email",
+        "task": "Reply as Li Ming to friend Paul about Chinese families' handwritten letters posted yesterday; explain more about the letters and whether they are currently on public display for an in-person visit."
+      },
+      "long_requirement": {
+        "word_min": 160,
+        "word_max": 200,
+        "points": 20,
+        "task": "Describe the actual charts briefly (the first instruction says drawing); interpret the charts; give comments."
+      },
+      "data": {
+        "type": "pie chart and bar chart",
+        "scope": "consumer survey; sample size, location and survey year not specified",
+        "acceptance_percent": {
+          "fully": 39.3,
+          "partly": 32.8,
+          "not_accept": 27.9
+        },
+        "leading_concerns_percent_shown": {
+          "safety": 46.3,
+          "price": 24.9,
+          "convenience": 10.7
+        },
+        "limits": "Do not invent unshown categories, interpret concern as danger/failure rate, combine metrics as if they were a single question, or infer cross-tabulated groups."
+      },
+      "content_path": "content/english/writing/writing-4000-2026.md",
+      "url": "/english/5d8a2837fabc4e063162c673/",
+      "models": [
+        {
+          "kind": "short",
+          "words": 102,
+          "complete_words": 107,
+          "paragraph_words": [
+            24,
+            33,
+            45
+          ],
+          "text_sha256": "947e6e78eea7139fd448b50a00654a96aa3c9ba7852a6c6985d7c7b0761c39c7"
+        },
+        {
+          "kind": "long",
+          "words": 183,
+          "complete_words": 183,
+          "paragraph_words": [
+            58,
+            67,
+            58
+          ],
+          "text_sha256": "339a0359f702c0d5d83b2caf6bec973bfcb87289fbb46d06ec1593d862cdee61"
+        }
+      ]
+    }
+  ],
+  "preservation": {
+    "unchanged_existing_model_files": 39,
+    "unchanged_source_pdfs": 3
+  },
+  "editorial_checks": [
+    "All six complete essays manually proofread for grammar, naturalness and prompt coverage.",
+    "Three paragraphs per essay; three quoted memorable sentences per essay checked against exact model text.",
+    "Short emails retain requested roles, recipient and signature.",
+    "Self-supplied craft activities, letter contents and exhibition details are explicitly marked in Chinese analysis.",
+    "All displayed chart values visually checked; full 2025 table transcribed; factual data separated from cautious interpretations.",
+    "Two-way links connect annual pages, summary and relevant pattern groups."
+  ],
+  "validation": {
+    "typecheck": "npm run check: passed",
+    "tests": "node --import tsx --test scripts/*.test.ts: 81 passed, 0 failed",
+    "build": "node --import tsx scripts/build.tsx: 710 listed pages, 545 published entries; passed",
+    "links": "npm run verify: 720 HTML pages and 45117 local links/assets; passed",
+    "format": "git diff --check: passed after explicit Markdown hard breaks; all three annual pages render identically to the original publication.",
+    "local_runtime_note": "Used node --import tsx for tests/build because the tsx CLI IPC socket is unavailable in this container. This is the same TypeScript loader used by the existing Actions test command.",
+    "website_visual_review": "Browser preview unavailable locally: Chromium download returned an invalid archive. No CSS, font, size or layout changes were made; existing rendering and navigation tests passed. Original exam PDF pages were visually reviewed."
+  }
+}

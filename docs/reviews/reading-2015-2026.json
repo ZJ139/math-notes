@@ -1,0 +1,514 @@
+{
+  "date": "2026-10-25",
+  "sourceArchives": [
+    "2015～2026阅读单词.zip",
+    "2015～2026阅读原文.zip",
+    "2015～2026阅读翻译.zip"
+  ],
+  "files": [
+    {
+      "year": 2015,
+      "kind": "阅读单词",
+      "path": "english/translation/2015英一阅读单词.pdf",
+      "sha256": "667a01b22a3622379bee3f64088b51719f1e0003d1a703f1c104c84438421c99",
+      "bytes": 207011,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2015,
+      "kind": "阅读原文",
+      "path": "english/translation/2015英一阅读原文.pdf",
+      "sha256": "9a78c6f632cd77443be5f75c3199285e77797cbc4ef77d1a5d6d096224536934",
+      "bytes": 61500,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2015,
+      "kind": "阅读直译",
+      "path": "english/translation/2015英一阅读翻译.pdf",
+      "sha256": "4f17bd3977c82c6bad5ada5fb1eabfd3b55b685a6646c88c6cbda5ea4e83ce3b",
+      "bytes": 340819,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2016,
+      "kind": "阅读单词",
+      "path": "english/translation/2016英一阅读单词.pdf",
+      "sha256": "8fdb0efcd9b0b26f0f92ded6a52a7b2e4bbe7168bb0cd1cab2ec192be6e67421",
+      "bytes": 205634,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2016,
+      "kind": "阅读原文",
+      "path": "english/translation/2016英一阅读原文.pdf",
+      "sha256": "84775e83c28f6d69402395df44c79c2f38f909a869de04b1742e0389218fd993",
+      "bytes": 62026,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2016,
+      "kind": "阅读直译",
+      "path": "english/translation/2016英一阅读翻译.pdf",
+      "sha256": "23bdbe7f8c528dbfbe6317f8191ed5d9fca311427a610aec9e6222d23b860b43",
+      "bytes": 344209,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2017,
+      "kind": "阅读单词",
+      "path": "english/translation/2017英一阅读单词.pdf",
+      "sha256": "81d87c1125ea6b26162613744ddc5bcd4739d55dfccdaabb9aa5c429b03165de",
+      "bytes": 199770,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2017,
+      "kind": "阅读原文",
+      "path": "english/translation/2017英一阅读原文.pdf",
+      "sha256": "885e2524b8f2f6e9fa7881fa17d40507d17ce0cd200a610e1171e76a3f508689",
+      "bytes": 62125,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2017,
+      "kind": "阅读直译",
+      "path": "english/translation/2017英一阅读翻译.pdf",
+      "sha256": "f0c19a7d1f9fddfd0456620ca94c2e7619ed41b80dc11e07e6146f15bb6297b1",
+      "bytes": 344512,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2018,
+      "kind": "阅读单词",
+      "path": "english/translation/2018英一阅读单词.pdf",
+      "sha256": "d0c80b1d0d77a882e93695e994f01b1ea6dbc845872c7e645c304565f1691a5c",
+      "bytes": 199347,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2018,
+      "kind": "阅读原文",
+      "path": "english/translation/2018英一阅读原文.pdf",
+      "sha256": "77eddf242ef22d7e98c8876965a0e905c6b79972b62ef49031215fd206408e31",
+      "bytes": 61917,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2018,
+      "kind": "阅读直译",
+      "path": "english/translation/2018英一阅读翻译.pdf",
+      "sha256": "d4b022ae536f12adb036c26e84365192c1a414e82a917331176ea5d4901768f9",
+      "bytes": 342143,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2019,
+      "kind": "阅读单词",
+      "path": "english/translation/2019英一阅读单词.pdf",
+      "sha256": "ef442811a93c77ac00ca094b0bb8401ee396bb1fd9d0cd518f3ffb6b28273804",
+      "bytes": 200420,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2019,
+      "kind": "阅读原文",
+      "path": "english/translation/2019英一阅读原文.pdf",
+      "sha256": "f255f06f163c8d2078a557dc55e18538718e3969d3c29388d87173d09d87f023",
+      "bytes": 61305,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2019,
+      "kind": "阅读直译",
+      "path": "english/translation/2019英一阅读翻译.pdf",
+      "sha256": "e823086218e4dc5b1877c0846eff25a42032e1c1e8fd9ea38a0e3a9e63b65a84",
+      "bytes": 322116,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2020,
+      "kind": "阅读单词",
+      "path": "english/translation/2020英一阅读单词.pdf",
+      "sha256": "ede303e83359ed4ac439eaaeb4b3f16ae859bbae536888d2be0c489e5cbabc0e",
+      "bytes": 194488,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2020,
+      "kind": "阅读原文",
+      "path": "english/translation/2020英一阅读原文.pdf",
+      "sha256": "e026ce5a958ce3a76e08ab4e3983f4c3125d9b76aad67fc10efb64506ad0b7a0",
+      "bytes": 62526,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2020,
+      "kind": "阅读直译",
+      "path": "english/translation/2020英一阅读翻译.pdf",
+      "sha256": "79169c615353e47cf7f387ef26d1968ae1d8e16d59c2a73cdc603dc8051b35a9",
+      "bytes": 324357,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2021,
+      "kind": "阅读单词",
+      "path": "english/translation/2021英一阅读单词.pdf",
+      "sha256": "d4032548645aec51275b342d035aace8101fab437d73168093790df1d5696585",
+      "bytes": 204270,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2021,
+      "kind": "阅读原文",
+      "path": "english/translation/2021英一阅读原文.pdf",
+      "sha256": "ccce1e8eaeb0400a57f186749d92184909e1521cea0f68a4ea97d4cb874e2e27",
+      "bytes": 61876,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2021,
+      "kind": "阅读直译",
+      "path": "english/translation/2021英一阅读翻译.pdf",
+      "sha256": "892f35715f8f09c2605a6a80687845f38f00b9b23e1c658a0873e696271bf8b9",
+      "bytes": 357779,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2022,
+      "kind": "阅读单词",
+      "path": "english/translation/2022英一阅读单词.pdf",
+      "sha256": "f1a852b040700fb0774502ba3b273dd5e2bc5af6b579f3cebf8338e32aa02509",
+      "bytes": 185803,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2022,
+      "kind": "阅读原文",
+      "path": "english/translation/2022英一阅读原文.pdf",
+      "sha256": "5524d86f874f2cfa1b60c095ed1d4b9e797135c4589dcd46a2551e032c8bfafd",
+      "bytes": 62694,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2022,
+      "kind": "阅读直译",
+      "path": "english/translation/2022英一阅读翻译.pdf",
+      "sha256": "04daa60df762c4a0f4e123427208669642ab313f6afb78d9094b75e62d09d496",
+      "bytes": 346910,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2023,
+      "kind": "阅读单词",
+      "path": "english/translation/2023英一阅读单词.pdf",
+      "sha256": "57a8e260327a18fb4df02eb0a269033b3f8152407fe8e4c0b16babda309b4572",
+      "bytes": 203392,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2023,
+      "kind": "阅读原文",
+      "path": "english/translation/2023英一阅读原文.pdf",
+      "sha256": "389c3174363d28bd379bc61db3a77739209e012ad977aba73f33bba53a6e6c47",
+      "bytes": 61814,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2023,
+      "kind": "阅读直译",
+      "path": "english/translation/2023英一阅读翻译.pdf",
+      "sha256": "da976de99c3a88937753f2e556bfb576bf2ae43b8bf38c8aa2b95dcfb25a17a2",
+      "bytes": 322769,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2024,
+      "kind": "阅读单词",
+      "path": "english/translation/2024英一阅读单词.pdf",
+      "sha256": "ef6b50b3602efb044835132a9cf3824c00763a5782953b9d4656f9958b22a3e0",
+      "bytes": 206147,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2024,
+      "kind": "阅读原文",
+      "path": "english/translation/2024英一阅读原文.pdf",
+      "sha256": "011635043adb045241479369e4516a90db07572341359b3e99b62c44a6acaf07",
+      "bytes": 63340,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2024,
+      "kind": "阅读直译",
+      "path": "english/translation/2024英一阅读翻译.pdf",
+      "sha256": "60eb470b672e11f11b0d811da3a5ddb5dfd20bd4d33a86a8f223f3c4dcf07161",
+      "bytes": 368905,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2025,
+      "kind": "阅读单词",
+      "path": "english/translation/2025英一阅读单词.pdf",
+      "sha256": "f1b3f48659501d2f398984d488366005b8384c850e038f4ec035852f707b5b8a",
+      "bytes": 199362,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2025,
+      "kind": "阅读原文",
+      "path": "english/translation/2025英一阅读原文.pdf",
+      "sha256": "1bfdef09b434ab6b65175a1eacc91ea4e9e75c2c11a2158ca408ff648e4eb078",
+      "bytes": 63671,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2025,
+      "kind": "阅读直译",
+      "path": "english/translation/2025英一阅读翻译.pdf",
+      "sha256": "d593f6373e709e6ba3d7bf31dc6022a59029e1bcd4004e0e1cd06ed473743f23",
+      "bytes": 352059,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2026,
+      "kind": "阅读单词",
+      "path": "english/translation/2026英一阅读单词.pdf",
+      "sha256": "b278dae8421b0ea31e62316ffddcc2ec1ce94f2d3f7b91ec6770acd987a48f8e",
+      "bytes": 225231,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2026,
+      "kind": "阅读原文",
+      "path": "english/translation/2026英一阅读原文.pdf",
+      "sha256": "f8044fe3e8252b27a3f9b9015dc7e8477f0f468ece7ad26bea9987d30eeab6fd",
+      "bytes": 62845,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2026,
+      "kind": "阅读直译",
+      "path": "english/translation/2026英一阅读翻译.pdf",
+      "sha256": "81056590fee6a882914bf16d088454be6e4eedbfee9e78c998e212426a53a68b",
+      "bytes": 358306,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "b14534f108ffaf7aa99388e2d7cd362d56583a0b",
+  "exam_years": [
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "writing_task_count": 38,
+  "visual_check_years": [
+    2024,
+    2025,
+    2026
+  ],
+  "pattern_count": 20,
+  "original_example_count": 40,
+  "patterns": [
+    {
+      "number": 1,
+      "type": "限制性定语从句",
+      "source": "english/sentences/reading-sentence-2016-t1-01.md",
+      "excerpt": "a law that would make it a crime",
+      "lesson": "english/writing/writing-patterns-20-clauses.md",
+      "url": "/english/fa15b2af0959d1353cd0b8ae/#句型-01",
+      "original_examples": 2
+    },
+    {
+      "number": 2,
+      "type": "非限制性定语从句",
+      "source": "english/sentences/reading-sentence-2024-t2-03.md",
+      "excerpt": "which could have a “knock-on” benefit",
+      "lesson": "english/writing/writing-patterns-20-clauses.md",
+      "url": "/english/fa15b2af0959d1353cd0b8ae/#句型-02",
+      "original_examples": 2
+    },
+    {
+      "number": 3,
+      "type": "宾语从句",
+      "source": "english/sentences/reading-sentence-2021-t2-04.md",
+      "excerpt": "the study shows that",
+      "lesson": "english/writing/writing-patterns-20-clauses.md",
+      "url": "/english/fa15b2af0959d1353cd0b8ae/#句型-03",
+      "original_examples": 2
+    },
+    {
+      "number": 4,
+      "type": "what 主语从句",
+      "source": "english/sentences/reading-sentence-2018-t3-04.md",
+      "excerpt": "What matters is that",
+      "lesson": "english/writing/writing-patterns-20-clauses.md",
+      "url": "/english/fa15b2af0959d1353cd0b8ae/#句型-04",
+      "original_examples": 2
+    },
+    {
+      "number": 5,
+      "type": "表语从句",
+      "source": "english/sentences/reading-sentence-2023-t4-03.md",
+      "excerpt": "The peculiar part is that",
+      "lesson": "english/writing/writing-patterns-20-clauses.md",
+      "url": "/english/fa15b2af0959d1353cd0b8ae/#句型-05",
+      "original_examples": 2
+    },
+    {
+      "number": 6,
+      "type": "同位语从句",
+      "source": "english/sentences/reading-sentence-2022-t2-03.md",
+      "excerpt": "there are signs that this is already happening",
+      "lesson": "english/writing/writing-patterns-20-focus.md",
+      "url": "/english/3b55475a4dd562133b374474/#句型-06",
+      "original_examples": 2
+    },
+    {
+      "number": 7,
+      "type": "形式主语 it",
+      "source": "english/sentences/reading-sentence-2022-t2-04.md",
+      "excerpt": "It has been estimated that this generation",
+      "lesson": "english/writing/writing-patterns-20-focus.md",
+      "url": "/english/3b55475a4dd562133b374474/#句型-07",
+      "original_examples": 2
+    },
+    {
+      "number": 8,
+      "type": "形式宾语 it",
+      "source": "english/sentences/reading-sentence-2023-t2-02.md",
+      "excerpt": "made it illegal for towns to create legislation",
+      "lesson": "english/writing/writing-patterns-20-focus.md",
+      "url": "/english/3b55475a4dd562133b374474/#句型-08",
+      "original_examples": 2
+    },
+    {
+      "number": 9,
+      "type": "强调句",
+      "source": "english/sentences/reading-sentence-2023-t3-02.md",
+      "excerpt": "it’s those mid-list authors",
+      "lesson": "english/writing/writing-patterns-20-focus.md",
+      "url": "/english/3b55475a4dd562133b374474/#句型-09",
+      "original_examples": 2
+    },
+    {
+      "number": 10,
+      "type": "Only 状语前置的部分倒装",
+      "source": "english/sentences/sentence-v1-l17-2014-text-1.md",
+      "excerpt": "will they be eligible for benefit",
+      "lesson": "english/writing/writing-patterns-20-focus.md",
+      "url": "/english/3b55475a4dd562133b374474/#句型-10",
+      "original_examples": 2
+    },
+    {
+      "number": 11,
+      "type": "Not only 递进倒装",
+      "source": "english/sentences/reading-sentence-2026-t1-04.md",
+      "excerpt": "Not only does understanding the equines’ genetic makeup help",
+      "lesson": "english/writing/writing-patterns-20-logic.md",
+      "url": "/english/60f94d9c90f72875291fe5ff/#句型-11",
+      "original_examples": 2
+    },
+    {
+      "number": 12,
+      "type": "让步状语从句",
+      "source": "english/sentences/reading-sentence-2024-t1-02.md",
+      "excerpt": "although the falling price of nails was driven partly",
+      "lesson": "english/writing/writing-patterns-20-logic.md",
+      "url": "/english/60f94d9c90f72875291fe5ff/#句型-12",
+      "original_examples": 2
+    },
+    {
+      "number": 13,
+      "type": "while 对比从句",
+      "source": "english/sentences/reading-sentence-2024-t2-04.md",
+      "excerpt": "While hunter-gatherer children learnt from observation and imitation",
+      "lesson": "english/writing/writing-patterns-20-logic.md",
+      "url": "/english/60f94d9c90f72875291fe5ff/#句型-13",
+      "original_examples": 2
+    },
+    {
+      "number": 14,
+      "type": "虚拟条件句",
+      "source": "english/sentences/reading-sentence-2025-t4-03.md",
+      "excerpt": "I’d be lying if I said",
+      "lesson": "english/writing/writing-patterns-20-logic.md",
+      "url": "/english/60f94d9c90f72875291fe5ff/#句型-14",
+      "original_examples": 2
+    },
+    {
+      "number": 15,
+      "type": "so that 目的从句",
+      "source": "english/sentences/reading-sentence-2025-t4-04.md",
+      "excerpt": "so that, while future researchers may find",
+      "lesson": "english/writing/writing-patterns-20-logic.md",
+      "url": "/english/60f94d9c90f72875291fe5ff/#句型-15",
+      "original_examples": 2
+    },
+    {
+      "number": 16,
+      "type": "同级比较与比较补足",
+      "source": "english/sentences/reading-sentence-2022-t3-04.md",
+      "excerpt": "this trend is as strong as ever",
+      "lesson": "english/writing/writing-patterns-20-compact.md",
+      "url": "/english/b72e7381bdadd3c191e22516/#句型-16",
+      "original_examples": 2
+    },
+    {
+      "number": 17,
+      "type": "动名词短语作主语",
+      "source": "english/sentences/reading-sentence-2026-t2-04.md",
+      "excerpt": "Persuading studios to film here would become much more challenging",
+      "lesson": "english/writing/writing-patterns-20-compact.md",
+      "url": "/english/b72e7381bdadd3c191e22516/#句型-17",
+      "original_examples": 2
+    },
+    {
+      "number": 18,
+      "type": "现在分词作状语",
+      "source": "english/sentences/reading-sentence-2026-t1-02.md",
+      "excerpt": "Looking at these DNA sequences, we get",
+      "lesson": "english/writing/writing-patterns-20-compact.md",
+      "url": "/english/b72e7381bdadd3c191e22516/#句型-18",
+      "original_examples": 2
+    },
+    {
+      "number": 19,
+      "type": "过去分词作状语",
+      "source": "english/sentences/reading-sentence-2021-t2-01.md",
+      "excerpt": "Called conditional cash transfers or CCTs, these social assistance programs",
+      "lesson": "english/writing/writing-patterns-20-compact.md",
+      "url": "/english/b72e7381bdadd3c191e22516/#句型-19",
+      "original_examples": 2
+    },
+    {
+      "number": 20,
+      "type": "with 复合结构",
+      "source": "english/sentences/reading-sentence-2025-t3-01.md",
+      "excerpt": "with the likes of Disney+, Peacock and Paramount+ losing",
+      "lesson": "english/writing/writing-patterns-20-compact.md",
+      "url": "/english/b72e7381bdadd3c191e22516/#句型-20",
+      "original_examples": 2
+    }
+  ]
+}

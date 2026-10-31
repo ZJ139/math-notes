@@ -1,0 +1,38 @@
+% Compile from the repository root with XeLaTeX, without shell escape.
+% Clarify conjugate transposes in the existing proof; the original PDF
+% already uses overlined transposes, whose bars are lost in text extraction.
+% Match the original/reference: 11 pt Fandol Song, Computer Modern math,
+% 164 mm text width and 1.12 line spacing. Only page 2's proof opening changes.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,Script=CustomDefault]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\linespread{1.12}
+\usepackage[active,tightpage]{preview}
+\setlength{\textwidth}{164mm}
+\setlength{\PreviewBorder}{4pt}
+\PreviewEnvironment{preview}
+\begin{document}
+\begin{preview}
+\begin{minipage}{164mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+本题中 $Z^*=\overline Z^{\mathsf T}$ 表示共轭转置。将(1)两式分别左乘 $x^*,y^*$，相加得
+\[
+x^*Ax+x^*By+y^*B^{\mathsf T}x+y^*Cy-\mathrm i\,x^*Dx=0.
+\]
+实对称阵亦为 Hermite 阵，故 $A^*=A,\ C^*=C$，从而 $x^*Ax,y^*Cy\in\mathbb R$。又因 $B$ 为实矩阵，
+\[
+y^*B^{\mathsf T}x=\overline{x^*By},\qquad
+x^*By+y^*B^{\mathsf T}x=2\operatorname{Re}(x^*By)\in\mathbb R.
+\]
+故前四项之和为实数。因 $D$ 为实对角阵，$x^*Dx\in\mathbb R$，取虚部得
+\[
+0=-x^*Dx=-\sum_{j=1}^n d_j|x_j|^2.
+\]
+\end{minipage}
+\end{preview}
+\end{document}

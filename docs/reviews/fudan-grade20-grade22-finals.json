@@ -1,0 +1,52 @@
+[
+  {
+    "file": "20级期末大题解答.pdf",
+    "pages": 2,
+    "bytes": 126315,
+    "sha256": "a4b29759bd9d2f0c35323fa4d326a2749f97aa01b7f40ddf70aba41d4816abf4",
+    "question_start_pages": [
+      1,
+      2
+    ],
+    "original_bytes_preserved": true
+  },
+  {
+    "file": "21级期末大题解答.pdf",
+    "pages": 5,
+    "bytes": 204317,
+    "sha256": "71c4a85353cf7c442c1dddd89488568a1806d228d42707693537b94e4bab6043",
+    "question_start_pages": [
+      1,
+      1,
+      2,
+      3,
+      4
+    ],
+    "original_bytes_preserved": false,
+    "original_sha256": "593365e36f1aefd764d723984f357cfb746ba557b028c26a4c236f8bb9844d4a",
+    "clarified_page": 2,
+    "proof_region_pt": [
+      60.0,
+      59.0,
+      535.0,
+      234.0
+    ],
+    "original_conjugation_verified_visually": true,
+    "unchanged_text_and_pixels_outside_proof": true,
+    "unchanged_metadata_bookmarks_and_links": true,
+    "all_fonts_embedded": true
+  },
+  {
+    "file": "22级期末大题解答.pdf",
+    "pages": 3,
+    "bytes": 113648,
+    "sha256": "808fe0663fb484089d2848386444dc9e659d775a2bc9d5a033db6635b9edec44",
+    "question_start_pages": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "original_bytes_preserved": true
+  }
+]

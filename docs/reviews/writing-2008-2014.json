@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-26",
+  "source_zip": "2008~2014 (1).zip",
+  "source_zip_sha256": "2066e6daa6f99037a6616be33738a45d0062081542a53b3eb3a8561e7719e462",
+  "scope": "7 original short compositions and 7 original picture essays; manual prompt and image review",
+  "word_count_rule": "English tokens; internal apostrophes and hyphens retained; numbers count as words; short body excludes salutation/title and closing signature",
+  "short_required_signature": {
+    "2010": "Postgraduates’ Association",
+    "others": "Li Ming"
+  },
+  "sentence_examples_verified_verbatim": 42,
+  "entries": [
+    {
+      "year": 2008,
+      "source_pdf": "2008英一.pdf",
+      "source_page": 8,
+      "source_sha256": "71c147d52570f2708d23460e6c77572fedcab307a663cf3c3650dc7bda1a59b6",
+      "short_body_words": 100,
+      "short_total_words": 106,
+      "long_words": 180,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2008.md",
+      "url": "/english/601f58022d114c16c246e7d5/"
+    },
+    {
+      "year": 2009,
+      "source_pdf": "2009英一.pdf",
+      "source_page": 8,
+      "source_sha256": "1e6111c5b134f29fbdaa7b56b4256406beb7e9728d27e08a78386ac3cdcf194d",
+      "short_body_words": 101,
+      "short_total_words": 107,
+      "long_words": 180,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2009.md",
+      "url": "/english/81f0447edec31dc1dc5324c4/"
+    },
+    {
+      "year": 2010,
+      "source_pdf": "2010英一.pdf",
+      "source_page": 8,
+      "source_sha256": "77b8356bc460b6e2ed630f6a2a8be3f83c731a91293ed87e5b82c4024a7c2134",
+      "short_body_words": 101,
+      "short_total_words": 104,
+      "long_words": 179,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2010.md",
+      "url": "/english/1e566f8cb8009a4247149f6d/"
+    },
+    {
+      "year": 2011,
+      "source_pdf": "2011英一.pdf",
+      "source_page": 8,
+      "source_sha256": "3b40e8da1b11a823987d0ecde9d5a465c296b78af2ccf06792245ce9acfbc7a3",
+      "short_body_words": 101,
+      "short_total_words": 106,
+      "long_words": 184,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2011.md",
+      "url": "/english/01c3bb77ce090e4d6c9dd2ea/"
+    },
+    {
+      "year": 2012,
+      "source_pdf": "2012英一.pdf",
+      "source_page": 8,
+      "source_sha256": "30f265cce7bf703901847d1cfb9b4c5d6d61c0d1e3bceb698d74f6b66f53407c",
+      "short_body_words": 100,
+      "short_total_words": 107,
+      "long_words": 180,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2012.md",
+      "url": "/english/f16c693c3238f9bdf0c52173/"
+    },
+    {
+      "year": 2013,
+      "source_pdf": "2013英一.pdf",
+      "source_page": 8,
+      "source_sha256": "01878c842862e402b64c0e124c52afc211b7c82ce010c67e43e303040128cab9",
+      "short_body_words": 102,
+      "short_total_words": 109,
+      "long_words": 179,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2013.md",
+      "url": "/english/e1384da241f242f6a32ffec1/"
+    },
+    {
+      "year": 2014,
+      "source_pdf": "2014英一.pdf",
+      "source_page": 8,
+      "source_sha256": "b96f60880181ab989935154788f56790f3e7845c00dd6f4e6f7293630d32eeab",
+      "short_body_words": 102,
+      "short_total_words": 108,
+      "long_words": 182,
+      "sentence_examples": 6,
+      "source_path": "content/english/writing/writing-4000-2014.md",
+      "url": "/english/50a61351cfb55c842c6b8af6/"
+    }
+  ],
+  "index_url": "/english/085a33fb69b3e055ee0460e3/"
+}

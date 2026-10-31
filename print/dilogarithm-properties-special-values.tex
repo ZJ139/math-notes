@@ -1,0 +1,1113 @@
+% Expanded companion to content/notes/dilogarithm-properties-special-values.md.
+% XeLaTeX; approved Fandol Song / Computer Modern template unchanged.
+% Build twice from repository root with -output-directory=outputs/dilogarithm.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 二重对数}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={二重对数：定义、性质与特殊值计算},pdfauthor={Vincent Arqain},pdfsubject={定义、完整推导、特殊值、应用与复数主支}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 二重对数：定义、性质与特殊值计算\par}
+\end{center}
+\vspace{10pt}
+二重对数（又称二对数、双对数，dilogarithm）记作
+\(\operatorname{Li}_2\)。它把带 \(n^{-2}\)
+的幂级数与``对数除以自变量''的积分联系起来。这里的``二重''指多对数的阶数，并不是
+\(\log\log x\)，也不是 \((\log x)^2\)。
+
+讲义按``定义为什么成立 → 性质如何证明 → 特殊值怎样算出 →
+怎样用于积分与级数''的顺序展开。前五节只使用实变量，实值定义域为
+\((-\infty,1]\)，\(\log\)
+均表示自然对数；第六节另行说明复数主支，不把实对数公式直接套到
+\(x>1\)。核心内容只需微积分与级数知识，复数补充需用到解析函数及 Cauchy
+积分定理。
+
+相关材料：\href{https://zj139.github.io/math-notes/notes/890e1516e64e21a2fb2248b4/}{Euler
+型级数讲义}；\href{https://zj139.github.io/math-notes/essays/e171823ae7848bf83c108276/}{什么时候可以先换元，再展开幂级数？}。本页与配套
+PDF 的正文和公式编号一致。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \protect\hyperlink{ux5b9aux4e49ux4e0eux57faux672cux6027ux8d28}{定义与基本性质}
+\item
+  \protect\hyperlink{ux56dbux4e2aux57faux672cux51fdux6570ux65b9ux7a0b}{四个基本函数方程}
+\item
+  \protect\hyperlink{ux7279ux6b8aux503cux53caux5176ux8ba1ux7b97ux65b9ux6cd5}{特殊值及其计算方法}
+\item
+  \protect\hyperlink{euler-ux578bux7ea7ux6570ux4e0eux5bf9ux6570ux79efux5206}{Euler
+  型级数与对数积分}
+\item
+  \protect\hyperlink{ux6570ux503cux8ba1ux7b97ux4e0eux6e10ux8fd1ux5c55ux5f00}{数值计算与渐近展开}
+\item
+  \protect\hyperlink{ux590dux6570ux4e3bux652fux4e0eux590dux6570ux7279ux6b8aux503c}{复数主支与复数特殊值}
+\item
+  \protect\hyperlink{ux8ba1ux7b97ux65b9ux6cd5ux4e0eux516cux5f0fux7d22ux5f15}{计算方法与公式索引}
+\item
+  \protect\hyperlink{ux9644ux5f55basel-ux6c42ux548cux503cux7684ux8bc1ux660e}{附录：Basel
+  求和值的证明}
+\end{enumerate}
+
+\hypertarget{ux5b9aux4e49ux4e0eux57faux672cux6027ux8d28}{%
+\section{定义与基本性质}\label{ux5b9aux4e49ux4e0eux57faux672cux6027ux8d28}}
+
+\hypertarget{ux5e42ux7ea7ux6570ux7684ux6536ux655bux8303ux56f4}{%
+\subsection{幂级数的收敛范围}\label{ux5e42ux7ea7ux6570ux7684ux6536ux655bux8303ux56f4}}
+
+对 \(|x|\leqslant1\)，定义
+\[
+\operatorname{Li}_2(x)=\sum_{n=1}^{\infty}\frac{x^n}{n^2}.
+\]
+
+因为 \(|x^n/n^2|\leqslant1/n^2\)，该级数在 \([-1,1]\)
+上一致绝对收敛，故其和函数连续。若
+\(|x|>1\)，通项不趋于零，级数发散；特别是不能用这个级数直接定义 \(x<-1\)
+时的值。
+
+为什么这个级数与对数有关？从几何级数出发，在任意
+\([-r,r]\)（\(0<r<1\)）上一致收敛地积分，有
+\[
+\frac1{1-t}=\sum_{n=0}^{\infty}t^n
+\quad\Longrightarrow\quad
+-\log(1-x)=\sum_{n=1}^{\infty}\frac{x^n}{n}.
+\]
+
+再除以 \(x\)，把零点处按极限补全，并逐项积分：
+\[
+\begin{aligned}
+-\int_0^x\frac{\log(1-t)}t\,\mathrm dt
+&=\int_0^x\sum_{n=1}^{\infty}\frac{t^{n-1}}n\,\mathrm dt\\
+&=\sum_{n=1}^{\infty}\frac1n\int_0^xt^{n-1}\,\mathrm dt
+=\sum_{n=1}^{\infty}\frac{x^n}{n^2}.
+\end{aligned}
+\]
+
+第二次逐项积分也合法，因为
+\(|t^{n-1}/n|\leqslant r^{n-1}/n\)，而右边的数项级数收敛。\(x<0\)
+时仍按有向积分计算，等式不变。这个过程说明：多出一个分母
+\(n\)，对应一次``除以自变量，再积分''。更一般地，在 \(|x|<1\) 内定义
+\(\operatorname{Li}_k(x)=\sum_{n\geqslant1}x^n/n^k\)，就有
+\[
+\operatorname{Li}_1(x)=-\log(1-x),\qquad
+x\operatorname{Li}_k'(x)=\operatorname{Li}_{k-1}(x)\quad(k\geqslant2).
+\]
+
+\hypertarget{ux79efux5206ux5ef6ux62d3ux4e0eux7aefux70b9}{%
+\subsection{积分延拓与端点}\label{ux79efux5206ux5ef6ux62d3ux4e0eux7aefux70b9}}
+
+对任意 \(x<1\)，用下式将函数延拓到整个负实轴：
+\[
+\operatorname{Li}_2(x)=-\int_0^x\frac{\log(1-t)}t\,\mathrm dt.
+\]
+
+积分核 \(-\log(1-t)/t\) 在 \(t=0\) 处的连续延拓值为
+\(1\)，所以跨过零点没有奇性；当 \(x<0\)
+时，积分按通常的有向积分理解。该定义与幂级数在 \((-1,1)\) 内一致，在
+\(x=-1\) 处由连续性一致。对于 \(x=-a<0\)，也可写成
+\[
+\operatorname{Li}_2(-a)=-\int_0^a\frac{\log(1+u)}u\,\mathrm du,
+\qquad a>0.
+\]
+
+当 \(x\uparrow1\) 时，积分中的对数奇性可积：在 \([1/2,1)\)
+上，\(1/t\leqslant2\)，而 \(-\log(1-t)\) 可积。因此积分定义连续延伸到
+\(x=1\)，并与一致收敛的级数定义相同。于是
+\[
+\operatorname{Li}_2(0)=0,\qquad
+\operatorname{Li}_2(1)=\zeta(2)=\frac{\pi^2}{6},\qquad
+\operatorname{Li}_2(-1)=-\frac{\pi^2}{12}.
+\]
+
+最后一个等式由绝对收敛级数的奇偶分组得到：\(\sum(-1)^n/n^2=2\sum(2n)^{-2}-\zeta(2)=-\zeta(2)/2\)。这里
+\(\zeta(s)=\sum_{n\geqslant1}n^{-s}\)（\(s>1\)）。所用的 Basel 求和值
+\(\zeta(2)=\pi^2/6\) 在本文附录中给出证明；前文可先接受这一经典求和值。
+
+\hypertarget{ux4e09ux79cdux7b49ux4ef7ux7684ux79efux5206ux8868ux793a}{%
+\subsection{三种等价的积分表示}\label{ux4e09ux79cdux7b49ux4ef7ux7684ux79efux5206ux8868ux793a}}
+
+对 \(x<1\)，除直接定义外，还有
+\[
+\begin{aligned}
+\operatorname{Li}_2(x)
+&=-\int_0^1\frac{\log(1-xu)}u\,\mathrm du\\
+&=-x\int_0^1\frac{\log u}{1-xu}\,\mathrm du\\
+&=x\int_0^1\!\int_0^1\frac{\mathrm du\,\mathrm dv}{1-xuv}.
+\end{aligned}
+\]
+
+第一式由 \(t=xu\) 得到，\(x=0\)
+单独代入两边均为零。为证明第二式，对第一式分部积分：
+\[
+\begin{aligned}
+-\int_0^1\log(1-xu)\,\mathrm d(\log u)
+&=-\bigl[\log(1-xu)\log u\bigr]_0^1
+-x\int_0^1\frac{\log u}{1-xu}\,\mathrm du.
+\end{aligned}
+\]
+
+在 \(u=1\) 处边界项为零；在 \(u\downarrow0\) 时，\(\log(1-xu)=O(u)\)，而
+\(u\log u\to0\)，故另一端也为零。剩余积分绝对收敛，因为 \(1-xu\) 在
+\([0,1]\) 上有正下界，而 \(|\log u|\) 可积。
+
+第三式可先对 \(v\) 积分：
+\[
+x\int_0^1\frac{\mathrm dv}{1-xuv}
+=-\frac{\log(1-xu)}u,
+\]
+
+再对 \(u\) 积分；\(xu=0\)
+时按连续极限理解。分母在单位正方形上有正下界，故此处交换积分次序没有收敛障碍。\(x=1\)
+时以上等式仍可按从左取极限延伸：相应核非负，单调收敛定理适用，积分值为
+\(\zeta(2)\)。
+
+在第二个表示中再令 \(u=e^{-v}\)，得到无穷区间形式
+\[
+\operatorname{Li}_2(x)=x\int_0^{\infty}\frac{v}{e^v-x}\,\mathrm dv,
+\qquad x\leqslant1.
+\]
+
+当 \(x=1\) 时，零点附近
+\(v/(e^v-1)\to1\)；无穷远处有指数衰减，所以两个端点均可积。这些表示各有用途：含对数的形式适合识别积分，正核形式适合证明不等式。
+
+\hypertarget{ux5bfcux6570ux5355ux8c03ux6027ux4e0eux51f8ux6027}{%
+\subsection{导数、单调性与凸性}\label{ux5bfcux6570ux5355ux8c03ux6027ux4e0eux51f8ux6027}}
+
+由微积分基本定理，对 \(x<1\)、\(x\ne0\)，
+\[
+\operatorname{Li}_2'(x)=-\frac{\log(1-x)}x,
+\qquad
+\operatorname{Li}_2''(x)=\frac{x/(1-x)+\log(1-x)}{x^2}.
+\]
+
+在零点由幂级数得到
+\(\operatorname{Li}_2'(0)=1\)、\(\operatorname{Li}_2''(0)=1/2\)。更统一的表达式是
+\[
+\operatorname{Li}_2'(x)=\int_0^1\frac{\mathrm du}{1-xu}>0,
+\qquad
+\operatorname{Li}_2''(x)=\int_0^1\frac{u\,\mathrm du}{(1-xu)^2}>0,
+\qquad x<1.
+\]
+
+第一个积分可直接计算；第二个由对第一个积分求导得到。在任一固定的 \(x<1\)
+的小闭邻域内，分母一致远离零，因而该求导合法。故函数在 \((-\infty,1)\)
+上严格递增、严格凸。进一步反复求导可得，对每个整数 \(m\geqslant1\)，
+\[
+\operatorname{Li}_2^{(m)}(x)
+=(m-1)!\int_0^1\frac{u^{m-1}}{(1-xu)^m}\,\mathrm du>0,
+\qquad x<1.
+\]
+
+这里每次求导的合法性都来自同一个局部正下界。取 \(x=0\) 得
+\(\operatorname{Li}_2^{(m)}(0)=(m-1)!/m\)，除以 \(m!\) 后正好还原系数
+\(1/m^2\)。
+
+导数公式不包含端点
+\(x=1\)。事实上，\(\operatorname{Li}_2'(x)\to+\infty\)。又因导数递增，对
+\(0<h<1\) 有
+\[
+\frac{\operatorname{Li}_2(1)-\operatorname{Li}_2(1-h)}h
+=\frac1h\int_{1-h}^1\operatorname{Li}_2'(t)\,\mathrm dt
+\geqslant\operatorname{Li}_2'(1-h)\longrightarrow+\infty.
+\]
+
+因此 \(x=1\)
+处连续，但没有有限左导数；``函数值有限''与``导数有限''是两个不同的问题。
+
+\hypertarget{ux4eceux51f8ux6027ux8bfbux51faux4e24ux4e2aux5e38ux7528ux4f30ux8ba1}{%
+\subsection{从凸性读出两个常用估计}\label{ux4eceux51f8ux6027ux8bfbux51faux4e24ux4e2aux5e38ux7528ux4f30ux8ba1}}
+
+凸函数的图像在切线上方，零点处切线为 \(y=x\)，故
+\[
+\operatorname{Li}_2(x)\geqslant x\qquad(x\leqslant1).
+\]
+
+也可以直接积分验证：\(0<x<1\) 时 \(\operatorname{Li}_2'(t)>1\)；\(x<0\)
+时在 \([x,0]\) 上有 \(\operatorname{Li}_2'(t)<1\)，从而
+\(-\int_x^0\operatorname{Li}_2'(t)\,\mathrm dt>x\)。等号只在 \(x=0\)
+成立。
+
+另一方面，凸函数在两端点连线下方，所以
+\[
+x\leqslant\operatorname{Li}_2(x)\leqslant\frac{\pi^2}{6}x,
+\qquad 0\leqslant x\leqslant1.
+\]
+
+上界也可由 \(x^n\leqslant x\)
+逐项求和得到。这个简短估计可先用于检查计算结果的量级与符号。
+
+\hypertarget{ux56dbux4e2aux57faux672cux51fdux6570ux65b9ux7a0b}{%
+\section{四个基本函数方程}\label{ux56dbux4e2aux57faux672cux51fdux6570ux65b9ux7a0b}}
+
+\hypertarget{euler-ux53cdux5c04ux516cux5f0f}{%
+\subsection{Euler 反射公式}\label{euler-ux53cdux5c04ux516cux5f0f}}
+
+对 \(0<x<1\)，有
+\begin{equation}
+\operatorname{Li}_2(x)+\operatorname{Li}_2(1-x)
+=\frac{\pi^2}{6}-\log x\log(1-x).
+\tag{1}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：令
+\(F(x)=\operatorname{Li}_2(x)+\operatorname{Li}_2(1-x)+\log x\log(1-x)\)，则
+\[
+F'(x)=-\frac{\log(1-x)}x+\frac{\log x}{1-x}
++\frac{\log(1-x)}x-\frac{\log x}{1-x}=0.
+\]
+
+由端点连续性及 \(\log x\log(1-x)=O(x|\log x|)\to0\)，令 \(x\downarrow0\)
+即知常数为 \(\pi^2/6\)。式 (1) 在端点只按极限解释，不能把 \(\log0\)
+当作实数代入。
+
+\hypertarget{landen-ux53d8ux6362ux516cux5f0f}{%
+\subsection{Landen 变换公式}\label{landen-ux53d8ux6362ux516cux5f0f}}
+
+对所有 \(x<1\)，有
+\begin{equation}
+\operatorname{Li}_2(x)+\operatorname{Li}_2\!\left(\frac{x}{x-1}\right)
+=-\frac12\log^2(1-x).
+\tag{2}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：记 \(y=x/(x-1)\)。先把链式法则中的每一项写出：
+\[
+1-y=\frac1{1-x}>0,\qquad
+y'=-\frac1{(x-1)^2},\qquad
+\frac{y'}y=\frac1{x(1-x)}\quad(x\ne0).
+\]
+
+所以 \(y<1\)，并且 \(\log(1-y)=-\log(1-x)\)。因此
+\[
+\frac{\mathrm d}{\mathrm dx}\operatorname{Li}_2(y)
+=-\log(1-y)\frac{y'}y
+=\frac{\log(1-x)}{x(1-x)}.
+\]
+
+令式 (2) 左端加上 \(\tfrac12\log^2(1-x)\) 为 \(G(x)\)。于是
+\[
+G'(x)=-\frac{\log(1-x)}x
++\frac{\log(1-x)}{x(1-x)}
+-\frac{\log(1-x)}{1-x}=0.
+\]
+
+因此 \(G\) 在 \((-\infty,0)\) 和 \((0,1)\)
+上分别为常数。它在零点连续，且 \(G(0)=0\)，故两个常数均为零。式 (2) 包含
+\(x=0\)。
+
+\hypertarget{ux500dux89d2ux516cux5f0f}{%
+\subsection{倍角公式}\label{ux500dux89d2ux516cux5f0f}}
+
+对 \(|x|\leqslant1\)，有
+\begin{equation}
+\operatorname{Li}_2(x)+\operatorname{Li}_2(-x)
+=\frac12\operatorname{Li}_2(x^2).
+\tag{3}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：绝对收敛允许逐项相加并取偶数项，故
+\[
+\sum_{n=1}^{\infty}\frac{x^n+(-x)^n}{n^2}
+=2\sum_{k=1}^{\infty}\frac{x^{2k}}{(2k)^2}
+=\frac12\operatorname{Li}_2(x^2).
+\]
+
+这个证明包含 \(x=\pm1\)。本文不把式 (3) 延伸到 \(|x|>1\)，因为那时
+\(x^2>1\) 已超出本文的实值定义域。
+
+\hypertarget{ux8d1fux5b9eux8f74ux53cdux6f14ux516cux5f0f}{%
+\subsection{负实轴反演公式}\label{ux8d1fux5b9eux8f74ux53cdux6f14ux516cux5f0f}}
+
+对 \(a>0\)，有
+\begin{equation}
+\operatorname{Li}_2(-a)+\operatorname{Li}_2(-1/a)
+=-\frac{\pi^2}{6}-\frac12\log^2a.
+\tag{4}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：先分别求导。第一个复合函数满足
+\[
+\frac{\mathrm d}{\mathrm da}\operatorname{Li}_2(-a)
+=-\frac{\log(1+a)}a.
+\]
+
+对第二个，因 \((-1/a)'=1/a^2\)，有
+\[
+\frac{\mathrm d}{\mathrm da}\operatorname{Li}_2(-1/a)
+=\left[-\frac{\log(1+1/a)}{-1/a}\right]\frac1{a^2}
+=\frac{\log(1+1/a)}a.
+\]
+
+令式 (4) 左端加上 \(\tfrac12\log^2a\) 为 \(J(a)\)，则
+\[
+J'(a)=\frac{-\log(1+a)+\log(1+1/a)+\log a}{a}=0,
+\]
+
+其中使用 \(1+1/a=(1+a)/a\) 和实对数的乘法公式。取 \(a=1\)，得到
+\(J(1)=2\operatorname{Li}_2(-1)=-\pi^2/6\)。这里两个自变量始终为负数，任意大小的
+\(a>0\) 均可使用积分延拓。
+
+\hypertarget{ux7279ux6b8aux503cux53caux5176ux8ba1ux7b97ux65b9ux6cd5}{%
+\section{特殊值及其计算方法}\label{ux7279ux6b8aux503cux53caux5176ux8ba1ux7b97ux65b9ux6cd5}}
+
+\hypertarget{ux534aux70b9ux7684ux7279ux6b8aux503c}{%
+\subsection{半点的特殊值}\label{ux534aux70b9ux7684ux7279ux6b8aux503c}}
+
+在式 (1) 中取 \(x=1/2\)，因为 \(1-x=x\) 且 \(\log(1/2)=-\log2\)，有
+\[
+2\operatorname{Li}_2(1/2)=\frac{\pi^2}{6}-\log^22.
+\]
+
+两边除以 \(2\)，得到
+\begin{equation}
+\operatorname{Li}_2\!\left(\frac12\right)
+=\frac{\pi^2}{12}-\frac12\log^22.
+\tag{5}
+\end{equation}
+
+这一步的关键是反射后自变量不变，从而原来的两个函数值合并为一个未知量。
+
+\hypertarget{ux4e3aux4ec0ux4e48ux9ec4ux91d1ux5206ux5272ux4f1aux51faux73b0}{%
+\subsection{为什么黄金分割会出现}\label{ux4e3aux4ec0ux4e48ux9ec4ux91d1ux5206ux5272ux4f1aux51faux73b0}}
+
+半点计算利用的是 \(1-x=x\)。若希望反射公式中的 \(1-x\) 与倍角公式中的
+\(x^2\) 配合，就应寻找
+\[
+1-x=x^2.
+\]
+
+方程在 \((0,1)\) 内的根是
+\(t=(\sqrt5-1)/2\)。因此黄金分割并不是偶然猜中的参数：它使``反射''和``平方''作用在同一组自变量上，能够产生足够的线性关系。
+
+\hypertarget{ux9ec4ux91d1ux5206ux5272ux6bd4ux5bf9ux5e94ux7684ux7279ux6b8aux503c}{%
+\subsection{黄金分割比对应的特殊值}\label{ux9ec4ux91d1ux5206ux5272ux6bd4ux5bf9ux5e94ux7684ux7279ux6b8aux503c}}
+
+令 \(\varphi=(1+\sqrt5)/2\)、\(t=\varphi^{-1}\)、\(L=\log\varphi\)。有
+\(1-t=t^2\)、\(\log t=-L\)。记
+\[
+A=\operatorname{Li}_2(t),\quad B=\operatorname{Li}_2(t^2),\quad
+C=\operatorname{Li}_2(-t),\quad D=\operatorname{Li}_2(-\varphi).
+\]
+
+由于 \(0<t<1\)，式 (1)、(3)、(2)、(4) 分别给出
+\[
+\begin{aligned}
+A+B&=\frac{\pi^2}{6}-2L^2,\\
+A+C&=\frac12B,\\
+A+D&=-2L^2,\\
+C+D&=-\frac{\pi^2}{6}-\frac12L^2.
+\end{aligned}
+\]
+
+第一式中，\(\log t\log(1-t)=(-L)(-2L)=2L^2\)。第三式使用
+\(t/(t-1)=-1/t=-\varphi\) 和 \(\log(1-t)=-2L\)；第四式取 \(a=\varphi\)。
+
+下面完整消元。由第二、第三式先解出
+\[
+C=\frac B2-A,\qquad D=-2L^2-A.
+\]
+
+将它们代入第四式：
+\[
+\frac B2-2A-2L^2=-\frac{\pi^2}{6}-\frac12L^2.
+\]
+
+移项并乘以 \(-2\)，得到
+\[
+4A-B=\frac{\pi^2}{3}-3L^2.
+\]
+
+与第一式 \(A+B=\pi^2/6-2L^2\) 相加，消去 \(B\)：
+\[
+5A=\frac{\pi^2}{2}-5L^2,
+\qquad A=\frac{\pi^2}{10}-L^2.
+\]
+
+再代回第一式，
+\[
+B=\frac{\pi^2}{6}-2L^2-A
+=\frac{\pi^2}{15}-L^2.
+\]
+
+因此
+\[
+\begin{aligned}
+\operatorname{Li}_2\!\left(\frac{\sqrt5-1}{2}\right)
+&=\frac{\pi^2}{10}-\log^2\varphi,\\
+\operatorname{Li}_2\!\left(\frac{3-\sqrt5}{2}\right)
+&=\frac{\pi^2}{15}-\log^2\varphi.
+\end{aligned}
+\]
+
+再由 \(C=B/2-A\)、\(D=-2L^2-A\)，得
+\[
+\operatorname{Li}_2(-\varphi^{-1})=-\frac{\pi^2}{15}+\frac12\log^2\varphi,
+\qquad
+\operatorname{Li}_2(-\varphi)=-\frac{\pi^2}{10}-\log^2\varphi.
+\]
+
+这里并没有把 \(-\varphi<-1\)
+代入发散的幂级数；该值来自积分延拓和已经证明的函数方程。
+
+\hypertarget{ux6709ux7406ux81eaux53d8ux91cfux4e4bux95f4ux7684ux5173ux7cfb}{%
+\subsection{有理自变量之间的关系}\label{ux6709ux7406ux81eaux53d8ux91cfux4e4bux95f4ux7684ux5173ux7cfb}}
+
+对一般有理自变量，本讲义不保证其值能单独化成 \(\pi^2\)
+与对数的简单组合。但可以证明多个值之间的恒等式，例如
+\begin{equation}
+\operatorname{Li}_2\!\left(\frac14\right)
++2\operatorname{Li}_2\!\left(\frac13\right)
+=\frac{\pi^2}{6}-\log^22-\log^2\!\frac32.
+\tag{6}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：式 (3) 取 \(x=1/2\)，式 (2) 取 \(x=-1/2\)，分别得到
+\[
+\begin{aligned}
+\operatorname{Li}_2(1/2)+\operatorname{Li}_2(-1/2)
+&=\frac12\operatorname{Li}_2(1/4),\\
+\operatorname{Li}_2(-1/2)+\operatorname{Li}_2(1/3)
+&=-\frac12\log^2\!\frac32.
+\end{aligned}
+\]
+
+由第二式解出 \(\operatorname{Li}_2(-1/2)\) 并代入第一式，得到
+\[
+\frac12\operatorname{Li}_2(1/4)
+=\operatorname{Li}_2(1/2)-\operatorname{Li}_2(1/3)
+-\frac12\log^2\!\frac32.
+\]
+
+把 \(\operatorname{Li}_2(1/3)\) 移到左边，两边乘以 \(2\)，再代入式
+(5)，即得式 (6)。同时保留有用的关系
+\[
+\operatorname{Li}_2(-1/2)=-\operatorname{Li}_2(1/3)-\frac12\log^2\!\frac32.
+\]
+
+这里算出的是一个组合值，并没有单独求出 \(\operatorname{Li}_2(1/3)\) 或
+\(\operatorname{Li}_2(1/4)\)。方程数量不足以确定所有未知量时，应保留这种关系；不能把``尚未在本节化简''说成``已经证明不存在简单闭式''。
+
+还可由反射公式取 \(x=1/3\) 得
+\[
+\operatorname{Li}_2(2/3)=\frac{\pi^2}{6}
++\log2\log3-\log^23-\operatorname{Li}_2(1/3),
+\]
+
+因为
+\(\log(1/3)=-\log3\)、\(\log(2/3)=\log2-\log3\)。这表明不同自变量的值可以共同约化到较少的基础值，而不必每个都独立计算。
+
+\hypertarget{ux5b9eux6570ux7279ux6b8aux503cux901fux67e5}{%
+\subsection{实数特殊值速查}\label{ux5b9eux6570ux7279ux6b8aux503cux901fux67e5}}
+
+以下均已在前文证明；记 \(\varphi=(1+\sqrt5)/2\)。
+\[
+\begin{aligned}
+\operatorname{Li}_2(0)&=0,\\
+\operatorname{Li}_2(1)&=\frac{\pi^2}{6},\\
+\operatorname{Li}_2(-1)&=-\frac{\pi^2}{12},\\
+\operatorname{Li}_2(1/2)&=\frac{\pi^2}{12}-\frac12\log^22,\\
+\operatorname{Li}_2(\varphi^{-1})&=\frac{\pi^2}{10}-\log^2\varphi,\\
+\operatorname{Li}_2(\varphi^{-2})&=\frac{\pi^2}{15}-\log^2\varphi,\\
+\operatorname{Li}_2(-\varphi^{-1})&=-\frac{\pi^2}{15}+\frac12\log^2\varphi,\\
+\operatorname{Li}_2(-\varphi)&=-\frac{\pi^2}{10}-\log^2\varphi.
+\end{aligned}
+\]
+
+\hypertarget{euler-ux578bux7ea7ux6570ux4e0eux5bf9ux6570ux79efux5206}{%
+\section{Euler
+型级数与对数积分}\label{euler-ux578bux7ea7ux6570ux4e0eux5bf9ux6570ux79efux5206}}
+
+\hypertarget{ux8c03ux548cux6570ux751fux6210ux51fdux6570ux4e0eux6c42ux548c}{%
+\subsection{调和数生成函数与求和}\label{ux8c03ux548cux6570ux751fux6210ux51fdux6570ux4e0eux6c42ux548c}}
+
+记 \(H_n=\sum_{k=1}^n1/k\)。对 \(|x|<1\)，双重级数绝对收敛，因为令
+\(r=|x|\) 有
+\[
+\sum_{n=1}^{\infty}\sum_{k=1}^n\frac{r^n}{k}
+=\frac1{1-r}\sum_{k=1}^{\infty}\frac{r^k}{k}<\infty.
+\]
+
+右端可先由非负项换序得到，再据其有限性判断绝对收敛。因此对一般实数
+\(|x|<1\)，换序合法，且
+\[
+\sum_{n=1}^{\infty}H_nx^n=-\frac{\log(1-x)}{1-x}.
+\]
+
+在收敛区间内部，除以 \(x\) 后的级数在零点也连续，并可逐项积分。具体地，
+\[
+\begin{aligned}
+\sum_{n=1}^{\infty}\frac{H_n}{n}x^n
+&=-\int_0^x\frac{\log(1-t)}{t(1-t)}\,\mathrm dt\\
+&=-\int_0^x\frac{\log(1-t)}t\,\mathrm dt
+-\int_0^x\frac{\log(1-t)}{1-t}\,\mathrm dt\\
+&=\operatorname{Li}_2(x)+\frac12\log^2(1-x).
+\end{aligned}
+\]
+
+第二步使用 \(1/[t(1-t)]=1/t+1/(1-t)\)；第三步第二个积分用
+\(u=\log(1-t)\)，\(\mathrm du=-\mathrm dt/(1-t)\)。综上，
+\begin{equation}
+\sum_{n=1}^{\infty}\frac{H_n}{n}x^n
+=\operatorname{Li}_2(x)+\frac12\log^2(1-x),
+\qquad |x|<1.
+\tag{7}
+\end{equation}
+
+在式 (7) 中取 \(x=1/2\)，再用式 (5)，两个对数平方项抵消，故
+\[
+\sum_{n=1}^{\infty}\frac{H_n}{n\,2^n}=\frac{\pi^2}{12}.
+\]
+
+注意分母是 \(n\,2^n\)，并非 \(n^2\)。若在式 (7) 两边再除以 \(x\)，并在
+\((0,1)\) 上积分，非负项逐项积分给出
+\[
+\sum_{n=1}^{\infty}\frac{H_n}{n^2}
+=\zeta(3)+\frac12\int_0^1\frac{\log^2(1-x)}x\,\mathrm dx
+=2\zeta(3).
+\]
+
+上式的两部分可以分别算清楚。首先，由非负项逐项积分，
+\[
+\int_0^1\frac{\operatorname{Li}_2(x)}x\,\mathrm dx
+=\sum_{n=1}^{\infty}\frac1{n^2}\int_0^1x^{n-1}\,\mathrm dx
+=\sum_{n=1}^{\infty}\frac1{n^3}=\zeta(3).
+\]
+
+其次，令 \(u=1-x\)，再展开非负几何级数，有
+\[
+\begin{aligned}
+\int_0^1\frac{\log^2(1-x)}x\,\mathrm dx
+&=\int_0^1\frac{\log^2u}{1-u}\,\mathrm du\\
+&=\sum_{j=0}^{\infty}\int_0^1u^j\log^2u\,\mathrm du.
+\end{aligned}
+\]
+
+对每一项，作 \(u=e^{-v}\)，记 \(b=j+1>0\)。两次分部积分给出
+\[
+\begin{aligned}
+\int_0^1u^j\log^2u\,\mathrm du
+&=\int_0^{\infty}v^2e^{-bv}\,\mathrm dv\\
+&=\frac2b\int_0^{\infty}ve^{-bv}\,\mathrm dv
+=\frac2{b^2}\int_0^{\infty}e^{-bv}\,\mathrm dv
+=\frac2{b^3}.
+\end{aligned}
+\]
+
+所有分部积分的边界项都为零，因为指数衰减快于这里的多项式增长。于是该积分为
+\(2\zeta(3)\)，从而原和为
+\(\zeta(3)+\tfrac12\cdot2\zeta(3)=2\zeta(3)\)。所有无穷换序先由非负性保证，再由所得有限值确认收敛；没有直接把
+\(x=1\) 代入只在 \(|x|<1\) 证明的式 (7)。
+
+\hypertarget{ux4e24ux4e2aux5178ux578bux5bf9ux6570ux79efux5206}{%
+\subsection{两个典型对数积分}\label{ux4e24ux4e2aux5178ux578bux5bf9ux6570ux79efux5206}}
+
+\Needspace{5\baselineskip}
+解：由积分定义和已求出的特殊值，
+\[
+\begin{aligned}
+\int_0^1\frac{\log(1+x)}x\,\mathrm dx
+&=-\operatorname{Li}_2(-1)=\frac{\pi^2}{12},\\
+\int_0^{1/2}\frac{\log(1-x)}x\,\mathrm dx
+&=-\operatorname{Li}_2(1/2)=-\frac{\pi^2}{12}+\frac12\log^22.
+\end{aligned}
+\]
+
+零点处两个被积函数的极限分别为 \(1\) 和
+\(-1\)，故不存在不可积奇性。遇到``对数除以自变量''的积分，先检查是否可以直接识别为二对数函数的差值。
+
+\hypertarget{ux5148ux62c6ux5206ux518dux8bc6ux522bux7684ux79efux5206}{%
+\subsection{先拆分再识别的积分}\label{ux5148ux62c6ux5206ux518dux8bc6ux522bux7684ux79efux5206}}
+
+求
+\[
+I=\int_0^1\frac{\log(1+x)}{x(1+x)}\,\mathrm dx.
+\]
+
+\Needspace{5\baselineskip}
+解：在零点附近，\(\log(1+x)=x+O(x^2)\)，所以积分收敛。利用
+\(1/[x(1+x)]=1/x-1/(1+x)\)，有
+\[
+\begin{aligned}
+I&=\int_0^1\frac{\log(1+x)}x\,\mathrm dx
+-\int_0^1\frac{\log(1+x)}{1+x}\,\mathrm dx\\
+&=\frac{\pi^2}{12}-\left[\frac12\log^2(1+x)\right]_0^1\\
+&=\frac{\pi^2}{12}-\frac12\log^22
+=\operatorname{Li}_2(1/2).
+\end{aligned}
+\]
+
+若一开始作 \(u=x/(1+x)\)，则
+\(x=u/(1-u)\)，\(\mathrm dx/[x(1+x)]=\mathrm du/u\)，且
+\(\log(1+x)=-\log(1-u)\)；积分区间变为 \([0,1/2]\)，也会直接得到
+\(\operatorname{Li}_2(1/2)\)。这两条解法分别体现``拆分分母''和``选择合适自变量''。
+
+\hypertarget{ux5bf9ux6570ux4e58ux79efux79efux5206ux4e0eux90e8ux5206ux5206ux5f0f}{%
+\subsection{对数乘积积分与部分分式}\label{ux5bf9ux6570ux4e58ux79efux79efux5206ux4e0eux90e8ux5206ux5206ux5f0f}}
+
+求
+\[
+K=\int_0^1\log x\log(1-x)\,\mathrm dx.
+\]
+
+\Needspace{5\baselineskip}
+解：两个对数在 \((0,1)\) 上均为负，因此可以使用非负项展开：
+\[
+\begin{aligned}
+K&=\int_0^1(-\log x)\sum_{n=1}^{\infty}\frac{x^n}n\,\mathrm dx\\
+&=\sum_{n=1}^{\infty}\frac1n\int_0^1x^n(-\log x)\,\mathrm dx
+=\sum_{n=1}^{\infty}\frac1{n(n+1)^2}.
+\end{aligned}
+\]
+
+最后的矩积分由 \(x=e^{-v}\) 化为
+\(\int_0^{\infty}ve^{-(n+1)v}\,\mathrm dv\)，一次分部积分即为
+\((n+1)^{-2}\)。再作部分分式分解：
+\[
+\frac1{n(n+1)^2}=\frac1n-\frac1{n+1}-\frac1{(n+1)^2}.
+\]
+
+为避免分别处理两个发散的调和级数，先对有限项求和：
+\[
+\sum_{n=1}^{N}\frac1{n(n+1)^2}
+=1-\frac1{N+1}-\sum_{n=1}^{N}\frac1{(n+1)^2}.
+\]
+
+令 \(N\to\infty\)，得到
+\[
+K=1-(\zeta(2)-1)=2-\frac{\pi^2}{6}.
+\]
+
+所得值有限，同时证明了原反常积分的收敛性。此题的关键不是把每一项都写成二对数，而是识别最后留下的二阶倒数和。
+
+\hypertarget{ux6570ux503cux8ba1ux7b97ux4e0eux6e10ux8fd1ux5c55ux5f00}{%
+\section{数值计算与渐近展开}\label{ux6570ux503cux8ba1ux7b97ux4e0eux6e10ux8fd1ux5c55ux5f00}}
+
+\hypertarget{ux622aux65adux8befux5deeux4e0eux81eaux53d8ux91cfux7ea6ux5316}{%
+\subsection{截断误差与自变量约化}\label{ux622aux65adux8befux5deeux4e0eux81eaux53d8ux91cfux7ea6ux5316}}
+
+对 \(0\leqslant r<1\) 及整数 \(N\geqslant0\)，有
+\begin{equation}
+0\leqslant\operatorname{Li}_2(r)-\sum_{n=1}^N\frac{r^n}{n^2}
+\leqslant\frac{r^{N+1}}{(N+1)^2(1-r)}.
+\tag{8}
+\end{equation}
+
+\Needspace{5\baselineskip}
+证明：余项的每个分母均不小于 \((N+1)^2\)，再求几何尾和即可。对
+\(|x|<1\)，绝对误差也被式 (8) 中取 \(r=|x|\) 的右端控制；端点 \(r=1\)
+不使用这个界。
+
+实际计算可按以下步骤将级数参数约化到 \([0,1/2]\)。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(0\leqslant x\leqslant1/2\)：直接用级数和式 (8)。
+\item
+  \(1/2<x<1\)：用式 (1) 化为 \(1-x\)。
+\item
+  \(-1\leqslant x<0\)：用式 (2) 化为 \(x/(x-1)\in(0,1/2]\)。
+\item
+  \(x<-1\)：令 \(a=-x>1\)，先用式 (4) 化为
+  \(-1/a\in(-1,0)\)，再用上一步。
+\item
+  \(x=1\)：直接使用 \(\pi^2/6\)。
+\end{enumerate}
+
+例如取 \(r=1/2\)、\(N=30\)，则
+\[
+0\leqslant\operatorname{Li}_2(1/2)-\sum_{n=1}^{30}\frac{2^{-n}}{n^2}
+\leqslant\frac{2^{-30}}{31^2}<10^{-12}.
+\]
+
+在端点 \(x=1\)，用积分比较给出另一种尾界：对 \(N\geqslant1\)，
+\[
+\frac1{N+1}\leqslant\sum_{n=N+1}^{\infty}\frac1{n^2}\leqslant\frac1N.
+\]
+
+因此直接在 \(x=1\) 求和只具有 \(N^{-1}\) 量级的收敛速度。对负参数
+\(x=-r\)（\(0\leqslant r\leqslant1\)），交错级数余项估计还给出
+\[
+\left|\operatorname{Li}_2(-r)-\sum_{n=1}^N\frac{(-r)^n}{n^2}\right|
+\leqslant\frac{r^{N+1}}{(N+1)^2},
+\]
+
+因为 \(r^n/n^2\) 随 \(n\) 递减并趋于零。这里的交错估计包含 \(r=1\)。
+
+上述界控制的是截断误差；用浮点数计算对数、平方和相减时，还应保留足够精度，不能将截断界误当作全部舍入误差的界。
+
+\hypertarget{ux96f6ux70b9ux9644ux8fd1}{%
+\subsection{零点附近}\label{ux96f6ux70b9ux9644ux8fd1}}
+
+原级数直接给出
+\[
+\operatorname{Li}_2(x)=x+\frac{x^2}{4}+\frac{x^3}{9}+O(x^4),
+\qquad x\to0.
+\]
+
+由式 (8) 的绝对值版本，对
+\(|x|\leqslant1/2\)，前三项之后的余项绝对值不超过
+\(|x|^4/[16(1-|x|)]\leqslant|x|^4/8\)，故这里的大 \(O\) 是双侧且一致的。
+
+\hypertarget{ux6b63ux7aefux70b9ux9644ux8fd1}{%
+\subsection{正端点附近}\label{ux6b63ux7aefux70b9ux9644ux8fd1}}
+
+对 \(\varepsilon\downarrow0\)，式 (1) 给出
+\[
+\operatorname{Li}_2(1-\varepsilon)
+=\frac{\pi^2}{6}+\varepsilon\log\varepsilon-\varepsilon
++O\!\left(\varepsilon^2|\log\varepsilon|\right).
+\]
+
+\Needspace{5\baselineskip}
+证明：在 \(0<\varepsilon\leqslant1/2\) 上，
+\[
+|\operatorname{Li}_2(\varepsilon)-\varepsilon|\leqslant\frac{\varepsilon^2}{2},
+\qquad
+|\log(1-\varepsilon)+\varepsilon|\leqslant\varepsilon^2.
+\]
+
+第一式来自式 (8)，第二式来自对数幂级数的尾和估计。代入反射公式，所得余项
+\(R(\varepsilon)\) 满足
+\[
+|R(\varepsilon)|\leqslant\varepsilon^2\left(|\log\varepsilon|+\frac12\right).
+\]
+
+这既证明上述渐近式，也解释了为什么主修正项含
+\(\varepsilon\log\varepsilon\)，不能假设函数在 \(x=1\) 处有通常的 Taylor
+展开。
+
+若需要再多一阶，写成
+\[
+\begin{aligned}
+\operatorname{Li}_2(\varepsilon)&=\varepsilon+\frac{\varepsilon^2}{4}+R_1,\qquad
+|R_1|\leqslant\frac{\varepsilon^3}{9(1-\varepsilon)},\\
+\log(1-\varepsilon)&=-\varepsilon-\frac{\varepsilon^2}{2}+R_2,\qquad
+|R_2|\leqslant\frac{\varepsilon^3}{3(1-\varepsilon)}.
+\end{aligned}
+\]
+
+把这两式代入反射公式，依次收集一次、二次项，得到
+\[
+\begin{aligned}
+\operatorname{Li}_2(1-\varepsilon)
+={}&\frac{\pi^2}{6}+\varepsilon(\log\varepsilon-1)\\
+&+\varepsilon^2\left(\frac12\log\varepsilon-\frac14\right)+R,
+\end{aligned}
+\]
+
+其中 \(R=-R_1-R_2\log\varepsilon\)，故
+\[
+|R|\leqslant\frac{\varepsilon^3}{1-\varepsilon}
+\left(\frac19+\frac{|\log\varepsilon|}{3}\right).
+\]
+
+这比只写一个大 \(O\) 多说明了误差怎样由两次 Taylor 尾项共同控制。
+
+\hypertarget{ux8d1fux5b9eux8f74ux65e0ux7a77ux8fdcux5904}{%
+\subsection{负实轴无穷远处}\label{ux8d1fux5b9eux8f74ux65e0ux7a77ux8fdcux5904}}
+
+由式 (4) 与零点展开，当 \(a\to+\infty\) 时，
+\[
+\operatorname{Li}_2(-a)
+=-\frac12\log^2a-\frac{\pi^2}{6}
++\frac1a-\frac1{4a^2}+O(a^{-3}).
+\]
+
+具体地，\(a\geqslant2\) 时，最后余项的绝对值不超过
+\(1/[9a^3(1-1/a)]\)。因此较粗的形式
+\[
+\operatorname{Li}_2(-a)=-\frac12\log^2a-\frac{\pi^2}{6}+O(1/a)
+\]
+
+同样成立。这里是在小参数 \(-1/a\) 处使用收敛级数，再借反演公式返回
+\(-a\)，并非在收敛区间外形式地展开。
+
+\hypertarget{ux590dux6570ux4e3bux652fux4e0eux590dux6570ux7279ux6b8aux503c}{%
+\section{复数主支与复数特殊值}\label{ux590dux6570ux4e3bux652fux4e0eux590dux6570ux7279ux6b8aux503c}}
+
+\hypertarget{ux4eceux5b9eux8f74ux5ef6ux62d3ux5230ux5272ux5e73ux9762}{%
+\subsection{从实轴延拓到割平面}\label{ux4eceux5b9eux8f74ux5ef6ux62d3ux5230ux5272ux5e73ux9762}}
+
+取主值对数 \(\operatorname{Log}w=\log|w|+i\arg w\)，其中
+\(-\pi<\arg w<\pi\)。在割平面
+\[
+\Omega=\mathbb C\setminus[1,\infty)
+\]
+
+上定义
+\[
+\operatorname{Li}_2(z)=-\int_0^z\frac{\operatorname{Log}(1-t)}t\,\mathrm dt.
+\]
+
+积分路径位于 \(\Omega\) 内。被积函数在 \(t=0\) 的奇点可去，且 \(\Omega\)
+单连通，所以由 Cauchy
+积分定理，积分与路径无关。这确定了一个解析函数，其导数为
+\(-\operatorname{Log}(1-z)/z\)，在 \(|z|<1\) 上与幂级数相同。
+
+在闭单位圆盘上，\(\sum z^n/n^2\) 仍由 \(\sum1/n^2\)
+控制而一致绝对收敛，所以圆周值也可直接用级数定义。对于
+\(z=1\)，单独取连续极限值 \(\pi^2/6\)；这不表示函数在 \(1\)
+的邻域内解析。
+
+采用主支后，\(x<1\) 的实数值与前文完全一致。对于
+\(x>1\)，必须说明从割线上方还是下方趋近，不能再把 \(\log(1-x)\)
+当作实对数。
+
+\hypertarget{ux5272ux7ebfux4e0aux4e0bux4e24ux4fa7ux4e3aux4ec0ux4e48ux76f8ux5deeux4e00ux4e2aux865aux90e8}{%
+\subsection{割线上下两侧为什么相差一个虚部}\label{ux5272ux7ebfux4e0aux4e0bux4e24ux4fa7ux4e3aux4ec0ux4e48ux76f8ux5deeux4e00ux4e2aux865aux90e8}}
+
+记 \(\operatorname{Li}_2(x\pm i0)\) 为从上、下半平面趋近 \(x>1\)
+的极限。因为
+\[
+\operatorname{Log}(1-(x\pm i0))=\log(x-1)\mp i\pi,
+\]
+
+导数边界值为
+\[
+\frac{\mathrm d}{\mathrm dx}\operatorname{Li}_2(x\pm i0)
+=-\frac{\log(x-1)}x\pm\frac{i\pi}x.
+\]
+
+从 \(1\) 积分到 \(x\)，得到
+\[
+\operatorname{Li}_2(x\pm i0)
+=\frac{\pi^2}{6}-\int_1^x\frac{\log(t-1)}t\,\mathrm dt
+\pm i\pi\log x.
+\]
+
+这里绕过 \(1\) 的半径 \(\delta\) 小圆弧贡献为
+\(O(\delta(1+|\log\delta|))\to0\)，因为弧长为
+\(O(\delta)\)、积分核大小为 \(O(1+|\log\delta|)\)，而 \(|t|\)
+在该圆弧上远离零。因此上下侧都以 \(\pi^2/6\) 为起始极限。
+
+为计算实部，直接求导可验证
+\[
+\begin{aligned}
+\frac{\mathrm d}{\mathrm dx}
+\bigl[\log x\log(x-1)+\operatorname{Li}_2(1-x)\bigr]
+&=\frac{\log(x-1)}x+\frac{\log x}{x-1}-\frac{\log x}{x-1}\\
+&=\frac{\log(x-1)}x.
+\end{aligned}
+\]
+
+括号中的函数在 \(x\downarrow1\) 时趋于零，故
+\[
+\begin{aligned}
+\operatorname{Li}_2(x\pm i0)
+={}&\frac{\pi^2}{6}-\log x\log(x-1)\\
+&-\operatorname{Li}_2(1-x)\pm i\pi\log x,
+\qquad x>1.
+\end{aligned}
+\]
+
+特别地，利用 \(\operatorname{Li}_2(-1)=-\pi^2/12\)，
+\[
+\operatorname{Li}_2(2\pm i0)=\frac{\pi^2}{4}\pm i\pi\log2.
+\]
+
+上、下侧的差为
+\(2\pi i\log x\)。这个差不能通过实轴上的普通换元消失；它来自对数辐角的差异。实部也可以用含
+\(\log|1-t|\)
+的实积分定义，但那是取实部的约定，不能与上述复数边界值混称。
+
+\hypertarget{ux865aux6570ux5355ux4f4dux5904ux7684ux503cux4e0e-catalan-ux5e38ux6570}{%
+\subsection{虚数单位处的值与 Catalan
+常数}\label{ux865aux6570ux5355ux4f4dux5904ux7684ux503cux4e0e-catalan-ux5e38ux6570}}
+
+在 \(z=i\) 处，闭圆盘上的绝对收敛允许按奇偶项分组：
+\[
+\begin{aligned}
+\operatorname{Li}_2(i)
+&=\sum_{k=1}^{\infty}\frac{(-1)^k}{(2k)^2}
++i\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k+1)^2}\\
+&=\frac14\operatorname{Li}_2(-1)+iG
+=-\frac{\pi^2}{48}+iG,
+\end{aligned}
+\]
+
+其中
+\[
+G=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k+1)^2}
+\]
+
+称为 Catalan 常数。由于级数系数为实数，逐项取共轭给出
+\[
+\operatorname{Li}_2(-i)=-\frac{\pi^2}{48}-iG.
+\]
+
+这里引入 \(G\) 是一种精确表达，并没有声称它已经化成 \(\pi\)
+与对数的组合。
+
+\hypertarget{ux500dux89d2ux516cux5f0fux63a8ux5e7fux4e3aux5355ux4f4dux6839ux7b5bux9009}{%
+\subsection{倍角公式推广为单位根筛选}\label{ux500dux89d2ux516cux5f0fux63a8ux5e7fux4e3aux5355ux4f4dux6839ux7b5bux9009}}
+
+令 \(m\geqslant1\) 为整数、\(\omega=e^{2\pi i/m}\)。当 \(|z|\leqslant1\)
+时，
+\[
+\sum_{k=0}^{m-1}\operatorname{Li}_2(\omega^kz)
+=\frac1m\operatorname{Li}_2(z^m).
+\]
+
+\Needspace{5\baselineskip}
+证明：有限项求和与绝对收敛级数可以交换。由等比数列求和，
+\[
+\sum_{k=0}^{m-1}\omega^{kn}
+=\begin{cases}m,&m\mid n,\\0,&m\nmid n.\end{cases}
+\]
+
+所以
+\[
+\begin{aligned}
+\sum_{k=0}^{m-1}\operatorname{Li}_2(\omega^kz)
+&=\sum_{n=1}^{\infty}\frac{z^n}{n^2}\sum_{k=0}^{m-1}\omega^{kn}\\
+&=m\sum_{j=1}^{\infty}\frac{z^{mj}}{(mj)^2}
+=\frac1m\operatorname{Li}_2(z^m).
+\end{aligned}
+\]
+
+\(m=2\) 就是式 (3)。这说明倍角公式背后的机制是筛出指标为 \(m\)
+的倍数的项，而不只是一次特殊的符号抵消。
+
+\hypertarget{ux8ba1ux7b97ux65b9ux6cd5ux4e0eux516cux5f0fux7d22ux5f15}{%
+\section{计算方法与公式索引}\label{ux8ba1ux7b97ux65b9ux6cd5ux4e0eux516cux5f0fux7d22ux5f15}}
+
+特殊值计算的第一步是观察自变量，而不是盲目代公式：反射处理 \(x\) 与
+\(1-x\)，Landen 处理 \(x\) 与
+\(x/(x-1)\)，倍角处理正负配对与平方，反演处理负数与负倒数。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  自变量变换后回到自身，通常可直接解出一个值；\(1/2\) 是典型例子。
+\item
+  变换后落在有限组代数相关的参数中，就设未知量、列式并消元；黄金分割是典型例子。
+\item
+  方程不足以单独求值时，保留组合恒等式，再用约化与误差界求数值。
+\item
+  积分中出现
+  \(\log(1-ax)/x\)，先检查换元；出现更复杂的有理分母，先考虑部分分式。
+\item
+  级数中多一个 \(n\) 因子，考虑``除以自变量再积分''；含 \(H_n\)
+  时从生成函数出发。
+\end{enumerate}
+
+文中编号用于快速查找：式 (1) 为反射，式 (2) 为 Landen，式 (3) 为倍角，式
+(4) 为负实轴反演；式 (5) 是半点值，式 (6) 是 \(1/4\) 与 \(1/3\)
+的组合，式 (7) 是调和数生成式，式 (8) 是几何尾界。
+
+使用时逐次检查三件事：自变量是否仍在定义域内；换序或逐项微积分是否有收敛依据；端点代入是否应改为取极限。数值复核能检查符号和录入错误，不能代替证明。
+
+\hypertarget{ux9644ux5f55basel-ux6c42ux548cux503cux7684ux8bc1ux660e}{%
+\section{附录：Basel
+求和值的证明}\label{ux9644ux5f55basel-ux6c42ux548cux503cux7684ux8bc1ux660e}}
+
+为使特殊值中的 \(\pi^2/6\) 有明确来源，下面用 \(x^2\) 的 Fourier
+级数证明。只引用 Fourier 级数的 Dirichlet
+收敛定理：分段光滑的周期函数，其 Fourier
+级数在每点收敛到左右极限的平均值。\([-\pi,\pi]\) 上的 \(x^2\) 作
+\(2\pi\) 周期延拓后连续、分段光滑，符合条件。
+
+因为 \(x^2\) 是偶函数，正弦系数为零；常数项为
+\[
+\frac{a_0}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}x^2\,\mathrm dx
+=\frac{\pi^2}{3}.
+\]
+
+对 \(n\geqslant1\)，余弦系数为
+\[
+a_n=\frac2\pi\int_0^{\pi}x^2\cos(nx)\,\mathrm dx.
+\]
+
+先分部积分一次：
+\[
+\int_0^{\pi}x^2\cos(nx)\,\mathrm dx
+=\left[\frac{x^2\sin(nx)}n\right]_0^{\pi}
+-\frac2n\int_0^{\pi}x\sin(nx)\,\mathrm dx.
+\]
+
+第一项为零。对剩下的积分再分部积分：
+\[
+\begin{aligned}
+\int_0^{\pi}x\sin(nx)\,\mathrm dx
+&=\left[-\frac{x\cos(nx)}n\right]_0^{\pi}
++\frac1n\int_0^{\pi}\cos(nx)\,\mathrm dx\\
+&=-\frac{\pi(-1)^n}{n}.
+\end{aligned}
+\]
+
+故原积分为 \(2\pi(-1)^n/n^2\)，从而 \(a_n=4(-1)^n/n^2\)。由收敛定理，
+\[
+x^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac{(-1)^n\cos(nx)}{n^2},
+\qquad -\pi\leqslant x\leqslant\pi.
+\]
+
+在 \(x=\pi\) 处，周期延拓的左右极限均为 \(\pi^2\)，所以允许代入；又
+\(\cos(n\pi)=(-1)^n\)，于是
+\[
+\pi^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac1{n^2},
+\qquad
+\sum_{n=1}^{\infty}\frac1{n^2}=\frac{\pi^2}{6}.
+\]
+
+\hypertarget{ux53c2ux8003ux4e0eux540eux7eedux9605ux8bfb}{%
+\subsection{参考与后续阅读}\label{ux53c2ux8003ux4e0eux540eux7eedux9605ux8bfb}}
+
+标准记号、积分定义与主支约定参照
+\href{https://dlmf.nist.gov/25.12\#i}{NIST DLMF §25.12(i)}，其中式
+25.12.1---25.12.6
+给出基本定义与连接关系。本讲义已逐步推导所用的实轴恒等式、特殊值和误差界；复数部分明确区分了割线上下两侧。
+
+带调和数的更多例题见
+\href{https://zj139.github.io/math-notes/notes/890e1516e64e21a2fb2248b4/}{Euler
+型级数讲义}；有关积分区间与幂级数收敛域的选择，见
+\href{https://zj139.github.io/math-notes/essays/e171823ae7848bf83c108276/}{换元与级数方法札记}。
+
+\end{document}

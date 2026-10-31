@@ -1,0 +1,304 @@
+{
+  "date": "2026-10-25",
+  "sourceArchives": [
+    "2008～2014阅读单词.zip",
+    "2008～2014阅读原文.zip",
+    "2008～2014阅读翻译.zip"
+  ],
+  "files": [
+    {
+      "year": 2008,
+      "kind": "阅读单词",
+      "path": "english/translation/2008年英一阅读单词.pdf",
+      "sha256": "ab1b7dcebb8b4e7accb13ffa62142d052a9a22679b45874f14cd794ffa30e3ad",
+      "bytes": 178908,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2009,
+      "kind": "阅读单词",
+      "path": "english/translation/2009年英一阅读单词.pdf",
+      "sha256": "aae5a9691fa524d49eccfcccb21168df944c884b3457ff090af4577f673a0010",
+      "bytes": 169422,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2010,
+      "kind": "阅读单词",
+      "path": "english/translation/2010年英一阅读单词.pdf",
+      "sha256": "4b6fd64854a5496650b64a0fc91c80614bea9979888bc61fb7fef2f1c4033ff0",
+      "bytes": 170730,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2011,
+      "kind": "阅读单词",
+      "path": "english/translation/2011年英一阅读单词.pdf",
+      "sha256": "e7dc4e391d26db8f6696c48949facf212602a2a4a2be5ff1c4c3abf382e79f32",
+      "bytes": 183388,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2012,
+      "kind": "阅读单词",
+      "path": "english/translation/2012年英一阅读单词.pdf",
+      "sha256": "402126f1b8445e8a1f018a160224bad78df0b6ce8aeaca357035ed7ba9e8678e",
+      "bytes": 172364,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2013,
+      "kind": "阅读单词",
+      "path": "english/translation/2013年英一阅读单词.pdf",
+      "sha256": "7e821aa9cd261fb80554fbe719228d013df9d2db18b497619f2dd7f403f5bc2d",
+      "bytes": 171289,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2014,
+      "kind": "阅读单词",
+      "path": "english/translation/2014年英一阅读单词.pdf",
+      "sha256": "6d4a04484a00918d26a813f2266e80de59fae7708e13913e57ae2c79eef9a19d",
+      "bytes": 179491,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2008,
+      "kind": "阅读原文",
+      "path": "english/translation/2008年英一阅读原文.pdf",
+      "sha256": "783a60889fad88a811473261c45cb17715cb4b95b347f9521685e275bc05e100",
+      "bytes": 62449,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2009,
+      "kind": "阅读原文",
+      "path": "english/translation/2009年英一阅读原文.pdf",
+      "sha256": "29a1e88db57a0151e79cd54ed4cbe23d38d447e4dae6ecefbd8a647f234379d8",
+      "bytes": 61823,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2010,
+      "kind": "阅读原文",
+      "path": "english/translation/2010年英一阅读原文.pdf",
+      "sha256": "cd381759f656331b5ad146165288560aa3866fb58299718384f5547c34dfbb28",
+      "bytes": 62118,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2011,
+      "kind": "阅读原文",
+      "path": "english/translation/2011年英一阅读原文.pdf",
+      "sha256": "feaebb10cbbd97efcc6662566a75e85d43749f8c9483e45b44e5519b0ab0c2c5",
+      "bytes": 62569,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2012,
+      "kind": "阅读原文",
+      "path": "english/translation/2012年英一阅读原文.pdf",
+      "sha256": "973ba13bb6e2d1b497a438f05295360a4c59f798ac35651f3c8ee2dd77db4ebe",
+      "bytes": 68289,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2013,
+      "kind": "阅读原文",
+      "path": "english/translation/2013年英一阅读原文.pdf",
+      "sha256": "c03e0dff3e759f617acae10fb8eb3a4994111bcbfbf1626da422725e0bb8a509",
+      "bytes": 63732,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2014,
+      "kind": "阅读原文",
+      "path": "english/translation/2014年英一阅读原文.pdf",
+      "sha256": "c95b4b09812d0988a77e992c4d8fa8c713fbf4f33bffb897fccb5a4712658dc2",
+      "bytes": 66947,
+      "pages": 4,
+      "textPages": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4
+      }
+    },
+    {
+      "year": 2008,
+      "kind": "阅读直译",
+      "path": "english/translation/2008年英一阅读翻译.pdf",
+      "sha256": "2018bc782a1ba4e55fa0a4a22090a4f901741f724f6e8d76c23707e29116e004",
+      "bytes": 373595,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2009,
+      "kind": "阅读直译",
+      "path": "english/translation/2009年英一阅读翻译.pdf",
+      "sha256": "09f46f66fce96e36e7d51095b813566fc43ed9fc31f4f824755570c3c4fec764",
+      "bytes": 367911,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2010,
+      "kind": "阅读直译",
+      "path": "english/translation/2010年英一阅读翻译.pdf",
+      "sha256": "8eb7b7f70ba3b5437176861c8c5aea9eb3473d985323f41bac6cbae2dcdd39c4",
+      "bytes": 367961,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2011,
+      "kind": "阅读直译",
+      "path": "english/translation/2011年英一阅读翻译.pdf",
+      "sha256": "7705b8e7d0de6249cf0aa481bcc7268f5ff730c5d9af0a5c8c986dd15d141bdc",
+      "bytes": 381405,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2012,
+      "kind": "阅读直译",
+      "path": "english/translation/2012年英一阅读翻译.pdf",
+      "sha256": "9caa9dfe5854cf06720cdaefb85c87a5e45f41e6793dd6445f98d317775fa5a3",
+      "bytes": 373124,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2013,
+      "kind": "阅读直译",
+      "path": "english/translation/2013年英一阅读翻译.pdf",
+      "sha256": "6eb19274e6f481217ee15f6080639ae46dfb7a77c764ac0a29e0a96f49f2d1cd",
+      "bytes": 392576,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    },
+    {
+      "year": 2014,
+      "kind": "阅读直译",
+      "path": "english/translation/2014年英一阅读翻译.pdf",
+      "sha256": "01739fe578f78b6f6880e0e929b89d38abb9fa12392edbfef0838ba25c4d9aba",
+      "bytes": 369207,
+      "pages": 8,
+      "textPages": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7
+      }
+    }
+  ]
+}

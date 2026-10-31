@@ -1,0 +1,32 @@
+[
+  {
+    "file": "16级期末大题解答.pdf",
+    "pages": 6,
+    "bytes": 197426,
+    "sha256": "d296865650ce2bd67d4689c50e94e331fbb18e033860269a4d77254b63a8f3d3",
+    "original_sha256": "4a6b928355502acac4498a4fd62aae59e0eb306ac677ca0c4196782cf1ad293e",
+    "corrected_page": 3,
+    "formula_region_pt": [
+      65,
+      371,
+      531,
+      394
+    ],
+    "unchanged_text_and_pixels_outside_formula": true
+  },
+  {
+    "file": "17级期末大题解答.pdf",
+    "pages": 7,
+    "bytes": 202551,
+    "sha256": "968aab123b1b5333b0431ce42b3e9596890d2a0a599a78ee9b7d8077ca3a81af",
+    "original_sha256": "f314bf43b0354e83de97d1ece801d31904ff759124e2d735ab85857e8905220c",
+    "corrected_page": 6,
+    "formula_region_pt": [
+      65,
+      529,
+      531,
+      552
+    ],
+    "unchanged_text_and_pixels_outside_formula": true
+  }
+]

@@ -1,0 +1,12 @@
+node_modules/
+.latex-cache/
+dist/
+.env*
+.dev.vars*
+.wrangler/
+*.log
+*.tsbuildinfo
+.preview-*
+outputs/
+drafts/
+data/

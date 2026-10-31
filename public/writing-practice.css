@@ -1,0 +1,54 @@
+.practice-years{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 30px;border-top:1px solid var(--ink)}
+.practice-years>a{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--line);padding:25px 0;min-width:0}
+.practice-years strong{font:700 32px/1.2 var(--heading-serif);margin-bottom:8px}
+.practice-years span{font-size:17px;line-height:1.65}
+.practice-years>a:hover strong{color:var(--selected)}
+.practice-note{font-size:16px;line-height:1.7;margin:20px 0;color:var(--muted);max-width:1000px}
+.practice-title{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.practice-title nav{display:flex;gap:22px;font-size:17px}
+.practice-title h1{margin-bottom:16px}
+.practice-page .page-heading{margin-bottom:24px}
+.practice-toolbar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;border-block:1px solid var(--line);padding:14px 0}
+.practice-toolbar .button,.answer-controls .button{font:400 16px/1.5 var(--serif);min-height:42px;padding:9px 14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:2px;cursor:pointer}
+.practice-toolbar .button:hover,.answer-controls .button:hover{border-color:var(--selected);color:var(--selected)}
+.practice-toolbar .text-link{font-size:16px}
+.practice-file,.upload-handwriting input{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.practice-toolbar label:focus-within,.upload-handwriting:focus-within{outline:2px solid var(--selected);outline-offset:3px}
+.practice-help{font-size:15px;line-height:1.65;margin:12px 0 20px;color:var(--muted)}
+.practice-help summary{cursor:pointer;width:fit-content}
+.practice-help p{max-width:760px;margin:10px 0 0}
+.practice-help summary:focus-visible,.prompt-scan summary:focus-visible,.text-button:focus-visible{outline:2px solid var(--selected);outline-offset:4px}
+.practice-feedback{font-size:16px;line-height:1.6;margin:0 0 18px;color:var(--selected)}
+.practice-feedback:empty{display:none}
+.practice-feedback.save-error,.answer-status.save-error{color:#a32121}
+.practice-part{margin:20px 0 58px;border-top:2px solid var(--ink);padding-top:24px}
+.practice-part-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.practice-part-heading span{font-size:17px;white-space:nowrap}
+.practice-part-heading h2{font-size:27px;margin:5px 0 22px}
+.practice-prompt{border-bottom:1px solid var(--line);padding:4px 0 25px}
+.prompt-copy{white-space:pre-line;font:400 20px/1.55 var(--serif);max-width:900px;overflow-wrap:anywhere;-webkit-text-stroke:.22px currentColor}
+.prompt-figure{margin:22px 0 12px;max-width:650px}
+.prompt-figure img{display:block;max-width:100%;height:auto}
+.prompt-scan{margin-top:18px;font-size:16px}
+.prompt-scan summary{cursor:pointer;width:fit-content}
+.prompt-scan img{display:block;max-width:100%;width:740px;height:auto;margin-top:16px}
+.comparison-heading{display:flex;justify-content:flex-end;margin:16px 0 10px}
+.text-button{border:0;background:transparent;padding:5px 0;color:var(--ink);font-size:16px;text-decoration:underline;text-underline-offset:4px}
+.text-button:hover{color:var(--selected)}
+.answer-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.practice-answer{min-width:0;border:1px solid var(--line);padding:20px;background:white}
+.answer-heading{display:flex;justify-content:flex-end;margin-bottom:10px}
+.answer-heading span{font-size:15px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.answer-paper{display:block;width:100%;height:486px;min-height:246px;resize:vertical;border:0;border-block:1px solid #8c8c8c;padding:7px 8px 8px;font:400 20px/32px var(--serif);color:var(--ink);border-radius:0;background:repeating-linear-gradient(to bottom,#fff 0px,#fff 31px,#8c8c8c 31px,#8c8c8c 32px) 0 7px/100% 32px local;overflow-wrap:break-word;-webkit-text-stroke:.22px currentColor}
+.answer-paper-b{height:646px}
+.answer-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.answer-status{font-size:14px;line-height:1.6;min-height:23px;margin:10px 0 0}
+.answer-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.answer-images:empty{display:none}.answer-images figure{margin:18px 0 0;min-width:0}
+.answer-images img{display:block;width:100%;height:180px;object-fit:contain;background:#f7f7f7;border:1px solid var(--line)}
+.answer-images figcaption{font-size:14px;line-height:1.4;overflow-wrap:anywhere;margin-top:7px}
+.practice-page .year-return{font-size:18px}
+@media(min-width:1500px){.practice-years{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:900px){.practice-years{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px}.answer-comparison{gap:18px}.practice-answer{padding:15px}.practice-title{gap:0}.practice-title nav{margin-bottom:18px}}
+@media(max-width:700px){.answer-comparison{grid-template-columns:1fr}.practice-part-heading{display:block}.practice-part-heading h2{margin-bottom:8px}.practice-part-heading{margin-bottom:24px}.practice-title h1{font-size:29px}.practice-years{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.practice-years span{font-size:16px}.practice-years strong{font-size:30px}.practice-years>a{padding:22px 0}.practice-note{font-size:15px}.prompt-copy{font-size:19px}.practice-part-heading h2{font-size:25px}}
+@media print{.practice-toolbar,.practice-note,.practice-help,.practice-feedback,.answer-controls,.text-button,.practice-title nav,.prompt-scan{display:none}.answer-comparison{grid-template-columns:1fr}.practice-answer{break-inside:avoid}.answer-paper{background:none;overflow:visible}.practice-part{break-before:page}.practice-years{grid-template-columns:repeat(4,1fr)}}

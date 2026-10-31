@@ -1,0 +1,269 @@
+% Compile from the repository root with XeLaTeX; no shell escape.
+% Typography follows the user's Fourier-inversion reference PDF.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,Script=CustomDefault]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\linespread{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 复旦大学高等代数习题集·期末考试}
+\fancyhead[R]{\small 2019 级}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={19级期末大题解答},pdfauthor={数学手记}}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\newcommand{\question}[1]{\section*{［19级高代 #1］}\phantomsection\addcontentsline{toc}{section}{19级高代 #1}}
+\newcommand{\proofend}{\hfill$\square$\par}
+\widowpenalty=10000\clubpenalty=10000\raggedbottom
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 19级期末大题解答}\par\vspace{8pt}
+{\small 谢启鸿《复旦大学高等代数习题集（2023版）》第2.7节，书内第157页}
+\end{center}
+
+\question{I 期末 06}
+\noindent 设 $n$（$n>1$）阶方阵 $A$ 满足：每行元素之和都等于 $c$，并且 $|A|=d\ne0$。试求 $A$ 的所有代数余子式之和
+\[
+\sum_{i,j=1}^{n}A_{ij}.
+\]
+
+\noindent 解：记 $\boldsymbol e=(1,\ldots,1)^{\mathsf T}$。每行元素之和等于 $c$，恰好表示
+\[
+A\boldsymbol e=c\boldsymbol e.
+\]
+由于 $\boldsymbol e\ne0$ 且 $A$ 可逆，必有 $c\ne0$。两边左乘 $A^{-1}$，再除以 $c$，得
+\[
+A^{-1}\boldsymbol e=\frac1c\boldsymbol e.
+\]
+设 $A^*$ 为 $A$ 的伴随矩阵。由代数余子式展开，$AA^*=|A|I_n$，故
+\[
+A^*=dA^{-1},\qquad A^*\boldsymbol e=\frac dc\boldsymbol e.
+\]
+注意 $A^*$ 的第 $(i,j)$ 个元素为 $A_{ji}$，所以所有代数余子式之和就是 $A^*$ 的全部元素之和。因此
+\begin{align*}
+\sum_{i,j=1}^{n}A_{ij}
+&=\sum_{i,j=1}^{n}(A^*)_{ij}
+=\boldsymbol e^{\mathsf T}A^*\boldsymbol e\\
+&=\frac dc\boldsymbol e^{\mathsf T}\boldsymbol e
+=\boxed{\frac{nd}{c}}.
+\end{align*}
+
+\noindent 方法小结：把“每行元素之和相同”写成 $A\boldsymbol e=c\boldsymbol e$，再利用伴随矩阵与逆矩阵的关系。求全部元素之和时，左右各乘一个全一向量即可；转置不会改变这个总和。
+
+\newpage
+\question{I 期末 07}
+\noindent 设 $V$ 为 $n$ 维线性空间，$\varphi$ 是 $V$ 上的线性变换，$V=U\oplus W$，其中 $U,W$ 都是 $\varphi$-不变子空间。证明：
+
+\noindent （1）对任意正整数 $k$，
+\[
+\varphi^{-k}(U):=\{v\in V:\varphi^k(v)\in U\},\qquad
+\varphi^k(W):=\{\varphi^k(w):w\in W\}
+\]
+都是 $\varphi$-不变子空间；
+
+\noindent （2）存在正整数 $m$，使对任意 $k\ge m$，
+\[
+\varphi^{-k}(U)=\varphi^{-m}(U),\qquad \varphi^k(W)=\varphi^m(W),
+\]
+且 $V=\varphi^{-m}(U)\oplus\varphi^m(W)$。
+
+\noindent 证明：（1）线性映射下子空间的原像与像都是子空间。具体地，若 $x,y\in\varphi^{-k}(U)$，则
+\[
+\varphi^k(ax+by)=a\varphi^k(x)+b\varphi^k(y)\in U;
+\]
+而 $a\varphi^k(w_1)+b\varphi^k(w_2)=\varphi^k(aw_1+bw_2)$ 属于 $\varphi^k(W)$。
+又由 $U,W$ 的不变性，
+\begin{align*}
+x\in\varphi^{-k}(U)&\ \Longrightarrow\ 
+\varphi^k(\varphi x)=\varphi(\varphi^k x)\in U,\\
+y=\varphi^k(w),\ w\in W&\ \Longrightarrow\ 
+\varphi y=\varphi^k(\varphi w)\in\varphi^k(W).
+\end{align*}
+故两者均为 $\varphi$-不变子空间。这里的 $\varphi^{-k}(U)$ 是集合的原像，并不要求 $\varphi$ 可逆。
+
+（2）令 $T=\varphi|_W$。任一 $v\in V$ 唯一写成 $v=u+w$，其中 $u\in U,w\in W$。由于 $\varphi^k u\in U$、$T^kw\in W$ 且 $U\cap W=\{0\}$，有
+\[
+\varphi^k v\in U\ \Longleftrightarrow\ T^kw=0.
+\]
+因此，对每个正整数 $k$，
+\[
+\varphi^{-k}(U)=U\oplus\ker T^k,\qquad \varphi^k(W)=\im T^k.
+\]
+有限维空间 $W$ 中的递增链 $\ker T\subseteq\ker T^2\subseteq\cdots$ 必有相邻两项相等。取正整数 $m$ 使 $\ker T^m=\ker T^{m+1}$。若 $\ker T^j=\ker T^{j+1}$ 且 $T^{j+2}w=0$，则 $Tw\in\ker T^{j+1}=\ker T^j$，故 $w\in\ker T^{j+1}$。归纳得到
+\[
+\ker T^k=\ker T^m\qquad(k\ge m).
+\]
+又 $\im T^k\subseteq\im T^m$，而秩与零度之和等于 $\dim W$，故两者维数相同，从而 $\im T^k=\im T^m$。
+
+若 $x\in\ker T^m\cap\im T^m$，写成 $x=T^my$，则 $T^{2m}y=T^mx=0$。由核空间已稳定，$y\in\ker T^{2m}=\ker T^m$，所以 $x=0$。再用维数等式可得 $W=\ker T^m\oplus\im T^m$，于是
+\[
+V=U\oplus\ker T^m\oplus\im T^m
+=\varphi^{-m}(U)\oplus\varphi^m(W).
+\]
+前述核、像的稳定性同时给出了所需的两个等式。\proofend
+
+\noindent 方法小结：先在不变补空间 $W$ 上限制变换，再证明高次幂的核与像稳定并互补；这也是有限维 Fitting 分解的直接证明。
+
+\newpage
+\question{I 期末 08}
+\noindent 设 $A=(a_{ij})$ 为 $n$（$n>1$）阶实对称阵，每行元素之和都等于零，且非主对角元素均小于等于零。设 $\Gamma=\{1,\ldots,n\}$。若存在一列指标
+\[
+i=i_1,i_2,\ldots,i_k=j,\qquad a_{i_1i_2}<0,\ldots,a_{i_{k-1}i_k}<0,
+\]
+则称不同指标 $i,j$ 连通。设 $\Gamma$ 分成 $m$ 个连通分支 $\Gamma_1,\ldots,\Gamma_m$。证明：$r(A)=n-m$。
+
+\noindent 证明：对 $i\ne j$，令 $w_{ij}=-a_{ij}\ge0$。由对称性和行和为零，
+\[
+w_{ij}=w_{ji},\qquad a_{ii}=\sum_{j\ne i}w_{ij}.
+\]
+任取 $x=(x_1,\ldots,x_n)^{\mathsf T}\in\mathbb R^n$，逐项展开得
+\begin{align*}
+x^{\mathsf T}Ax
+&=\sum_{i=1}^{n}\left(\sum_{j\ne i}w_{ij}\right)x_i^2
+-2\sum_{i<j}w_{ij}x_ix_j\\
+&=\sum_{i<j}w_{ij}(x_i^2+x_j^2-2x_ix_j)\\
+&=\sum_{i<j}w_{ij}(x_i-x_j)^2.
+\end{align*}
+其中每项均非负。
+
+若 $Ax=0$，则上式左端为零，故每当 $w_{ij}>0$ 时都有 $x_i=x_j$。沿着连通分支内的任一条连接路径逐次传递，便知 $x_i$ 在每个 $\Gamma_\ell$ 上均为常数。
+
+反过来，设 $x_i$ 在每个连通分支上为常数。由
+\[
+(Ax)_i=\sum_{j\ne i}w_{ij}(x_i-x_j)
+\]
+可知：若 $w_{ij}=0$，对应项为零；若 $w_{ij}>0$，则 $i,j$ 同属一个连通分支，也有 $x_i-x_j=0$。因此 $Ax=0$。
+
+对 $1\le\ell\le m$，定义分支示性向量 $u_\ell$：
+\[
+(u_\ell)_i=\begin{cases}1,&i\in\Gamma_\ell,\\0,&i\notin\Gamma_\ell.\end{cases}
+\]
+上述两方向说明
+\[
+\ker A=\operatorname{span}\{u_1,\ldots,u_m\}.
+\]
+各连通分支非空且两两不交，故这些示性向量线性无关：若 $\sum_\ell c_\ell u_\ell=0$，在任一 $i\in\Gamma_\ell$ 处取分量即得 $c_\ell=0$。于是 $\dim\ker A=m$，由秩与零度公式得到
+\[
+\boxed{r(A)=n-m}.
+\]
+孤立指标构成一个单点分支，上述论证同样适用。\proofend
+
+\noindent 方法小结：先把二次型写成非负平方和，再刻画零空间为“在每个连通分支上为常数”的向量。连通分支数就是零空间维数，无需求特征多项式。
+
+\newpage
+\question{II 期末 07}
+\noindent 设数域 $K$ 上的 $n$（$n\ge2$）阶方阵 $A,B$ 满足 $AB=O$ 且 $\tr(A^*)=0$，其中 $A^*$ 为 $A$ 的伴随矩阵。证明：$A^*B=O$。
+
+\noindent 证明：按 $A$ 的秩分三种情况讨论。
+
+（1）若 $r(A)=n$，则 $A$ 可逆，由 $AB=O$ 得 $B=O$，于是 $A^*B=O$。
+
+（2）若 $r(A)\le n-2$，则 $A$ 的所有 $n-1$ 阶子式均为零，故 $A^*=O$，结论也成立。
+
+（3）设 $r(A)=n-1$。此时 $\det A=0$，且 $\dim\ker A=1$。取非零列向量 $u$ 使 $\ker A=Ku$。由伴随矩阵恒等式
+\[
+AA^*=(\det A)I_n=O
+\]
+可知，$A^*$ 的每一列均属于 $\ker A$，因而存在列向量 $v\in K^n$，使
+\[
+A^*=uv^{\mathsf T}.
+\]
+这里 $A$ 至少有一个非零的 $n-1$ 阶子式，所以 $A^*\ne O$，从而 $v\ne0$。同理由 $AB=O$，$B$ 的每一列也属于 $Ku$，故存在 $w\in K^n$ 使
+\[
+B=uw^{\mathsf T}.
+\]
+将迹条件写成分量形式，得到
+\[
+0=\tr(A^*)=\tr(uv^{\mathsf T})
+=\sum_{i=1}^{n}u_iv_i=v^{\mathsf T}u.
+\]
+于是
+\[
+A^*B=(uv^{\mathsf T})(uw^{\mathsf T})
+=u(v^{\mathsf T}u)w^{\mathsf T}=O.
+\]
+三种情况涵盖所有可能，命题得证。\proofend
+
+\noindent 方法小结：伴随矩阵的问题先按 $r(A)=n$、$n-1$、$\le n-2$ 分类。唯一需要处理的是秩为 $n-1$ 的情形；此时用一维核空间把 $A^*$、$B$ 写成外积，迹条件恰好消去乘积中的标量因子。
+
+\newpage
+\question{II 期末 08}
+\noindent 设 $n$ 阶复方阵 $M$ 的全体特征值为 $\lambda_1,\ldots,\lambda_n$，定义其谱半径为
+\[
+\rho(M)=\max_{1\le i\le n}|\lambda_i|.
+\]
+设 $A,B$ 为 $n$ 阶实方阵，使得
+\[
+H=\begin{pmatrix}A&B\\B^{\mathsf T}&A\end{pmatrix}
+\]
+为半正定实对称阵。证明：$\rho(B)\le\rho(A)$。
+
+\noindent 证明：$H$ 对称且半正定，故 $A$ 实对称，并且对任意 $x\in\mathbb R^n$，
+\[
+x^{\mathsf T}Ax=
+\begin{pmatrix}x\\0\end{pmatrix}^{\mathsf T}
+H\begin{pmatrix}x\\0\end{pmatrix}\ge0.
+\]
+因此 $A$ 也是半正定阵。
+
+以下用 $z^{\mathrm H}=\overline z^{\mathsf T}$ 表示复向量的共轭转置，以区别上一题的伴随矩阵记号。半正定性也适用于复向量：若 $\xi=p+iq$，其中 $p,q$ 为实向量，则因 $H$ 对称，
+\[
+\xi^{\mathrm H}H\xi
+=p^{\mathsf T}Hp+q^{\mathsf T}Hq
++i(p^{\mathsf T}Hq-q^{\mathsf T}Hp)
+=p^{\mathsf T}Hp+q^{\mathsf T}Hq\ge0.
+\]
+
+任取 $B$ 的特征值 $\lambda$ 及非零复特征向量 $z$，使 $Bz=\lambda z$。若 $\lambda=0$，则 $|\lambda|\le\rho(A)$ 已成立。以下设 $\lambda\ne0$，写成
+\[
+\lambda=|\lambda|e^{i\theta},\qquad
+\xi=\begin{pmatrix}z\\-e^{-i\theta}z\end{pmatrix}.
+\]
+由于 $A,B$ 都是实矩阵，且 $A$ 对称，
+\[
+z^{\mathrm H}Bz=\lambda\|z\|^2,\qquad
+z^{\mathrm H}B^{\mathsf T}z
+=\overline{z^{\mathrm H}Bz}=\overline\lambda\|z\|^2.
+\]
+将所选 $\xi$ 代入半正定二次型，得到
+\begin{align*}
+0\le\xi^{\mathrm H}H\xi
+&=2z^{\mathrm H}Az
+-e^{-i\theta}z^{\mathrm H}Bz
+-e^{i\theta}z^{\mathrm H}B^{\mathsf T}z\\
+&=2z^{\mathrm H}Az-2|\lambda|\|z\|^2.
+\end{align*}
+故 $|\lambda|\|z\|^2\le z^{\mathrm H}Az$。
+
+由实对称矩阵的正交对角化，存在实正交阵 $Q$ 使
+\[
+Q^{\mathsf T}AQ=\operatorname{diag}(a_1,\ldots,a_n),\qquad
+0\le a_j\le\rho(A).
+\]
+令 $y=Q^{\mathsf T}z$，则
+\[
+z^{\mathrm H}Az=\sum_{j=1}^{n}a_j|y_j|^2
+\le\rho(A)\sum_{j=1}^{n}|y_j|^2
+=\rho(A)\|z\|^2.
+\]
+因为 $z\ne0$，两边除以 $\|z\|^2$ 即得 $|\lambda|\le\rho(A)$。再对 $B$ 的全部特征值取最大值得
+\[
+\boxed{\rho(B)\le\rho(A)}.
+\]
+这里用到的正交对角化可由下述标准论证得到：实对称二次型在实单位球面上取得最大值，极值条件给出一个单位特征向量；其正交补仍是不变子空间，在该补空间上归纳，即得一组标准正交特征向量。\proofend
+
+\noindent 方法小结：允许复特征向量，并在分块向量中加入相位因子 $e^{-i\theta}$，就能把特征值的实部变成模长；再用 $A$ 的最大特征值控制其二次型。
+\end{document}

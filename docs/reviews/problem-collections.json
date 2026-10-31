@@ -1,0 +1,33 @@
+{
+  "baseline": "068c10ccb991af016ac83e7191ac61c6580f29a6",
+  "checks": [
+    "npm run check",
+    "npm test: 60 passed",
+    "npm run build",
+    "npm run verify: 384 pages, 23807 local links/assets"
+  ],
+  "browser": {
+    "widths": [
+      320,
+      390,
+      1440
+    ],
+    "verified": [
+      "collection > year > solution > return",
+      "final exams > admission cohort > solution > return",
+      "PDF read response and download link",
+      "search matching, no results and browser back",
+      "no horizontal overflow",
+      "no JavaScript directory navigation"
+    ],
+    "pageErrors": []
+  },
+  "pdfCopiesByteIdentical": 156,
+  "unchanged": [
+    "English content",
+    "writing templates from PR25",
+    "PDF source bytes",
+    "fonts and global colors"
+  ],
+  "deploymentTarget": "GitHub Pages"
+}
