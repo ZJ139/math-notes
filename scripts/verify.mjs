@@ -99,3 +99,27 @@ if ((await fs.stat('content/problems/lou-analysis-b-04.md').catch(()=>null))?.is
 }
 
 console.log(`Verified ${pages} HTML pages and ${links} local links/assets. No old-host or external runtime dependencies.`);
+
+// Sixth Lou batch: compare source math with rendered output and check navigation.
+if ((await fs.stat('content/problems/lou-analysis-b-06.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-06.md','utf8');
+  const html=await fs.readFile(path.join(root,'problems','0ce2ad9c1d045270806e755b','index.html'),'utf8');
+  const directory=await fs.readFile(path.join(root,'problems','41e85e430c9d7f84a0863658','index.html'),'utf8');
+  const previous=await fs.readFile(path.join(root,'problems','e7f87e98efda5bacdd444c79','index.html'),'utf8');
+  const prose=source.replace(/```[\s\S]*?```/g,'');
+  const inline=(prose.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(prose.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||!Number.isInteger(display)||inline<50||display<20
+     ||rendered!==inline+display||renderedDisplay!==display||/katex-error/.test(html))
+    throw new Error('楼分析 B36–B42 公式渲染不完整：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  for(let number=36;number<=42;number++){
+    if(!html.includes(`id="问题-b${number}"`)||!source.includes(`习题 2.4.B 第 ${number-31} 题`))
+      throw new Error('第六批题号或原题映射缺失：B'+number);
+  }
+  for(const page of [directory,previous])if(!page.includes('/problems/0ce2ad9c1d045270806e755b/'))
+    throw new Error('第六批未接入总目录或上一批导航');
+  if(!source.includes('下一批起点：习题 2.4.B 第 12 题'))throw new Error('第六批后续起点错误');
+  console.log(`Verified Lou analysis B36–B42: ${inline} inline and ${display} display formulas; all seven headings and batch links.`);
+}

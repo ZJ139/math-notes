@@ -5,14 +5,14 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "2.3.B", "2.4.B", "内积", "导集", "递推数列", "对角线法", "嵌套根式", "B29-B35"]
 created_at: "2026-10-31"
-updated_at: "2026-10-31"
+updated_at: "2026-11-01"
 ---
 
 承接上一批，本批按上册原书 B 组顺序，连续完成 **B29—B35**：习题 2.3.B 第 4—6 题及 2.4.B 第 1—4 题，不穿插 A 组。
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 9 页](/files/problems/楼分析习题-v1.pdf#page=9) · [第 10 页](/files/problems/楼分析习题-v1.pdf#page=10) · [第 11 页](/files/problems/楼分析习题-v1.pdf#page=11)
 
-**批次导航：**[B 组解答总目录](/problems/41e85e430c9d7f84a0863658/) · [上一批 B22—B28](/problems/73fb9e5f1d74f40bed927fb9/)
+**批次导航：**[B 组解答总目录](/problems/41e85e430c9d7f84a0863658/) · [上一批 B22—B28](/problems/73fb9e5f1d74f40bed927fb9/) · [下一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/)
 
 ## 题号导航
 
@@ -647,4 +647,4 @@ $$
 
 **下一批起点：习题 2.4.B 第 5 题**，继续每批连续七道，不穿插 A 组。
 
-**批次导航：**[B 组解答总目录](/problems/41e85e430c9d7f84a0863658/) · [上一批 B22—B28](/problems/73fb9e5f1d74f40bed927fb9/)
+**批次导航：**[B 组解答总目录](/problems/41e85e430c9d7f84a0863658/) · [上一批 B22—B28](/problems/73fb9e5f1d74f40bed927fb9/) · [下一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/)
