@@ -519,3 +519,58 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
   .article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul{display:none}
   .article-shell[data-category="lou-analysis"] .prose>h2[id^="问题-b"]{border-top:0;padding-top:0}
 }
+
+/* Lou B-group: chapter, textbook section, then original problem number. */
+.lou-directory{margin:28px 0 40px}
+.lou-directory-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px}
+.lou-directory-heading h2,.lou-resources h2{font-size:25px;font-weight:700;margin:0}
+.lou-directory-heading p{font-size:17px;color:var(--muted);margin:0}
+.lou-chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lou-chapter-grid>a{border:1px solid var(--line);border-radius:4px;padding:25px;display:flex;flex-direction:column;min-width:0}
+.lou-chapter-number{font-size:17px;color:var(--muted)}
+.lou-chapter-grid h3{font-size:28px;font-weight:700;margin:8px 0 16px}
+.lou-chapter-grid p{font-size:17px;color:var(--muted);line-height:1.8;margin:0 0 22px}
+.lou-chapter-count{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:17px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.lou-chapter-grid>a:is(:hover,:focus-visible){border-color:var(--selected);color:var(--selected)}
+.lou-resources{margin-top:38px}
+.lou-resources ul,.lou-batch-archive ul{list-style:none;padding:0;margin:14px 0 0}
+.lou-resources li,.lou-batch-archive li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;font-size:18px;border-bottom:1px solid var(--line)}
+.lou-resources li>span,.lou-batch-archive li>span{font-size:16px;color:var(--muted)}
+.lou-batch-archive{margin-top:30px;font-size:17px}
+.lou-batch-archive summary{cursor:pointer;padding-block:12px}
+.lou-chapter-switch{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}
+.lou-chapter-switch a{padding:9px 16px;border:1px solid var(--line);border-radius:3px;font-size:18px}
+.lou-chapter-switch a[aria-current=page]{color:var(--selected);border-color:var(--selected);background:var(--selected-soft)}
+.lou-section-jumps{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 32px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.lou-section-jumps a{display:flex;gap:10px;padding-block:6px;font-size:18px}
+.lou-section-jumps span{font-size:16px;color:var(--muted)}
+.lou-section{margin:32px 0}
+.lou-section>header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.lou-section h2{font-size:25px;font-weight:700;margin:0;scroll-margin-top:24px}
+.lou-section>header>span{font-size:16px;color:var(--muted)}
+.lou-problem-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.lou-problem-list a{display:grid;grid-template-columns:54px minmax(0,1fr) 106px;align-items:baseline;gap:12px;padding:17px 8px;border-bottom:1px solid var(--line);line-height:1.65}
+.lou-problem-list a:is(:hover,:focus-visible){background:var(--selected-soft)}
+.lou-problem-code{font-size:18px;font-variant-numeric:tabular-nums}
+.lou-problem-title{font-size:20px;overflow-wrap:anywhere}
+.lou-original-number{font-size:16px;color:var(--muted);text-align:right}
+.lou-progress{font-size:17px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px}
+.lou-article-context{padding:12px 0;font-size:17px}
+.lou-batch-toc{margin:30px 0 40px;padding:24px;border:1px solid var(--line);border-radius:4px}
+.lou-batch-toc>h2{font-size:25px;font-weight:700;margin:0 0 18px;scroll-margin-top:24px}
+.lou-batch-toc section+section{border-top:1px solid var(--line);margin-top:20px;padding-top:20px}
+.lou-batch-section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.lou-batch-section-heading h3{font-size:20px;font-weight:700;margin:0}
+.lou-batch-section-heading>a{font-size:16px;white-space:nowrap}
+.lou-batch-toc ul{list-style:none;margin:8px 0 0;padding:0}
+.lou-batch-toc li a{display:block;font-size:18px;line-height:1.7;padding:7px 0}
+.lou-summary-link{display:inline-block;margin-top:20px;font-size:17px}
+@media(max-width:600px){
+ .lou-directory-heading{display:block}.lou-directory-heading p{margin-top:8px}
+ .lou-chapter-grid{grid-template-columns:1fr;gap:14px}.lou-chapter-grid>a{padding:20px}.lou-chapter-grid h3{font-size:26px;margin-bottom:10px}.lou-chapter-grid p{margin-bottom:14px}
+ .lou-resources li,.lou-batch-archive li{flex-direction:column;gap:4px}
+ .lou-chapter-switch a{font-size:17px;padding:9px 12px}.lou-section-jumps{gap:6px 18px}
+ .lou-problem-list a{grid-template-columns:46px minmax(0,1fr);gap:2px 10px;padding:15px 0}.lou-problem-code{grid-row:1/3}.lou-problem-title{font-size:19px}.lou-original-number{grid-column:2;text-align:left}
+ .lou-batch-toc{padding:20px 16px}.lou-batch-section-heading{flex-wrap:wrap;gap:6px}.lou-batch-toc li a{font-size:17px}
+}
+@media print{.lou-chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lou-section,.lou-chapter-grid>a{break-inside:avoid}}
