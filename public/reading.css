@@ -504,3 +504,18 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
 .reading-answers .reading-options>li>p{margin:0 0 10px;text-indent:0;text-align:left}
 .reading-answers .reading-options>li>p:last-child{margin-bottom:0}
 .reading-answers .reading-block>h4{font-size:1em;line-height:1.55;margin:24px 0 14px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* Lou Hongwei B-group solutions: document-style hierarchy without changing typefaces. */
+.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]{text-align:left;margin:1.3em 0 .6em}
+.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.35em;row-gap:.38em;list-style:none;padding:0;margin:0 0 1.4em}
+.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul li{font-size:.88em;line-height:1.48;margin:0;break-inside:avoid}
+.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul a{text-decoration:none}
+.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul a:hover{text-decoration:underline;color:var(--selected)}
+.article-shell[data-category="lou-analysis"] .prose>h2[id^="问题-b"]{text-align:left;border-top:1px solid var(--line);padding-top:.6em;margin-top:1.8em;scroll-margin-top:28px}
+.article-shell[data-category="lou-analysis"] .prose>p:has(>a[href="#题号导航"]:only-child){text-align:right;text-indent:0;font-size:.86em;margin:.75em 0 1.15em}
+@media(max-width:700px){.article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul{grid-template-columns:1fr;row-gap:.3em}}
+@media print{
+  .article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"],
+  .article-shell[data-category="lou-analysis"] .prose>h2[id="题号导航"]+ul{display:none}
+  .article-shell[data-category="lou-analysis"] .prose>h2[id^="问题-b"]{border-top:0;padding-top:0}
+}
