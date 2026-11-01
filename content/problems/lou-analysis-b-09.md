@@ -5,14 +5,14 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "2.6.B", "2.7.B", "正项级数", "Abel变换", "Euler乘积", "B57-B63"]
 created_at: "2026-11-01"
-updated_at: "2026-11-01"
+updated_at: "2026-11-02"
 ---
 
 承接上一批，本批严格依上册原书顺序，连续完成 **B57—B63**，对应习题 **2.6.B 第 1—3 题、2.7.B 第 1—4 题**；跨节时跳过 A 组，不另插题。题目及符号逐项核对原题 PDF 第 14—15 页。
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [本批原题：PDF 第 14—15 页](/files/problems/楼分析习题-v1.pdf#page=14) · [第二章按原题号查阅](/problems/collections/lou-analysis/chapters/2/)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/) · [下一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/)
 
 ## 题号导航
 
@@ -595,6 +595,6 @@ $$
 - **B62：错位相减改善参数控制。** 相邻差仍单调，交错余项界变成显式参数误差，避免非法交换参数极限与无穷求和。
 - **B63：先处理有限乘积，再控制遗漏的尾项。** 唯一素因数分解负责对应，非负性负责求和次序，尾和趋零完成无穷乘积极限。
 
-**批次导航：**[上一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/) · [返回 B 组解答总目录](/problems/collections/lou-analysis/)
+**批次导航：**[上一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/) · [返回 B 组解答总目录](/problems/collections/lou-analysis/) · [下一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/)
 
 本批完成习题 2.6.B 第 1—3 题及 2.7.B 第 1—4 题。**下一批从习题 2.7.B 第 5 题开始**，仍按原书 B 组顺序连续选取七题。
