@@ -14,7 +14,7 @@ updated_at: "2026-11-01"
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [本批原题：PDF 第 11—12 页](/files/problems/楼分析习题-v1.pdf#page=11) · [第二章按原题号查阅](/problems/collections/lou-analysis/chapters/2/#section-2-4-b)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/)
+**批次导航：**[下一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/)
 
 ## 题号导航
 
@@ -422,6 +422,6 @@ $$
 - **B48：长度与稠密性分工。** 总长度小保证非空，稠密中心保证无内部；紧性把无穷覆盖化为有限长度比较。
 - **B49：逐项排除并保留可继续构造的区间。** 用闭性、不交性和闭区间套排除非平凡可列闭分解，避免把有限并的连通性论证直接套到可列并。
 
-**批次导航：**[上一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/#section-2-4-b) · [返回 B 组解答总目录](/problems/collections/lou-analysis/)
+**批次导航：**[下一批 B50—B56](/problems/6e82c6e274a8f219f40720c7/) · [上一批 B36—B42](/problems/0ce2ad9c1d045270806e755b/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/#section-2-4-b) · [返回 B 组解答总目录](/problems/collections/lou-analysis/)
 
-本批完成习题 2.4.B 第 12—18 题。**下一批从习题 2.4.B 第 19 题开始**，仍按原书 B 组顺序连续选取七题。
+本批完成习题 2.4.B 第 12—18 题。**下一批从习题 2.4.B 第 19 题开始**；[B50—B56 已完成](/problems/6e82c6e274a8f219f40720c7/)，仍按原书 B 组顺序连续选取七题。

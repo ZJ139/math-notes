@@ -150,3 +150,30 @@ if ((await fs.stat('content/problems/lou-analysis-b-07.md').catch(()=>null))?.is
   if(!source.includes('下一批从习题 2.4.B 第 19 题开始'))throw new Error('第七批后续起点错误');
   console.log(`Verified Lou analysis B43–B49: ${inline} inline and ${display} display formulas; seven original numbers, chapter entries and batch links.`);
 }
+
+// Eighth Lou batch crosses sections; check rendered math and both navigation levels.
+if ((await fs.stat('content/problems/lou-analysis-b-08.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-08.md','utf8');
+  const route='/problems/6e82c6e274a8f219f40720c7/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||display===0||rendered!==inline+display
+     ||renderedDisplay!==display||/katex-error/.test(html)||/\\[\[\]()]/.test(source))
+    throw new Error('楼分析 B50–B56 公式渲染不完整：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  const chapter=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/2/index.html'),'utf8');
+  for(let n=50;n<=56;n++){
+    const section=n<=51?'2.4':'2.5',original=n<=51?n-31:n-51;
+    if(!html.includes('id="问题-b'+n+'"')||!source.includes('习题 '+section+'.B 第 '+original+' 题')
+       ||!chapter.includes(route+'#问题-b'+n))
+      throw new Error('第八批题号、原题映射或章节入口缺失：B'+n);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/8bf5d892fb2fadbffdaa8f2b/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第八批未接入资料页、上一批或批次目录：'+file);
+  }
+  if(!source.includes('下一批从习题 2.6.B 第 1 题开始'))throw new Error('第八批后续起点错误');
+  console.log('Verified Lou analysis B50–B56: '+inline+' inline and '+display+' display formulas; seven original numbers, chapter entries and batch links.');
+}
