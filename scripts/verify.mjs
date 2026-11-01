@@ -123,3 +123,30 @@ if ((await fs.stat('content/problems/lou-analysis-b-06.md').catch(()=>null))?.is
   if(!source.includes('下一批起点：习题 2.4.B 第 12 题'))throw new Error('第六批后续起点错误');
   console.log(`Verified Lou analysis B36–B42: ${inline} inline and ${display} display formulas; all seven headings and batch links.`);
 }
+
+// Seventh Lou batch: verify every formula, original problem and navigation route.
+if ((await fs.stat('content/problems/lou-analysis-b-07.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-07.md','utf8');
+  const route='/problems/8bf5d892fb2fadbffdaa8f2b/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const prose=source.replace(/```[\s\S]*?```/g,'');
+  const inline=(prose.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(prose.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||display!==27||rendered!==inline+display
+     ||renderedDisplay!==display||/katex-error/.test(html))
+    throw new Error('楼分析 B43–B49 公式渲染不完整：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  const chapter=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/2/index.html'),'utf8');
+  for(let n=43;n<=49;n++){
+    if(!html.includes(`id="问题-b${n}"`)||!source.includes(`习题 2.4.B 第 ${n-31} 题`)
+       ||!chapter.includes(`${route}#问题-b${n}`))
+      throw new Error('第七批题号、原题映射或章节入口缺失：B'+n);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/0ce2ad9c1d045270806e755b/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第七批未接入资料页、上一批或批次目录：'+file);
+  }
+  if(!source.includes('下一批从习题 2.4.B 第 19 题开始'))throw new Error('第七批后续起点错误');
+  console.log(`Verified Lou analysis B43–B49: ${inline} inline and ${display} display formulas; seven original numbers, chapter entries and batch links.`);
+}

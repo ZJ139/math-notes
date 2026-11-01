@@ -9,14 +9,15 @@ const entries=loadEntries(fileURLToPath(new URL('../content/',import.meta.url)))
 
 test('Lou chapter directory includes each solution once and merges sections across batches',async()=>{
   const items=await entries,problems=louProblems(items);
-  assert.equal(problems.length,42);
-  assert.equal(new Set(problems.map(p=>p.code)).size,42);
-  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,21]]);
+  assert.equal(problems.length,49);
+  assert.equal(new Set(problems.map(p=>p.code)).size,49);
+  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,28]]);
   const topology=problems.filter(p=>p.section==='2.3');
   assert.deepEqual(topology.map(p=>p.original),[1,2,3,4,5,6]);
   assert.equal(new Set(topology.map(p=>p.entry.id)).size,2);
   const recurrences=problems.filter(p=>p.section==='2.4');
-  assert.deepEqual(recurrences.map(p=>p.original),Array.from({length:11},(_,i)=>i+1));
+  assert.deepEqual(recurrences.map(p=>p.original),Array.from({length:18},(_,i)=>i+1));
+  assert.deepEqual(problems.filter(p=>p.number>=43).map(p=>[p.code,p.section,p.original]),Array.from({length:7},(_,i)=>[`B${43+i}`,'2.4',12+i]));
   for(const p of problems)assert.ok(p.entry.body.includes(`## 问题 ${p.code}\n`));
   assert.throws(()=>louProblems([...items,problems[0].entry]),/题号重复/);
 });
