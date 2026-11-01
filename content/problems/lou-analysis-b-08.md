@@ -619,7 +619,7 @@ $$
 - **B55：辨清上下极限，再构造相消。** 原 PDF 的下极限命题有反例；正确上极限结论由归一化递推和调和和式发散证明。
 - **B56：紧性补足严格缩短。** 先证明唯一不动点存在，再将距离极限与子列极限结合，推出所有初值收敛到同一点。
 
-**批次导航：**[上一批 B43—B49](/problems/8bf5d892fb2fadbffdaa8f2b/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/) · [返回 B 组解答总目录](/problems/collections/lou-analysis/)
+**批次导航：**[下一批 B57—B63](/problems/66783d8d0bfbf0815b31a433/) · [上一批 B43—B49](/problems/8bf5d892fb2fadbffdaa8f2b/) · [第二章按节与原题号查阅](/problems/collections/lou-analysis/chapters/2/) · [返回 B 组解答总目录](/problems/collections/lou-analysis/)
 
 本批完成习题 2.4.B 第 19—20 题及 2.5.B 第 1—5 题。**下一批从习题 2.6.B 第 1 题开始**，仍按原书 B 组顺序连续选取七题。
 

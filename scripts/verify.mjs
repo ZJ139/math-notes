@@ -177,3 +177,30 @@ if ((await fs.stat('content/problems/lou-analysis-b-08.md').catch(()=>null))?.is
   if(!source.includes('下一批从习题 2.6.B 第 1 题开始'))throw new Error('第八批后续起点错误');
   console.log('Verified Lou analysis B50–B56: '+inline+' inline and '+display+' display formulas; seven original numbers, chapter entries and batch links.');
 }
+
+// Ninth Lou batch crosses from positive series to general series.
+if ((await fs.stat('content/problems/lou-analysis-b-09.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-09.md','utf8');
+  const route='/problems/66783d8d0bfbf0815b31a433/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||display===0||rendered!==inline+display
+     ||renderedDisplay!==display||/katex-error/.test(html)||/\\[\[\]()]/.test(source))
+    throw new Error('楼分析 B57–B63 公式渲染不完整：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  const chapter=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/2/index.html'),'utf8');
+  for(let n=57;n<=63;n++){
+    const section=n<=59?'2.6':'2.7',original=n<=59?n-56:n-59;
+    if(!html.includes('id="问题-b'+n+'"')||!source.includes('习题 '+section+'.B 第 '+original+' 题')
+       ||!chapter.includes(route+'#问题-b'+n))
+      throw new Error('第九批题号、原题映射或章节入口缺失：B'+n);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/6e82c6e274a8f219f40720c7/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第九批未接入资料页、上一批或批次目录：'+file);
+  }
+  if(!source.includes('下一批从习题 2.7.B 第 5 题开始'))throw new Error('第九批后续起点错误');
+  console.log('Verified Lou analysis B57–B63: '+inline+' inline and '+display+' display formulas; seven original numbers, chapter entries and batch links.');
+}
