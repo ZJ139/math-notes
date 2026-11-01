@@ -8,11 +8,13 @@ created_at: "2026-11-01"
 updated_at: "2026-11-01"
 ---
 
-**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 2](/files/english/exams/2017英一.pdf#page=3) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 2](/files/english/exams/2017英一.pdf#page=3) · [阅读原文 PDF](/files/english/translation/2017英一阅读原文.pdf) · [阅读词汇 PDF](/files/english/translation/2017英一阅读单词.pdf) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+
+**本年四篇**：[Text 1](/english/c6c76594bfc4113f5879610a/) · [Text 2](/english/6506bff62775fc92feca2357/) · [Text 3](/english/70f75315d0b325b5ebe6a310/) · [Text 4](/english/8cff8caf05cedde82f613013/)
 
 **原文定位导航**：[1° · 第26题](#evidence-q26) · [2° · 第27题](#evidence-q27) · [3° · 第28题](#evidence-q28) · [4° · 第29题](#evidence-q29) · [5° · 第30题](#evidence-q30)
 
-**版本说明**：题干、选项及答案字母以本站《2017英一.pdf》的顺序为准；天文项目与争议均按试题写作时的语境理解。原卷第二段的 Rested in the Pacific Ocean 按语境译为“坐落于太平洋中”，不据此改变原句。
+**版本说明**：文章、题干与选项已按本站《2017英一.pdf》第2—5页逐项核对；原卷未附答案表，下文答案由原文证据逐题论证，字母对应本站选项顺序。天文项目与争议均按试题写作时的语境理解。原卷第二段的 Rested in the Pacific Ocean 按语境译为“坐落于太平洋中”，不据此改变原句；这个开头不是应当模仿的规范分词搭配，理解时抓住后面的 peak rises 与图像清晰度即可。
 
 **阅读方式**：原文与逐段直译在前；每题按 A—D 依次呈现英文、中文含义、判断与理由。粉色定位旁的 1°—5° 可与题目双向跳转。
 
@@ -69,6 +71,24 @@ updated_at: "2026-11-01"
 **逐段直译**：天文学界正在作出妥协，改变使用莫纳克亚山的方式。TMT 的选址旨在尽量降低从岛上各处看到望远镜的程度，并避免对考古遗存和环境产生影响。为了限制莫纳克亚山上的望远镜数量，旧望远镜将在使用寿命结束时被拆除，其场地将恢复自然状态。没有理由不欢迎所有人来到莫纳克亚山，既亲近自己的文化遗产，又研究星辰。
 
 **上下文与句法**：前两句说明妥协和选址的保护目的，旧设备退出则限制总量；不能把这些目的直接当作所有影响已经消失。最后的 **no reason...cannot** 表达积极肯定：文化活动与科学研究可以共存。作者支持的是文中采取保护措施的选址方案，不等于支持不受约束的无限扩建。
+
+### 长难句精读｜跨过修饰语，找到真正谓语
+
+**句一（P5，联系第29题）**：The same curiosity to find what lies beyond the horizon that first brought early Polynesians to Hawaii’s shores inspires astronomers today to explore the heavens.
+
+1. **主干谓语**：主干是 The same curiosity inspires astronomers，谓语为 inspires。中途看到 brought 不要结束主句，它属于定语从句。
+2. **切分从句**：what lies beyond the horizon 是 find 的宾语，意为“地平线之外有什么”；that first brought... 是修饰 curiosity 的定语从句。根据 same...today 的古今对应及“好奇心带来远航”的语义，that 在这里回接 curiosity，而不是把 horizon 当作带人远航的主体。
+3. **剥离修饰**：to find... 说明好奇心的内容；to Hawaii’s shores 是 brought 的方向；today 标记现在；to explore... 说明这种好奇心如今激励天文学家做什么。
+4. **还原语序**：过去，把波利尼西亚人带到夏威夷的，是探索未知的好奇心；今天，同一种好奇心又激励天文学家探索天空。由此才能把第29题的 dreams 理解为延续探索追求，而不是虚构古代人提出过现代望远镜方案。
+
+**句二（P3，联系第28题）**：A small but vocal group of Hawaiians and environmentalists have long viewed their presence as disrespect for sacred land and a painful reminder of the occupation of what was once a sovereign nation.
+
+1. **主干谓语**：抓 have viewed，得到“这一群体长期把它们的存在看作……”。vocal 在这里指积极发声，不是从事声乐。
+2. **切分从句**：what was once a sovereign nation 作 of 的宾语，表示“一个曾经拥有主权的国家”。what 在从句内兼作主语；once 给出过去时间。
+3. **剥离修饰**：view A as B and C 中，A 是 their presence，their 回指望远镜；B 是 disrespect，C 是 reminder。两个宾语补足语并列，不能只保留圣地因素而漏掉历史因素。
+4. **还原语序**：这些人把望远镜的存在看成对圣地不敬，也看成对昔日国家被占领的痛苦提醒。第28题 partly because 允许正确选项只概括其中一个明示理由。
+
+**生词较多时的最小解题路径**：将 TMT 记作“新望远镜”、Mauna Kea 记作“拟选地点”，不必先背专名。古今对照抓 ancient / today，历史原因抓 once / reminder，共同追求抓 same / both，作者态度读结尾。不要把反对者的话当作作者的结论。
 
 ## 二、逐题作答：选项与分析
 
@@ -280,7 +300,7 @@ updated_at: "2026-11-01"
 
 **生词策略**：不熟悉 hesitancy，可先分出 criticism 的否定与 approval 的肯定；将 no reason...cannot 还原为“可以、应欢迎”来判断极性。
 
-**本题规律**：A 移用对旧做法的批评；B 把积极支持降成无奈接受；C 把客观呈现争议当作犹豫；D 对应结尾立场。
+**本题规律**：A 移用对旧做法的批评；B 把积极支持降成被动接受；C 把客观呈现争议当作犹豫；D 对应结尾立场。full approval 的语气虽强，也不能仅凭“强词通常错”排除：本题限定的是选址，结尾确实给出明确肯定，文化与生态保护是作者支持共存的论证组成。
 
 ## 三、全篇总结
 
