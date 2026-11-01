@@ -8,11 +8,13 @@ created_at: "2026-11-01"
 updated_at: "2026-11-01"
 ---
 
-**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 3](/files/english/exams/2017英一.pdf#page=4) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 3](/files/english/exams/2017英一.pdf#page=4) · [阅读原文 PDF](/files/english/translation/2017英一阅读原文.pdf) · [阅读词汇 PDF](/files/english/translation/2017英一阅读单词.pdf) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+
+**本年四篇**：[Text 1](/english/c6c76594bfc4113f5879610a/) · [Text 2](/english/6506bff62775fc92feca2357/) · [Text 3](/english/70f75315d0b325b5ebe6a310/) · [Text 4](/english/8cff8caf05cedde82f613013/)
 
 **原文定位导航**：[1° · 第31题](#evidence-q31) · [2° · 第32题](#evidence-q32) · [3° · 第33题](#evidence-q33) · [4° · 第34题](#evidence-q34) · [5° · 第35题](#evidence-q35)
 
-**版本说明**：题干、选项及答案字母以本站《2017英一.pdf》的顺序为准。GDP、英国脱欧与研究结果均按试题写作时的语境理解；本文作阅读证据分析，不把文中预测当成后来的实际结果。
+**版本说明**：文章、题干与选项已按本站《2017英一.pdf》第2—5页逐项核对；原卷未附答案表，下文答案由原文证据逐题论证，字母对应本站选项顺序。GDP、英国脱欧与研究结果均按试题写作时的语境理解；本文作阅读证据分析，不把文中预测当成后来的实际结果。
 
 **阅读方式**：原文与逐段直译在前，每个选项后紧接中文含义、正误与理由；粉色句子旁的 1°—5° 可与题目双向跳转。
 
@@ -26,7 +28,7 @@ updated_at: "2026-11-01"
 
 > [Robert F. Kennedy once said that a country’s GDP measures “everything except that which makes life worthwhile.”](#q31 "pink-evidence") **1°** With Britain voting to leave the European Union, and GDP already predicted to slow as a result, it is now a timely moment to assess what he was referring to.
 
-**逐段直译**：罗伯特·F.肯尼迪曾说，一个国家的GDP衡量了“除使生活值得过下去的东西以外的一切”。随着英国投票决定离开欧盟，而且人们已经预测GDP将因此放缓，现在正是重新审视他这句话所指何意的恰当时机。
+**逐段直译**：罗伯特·F.肯尼迪曾说，一个国家的GDP衡量了“除使生活值得过下去的东西以外的一切”。随着英国投票决定离开欧盟，而且人们已经预测GDP增长将因此放缓，现在正是重新审视他这句话所指何意的恰当时机。
 
 **上下文与句法**：**everything except...** 表面说衡量“一切”，重点却落在“除了真正有价值的东西”，表达对指标局限的批评。**that which** 相当于“那些……的东西”；后一句的 predicted 保留预测性质。with 结构给出重新讨论GDP的背景，不能理解为肯尼迪评论过此次脱欧。
 
@@ -77,6 +79,24 @@ updated_at: "2026-11-01"
 **逐段直译**：预计全球和英国的经济增长将受到严重冲击，这可能使我们为获得福祉和促进增长而依赖的日常服务衰退。但是，如果政策制定者重新把努力集中到改善福祉上，而不是只为GDP数字担忧，就可能避免预言中的厄运，甚至有望取得进步。
 
 **上下文与句法**：**predicted / could / may** 都限制确定性，不能读成英国已经准备好迎来繁荣。**rather than simply worrying** 反对的是只盯数字，并非反对关心经济增长。末段落点是改变政策关注重点，改善实际生活。
+
+### 长难句精读｜反问、让步与省略怎样接起来
+
+**句一（P2，联系第32题）**：If everything was going so well, then why did over 17 million people vote for Brexit, despite the warnings about what it could do to their country’s economic prospects?
+
+1. **主干谓语**：主句问 why did...people vote...，即“为什么这么多人仍然投脱欧票”。did 是疑问结构的助动词，真正动作是 vote。
+2. **切分从句**：If everything was going so well 提出与好看经济数字相应的假设；what it could do... 作 about 的宾语，其中 it 指 Brexit，what 作 do 的宾语。
+3. **剥离修饰**：despite the warnings... 是“尽管已有警告”，给出与实际投票相反的预期；could 只表达可能后果，不能改成已发生的结果。
+4. **还原语序**：经济数字如此好，而且脱欧可能损害经济已受到警告，为什么仍有大量选民支持脱欧？反问促使读者怀疑“数字好就足以说明生活和国家状态好”这一判断，下一段研究再解释增长与生活改善为何脱节。
+
+**句二（P6，联系第34题）**：So, what Kennedy was referring to was that while GDP has been the most common method for measuring the economic activity of nations, as a measure, it is no longer enough.
+
+1. **主干谓语**：主句为 what Kennedy was referring to **was** that...，外层 was 连接“他所指的内容”与解释；不能把 what...to 单独读成疑问句。
+2. **切分从句**：what Kennedy was referring to 是主语从句，what 作 to 的宾语；that 引导表语从句，不单独翻成“那个”。表语从句内又嵌有 while GDP has been...，这里 while 表示“尽管”。
+3. **剥离修饰**：for measuring... 说明 method 的用途；as a measure 插入说明判断角度。去掉修饰后，表语从句的落点是 it is no longer enough，it 回指 GDP。
+4. **还原语序**：肯尼迪的意思是：尽管GDP常用于衡量经济活动，用它单独作评价尺度仍不够。译文必须保留“常用”与“不够全面”两面，才不会错选“完全排除GDP”。
+
+**生词较多时的最小解题路径**：先把 GDP 记作“经济产出指标”、well-being 记作“生活是否过得好”。抓住 just、sole、enough 三个限制词，再比较指标与生活两条线。即便不懂 rounded 和 enlightening，也可从 more、shed light 和前后问答判断研究得到肯定，而不是受到质疑。
 
 ## 二、逐题作答：选项与分析
 
@@ -162,7 +182,7 @@ updated_at: "2026-11-01"
 
 **生词策略**：defy 在这里是“挑战、不遵从”；结合上下文理解为不接受数字作为充分判断依据，不要机械译成“蔑视GDP本身”。
 
-**本题规律**：A 添加经济模式意愿；B 概括反问逻辑；C 从本国前景跳到全球贡献；D 把选民行为移给政策制定者。
+**本题规律**：A 添加经济模式意愿；B 概括反问逻辑；C 从本国前景跳到全球贡献；D 把选民行为移给政策制定者。B是本文论证语境中的最佳推断，不是把投票行为当作每位选民经济观念的直接调查；推断题应保留作者建立的联系，也不额外放大其证明力。
 
 ### 第 33 题｜研究评价与范围词｜3°
 

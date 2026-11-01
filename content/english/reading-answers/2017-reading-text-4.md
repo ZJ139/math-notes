@@ -8,11 +8,13 @@ created_at: "2026-11-01"
 updated_at: "2026-11-01"
 ---
 
-**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 4](/files/english/exams/2017英一.pdf#page=5) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 4](/files/english/exams/2017英一.pdf#page=5) · [阅读原文 PDF](/files/english/translation/2017英一阅读原文.pdf) · [阅读词汇 PDF](/files/english/translation/2017英一阅读单词.pdf) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+
+**本年四篇**：[Text 1](/english/c6c76594bfc4113f5879610a/) · [Text 2](/english/6506bff62775fc92feca2357/) · [Text 3](/english/70f75315d0b325b5ebe6a310/) · [Text 4](/english/8cff8caf05cedde82f613013/)
 
 **原文定位导航**：[1° · 第36题](#evidence-q36) · [2° · 第37题](#evidence-q37) · [3° · 第38题](#evidence-q38) · [4° · 第39题](#evidence-q39) · [5° · 第40题](#evidence-q40)
 
-**版本说明**：题干、选项及答案字母以本站《2017英一.pdf》的顺序为准。第36题所指画线句是第一段 But it did so... 至段末，已作粉色定位。法律与事件表述仅按试题文章的论证语境解释，不扩展成现实案件的完整定罪标准。
+**版本说明**：文章、题干与选项已按本站《2017英一.pdf》第2—5页逐项核对；原卷未附答案表，下文答案由原文证据逐题论证，字母对应本站选项顺序。第36题所指画线句是第一段 But it did so... 至段末，已作粉色定位。法律与事件表述仅按试题文章的论证语境解释，不扩展成现实案件的完整定罪标准。
 
 **阅读方式**：原文与逐段直译在前，题目和选项在后；每个选项紧接直译、判断与理由，1°—5° 支持原文与题目双向跳转。
 
@@ -85,6 +87,24 @@ updated_at: "2026-11-01"
 **逐段直译**：良好治理建立在对每个人固有价值的理解之上。法院的裁决，是在同时反对腐败与官员偏袒的斗争中向前迈出的一步。
 
 **上下文与句法**：**a step forward** 直接表达支持，却不等于“一次裁决解决全部问题”。作者肯定裁决澄清刑事边界，并据此强调要用透明制度继续处理尚未构成刑事腐败的偏袒。
+
+### 长难句精读｜插入语与必要条件不能丢
+
+**句一（P5，联系第38题）**：“The basic compact underlying representative government,” wrote Chief Justice John Roberts for the court, “assumes that public officials will hear from their constituents and act on their concerns.”
+
+1. **主干谓语**：把引述者插语暂时移开，得到 The basic compact...assumes that...，即“基本约定预设……”。wrote 属于报道谁说了这句话的插语，不能误当引语的主干谓语。
+2. **切分从句**：that 引导 assumes 的宾语从句；从句内 will hear from... 与 act on... 是同一主语 public officials 的两个并列动作。
+3. **剥离修饰**：underlying representative government 是分词短语，修饰 compact，表示“构成代议制政府基础的”；for the court 说明首席大法官代表法院发言。这里 compact 是“约定”，不是“紧凑的”。
+4. **还原语序**：代议制政府所依据的基本约定，是公职人员会听取其所代表民众的意见，并回应他们的关切。第38题要保留 constituents 这一代表对象，不能只因前句有 supporters 就忽视题干 assumption 与 assumes 的精确对应。
+
+**句二（P3，联系第37题）**：Merely helping a gift-giver gain access to other officials, unless done with clear intent to pressure those officials, is not corruption, the justices found.
+
+1. **主干谓语**：Merely helping... 是动名词短语作主语；主干为“单纯帮助接触其他官员，不构成腐败”。句末 the justices found 是引述说明。
+2. **切分从句**：unless done... 是省略结构，可补成 unless this is done...，this 指上述帮助行为；unless＝除非，保留例外，不能删去后作无条件结论。
+3. **剥离修饰**：with clear intent 表示带有明确意图，to pressure... 说明意图的内容；those officials 回指刚才的 other officials，而不是送礼者。
+4. **还原语序**：按照文中的表述，单纯牵线本身不构成腐败，但明确意在向其他官员施压的情形不在这个概括以内。句子也没有反过来给出“只要施压就必定满足一切定罪条件”的完整规则。
+
+**生词较多时的最小解题路径**：先画清两条利益方向：送礼者给官员礼物，官员给送礼者具体回报；再分清两条评价线：法院厌恶官员行为，作者支持法院裁决。第36、40题虽然都考态度，评价者和对象各不相同；第37题的 concrete 必须连着 benefits 及合同批准的例子理解。
 
 ## 二、逐题作答：选项与分析
 
@@ -192,7 +212,7 @@ updated_at: "2026-11-01"
 
   直译：（被允许把关注重点放在其支持者的关切上。）
 
-  **错误｜缩小代表范围、改变关注重点**：前一句确实允许帮助支持者，但题目问的是引语中裁决的制度前提，那里说 constituents。帮助其中的支持者不等于可把重点专门放在支持者身上；全文随后还反对因捐款或礼物而偏袒。
+  **错误｜范围缩小且偏离明示前提**：前一句确实允许帮助 supporters，所以不能简单说C全无出处。但题干 assumption 精确对应引语的 assumes，引语说的是 constituents，即官员所代表的民众。C把对象缩成支持者，并用 focus 强调重点关注，均不如A准确；focus 本身不等于“只关注”，排除C也不需要擅自给它补上 only。后文反偏袒的论述进一步支持平等回应民众这一理解。
 
 - **[D]** exempt from conviction on the charge of favoritism.
 

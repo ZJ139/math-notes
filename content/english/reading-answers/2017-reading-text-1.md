@@ -8,11 +8,13 @@ created_at: "2026-11-01"
 updated_at: "2026-11-01"
 ---
 
-**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 1](/files/english/exams/2017英一.pdf#page=2) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+**阅读导航**：[2017 年解答目录](/english/reading-answers/years/2017/) · [全部年份](/english/reading-answers/) · [站内原卷 · Text 1](/files/english/exams/2017英一.pdf#page=2) · [阅读原文 PDF](/files/english/translation/2017英一阅读原文.pdf) · [阅读词汇 PDF](/files/english/translation/2017英一阅读单词.pdf) · [2017 年阅读直译 PDF](/files/english/translation/2017英一阅读翻译.pdf)
+
+**本年四篇**：[Text 1](/english/c6c76594bfc4113f5879610a/) · [Text 2](/english/6506bff62775fc92feca2357/) · [Text 3](/english/70f75315d0b325b5ebe6a310/) · [Text 4](/english/8cff8caf05cedde82f613013/)
 
 **原文定位导航**：[1° · 第21题](#evidence-q21) · [2° · 第22题](#evidence-q22) · [3° · 第23题](#evidence-q23) · [4° · 第24题](#evidence-q24) · [5° · 第25题](#evidence-q25)
 
-**版本说明**：题干、选项及答案字母以本站《2017英一.pdf》的顺序为准。第21题 A 的 American’s 沿用站内卷面拼写，语义为“美国人的”。文章中的事件判断、收费及政策状态均按试题写作时的语境理解。
+**版本说明**：文章、题干与选项已按本站《2017英一.pdf》第2—5页逐项核对；原卷未附答案表，下文答案由原文证据逐题论证，字母对应本站选项顺序。第21题 A 的 American’s 沿用站内卷面拼写，语义为“美国人的”；复数所有格的规范写法为 Americans’，卷面转录保留原样，写作时不要照抄此处拼写。文章中的事件判断、收费及政策状态均按试题写作时的语境理解。
 
 **阅读方式**：先读原文与逐段直译，再看逐题作答；每个选项后紧接直译、判断及理由。粉色定位句旁的 1°—5° 与题目双向跳转。
 
@@ -69,6 +71,24 @@ updated_at: "2026-11-01"
 **逐段直译**：TSA 不能继续把资源调配到利用不足的预检通道，却让大多数旅客在不必要的队伍中受苦。早就该让这项计划真正发挥作用了。
 
 **上下文与句法**：**while** 对比两种同时存在的状态：一边利用不足，一边拥挤。**It is long past time to...** 带有“早就该……”的催促语气。作者要求改进既有计划以解决排队问题，既不是取消安检，也不是宣告一项新方案刚刚出现。
+
+### 长难句精读｜先读主干，再补关系
+
+**句一（P3，联系第22题）**：Enhanced security measures since then, combined with a rise in airline travel due to the improving economy and low oil prices, have resulted in long waits at major airports such as Chicago’s O’Hare International.
+
+1. **主干谓语**：先认 have resulted in，把句子压缩为“加强的安检措施造成长时间等待”。读到 measures 后还没有完整谓语，不能把 combined 当作主句的过去式。
+2. **切分从句**：本句没有限定性从句；combined with... 是过去分词短语。它补入“航空出行增加”这一共同原因，语义上不能在做因果题时删掉。
+3. **剥离修饰**：since then 修饰措施加强的时间；due to... 解释出行增加的原因；such as... 举大型机场的例子。先把这三层放到各自所修饰的词后，防止串错因果。
+4. **还原语序**：此后安检加强，同时经济改善和低油价使航空出行增加；这些因素一起造成大型机场长时间等待。第22题的 increase 对应 rise，不必先翻译机场专名。
+
+**句二（P5，联系第24题）**：But Congress should look into doing so directly, by helping to finance PreCheck enrollment or to cut costs in other ways.
+
+1. **主干谓语**：Congress should look into...＝国会应当考虑……；should 先标成“建议”，不要读成已经采取的行动。
+2. **切分从句**：本句没有从句；doing so 承接前句“把价格降到更合理的水平”。so 不能机械译作“所以”。
+3. **剥离修饰**：by... 给出实现办法；helping to finance... 与 to cut costs... 是两种降低旅客负担的途径，or 连接二者。
+4. **还原语序**：国会应考虑直接促成降价，办法可以是资助报名，也可以是通过其他途径削减成本。因此能推出“需要降低费用”，不能推出“政府已经拒绝支持”。
+
+**生词较多时的最小解题路径**：先保留时间词、因果词和评价词：P3 的 rise / resulted in，P5 的 saving time / price / flaw。先确定题目问的是原因、词义还是问题，再在同一维度比较选项；把不懂的机构名暂记为“安检机构”也不妨碍第22—24题作答。
 
 ## 二、逐题作答：选项与分析
 
@@ -254,7 +274,7 @@ updated_at: "2026-11-01"
 
   直译：（预检计划——一个姗姗来迟的解决办法。）
 
-  **错误｜局部代整体、时序误读**：预检是后半篇的对策，前半篇还分析安检拥堵及原因；且计划已经存在，迟迟未实现的是充分发挥作用，并非方案刚刚推出。
+  **错误｜对策覆盖不足、时序表述不准**：预检是后半篇讨论的办法，B没有统摄前半篇围绕排队现象、容忍限度和成因的论述。计划早已存在，作者催促的是让它奏效，belated 容易把“生效迟缓”说成“方案来迟”。标题可以突出对策，但本篇没有把“预检姗姗来迟”作为贯穿全文的判断，C与首尾中心更吻合。
 
 - **[C]** Getting Stuck in Security Lines
 
@@ -280,7 +300,7 @@ updated_at: "2026-11-01"
 
 **生词策略**：get stuck in＝困在……中；underused＝利用不足。先比较主题覆盖范围，再比较标题语气与时间判断。
 
-**本题规律**：A 增添因果；B 用方案替代全文并误读“迟”；C 统摄问题及处理；D 将局部现象当作总题。
+**本题规律**：A 增添因果；B 对全文覆盖不足且“迟”的含义不稳；C 统摄问题及处理；D 将局部现象当作总题。排除B依据本文结构，不能归纳为“标题永远不能写对策”。
 
 ## 三、全篇总结
 
