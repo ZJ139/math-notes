@@ -204,3 +204,31 @@ if ((await fs.stat('content/problems/lou-analysis-b-09.md').catch(()=>null))?.is
   if(!source.includes('下一批从习题 2.7.B 第 5 题开始'))throw new Error('第九批后续起点错误');
   console.log('Verified Lou analysis B57–B63: '+inline+' inline and '+display+' display formulas; seven original numbers, chapter entries and batch links.');
 }
+
+// Tenth Lou batch crosses chapters; all seven proofs must render and be indexed.
+if ((await fs.stat('content/problems/lou-analysis-b-10.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-10.md','utf8');
+  const route='/problems/bba0529edd7210df6fd8f51a/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||display===0||rendered!==inline+display
+     ||renderedDisplay!==display||/katex-error/.test(html)||/\\[\[\]()]/.test(source))
+    throw new Error('楼分析 B64–B70 公式渲染不完整：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  for(const [number,section,original,page] of [[64,'2.7',5,15],[65,'2.7',6,15],[66,'3.1',1,16],[67,'3.1',2,16],[68,'3.1',3,16],[69,'3.1',4,17],[70,'3.2',1,18]]){
+    const chapter=await fs.readFile(path.join(root,`problems/collections/lou-analysis/chapters/${section[0]}/index.html`),'utf8');
+    const problem=source.split(`## 问题 B${number}\n`)[1]?.split(/^## /m)[0];
+    if(!html.includes(`id="问题-b${number}"`)||!problem?.includes(`习题 ${section}.B 第 ${original} 题`)
+       ||!problem.includes(`楼分析习题-v1.pdf#page=${page}`)||!chapter.includes(`${route}#问题-b${number}`))
+      throw new Error('第十批题号、原题页码或章节入口缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/66783d8d0bfbf0815b31a433/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第十批未接入资料页、上一批或总目录：'+file);
+  }
+  if(!source.includes('下一批从习题 3.2.B 第 2 题开始'))throw new Error('第十批后续起点错误');
+  for(const chapter of [2,3])if(!html.includes(`/problems/collections/lou-analysis/chapters/${chapter}/`))throw new Error('第十批缺少跨章导航');
+  console.log(`Verified Lou analysis B64–B70: ${inline} inline and ${display} display formulas; seven original numbers, PDF pages, both chapters and batch links.`);
+}
