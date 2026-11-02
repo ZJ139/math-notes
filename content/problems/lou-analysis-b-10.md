@@ -12,7 +12,7 @@ updated_at: "2026-11-02"
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [本批原题：PDF 第 15—18 页](/files/problems/楼分析习题-v1.pdf#page=15) · [第二章索引](/problems/collections/lou-analysis/chapters/2/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B57—B63](/problems/66783d8d0bfbf0815b31a433/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B57—B63](/problems/66783d8d0bfbf0815b31a433/) · [下一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/)
 
 **原题引用说明：** 整理 PDF 在若干 A 组中把星号题与后续题重新编号，却保留了 B 组中的交叉引用。3.1.A 按出现顺序计数的第 2 题是正弦求和题（PDF 标作无星号“1”）；3.2.A 按出现顺序计数的第 11 题是单调连续函数与上下极限题（PDF 标作“9”，前面另有两道星号题）。据此，B67、B70 按包含星号题的顺序解释交叉引用；两题均保留 B 组原文，并把采用的对应题目完整写出。这一对应关系依据整理 PDF 的题序与内容推定，教材原版编号尚未独立核实；PDF 另列的“命题 3.1.9”未附命题正文。
 
@@ -687,4 +687,4 @@ $F$ 单调不减，却有 $\liminf F(x_n)=1\ne0=F(\liminf x_n)$。无穷端点�
 
 **后续：** 本批完成后累计作答 **70 道 B 组习题**，其中第一章 21 题、第二章 44 题、第三章 5 题。下一批从习题 3.2.B 第 2 题开始，继续按原书 B 组出现顺序连续完成七题；该节星号“3*”与后续无星号“3”是不同题目，后续须分别保留，不能因同号而漏题。
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第二章索引](/problems/collections/lou-analysis/chapters/2/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B57—B63](/problems/66783d8d0bfbf0815b31a433/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第二章索引](/problems/collections/lou-analysis/chapters/2/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B57—B63](/problems/66783d8d0bfbf0815b31a433/) · [下一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/)
