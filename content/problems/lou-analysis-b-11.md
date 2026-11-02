@@ -12,7 +12,7 @@ updated_at: "2026-11-02"
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [本批原题：PDF 第 18—19 页](/files/problems/楼分析习题-v1.pdf#page=18) · [第三章索引](/problems/collections/lou-analysis/chapters/3/)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/) · [下一批 B78—B84](/problems/026454abe0373d4f9174aa05/)
 
 ## 题号导航
 
@@ -453,7 +453,7 @@ $$
 - **B76：可达集与不可达集都相对开。** 开集中的小球提供线段，连通性将局部可达扩展到整个区域。
 - **B77：等价类分解与有理点编号结合。** 可达类是连通分支，可列稠密集保证分支至多可列。
 
-**后续：** 本批完成后累计作答 **77 道 B 组习题**，其中第一章 21 题、第二章 44 题、第三章 12 题。下一批从习题 **3.3.B 第 2 题（无星号）** 开始，继续按原书 B 组出现顺序连续完成七题；该题与本批的第 2* 题不同，不能跳过。
+**后续：** 本批完成后累计作答 **77 道 B 组习题**，其中第一章 21 题、第二章 44 题、第三章 12 题。现已续接[第十二批 B78—B84](/problems/026454abe0373d4f9174aa05/)，从习题 **3.3.B 第 2 题（无星号）** 开始，连续完成至第 8 题；无星号的第 2 题与本批的第 2* 题分别保留。
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B64—B70](/problems/bba0529edd7210df6fd8f51a/) · [下一批 B78—B84](/problems/026454abe0373d4f9174aa05/)
 
