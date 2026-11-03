@@ -12,7 +12,7 @@ updated_at: "2026-11-02"
 
 [楼分析习题-v1（上册）资料页](/problems/41e85e430c9d7f84a0863658/) · [本批原题：PDF 第 19—20 页](/files/problems/楼分析习题-v1.pdf#page=19) · [第三章索引](/problems/collections/lou-analysis/chapters/3/)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [上一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/) · [下一批 B85—B91](/problems/1a48475f661893850f32d337/)
 
 ## 题号导航
 
@@ -456,4 +456,4 @@ $$
 
 **后续：** 本批完成后累计作答 **84 道 B 组习题**，其中第一章 21 题、第二章 44 题、第三章 19 题。下一批从习题 **3.3.B 第 9 题** 开始，继续按原书 B 组出现顺序连续完成七题。
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第三章索引](/problems/collections/lou-analysis/chapters/3/) · [上一批 B71—B77](/problems/3ddc58f0d3bf52252dc7207f/) · [下一批 B85—B91](/problems/1a48475f661893850f32d337/)
