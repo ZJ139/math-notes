@@ -12,8 +12,8 @@ const entries=loadEntries(fileURLToPath(new URL('../content/',import.meta.url)))
 test('every existing problem has exactly one explicit collection and unique collection counts',async()=>{
  const items=await entries;const problems=items.filter(e=>e.section==='problems');
  assert.deepEqual(populatedCollections(items).map(c=>c.id),['fudan-weekly','final-exams','ustc-analysis','xhm-analysis','green-algebra','lou-analysis','qws-algebra','analytic-geometry','cmc-mathematics']);
- assert.equal(collectionEntries(items,'fudan-weekly').length,36);
- assert.equal(collectionEntries(items,'final-exams').length,9);
+ assert.equal(collectionEntries(items,'fudan-weekly').length,37);
+ assert.equal(collectionEntries(items,'final-exams').length,10);
  for(const e of problems)assert.ok(entryCollection(e),e.sourcePath);
  assert.equal(new Set(populatedCollections(items).flatMap(c=>collectionEntries(items,c.id).map(e=>e.id))).size,problems.length);
  assert.deepEqual(populatedCollections([]),[]);
@@ -22,7 +22,7 @@ test('every existing problem has exactly one explicit collection and unique coll
  assert.match(renderToStaticMarkup(createElement(ProblemLibrary,{items:[unknown]})),/其他题目与解答/);
  const cards=renderToStaticMarkup(createElement(ProblemCollectionCards,{items}));
  assert.equal((cards.match(/<a /g)||[]).length,9);
- assert.match(cards,/36 份资料/);assert.doesNotMatch(cards,/2023S|14A01/);
+ assert.match(cards,/37 份资料/);assert.doesNotMatch(cards,/2023S|14A01/);
 });
 test('collection, cohort and cross-year articles provide static parent paths',async()=>{
  const items=await entries;
@@ -33,6 +33,9 @@ test('collection, cohort and cross-year articles provide static parent paths',as
  assert.match(weekly,/跨年合辑只计一份/);
  const finals=renderToStaticMarkup(createElement(ProblemLibrary,{items,collection:'final-exams'}));
  assert.ok(finals.includes(`href="${entryUrl(items.find(e=>e.category==='final-exams/2014')!)}/"`));
+ for(const [html,title] of [[weekly,'每周一题解答'],[finals,'期末大题解答']]){
+  assert.ok(html.includes('href="/files/problems/'+encodeURIComponent(title+'.pdf')+'" download="'+title+'.pdf"'));
+ }
  assert.doesNotMatch(finals,/href="\/problems\/years\//);
  const cohort=renderToStaticMarkup(createElement(ProblemLibrary,{items,collection:'final-exams',cohort:'2014'}));
  assert.doesNotMatch(cohort,/data-problem-results="" hidden/);
