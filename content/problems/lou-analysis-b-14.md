@@ -12,7 +12,7 @@ updated_at: "2026-11-03"
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 22 页](/files/problems/楼分析习题-v1.pdf#page=22) · [第 23 页](/files/problems/楼分析习题-v1.pdf#page=23) · [第 24 页](/files/problems/楼分析习题-v1.pdf#page=24)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B85—B91](/problems/1a48475f661893850f32d337/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B85—B91](/problems/1a48475f661893850f32d337/) · [下一批 B99—B105](/problems/d0f25a17cae3844b03f51d0a/)
 
 ## 题号导航
 
@@ -285,4 +285,4 @@ $$
 
 本批完成后累计 **98 道**，其中第四章已收录 4.1.B 全部七题与 4.2.B 全部三题。下一批从 **习题 4.3.B 第 1 题** 接续，见[原题 PDF 第 26 页](/files/problems/楼分析习题-v1.pdf#page=26)。
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B85—B91](/problems/1a48475f661893850f32d337/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B85—B91](/problems/1a48475f661893850f32d337/) · [下一批 B99—B105](/problems/d0f25a17cae3844b03f51d0a/)

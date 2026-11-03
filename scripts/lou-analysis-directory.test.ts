@@ -9,9 +9,9 @@ const entries=loadEntries(fileURLToPath(new URL('../content/',import.meta.url)))
 
 test('Lou chapter directory includes each solution once and merges sections across batches',async()=>{
   const items=await entries,problems=louProblems(items);
-  assert.equal(problems.length,98);
-  assert.equal(new Set(problems.map(p=>p.code)).size,98);
-  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,10]]);
+  assert.equal(problems.length,105);
+  assert.equal(new Set(problems.map(p=>p.code)).size,105);
+  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,17]]);
   const topology=problems.filter(p=>p.section==='2.3');
   assert.deepEqual(topology.map(p=>p.original),[1,2,3,4,5,6]);
   assert.equal(new Set(topology.map(p=>p.entry.id)).size,2);
@@ -32,6 +32,10 @@ test('Lou chapter directory includes each solution once and merges sections acro
     ['B92','4.1',4,false],['B93','4.1',5,false],['B94','4.1',6,false],['B95','4.1',7,false],
     ['B96','4.2',1,false],['B97','4.2',2,false],['B98','4.2',3,false],
   ]);
+  assert.deepEqual(problems.filter(p=>p.number>=99&&p.number<=105).map(p=>[p.code,p.section,p.original,p.starred]),[
+    ['B99','4.3',1,false],['B100','4.3',2,false],['B101','4.4',1,false],['B102','4.4',2,false],
+    ['B103','4.4',3,false],['B104','4.4',4,false],['B105','4.4',5,false],
+  ]);
   for(const p of problems)assert.ok(p.entry.body.includes(`## 问题 ${p.code}\n`));
   assert.throws(()=>louProblems([...items,problems[0].entry]),/题号重复/);
 });
@@ -45,7 +49,7 @@ test('Lou chapter pages provide section anchors and direct links to existing pro
     assert.equal((html.match(/class="lou-problem-code"/g)||[]).length,c.problems.length);
     for(const p of c.problems){assert.ok(html.includes(`href="${p.url}"`));assert.ok(html.includes(`id="section-${p.section.replace('.', '-')}-b"`));}
     if(c.number===3){assert.match(html,/原书第 3\* 题/);assert.match(html,/原书第 3 题/);assert.match(html,/原书第 2\* 题/);assert.ok(html.indexOf('B72')<html.indexOf('B73'));assert.match(html,/原书第 2 题/);assert.ok(html.indexOf('B77')<html.indexOf('B78'));assert.match(html,/本章当前收录至习题 3\.4\.B 第 1 题/);}
-    if(c.number===4)assert.match(html,/本章当前收录至习题 4\.2\.B 第 3 题/);
+    if(c.number===4)assert.match(html,/本章当前收录至习题 4\.4\.B 第 5 题/);
     assert.match(html,/aria-current="page"/);
   }
 });
