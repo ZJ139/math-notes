@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "上册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v1.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-03"
+updated_at: "2026-11-04"
 ---
 
 依据楼红卫编著《数学分析》上册（2022）整理，按原书章节及 A、B 组编排，保留原题号与星号。收录实数、序列极限、函数极限与连续、导数与微分、不定积分、微分中值定理与 Taylor 展开式、微分问题。
@@ -47,6 +47,10 @@ updated_at: "2026-11-03"
 
 - [第十五批：习题 4.3.B 第 1—2 题与 4.4.B 第 1—5 题——微分算子、三角恒等式与 Euler 乘积系数](/problems/d0f25a17cae3844b03f51d0a/)。连续编号 B99—B105，原题见 [PDF 第 26 页](/files/problems/楼分析习题-v1.pdf#page=26)与[第 27 页](/files/problems/楼分析习题-v1.pdf#page=27)。
 
-累计完成 105 道 B 组习题：第一章 21 题、第二章 44 题、第三章 23 题、第四章 17 题。
+- [第十六批：习题 4.4.B 第 6—7 题、5.1.B 第 1—2 题、5.2.B 第 1 题与 5.3.B 第 1—2 题——无穷乘积、局部与整体原函数及整数幂三角积分](/problems/5c58196012dc9fd39621cdaa/)。连续编号 B106—B112；原题见 [PDF 第 27—29 页](/files/problems/楼分析习题-v1.pdf#page=27)，含开放题构造、分支拼接与全部整数指数的分类。
 
-后续从[习题 4.4.B 第 6 题](/files/problems/楼分析习题-v1.pdf#page=27)继续。尚未解答的题目仍可通过上方原题 PDF 查阅。
+累计完成 112 道 B 组习题：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 5 题。第四章 B 组已全部完成。
+
+[第四章索引](/problems/collections/lou-analysis/chapters/4/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/)
+
+后续从[习题 5.4.B 第 1 题](/files/problems/楼分析习题-v1.pdf#page=30)继续。尚未解答的题目仍可通过上方原题 PDF 查阅。

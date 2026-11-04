@@ -5,14 +5,14 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "4.3.B", "4.4.B", "微分算子", "三角函数", "无穷乘积", "B99-B105"]
 created_at: "2026-11-03"
-updated_at: "2026-11-03"
+updated_at: "2026-11-04"
 ---
 
 本批接续 4.2.B 第 3 题，按上册顺序收录 **B99—B105**。4.3.B 共两题，随后进入 4.4.B。七题均为原书无星号题。
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 26 页](/files/problems/楼分析习题-v1.pdf#page=26) · [第 27 页](/files/problems/楼分析习题-v1.pdf#page=27)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B92—B98](/problems/e3cc553b27e4c782f3ec8a28/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B92—B98](/problems/e3cc553b27e4c782f3ec8a28/) · [下一批 B106—B112](/problems/5c58196012dc9fd39621cdaa/)
 
 ## 题号导航
 
@@ -276,4 +276,4 @@ $$
 
 本批完成后累计 **105 道**，其中第一章 21 题、第二章 44 题、第三章 23 题、第四章 17 题。下一批从 **习题 4.4.B 第 6 题** 接续，见[原题 PDF 第 27 页](/files/problems/楼分析习题-v1.pdf#page=27)。
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B92—B98](/problems/e3cc553b27e4c782f3ec8a28/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第四章索引](/problems/collections/lou-analysis/chapters/4/) · [上一批 B92—B98](/problems/e3cc553b27e4c782f3ec8a28/) · [下一批 B106—B112](/problems/5c58196012dc9fd39621cdaa/)
