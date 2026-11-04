@@ -11,6 +11,8 @@ test('Lou chapter directory includes each solution once and merges sections acro
   const items=await entries,problems=louProblems(items);
   assert.equal(problems.length,119);
   assert.equal(new Set(problems.map(p=>p.code)).size,119);
+  assert.equal(problems.filter(p=>!p.skipped).length,118);
+  assert.deepEqual(problems.filter(p=>p.skipped).map(p=>[p.code,p.section,p.original]),[['B116','5.5',1]]);
   assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,19],[5,10],[6,2]]);
   const topology=problems.filter(p=>p.section==='2.3');
   assert.deepEqual(topology.map(p=>p.original),[1,2,3,4,5,6]);
@@ -46,6 +48,21 @@ test('Lou chapter directory includes each solution once and merges sections acro
   ]);
   for(const p of problems)assert.ok(p.entry.body.includes(`## 问题 ${p.code}\n`));
   assert.throws(()=>louProblems([...items,problems[0].entry]),/题号重复/);
+});
+test('a temporarily skipped Lou problem keeps its original position without inflating solved totals',async()=>{
+  const items=await entries;
+  const directory=renderToStaticMarkup(createElement(LouAnalysisDirectory,{items}));
+  assert.match(directory,/118 道已作答 · 1 道暂跳过/);
+  assert.doesNotMatch(directory,/119 道已作答/);
+  const chapter=renderToStaticMarkup(createElement(LouChapterPage,{items,chapter:5}));
+  assert.match(chapter,/9 道已作答 · 1 道暂跳过/);
+  assert.match(chapter,/1 道已作答 · 1 道暂跳过/);
+  assert.match(chapter,/原书第 1 题 · 暂跳过/);
+  assert.ok(chapter.indexOf('B115')<chapter.indexOf('B116')&&chapter.indexOf('B116')<chapter.indexOf('B117'));
+  assert.ok(chapter.includes('/problems/39d0a20cbb571861ad253766/#问题-b116'));
+  const sixth=renderToStaticMarkup(createElement(LouChapterPage,{items,chapter:6}));
+  assert.match(sixth,/2 道已作答/);
+  assert.doesNotMatch(sixth,/原书第 [12] 题 · 暂跳过/);
 });
 test('Lou chapter pages provide section anchors and direct links to existing proofs',async()=>{
   const items=await entries;
