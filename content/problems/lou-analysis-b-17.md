@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "5.4.B", "5.5.B", "6.1.B", "复对数", "积分因子", "函数方程", "B113-B119"]
 created_at: "2026-11-04"
-updated_at: "2026-11-04"
+updated_at: "2026-11-05"
 ---
 
 本批接续 5.3.B 第 2 题，按原书顺序选取 **B113—B119**：5.4.B 第 1—3 题、5.5.B 第 1—2 题与 6.1.B 第 1—2 题。七题均无星号；第五章结束后自然进入第六章，不穿插 A 组。
@@ -14,7 +14,7 @@ updated_at: "2026-11-04"
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 30 页](/files/problems/楼分析习题-v1.pdf#page=30) · [第 32 页](/files/problems/楼分析习题-v1.pdf#page=32)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B106—B112](/problems/5c58196012dc9fd39621cdaa/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B106—B112](/problems/5c58196012dc9fd39621cdaa/) · [下一批 B120—B126](/problems/e88bdfb19174ef4219a86336/)
 
 ## 题号导航
 
@@ -594,8 +594,8 @@ $$
 | B118 | 分离模与单位圆相位 | 局部有界只强制模的对数线性，不强制相位连续。 |
 | B119 | 幂等初值、共同特征块与有限矩阵对数 | 零块不可漏，局部有界不可擅自替换为连续或可微。 |
 
-[上一批：B106—B112](/problems/5c58196012dc9fd39621cdaa/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+[上一批：B106—B112](/problems/5c58196012dc9fd39621cdaa/) · [下一批：B120—B126](/problems/e88bdfb19174ef4219a86336/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
 
-本批按原书顺序保留 B113—B119 七个题号，完成其中六题，B116 暂跳过。第五章目前完成 9 题，另有 B116 待补解。下一批应从[习题 6.1.B 第 3 题](/files/problems/楼分析习题-v1.pdf#page=32)接续，保留原书题号与每批七题的顺序。
+本批按原书顺序保留 B113—B119 七个题号，完成其中六题，B116 暂跳过。第五章目前完成 9 题，另有 B116 待补解。[第十八批 B120—B126](/problems/e88bdfb19174ef4219a86336/)已从习题 6.1.B 第 3 题接续至 6.2.B 第 2 题，保留原书题号与每批七题的顺序。
 
 **资料来源：**楼红卫《数学分析》上册（2022），本站仓库《楼分析习题-v1.pdf》第 30、32 页。题干与数学符号直接据该 PDF 核对；解答、条件辨析与方法总结为独立整理。B116 保留原书的公式引用并标注暂跳过，未将未核实转录写入原题。
