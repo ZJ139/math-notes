@@ -37,14 +37,15 @@ test('year directory reaches all reading answers through the correct Text and re
 });
 
 test('untagged or ambiguous answers stay accessible and missing Texts do not become broken links',()=>{
-  const sample=groups[0].texts[0].entries[0];
+  const {year,texts}=groups[0];
+  const sample=texts[0].entries[0];
   assert.equal(readingAnswerSource({...sample,category:'sentences'}),null);
   for(const tags of [[],['2020年','2007年','Text 1'],['2020年','Text 1','Text 2']]){
     const unknown={...sample,tags:JSON.stringify(tags)};
     assert.equal(readingAnswerSource(unknown),null);
     assert.ok(renderToStaticMarkup(createElement(ReadingAnswersIndexPage,{items:[unknown]})).includes(`href="${entryUrl(unknown)}/"`));
   }
-  const partial=renderToStaticMarkup(createElement(ReadingAnswersYearPage,{items:[sample],year:2020}));
+  const partial=renderToStaticMarkup(createElement(ReadingAnswersYearPage,{items:[sample],year}));
   assert.equal((partial.match(/aria-disabled="true"/g)||[]).length,3);
   assert.equal((partial.match(/>暂未收录</g)||[]).length,3);
 });
