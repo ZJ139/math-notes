@@ -37,6 +37,7 @@ test('SVG bounds match TeX metrics so short and multiline formulas keep the same
   try{
     const formulas=[
       {tex:'x',display:false},
+      {tex:'p',display:false},
       {tex:'j=0',display:false},
       {tex:String.raw`\zeta(2)`,display:false},
       {tex:String.raw`\sum_{k=1}^{\infty}\frac1{k^2}`,display:true},
@@ -53,6 +54,30 @@ test('SVG bounds match TeX metrics so short and multiline formulas keep the same
       assert.equal(x,0);assert.equal(y,0);
       assert.ok(Math.abs(width-math.width*emToPdfPoints)<0.03,`Unexpected horizontal space would shrink ${tex}: SVG ${width}, TeX ${math.width*emToPdfPoints}`);
       assert.ok(Math.abs(height-(math.height+math.depth)*emToPdfPoints)<0.03,`Unexpected vertical space would shrink ${tex}`);
+    }
+  }finally{await rm(output,{recursive:true,force:true});}
+});
+
+test('standalone variables retain the glyph scale and baseline used inside longer formulas',async()=>{
+  const output=await mkdtemp(path.join(tmpdir(),'math-glyph-scale-'));
+  try{
+    // The old conversion kept the correct viewBox but shrank its contents:
+    // p was about 16% smaller alone than inside an inequality. Include both
+    // descenders and very narrow letters, which expose crop-rounding errors.
+    for(const tex of ['p','x','q','g','i','l','f','1',String.raw`\alpha`]){
+      const single=latexMath(tex,false);
+      const compound=latexMath(`${tex}+${tex}`,false);
+      copyLatexMathAssets(output);
+      const svg=await readFile(path.join(output,single.id+'.svg'),'utf8');
+      const longerSvg=await readFile(path.join(output,compound.id+'.svg'),'utf8');
+      const firstGlyph=(source:string)=>source.match(/<path\s+d="([^"]+)"/)?.[1];
+      assert.ok(firstGlyph(svg),`Missing visible glyph path: ${tex}`);
+      assert.equal(firstGlyph(svg),firstGlyph(longerSvg),`The same glyph must keep its size alone and in a formula: ${tex}`);
+      const firstUse=svg.match(/<use\b[^>]*\bx="([^"]+)"\s+y="([^"]+)"/);
+      assert.ok(firstUse,`Missing glyph placement: ${tex}`);
+      assert.ok(Math.abs(Number(firstUse[1]))<0.03,`Unexpected horizontal centering for ${tex}`);
+      const baseline=single.height*10*72/72.27;
+      assert.ok(Math.abs(Number(firstUse[2])-baseline)<0.03,`Unexpected baseline shift for ${tex}`);
     }
   }finally{await rm(output,{recursive:true,force:true});}
 });
