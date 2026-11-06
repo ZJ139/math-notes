@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "6.1.B", "6.2.B", "微分中值定理", "函数迭代", "微分算子", "B120-B126"]
 created_at: "2026-11-05"
-updated_at: "2026-11-05"
+updated_at: "2026-11-06"
 ---
 
 本批接续 6.1.B 第 2 题，按原书顺序连续完成 **B120—B126**：6.1.B 第 3—7 题、6.2.B 第 1—2 题。七题均无星号；跨节时跳过 A 组，自然衔接下一节 B 组。
@@ -14,7 +14,7 @@ updated_at: "2026-11-05"
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 32 页](/files/problems/楼分析习题-v1.pdf#page=32) · [第 33 页](/files/problems/楼分析习题-v1.pdf#page=33)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B113—B119](/problems/39d0a20cbb571861ad253766/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B113—B119](/problems/39d0a20cbb571861ad253766/) · [下一批 B127—B133](/problems/b69d1a64f6e3c089263e7de7/)
 
 ## 题号导航
 
@@ -545,8 +545,8 @@ $$
 | B125 | 正弦迭代；倒数平方差；极限比较 | 每个正 $p$ 都交错收敛，绝对收敛阈值为 $p>2$。 |
 | B126 | 一阶稳定因子；模平方估计 | 仅需 $n$ 次可导；非负实部零点给出实值反例。 |
 
-[上一批：B113—B119](/problems/39d0a20cbb571861ad253766/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+[上一批：B113—B119](/problems/39d0a20cbb571861ad253766/) · [下一批：B127—B133](/problems/b69d1a64f6e3c089263e7de7/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
 
-本批完成 B120—B126 七题，累计完成 125 题，B116 仍暂跳过。下一批从[习题 6.2.B 第 3 题](/files/problems/楼分析习题-v1.pdf#page=33)继续，保留原题号及星号，不重排既有编号。
+本批完成 B120—B126 七题，累计完成 125 题，B116 仍暂跳过。下一批 [B127—B133](/problems/b69d1a64f6e3c089263e7de7/) 已接续完成习题 6.2.B 第 3—6 题与 6.3.B 第 1—3 题；保留原题号及星号，不重排既有编号。
 
 **资料来源：**楼红卫《数学分析》上册（2022），本站仓库《楼分析习题-v1.pdf》第 32—33 页。题干直接依据原题 PDF 核对。证明、反例、条件核查及方法总结为本页整理；B124 的参考来源另在该题末明确列出。
