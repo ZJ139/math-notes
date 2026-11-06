@@ -7,6 +7,7 @@ import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import katex from 'katex';
 import {loadEntries} from '../src/content';
 import {latexMath} from '../src/latexMath';
 
@@ -19,6 +20,8 @@ if(process.argv[2]==='--worker'){
   const formulas:Formula[]=JSON.parse(await readFile(file,'utf8'));
   let count=0;
   for(let i=index;i<formulas.length;i+=total){
+    // Keep the site's KaTeX validation before handing any source to TeX.
+    katex.renderToString(formulas[i][0],{displayMode:formulas[i][1],throwOnError:true,strict:'ignore',trust:false});
     latexMath(...formulas[i]);
     if(++count%100===0)console.log(`Math worker ${index+1}/${total}: ${count} formulas prepared`);
   }
