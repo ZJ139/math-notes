@@ -52,7 +52,12 @@ export function latexMath(tex:string,display:boolean):MathImage {
     if(/Missing character:/.test(log))throw new Error('公式包含字体未覆盖的字符');
     const [width,height,depth]=readFileSync(path.join(work,'metrics.txt'),'utf8').trim().split(',').map(parseFloat);
     if(![width,height,depth].every(n=>Number.isFinite(n)&&n>=0)||width===0||height+depth===0)throw new Error('LaTeX 公式尺寸无效');
-    execFileSync('pdftocairo',['-svg','formula.pdf','formula.svg'],{cwd:work,env,timeout:30_000,stdio:'pipe'});
+    // Cairo rounds the crop size up to whole PDF points before fitting it to
+    // the fractional standalone page. Default shrink/centering therefore
+    // changes glyph size and baseline, especially for one-letter formulas.
+    // Preserve TeX's scale and origin; matching viewBox dimensions alone do
+    // not guarantee that the paths inside the SVG have the correct size.
+    execFileSync('pdftocairo',['-svg','-noshrink','-nocenter','formula.pdf','formula.svg'],{cwd:work,env,timeout:30_000,stdio:'pipe'});
     const fontReport=execFileSync('pdffonts',['formula.pdf'],{cwd:work,env,timeout:10_000,encoding:'utf8'});
     const fontNames=fontReport.trim().split('\n').slice(2).map(line=>line.split(/\s+/)[0].replace(/^[A-Z]{6}\+/,''));
     if(!fontNames.length||(/[\u3400-\u9fff]/.test(tex)&&!fontNames.some(name=>name.startsWith('FandolSong'))))throw new Error(`公式字体未正确嵌入：${fontNames.join(', ')}\n${compiler.stderr}\n${log.split('\n').filter(line=>/Fandol|Font Warning|font encoding|Missing character|not found/.test(line)).slice(-30).join('\n')}`);
