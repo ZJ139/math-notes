@@ -14,7 +14,7 @@ updated_at: "2026-11-06"
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 33 页](/files/problems/楼分析习题-v1.pdf#page=33) · [第 34 页](/files/problems/楼分析习题-v1.pdf#page=34)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B120—B126](/problems/e88bdfb19174ef4219a86336/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B120—B126](/problems/e88bdfb19174ef4219a86336/) · [下一批 B134—B140](/problems/b1e99d01d263faff6fa790af/)
 
 ## 题号导航
 
@@ -528,8 +528,8 @@ $$
 | B132 | 减切平面；坐标凸组合与对称下界 | 有限个坐标估计需选统一邻域，得到全方向的小量控制。 |
 | B133 | 极小化序列；中点恒等式；变分不等式 | 最小值在端点时仅有右导数非负；唯一解必须限制在 $E$ 中。 |
 
-[上一批：B120—B126](/problems/e88bdfb19174ef4219a86336/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+[上一批：B120—B126](/problems/e88bdfb19174ef4219a86336/) · [下一批：B134—B140](/problems/b1e99d01d263faff6fa790af/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
 
-本批完成 B127—B133 七题，累计完成 132 题，B116 仍暂跳过。下一批从[习题 6.3.B 第 4 题](/files/problems/楼分析习题-v1.pdf#page=34)继续，保留原题号及星号，不重排既有编号。
+本批完成 B127—B133 七题，累计完成 132 题，B116 仍暂跳过。[第二十批 B134—B140](/problems/b1e99d01d263faff6fa790af/)已接续完成习题 6.3.B 第 4—10 题；全局最新进度见 [B 组总目录](/problems/collections/lou-analysis/)。
 
 **资料来源：**楼红卫《数学分析》上册（2022），本站仓库《楼分析习题-v1.pdf》第 33—34 页。原题直接依据 PDF 核对；记号解释、证明、反例、条件辨析与方法总结为本页整理。
