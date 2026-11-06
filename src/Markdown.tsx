@@ -6,6 +6,7 @@ import remarkHeadingIds from './headingIds';
 import remarkDocumentLabels from './documentLabels';
 import remarkReadingAnswerLayout from './readingAnswerLayout';
 import rehypeLatexMath from './latexMath';
+import rehypeMathTypography from './mathTypography';
 const components: Components = {
   a: ({node, title, children, className, ...props}) => {
     const evidence = title === 'pink-evidence';
@@ -32,7 +33,7 @@ export default function Markdown({body, readingAnswers = false}: {body: string; 
     </nav>}
     <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels,
       ...(structured ? [remarkReadingAnswerLayout] : [])]}
-      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], rehypeLatexMath]}
+      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], rehypeLatexMath, rehypeMathTypography]}
       components={components}>{body}</ReactMarkdown>
   </div>;
 }

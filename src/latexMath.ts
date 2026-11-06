@@ -93,7 +93,11 @@ export default function rehypeLatexMath(){
         const result=latexMath(tex,display);
         // Keep the accessible MathML, but render the visible formula with TeX.
         node.children=node.children.filter((n:any)=>n.properties?.className?.includes('katex-mathml'));
-        node.children.push({type:'element',tagName:'img',properties:{className:['latex-svg'],src:`/math/${result.id}.svg`,alt:'',ariaHidden:'true',style:`width:${result.width}em;height:${result.height+result.depth}em;vertical-align:-${result.depth}em`},children:[]});
+        // A scrollable inline-block exposes its bottom edge as its baseline.
+        // Put TeX's depth on that outer box, not on an image inside a centered
+        // line box; otherwise p, subscripts and fractions all sit differently.
+        node.properties.style=`--math-baseline:-${result.depth}em`;
+        node.children.push({type:'element',tagName:'img',properties:{className:['latex-svg'],src:`/math/${result.id}.svg`,alt:'',ariaHidden:'true',style:`width:${result.width}em;height:${result.height+result.depth}em`},children:[]});
         return;
       }
       for(const child of node.children||[])walk(child,display);
