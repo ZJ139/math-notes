@@ -14,7 +14,7 @@ B116 继续暂跳过，不补解、不重编号。本批完成后累计完成 **
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 34 页](/files/problems/楼分析习题-v1.pdf#page=34)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B127—B133](/problems/b69d1a64f6e3c089263e7de7/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B127—B133](/problems/b69d1a64f6e3c089263e7de7/) · [下一批 B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/)
 
 ## 题号导航
 
@@ -499,7 +499,7 @@ $$
 | B139 | 导数递推；奇偶交替归纳 | 正最小值须实际取得；临界点处用相邻项恒等式求值。 |
 | B140 | 固定振幅分层；不交左区间；有理数编码 | 不假定右极限存在，不将一般不连续点误作跳跃点。 |
 
-[上一批：B127—B133](/problems/b69d1a64f6e3c089263e7de7/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+[上一批：B127—B133](/problems/b69d1a64f6e3c089263e7de7/) · [下一批：B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
 
 本批完成 B134—B140 七题，累计完成 139 题，B116 仍暂跳过。下一批从[习题 6.3.B 第 11 题](/files/problems/楼分析习题-v1.pdf#page=34)继续，保留原题号及星号，不重排既有编号。
 
