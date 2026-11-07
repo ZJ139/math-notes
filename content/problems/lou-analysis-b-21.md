@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "6.3.B", "Dini导数", "凸函数", "多项式实根", "最优常数", "B141-B147"]
 created_at: "2026-11-06"
-updated_at: "2026-11-06"
+updated_at: "2026-11-07"
 ---
 
 本批接续 6.3.B 第 10 题，严格按原书顺序连续完成 **B141—B147**，对应 **6.3.B 第 11—17 题**，七题均无星号。原题见仓库 PDF 第 34—35 页，题干、全部小问和极限符号已逐项对照页面图像核实。特别地，第 13、16 题使用的是带下横线的 **下极限**，第 15 题使用普通极限；第 17 题为开放探究题，以下给出具体命题、证明与反例。
@@ -14,7 +14,7 @@ B116 继续暂跳过，保留原位置与编号。本批完成后累计完成 **
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 34 页](/files/problems/楼分析习题-v1.pdf#page=34) · [第 35 页](/files/problems/楼分析习题-v1.pdf#page=35)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B134—B140](/problems/b1e99d01d263faff6fa790af/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B134—B140](/problems/b1e99d01d263faff6fa790af/) · [下一批 B148—B154（B148 待核）](/problems/cc82a0d37091875a19e034ec/)
 
 ## 题号导航
 
@@ -575,8 +575,8 @@ $$
 | B146 | 二阶差商下极限；广义最大值原理 | 允许正无穷，不要求普通极限；下极限非负不等于逐项非负。 |
 | B147 | 单侧最值判别；割线斜率；二次函数相减 | 区分左右方向与全点量词；给出连续性缺失、单点遗漏和严格性反例。 |
 
-[上一批：B134—B140](/problems/b1e99d01d263faff6fa790af/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+[上一批：B134—B140](/problems/b1e99d01d263faff6fa790af/) · [下一批：B148—B154（B148 待核）](/problems/cc82a0d37091875a19e034ec/) · [B 组章节总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
 
-本批完成 B141—B147 七题，累计完成 146 题，B116 仍暂跳过。6.3.B 已全部完成；下一批按原书顺序从[习题 6.4.B 第 1 题](/files/problems/楼分析习题-v1.pdf#page=36)继续，跳过其前的 A 组，保留原题号及星号。该题引用教材正文定理 6.4.2，作答前需核对所引定理及其证明，不能由题号猜测内容。
+本批完成 B141—B147 七题，累计完成 146 题，B116 仍暂跳过。6.3.B 已全部完成；[第二十二批 B148—B154](/problems/cc82a0d37091875a19e034ec/)已按原书顺序接续 6.4.B 第 1—6 题与 6.5.B 第 1 题，完成六题；其中 B148 引用的定理 6.4.2 原文与证明尚未取得，保留待核状态，不计入完成数。
 
 **资料来源：**楼红卫《数学分析》上册（2022），本站仓库《楼分析习题-v1.pdf》第 34—35 页。原题直接依据 PDF 核对；证明、条件辨析、反例与方法总结为本页整理。
