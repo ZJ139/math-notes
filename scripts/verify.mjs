@@ -74,6 +74,39 @@ if ((await fs.stat('content/problems/lou-analysis-b-23.md').catch(()=>null))?.is
     throw new Error('第二十三批前后批次衔接错误');
   console.log(`Verified Lou analysis B155–B161: ${inline} inline and ${display} display formulas; seven original numbers, PDF pages, chapter entries and batch links.`);
 }
+// The full-site batch checks must remain absent from minimal test fixtures.
+if ((await fs.stat('content/problems/lou-analysis-b-24.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-24.md','utf8');
+  const route='/problems/a0a262f9a6114b75980fa4f7/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||!Number.isInteger(display)||display===0
+     ||rendered!==inline+display||renderedDisplay!==display||/katex-error/.test(html))
+    throw new Error('楼分析 B162–B168 公式未全部渲染：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  const mapping=[
+    [162,'6.6',4,[38,39]],[163,'6.6',5,[39]],[164,'6.6',6,[39]],
+    [165,'6.6',7,[39]],[166,'6.6',8,[39]],[167,'7.1',1,[40]],[168,'7.2',1,[41]],
+  ];
+  for(const [number,section,original,pdfPages] of mapping){
+    const problem=source.split(`## 问题 B${number}\n`)[1]?.split(/^## /m)[0];
+    const chapter=await fs.readFile(path.join(root,`problems/collections/lou-analysis/chapters/${section.split('.')[0]}/index.html`),'utf8');
+    if(!html.includes(`id="问题-b${number}"`)||!problem?.includes(`习题 ${section}.B 第 ${original} 题`)
+       ||!chapter.includes(`${route}#问题-b${number}`)
+       ||pdfPages.some(page=>!problem.includes(`楼分析习题-v1.pdf#page=${page}`)))
+      throw new Error('第二十四批原题、PDF 页码或章节导航缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/07a9f1208dd119dd666e6278/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第二十四批未接入总目录或上一批：'+file);
+  }
+  if(!html.includes('/problems/07a9f1208dd119dd666e6278/')
+     ||!source.includes('习题 7.2.B 第 2 题')||!source.includes('对应 B169'))
+    throw new Error('第二十四批前后批次衔接错误');
+  console.log(`Verified Lou analysis B162–B168: ${inline} inline and ${display} display formulas; seven original numbers, PDF pages, both chapter entries and batch links.`);
+}
 for(const p of ['search','manage'])if(!(await fs.readFile(path.join(root,p,'index.html'),'utf8')).includes('noindex,follow'))throw new Error(`缺少 noindex：${p}`);
 if ((await fs.stat('content/problems/lou-analysis-b-02.md').catch(()=>null))?.isFile()) {
   // Guard against publishing source math syntax as literal text, as happened
