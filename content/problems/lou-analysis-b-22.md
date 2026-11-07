@@ -14,7 +14,7 @@ B116 继续暂跳过，不补解、不改编号。本批后累计 **152 道已�
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 36 页](/files/problems/楼分析习题-v1.pdf#page=36) · [第 37 页](/files/problems/楼分析习题-v1.pdf#page=37)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/)
+**批次导航：**[下一批 B155—B161](/problems/07a9f1208dd119dd666e6278/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/)
 
 ## 题号导航
 
@@ -442,6 +442,6 @@ $q$ 是偶函数，故 $F$ 是奇函数，进而 $F(-\alpha)=-F(\alpha)=0$。全
 | B153 | 已完成；局部原函数与零点逼近序列 | 连续因子过零时，需要有限差商控制导数，而非假定导数连续。 |
 | B154 | 已完成；严格凸偶函数的正组合 | 用积分异号实现边界抵消，同时保持严格高阶导数符号。 |
 
-本批保留 B148—B154 七个原始位置，完成其中六题，累计 152 道已作答；B116 与 B148 暂跳过，均未计入完成数量。6.4.B 六题已全部收录，其中第 1 题待核；6.5.B 已完成第 1 题。下一批从[习题 6.5.B 第 2 题](/files/problems/楼分析习题-v1.pdf#page=37)继续，不重排编号。
+本批保留 B148—B154 七个原始位置，完成其中六题，累计 152 道已作答；B116 与 B148 暂跳过，均未计入完成数量。6.4.B 六题已全部收录，其中第 1 题待核；6.5.B 已完成第 1 题。[第二十三批 B155—B161](/problems/07a9f1208dd119dd666e6278/)已接续完成 6.5.B 第 2—5 题及 6.6.B 第 1—3 题，不重排编号。
 
-**前后批次：**[上一批 B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+**前后批次：**[下一批 B155—B161](/problems/07a9f1208dd119dd666e6278/) · [上一批 B141—B147](/problems/34eb78e3e4a49ef3cd2e4063/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
