@@ -1,0 +1,795 @@
+{
+  "categories": [
+    {
+      "code": "A",
+      "name": "张冠李戴",
+      "definition": "把原文的行为、观点或得失移给另一人物、机构、群体或指代对象。",
+      "signals": "同段有多个名字、两个调查，或 former／latter、it／they 的回指。",
+      "method": "写成“谁—做什么—对谁”；引用者、被引者与作者分开。",
+      "boundary": "如果只是同一对象的性质换了，优先归 R02；不能仅因段落相邻就标 R01。"
+    },
+    {
+      "code": "B",
+      "name": "偷换概念",
+      "definition": "主体可能不变，但动作、对象、指标、性质、行为方式或讨论层次变了。",
+      "signals": "retention／enrollment；获利／收入；有能力／已实施；应当／已经。",
+      "method": "保留名词之外的谓语和宾语；问两种说法能否在本文条件下互相替换。",
+      "boundary": "R02 是较宽的描述类；若同时改了方向、时间或因果角色，再保留相应的 R05、R06、R07。"
+    },
+    {
+      "code": "C",
+      "name": "以偏概全与范围失配",
+      "definition": "把局部当整体、删去人群限定，或用过宽／过窄的主题替代原文讨论范围。",
+      "signals": "一段替全篇，some 变全部，一类学校变所有教育，背景例子变中心。",
+      "method": "将选项覆盖范围与题干要求对齐；主旨项还须安放主要论证段。",
+      "boundary": "概括本身并非错误：正确项允许抽象，但不能删除决定性限定。"
+    },
+    {
+      "code": "D",
+      "name": "无中生有",
+      "definition": "新添原文未交代的事件、行动、计划、比较、指标或心理状态。",
+      "signals": "突然出现调查未测的兴趣、未说的复制计划、未交代的外部敦促。",
+      "method": "逐个圈出新增动词及限定，给它寻找可指认的证据句。",
+      "boundary": "与 R09 区分：R04 更偏新增独立事实；R09 更偏由已知事实多推出一步。可并存。"
+    },
+    {
+      "code": "E",
+      "name": "逻辑关系颠倒",
+      "definition": "改变正反、主动被动、比较次序、允许禁止、条件与结果等关系。",
+      "signals": "prevent／allow；引用／被引；more／equal；没有效果／有效。",
+      "method": "先将关系译成最短中文，再比较两端位置和方向。",
+      "boundary": "因果颠倒同时归 R07；一个否定词出现不等于整句含义已经确定。"
+    },
+    {
+      "code": "F",
+      "name": "时间范围与状态变化",
+      "definition": "把过去、目前、未来、初衷、后来效果或已然未然放在错误阶段。",
+      "signals": "originally／now；still／ever；has done／will do；状态变成变化过程。",
+      "method": "先用题干确定时间格，再将原句放入同一格比较。",
+      "boundary": "文章出现时间对比，不等于每个错误项都属于 R06；统计只标有实际阶段错配的选项。"
+    },
+    {
+      "code": "G",
+      "name": "因果关系误判",
+      "definition": "原因、结果、动机、手段或实验变量被改换，或从相关／结果无据反推原因。",
+      "signals": "因为／所以；目的／效果；研究中改了什么／测了什么。",
+      "method": "分别记“起因—过程—结果”；实验题先列干预条件和结果指标。",
+      "boundary": "不是凡问 why 都标 R07。标签针对错误项实际怎样破坏关系。"
+    },
+    {
+      "code": "H",
+      "name": "程度夸大与缩小",
+      "definition": "把有限、相对、可能的判断推向绝对，或无据强化／减弱数量、强度和评价。",
+      "signals": "groundless、all、never、greatly、minimal；少量变化改成 many。",
+      "method": "用原文标定允许的强度：有／多／全部，可能／确定，目前／永久。",
+      "boundary": "强词不自动错误；may 也不能救活本来没有证据的命题。"
+    },
+    {
+      "code": "I",
+      "name": "推断过度",
+      "definition": "从已有事实推到原文没有保证的新结论，缺少必要的中间证据。",
+      "signals": "忙碌推忠诚；好成绩推好教学；一地研究推必然普遍受益。",
+      "method": "追问：即使原文全部成立，选项是否仍可能不成立？缺的那一步是什么？",
+      "boundary": "阅读允许合理概括；不是要求答案逐字复现。应比较四项的证据距离。"
+    },
+    {
+      "code": "J",
+      "name": "态度误读",
+      "definition": "误判评价者、评价对象、褒贬方向、强弱程度，或把有保留立场读成中立。",
+      "signals": "他人引语；正面词落在别的对象；让步；反问；认可与敬重的差别。",
+      "method": "同时核对“谁—对什么—正负—强弱”，把事实与评价分列。",
+      "boundary": "客观叙述、权衡利弊与态度不明不同；态度标签也可与 R01、R08 重叠。"
+    },
+    {
+      "code": "K",
+      "name": "答题焦点与文段功能错判",
+      "definition": "内容可能真实或相关，却未回答题干；将背景、例子内容、论点或结论功能混淆。",
+      "signals": "问例子作用却答例子事实；问主要目的却答附带益处。",
+      "method": "将题干改成一个空槽：作者举此例，是为了证明“____”。",
+      "boundary": "这是补充类，不把所有不匹配都强行归入前十类；可与范围类 R03 并用。"
+    },
+    {
+      "code": "L",
+      "name": "语境词义与搭配误读",
+      "definition": "忽略词性、宾语、习语或上下文，用熟悉义项替代当前义项。",
+      "signals": "power 的名词／动词；beef up skills；challenging 不是争议。",
+      "method": "先定词性与搭配，再用同段复述、正反方向和例子验证词义。",
+      "boundary": "只有错误机制确实依赖词义／搭配时才标 R12；生词出现本身不是错误机制。"
+    }
+  ],
+  "methods": [
+    [
+      "先把选项当成一句可检验的命题",
+      [
+        "读题时保留四件事：问谁、问哪一段或哪一时段、问事实还是态度、问什么关系。把题干中的 according to、original、most、purpose、best title 当作约束，不要只圈话题名词。",
+        "找到证据后，压缩成“主体—动作／判断—对象—限定—关系”。例如 2019-T2-Q28 的核心不是“大学、成绩、学生”三个名词，而是“学校的留存和毕业指标可能影响资金”。只对名词会被 enrollment、teaching quality 诱走。",
+        "先独立说一句中文答案，再看四个英文选项。逐项比较：哪一个完整保存关系，哪一个换了主体，哪一个少了限定，哪一个多加了事实。排除理由应能落到词或关系，不能只说“感觉不对”。"
+      ]
+    ],
+    [
+      "定位不是只读含关键词的一句",
+      [
+        "细节题先读定位句及前后各一句：前句可能给代词来源，后句可能解释术语。对比题须把两侧都读完；因果题须找到起点和终点；例证题常须回到例前论点，再用例后总结确认。",
+        "段落限定优先于全文常识。2018-T4-Q37 问第二段的现代化受阻原因，不能用第一段邮件需求下降替代利益集团施压。来自原文别处的真信息，仍可能答错当前问题。",
+        "主旨与行文方式题使用“覆盖检验”：给每个主体段写一个动词短语，将候选标题放在上方，检查是否能解释这些段落为何存在。无需每个例子都进标题，但中心对象与核心判断不能丢。"
+      ]
+    ],
+    [
+      "缺词时先保住关系",
+      [
+        "把暂时不认识的专名、材料名、机构名记作 X，但保留词性和句法位置。2022-T1-Q23 不懂聚氨酯名称，仍能由 light damage—dark—prevent 恢复“避光防损”的关系。",
+        "优先处理会改变答案的词：否定、比较、时间、情态、因果以及选项的核心谓语。形容风景的词暂缺，通常不妨碍推理；若不认识必要选项的核心动词，就应借词形、搭配或上下文继续判断，不能装作已经知道。",
+        "先排除有明确矛盾的选项，再比较剩余项的证据距离。排除三项不等于自动证明第四项；最后仍要补一句“正确项如何由原句得到”。若关键限制确实无法确定，标记疑点，复习时定点查词。"
+      ]
+    ],
+    [
+      "从做对一题到迁移一类题",
+      [
+        "每次复盘写下四行：原文实际说什么；我选的项多了／少了／换了什么；正确项如何改写；下次先检查哪一个位置。把“生词太多”改成可操作的记录，例如“未识别 only 限定的宾语”。",
+        "先做同类跨年对照，再做混合检验。可先比较 2019-T2-Q27 与 2024-T3-Q33 的时间阶段，再混入 2018-T3-Q32 的主体错配，检验自己是在读取证据还是只凭分类标题作答。",
+        "本册没有你的作答记录，因此不判断你的薄弱项。可自行记录首次作答与复习重做，但一次错题不能直接当成稳定弱点；也不要把下文的题目分类数当作考生实际错误率。"
+      ]
+    ]
+  ],
+  "boundaries": [
+    [
+      "2019-T2-Q29：identical 并非见词就错",
+      "正确项 C 的 To be identical with each other 受 On this 与 seem 的语境限制，表达在眼前所谈动机上趋于一致，不能扩成所有利益完全相同。“绝对词必错”会在这里误伤正确项。"
+    ],
+    [
+      "2018-T4-Q38：removing 要放回具体负担",
+      "正确项 A 概括卸下退休医疗预筹压力，原文是 largely offset；本册沿用原解析的选择，同时保留这个程度边界。不要另写成邮政局从此取消所有退休医疗开支。"
+    ],
+    [
+      "2019-T4-Q38：相关不等于最精确",
+      "A“阻碍经济发展”与 limited states’ ability ... 有联系，但 C“损害公平竞争”有明确的一一对应。排除理由应是 A 泛化了主体和结果、证据精度不足，不能断言现实中绝无经济影响。"
+    ],
+    [
+      "2022-T4-Q39：较低薪酬不等于已发生统一降薪",
+      "正确项 B 的 salary cuts 在原解析中按 pay staff less 的薪酬受压理解。原文没有给出每个员工先前工资、削减幅度或统一实施事件；专册不补这些数字或事实。"
+    ],
+    [
+      "2023-T3-Q33：will 所在的说话层级",
+      "题干问发言人似乎传达什么，因此 B 的 will be removed 应放在 hopeful 的乐观预期中理解；若问题改问限制是否已经解除，现有证据不够。"
+    ],
+    [
+      "2025-T1-Q25：可能最好不是已证最优",
+      "A 是与其余三项比较后较有支持的保留性推断。原文明确还需更多研究，未报告跨剧作家的系统比较。保留 may 并说明证据限度，胜过把正确答案改写成强结论。"
+    ]
+  ],
+  "vocabulary": [
+    [
+      "tackle",
+      "处理、应对",
+      "2018-T1-Q22",
+      "教育、创业、税制三组措施解释该动作；不要升级为避免全部后果。"
+    ],
+    [
+      "beef up / sharpen",
+      "加强、磨炼技能",
+      "2018-T2-Q27",
+      "宾语 skills 与下文 more skillful 验证方向；不用逐字翻译 beef。"
+    ],
+    [
+      "take account of",
+      "考虑、顾及",
+      "2018-T3-Q31",
+      "too little account of rights 不是少建账户，而是未充分顾及权利。"
+    ],
+    [
+      "mend one’s ways",
+      "改正做法",
+      "2018-T3-Q32",
+      "主语是 NHS；不要借邻句的道歉替换其行为。"
+    ],
+    [
+      "offset / the latter",
+      "抵消／两者中的后者",
+      "2018-T4-Q38",
+      "先列邮资上调与医保转入，再用 latter 指回第二项。"
+    ],
+    [
+      "retention",
+      "留存、保留",
+      "2019-T2-Q28",
+      "留住在校生，与招收新生区分；用 keep students in school 互证。"
+    ],
+    [
+      "aligned / complement",
+      "方向一致／相互补足",
+      "2019-T2-Q29",
+      "共同目标一致不等于各自提供对方缺少的部分。"
+    ],
+    [
+      "even playing field",
+      "公平的竞争条件",
+      "2019-T4-Q38",
+      "even 在此为公平、平等，不是“甚至”；看 competing。"
+    ],
+    [
+      "title / crown",
+      "称号、荣誉头衔",
+      "2020-T1-Q21",
+      "town of culture 语境，不能一律译为标题或王冠。"
+    ],
+    [
+      "a license to print money",
+      "获利丰厚的机会或经营模式",
+      "2020-T2-Q26",
+      "由免费内容与高利润解读比喻，不是字面的印钞许可。"
+    ],
+    [
+      "frown on",
+      "不赞成",
+      "2020-T3-Q32",
+      "与 welcomed 相反；需认识整个短语的评价方向。"
+    ],
+    [
+      "account",
+      "叙述、报道",
+      "2019-T4-Q40",
+      "a factual account 是事实叙述；与银行账户无关。"
+    ],
+    [
+      "subject to",
+      "受到、易受……影响",
+      "2025-T4-Q37",
+      "neglect、damage 等宾语决定具体含义；还要检查比较有无依据。"
+    ],
+    [
+      "concern / discontent",
+      "担忧／不满",
+      "2020-T2-Q28；2018-T4-Q39",
+      "担忧风险与批评行为不同；先找具体评价对象。"
+    ],
+    [
+      "challenging",
+      "有挑战性的、困难的",
+      "2022-T1-Q24；2022-T3-Q31",
+      "在积极合作体验中也可为正面描述，不等于引发公众争议。"
+    ],
+    [
+      "inherently flawed",
+      "本身有缺陷",
+      "2022-T1-Q22",
+      "制作时配比错误使某些物品埋下隐患；不要扩大到所有塑料。"
+    ],
+    [
+      "wanting",
+      "不足、不够好",
+      "2022-T2-Q27",
+      "promise has been found wanting 是旧承诺显得不可靠，不是“承诺想要”。"
+    ],
+    [
+      "handbrake",
+      "阻碍、约束（比喻）",
+      "2022-T4-Q37",
+      "后接生产率提升，故不是车上手刹的物理问题。"
+    ],
+    [
+      "inventory / stock",
+      "存量、库存",
+      "2023-T2-Q26；2023-T3-Q33",
+      "住房和书店语境中不是“目录／股票”；库存低不等于估计偏低。"
+    ],
+    [
+      "retire",
+      "撤回、移走",
+      "2023-T3-Q32",
+      "宾语 books，去向 relevant sections；不是书籍“退休”。"
+    ],
+    [
+      "citation",
+      "引用；被引需看方向",
+      "2023-T4-Q36",
+      "papers are cited 与 works contain citations 的箭头相反。"
+    ],
+    [
+      "oblige",
+      "按要求照办",
+      "2023-T4-Q40",
+      "do not oblige 是不要听从不当加引文的要求。"
+    ],
+    [
+      "credit",
+      "功劳；信用额度",
+      "2024-T1-Q23；2023-T3-Q32",
+      "most of the credit goes to 与 a credit limit 是不同义项。"
+    ],
+    [
+      "public domain / attribution",
+      "公有领域／署名归属",
+      "2024-T3-Q32、Q34",
+      "前者不是公共机构；后者不是泛指用户信息。"
+    ],
+    [
+      "instruction / outcomes",
+      "教学方式／学习成效",
+      "2025-T1-Q22",
+      "实验语境先找教学差异，再找结果指标。"
+    ],
+    [
+      "identify with / in one’s shoes",
+      "认同、共情／设身处地",
+      "2025-T1-Q24",
+      "不是辨认名字；人物情感与角色写作帮助确定含义。"
+    ],
+    [
+      "formidable / any old",
+      "令人畏惧的／随便哪个",
+      "2025-T1-Q25",
+      "语言丰富不自动等于难以克服；any old 不必带古代义。"
+    ],
+    [
+      "power / rewards",
+      "供能（动词）／社会收益",
+      "2025-T2-Q29、Q28",
+      "power our intelligence 中 power 是动作；rewards 不限奖品。"
+    ],
+    [
+      "plateau / decline",
+      "趋于平稳／下降",
+      "2025-T3-Q34",
+      "增长停住不等于数量下降，更不等于消除。"
+    ],
+    [
+      "carrier / migration",
+      "载体／数据迁移",
+      "2025-T4-Q39",
+      "磁盘留下不等于文件仍可读取；migration 指随技术变化转存。"
+    ]
+  ],
+  "syntax": [
+    [
+      "2023-T2-Q27",
+      "The state Legislature recently voted against a bill that would’ve made it illegal for towns to create legislation restricting short-term rentals.",
+      "主干谓语是 voted against，主语为州议会，宾语为法案。",
+      "that 引出修饰 bill 的定语从句；从句的谓语是 would have made。",
+      "it 为形式宾语，后面的 for towns to create legislation 才是被判为 illegal 的行为；restricting... 修饰 legislation。",
+      "州议会否决了一个法案；该法案本来会禁止地方制定限制短租的法规。题干问法案目的，保留内层“禁止限制”，不要用外层否决替换。"
+    ],
+    [
+      "2018-T3-Q31",
+      "It is against that background that the information commissioner, Elizabeth Denham, has issued her damning verdict against the Royal Free hospital trust under the NHS, which handed over to DeepMind the records of 1.6 million patients in 2015 on the basis of a vague agreement which took far too little account of the patients’ rights and their expectations of privacy.",
+      "核心动作是 commissioner has issued a verdict：专员作出裁定。",
+      "It is ... that 是强调结构，强调背景；第一个 which 接医院信托机构，第二个 which 接 agreement。",
+      "Elizabeth Denham 是同位语；against... 是裁定针对的对象，to DeepMind 是数据接收方。",
+      "在此背景下，专员批评医院信托机构：它依据一份未充分顾及患者权利的协议移交病历。患者期待隐私被尊重，不能将期待移给 DeepMind。"
+    ],
+    [
+      "2021-T2-Q29",
+      "Even if this program didn’t reduce poverty, ... the value of the avoided deforestation just for carbon dioxide emissions alone is more than the program costs.",
+      "主句谓语是 is，主语中心词是 value，比较对象是 program costs。",
+      "Even if 引出让步条件；didn’t reduce poverty 不代表研究实际发现项目无法减贫。",
+      "of the avoided deforestation 解释价值来自避免毁林；just ... alone 将估值限定为仅考虑碳排放。",
+      "即便不计减贫收益，仅避免毁林带来的碳排放价值也超过成本。让步是为了突出额外环保价值，不能把它当成减贫失败的报告。"
+    ],
+    [
+      "2023-T1-Q23",
+      "A study last year by the National Center for Science Education, a non-profit group of scientists and teachers, looking at how state public schools across the country address climate change in science classes, gave barely half of US states a grade B+ or higher.",
+      "等到 gave 才找到全句主干：A study gave ... a grade。",
+      "how ... address ... 是 looking at 的宾语从句，说明研究关注什么。",
+      "by... 交代研究机构；a non-profit group... 为同位语；looking at... 为后置修饰。",
+      "该研究评估各州公校怎样教气候变化，只有不足或约一半州获 B+ 及以上。研究测的是教学表现，没有直接测决策者的动机或监督缺失。"
+    ],
+    [
+      "2024-T3-Q33",
+      "The online search brought back work that had his name attached to it but wasn’t his.",
+      "主句为 search brought back work：搜索返回了作品。",
+      "that 引导定语从句，修饰 work；had 与 wasn’t 由 but 并列。",
+      "had his name attached to it 中 attached to it 说明名字附着于作品；his 在 wasn’t his 中替代 his work。",
+      "搜索出现的作品挂着他的名字，却不是他的作品。名字归属与创作归属是两个维度，不能读成他发现了自己的新作品。"
+    ],
+    [
+      "2022-T2-Q26",
+      "This is not to say that there is no point in getting a degree, but rather stress that a degree is not for everyone, that the switch from classroom to lecture hall is not an inevitable one and that other options are available.",
+      "主干按意思读为“这不是说……，而是强调……”。",
+      "第一个 that 接被否定的误解；后面并列的三个 that 接要强调的三个判断。",
+      "not for everyone 是不适合每一个人；not an inevitable one 是否定必经性，而非否定所有价值。",
+      "大学不是人人必走的一条路，还有别的选择；并不是读大学毫无意义。部分否定尤其要保留 everyone 的作用范围。"
+    ],
+    [
+      "2023-T3-Q34",
+      "Big-name PRH authors may suffer a bit, but it’s those mid-list authors, who normally rely on Waterstones staff’s passion for promoting books by lesser-known writers, who will be praying for an end to the dispute.",
+      "前半是知名作者 may suffer a bit；后半是中等知名度作者 will be praying。",
+      "后半 it is ... who 为强调结构；插入的 who normally rely... 是另一个定语从句。",
+      "先暂放 normally rely... 的长修饰，找回被强调的人；再补其依赖书店推广的原因。",
+      "大牌作者可能略受影响，但更盼争端结束的是依赖推广的中等知名度作者。不能把这组人的损失移给全体书店或大牌作者。"
+    ],
+    [
+      "2025-T4-Q40",
+      "I’d be lying if I said a comprehensive preservation solution currently exists.",
+      "主干是 I would be lying：我那样说就是在撒谎。",
+      "if I said ... 为条件从句；solution currently exists 是 said 的宾语从句，that 可省略。",
+      "comprehensive 限制方案必须全面；currently 限制为目前，不是永久。",
+      "若我说目前已有全面保存方案，就是撒谎；因此作者实际上不承认目前存在这种方案。不能因看见 exists 就读成方案已存在，也不能推成永远无解。"
+    ]
+  ],
+  "cases": [
+    {
+      "code": "A",
+      "id": "2018-T3-Q32",
+      "focus": [
+        "A",
+        "D"
+      ],
+      "title": "相邻两句，动作不能换主人",
+      "paragraph": "P2",
+      "evidence": "DeepMind has almost apologized. The NHS trust has mended its ways.",
+      "translation": "DeepMind 差不多算是道了歉。NHS 信托机构已改正做法。",
+      "context": "P1 交代患者资料协议受到批评；P2 紧接着分别写两家机构的回应，再说明未来安排须受审查。题干只问 NHS 信托机构。",
+      "logic": "先将两句各写成“机构—行为”。NHS 对应改正，故选 C。D 借用前句的道歉，又将 almost 改为 sincere；A 把已经改正降为空口承诺。",
+      "unknown": "不懂 mended，可先认出两个不同主语。D 中 apologies 与 apologized 虽词形相近，却属于另一个主体；再用后文许可、清理数据的安排确认这里说的是调整行为。",
+      "compare": "与 2024-T3-Q34 比较：同段出现多个机构时，先配对主体与谓语，再做同义替换。"
+    },
+    {
+      "code": "A",
+      "id": "2024-T3-Q34",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "艺术家联盟与 AI 公司各做什么",
+      "paragraph": "P8",
+      "evidence": "The group is in its early days of mobilization, which could involve pushing for new policies or regulation. One suggestion is that AI models could be trained on images in the public domain, and AI companies could forge partnerships with museums and artists, Ortiz says.",
+      "translation": "这个团体正处于动员初期，可能会推动新政策或监管。一项建议是用公有领域图像训练 AI 模型，AI 公司还可以与博物馆和艺术家建立伙伴关系。",
+      "context": "前文的 The group 指正在形成的艺术家联盟；随后才转到对 AI 公司的建议。题干问的是后者。",
+      "logic": "推动政策属于联盟，故 A 主体错位；伙伴对象是博物馆与艺术家，故 C 不能换成 AI 用户。D 将训练素材与合作方式概括为不同的训练策略。",
+      "unknown": "不懂 forge，可保留 partnerships with 后的对象，读成“与这些人建立某种合作”。不懂 public domain 的法律术语，也可先凭主语和并列的两项建议排除 A、C。",
+      "compare": "与 2018-T3-Q32 相同：选项可以逐字重复原文，但只要把行为移给另一主体，仍然不能成立。"
+    },
+    {
+      "code": "B",
+      "id": "2019-T2-Q28",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "留住学生不等于招来学生",
+      "paragraph": "P5",
+      "evidence": "For public institutions, state funds are sometimes tied partly to their success on metrics such as graduation rates and student retention — so better grades can, by boosting figures like those, mean more money.",
+      "translation": "对公立院校而言，州拨款有时部分取决于毕业率、学生留存率等指标上的表现，因此更好的成绩可能通过改善这些数字，带来更多资金。",
+      "context": "P4 是学校宣称的学习收益；P5 转向学校自身的资金利益。题干明确限定 P5，不能把两个段落的落点混在一起。",
+      "logic": "保留“成绩—留存／毕业指标—资金”的链条，得到 A。B 把留住已在校学生换成招收新生；C 把分数指标改善换成教学实质改善，都多加了原文未保证的一步。",
+      "unknown": "暂不认识 retention，也先圈住 funds 和 more money，确定段落结果是资金。再用 keep students in school 回看 retention：重点是“留下”，不是“进来”。",
+      "compare": "与 2024-T3-Q32 比较：近义话题不等于同一对象；这里要核对流入与留存，后者要核对图像与用户信息。"
+    },
+    {
+      "code": "B",
+      "id": "2024-T3-Q32",
+      "focus": [
+        "B",
+        "D"
+      ],
+      "title": "未经许可，但究竟用了什么",
+      "paragraph": "P2—P3",
+      "evidence": "But these open-source programs are built by scraping images from the internet, often without permission and proper attribution to artists.",
+      "translation": "但是，这些开源程序是通过从互联网上抓取图像建立起来的，而且往往没有获得许可，也没有恰当地标明艺术家署名。",
+      "context": "P2 说明工具可模仿某位艺术家的风格；P3 的 But 将重点转到训练材料的获取方式，而非生成性能。",
+      "logic": "C 的 unauthorized use 对应 without permission，online images 对应 images from the internet。D 保留“未经同意”，却把图像换成用户信息。B 则把能生成相近风格改成风格不可预测。",
+      "unknown": "不懂 scraping，可先确定其宾语 images，再与选项的 artworks、user information 比较。一个动词未认识，不妨先用主语、宾语和否定范围完成初轮排除。",
+      "compare": "与 2019-T2-Q28 相同：不要只找相似词；写出“谁—做什么—对什么”，三个槽位必须同时一致。"
+    },
+    {
+      "code": "C",
+      "id": "2018-T1-Q25",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "冲击是背景，对策才覆盖主体",
+      "paragraph": "P1、P4—P6",
+      "evidence": "What happens when the robots come for their jobs? / The first step ... should be rethinking education and job training. / Starting new companies must be made easier.",
+      "translation": "机器人要来抢他们的工作时会怎样？／第一项措施应是重新思考教育与职业培训。／必须让创办新公司变得更容易。",
+      "context": "P1 提出问题；P2—P3 说明冲击及转型困难；P4、P5、P6 连续提出培训、创业、税收三组措施；P7 再强调配套政策。斜线分隔不同位置的摘句，省略号表示句内删节。",
+      "logic": "B 能统摄三段建议。C 所说的令人担忧的影响确实在文中，但只覆盖前半部分；A 把一处乐观观点的讨论放大为全篇对立观点结构。",
+      "unknown": "不懂政策名词，仍可追踪 The first step、should、must、Finally、need to。把段落缩成“培训／创业／调税”三个动词短语，就能判断它们共同承担解决问题的功能。",
+      "compare": "与 2025-T4-Q40 比较：标题或篇章结构项必须解释主体段为何存在；“文中提到”只满足必要条件。"
+    },
+    {
+      "code": "C",
+      "id": "2025-T4-Q40",
+      "focus": [
+        "A",
+        "B"
+      ],
+      "title": "图书馆员的贡献为何不是全文标题",
+      "paragraph": "P1—P5",
+      "evidence": "Digital information requires a great deal more care than analog. / Even when a digital object is preserved, it may only be the carrier that’s saved, not the information itself.",
+      "translation": "数字信息比模拟材料需要多得多的照料。／即使数字对象保存下来，被保存的也可能只是载体，而不是信息本身。",
+      "context": "P1 以实物遗存引题；P2 比较媒介；P3 写保存劳动易被忽视；P4 写格式过时与迁移；P5 承认尚无全面方案。",
+      "logic": "D 同时保留 digital historical records 和 challenge。B 只覆盖第三段的职业贡献；A 扩大到一般遗物，删去了讨论对象中最关键的 digital 限定。",
+      "unknown": "不懂 analog，先用 letters、photographs 与 digital、files 两组例子分出实物和数字信息。再问每段在解释哪一种保存困难，而不是统计哪个职业词出现最多。",
+      "compare": "2018-T1-Q25 的干扰项缩到背景，这一题的 B 缩到一段；两题都可用“剩下的主要段落是否无处安放”检查覆盖度。"
+    },
+    {
+      "code": "D",
+      "id": "2022-T1-Q23",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "保护原作不能补成复制计划",
+      "paragraph": "P4—P5",
+      "evidence": "It’s especially vulnerable to light damage ... Museums locked some of them away in the dark. / ... their goal was to prevent further light damage and rebuild worn polymer fibers.",
+      "translation": "这种材料尤其容易受到光损伤……博物馆把其中一些作品锁在暗处。／这些处理材料的目标，是防止进一步光损伤并修复磨损的聚合物纤维。",
+      "context": "作品已开裂，因而避光停展；随后化学家尝试加固，使部分原作重新展出。没有复制品登场。",
+      "logic": "D 对应避光和保护的直接目的。B 新增“复制—未来展出”的计划；C 看见化学家便补出“为了分析成分”，也没有得到停展目的句支持。",
+      "unknown": "不懂 polyurethane，仍可依次抓 light、dark、damage、prevent：光会伤害，所以避光保护。专业材料名称可以暂作 X，不影响因果方向。",
+      "compare": "与 2025-T3-Q33 比较：原文没有复制计划，也没有“被敦促”的事件；常见的现实做法不能自动写进答案。"
+    },
+    {
+      "code": "D",
+      "id": "2025-T3-Q33",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "确实组建，不等于受到敦促才组建",
+      "paragraph": "P4",
+      "evidence": "... failed five years earlier to build consensus between Hollywood and Silicon Valley ... / In 2017 the association formed the Alliance for Creativity and Entertainment (ACE), an enforcement task force ...",
+      "translation": "……五年前未能在好莱坞与硅谷之间建立共识……／2017 年，该协会成立了创意与娱乐联盟 ACE，一支执法特别小组……",
+      "context": "前半交代协调立法未果，后半交代成立执法团队。题目中的 A 是对这一轮协调未获合作的有限概括，不应读成永久拒绝合作。",
+      "logic": "B 新增全国抗议这种行动形式；C 保留 formed，却添入 was urged to 所要求的外部敦促者和动机。原文的事件发生，并不能证明选项添加的事件原因。",
+      "unknown": "不懂 consensus，可用 between A and B 确定需要双方形成一致；failed 给出未成功。对 C 则只比较 formed 与 was urged to form：后者多了“有人要求它”的一层。",
+      "compare": "与 2022-T1-Q23 相同：把选项每个新增动词圈出，逐一问原文在哪里交代，而不是只检查关键词有没有出现。"
+    },
+    {
+      "code": "E",
+      "id": "2023-T2-Q27",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "禁止限制，是放开还是收紧",
+      "paragraph": "P2",
+      "evidence": "The state Legislature recently voted against a bill that would’ve made it illegal for towns to create legislation restricting short-term rentals.",
+      "translation": "州议会最近否决了一项法案；该法案原本会使城镇制定限制短租的法规成为违法行为。",
+      "context": "主句交代法案被否决；that 从句交代法案原本要做什么。题干问 was intended to，索取的是后一层目的。",
+      "logic": "先还原内层“地方限制短租”，再还原“让这种限制违法”，得到放宽短租市场，即 D。A 把双层限制读成加强管制；C 把 illegal 的对象换成住房交易。法案未通过也不能反转其原定目的。",
+      "unknown": "遇到嵌套句，把动作按顺序写成中文短语：限制短租；不许地方限制；议会否决这一方案。三层各有自己的施事者，最后依题干选择所问层级。",
+      "compare": "与 2023-T4-Q36 比较：一个是限制方向，一个是引用方向；先把关系写清，再处理专有名词。"
+    },
+    {
+      "code": "E",
+      "id": "2023-T4-Q36",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "引用别人还是被别人引用",
+      "paragraph": "P1",
+      "evidence": "The careers of scientists and the reputation of their institutions depend on the number and prestige of the papers they produce, but even more so on the citations attracted by these papers.",
+      "translation": "科学家的职业发展与所在机构的声誉，取决于他们所发表论文的数量和声望，但更取决于这些论文吸引来的引用。",
+      "context": "段首先介绍论文评价指标，随后强调被引次数的作用。后文的引用操纵正是围绕这一指标展开。",
+      "logic": "B 把 attracted by 改写成 are cited，方向一致。A 的 works contain 是论文内部列了多少参考文献，方向相反。C 则把论文声望移给合作者。",
+      "unknown": "不知道 citation，可由 cite 的动词关系画出“别人引这篇／这篇引别人”。attracted 表示吸引而来，are cited 是被动；不必理解期刊指标的全部技术细节。",
+      "compare": "与 2023-T2-Q27 相同：关系词不是装饰。选项和原文共享名词时，优先比较主动／被动、允许／禁止。"
+    },
+    {
+      "id": "2021-T4-Q38",
+      "code": "E",
+      "title": "监管者与被约束者，方向不能反转",
+      "focus": "AC",
+      "paragraph": "P3，结合P1对偏袒风险的说明",
+      "evidence": "other agencies would protect against anti-competitive behavior, such as a broadband-providing conglomerate like AT&T favoring its own video-streaming service at the expense of Netflix and Apple TV.",
+      "translation": "其他机构会防范反竞争行为，例如像AT&T这样的宽带综合企业，偏袒自家流媒体视频服务，损害Netflix与Apple TV的利益。",
+      "context": "FCC声称其他机构会处理反竞争行为，随后作者指出FCC却结束了相关调查。such as引出的AT&T是被约束行为的例子，不是前面的other agencies。",
+      "logic": "B按段落信息概括AT&T的行为性质，engages in表示从事。A把防范者与被防范行为的实施者颠倒，同时发生主体错配；C把ended investigations改成is under investigation，且把宽带供应商这一类直接缩为AT&T。此处不额外推出已有确定的司法定罪。",
+      "unknown": "即使不认识conglomerate，也可把它暂记成“一类公司”。抓such as判断例证归属，再用its own与at the expense of识别自家受益、对手受损；不要因同句出现protect便把AT&T当保护者。",
+      "compare": "2023-T4-Q36区分“被引用”与“引用别人”，本题区分“保护竞争”与“实施反竞争行为”。两题都需先写清动作的施受方向；专有名词只作角色标记。"
+    },
+    {
+      "code": "F",
+      "id": "2019-T2-Q27",
+      "focus": [
+        "B",
+        "D"
+      ],
+      "title": "最初目的与后来利益",
+      "paragraph": "P3",
+      "evidence": "The use of this little-known practice has accelerated in recent years ... / When this practice first started decades ago, it was usually limited to freshmen ... if they struggled in their transition to college-level courses.",
+      "translation": "近几年，这项鲜为人知的做法使用得更快、更广……／几十年前刚开始时，它通常只限新生……如果他们在向大学课程过渡时感到困难。",
+      "context": "同段先写近年保留学生、学费和毕业率的考虑，再回溯几十年前帮助新生的初衷，最后返回如今的扩大适用。",
+      "logic": "题干 original purpose 要求锁住 first started。A 对应新生适应；B、D 都可能是后来推广的动机，却不是本题所问的起点。它们不是无中生有，而是时间挂错。",
+      "unknown": "不懂 forgiveness 的制度名称，可暂写“政策 X”。只靠 in recent years、first started、decades ago、now，先画出三个时段，再把目的放回相应时段。",
+      "compare": "与 2024-T3-Q33 比较：真实信息也会因阶段不符而失去作答资格；“最初”和“后来发现”不能混用。"
+    },
+    {
+      "code": "F",
+      "id": "2024-T3-Q33",
+      "focus": [
+        "A",
+        "B"
+      ],
+      "title": "起初期待与搜索发现",
+      "paragraph": "P4",
+      "evidence": "Rutkowski was initially surprised but thought it might be a good way to reach new audiences. Then he tried searching for his name ... The online search brought back work that had his name attached to it but wasn’t his.",
+      "translation": "鲁特科夫斯基起初惊讶，但认为这或许能接触新受众。后来他搜索自己的名字……搜索结果出现了带着他名字、却不是他创作的作品。",
+      "context": "initially 是期待，Then 开始实际搜索，随后才是发现。题干的 After searching online 指定第三个位置。",
+      "logic": "C 对应搜索结果。A 摘自真实的前一句，却把搜索前的期待写成搜索后的发现；B 将辨认出非本人作品扩写成发现一种通用识别方法。",
+      "unknown": "不懂带名字的复杂表达时，先读 work ... but wasn’t his：“作品，但不是他的”。had his name attached to it 补出“挂着他的名字”，两者可以同时成立。",
+      "compare": "2019-T2-Q27 要回到初衷，这题要跟到后来的发现。时间词应服从题干，不是越靠后的句子越优先。"
+    },
+    {
+      "code": "G",
+      "id": "2018-T4-Q36",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "财务失衡是现象还是原因",
+      "paragraph": "P1—P2",
+      "evidence": "... its expenses have exceeded revenue. / Fundamentally, the USPS is in a historic squeeze between technological change ... and a regulatory structure that denies management the flexibility to adjust its operations ...",
+      "translation": "……其支出超过收入。／根本上，邮政局处于技术变化与监管体制的双重挤压中；该监管体制使管理层缺乏调整业务的灵活性……",
+      "context": "首句报告长期亏损；Fundamentally 后才解释经营困难的来源。P2 的现代化推迟，是财务和制度压力后的困境之一。",
+      "logic": "B 概括制度对管理灵活性的束缚。A 用预算不平衡重述财务问题，未提供解释；C 把技术通过减少邮件需求发挥的作用，换成技术升级费用。",
+      "unknown": "不懂 regulatory，可先抓 denies ... flexibility，读成“不给灵活性”，与 rigid 对照。见 caused by 要寻找新的解释条件，不能拿题干现象的同义词作原因。",
+      "compare": "与 2025-T1-Q22 比较：前者防止“现象冒充原因”，后者防止“结果变量冒充原因”。"
+    },
+    {
+      "code": "G",
+      "id": "2025-T1-Q22",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "实验改变什么，观察什么",
+      "paragraph": "P3—P4",
+      "evidence": "The target group was given a 30-minute drama-based activity to accompany the passage. / ... the target group of pupils drew on a wider vocabulary ... and wrote at greater length.",
+      "translation": "实验组在阅读文章之外参加了三十分钟戏剧活动。／……实验组学生使用了更广的词汇……并写得更长。",
+      "context": "两组写作任务相似，明确增加的是戏剧活动，随后比较语言与情感表现。选项不能拿报告的一个结果重新拼出另一项实验。",
+      "logic": "A 保留“教学方式改变—学习结果变化”。B 将词汇增长从结果换成原因，还增加阅读流畅度这一结果；C 将情感表现换到原因端，又换了理解对象。",
+      "unknown": "暂不认识 randomised、pedagogy，仍可找 was given 后的活动与 results 后的表现。把前者记为“改了什么”，后者记为“量了什么”，再与选项两端分别核对。",
+      "compare": "与 2018-T4-Q36 比较后，再看 2020-T2-Q26：结果真实，也不允许倒推任何看似合理的原因。"
+    },
+    {
+      "code": "G",
+      "id": "2020-T2-Q26",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "高利润不自动证明营销成功",
+      "paragraph": "P1—P2",
+      "evidence": "Scientists need journals in which to publish their research, so they will supply the articles without monetary reward. / With the content of papers secured for free, the publisher needs only find a market for its journal.",
+      "translation": "科学家需要发表研究的期刊，所以会不收取报酬地提供论文。／免费获得论文内容后，出版商只需为期刊找到市场。",
+      "context": "原文先列免费内容和免费评审，再说购买市场与高利润。论证已给出了成本端的依据。",
+      "logic": "D 对应 content ... for free。B 从高利润反推营销策略成功，原文并未分析该策略；C 将“本来免费”改为“报酬减少”，为状态新增了一段变化史。",
+      "unknown": "不懂 a license to print money 的比喻，可从 profit、free、without reward 判断是赚钱能力强。问 partly because，就找作者已说明的成本与收入关系，不补商业常识。",
+      "compare": "三个例题分别示范：现象不是解释、结果不是自变量、结果也不能唯一确定原因。"
+    },
+    {
+      "code": "H",
+      "id": "2018-T1-Q22",
+      "focus": [
+        "A",
+        "D"
+      ],
+      "title": "需要应对不等于能够避免全部后果",
+      "paragraph": "P3、P7",
+      "evidence": "Likewise, automation should eventually boost productivity ... But in the medium term, middle-class workers may need a lot of help adjusting. / But policies to help workers adapt will be indispensable.",
+      "translation": "同样，自动化最终应能提高生产率……但在中期，中产劳动者可能需要大量帮助才能适应。／帮助劳动者适应的政策将不可或缺。",
+      "context": "作者接受技术的长期收益，同时正视转型期受损者。eventually 与 in the medium term 划分时间；这不等于作者对同一个命题先后自相矛盾。",
+      "logic": "C 保留“应处理问题”。A 的 groundless 抹去有根据的担忧；D 把适应和补救升级为避免负面后果。解决问题的必要性不能保证问题从不发生。",
+      "unknown": "不懂 tackle，先把后文培训、创业、调税三组建议合起来，推知它是“着手处理”。不懂 indispensable，也可由 should、must、need to 的连续建议判断作者要行动。",
+      "compare": "与 2024-T1-Q24 比较：承认局部变化不能升级为 many；承认长期收益也不能升级为风险为零。本题的时间对照同时帮助理解态度，但并非每个错误项都直接含时间偷换。"
+    },
+    {
+      "code": "H",
+      "id": "2024-T1-Q24",
+      "focus": [
+        "A",
+        "D"
+      ],
+      "title": "基本不变允许少量变化",
+      "paragraph": "P5",
+      "evidence": "Nails themselves have changed over the years, but Sichel studied them because they haven’t changed much. ... Roman nails are still clearly nails.",
+      "translation": "钉子本身多年来发生了变化，但西切尔研究它们，正是因为变化不大。……罗马时代的钉子显然仍然是钉子。",
+      "context": "作者比较钉子与灯、车辆，用形态相对稳定说明为何钉子适合研究长期价格。选项需要保留这一程度。",
+      "logic": "B 的 basically 与 haven’t changed much 对齐，允许少量变化。A 只保留 changed，再加入 many，越过原句限制。D 虚构最重要发明的排名。",
+      "unknown": "不懂 studied 的研究背景也不妨碍对比：have changed 是有变化，haven’t changed much 是变化少。把两个判断都保留，寻找 basically，而不是在“完全变／完全不变”之间二选一。",
+      "compare": "与 2018-T1-Q22 的共同点是强度守恒。注意：程度词本身无罪，是否过强取决于原文能支持到哪一档。"
+    },
+    {
+      "code": "I",
+      "id": "2021-T2-Q29",
+      "focus": [
+        "A",
+        "D"
+      ],
+      "title": "研究可推广，不等于一定受益",
+      "paragraph": "P8",
+      "evidence": "Whether this research translates elsewhere is anybody’s guess. Ferraro suggests the results may transfer to other parts of Asia ... And regardless of transferability ...",
+      "translation": "这项研究能否适用于别处，谁也说不准。费拉罗认为结果或许能适用于亚洲其他地区……而不论能否推广……",
+      "context": "本段先限制外部适用性，再说即使不考虑减贫，避免毁林的环保价值也超过项目成本。题干问最有价值之处。",
+      "logic": "C 对应环境保护。A 将 may transfer 改为 will benefit，既强化确定性，又将研究结果可迁移写成其他国家必然获益。D 从解释机制中的种稻外推出粮食生产改善。",
+      "unknown": "暂不理解 transferability，把它对应到前句 elsewhere 和 other parts 即可知道在问“能否用到别处”。may 与 will 的变化足以提示回查；最终还要用 regardless 后的正面证据选 C。",
+      "compare": "与 2023-T3-Q33 比较：这里是样本推广过度，后者是由销量推顾客忠诚。两者都缺少一条必须补上的证据。"
+    },
+    {
+      "code": "I",
+      "id": "2023-T3-Q33",
+      "focus": [
+        "A",
+        "C"
+      ],
+      "title": "销量好，不足以推出老顾客忠诚",
+      "paragraph": "P3",
+      "evidence": "We are hopeful with our shops now open again that normality will return and that we will be allowed to buy appropriately. Certainly, our shops are exceptionally busy.",
+      "translation": "随着门店重新开放，我们希望恢复正常，并获准按需要购书进货。确实，我们的门店异常忙碌。",
+      "context": "发言人先解释信用限制导致较低库存，继而表达恢复正常交易的希望，并以销售活跃作支持。题干问发言人“似乎想传达”什么。",
+      "logic": "B 应放在发言人的乐观预期中理解，不能改成限制已取消。A 由忙碌推出顾客持续忠诚，却没有老顾客占比或重复购买依据；C 把实际库存低改成库存被低估。",
+      "unknown": "不懂 credit terms，可以先认 hopeful 后的两个 that：希望恢复正常、希望获准进货。busy 能说明当前经营活跃，却不直接说明买家身份。",
+      "compare": "与 2021-T2-Q29 相同：选项多走的一步通常藏在抽象词里。这里是 loyal，前题是 will benefit。"
+    },
+    {
+      "code": "I",
+      "id": "2025-T1-Q25",
+      "focus": [
+        "B",
+        "C",
+        "D"
+      ],
+      "title": "四项都有 may，为什么仍要比较证据",
+      "paragraph": "P7",
+      "evidence": "But could the results be replicated with any old dramatist? O’Hanlon said more research would be needed but suggested that Shakespeare’s use of 20,000 words, compared with the everyday 2,000 words, gave a “massive expansion of language into children’s lives” ...",
+      "translation": "但换成随便哪位剧作家，结果都能复制吗？奥汉隆说还需要更多研究，但认为莎士比亚使用的两万词，相比日常两千词，会给儿童生活带来语言资源的巨大扩展……",
+      "context": "此处尚未完成不同剧作家的效果比较。any old dramatist 中 any old 表“随便哪个”，不要机械译成“任何古代剧作家”。",
+      "logic": "原解析答案 A 是选项比较中的保留性推断：莎剧可能特别适合，而不是已证明全局最优。B 把丰富输入改成学习障碍；C 新增纳入课程的安排；D 新增学生抗拒。它们都有 may，却缺乏对应命题的依据。",
+      "unknown": "先识别 more research would be needed 对结论强度的限制，再识别词汇丰富这一正面理由。不懂 replicated，可由 with any old dramatist 理解作者在问“换材料是否还有效”。",
+      "compare": "与 2021-T2-Q29 对读：may 能限制断言强度，却不能为一个本无证据的新命题提供依据。本题作推断边界示范，不把错误项全强行标为“推断过度”。"
+    },
+    {
+      "code": "J",
+      "id": "2019-T3-Q34",
+      "focus": [
+        "B",
+        "D"
+      ],
+      "title": "有所保留的肯定仍然是肯定",
+      "paragraph": "P8",
+      "evidence": "While the statement is vague, it represents one starting point.",
+      "translation": "虽然这份声明笼统，但它代表了一个起点。",
+      "context": "P7 转述谷歌承诺；P8 才是作者评价。作者随后也把可解释、透明、公平的决策原则视为起点，方向一致。",
+      "logic": "A affirmation 对应承认起点价值。B 只摘 vague，忽略主句的认可；D respect 把对一项承诺的有限肯定升为敬重。并非所有正面态度词都可互换。",
+      "unknown": "不懂 affirmation，先把“vague＝负面保留”与“starting point＝可推进”分开。再比较选项需要多强的敬意。这里 while 是让步，不是时间上的同时。",
+      "compare": "与 2024-T4-Q38 比较：两篇都有正负信息，落点却相反。必须读出作者最终对特定对象的判断。"
+    },
+    {
+      "code": "J",
+      "id": "2024-T4-Q38",
+      "focus": [
+        "B",
+        "C"
+      ],
+      "title": "一州已有保护，仍不足以让作者放心",
+      "paragraph": "P3",
+      "evidence": "In Maryland, the good news is that there are many state laws in place that provide wetlands protections. But that’s a very shortsighted view ... Perhaps some, but all? That seems unlikely.",
+      "translation": "在马里兰州，好消息是已有不少州法律保护湿地。但只这样看十分短视……或许某些辖区会补足保护，但所有辖区都会吗？这似乎不太可能。",
+      "context": "水和污染物不会遵守州界。作者关心联邦监管收缩后，跨州保护能否共同到位，而非单个州是否已有法律。",
+      "logic": "A Worried 与 shortsighted、unlikely 及跨州风险相符。C 截取 good news，把局部积极信息当总体宽慰；B 把有明确倾向的设问当成困惑。",
+      "unknown": "不懂 watershed 或 jurisdictions，先把它们暂记为“涉及的地方”，用 state boundaries 和 all 看出跨地域协调问题。问句后已有 unlikely，不能凭问号选 puzzled。",
+      "compare": "与 2019-T3-Q34 比较：让步与转折不是固定褒贬公式；应记录主句断言、评价对象及后续理由。"
+    },
+    {
+      "code": "J",
+      "id": "2020-T1-Q25",
+      "focus": [
+        "A",
+        "D"
+      ],
+      "title": "别人的讥讽，不是作者的结论",
+      "paragraph": "P2、P4",
+      "evidence": "Some might see the proposal as a booby prize ... A cynic might speculate ... / Jeremy Wright, the culture secretary, should welcome this positive, hope-filled proposal, and turn it into action.",
+      "translation": "一些人可能把提议视为安慰奖……一个爱讥讽的人可能猜想……／文化大臣杰里米·赖特应欢迎这项积极、充满希望的提议，并把它变成行动。",
+      "context": "P2 先安排旁人的嘲讽；P3 提醒称号并非万能，说明怎样取得长期效果；P4 给出作者自己的肯定与行动呼吁。",
+      "logic": "C Favourable 对应 positive、hope-filled、should welcome。A 借来 some 和 a cynic 的怀疑；D 把对运作不佳的风险批评移给提议本身。",
+      "unknown": "不懂 booby prize，可暂不判断这个名词褒贬，先标出 Some 与 a cynic。到末段，用 positive 与 welcome 两个常见词确定作者立场。",
+      "compare": "三道态度题共同要求：谁在评价、评价什么、方向如何、强度多大。承认风险或引用反对者，都不自动等于作者反对。"
+    }
+  ],
+  "coding": "# Codes: A attribution; B concept; C scope; D unsupported; E reversed logic; F time; G causality; H degree; I over-inference; J attitude; K function/answer-target; L contextual word meaning\n2018 21 A A E\n2018 22 HJ EJ BH\n2018 23 B D B\n2018 24 GK AE B\n2018 25 C C B\n2018 26 EJ B A\n2018 27 BL DL AB\n2018 28 B CI B\n2018 29 DG AG EG\n2018 30 CK BE C\n2018 31 B A CI\n2018 32 F EJ AH\n2018 33 H D B\n2018 34 AK B B\n2018 35 J AJ HJ\n2018 36 G BG D\n2018 37 BG AG B\n2018 38 BK A D\n2018 39 J J AJ\n2018 40 DI C BF\n2019 21 B C E\n2019 22 BK A D\n2019 23 K H BF\n2019 24 BK K AK\n2019 25 CH B CD\n2019 26 BG E E\n2019 27 F AC F\n2019 28 B BI A\n2019 29 EL BL EL\n2019 30 BK C BGK\n2019 31 ACH FI BG\n2019 32 E B AG\n2019 33 FH HJ AJ\n2019 34 J HJ HJ\n2019 35 CI C HI\n2019 36 D CH E\n2019 37 GHI A AHJ\n2019 38 CI CE E\n2019 39 E A C\n2019 40 D C K\n2020 21 AB A BCK\n2020 22 J J A\n2020 23 B B CF\n2020 24 EK K K\n2020 25 AJ J BJ\n2020 26 AD GI BF\n2020 27 A AB E\n2020 28 J J J\n2020 29 BH E ABH\n2020 30 D B E\n2020 31 D IJ CH\n2020 32 DJ EJ D\n2020 33 B AK BD\n2020 34 BI BJ D\n2020 35 DK CI D\n2020 36 BK DG BK\n2020 37 C EG DH\n2020 38 B D CI\n2020 39 AD FI DI\n2020 40 CFH BH BD\n2021 21 BE AJ AI\n2021 22 A BK A\n2021 23 BF D AHI\n2021 24 DG H GI\n2021 25 C EJ CBI\n2021 26 C C BGK\n2021 27 CHI B D\n2021 28 B B BK\n2021 29 CHI BK BGI\n2021 30 CK K C\n2021 31 BK B AK\n2021 32 CI CE BK\n2021 33 BI DFG DJ\n2021 34 JK B DK\n2021 35 B BK DF\n2021 36 CH DI AB\n2021 37 AF ABL AE\n2021 38 AE AF BD\n2021 39 B B AE\n2021 40 A BI AE\n2022 21 B B D\n2022 22 E B D\n2022 23 A D BK\n2022 24 BI BJ DJ\n2022 25 BI BFK AF\n2022 26 B DK BF\n2022 27 BJ CIJ E\n2022 28 AF DJ E\n2022 29 DF AI D\n2022 30 AB CH BI\n2022 31 AD BG CL\n2022 32 BE CI BI\n2022 33 B BI DG\n2022 34 D BK AG\n2022 35 B B E\n2022 36 BC B E\n2022 37 A D DI\n2022 38 BK E EG\n2022 39 BF E B\n2022 40 BL A A\n2023 21 FI K D\n2023 22 A HIJ B\n2023 23 CGI ACJ DGI\n2023 24 DF DHI AI\n2023 25 BK A AEG\n2023 26 B CE AB\n2023 27 E AGK B\n2023 28 AJ D AB\n2023 29 BFH K AK\n2023 30 BJ B BH\n2023 31 K DJ K\n2023 32 E A BK\n2023 33 BI B E\n2023 34 B AD AHI\n2023 35 DI E C\n2023 36 E A GK\n2023 37 D A B\n2023 38 DK D B\n2023 39 BD E BFI\n2023 40 HI D BK\n2024 21 GI D BGI\n2024 22 BK BI CK\n2024 23 BEG DG EG\n2024 24 H D DH\n2024 25 BC B BG\n2024 26 B B AC\n2024 27 GK F BK\n2024 28 E D BG\n2024 29 BI GI ACI\n2024 30 C CD FK\n2024 31 AJ A B\n2024 32 D EL AB\n2024 33 F DI DK\n2024 34 A B A\n2024 35 CK C BK\n2024 36 AK B E\n2024 37 E ADH EJ\n2024 38 J CJ CJ\n2024 39 BI DGH B\n2024 40 CK D CD\n2025 21 B AB D\n2025 22 BDG BEG BD\n2025 23 BC BL AB\n2025 24 C AG B\n2025 25 BJ D DJ\n2025 26 E DJ B\n2025 27 HI HJ AB\n2025 28 K K BK\n2025 29 BH EG BL\n2025 30 D BI DK\n2025 31 A BE DJ\n2025 32 EG AD B\n2025 33 D DG A\n2025 34 H HI D\n2025 35 C C H\n2025 36 K B K\n2025 37 BI E DI\n2025 38 AK D BI\n2025 39 G BE B\n2025 40 C C BK\n",
+  "base_commit": "5b6ada93f63a25980b3b97ee80a363ebe752b91a",
+  "edition": "2026-11-07"
+}
