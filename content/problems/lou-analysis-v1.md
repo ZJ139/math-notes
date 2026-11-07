@@ -63,8 +63,10 @@ updated_at: "2026-11-07"
 
 - [第二十三批：习题 6.5.B 第 2—5 题与 6.6.B 第 1—3 题——无穷乘积、正多项式、聚点数据、插值不等式、正割展开、一致 Taylor 余项与高阶差分](/problems/07a9f1208dd119dd666e6278/)。连续编号 B155—B161，七题全部完成；原题见 [PDF 第 37 页](/files/problems/楼分析习题-v1.pdf#page=37)、[第 38 页](/files/problems/楼分析习题-v1.pdf#page=38)及[第 39 页](/files/problems/楼分析习题-v1.pdf#page=39)。含无穷乘积完整分类及反例、参数一致性条件与任意高阶差分推广。
 
-累计完成 159 道 B 组习题：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 9 题、第六章 43 题。另有 B116（5.5.B 第 1 题）与 B148（6.4.B 第 1 题）暂跳过，均保留在原书位置，未计入上述数量。第四章 B 组已全部完成，第五章尚有 B116 待补解。
+- [第二十四批：习题 6.6.B 第 4—8 题、7.1.B 第 1 题与 7.2.B 第 1 题——有界区间导数估计、级数变换、局部刚性、递推渐近、隐式曲面与方向极值](/problems/a0a262f9a6114b75980fa4f7/)。连续编号 B162—B168，七题全部完成；原题见 [PDF 第 39 页](/files/problems/楼分析习题-v1.pdf#page=39)、[第 40 页](/files/problems/楼分析习题-v1.pdf#page=40)及[第 41 页](/files/problems/楼分析习题-v1.pdf#page=41)，B162 所引 A 组题另见[第 38 页](/files/problems/楼分析习题-v1.pdf#page=38)。保留 B165 原题的记号与初值问题，给出反例及明确修订条件下的精细展开；B166 附两道自拟题与完整证明。
 
-[第四章索引](/problems/collections/lou-analysis/chapters/4/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+累计完成 166 道 B 组习题：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 9 题、第六章 48 题、第七章 2 题。另有 B116（5.5.B 第 1 题）与 B148（6.4.B 第 1 题）暂跳过，均保留在原书位置，未计入上述数量。第四章 B 组已全部完成，第五章尚有 B116 待补解。
 
-本批编号推进至 B161，完成数量为 159，不因暂跳过题而重排后续编号。6.4.B 第 1 题仍待核定理 6.4.2 原文与证明；6.5.B 五题已全部完成，6.6.B 已完成第 1—3 题，后续从[习题 6.6.B 第 4 题](/files/problems/楼分析习题-v1.pdf#page=39)继续，对应 B162。尚未解答的题目仍可通过上方原题 PDF 查阅。
+[第四章索引](/problems/collections/lou-analysis/chapters/4/) · [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/)
+
+本批编号推进至 B168，完成数量为 166，不因暂跳过题而重排后续编号。6.4.B 第 1 题仍待核定理 6.4.2 原文与证明；6.6.B 八题与 7.1.B 第 1 题已全部完成，7.2.B 已完成第 1 题，后续从[习题 7.2.B 第 2 题](/files/problems/楼分析习题-v1.pdf#page=41)继续，对应 B169。尚未解答的题目仍可通过上方原题 PDF 查阅。

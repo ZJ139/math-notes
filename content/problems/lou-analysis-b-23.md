@@ -14,7 +14,7 @@ B116、B148 继续暂跳过，不补写缺失教材内容、不改编号、不�
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 37 页](/files/problems/楼分析习题-v1.pdf#page=37) · [第 38 页](/files/problems/楼分析习题-v1.pdf#page=38) · [第 39 页](/files/problems/楼分析习题-v1.pdf#page=39)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B148—B154](/problems/cc82a0d37091875a19e034ec/)
+**批次导航：**[下一批 B162—B168](/problems/a0a262f9a6114b75980fa4f7/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [上一批 B148—B154](/problems/cc82a0d37091875a19e034ec/)
 
 ## 题号导航
 
@@ -664,4 +664,4 @@ $$
 
 本批七题均已完成，编号推进至 B161，累计 159 道已作答、2 道暂跳过。6.5.B 五题已全部完成，6.6.B 已完成第 1—3 题；下一批从[习题 6.6.B 第 4 题](/files/problems/楼分析习题-v1.pdf#page=39)继续，对应 B162。B116、B148 保留原位置与待核状态。
 
-**前后批次：**[上一批 B148—B154](/problems/cc82a0d37091875a19e034ec/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
+**前后批次：**[下一批 B162—B168](/problems/a0a262f9a6114b75980fa4f7/) · [上一批 B148—B154](/problems/cc82a0d37091875a19e034ec/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/)
