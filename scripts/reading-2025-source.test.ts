@@ -12,6 +12,13 @@ const norm = (text:string) => text.replace(/you[’']11/g, 'you’ll').toLowerCa
 const examPages = pdf('../content/english/exams/2025英一.pdf').split('\f');
 const originalPages = pdf('../content/english/translation/2025英一阅读原文.pdf').split('\f');
 const reviewedKeys = ['CAABA', 'BDCAC', 'DAACD', 'CBBCD'];
+const questionText = (page:string, number:number) => {
+  // Poppler may put a line break immediately after a printed question number.
+  const boundary = (n:number) => new RegExp(`(?:^|\\n)\\s*${n}\\.\\s*`);
+  const raw = page.split(boundary(number))[1]?.split(boundary(number + 1))[0];
+  assert.ok(raw, `Q${number}: source question boundary`);
+  return raw;
+};
 
 for (let text = 1; text <= 4; text++) {
   test(`2025 Text ${text}: complete passage and all five questions match both original repository sources`, () => {
@@ -27,9 +34,12 @@ for (let text = 1; text <= 4; text++) {
     assert.equal(norm(passage), norm(originalPassage), 'passage vs reading original');
     for (let offset = 0; offset < 5; offset++) {
       const number = start + offset;
-      const raw = page.split(`${number}. `)[1].split(`${number + 1}. `)[0];
+      const raw = questionText(page, number);
+      // Reproduce the CI wrapping difference using the actual PDF text.
+      const wrappedNumbers = page.replace(/^(\d+)\.[ \t]+/gm, '$1.\n');
+      assert.equal(norm(questionText(wrappedNumbers, number)), norm(raw), `Q${number}: wrapped number`);
       const sourceParts = raw.split(/\[[A-D]\]/);
-      assert.equal(sourceParts.length, 5);
+      assert.equal(sourceParts.length, 5, `Q${number}: four source options`);
       const block = md.split(`**原题**：${number}. `)[1].split(/### 第|## 三、/)[0];
       // Q22 has a stray “s” embedded in its printed blank; keep the prose.
       assert.equal(norm(block.split('**（')[0]), norm(sourceParts[0].replace('_s.', '____.')), `Q${number}: prompt`);
