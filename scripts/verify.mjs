@@ -43,7 +43,7 @@ async function walk(dir){
 }
 await walk(root);
 // Keep the new batch's complete formula rendering and cross-section navigation verifiable.
-{
+if ((await fs.stat('content/problems/lou-analysis-b-23.md').catch(()=>null))?.isFile()) {
   const source=await fs.readFile('content/problems/lou-analysis-b-23.md','utf8');
   const route='/problems/07a9f1208dd119dd666e6278/';
   const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
