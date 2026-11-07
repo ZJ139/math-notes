@@ -1,0 +1,85 @@
+{
+  "status": "approved_for_publication",
+  "edition": "2026-11-07",
+  "base_commit": "5b6ada93f63a25980b3b97ee80a363ebe752b91a",
+  "coverage": {
+    "articles": 32,
+    "questions": 160,
+    "options": 640,
+    "distractors": 480,
+    "cases": 24
+  },
+  "source_hashes_verified": 32,
+  "answers_preserved": 160,
+  "distractors_coded": 480,
+  "tag_assignments": 780,
+  "multi_label_distractors": 266,
+  "important_categories_with_cross_year_cases": 10,
+  "pdf": {
+    "pages": 64,
+    "sha256": "9f30b59a665e048fa546c1c9f95d0151dbe25f03fed8981b4c40698bcb697ebc",
+    "bytes": 811693,
+    "size": "A4",
+    "nominal_margin_mm": 23,
+    "font_size_pt": 11,
+    "body_line_stretch": 1.12,
+    "bookmarks": 129,
+    "links": 1978,
+    "internal_links": 1729,
+    "external_links": 249,
+    "all_160_source_question_links_present": true,
+    "internal_targets_in_bounds": true,
+    "rendered_pages_visually_reviewed": 64,
+    "render_engine": "Poppler pdftoppm",
+    "grayscale_print_sample_page": 28,
+    "rendered_ink_bounds_all_pages_px_at_72_dpi": [
+      65,
+      29,
+      530,
+      804
+    ],
+    "no_overfull_boxes_or_missing_glyphs_or_unresolved_refs": true,
+    "embedded_fonts": [
+      "FandolSong-Regular",
+      "FandolSong-Bold",
+      "LMRoman10-Regular",
+      "LMRoman10-Bold",
+      "LMRoman12-Bold"
+    ]
+  },
+  "content_review": {
+    "selected_case_evidence_excerpts_match_original_passages": 24,
+    "syntax_excerpts_match_original_passages": 8,
+    "english_stems_options_translations_answers_sourced_directly": true,
+    "statistics_are_editorial_not_learner_error_rates": true,
+    "independent_second_annotator": false
+  },
+  "site_checks": {
+    "typescript_check": "passed",
+    "tests": {
+      "passed": 113,
+      "failed": 0
+    },
+    "build": {
+      "generated_pages": 865,
+      "entries": 651
+    },
+    "verify": {
+      "html_pages": 875,
+      "local_links_assets": 76044
+    },
+    "landing_page": "/english/a648f4cf1d2b91ff2375697c/",
+    "download": "/files/english/reading-types/reading-distractors-2018-2025.pdf",
+    "english_collection_and_mutual_topic_links_verified": true,
+    "built_download_matches_reviewed_pdf_byte_for_byte": true,
+    "release_inventory_source": "Fresh GitHub connector GET /repos/ZJ139/math-notes/releases?per_page=100&page=1 returned []; used as build input after direct HTTP returned 403. Production capacity checks remain unchanged.",
+    "browser_ui": "Not completed: no installed Chromium executable, official Playwright browser download failed in this environment. Static generated HTML and every local reference were verified. Existing site UI/CSS is unchanged."
+  },
+  "pending": [
+    "refresh latest main and resolve any intervening changes",
+    "commit / PR / merge / deployment",
+    "published download verification",
+    "complete published-source ZIP backup with date and deployed Git SHA"
+  ],
+  "approval_received_date": "2026-11-07"
+}
