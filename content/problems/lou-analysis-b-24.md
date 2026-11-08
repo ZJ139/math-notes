@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "6.6.B", "7.1.B", "7.2.B", "导数估计", "级数", "渐近展开", "隐函数", "极值", "B162-B168"]
 created_at: "2026-11-07"
-updated_at: "2026-11-07"
+updated_at: "2026-11-08"
 ---
 
 本批严格按原书顺序完成 **B162—B168** 七题：**6.6.B 第 4—8 题、7.1.B 第 1 题、7.2.B 第 1 题**，均无星号。原题已对照仓库 PDF 第 39—41 页图像核实；B162 引用的 6.6.A 第 10 题另核对第 38 页，跨章时不穿插 A 组。
@@ -16,7 +16,7 @@ B116、B148 继续暂跳过，不补写缺失教材正文、不改变后续编�
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 38 页](/files/problems/楼分析习题-v1.pdf#page=38) · [第 39 页](/files/problems/楼分析习题-v1.pdf#page=39) · [第 40 页](/files/problems/楼分析习题-v1.pdf#page=40) · [第 41 页](/files/problems/楼分析习题-v1.pdf#page=41)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [上一批 B155—B161](/problems/07a9f1208dd119dd666e6278/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [上一批 B155—B161](/problems/07a9f1208dd119dd666e6278/) · [下一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/)
 
 ## 题号导航
 
@@ -499,4 +499,4 @@ $$
 
 本批七题均已完成，编号推进至 B168，累计 166 道已作答、2 道暂跳过。6.6.B 与 7.1.B 已全部完成，7.2.B 已完成第 1 题；下一批从[习题 7.2.B 第 2 题](/files/problems/楼分析习题-v1.pdf#page=41)继续，对应 B169。B116、B148 仍保留原位置与暂跳过状态。
 
-**前后批次：**[上一批 B155—B161](/problems/07a9f1208dd119dd666e6278/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/)
+**前后批次：**[上一批 B155—B161](/problems/07a9f1208dd119dd666e6278/) · [下一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/)
