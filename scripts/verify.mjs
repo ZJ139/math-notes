@@ -122,6 +122,39 @@ if ((await fs.stat('content/problems/lou-analysis-b-02.md').catch(()=>null))?.is
       +JSON.stringify({sourceInline:louInline,sourceDisplay:louDisplay,rendered:louMath,renderedDisplay:louDisplayMath}));
   console.log('Verified Lou analysis B08–B14: all 237 inline and 196 display formulas rendered.');
 }
+if ((await fs.stat('content/problems/lou-analysis-b-25.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-25.md','utf8');
+  const route='/problems/f5ad6d5a3d50a93ac170639e/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  const rendered=(html.match(/class="latex-svg"/g)||[]).length;
+  const renderedDisplay=(html.match(/class="katex-display"/g)||[]).length;
+  if(!Number.isInteger(inline)||!Number.isInteger(display)||display===0
+     ||rendered!==inline+display||renderedDisplay!==display||/katex-error/.test(html))
+    throw new Error('楼分析 B169–B175 公式未全部渲染：'+JSON.stringify({inline,display,rendered,renderedDisplay}));
+  const chapter=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/7/index.html'),'utf8');
+  const mapping=[
+    ...Array.from({length:5},(_,i)=>[169+i,'7.2',i+2,41]),
+    [174,'7.3',1,43],[175,'7.3',2,43],
+  ];
+  for(const [number,section,original,page] of mapping){
+    const problem=source.split('## 问题 B'+number+'\n')[1]?.split(/^## /m)[0];
+    if(!html.includes('id="问题-b'+number+'"')||!problem?.includes('习题 '+section+'.B 第 '+original+' 题')
+       ||!chapter.includes(route+'#问题-b'+number)
+       ||!problem.includes('楼分析习题-v1.pdf#page='+page))
+      throw new Error('第二十五批原题、PDF 页码或章节导航缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/a0a262f9a6114b75980fa4f7/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第二十五批未接入总目录或上一批：'+file);
+  }
+  if(!html.includes('/problems/a0a262f9a6114b75980fa4f7/')
+     ||!source.includes('习题 7.4.B 第 1 题')||!source.includes('B176')
+     ||!chapter.includes('9 道已作答')||!chapter.includes('习题 7.3.B 第 2 题'))
+    throw new Error('第二十五批前后批次或第七章进度错误');
+  console.log('Verified Lou analysis B169–B175: '+inline+' inline and '+display+' display formulas; seven original numbers, PDF pages, chapter entries and batch links.');
+}
 
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {
