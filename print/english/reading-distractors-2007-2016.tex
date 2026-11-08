@@ -1,0 +1,1671 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.2\baselineskip}{0.8\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.8\baselineskip}{0.4\baselineskip}
+\usepackage{enumitem,needspace,longtable,booktabs,array,xcolor,tcolorbox}
+\tcbuselibrary{breakable}
+\definecolor{evidencepink}{HTML}{FCE5ED}
+\newtcolorbox{evidence}{colback=evidencepink,colframe=evidencepink,boxrule=0pt,arc=0pt,left=6pt,right=6pt,top=5pt,bottom=5pt,breakable,before skip=5pt,after skip=5pt}
+\setlist{leftmargin=2em,itemsep=3pt,parsep=0pt,topsep=4pt}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记 · 英语学习}\fancyhead[R]{\small 阅读干扰项规律与解题方法}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}\bookmarksetup{depth=3}
+\hypersetup{pdftitle={2007—2016年考研英语一阅读干扰项规律与解题方法},pdfauthor={Vincent Arqain},pdfsubject={40篇解析、200题的多标签证据复习专册}}
+\renewcommand{\contentsname}{目录}\setcounter{tocdepth}{2}\setcounter{secnumdepth}{2}
+\renewcommand{\arraystretch}{1.18}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\emergencystretch=2em\raggedbottom
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 2007—2016年考研英语一阅读\par}
+\vspace{5pt}{\LARGE\bfseries 干扰项规律与解题方法\par}
+\vspace{10pt}{\large 跨年份证据比较与长期复习专册\par}
+\vspace{8pt}数学手记 · 审阅版 · 2026年11月8日
+\end{center}
+
+\noindent\textbf{内容范围：}据网站实际收录，2007—2016年每年Text 1—4齐全，共40篇、200题、800个选项。本册精读24道跨年重点题，其余题目以可追溯索引回查，不重复转载40篇全文。早年试卷沿用网站统一“英语一”栏目名称。\par
+\noindent\textbf{统计边界：}200个题库答案对应600个非答案候选项，其中599项作常规干扰机制编码；2013年Text 2第27题D项具有指代争议，另标U、排除确定机制计数。该题只保留原解析记载的A，不宣称已经独立核定官方答案。\par
+\noindent\textbf{适用读者：}词汇量约3500—4000，希望知道选项在哪一步偏离证据的考生。说明使用常用中文，保留英文题干、相关选项、必要原文和直译；会认一些词，也要会判断主体、方向、范围与程度。\par
+\noindent\textbf{使用方法：}先读统一方法与分类边界，再看每类两道跨年例题。重做时遮住答案，按年份题号索引回查；粉色框标出证据，黑白打印仍可凭题号、段号和文字辨认。目录、分类与年份索引均可点击。\par
+\noindent\textbf{资料版本：}40份解析固定于仓库提交 3ccbda98a5fa。本册末尾列原解析入口，配套核对记录保存完整提交、每篇哈希、题目行号、选项原理由及本册分类。\par
+\noindent\textbf{数据含义：}分类是本版的编辑判断，允许一项多类；数量不是考生错误率。本册未使用个人成绩或作答记录，也不推断个人薄弱点。材料涉及的科学、政策等内容均按各年试题语境理解。\par
+\noindent \href{https://zj139.github.io/math-notes/english/reading-answers/}{站内真题阅读解答总目录}\quad \href{https://github.com/ZJ139/math-notes/tree/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf}{本版资料快照}
+\clearpage{\setstretch{1}\setlength{\parskip}{0pt}\tableofcontents}
+\clearpage\section{统一作答与复盘方法}\label{methods}
+\subsection{先定任务，再读证据}
+题干中的 according to、because、mentioned to、implies、attitude、best title 决定你要找什么。先圈年份、Text、题号及限定段落，再用一句中文写下任务。问“为什么提到例子”，就不能只复述例子内容。\par
+每题先找定位句，再向前确认代词、比较对象和发言者，向后找解释、转折与结果。通常至少读相邻一句；主旨、例证和态度题还要连接段首、结尾或全文主线。不要固定成“定位句后一句永远优先”。\par
+\subsection{把选项还原为完整关系}
+按“主体—动作—对象—范围—时间—强度”读完整选项。比如“提高售价”与“降低印刷成本”都涉及钱，却是不同变量；“仍有大量成员”与“1960年处于鼎盛期”也不是同一时点。\par
+先给候选答案找正面证据，再给干扰项指出具体改动。排除项时写“原文说甲，选项换成乙”，比只写“偷换概念”更有效。两个选项都有原词时，优先比较它们是否完成了同一个任务。\par
+\subsection{不会关键词时，保留哪些信息}
+可以先把生僻人名、机构名、技术名当作甲、乙、某方法；保留主干动词、否定、比较、情态与连接词。2010年第35题即使不懂 cascades，也能看出 influenced 是“受到影响”，不能变成 influence others。\par
+用后文解释回填陌生词：2009年的 ruts 由 pathways 和 old roads 限定；2016年的 lenient 由 lower fines 与 less costly punishment 解释。不要只凭一个像中文意思的熟词完成选择。\par
+若不认识的恰好是关键谓语或关系词，而两种解释都能成立，应保留待核。先排除已经确定不符的项，再比较剩余项；词汇不足不是凭空增加确定性的理由。\par
+\subsection{复盘时留下可迁移的一句话}
+重做前遮住答案，给每个候选项写一句证据依据。核对后记录：我漏读哪个词、错接哪个主语、把哪种关系换成哪种关系。只记录实际发生的误判，不把本册数量当作自己的成绩。\par
+建议记录四栏：题号；首答及重做答案；漏读证据；下次检查动作。例如“2012-T4-Q36：把 in 1960 忽略；下次先标 now 与过去时间”。复习间隔按实际遗忘情况安排，本册不预设个人弱项。\par
+\subsection{用同一张核对表比较选项}
+\noindent\textbf{主体：}谁说、谁做、谁受影响？引用者的判断是否被算给作者？\par
+\noindent\textbf{关系：}提高还是降低，影响还是被影响，必要还是充分，原因还是结果？\par
+\noindent\textbf{边界：}部分还是全体，曾经还是现在，计划还是完成，可能还是必然？\par
+\noindent\textbf{任务：}题干要细节、原因、推断、词义、态度、例证功能还是标题？\par
+这张表用于发现证据缺口，并不要求每题把所有项目机械检查一遍。优先核对两项真正不同的地方。\par
+\clearpage\section{分类边界与统计口径}\label{taxonomy}
+分类单位是非答案选项。599个常规干扰项至少记一类；同一项可有多个标签，同一类内每项只计一次。“涉及题数”指至少出现一个该类选项的不同题目数。两列都不能跨类别相加当作独立题数或独立选项数。\par
+本版形成1056次标签归属，其中376个选项有多个标签。另有1个U争议项不计入下表。准确计数不等于分类天然唯一：本版未进行第二标注者独立编码或一致性系数检验。\par
+\begin{longtable}{@{}p{1.1cm}p{8.6cm}rr@{}}\toprule 代码 & 机制 & 涉及题数 & 选项数\\\midrule\endhead
+\hyperref[cat-R01]{R01} & 张冠李戴 & 81 & 101\\
+\hyperref[cat-R02]{R02} & 偷换概念 & 130 & 176\\
+\hyperref[cat-R03]{R03} & 以偏概全与范围失配 & 63 & 85\\
+\hyperref[cat-R04]{R04} & 无中生有 & 88 & 100\\
+\hyperref[cat-R05]{R05} & 逻辑关系颠倒 & 69 & 86\\
+\hyperref[cat-R06]{R06} & 时间范围与状态变化 & 43 & 55\\
+\hyperref[cat-R07]{R07} & 因果关系误判 & 44 & 58\\
+\hyperref[cat-R08]{R08} & 程度夸大与缩小 & 52 & 60\\
+\hyperref[cat-R09]{R09} & 推断过度 & 75 & 97\\
+\hyperref[cat-R10]{R10} & 态度误读 & 39 & 66\\
+\hyperref[cat-R11]{R11} & 答题焦点与论证功能错判 & 78 & 121\\
+\hyperref[cat-R12]{R12} & 语境词义与搭配误读 & 26 & 51\\
+\bottomrule\end{longtable}
+标签多少受定义宽度影响；高计数不代表更容易错，低计数也不代表可忽略。每条编码都可经分类索引回到题目，再查看原解析中的选项及理由。原解析的标签与本册不必逐字一致，本册按统一边界重新归纳。\par
+\Needspace{9\baselineskip}
+\subsection{R01 张冠李戴}\label{cat-R01}
+\noindent\textbf{识别：}把原文已有的判断、动作、特征或责任交给另一个人、群体或事物；包括误认被引用者与作者。\par
+\noindent\textbf{排除：}给关键句补全“谁—做什么—对谁”；逐项核对主语、代词、所有格及观点来源。\par
+\noindent\textbf{边界：}原文根本没有这个判断时，主要是无中生有；原文有该判断但属于别人时，才突出归属错位。主体扩大到全体还可同时记范围失配。\par
+\Needspace{9\baselineskip}
+\subsection{R02 偷换概念}\label{cat-R02}
+\noindent\textbf{识别：}保留相近词汇，却改变动作、对象、评价维度或命题性质，例如成本换成售价、处罚轻重换成受罚概率。\par
+\noindent\textbf{排除：}将选项用简短中文说全，和证据逐格对应：到底量的是什么、改变的是什么？\par
+\noindent\textbf{边界：}近义改写不等于偷换。须指出新旧概念为何不能在本题中互换；只有原词不同、关系相同，仍可正确。\par
+\Needspace{9\baselineskip}
+\subsection{R03 以偏概全与范围失配}\label{cat-R03}
+\noindent\textbf{识别：}将部分人、一个环节或一个方面推广为全体，或把全文主题缩成局部；同时记录不当扩大与缩窄。\par
+\noindent\textbf{排除：}圈出集合与量词：谁属于这个范围？这是个体、群体还是总体？标题能否涵盖各主要段落？\par
+\noindent\textbf{边界：}合理的上位概括允许省略细节。不能只因选项较宽就排除，须证明它多承诺了什么，或遗漏了哪条主线。\par
+\Needspace{9\baselineskip}
+\subsection{R04 无中生有}\label{cat-R04}
+\noindent\textbf{识别：}选项加入文中没有支持的动作、规则、对象、比较或评价；附近有相同名词不等于关系成立。\par
+\noindent\textbf{排除：}指出缺失的关键证据，而非笼统说“没提到”：谁实施了什么？哪句提供这项比较或建议？\par
+\noindent\textbf{边界：}有文内起点但推得太远时另记推断过度；与原文明示相反时优先记方向颠倒。不把现实中可能成立当作文中已证实。\par
+\Needspace{9\baselineskip}
+\subsection{R05 逻辑关系颠倒}\label{cat-R05}
+\noindent\textbf{识别：}反转肯定与否定、主动与被动、比较方向、支持与反对，或把原文关系换成相反方向。\par
+\noindent\textbf{排除：}用“甲高于乙”“甲影响乙”“作者否定甲”短句恢复关系，再与选项比方向。\par
+\noindent\textbf{边界：}不是所有错误都叫反向。没有证据支持不等于有证据否定；时间倒置和因果倒置另加相应标签。\par
+\Needspace{9\baselineskip}
+\subsection{R06 时间范围与状态变化}\label{cat-R06}
+\noindent\textbf{识别：}把过去搬到现在、旧背景当新原因、计划写成完成、条件假设写成既成事实，或擅自添加持续时长和变化趋势。\par
+\noindent\textbf{排除：}圈 recently、used to、now、already、still；分别写出“何时”和“处于哪一阶段”。\par
+\noindent\textbf{边界：}文中出现时间词不代表所有错项都是时间错误。只有选项的失真确实依赖时间、阶段或事实状态才编码。\par
+\Needspace{9\baselineskip}
+\subsection{R07 因果关系误判}\label{cat-R07}
+\noindent\textbf{识别：}把并列、相关、结果、资料来源、比较事实写成原因；倒置因果，删掉必要的中间环节，或把原因错归另一个因素。\par
+\noindent\textbf{排除：}分别写出原因和结果，再找连接依据。区分“已有特征”与“促成特征”，以及直接原因和背景条件。\par
+\noindent\textbf{边界：}不要求正确选项必须含 because。因果可由上下文共同支持；没有连接词不能自动排除。\par
+\Needspace{9\baselineskip}
+\subsection{R08 程度夸大与缩小}\label{cat-R08}
+\noindent\textbf{识别：}提高或压低数量、频率、必要性、确定性、情绪强度：如存在缺点变成必败、部分作用变成唯一条件。\par
+\noindent\textbf{排除：}保留 may、some、not enough、tend to；同时检查 too weak：普通兴奋未必足以表达狂热。\par
+\noindent\textbf{边界：}强词不是自动错误。正确选项也可能使用强措辞，必须由语境定其适用范围，不按“绝对词必错”作答。\par
+\Needspace{9\baselineskip}
+\subsection{R09 推断过度}\label{cat-R09}
+\noindent\textbf{识别：}从真实线索跨过文本没有提供的桥梁，得到更强或不同层次的结论，如“不是最大敌人”推成“潜在盟友”。\par
+\noindent\textbf{排除：}列出推理必须补上的前提。若它来自常识、猜测或心理想象，且文章未给出，就不能把结论当作可靠推断。\par
+\noindent\textbf{边界：}合理推断允许同义归纳和必要的低强度概括。may 只是降低确定性，不能为完全无据的命题提供内容依据。\par
+\Needspace{9\baselineskip}
+\subsection{R10 态度误读}\label{cat-R10}
+\noindent\textbf{识别：}把局部让步当总体赞成，把冷静批评当中立，把引用者态度当作者态度，或混淆怀疑、困惑、轻蔑等评价性质。\par
+\noindent\textbf{排除：}先定发言者和评价对象，再看转折后的理由及结尾主张；用具体评价词校准倾向和强度。\par
+\noindent\textbf{边界：}skeptical 常有明确理由，并非不知道答案；承认有优点也可总体批评。态度要针对题干对象，不能泛化到整个人或整类事物。\par
+\Needspace{9\baselineskip}
+\subsection{R11 答题焦点与论证功能错判}\label{cat-R11}
+\noindent\textbf{识别：}选项可能谈到真实信息，但没有回答题干任务：用结果回答原因、用背景回答目的、用重要细节替代全文主题。\par
+\noindent\textbf{排除：}先把问题改成中文任务：问事实、原因、用途、作者评价，还是例子为什么在这里出现？再找相应层级。\par
+\noindent\textbf{边界：}这类选项不一定在字面上完全虚假。排除理由应写“未回答本题”或“覆盖不足”，不能伪称原文绝无此信息。\par
+\Needspace{9\baselineskip}
+\subsection{R12 语境词义与搭配误读}\label{cat-R12}
+\noindent\textbf{识别：}按熟悉本义、词形或背景常识猜词，忽略当前搭配、比喻链与句法功能，例如 banking on 误读成银行业。\par
+\noindent\textbf{排除：}找同位解释、重复表达、反义对照及后续结果；把候选义项放回句子检验主谓宾是否合理。\par
+\noindent\textbf{边界：}猜词不能只凭褒贬。两个同为正面或负面的词，还要比较具体动作、程度和句法搭配。\par
+\clearpage\section{跨年重点例题：证据与干扰项对照}\label{cases}
+每类两道不同年份例题，共24题，涵盖全部十年。只展示正确项与本例所讨论的干扰项；其余选项可从题号链接回查。题号沿用原试卷21—40，1°—5°表示篇内顺序。每段引文均为独立节选，段号按站内解析；上下文说明补足所需前后关系。\par
+练习时先读题干和选项、遮住判断，再读粉色证据，写出选项到底改动了什么。遇到多个标签时，本例突出当前机制，不表示只有一种解释。\par
+\subsection{R01 张冠李戴}
+\subsubsection{例1　专栏提问，不是智商测试任务}\label{case-2007-T2-Q26}
+\noindent\textbf{2007 年 · Text 2 · 第 26 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q26}{原解析与四选项}\quad \hyperref[idx-2007-T2-Q26]{年份索引}\quad \hyperref[class-R01]{分类索引}\par\smallskip
+\noindent\textbf{题干：}26. Which of the following may be required in an intelligence test?\par
+直译：下列哪项可能是智力测验要求受试者完成的？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} Answering philosophical questions.\par\nopagebreak
+\noindent\textbf{直译：}回答哲学问题。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} Choosing words or graphs similar to the given ones.\par\nopagebreak
+\noindent\textbf{直译：}选择与给定词语或图形具有相似关系的词语或图形。　〔正确〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} IQ tests ask you to complete verbal and visual analogies, to envision paper after it has been folded and cut, and to deduce numerical sequences, among other similar tasks.\par 直译：智商测试要求完成词语与图形类比、想象折剪后的纸张、推导数列等任务。\par
+\end{evidence}
+\noindent\textbf{上下文：}同段先介绍问答专栏，随后列测试任务，再举读者问爱、运气的哲学问题。三类内容挨得很近，却属于不同场景。\par
+\noindent\textbf{判断与排除：}选 D。词语与图形类比对应选择相近的词或图形。A 的哲学问题确实出现，但提出者是专栏读者，不是测验机构；原词出现不能替代归属核对。\par
+\noindent\textbf{缺词时怎么推：}不懂 analogies 时，先抓 IQ tests ask you to 后面的并列动词；verbal、visual 分别对应 words、graphs。爱与运气位于另一个提问场景，可先排除 A。\par
+\noindent\textbf{跨年比较：}对照例2：本题把任务移错场景；2015年把被作者反对的类比移成作者自己的观点。共同检查“这是谁的内容”。\par
+\clearpage
+\subsubsection{例2　钱包类比是谁的观点}\label{case-2015-T2-Q28}
+\noindent\textbf{2015 年 · Text 2 · 第 28 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q28}{原解析与四选项}\quad \hyperref[idx-2015-T2-Q28]{年份索引}\quad \hyperref[class-R01]{分类索引}\par\smallskip
+\noindent\textbf{题干：}28. The author believes that exploring one's phone contents is comparable to\par
+直译：作者认为，查看一个人的手机内容可以类比于……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} going through one's wallet.\par\nopagebreak
+\noindent\textbf{直译：}翻查某人的钱包。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} getting into one's residence.\par\nopagebreak
+\noindent\textbf{直译：}进入某人的住宅。　〔正确〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P4} They should start by discarding California's lame argument\par 直译：法官们首先应该抛弃加州站不住脚的论点。\par
+\textbf{P4} But exploring one's smartphone is more like entering his or her home.\par 直译：但是，查看一个人的智能手机更像进入其住宅。\par
+\end{evidence}
+\noindent\textbf{上下文：}加州把手机与钱包相类比，作者用 discarding 和 lame 否定它，随后 But 引出自己的住宅类比，后面的信息清单说明隐私范围。\par
+\noindent\textbf{判断与排除：}选 D。entering home 与 getting into residence 成对对应。A 不是文中没出现，而是属于被反对的加州论证；把它算给作者就错了。\par
+\noindent\textbf{缺词时怎么推：}不知道宪法条文也能作答。即便 lame 陌生，discarding 与 But 已指示立场转向；home 是住宅，不能因 wallet 熟悉就停在那里。\par
+\noindent\textbf{跨年比较：}对照例1：两题都要越过词面重现，回到任务或观点的归属。法律背景不是完成本题的必要条件。\par
+\clearpage
+\subsection{R02 偷换概念}
+\subsubsection{例3　恢复信任，不是恢复数据}\label{case-2007-T4-Q39}
+\noindent\textbf{2007 年 · Text 4 · 第 39 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q39}{原解析与四选项}\quad \hyperref[idx-2007-T4-Q39]{年份索引}\quad \hyperref[class-R02]{分类索引}\par\smallskip
+\noindent\textbf{题干：}39. According to Paragraph 4, what puzzles the author is that some bosses fail to\par
+直译：根据第 4 段，使作者困惑的是，一些高管没能……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} see the link between trust and data protection.\par\nopagebreak
+\noindent\textbf{直译：}看到信任与数据保护之间的联系。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} realize the high cost of data restoration.\par\nopagebreak
+\noindent\textbf{直译：}意识到恢复数据的高额成本。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P4} trust, that most valuable of economic assets, is easily destroyed and hugely expensive to restore\par 直译：信任这种极有价值的经济资产很容易毁坏，恢复起来却极其昂贵。\par
+\textbf{P4} few things are more likely to destroy trust than a company letting sensitive personal data get into the wrong hands.\par 直译：很少有什么比公司让敏感个人资料落入不该得到它们的人手中更容易破坏信任。\par
+\end{evidence}
+\noindent\textbf{上下文：}作者困惑的是一些高管竟未明白数据保护与信任的联系。一个 that 从句讲信任易损、难恢复，另一个 that 从句讲泄露如何毁坏信任。\par
+\noindent\textbf{判断与排除：}选 A。两条证据合成“数据保护关系到信任”。C 把 restore 的省略对象从 trust 换成 data，虽保留 high cost，却已谈另一件事。\par
+\noindent\textbf{缺词时怎么推：}先删去插入的 that most valuable of economic assets，得到 trust is destroyed and expensive to restore；再把 restore 后面补回 trust，核心关系就清楚了。\par
+\noindent\textbf{跨年比较：}对照例4：这里换的是动词对象；2016年换的是统计指标。都应先问“究竟在恢复或测量什么”。\par
+\clearpage
+\subsubsection{例4　处罚轻重，不是受罚概率}\label{case-2016-T3-Q34}
+\noindent\textbf{2016 年 · Text 3 · 第 34 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q34}{原解析与四选项}\quad \hyperref[idx-2016-T3-Q34]{年份索引}\quad \hyperref[class-R02]{分类索引}\par\smallskip
+\noindent\textbf{题干：}34. When prosecutors evaluate a case, a company's CSR record\par
+直译：当检察官评估案件时，一家公司的企业社会责任记录……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} has an impact on their decision.\par\nopagebreak
+\noindent\textbf{直译：}会影响他们的决定。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} increases the chance of being penalized.\par\nopagebreak
+\noindent\textbf{直译：}提高公司受处罚的可能性。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P4} among prosecuted firms, those with the most comprehensive CSR programmes tended to get more lenient penalties.\par 直译：在被起诉的企业中，社会责任计划最全面的企业往往受到较宽松的处罚。\par
+\textbf{P5} they do seem to be influenced by a company's record in CSR.\par 直译：检察官看来确实受到公司社会责任记录的影响。\par
+\end{evidence}
+\noindent\textbf{上下文：}研究先限定被起诉企业，再比较处罚轻重。P5 对照“应按案件本身判断”与“实际似乎受既有形象影响”。\par
+\noindent\textbf{判断与排除：}选 A，CSR 记录影响决定。C 讨论“是否受罚的机会增加”，原文比较的却是罚款与处罚强度，样本还已经限定为被起诉企业，不能换成受罚概率结论。\par
+\noindent\textbf{缺词时怎么推：}CSR 可暂记“公司某项记录”。即使 lenient 不熟，lower fines 可回填“较轻”；chance 是机会，fines 是罚款，这两个量已经不同。\par
+\noindent\textbf{跨年比较：}对照例3：同一主题中词汇相近仍可能改变命题。不要把“罚得轻”再推成“不受罚”或“不会违法”。\par
+\clearpage
+\subsection{R03 以偏概全与范围失配}
+\subsubsection{例5　球员群体，不能代替全国人口}\label{case-2008-T3-Q33}
+\noindent\textbf{2008 年 · Text 3 · 第 33 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q33}{原解析与四选项}\quad \hyperref[idx-2008-T3-Q33]{年份索引}\quad \hyperref[class-R03]{分类索引}\par\smallskip
+\noindent\textbf{题干：}33. On which of the following statements would the author most probably agree?\par
+直译：作者最可能赞同下列哪一项说法？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} Non-Americans add to the average height of the nation.\par\nopagebreak
+\noindent\textbf{直译：}非美国人提高了这个国家的平均身高。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} Human height is conditioned by the upright posture.\par\nopagebreak
+\noindent\textbf{直译：}人的身高受到直立姿态的制约。　〔正确〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P2} In the case of NBA players, their increase in height appears to result from the increasingly common practice of recruiting players from all over the world.\par 直译：就 NBA 球员而言，身高增加似乎来自越来越普遍的全球招募做法。\par
+\textbf{P4} our feet and back continue to struggle with bipedal posture and cannot easily withstand repeated strain imposed by oversize limbs.\par 直译：我们的脚和背仍在艰难适应双足直立，难以承受过大四肢反复施加的负荷。\par
+\end{evidence}
+\noindent\textbf{上下文：}P1 的球员数据引入话题，P2 随即转向普通美国人口总体趋稳；P4 用身体负重解释身高限制。\par
+\noindent\textbf{判断与排除：}选 B。身体承受负荷受限，支持直立姿态制约身高；condition 在此是“制约”。A 把全球招募造成的球员群体变化扩成全国人口平均身高变化。\par
+\noindent\textbf{缺词时怎么推：}不懂 bipedal，可借 upright、feet and back、strain 串出直立负重。A 的 nation 与原句 NBA players 范围明显不同，可独立排除。\par
+\noindent\textbf{跨年比较：}对照例6：本题把小群体扩成总体；2014年反过来把“尤其重视”缩成“只研究”。范围错误可向两个方向发生。\par
+\clearpage
+\subsubsection{例6　尤其重视，不是排他研究}\label{case-2014-T4-Q38}
+\noindent\textbf{2014 年 · Text 4 · 第 38 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q38}{原解析与四选项}\quad \hyperref[idx-2014-T4-Q38]{年份索引}\quad \hyperref[class-R03]{分类索引}\par\smallskip
+\noindent\textbf{题干：}38. According to Paragraph 3, the report suggests\par
+直译：根据第 3 段，这份报告建议……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} an exclusive study of American history.\par\nopagebreak
+\noindent\textbf{直译：}只研究美国历史。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} the application of emerging technologies.\par\nopagebreak
+\noindent\textbf{直译：}运用新兴技术。　〔正确〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P3} stresses the study of history and government, particularly American history and American government; and encourages the use of new digital technologies.\par 直译：强调学习历史与政府体制，尤其是美国历史和美国政府体制；并鼓励使用新的数字技术。\par
+\end{evidence}
+\noindent\textbf{上下文：}本段逐项列报告建议。particularly 在广泛学习历史与政府的框架内强调美国部分；分号后另列数字技术建议。\par
+\noindent\textbf{判断与排除：}选 C，emerging technologies 对应 new digital technologies。A 将 particularly 改成 exclusive，把重点改为排他限制，删掉了原文保留的其他研究范围。\par
+\noindent\textbf{缺词时怎么推：}即使 citizenry、curricula 不会，也可按分号分开建议。particularly 是“尤其”，exclusive 是“仅限、排他”；两词决定 A 的边界。\par
+\noindent\textbf{跨年比较：}对照例5：先写原文集合，再写选项集合。不要把“强调一个成员”理解成“只允许这个成员”。\par
+\clearpage
+\subsection{R04 无中生有}
+\subsubsection{例7　有销量，不等于促销成功}\label{case-2009-T2-Q26}
+\noindent\textbf{2009 年 · Text 2 · 第 26 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q26}{原解析与四选项}\quad \hyperref[idx-2009-T2-Q26]{年份索引}\quad \hyperref[class-R04]{分类索引}\par\smallskip
+\noindent\textbf{题干：}26. In Paragraphs 1 and 2, the text shows PTK's\par
+直译：在第 1、2 段中，文章表明亲子鉴定试剂盒 PTK 的什么特征？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} easy availability.\par\nopagebreak
+\noindent\textbf{直译：}容易买到；获取便捷。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} successful promotion.\par\nopagebreak
+\noindent\textbf{直译：}推广成功。　〔本例干扰项〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} All he needs to do is shell out \$30 for a paternity testing kit (PTK) at his local drugstore\par 直译：他只需在当地药店花30美元买一套亲子鉴定试剂盒。\par
+\textbf{P2} More than 60,000 people have purchased the PTKs since they first became available without prescriptions last year\par 直译：自去年开始无需处方即可购买以来，已有超过六万人买过这些试剂盒。\par
+\end{evidence}
+\noindent\textbf{上下文：}前两段强调购买地点与无需处方，数字补充市场使用情况，并未介绍广告、打折或推广活动。\par
+\noindent\textbf{判断与排除：}选 A。药店可买、无需处方共同支持 easy availability。C 需要“采取了推广活动且成功”的证据；销量本身不能补出这个过程，所以不能只凭数字看上去很大就选。\par
+\noindent\textbf{缺词时怎么推：}PTK 可暂当作“某产品”。drugstore、without prescriptions 与 directly to the public 都在说明获取渠道；不必知道检测原理，也能区分“买得到”和“推广得好”。\par
+\noindent\textbf{跨年比较：}对照例8：本题从销量补出促销活动，2016年从地点名词补出修建计划。两者都多加了一个动作。\par
+\clearpage
+\subsubsection{例8　秀台这个地点，不证明修建计划}\label{case-2016-T1-Q21}
+\noindent\textbf{2016 年 · Text 1 · 第 21 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q21}{原解析与四选项}\quad \hyperref[idx-2016-T1-Q21]{年份索引}\quad \hyperref[class-R04]{分类索引}\par\smallskip
+\noindent\textbf{题干：}21. According to the first paragraph, what would happen in France?\par
+直译：根据第一段，法国将会发生什么？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} Physical beauty would be redefined.\par\nopagebreak
+\noindent\textbf{直译：}形体美将被重新界定。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} New runways would be constructed.\par\nopagebreak
+\noindent\textbf{直译：}将修建新的时装秀台。　〔本例干扰项〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} its fashion industry has lost an absolute right to define physical beauty for women.\par 直译：其时尚业已经失去了定义女性形体美的绝对权利。\par
+\textbf{P1} a law that would make it a crime to employ ultra-thin models on runways.\par 直译：一项法律将使雇用过度瘦削的模特走秀成为犯罪。\par
+\end{evidence}
+\noindent\textbf{上下文：}法国的立法动向被用来说明行业原有审美权威受到挑战。runways 是模特活动的地点，句子核心是限制 employ。\par
+\noindent\textbf{判断与排除：}选 A，身体美的定义将被重新审视。B 添加 would be constructed，把背景地点升级为新建筑计划；原文没有修建者、建设行动或相关安排。\par
+\noindent\textbf{缺词时怎么推：}不懂 ultra-thin，可从后文 dieting、thinness 知道在谈体形。先看谓语 employ，并未出现 build 或 construct，足以排除 B。\par
+\noindent\textbf{跨年比较：}对照例7：看到熟悉名词时先问“它在句中扮演什么角色”。名词重现不能证明选项新加的谓语。\par
+\clearpage
+\subsection{R05 逻辑关系颠倒}
+\subsubsection{例9　认知多于直觉，不能倒过来}\label{case-2007-T1-Q23}
+\noindent\textbf{2007 年 · Text 1 · 第 23 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q23}{原解析与四选项}\quad \hyperref[idx-2007-T1-Q23]{年份索引}\quad \hyperref[class-R05]{分类索引}\par\smallskip
+\noindent\textbf{题干：}23. According to Ericsson, good memory\par
+直译：按照埃里克森的观点，良好的记忆能力……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} depends on meaningful processing of information.\par\nopagebreak
+\noindent\textbf{直译：}取决于对信息进行有意义的加工处理。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} results from intuitive rather than cognitive exercises.\par\nopagebreak
+\noindent\textbf{直译：}源于直觉性训练而不是认知训练。　〔本例干扰项〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P4} the act of memorizing is more of a cognitive exercise than an intuitive one.\par 直译：记忆活动与其说是直觉活动，不如说更是一种认知训练。\par
+\textbf{P4} the best way to learn how to encode information meaningfully\par 直译：学会对信息作有意义编码的最佳方法。\par
+\end{evidence}
+\noindent\textbf{上下文：}数字记忆训练实验说明表现可以改善，P4 进一步解释编码质量，随后把刻意练习与机械重复区分开。\par
+\noindent\textbf{判断与排除：}选 A，meaningful processing 对应 encode information meaningfully。B 把 intuitive 放在 rather than 前、cognitive 放在后，正好反转原文更重视认知训练的方向。\par
+\noindent\textbf{缺词时怎么推：}即便 cognitive 与 intuitive 都不熟，也可先记为甲、乙：原文“更是甲而非乙”，B 却是“乙而非甲”。排除方向错误不必先掌握专业名词。\par
+\noindent\textbf{跨年比较：}对照例10：本题反转比较的两端；2010年反转影响的发出者与承受者。把两端写出来，比单独记关键词稳妥。\par
+\clearpage
+\subsubsection{例10　影响别人，与受到影响}\label{case-2010-T3-Q35}
+\noindent\textbf{2010 年 · Text 3 · 第 35 题 · 5°}\par\noindent \href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q35}{原解析与四选项}\quad \hyperref[idx-2010-T3-Q35]{年份索引}\quad \hyperref[class-R05]{分类索引}\par\smallskip
+\noindent\textbf{题干：}35. What is the essential element in the dynamics of social influence?\par
+直译：在社会影响力传播的动态过程中，最关键的要素是什么？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} The impulse to influence others.\par\nopagebreak
+\noindent\textbf{直译：}主动影响他人的冲动。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} The readiness to be influenced.\par\nopagebreak
+\noindent\textbf{直译：}愿意接受他人影响的倾向。　〔正确〕\par
+\begin{evidence}\textbf{5°　原文证据（独立节选）}\par
+\textbf{P5} the presence not of a few influentials but, rather, of a critical mass of easily influenced people.\par 直译：关键在于存在的不是少数影响者，而是达到一定规模、容易受到影响的人群。\par
+\end{evidence}
+\noindent\textbf{上下文：}前文介绍少数关键人物理论，再用传播链和模拟研究提出修正：下游足够多的人愿意接收影响，传播才有扩大的条件。\par
+\noindent\textbf{判断与排除：}选 C，readiness to be influenced 对应 easily influenced。B 是 impulse to influence others，强调向外影响他人，改变了原文结论中的被动方向。\par
+\noindent\textbf{缺词时怎么推：}不懂 cascades 或 critical mass 的精确定义，也应保留 not...but... 和 influenced 的被动形式。先确定正确项在说“容易受影响”，再补上群体数量条件。\par
+\noindent\textbf{跨年比较：}对照例9：把不熟的名词临时替换为甲乙仍可读关系；但不能删掉主动、被动与比较结构。\par
+\clearpage
+\subsection{R06 时间范围与状态变化}
+\subsubsection{例11　十年前的争议，不是近期的新动向}\label{case-2010-T2-Q26}
+\noindent\textbf{2010 年 · Text 2 · 第 26 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q26}{原解析与四选项}\quad \hyperref[idx-2010-T2-Q26]{年份索引}\quad \hyperref[class-R06]{分类索引}\par\smallskip
+\noindent\textbf{题干：}26. Business-method patents have recently aroused concern because of\par
+直译：商业方法专利最近引起关注，是因为什么？\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} the possible restriction on their granting.\par\nopagebreak
+\noindent\textbf{直译：}这类专利的授予可能受到限制。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} the controversy over their authorization.\par\nopagebreak
+\noindent\textbf{直译：}围绕其授权合法性存在争议。　〔本例干扰项〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P2} Now the nation's top patent court appears completely ready to scale back on business-method patents, which have been controversial ever since they were first authorized 10 years ago.\par 直译：如今，最高层级的专利法院看来已准备收紧商业方法专利；这类专利自十年前首次获准以来便一直有争议。\par
+\end{evidence}
+\noindent\textbf{上下文：}P1 交代已有广泛授权，P2 的 Now 转到法院准备重新审查；which 从句补充长期争议背景。\par
+\noindent\textbf{判断与排除：}选 C。题干 recently 问近因，possible restriction 对应准备收紧。D 所说授权争议不是凭空捏造，但属于持续多年的背景，未解释为什么最近引起新的关注。\par
+\noindent\textbf{缺词时怎么推：}不懂专利名称也可把它当“某制度”。圈 Now 和 10 years ago，分别配对主句与 which 从句；近期变化在主句里。\par
+\noindent\textbf{跨年比较：}对照例12：本题是旧背景冒充新原因；2012年是过去鼎盛冒充现今规模。事实本身出现过，仍须对齐时点。\par
+\clearpage
+\subsubsection{例12　旧时鼎盛，不能直接搬到现在}\label{case-2012-T4-Q36}
+\noindent\textbf{2012 年 · Text 4 · 第 36 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q36}{原解析与四选项}\quad \hyperref[idx-2012-T4-Q36]{年份索引}\quad \hyperref[class-R06]{分类索引}\par\smallskip
+\noindent\textbf{题干：}36. It can be learned from the first paragraph that\par
+直译：从第一段可以得知……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} Teamsters still have a large body of members.\par\nopagebreak
+\noindent\textbf{直译：}卡车司机工会仍然拥有大批会员。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} unions have enlarged their public-sector membership.\par\nopagebreak
+\noindent\textbf{直译：}工会扩大了其公共部门的会员规模。　〔正确〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} When Hoffa's Teamsters were in their prime in 1960, only one in ten American government workers belonged to a union; now 36\% do.\par 直译：1960年霍法的卡车司机工会处于鼎盛时，美国政府雇员仅十分之一入会；现在为36\%。\par
+\textbf{P1} In 2009 the number of unionists in America's public sector passed that of their fellow members in the private sector.\par 直译：2009年，美国公共部门工会会员人数超过了私营部门。\par
+\end{evidence}
+\noindent\textbf{上下文：}本段以一个历史人物的虚拟设想引出工会重心转变，再比较公共部门的入会比例与人数。不是更新某一个旧工会的现有会员名册。\par
+\noindent\textbf{判断与排除：}选 C，公共部门工会力量扩大。A 的 still 要求证明 Teamsters 现在仍有大量会员；in their prime 只限定1960年，now 36\% 的对象又是政府雇员，不能挪用。\par
+\noindent\textbf{缺词时怎么推：}先用 When...in 1960 与 now 分成两格，再把各格主语补全。do 代替 belong to a union，不是代替 Teamsters have many members。\par
+\noindent\textbf{跨年比较：}对照例11：时间词与主语需要一起核对。即使数字更大，也先问它属于哪群人、哪一年、什么指标。\par
+\clearpage
+\subsection{R07 因果关系误判}
+\subsubsection{例13　亲子关系与释放行动，不自动组成因果}\label{case-2008-T4-Q38}
+\noindent\textbf{2008 年 · Text 4 · 第 38 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q38}{原解析与四选项}\quad \hyperref[idx-2008-T4-Q38]{年份索引}\quad \hyperref[class-R07]{分类索引}\par\smallskip
+\noindent\textbf{题干：}38. What do we learn about Thomas Jefferson?\par
+直译：关于托马斯·杰斐逊，我们可以了解到什么？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} His status as a father made him free the child slaves.\par\nopagebreak
+\noindent\textbf{直译：}父亲身份使他释放了那些儿童奴隶。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} His attitude towards slavery was complex.\par\nopagebreak
+\noindent\textbf{直译：}他对奴隶制的态度是复杂的。　〔正确〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P3} While Washington and Jefferson privately expressed distaste for slavery, they also understood that it was part of the political and economic bedrock of the country they helped to create.\par 直译：虽然二人私下反感奴隶制，却也明白它属于这个国家政治经济根基的一部分。\par
+\textbf{P6} Still, Jefferson freed Hemings's children—though not Hemings herself or his approximately 150 other slaves.\par 直译：尽管如此，杰斐逊释放了赫明斯的孩子，却未释放赫明斯本人及其余约150名奴隶。\par
+\end{evidence}
+\noindent\textbf{上下文：}P2 提到亲子关系证据，P3 写道德反感与制度依赖，P5 写政治利益和扩张，P6 写有限释放。全篇呈现的是矛盾而复杂的态度与行动。\par
+\noindent\textbf{判断与排除：}选 C。B 用 made him 将父亲身份定为释放的原因，原文没有建立这条因果；the child slaves 还可能使范围超出特定孩子。两个事实同时出现，不等于作者已经解释了动机。\par
+\noindent\textbf{缺词时怎么推：}不认识 bedrock，可先抓 While 与 also，看到两种相冲突的考虑并存。排 B 时只需追问 made him 的因果证据在哪里，不能凭故事常识替文章补上。\par
+\noindent\textbf{跨年比较：}对照例14：本题把两件事连接成动机因果；2011年把质量比较改成提升质量的作用。都应另找因果桥梁。\par
+\clearpage
+\subsubsection{例14　质量更高，不等于使质量提高}\label{case-2011-T1-Q24}
+\noindent\textbf{2011 年 · Text 1 · 第 24 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q24}{原解析与四选项}\quad \hyperref[idx-2011-T1-Q24]{年份索引}\quad \hyperref[class-R07]{分类索引}\par\smallskip
+\noindent\textbf{题干：}24. According to the text, which of the following is true of recordings?\par
+直译：根据文章，下列关于录音的哪一说法是正确的？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} They are easily accessible to the general public.\par\nopagebreak
+\noindent\textbf{直译：}普通公众很容易获得或接触到它们。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} They help improve the quality of music.\par\nopagebreak
+\noindent\textbf{直译：}它们有助于提高音乐的质量。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P4} These recordings are cheap, available everywhere, and very often much higher in artistic quality than today's live performances; moreover, they can be “consumed” at a time and place of the listener's choosing.\par 直译：这些录音价格便宜、随处可得，艺术质量往往比当今现场演出高得多；听众还能自选欣赏时间和地点。\par
+\end{evidence}
+\noindent\textbf{上下文：}作者解释录音为何能与现场演出竞争，列举价格、获取、已有质量与选择自由，没有研究录音技术如何改变演奏质量。\par
+\noindent\textbf{判断与排除：}选 B，easily accessible 概括 cheap 与 available everywhere。C 的 help improve 新加“促使质量提升”的因果作用；原文只是在比较两类作品的既有质量。\par
+\noindent\textbf{缺词时怎么推：}不懂 instrumentalists 也不影响定位。higher...than 是比较，help improve 是促成变化；把“甲比乙好”译成“甲使音乐变好”，关系就变了。\par
+\noindent\textbf{跨年比较：}对照例13：并列事实和比较事实都不自带因果。想选因果项，必须确认文章不仅描述结果，还支持这个作用方向。\par
+\clearpage
+\subsection{R08 程度夸大与缩小}
+\subsubsection{例15　悬崖边缘，不是已经成为废墟}\label{case-2007-T3-Q35}
+\noindent\textbf{2007 年 · Text 3 · 第 35 题 · 5°}\par\noindent \href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q35}{原解析与四选项}\quad \hyperref[idx-2007-T3-Q35]{年份索引}\quad \hyperref[class-R08]{分类索引}\par\smallskip
+\noindent\textbf{题干：}35. Which of the following is the best title for this text?\par
+直译：以下哪一个标题最适合这篇文章？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} The Middle Class on the Cliff\par\nopagebreak
+\noindent\textbf{直译：}站在悬崖边缘的中产阶级。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} The Middle Class in Ruins\par\nopagebreak
+\noindent\textbf{直译：}已成废墟的中产阶级。　〔本例干扰项〕\par
+\begin{evidence}\textbf{5°　原文证据（独立节选）}\par
+\textbf{P1} Now a pink slip, a bad diagnosis, or a disappearing spouse can reduce a family from solidly middle class to newly poor in a few months.\par 直译：如今，一次解雇、不利诊断或配偶离开，都可能在几个月内使中产家庭陷入贫困。\par
+\end{evidence}
+\noindent\textbf{上下文：}后文解释双职工家庭失去备用收入，以及养老医疗投资风险向家庭转移；结尾强调肩上负担加重。主线是脆弱性和滑落风险。\par
+\noindent\textbf{判断与排除：}选 B，“悬崖边缘”对应一次变故即可滑落。D 的 in ruins 把可能的严重后果写成中产阶级已整体崩溃，既加重程度，也改变事实状态。\par
+\noindent\textbf{缺词时怎么推：}不熟 pink slip 可先不译，它与坏诊断、配偶离开并列为变故。保留 can reduce，意思是“可能使之变成”，不是“现在已经全变成”。\par
+\noindent\textbf{跨年比较：}对照例16：有风险不等于已毁灭，有弱点不等于必失败。否定一部分与否定整体之间往往正隔着一个错误选项。\par
+\clearpage
+\subsubsection{例16　指出流程弱点，不是预言方案失败}\label{case-2015-T3-Q34}
+\noindent\textbf{2015 年 · Text 3 · 第 34 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q34}{原解析与四选项}\quad \hyperref[idx-2015-T3-Q34]{年份索引}\quad \hyperref[class-R08]{分类索引}\par\smallskip
+\noindent\textbf{题干：}34. David Vaux holds that what Science is doing now\par
+直译：戴维·沃克斯认为，《科学》目前的做法……\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} has room for further improvement.\par\nopagebreak
+\noindent\textbf{直译：}仍有进一步改进的空间。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} is to fail in the foreseeable future.\par\nopagebreak
+\noindent\textbf{直译：}将在可预见的将来失败。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P6} has some merit, but a weakness is that it relies on the board of reviewing editors to identify ‘the papers that need scrutiny’ in the first place\par 直译：有一些可取之处，但弱点在于起初仍依赖审稿编辑委员会识别哪些论文需要细查。\par
+\end{evidence}
+\noindent\textbf{上下文：}《科学》把部分论文交给统计专家。Vaux 的问题在入口识别：编辑如果漏掉需要复核的稿件，后面的专家审查就未必能覆盖它。\par
+\noindent\textbf{判断与排除：}选 C，仍有改进空间。D 加入 is to fail 与 foreseeable future，把具体弱点提升为确定的近期失败预言；同时抹去 has some merit 的肯定。\par
+\noindent\textbf{缺词时怎么推：}不认识委员会名称，仍能读懂 some merit 与 a weakness 的一正一负。先保留“有价值但有缺点”，再找既不全盘肯定也不全盘否定的概括。\par
+\noindent\textbf{跨年比较：}对照例15：风险、弱点、失败三种强度不能混用。这里的 but 也没有把前面的优点从事实中删除。\par
+\clearpage
+\subsection{R09 推断过度}
+\subsubsection{例17　效率提高，不保证饥饿完全消失}\label{case-2009-T3-Q34}
+\noindent\textbf{2009 年 · Text 3 · 第 34 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q34}{原解析与四选项}\quad \hyperref[idx-2009-T3-Q34]{年份索引}\quad \hyperref[class-R09]{分类索引}\par\smallskip
+\noindent\textbf{题干：}34. The author quotes the example of our ancestors to show that education emerged\par
+直译：作者列举祖先的事例，是为了表明教育是在什么条件下出现的？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} when people had enough time.\par\nopagebreak
+\noindent\textbf{直译：}当人们有了足够时间时。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} when people no longer went hungry.\par\nopagebreak
+\noindent\textbf{直译：}当人们不再挨饿时。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P4} When our ancestors were hunters and gatherers 10,000 years ago, they didn't have time to wonder much about anything besides finding food.\par 直译：一万年前祖先狩猎采集时，除寻找食物外几乎无暇思考其他事。\par
+\textbf{P4} Only when humanity began to get its food in a more productive way was there time for other things.\par 直译：只有在人类开始更高效地获取食物后，才有时间从事其他活动。\par
+\end{evidence}
+\noindent\textbf{上下文：}本段用祖先的例子说明经济与生产率改善如何释放时间，从而促进教育。证据落点是 time，不是食物分配和饥饿是否彻底消除。\par
+\noindent\textbf{判断与排除：}选 A。C 从“获取食物更高效”跳到“不再饥饿”，需要供给充足、分配等额外前提，文章没有证明。提高效率可以解释有时间，却不自动保证全体始终吃饱。\par
+\noindent\textbf{缺词时怎么推：}先把倒装还原为 there was time only when...。即便 productive 不熟，主句仍明说 time，与 A 的 enough time 对应；不能用常识把它替换成食物结果。\par
+\noindent\textbf{跨年比较：}对照例18：本题把程度改善推成完全解决；2015年把相对否定推成相反阵营。检查推理中偷偷补进的前提。\par
+\clearpage
+\subsubsection{例18　不是最大敌人，不能推出是盟友}\label{case-2015-T1-Q24}
+\noindent\textbf{2015 年 · Text 1 · 第 24 题 · 4°}\par\noindent \href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q24}{原解析与四选项}\quad \hyperref[idx-2015-T1-Q24]{年份索引}\quad \hyperref[class-R09]{分类索引}\par\smallskip
+\noindent\textbf{题干：}24. The British royals “have most to fear” because Charles\par
+直译：英国王室“最需要担心”，是因为查尔斯……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} fails to adapt himself to his future role.\par\nopagebreak
+\noindent\textbf{直译：}未能使自己适应未来的角色。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} takes republicans as his potential allies.\par\nopagebreak
+\noindent\textbf{直译：}把共和派视为潜在盟友。　〔本例干扰项〕\par
+\begin{evidence}\textbf{4°　原文证据（独立节选）}\par
+\textbf{P7} He has failed to understand that monarchies have largely survived because they provide a service — as non-controversial and non-political heads of state.\par 直译：他没有理解，君主制大体得以延续，是因为其提供了中立、不卷入党派政治的国家元首服务。\par
+\textbf{P7} it is kings, not republicans, who are the monarchy's worst enemies.\par 直译：君主制最大的敌人是国王本人，而不是共和派。\par
+\end{evidence}
+\noindent\textbf{上下文：}作者此前批评奢华生活与等级观念，再指出未理解公共角色的风险；结尾通过强烈对照提醒君主审视自身做法。\par
+\noindent\textbf{判断与排除：}选 A，未适应未来角色。C 声称查尔斯把共和派当潜在盟友，既增加他的心理判断，又把“不是最大敌人”推成“盟友”。比较中排除第一名，不等于归入相反类别。\par
+\noindent\textbf{缺词时怎么推：}把 worst 当“最严重的”保留即可。not the worst enemy 仍可能是较小的敌手、中立者等；原文没有选项所需的 allies 或 Charles thinks。\par
+\noindent\textbf{跨年比较：}对照例17：不能因结论听起来顺理成章就省掉证据。遇到“更多、更少、最大、较弱”，尤其避免直接跳到绝对结论。\par
+\clearpage
+\subsection{R10 态度误读}
+\subsubsection{例19　有理由的怀疑，不是困惑}\label{case-2011-T1-Q25}
+\noindent\textbf{2011 年 · Text 1 · 第 25 题 · 5°}\par\noindent \href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q25}{原解析与四选项}\quad \hyperref[idx-2011-T1-Q25]{年份索引}\quad \hyperref[class-R10]{分类索引}\par\smallskip
+\noindent\textbf{题干：}25. Regarding Gilbert's role in revitalizing the Philharmonic, the author feels\par
+直译：对于吉尔伯特在振兴爱乐乐团方面的作用，作者持何种态度？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} doubtful.\par\nopagebreak
+\noindent\textbf{直译：}怀疑的；持保留态度的。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} enthusiastic.\par\nopagebreak
+\noindent\textbf{直译：}热情支持的。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} puzzled.\par\nopagebreak
+\noindent\textbf{直译：}困惑不解的。　〔本例干扰项〕\par
+\begin{evidence}\textbf{5°　原文证据（独立节选）}\par
+\textbf{P5} But what will be the nature of that difference? Merely expanding the orchestra's repertoire will not be enough.\par 直译：但这种不同究竟是什么？仅扩充乐团的演出曲目还不够。\par
+\textbf{P5} If Gilbert and the Philharmonic are to succeed, they must first change the relationship\par 直译：如果吉尔伯特和爱乐乐团要成功，他们首先必须改变有关关系。\par
+\end{evidence}
+\noindent\textbf{上下文：}公众和评论家有积极反响，Ross 还给出乐观期待。作者却转向录音竞争，质疑单靠曲目变化是否足够，并提出与新听众关系的要求。\par
+\noindent\textbf{判断与排除：}选 A，doubtful。B 挪用他人的热烈态度；D 把论证式提问读成茫然不解。作者能说清缺什么、需要做什么，所以是有理由的保留，不是没有理解。\par
+\noindent\textbf{缺词时怎么推：}不熟 repertoire 可暂当“某种改动”，merely...not enough 已说明不充分；If...must 是成功的必要条件，不是保证成功。\par
+\noindent\textbf{跨年比较：}对照例20：两题都要看作者拿出了什么反向理由，不能见 may 就判拿不准，也不能见问号就判困惑。\par
+\clearpage
+\subsubsection{例20　让步接受前提，不是赞同结论}\label{case-2016-T3-Q31}
+\noindent\textbf{2016 年 · Text 3 · 第 31 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q31}{原解析与四选项}\quad \hyperref[idx-2016-T3-Q31]{年份索引}\quad \hyperref[class-R10]{分类索引}\par\smallskip
+\noindent\textbf{题干：}31. The author views Milton Friedman's statement about CSR with\par
+直译：作者以怎样的态度看待米尔顿·弗里德曼关于企业社会责任的说法？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} skepticism.\par\nopagebreak
+\noindent\textbf{直译：}怀疑、质疑。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} approval.\par\nopagebreak
+\noindent\textbf{直译：}赞同。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} uncertainty.\par\nopagebreak
+\noindent\textbf{直译：}不确定、拿不准。　〔本例干扰项〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} But even if you accept Friedman's premise and regard corporate social responsibility (CSR) policies as a waste of shareholders’ money, things may not be absolutely clear-cut.\par 直译：但是，即使接受弗里德曼的前提，把企业社会责任政策看作浪费股东的钱，事情也未必如此分明。\par
+\textbf{P1} New research suggests that CSR may create monetary value for companies\par 直译：新研究表明，企业社会责任可能为公司创造经济价值。\par
+\end{evidence}
+\noindent\textbf{上下文：}先引用企业应增加利润的主张，再暂且接受这一出发点，说明即便按金钱衡量，也不能轻率断定 CSR 没有价值。\par
+\noindent\textbf{判断与排除：}选 B，skepticism。C 把 even if you accept 的假设读成作者实际赞同；D 只抓谨慎措辞，漏掉作者引入相反证据的论证方向。怀疑并不要求百分之百断言对方错误。\par
+\noindent\textbf{缺词时怎么推：}把 premise 暂当“前提”，抓 even if 和 But：即便接受前提，结论仍受挑战。may create value 与 waste money 构成明显对照。\par
+\noindent\textbf{跨年比较：}对照例19：态度要由作者的理由和论证方向确定。一个情态词只能告诉你强度，不能单独决定态度类别。\par
+\clearpage
+\subsection{R11 答题焦点与论证功能错判}
+\subsubsection{例21　开头引出问题，后文才给出解释}\label{case-2007-T1-Q21}
+\noindent\textbf{2007 年 · Text 1 · 第 21 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q21}{原解析与四选项}\quad \hyperref[idx-2007-T1-Q21]{年份索引}\quad \hyperref[class-R11]{分类索引}\par\smallskip
+\noindent\textbf{题干：}21. The birthday phenomenon found among soccer players is mentioned to\par
+直译：文章提到足球运动员中发现的出生月份现象，是为了……\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} stress the importance of professional training.\par\nopagebreak
+\noindent\textbf{直译：}强调专业训练的重要性。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} introduce the topic of what makes expert performance.\par\nopagebreak
+\noindent\textbf{直译：}引出“卓越表现是如何形成的”这一话题。　〔正确〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P2} What might account for this strange phenomenon?\par 直译：什么可能解释这一奇怪现象？\par
+\textbf{P5} expert performers – whether in memory or surgery, ballet or computer programming – are nearly always made, not born.\par 直译：无论记忆、外科、芭蕾还是编程，高手几乎总是后天培养而成，而非天生如此。\par
+\end{evidence}
+\noindent\textbf{上下文：}P1 写足球运动员出生月份的异常，P2 提问，后续记忆实验与刻意练习给出机制，P5 归纳高手形成。\par
+\noindent\textbf{判断与排除：}选 C。开篇现象引出“卓越表现如何形成”这一研究问题。A 的训练重要性与全文有关，但出生月份现象本身没有直接证明训练；它把后文结论倒填成开头的直接功能。\par
+\noindent\textbf{缺词时怎么推：}遇到 is mentioned to，先找例子后的问题句，再读结尾。即便专业训练词汇不全，会认 What...account for 和 made, not born，也能把引子与答案分开。\par
+\noindent\textbf{跨年比较：}对照例22：本题分清引子与结论；2012年分清重要机制与完整主题。选项真实相关仍不一定完成题干任务。\par
+\clearpage
+\subsubsection{例22　集体审查重要，却不是全文全部}\label{case-2012-T3-Q35}
+\noindent\textbf{2012 年 · Text 3 · 第 35 题 · 5°}\par\noindent \href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q35}{原解析与四选项}\quad \hyperref[idx-2012-T3-Q35]{年份索引}\quad \hyperref[class-R11]{分类索引}\par\smallskip
+\noindent\textbf{题干：}35. Which of the following would be the best title of the text?\par
+直译：下列哪一项最适合作为本文标题？\par
+\Needspace{3\baselineskip}\noindent\textbf{[B]} Collective Scrutiny in Scientific Discovery.\par\nopagebreak
+\noindent\textbf{直译：}科学发现中的集体审查。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} Evolution of Credibility in Doing Science.\par\nopagebreak
+\noindent\textbf{直译：}科学实践中可信度的形成与演变。　〔正确〕\par
+\begin{evidence}\textbf{5°　原文证据（独立节选）}\par
+\textbf{P2} This is the credibility process\par 直译：这就是可信度形成过程。\par
+\textbf{P2} Objective knowledge is the goal, not the starting point.\par 直译：客观知识是目标，而不是起点。\par
+\textbf{P5} We reason together, challenge, revise, and complete each other's reasoning and each other's conceptions of reason.\par 直译：我们共同推理，相互质疑、修正并完善彼此的推理及理性观念。\par
+\end{evidence}
+\noindent\textbf{上下文：}文章从个人发现的不确定性出发，经集体审查与公开交流走向可信度；又说明新发现会遭怀疑、已有成果也可被修正。\par
+\noindent\textbf{判断与排除：}选 C，可信度的形成与演变贯穿全文。B 确实是重要机制，不应说它“原文没提”，但不足以覆盖初始局限、接受过程及持续可修正性。标题须覆盖主线而非只选显眼关键词。\par
+\noindent\textbf{缺词时怎么推：}将每段压成短语：个人局限—共同检验—交流接受—挑战修正—可信度形成。比较两个标题能覆盖几段，而不是只比出现次数。\par
+\noindent\textbf{跨年比较：}对照例21：同样问“它在论证中处于哪一层”。不要把重要等同于全部，把正确细节等同于最佳标题。\par
+\clearpage
+\subsection{R12 语境词义与搭配误读}
+\subsubsection{例23　顺着道路比喻猜词}\label{case-2009-T1-Q23}
+\noindent\textbf{2009 年 · Text 1 · 第 23 题 · 3°}\par\noindent \href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q23}{原解析与四选项}\quad \hyperref[idx-2009-T1-Q23]{年份索引}\quad \hyperref[class-R12]{分类索引}\par\smallskip
+\noindent\textbf{题干：}23. The word "ruts" (Para. 4) is closest in meaning to\par
+直译：第 4 段的 ruts 与哪一词最接近？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} tracks.\par\nopagebreak
+\noindent\textbf{直译：}车辙；轨迹；道路。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} connections.\par\nopagebreak
+\noindent\textbf{直译：}联系；连接。　〔本例干扰项〕\par
+\begin{evidence}\textbf{3°　原文证据（独立节选）}\par
+\textbf{P4} once those ruts of procedure are worn into the brain, they're there to stay.\par 直译：程序性的那些痕迹一旦在大脑中磨出，就会一直保留。\par
+\textbf{P4} the new habits we deliberately press into ourselves create parallel pathways that can bypass those old roads.\par 直译：我们有意培养的新习惯形成平行通道，可以绕开那些旧路。\par
+\end{evidence}
+\noindent\textbf{上下文：}作者不主张消灭旧习惯，而主张建立新的并行路径。ruts 与 pathways、old roads 构成连续的道路比喻。\par
+\noindent\textbf{判断与排除：}选 A，tracks。D 的 connections 很像脑科学术语，却没有解释 worn into、parallel pathways、old roads 这一组局部语言关系。背景上相关不等于当前词义相同。\par
+\noindent\textbf{缺词时怎么推：}不认识 ruts 时向后找 those old roads 的回指，再把四项代入“磨出的旧道路痕迹”。先用句内比喻解释，不必补充脑神经知识。\par
+\noindent\textbf{跨年比较：}对照例24：本题防止背景常识替代语境；2013年防止相似词形替代搭配。猜词最终都要放回句子。\par
+\clearpage
+\subsubsection{例24　bargain 与 imagining 的词面诱导}\label{case-2013-T1-Q21}
+\noindent\textbf{2013 年 · Text 1 · 第 21 题 · 1°}\par\noindent \href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q21}{原解析与四选项}\quad \hyperref[idx-2013-T1-Q21]{年份索引}\quad \hyperref[class-R12]{分类索引}\par\smallskip
+\noindent\textbf{题干：}21. Priestly criticizes her assistant for her\par
+直译：Priestly 因为她的助理的什么问题而批评她？\par
+\Needspace{3\baselineskip}\noindent\textbf{[A]} insensitivity to fashion.\par\nopagebreak
+\noindent\textbf{直译：}对时尚不敏感；没有意识到时尚的影响。　〔正确〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[C]} poor bargaining skill.\par\nopagebreak
+\noindent\textbf{直译：}糟糕的讨价还价能力。　〔本例干扰项〕\par
+\Needspace{3\baselineskip}\noindent\textbf{[D]} lack of imagination.\par\nopagebreak
+\noindent\textbf{直译：}缺乏想象力。　〔本例干扰项〕\par
+\begin{evidence}\textbf{1°　原文证据（独立节选）}\par
+\textbf{P1} scolds her unattractive assistant for imagining that high fashion doesn't affect her.\par 直译：斥责她那位相貌不出众的助理，因为助理以为高级时装不影响自己。\par
+\textbf{P1} to the bargain bin in which the poor girl doubtless found her garment.\par 直译：流向廉价处理货区，那个女孩无疑在那里买到了衣服。\par
+\end{evidence}
+\noindent\textbf{上下文：}电影例子讲时尚由秀场向大众商品传导。助理没有意识到自己也在这条影响链里，毛衣的来历用于反驳她。\par
+\noindent\textbf{判断与排除：}选 A。C 把 bargain bin 的廉价区改成 bargaining skill 的砍价能力；D 把 imagining that 的“以为某命题”改成想象力不足。两项都借熟悉词形替换整句关系。\par
+\noindent\textbf{缺词时怎么推：}先抓 scolds...for，for 后才是受批评的原因。imagining 后接的完整命题是“时尚不影响她”，不能只摘一个动词就给人物添加能力缺陷。\par
+\noindent\textbf{跨年比较：}对照例23：遇到熟词也暂缓下结论。搭配、补语和指代链比“我好像认识这个词”更可靠。\par
+\clearpage\section{逻辑信号词：频次与读法}\label{signals}
+仅统计40篇原文英文正文，不含题干、选项、译文或重复讲解。按完整词／短语、不区分大小写匹配；“篇数”是至少出现一次的文章数。词与短语可以重叠，不能相加作为总词数。\par
+下表是字面检索频次，不是每种逻辑功能的准确次数。例如May也可能是月份，while可表同时或对照，since可表时间或原因；具体功能必须放回语境。例题列指适合练习该检查动作的题，不保证词在题干中重现。\par
+\begin{longtable}{@{}p{2.6cm}rrp{6.4cm}p{2.6cm}@{}}\toprule 信号 & 次数 & 篇数 & 读法与检查点 & 回查题\\\midrule\endhead
+but & 94 & 37 & 转折；核对前后评价对象 & \hyperref[idx-2011-T1-Q25]{2011-T1-Q25}\\\addlinespace[2pt]
+however & 13 & 10 & 转向新判断；前句事实未必失效 & \hyperref[idx-2012-T1-Q25]{2012-T1-Q25}\\\addlinespace[2pt]
+while & 10 & 9 & 让步、对照或同时，依句法判断 & \hyperref[idx-2008-T4-Q38]{2008-T4-Q38}\\\addlinespace[2pt]
+although & 3 & 3 & 承认一层事实，再看主句落点 & \hyperref[idx-2013-T2-Q29]{2013-T2-Q29}\\\addlinespace[2pt]
+even if & 2 & 2 & 即使假设成立，也不保证作者接受它 & \hyperref[idx-2016-T3-Q31]{2016-T3-Q31}\\\addlinespace[2pt]
+if & 37 & 22 & 条件或假设，不能直接改成现实 & \hyperref[idx-2012-T4-Q36]{2012-T4-Q36}\\\addlinespace[2pt]
+only & 43 & 26 & 限制词；找准所限制的动作或范围 & \hyperref[idx-2009-T3-Q34]{2009-T3-Q34}\\\addlinespace[2pt]
+not & 95 & 35 & 否定落在哪个成分上 & \hyperref[idx-2007-T1-Q23]{2007-T1-Q23}\\\addlinespace[2pt]
+rather than & 14 & 11 & 比较取舍，保持两端方向 & \hyperref[idx-2007-T1-Q23]{2007-T1-Q23}\\\addlinespace[2pt]
+more than & 14 & 11 & 数量比较或超出，依结构处理 & \hyperref[idx-2009-T2-Q26]{2009-T2-Q26}\\\addlinespace[2pt]
+some & 34 & 22 & 部分，不自动扩大为所有 & \hyperref[idx-2013-T2-Q29]{2013-T2-Q29}\\\addlinespace[2pt]
+most & 42 & 24 & 多数或最大程度，核对集合 & \hyperref[idx-2010-T3-Q33]{2010-T3-Q33}\\\addlinespace[2pt]
+may & 43 & 25 & 可能；降低确定性，不补充证据 & \hyperref[idx-2015-T4-Q37]{2015-T4-Q37}\\\addlinespace[2pt]
+could & 28 & 20 & 可能、能力或设想，结合时态 & \hyperref[idx-2011-T3-Q33]{2011-T3-Q33}\\\addlinespace[2pt]
+must & 15 & 11 & 必要性或强推断，不等于充分性 & \hyperref[idx-2011-T1-Q25]{2011-T1-Q25}\\\addlinespace[2pt]
+should & 34 & 18 & 应当，不等于实际已做到 & \hyperref[idx-2016-T3-Q34]{2016-T3-Q34}\\\addlinespace[2pt]
+now & 31 & 16 & 现在，与过去阶段比较 & \hyperref[idx-2010-T2-Q26]{2010-T2-Q26}\\\addlinespace[2pt]
+still & 19 & 14 & 仍然或尽管如此，依语境区分 & \hyperref[idx-2012-T4-Q36]{2012-T4-Q36}\\\addlinespace[2pt]
+since & 7 & 7 & 时间起点或原因，不固定一义 & \hyperref[idx-2009-T2-Q26]{2009-T2-Q26}\\\addlinespace[2pt]
+because & 16 & 14 & 原因，核对原因与结果两端 & \hyperref[idx-2015-T1-Q22]{2015-T1-Q22}\\\addlinespace[2pt]
+as a result & 2 & 2 & 结果回接前面的原因 & \hyperref[idx-2007-T3-Q31]{2007-T3-Q31}\\\addlinespace[2pt]
+in other words & 2 & 2 & 后句重新解释前句 & \hyperref[idx-2007-T1-Q23]{2007-T1-Q23}\\\addlinespace[2pt]
+for example & 7 & 6 & 例子回扣观点，不直接升为主旨 & \hyperref[idx-2008-T4-Q36]{2008-T4-Q36}\\\addlinespace[2pt]
+yet & 15 & 12 & 转折或尚未，兼查状态 & \hyperref[idx-2008-T3-Q35]{2008-T3-Q35}\\\addlinespace[2pt]
+\bottomrule\end{longtable}
+\noindent\textbf{组合阅读：}转折只告诉你方向变动；让步只承认一层前提。继续核对转折前后评价对象是否相同。not all 不等于 all not；may 支持低确定性，仍需内容证据；only when 强调必要条件，不自动证明充分性。\par
+\clearpage\section{核心词与熟词僻义：从搭配回到句子}\label{vocabulary}
+这里同时收录常见词的语境义、固定搭配和少量理解证据所必需的词。不是按字典穷举义项，也不是经过考纲标注的词频表。每条解释仅对应所列真题。\par
+\Needspace{4\baselineskip}\noindent\textbf{1. feed　输送人才}\hfill \hyperref[idx-2007-T1-Q21]{2007-T1-Q21}\par
+青年队为职业足坛输送球员；不是给球队喂食。\par
+\Needspace{4\baselineskip}\noindent\textbf{2. subject　受试者}\hfill \hyperref[idx-2007-T1-Q23]{2007-T1-Q23}\par
+记忆实验中是参与测试的人，不是学科。\par
+\Needspace{4\baselineskip}\noindent\textbf{3. envision　在脑中想象}\hfill \hyperref[idx-2007-T2-Q26]{2007-T2-Q26}\par
+想象折剪结果不等于亲手折剪。\par
+\Needspace{4\baselineskip}\noindent\textbf{4. pink slip　解雇通知}\hfill \hyperref[idx-2007-T3-Q35]{2007-T3-Q35}\par
+与不利诊断并列，都是经济冲击来源。\par
+\Needspace{4\baselineskip}\noindent\textbf{5. restore　恢复、重建}\hfill \hyperref[idx-2007-T4-Q39]{2007-T4-Q39}\par
+本句恢复的是信任，不是泄露的数据。\par
+\Needspace{4\baselineskip}\noindent\textbf{6. return on investment　投资回报}\hfill \hyperref[idx-2008-T2-Q28]{2008-T2-Q28}\par
+已有投入带来的回报，不是增加投资行为。\par
+\Needspace{4\baselineskip}\noindent\textbf{7. condition　制约、影响}\hfill \hyperref[idx-2008-T3-Q33]{2008-T3-Q33}\par
+作动词；身高受直立结构限制，不是给出一个条件句。\par
+\Needspace{4\baselineskip}\noindent\textbf{8. will　遗嘱}\hfill \hyperref[idx-2008-T4-Q40]{2008-T4-Q40}\par
+in his will 是在遗嘱中；此处不是将来助动词。\par
+\Needspace{4\baselineskip}\noindent\textbf{9. ruts / tracks　车辙、轨迹}\hfill \hyperref[idx-2009-T1-Q23]{2009-T1-Q23}\par
+依 old roads 的道路比喻理解，不能只看脑科学背景。\par
+\Needspace{4\baselineskip}\noindent\textbf{10. over-the-counter　可直接购买的、非处方的}\hfill \hyperref[idx-2009-T2-Q26]{2009-T2-Q26}\par
+与 without prescriptions 相互解释，说明可获得性。\par
+\Needspace{4\baselineskip}\noindent\textbf{11. counterpart　对应的人或单位}\hfill \hyperref[idx-2009-T3-Q33]{2009-T3-Q33}\par
+比较美国与日本的同类工厂或劳动者，保留比较基准。\par
+\Needspace{4\baselineskip}\noindent\textbf{12. end　目的}\hfill \hyperref[idx-2009-T4-Q40]{2009-T4-Q40}\par
+main end 是主要目的，不是文章末尾。\par
+\Needspace{4\baselineskip}\noindent\textbf{13. save　除了}\hfill \hyperref[idx-2010-T1-Q24]{2010-T1-Q24}\par
+save to specialists 说明少数专业人士例外，不能泛化为所有读者。\par
+\Needspace{4\baselineskip}\noindent\textbf{14. about-face　立场逆转}\hfill \hyperref[idx-2010-T2-Q28]{2010-T2-Q28}\par
+从曾支持授权到准备收紧，依据前后对照猜义。\par
+\Needspace{4\baselineskip}\noindent\textbf{15. embrace　接受、支持}\hfill \hyperref[idx-2010-T3-Q32]{2010-T3-Q32}\par
+Marketers embraced the theory 的主体是营销者。\par
+\Needspace{4\baselineskip}\noindent\textbf{16. book losses　把损失记入账簿}\hfill \hyperref[idx-2010-T4-Q39]{2010-T4-Q39}\par
+确认已有损失，不是制造损失，也不是预订。\par
+\Needspace{4\baselineskip}\noindent\textbf{17. air　神态、派头}\hfill \hyperref[idx-2011-T1-Q22]{2011-T1-Q22}\par
+no air of the formidable conductor 指不摆威严架子。\par
+\Needspace{4\baselineskip}\noindent\textbf{18. poach　挖人、从别处招揽人才}\hfill \hyperref[idx-2011-T2-Q28]{2011-T2-Q28}\par
+猎头、在任 CEO 和候选人共同限定招聘语境。\par
+\Needspace{4\baselineskip}\noindent\textbf{19. traffic　访问流量}\hfill \hyperref[idx-2011-T3-Q32]{2011-T3-Q32}\par
+网站人流量吸引广告投放，不是道路交通。\par
+\Needspace{4\baselineskip}\noindent\textbf{20. in retrospect　回顾起来}\hfill \hyperref[idx-2011-T4-Q36]{2011-T4-Q36}\par
+后来回看产生满足感，不等于回报永久持续。\par
+\Needspace{4\baselineskip}\noindent\textbf{21. take a page from　借鉴某人的做法}\hfill \hyperref[idx-2012-T1-Q22]{2012-T1-Q22}\par
+向广告商学习方法，不是招聘广告商。\par
+\Needspace{4\baselineskip}\noindent\textbf{22. be subject to　须经、受制于}\hfill \hyperref[idx-2012-T2-Q27]{2012-T2-Q27}\par
+许可证延期须经批准，不是研究主题。\par
+\Needspace{4\baselineskip}\noindent\textbf{23. credit / credibility　贡献荣誉／可信度}\hfill \hyperref[idx-2012-T3-Q33]{2012-T3-Q33}\par
+被承认提出了发现，不等于发现永远可靠。\par
+\Needspace{4\baselineskip}\noindent\textbf{24. modest　幅度不大的}\hfill \hyperref[idx-2012-T4-Q38]{2012-T4-Q38}\par
+modest pay rises 是工资涨幅小，与人格谦逊不同。\par
+\Needspace{4\baselineskip}\noindent\textbf{25. bargain bin　廉价处理货区}\hfill \hyperref[idx-2013-T1-Q21]{2013-T1-Q21}\par
+bargain 构成商品搭配，不能直接推成砍价技能。\par
+\Needspace{4\baselineskip}\noindent\textbf{26. effect change　促成改变}\hfill \hyperref[idx-2013-T1-Q24]{2013-T1-Q24}\par
+effect 作动词；结合可持续购买看实际改变。\par
+\Needspace{4\baselineskip}\noindent\textbf{27. check the power　制约权力}\hfill \hyperref[idx-2013-T4-Q40]{2013-T4-Q40}\par
+check 不是简单核对信息，而是限制权力扩张。\par
+\Needspace{4\baselineskip}\noindent\textbf{28. sign on　登记申领救济}\hfill \hyperref[idx-2014-T1-Q22]{2014-T1-Q22}\par
+与找工作构成对照，不能同义重复成查询岗位。\par
+\Needspace{4\baselineskip}\noindent\textbf{29. do justice to　给予公正评价、使获认可}\hfill \hyperref[idx-2014-T3-Q34]{2014-T3-Q34}\par
+时间积累为诺奖带来认可，不是一次法院判决。\par
+\Needspace{4\baselineskip}\noindent\textbf{30. flag up　标出、提请注意}\hfill \hyperref[idx-2015-T3-Q32]{2015-T3-Q32}\par
+先标出需额外复核的稿件，再交专家审查，不是已修改完成。\par
+\Needspace{4\baselineskip}\noindent\textbf{31. betray　显露、流露}\hfill \hyperref[idx-2015-T4-Q40]{2015-T4-Q40}\par
+betray any common humanity 在此是表现人性，不是背叛人类。\par
+\Needspace{4\baselineskip}\noindent\textbf{32. on its merits　按其本身的是非曲直}\hfill \hyperref[idx-2016-T3-Q34]{2016-T3-Q34}\par
+评价案件本身，不是评价企业公益功劳。\par
+\Needspace{4\baselineskip}\noindent\textbf{33. bank on　指望、寄望于}\hfill \hyperref[idx-2016-T3-Q35]{2016-T3-Q35}\par
+banking on the halo effect 与银行业无关。\par
+\Needspace{4\baselineskip}\noindent\textbf{34. aggressive　积极进取的}\hfill \hyperref[idx-2016-T4-Q39]{2016-T4-Q39}\par
+语境是主动调整经营；不指对人有攻击性。\par
+\clearpage\section{长难句障碍：主干、从句、修饰与语序}\label{syntax}
+每句采用同一套拆读动作：找主干谓语，切分从句，剥离修饰，最后还原语序。四个动作不是四次机械重读，而是对卡住位置的四种检查。先保留否定、比较和逻辑限定，再补回细节。\par
+\Needspace{17\baselineskip}
+\subsection{句1　2007-T1-Q23}
+\noindent \href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q23}{原解析}\quad \hyperref[idx-2007-T1-Q23]{年份索引}
+\begin{evidence}\textbf{P4} In other words, whatever inborn differences two people may exhibit in their abilities to memorize, those differences are swamped by how well each person “encodes” the information.\end{evidence}
+\noindent\textbf{主干谓语：}主句谓语为 are swamped；主语是 those differences。\par
+\noindent\textbf{从句切分：}whatever...memorize 是让步从句；how well...information 作 by 后的宾语内容。\par
+\noindent\textbf{剥离修饰：}inborn 修饰 differences；in their abilities to memorize 限定差异领域。不要把 how well 独立当作主句。\par
+\noindent\textbf{还原与作答：}换言之，不管两人在记忆能力上有何先天差异，这些差异都会被各自加工信息的好坏所压倒。作答时保留“编码质量占主导”，不改成遗传决定。\par
+\Needspace{17\baselineskip}
+\subsection{句2　2007-T4-Q39}
+\noindent \href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q39}{原解析}\quad \hyperref[idx-2007-T4-Q39]{年份索引}
+\begin{evidence}\textbf{P4} Surely it should be obvious to the dimmest executive that trust, that most valuable of economic assets, is easily destroyed and hugely expensive to restore – and that few things are more likely to destroy trust than a company letting sensitive personal data get into the wrong hands.\end{evidence}
+\noindent\textbf{主干谓语：}外层为 it should be obvious；内容是后面两个并列 that 从句。第一从句的谓语是 is。\par
+\noindent\textbf{从句切分：}that trust...restore 与 and that few things...hands 并列；第二句用 few...more...than 表示泄露极易损害信任。\par
+\noindent\textbf{剥离修饰：}that most valuable of economic assets 是 trust 的插入同位语；先拿掉，再补回“宝贵的资产”。\par
+\noindent\textbf{还原与作答：}即使迟钝的高管也该明白：信任易损而重建昂贵；资料泄露尤其容易毁坏信任。restore 的对象仍为 trust。\par
+\Needspace{17\baselineskip}
+\subsection{句3　2009-T3-Q34}
+\noindent \href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q34}{原解析}\quad \hyperref[idx-2009-T3-Q34]{年份索引}
+\begin{evidence}\textbf{P4} Only when humanity began to get its food in a more productive way was there time for other things.\end{evidence}
+\noindent\textbf{主干谓语：}主句是 there was time；was 被移到 there 前。\par
+\noindent\textbf{从句切分：}Only when...way 是前置时间兼条件从句，导致部分倒装。\par
+\noindent\textbf{剥离修饰：}in a more productive way 修饰 get its food，说明获取食物的方式更高效。\par
+\noindent\textbf{还原与作答：}只有开始更高效地获取食物后，才有时间做其他事。结论是释放时间，而非已经消除一切饥饿。\par
+\Needspace{17\baselineskip}
+\subsection{句4　2011-T3-Q31}
+\noindent \href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q31}{原解析}\quad \hyperref[idx-2011-T3-Q31]{年份索引}
+\begin{evidence}\textbf{P1} Consumers passionate about a product may create “earned” media by willingly promoting it to friends, and a company may leverage “owned” media by sending e-mail alerts about products and sales to customers registered with its Web site.\end{evidence}
+\noindent\textbf{主干谓语：}两个并列主干：Consumers may create；a company may leverage。\par
+\noindent\textbf{从句切分：}and 连接两套主体与动作，不能把后一套邮件营销移给前一套自愿口碑。\par
+\noindent\textbf{剥离修饰：}passionate about...修饰 Consumers；registered with...修饰 customers；两个 by...各归自己的主句。\par
+\noindent\textbf{还原与作答：}喜爱产品的消费者通过向朋友推荐形成口碑；企业通过给注册客户发邮件利用自有渠道。to friends 是“推荐给朋友”，不是“帮助朋友推广”。\par
+\Needspace{17\baselineskip}
+\subsection{句5　2012-T2-Q27}
+\noindent \href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q27}{原解析}\quad \hyperref[idx-2012-T2-Q27]{年份索引}
+\begin{evidence}\textbf{P3} As a condition of receiving state approval for the sale, the company agreed to seek permission from state regulators to operate past 2012.\end{evidence}
+\noindent\textbf{主干谓语：}主干是 the company agreed；agreed 后接 to seek permission。\par
+\noindent\textbf{从句切分：}As a condition of... 是条件性状语；to operate past 2012 说明将来申请的许可内容。\par
+\noindent\textbf{剥离修饰：}for the sale 修饰 approval；from state regulators 说明许可由谁给。两个许可属于不同阶段。\par
+\noindent\textbf{还原与作答：}为获得当前交易批准，公司同意将来若要继续运营须申请州许可。眼下交易获批不能改成当时已经取得延期许可。\par
+\Needspace{17\baselineskip}
+\subsection{句6　2014-T4-Q37}
+\noindent \href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q37}{原解析}\quad \hyperref[idx-2014-T4-Q37]{年份索引}
+\begin{evidence}\textbf{P2} In 2010, leading congressional Democrats and Republicans sent letters to the AAAS asking that it identify actions that could be taken by ‘federal, state and local governments, universities, foundations, educators, individual benefactors and others’ to ‘maintain national excellence in humanities and social scientific scholarship and education.’\end{evidence}
+\noindent\textbf{主干谓语：}主干是 Democrats and Republicans sent letters。\par
+\noindent\textbf{从句切分：}asking that it identify... 表要求内容；actions 后 that could be taken...是定语从句，不能读成第二个要求。\par
+\noindent\textbf{剥离修饰：}长名单只说明谁可采取行动，暂时压成“政府、学校等”；句末 to maintain 表目的。\par
+\noindent\textbf{还原与作答：}国会议员要求科学院找出政府、学校等可采取的行动，以保持人文社科学术与教育的领先地位。问目的时应看 maintain 的宾语，不应把名单当答案。\par
+\Needspace{17\baselineskip}
+\subsection{句7　2015-T1-Q23}
+\noindent \href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q23}{原解析}\quad \hyperref[idx-2015-T1-Q23]{年份索引}
+\begin{evidence}\textbf{P4} At a time when Thomas Piketty and other economists are warning of rising inequality and the increasing power of inherited wealth, it is bizarre that wealthy aristocratic families should still be the symbolic heart of modern democratic states.\end{evidence}
+\noindent\textbf{主干谓语：}主干是 it is bizarre；it 是形式主语，真正被评价的是 that 从句。\par
+\noindent\textbf{从句切分：}At a time when...是背景时间结构；that...states 说明“奇怪”的完整事情。\par
+\noindent\textbf{剥离修饰：}rising...与 increasing...是 warning of 的两个并列对象。它们不是 bizarre 的直接宾语。\par
+\noindent\textbf{还原与作答：}经济学家警告不平等和继承财富势力上升之际，贵族家族竟仍代表民主国家，令人诧异。should still be 表惊讶，不是劝其应该继续。\par
+\Needspace{17\baselineskip}
+\subsection{句8　2016-T3-Q31}
+\noindent \href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q31}{原解析}\quad \hyperref[idx-2016-T3-Q31]{年份索引}
+\begin{evidence}\textbf{P1} But even if you accept Friedman's premise and regard corporate social responsibility (CSR) policies as a waste of shareholders’ money, things may not be absolutely clear-cut.\end{evidence}
+\noindent\textbf{主干谓语：}主句是 things may not be absolutely clear-cut。\par
+\noindent\textbf{从句切分：}even if 引导让步假设；accept 与 regard 并列，仍受 even if 支配。\par
+\noindent\textbf{剥离修饰：}regard A as B 的 A 是 CSR policies，B 是 a waste；不能把这层假设抽成作者无条件判断。\par
+\noindent\textbf{还原与作答：}即便接受那一前提并把 CSR 看作浪费，事情也未必如此分明。作者借让步提出反证，态度不是照单全收。\par
+\clearpage\section{容易误用的排除法与争议边界}\label{boundaries}
+\Needspace{7\baselineskip}
+\subsection{强词也可能在限定语境中正确}
+\noindent \hyperref[idx-2009-T1-Q25]{2009-T1-Q25}
+原解析选择 A，其中 prevents 表述较强。应限制为现有标准化测试对新思维习惯发展的阻碍，不能解释成所有情况下都绝无新习惯。相似地，2011-T4-Q38 的 constantly 描述持续社会压力，不是每人每秒都受当面责骂。强词出现只是复核信号，不是自动判错按钮。\par
+\Needspace{7\baselineskip}
+\subsection{标题可以有概括性，但不能额外包办}
+\noindent \hyperref[idx-2013-T3-Q35]{2013-T3-Q35}
+原解析选 A（The Ever-bright Prospects of Mankind）。须与 not all rosy 合读：作者反对长期总体悲观，仍承认风险。不要用标题的亮色修辞推出未来毫无风险；也不能只抓近未来难预测，便把整篇说成悲观。\par
+\Needspace{7\baselineskip}
+\subsection{部分否定不是完全否定}
+\noindent \hyperref[idx-2012-T1-Q23]{2012-T1-Q23}
+not enough exploration 只说论证不够充分，正确项 adequately probe 保留这一程度。把“探究不足”变成“完全没有探究”，或把“证据有限”变成“作用完全不存在”，都会额外提高断言强度。\par
+\Needspace{7\baselineskip}
+\subsection{正确项的广义词须受题干限制}
+\noindent \hyperref[idx-2014-T2-Q29]{2014-T2-Q29}
+原解析选 B，outsiders’ involvement 应放在 ownership 语境，指非律师参与律所持股等所有权安排；不能泛化成外行不得接触任何法律事务。核对题干是读完整命题的一部分。\par
+\Needspace{7\baselineskip}
+\subsection{真信息也可能不是最佳答案}
+\noindent \hyperref[idx-2012-T3-Q32]{2012-T3-Q32}
+strict inspection 与 scrutiny 有关系，但只保留严格检查，漏掉 collective 和 acceptance 的共同参与机制。排除这类近似项，应比较覆盖和题干焦点，而不是捏造一个原文不存在的反义关系。\par
+\Needspace{7\baselineskip}
+\subsection{may 不给无据的命题开通行证}
+\noindent \hyperref[idx-2015-T4-Q37]{2015-T4-Q37}
+A 与 B 都可用 may。原解析选 B，有大规模窃听、他人待审等线索；A 关于某人可能否认犯罪性质，却没有立场证据。降低确定性只改变语气，不能替换所说的内容。\par
+\clearpage
+\subsection{2013-T2-Q27：保留指代争议}\label{dispute}
+原解析把 A 记作常见参考答案口径，同时明确承认 D 存在真实的语篇指代依据。本册未取得官方答案核定材料，因此只保留“原解析记 A”，不把它提升为独立核定结论。D 标为 U（争议待核），不计入 R01—R12 的确定机制数量。\par
+\noindent\textbf{题干：}27. “The industry” (Line 5, Para.3) refers to\par
+直译：第三段第 5 行的 the industry 指什么？\par
+\noindent\textbf{[A]} internet browser developers.\par 直译：互联网浏览器开发商。\par
+\noindent\textbf{[B]} digital information analysts.\par 直译：数字信息分析人员。\par
+\noindent\textbf{[C]} e-commerce conductors.\par 直译：电子商务运营者。\par
+\noindent\textbf{[D]} online advertisers.\par 直译：在线广告商。\par
+\begin{evidence}
+\textbf{P3} In February the FTC and the Digital Advertising Alliance (DAA) agreed that the industry would get cracking on responding to DNT requests.\par 直译：2月，FTC 与数字广告联盟约定，相关行业将尽快着手响应 DNT 请求。\par
+\textbf{P6} It is not yet clear how advertisers will respond.\par 直译：广告商将如何响应，目前仍不清楚。\par
+\end{evidence}
+\noindent\textbf{为什么保留：}A 可沿本段前半的 browsers、IE、Safari、Chrome 主题链理解；D 可沿紧邻的 DAA 及后文 advertisers will respond 的角色链理解。两条解释都有文本抓手，所以不能声称 D 完全无据，也不能靠“最近名词必是指代对象”一锤定音。B、C 则没有同样的角色依据，仍保留其常规编码。\par
+\noindent\textbf{可迁移方法：}复习时分开记“题库给定答案”和“语义证据强弱”。争议题用于训练保留判断；不要用它制造排除口诀，也不要据此统计个人能力。\par
+\noindent \href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q27}{原解析及完整语境}\quad \hyperref[idx-2013-T2-Q27]{年份索引}
+\clearpage\section{分类索引：从机制回查选项}\label{class-index}
+每条为“年份：全国题号（选项字母）”。21—25为Text 1，26—30为Text 2，31—35为Text 3，36—40为Text 4。点击题号跳到年份索引；同一项可在不同机制下重复出现。U不是错误机制，单列于争议题说明。\par
+\Needspace{15\baselineskip}
+\subsection{R01 张冠李戴}\label{class-R01}
+\noindent \hyperref[cat-R01]{定义与边界}\quad 81题／101项\quad \hyperref[case-2007-T2-Q26]{例1}, \hyperref[case-2015-T2-Q28]{例2}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q21]{21（BD）}；\hyperref[idx-2007-T2-Q26]{26（AC）}；\hyperref[idx-2007-T2-Q28]{28（B）}；\hyperref[idx-2007-T3-Q31]{31（D）}；\hyperref[idx-2007-T3-Q33]{33（C）}；\hyperref[idx-2007-T4-Q36]{36（B）}；\hyperref[idx-2007-T4-Q38]{38（C）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q23]{23（BD）}；\hyperref[idx-2008-T2-Q27]{27（AD）}；\hyperref[idx-2008-T2-Q28]{28（B）}；\hyperref[idx-2008-T2-Q29]{29（BD）}；\hyperref[idx-2008-T4-Q36]{36（C）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q24]{24（AB）}；\hyperref[idx-2009-T1-Q25]{25（C）}；\hyperref[idx-2009-T2-Q26]{26（D）}；\hyperref[idx-2009-T2-Q27]{27（A）}；\hyperref[idx-2009-T3-Q32]{32（ACD）}；\hyperref[idx-2009-T3-Q35]{35（D）}；\hyperref[idx-2009-T4-Q37]{37（C）}；\hyperref[idx-2009-T4-Q38]{38（C）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q21]{21（D）}；\hyperref[idx-2010-T1-Q23]{23（BC）}；\hyperref[idx-2010-T2-Q29]{29（D）}；\hyperref[idx-2010-T3-Q31]{31（C）}；\hyperref[idx-2010-T3-Q32]{32（C）}；\hyperref[idx-2010-T4-Q36]{36（B）}；\hyperref[idx-2010-T4-Q38]{38（B）}；\hyperref[idx-2010-T4-Q40]{40（B）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q21]{21（B）}；\hyperref[idx-2011-T1-Q23]{23（C）}；\hyperref[idx-2011-T1-Q25]{25（B）}；\hyperref[idx-2011-T2-Q30]{30（A）}；\hyperref[idx-2011-T3-Q31]{31（BC）}；\hyperref[idx-2011-T3-Q33]{33（D）}；\hyperref[idx-2011-T3-Q34]{34（B）}；\hyperref[idx-2011-T4-Q38]{38（CD）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q22]{22（AD）}；\hyperref[idx-2012-T1-Q23]{23（BD）}；\hyperref[idx-2012-T1-Q24]{24（A）}；\hyperref[idx-2012-T1-Q25]{25（C）}；\hyperref[idx-2012-T2-Q27]{27（B）}；\hyperref[idx-2012-T2-Q29]{29（C）}；\hyperref[idx-2012-T2-Q30]{30（BD）}；\hyperref[idx-2012-T4-Q36]{36（AB）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q25]{25（A）}；\hyperref[idx-2013-T3-Q32]{32（CD）}；\hyperref[idx-2013-T3-Q34]{34（D）}；\hyperref[idx-2013-T4-Q36]{36（AC）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q21]{21（C）}；\hyperref[idx-2014-T1-Q23]{23（B）}；\hyperref[idx-2014-T1-Q25]{25（B）}；\hyperref[idx-2014-T2-Q26]{26（B）}；\hyperref[idx-2014-T2-Q27]{27（BC）}；\hyperref[idx-2014-T2-Q28]{28（B）}；\hyperref[idx-2014-T2-Q29]{29（D）}；\hyperref[idx-2014-T3-Q31]{31（D）}；\hyperref[idx-2014-T3-Q32]{32（A）}；\hyperref[idx-2014-T3-Q33]{33（A）}；\hyperref[idx-2014-T3-Q35]{35（C）}；\hyperref[idx-2014-T4-Q37]{37（A）}；\hyperref[idx-2014-T4-Q38]{38（D）}；\hyperref[idx-2014-T4-Q39]{39（B）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q21]{21（BC）}；\hyperref[idx-2015-T1-Q23]{23（C）}；\hyperref[idx-2015-T2-Q27]{27（D）}；\hyperref[idx-2015-T2-Q28]{28（A）}；\hyperref[idx-2015-T3-Q31]{31（C）}；\hyperref[idx-2015-T3-Q33]{33（B）}；\hyperref[idx-2015-T4-Q36]{36（C）}；\hyperref[idx-2015-T4-Q37]{37（C）}；\hyperref[idx-2015-T4-Q38]{38（D）}；\hyperref[idx-2015-T4-Q39]{39（A）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q22]{22（C）}；\hyperref[idx-2016-T1-Q23]{23（C）}；\hyperref[idx-2016-T2-Q26]{26（B）}；\hyperref[idx-2016-T2-Q28]{28（A）}；\hyperref[idx-2016-T2-Q29]{29（BD）}；\hyperref[idx-2016-T2-Q30]{30（B）}；\hyperref[idx-2016-T3-Q31]{31（C）}；\hyperref[idx-2016-T4-Q36]{36（D）}；\hyperref[idx-2016-T4-Q37]{37（C）}。\par
+\Needspace{15\baselineskip}
+\subsection{R02 偷换概念}\label{class-R02}
+\noindent \hyperref[cat-R02]{定义与边界}\quad 130题／176项\quad \hyperref[case-2007-T4-Q39]{例3}, \hyperref[case-2016-T3-Q34]{例4}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q24]{24（B）}；\hyperref[idx-2007-T1-Q25]{25（A）}；\hyperref[idx-2007-T2-Q26]{26（B）}；\hyperref[idx-2007-T2-Q28]{28（BD）}；\hyperref[idx-2007-T3-Q31]{31（BD）}；\hyperref[idx-2007-T3-Q33]{33（C）}；\hyperref[idx-2007-T3-Q34]{34（B）}；\hyperref[idx-2007-T3-Q35]{35（C）}；\hyperref[idx-2007-T4-Q37]{37（B）}；\hyperref[idx-2007-T4-Q38]{38（C）}；\hyperref[idx-2007-T4-Q39]{39（C）}；\hyperref[idx-2007-T4-Q40]{40（A）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q21]{21（CD）}；\hyperref[idx-2008-T1-Q22]{22（AC）}；\hyperref[idx-2008-T2-Q26]{26（AB）}；\hyperref[idx-2008-T2-Q28]{28（D）}；\hyperref[idx-2008-T2-Q29]{29（C）}；\hyperref[idx-2008-T2-Q30]{30（D）}；\hyperref[idx-2008-T3-Q32]{32（AB）}；\hyperref[idx-2008-T3-Q34]{34（C）}；\hyperref[idx-2008-T4-Q37]{37（D）}；\hyperref[idx-2008-T4-Q40]{40（D）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q21]{21（A）}；\hyperref[idx-2009-T1-Q22]{22（BC）}；\hyperref[idx-2009-T1-Q24]{24（B）}；\hyperref[idx-2009-T1-Q25]{25（C）}；\hyperref[idx-2009-T2-Q26]{26（B）}；\hyperref[idx-2009-T2-Q27]{27（ABD）}；\hyperref[idx-2009-T2-Q28]{28（C）}；\hyperref[idx-2009-T2-Q29]{29（BCD）}；\hyperref[idx-2009-T3-Q31]{31（B）}；\hyperref[idx-2009-T3-Q32]{32（D）}；\hyperref[idx-2009-T3-Q33]{33（C）}；\hyperref[idx-2009-T3-Q35]{35（D）}；\hyperref[idx-2009-T4-Q36]{36（AD）}；\hyperref[idx-2009-T4-Q39]{39（BD）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q21]{21（D）}；\hyperref[idx-2010-T1-Q22]{22（C）}；\hyperref[idx-2010-T1-Q24]{24（BC）}；\hyperref[idx-2010-T3-Q31]{31（A）}；\hyperref[idx-2010-T3-Q33]{33（B）}；\hyperref[idx-2010-T3-Q34]{34（B）}；\hyperref[idx-2010-T3-Q35]{35（AD）}；\hyperref[idx-2010-T4-Q36]{36（C）}；\hyperref[idx-2010-T4-Q37]{37（C）}；\hyperref[idx-2010-T4-Q38]{38（D）}；\hyperref[idx-2010-T4-Q39]{39（AD）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q21]{21（D）}；\hyperref[idx-2011-T1-Q22]{22（ACD）}；\hyperref[idx-2011-T1-Q25]{25（D）}；\hyperref[idx-2011-T2-Q26]{26（D）}；\hyperref[idx-2011-T2-Q27]{27（B）}；\hyperref[idx-2011-T2-Q28]{28（AB）}；\hyperref[idx-2011-T2-Q29]{29（B）}；\hyperref[idx-2011-T3-Q31]{31（AC）}；\hyperref[idx-2011-T3-Q32]{32（D）}；\hyperref[idx-2011-T3-Q33]{33（C）}；\hyperref[idx-2011-T3-Q34]{34（D）}；\hyperref[idx-2011-T3-Q35]{35（B）}；\hyperref[idx-2011-T4-Q36]{36（A）}；\hyperref[idx-2011-T4-Q37]{37（C）}；\hyperref[idx-2011-T4-Q38]{38（B）}；\hyperref[idx-2011-T4-Q39]{39（B）}；\hyperref[idx-2011-T4-Q40]{40（AC）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q21]{21（AB）}；\hyperref[idx-2012-T1-Q22]{22（A）}；\hyperref[idx-2012-T1-Q23]{23（B）}；\hyperref[idx-2012-T1-Q24]{24（AD）}；\hyperref[idx-2012-T1-Q25]{25（A）}；\hyperref[idx-2012-T2-Q26]{26（A）}；\hyperref[idx-2012-T2-Q27]{27（A）}；\hyperref[idx-2012-T2-Q28]{28（B）}；\hyperref[idx-2012-T2-Q29]{29（A）}；\hyperref[idx-2012-T3-Q31]{31（BC）}；\hyperref[idx-2012-T3-Q32]{32（D）}；\hyperref[idx-2012-T3-Q33]{33（AD）}；\hyperref[idx-2012-T3-Q34]{34（C）}；\hyperref[idx-2012-T4-Q36]{36（BD）}；\hyperref[idx-2012-T4-Q37]{37（AB）}；\hyperref[idx-2012-T4-Q39]{39（B）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q21]{21（D）}；\hyperref[idx-2013-T1-Q25]{25（A）}；\hyperref[idx-2013-T2-Q26]{26（A）}；\hyperref[idx-2013-T2-Q28]{28（D）}；\hyperref[idx-2013-T2-Q29]{29（D）}；\hyperref[idx-2013-T3-Q32]{32（BC）}；\hyperref[idx-2013-T3-Q33]{33（B）}；\hyperref[idx-2013-T3-Q34]{34（AD）}；\hyperref[idx-2013-T3-Q35]{35（C）}；\hyperref[idx-2013-T4-Q36]{36（C）}；\hyperref[idx-2013-T4-Q37]{37（A）}；\hyperref[idx-2013-T4-Q39]{39（B）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q21]{21（D）}；\hyperref[idx-2014-T1-Q22]{22（AB）}；\hyperref[idx-2014-T1-Q24]{24（BC）}；\hyperref[idx-2014-T2-Q30]{30（AD）}；\hyperref[idx-2014-T3-Q31]{31（A）}；\hyperref[idx-2014-T3-Q33]{33（BD）}；\hyperref[idx-2014-T4-Q37]{37（AC）}；\hyperref[idx-2014-T4-Q38]{38（D）}；\hyperref[idx-2014-T4-Q39]{39（D）}；\hyperref[idx-2014-T4-Q40]{40（D）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q22]{22（A）}；\hyperref[idx-2015-T1-Q23]{23（AD）}；\hyperref[idx-2015-T1-Q24]{24（D）}；\hyperref[idx-2015-T1-Q25]{25（D）}；\hyperref[idx-2015-T2-Q26]{26（B）}；\hyperref[idx-2015-T2-Q27]{27（C）}；\hyperref[idx-2015-T2-Q28]{28（B）}；\hyperref[idx-2015-T2-Q29]{29（A）}；\hyperref[idx-2015-T3-Q31]{31（D）}；\hyperref[idx-2015-T3-Q32]{32（B）}；\hyperref[idx-2015-T3-Q33]{33（C）}；\hyperref[idx-2015-T4-Q36]{36（BCD）}；\hyperref[idx-2015-T4-Q38]{38（B）}；\hyperref[idx-2015-T4-Q39]{39（B）}；\hyperref[idx-2015-T4-Q40]{40（A）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q22]{22（A）}；\hyperref[idx-2016-T1-Q24]{24（A）}；\hyperref[idx-2016-T1-Q25]{25（A）}；\hyperref[idx-2016-T2-Q27]{27（AB）}；\hyperref[idx-2016-T2-Q28]{28（D）}；\hyperref[idx-2016-T2-Q30]{30（A）}；\hyperref[idx-2016-T3-Q32]{32（AD）}；\hyperref[idx-2016-T3-Q33]{33（ABC）}；\hyperref[idx-2016-T3-Q34]{34（BCD）}；\hyperref[idx-2016-T3-Q35]{35（ACD）}；\hyperref[idx-2016-T4-Q36]{36（B）}；\hyperref[idx-2016-T4-Q38]{38（CD）}；\hyperref[idx-2016-T4-Q39]{39（A）}。\par
+\Needspace{15\baselineskip}
+\subsection{R03 以偏概全与范围失配}\label{class-R03}
+\noindent \hyperref[cat-R03]{定义与边界}\quad 63题／85项\quad \hyperref[case-2008-T3-Q33]{例5}, \hyperref[case-2014-T4-Q38]{例6}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q25]{25（B）}；\hyperref[idx-2007-T2-Q27]{27（D）}；\hyperref[idx-2007-T2-Q28]{28（D）}；\hyperref[idx-2007-T2-Q29]{29（C）}；\hyperref[idx-2007-T3-Q33]{33（B）}；\hyperref[idx-2007-T4-Q39]{39（BD）}；\hyperref[idx-2007-T4-Q40]{40（C）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q25]{25（BC）}；\hyperref[idx-2008-T2-Q26]{26（B）}；\hyperref[idx-2008-T2-Q30]{30（A）}；\hyperref[idx-2008-T3-Q31]{31（C）}；\hyperref[idx-2008-T3-Q33]{33（A）}；\hyperref[idx-2008-T3-Q34]{34（B）}；\hyperref[idx-2008-T3-Q35]{35（B）}；\hyperref[idx-2008-T4-Q36]{36（C）}；\hyperref[idx-2008-T4-Q37]{37（AD）}；\hyperref[idx-2008-T4-Q38]{38（B）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T2-Q26]{26（D）}；\hyperref[idx-2009-T2-Q30]{30（CD）}；\hyperref[idx-2009-T4-Q37]{37（D）}；\hyperref[idx-2009-T4-Q38]{38（C）}；\hyperref[idx-2009-T4-Q40]{40（ABD）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q23]{23（A）}；\hyperref[idx-2010-T1-Q25]{25（ACD）}；\hyperref[idx-2010-T2-Q30]{30（CD）}；\hyperref[idx-2010-T3-Q31]{31（D）}；\hyperref[idx-2010-T3-Q33]{33（D）}；\hyperref[idx-2010-T3-Q34]{34（D）}；\hyperref[idx-2010-T4-Q38]{38（C）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q23]{23（AB）}；\hyperref[idx-2011-T1-Q24]{24（D）}；\hyperref[idx-2011-T2-Q30]{30（AD）}；\hyperref[idx-2011-T3-Q35]{35（BD）}；\hyperref[idx-2011-T4-Q38]{38（D）}；\hyperref[idx-2011-T4-Q40]{40（C）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q21]{21（C）}；\hyperref[idx-2012-T1-Q22]{22（D）}；\hyperref[idx-2012-T2-Q29]{29（A）}；\hyperref[idx-2012-T3-Q32]{32（A）}；\hyperref[idx-2012-T3-Q33]{33（C）}；\hyperref[idx-2012-T3-Q35]{35（ABD）}；\hyperref[idx-2012-T4-Q37]{37（B）}；\hyperref[idx-2012-T4-Q39]{39（AD）}；\hyperref[idx-2012-T4-Q40]{40（B）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q25]{25（BD）}；\hyperref[idx-2013-T2-Q26]{26（A）}；\hyperref[idx-2013-T2-Q29]{29（A）}；\hyperref[idx-2013-T3-Q35]{35（BD）}；\hyperref[idx-2013-T4-Q40]{40（A）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q23]{23（A）}；\hyperref[idx-2014-T2-Q30]{30（CD）}；\hyperref[idx-2014-T4-Q36]{36（B）}；\hyperref[idx-2014-T4-Q38]{38（A）}；\hyperref[idx-2014-T4-Q40]{40（D）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q25]{25（AD）}；\hyperref[idx-2015-T2-Q28]{28（C）}；\hyperref[idx-2015-T2-Q30]{30（A）}；\hyperref[idx-2015-T3-Q33]{33（A）}；\hyperref[idx-2015-T4-Q40]{40（C）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q21]{21（CD）}；\hyperref[idx-2016-T1-Q25]{25（AC）}；\hyperref[idx-2016-T2-Q30]{30（BD）}；\hyperref[idx-2016-T4-Q39]{39（D）}。\par
+\Needspace{15\baselineskip}
+\subsection{R04 无中生有}\label{class-R04}
+\noindent \hyperref[cat-R04]{定义与边界}\quad 88题／100项\quad \hyperref[case-2009-T2-Q26]{例7}, \hyperref[case-2016-T1-Q21]{例8}
+\noindent\textbf{2007}：\hyperref[idx-2007-T2-Q27]{27（BD）}；\hyperref[idx-2007-T2-Q29]{29（B）}；\hyperref[idx-2007-T3-Q33]{33（A）}；\hyperref[idx-2007-T3-Q34]{34（AD）}；\hyperref[idx-2007-T4-Q36]{36（A）}；\hyperref[idx-2007-T4-Q37]{37（CD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q21]{21（B）}；\hyperref[idx-2008-T1-Q24]{24（C）}；\hyperref[idx-2008-T2-Q27]{27（B）}；\hyperref[idx-2008-T2-Q30]{30（C）}；\hyperref[idx-2008-T3-Q31]{31（BD）}；\hyperref[idx-2008-T3-Q32]{32（D）}；\hyperref[idx-2008-T3-Q33]{33（C）}；\hyperref[idx-2008-T3-Q34]{34（AC）}；\hyperref[idx-2008-T3-Q35]{35（A）}；\hyperref[idx-2008-T4-Q37]{37（C）}；\hyperref[idx-2008-T4-Q38]{38（D）}；\hyperref[idx-2008-T4-Q39]{39（B）}；\hyperref[idx-2008-T4-Q40]{40（C）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q22]{22（A）}；\hyperref[idx-2009-T1-Q25]{25（C）}；\hyperref[idx-2009-T2-Q26]{26（C）}；\hyperref[idx-2009-T2-Q28]{28（B）}；\hyperref[idx-2009-T3-Q33]{33（AD）}；\hyperref[idx-2009-T3-Q34]{34（D）}；\hyperref[idx-2009-T4-Q36]{36（C）}；\hyperref[idx-2009-T4-Q37]{37（A）}；\hyperref[idx-2009-T4-Q38]{38（B）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q21]{21（C）}；\hyperref[idx-2010-T1-Q22]{22（D）}；\hyperref[idx-2010-T2-Q26]{26（A）}；\hyperref[idx-2010-T2-Q27]{27（C）}；\hyperref[idx-2010-T2-Q29]{29（C）}；\hyperref[idx-2010-T4-Q36]{36（C）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T2-Q27]{27（A）}；\hyperref[idx-2011-T2-Q29]{29（C）}；\hyperref[idx-2011-T3-Q32]{32（ABD）}；\hyperref[idx-2011-T3-Q34]{34（C）}；\hyperref[idx-2011-T4-Q37]{37（B）}；\hyperref[idx-2011-T4-Q39]{39（C）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q24]{24（B）}；\hyperref[idx-2012-T2-Q28]{28（C）}；\hyperref[idx-2012-T2-Q30]{30（C）}；\hyperref[idx-2012-T3-Q31]{31（D）}；\hyperref[idx-2012-T4-Q38]{38（D）}；\hyperref[idx-2012-T4-Q39]{39（A）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q21]{21（C）}；\hyperref[idx-2013-T1-Q22]{22（C）}；\hyperref[idx-2013-T1-Q24]{24（A）}；\hyperref[idx-2013-T2-Q26]{26（BC）}；\hyperref[idx-2013-T2-Q27]{27（BC）}；\hyperref[idx-2013-T2-Q29]{29（C）}；\hyperref[idx-2013-T3-Q33]{33（A）}；\hyperref[idx-2013-T3-Q34]{34（C）}；\hyperref[idx-2013-T4-Q36]{36（D）}；\hyperref[idx-2013-T4-Q38]{38（D）}；\hyperref[idx-2013-T4-Q39]{39（D）}；\hyperref[idx-2013-T4-Q40]{40（C）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q22]{22（D）}；\hyperref[idx-2014-T1-Q24]{24（D）}；\hyperref[idx-2014-T2-Q26]{26（A）}；\hyperref[idx-2014-T2-Q27]{27（A）}；\hyperref[idx-2014-T2-Q28]{28（D）}；\hyperref[idx-2014-T3-Q31]{31（C）}；\hyperref[idx-2014-T3-Q35]{35（B）}；\hyperref[idx-2014-T4-Q37]{37（B）}；\hyperref[idx-2014-T4-Q38]{38（B）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q21]{21（AC）}；\hyperref[idx-2015-T1-Q22]{22（B）}；\hyperref[idx-2015-T1-Q24]{24（B）}；\hyperref[idx-2015-T1-Q25]{25（B）}；\hyperref[idx-2015-T2-Q26]{26（D）}；\hyperref[idx-2015-T3-Q31]{31（C）}；\hyperref[idx-2015-T3-Q32]{32（D）}；\hyperref[idx-2015-T3-Q34]{34（A）}；\hyperref[idx-2015-T3-Q35]{35（D）}；\hyperref[idx-2015-T4-Q37]{37（A）}；\hyperref[idx-2015-T4-Q40]{40（D）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q21]{21（B）}；\hyperref[idx-2016-T1-Q23]{23（B）}；\hyperref[idx-2016-T1-Q24]{24（D）}；\hyperref[idx-2016-T1-Q25]{25（C）}；\hyperref[idx-2016-T2-Q26]{26（CD）}；\hyperref[idx-2016-T3-Q32]{32（B）}；\hyperref[idx-2016-T3-Q35]{35（A）}；\hyperref[idx-2016-T4-Q36]{36（C）}；\hyperref[idx-2016-T4-Q37]{37（D）}；\hyperref[idx-2016-T4-Q38]{38（A）}。\par
+\Needspace{15\baselineskip}
+\subsection{R05 逻辑关系颠倒}\label{class-R05}
+\noindent \hyperref[cat-R05]{定义与边界}\quad 69题／86项\quad \hyperref[case-2007-T1-Q23]{例9}, \hyperref[case-2010-T3-Q35]{例10}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q23]{23（BC）}；\hyperref[idx-2007-T1-Q24]{24（AC）}；\hyperref[idx-2007-T1-Q25]{25（D）}；\hyperref[idx-2007-T2-Q27]{27（A）}；\hyperref[idx-2007-T2-Q30]{30（A）}；\hyperref[idx-2007-T3-Q32]{32（ACD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q22]{22（B）}；\hyperref[idx-2008-T1-Q23]{23（A）}；\hyperref[idx-2008-T3-Q35]{35（D）}；\hyperref[idx-2008-T4-Q37]{37（C）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q21]{21（D）}；\hyperref[idx-2009-T1-Q24]{24（C）}；\hyperref[idx-2009-T1-Q25]{25（BD）}；\hyperref[idx-2009-T3-Q31]{31（AC）}；\hyperref[idx-2009-T3-Q34]{34（BD）}；\hyperref[idx-2009-T3-Q35]{35（B）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q24]{24（D）}；\hyperref[idx-2010-T2-Q29]{29（A）}；\hyperref[idx-2010-T2-Q30]{30（B）}；\hyperref[idx-2010-T3-Q33]{33（C）}；\hyperref[idx-2010-T3-Q34]{34（A）}；\hyperref[idx-2010-T3-Q35]{35（B）}；\hyperref[idx-2010-T4-Q37]{37（A）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q21]{21（A）}；\hyperref[idx-2011-T1-Q24]{24（A）}；\hyperref[idx-2011-T2-Q28]{28（D）}；\hyperref[idx-2011-T2-Q29]{29（D）}；\hyperref[idx-2011-T3-Q34]{34（B）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q22]{22（C）}；\hyperref[idx-2012-T1-Q23]{23（C）}；\hyperref[idx-2012-T2-Q26]{26（BD）}；\hyperref[idx-2012-T3-Q34]{34（A）}；\hyperref[idx-2012-T4-Q37]{37（C）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q21]{21（B）}；\hyperref[idx-2013-T1-Q22]{22（AD）}；\hyperref[idx-2013-T1-Q23]{23（C）}；\hyperref[idx-2013-T1-Q24]{24（BD）}；\hyperref[idx-2013-T2-Q28]{28（AB）}；\hyperref[idx-2013-T2-Q29]{29（D）}；\hyperref[idx-2013-T2-Q30]{30（C）}；\hyperref[idx-2013-T4-Q37]{37（BD）}；\hyperref[idx-2013-T4-Q38]{38（BC）}；\hyperref[idx-2013-T4-Q39]{39（A）}；\hyperref[idx-2013-T4-Q40]{40（B）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q21]{21（B）}；\hyperref[idx-2014-T1-Q23]{23（C）}；\hyperref[idx-2014-T1-Q25]{25（C）}；\hyperref[idx-2014-T2-Q28]{28（B）}；\hyperref[idx-2014-T2-Q29]{29（AD）}；\hyperref[idx-2014-T3-Q32]{32（BD）}；\hyperref[idx-2014-T3-Q34]{34（D）}；\hyperref[idx-2014-T3-Q35]{35（A）}；\hyperref[idx-2014-T4-Q39]{39（AB）}；\hyperref[idx-2014-T4-Q40]{40（C）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q22]{22（D）}；\hyperref[idx-2015-T2-Q29]{29（B）}；\hyperref[idx-2015-T3-Q31]{31（A）}；\hyperref[idx-2015-T3-Q33]{33（A）}；\hyperref[idx-2015-T3-Q34]{34（B）}；\hyperref[idx-2015-T4-Q37]{37（C）}；\hyperref[idx-2015-T4-Q39]{39（D）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q21]{21（C）}；\hyperref[idx-2016-T1-Q22]{22（B）}；\hyperref[idx-2016-T1-Q23]{23（C）}；\hyperref[idx-2016-T1-Q24]{24（B）}；\hyperref[idx-2016-T2-Q27]{27（C）}；\hyperref[idx-2016-T2-Q28]{28（AB）}；\hyperref[idx-2016-T2-Q29]{29（C）}；\hyperref[idx-2016-T4-Q40]{40（A）}。\par
+\Needspace{15\baselineskip}
+\subsection{R06 时间范围与状态变化}\label{class-R06}
+\noindent \hyperref[cat-R06]{定义与边界}\quad 43题／55项\quad \hyperref[case-2010-T2-Q26]{例11}, \hyperref[case-2012-T4-Q36]{例12}
+\noindent\textbf{2007}：\hyperref[idx-2007-T2-Q27]{27（AB）}；\hyperref[idx-2007-T3-Q35]{35（D）}；\hyperref[idx-2007-T4-Q37]{37（B）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q23]{23（A）}；\hyperref[idx-2008-T2-Q29]{29（BD）}；\hyperref[idx-2008-T3-Q33]{33（D）}；\hyperref[idx-2008-T3-Q34]{34（B）}；\hyperref[idx-2008-T3-Q35]{35（B）}；\hyperref[idx-2008-T4-Q37]{37（D）}；\hyperref[idx-2008-T4-Q38]{38（A）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q25]{25（B）}；\hyperref[idx-2009-T3-Q34]{34（B）}；\hyperref[idx-2009-T4-Q38]{38（B）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q21]{21（A）}；\hyperref[idx-2010-T2-Q26]{26（D）}；\hyperref[idx-2010-T2-Q27]{27（AC）}；\hyperref[idx-2010-T2-Q30]{30（D）}；\hyperref[idx-2010-T4-Q39]{39（D）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T2-Q29]{29（D）}；\hyperref[idx-2011-T3-Q33]{33（A）}；\hyperref[idx-2011-T4-Q36]{36（ABD）}；\hyperref[idx-2011-T4-Q37]{37（A）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T2-Q27]{27（C）}；\hyperref[idx-2012-T4-Q36]{36（AB）}；\hyperref[idx-2012-T4-Q39]{39（B）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T2-Q29]{29（C）}；\hyperref[idx-2013-T3-Q31]{31（C）}；\hyperref[idx-2013-T3-Q33]{33（AC）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T3-Q34]{34（A）}；\hyperref[idx-2014-T3-Q35]{35（B）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q22]{22（D）}；\hyperref[idx-2015-T1-Q24]{24（B）}；\hyperref[idx-2015-T2-Q29]{29（B）}；\hyperref[idx-2015-T3-Q32]{32（B）}；\hyperref[idx-2015-T3-Q34]{34（D）}；\hyperref[idx-2015-T3-Q35]{35（CD）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q23]{23（ABC）}；\hyperref[idx-2016-T2-Q26]{26（C）}；\hyperref[idx-2016-T2-Q28]{28（BD）}；\hyperref[idx-2016-T3-Q33]{33（C）}；\hyperref[idx-2016-T4-Q36]{36（BD）}；\hyperref[idx-2016-T4-Q39]{39（D）}；\hyperref[idx-2016-T4-Q40]{40（C）}。\par
+\Needspace{15\baselineskip}
+\subsection{R07 因果关系误判}\label{class-R07}
+\noindent \hyperref[cat-R07]{定义与边界}\quad 44题／58项\quad \hyperref[case-2008-T4-Q38]{例13}, \hyperref[case-2011-T1-Q24]{例14}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q24]{24（B）}；\hyperref[idx-2007-T2-Q28]{28（C）}；\hyperref[idx-2007-T3-Q31]{31（BC）}；\hyperref[idx-2007-T3-Q33]{33（C）}；\hyperref[idx-2007-T4-Q36]{36（C）}；\hyperref[idx-2007-T4-Q40]{40（D）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q21]{21（B）}；\hyperref[idx-2008-T1-Q22]{22（A）}；\hyperref[idx-2008-T3-Q33]{33（D）}；\hyperref[idx-2008-T4-Q38]{38（ABD）}；\hyperref[idx-2008-T4-Q40]{40（BCD）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q24]{24（C）}；\hyperref[idx-2009-T3-Q34]{34（D）}；\hyperref[idx-2009-T3-Q35]{35（A）}；\hyperref[idx-2009-T4-Q36]{36（C）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T2-Q26]{26（B）}；\hyperref[idx-2010-T2-Q29]{29（D）}；\hyperref[idx-2010-T4-Q37]{37（BC）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q24]{24（C）}；\hyperref[idx-2011-T2-Q27]{27（A）}；\hyperref[idx-2011-T3-Q33]{33（C）}；\hyperref[idx-2011-T4-Q39]{39（C）}；\hyperref[idx-2011-T4-Q40]{40（AC）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q21]{21（B）}；\hyperref[idx-2012-T1-Q24]{24（BD）}；\hyperref[idx-2012-T2-Q27]{27（C）}；\hyperref[idx-2012-T3-Q32]{32（C）}；\hyperref[idx-2012-T3-Q33]{33（A）}；\hyperref[idx-2012-T4-Q37]{37（A）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T2-Q26]{26（B）}；\hyperref[idx-2013-T2-Q28]{28（D）}；\hyperref[idx-2013-T3-Q31]{31（AD）}；\hyperref[idx-2013-T3-Q34]{34（A）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q25]{25（D）}；\hyperref[idx-2014-T2-Q26]{26（ABC）}；\hyperref[idx-2014-T2-Q28]{28（C）}；\hyperref[idx-2014-T2-Q29]{29（C）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T4-Q36]{36（B）}；\hyperref[idx-2015-T4-Q37]{37（D）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q22]{22（A）}；\hyperref[idx-2016-T2-Q26]{26（D）}；\hyperref[idx-2016-T3-Q32]{32（AD）}；\hyperref[idx-2016-T4-Q36]{36（BCD）}；\hyperref[idx-2016-T4-Q38]{38（C）}。\par
+\Needspace{15\baselineskip}
+\subsection{R08 程度夸大与缩小}\label{class-R08}
+\noindent \hyperref[cat-R08]{定义与边界}\quad 52题／60项\quad \hyperref[case-2007-T3-Q35]{例15}, \hyperref[case-2015-T3-Q34]{例16}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q22]{22（ACD）}；\hyperref[idx-2007-T1-Q23]{23（D）}；\hyperref[idx-2007-T2-Q29]{29（D）}；\hyperref[idx-2007-T3-Q35]{35（AD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q23]{23（D）}；\hyperref[idx-2008-T1-Q24]{24（A）}；\hyperref[idx-2008-T2-Q27]{27（D）}；\hyperref[idx-2008-T4-Q37]{37（D）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T2-Q28]{28（A）}；\hyperref[idx-2009-T2-Q30]{30（D）}；\hyperref[idx-2009-T3-Q34]{34（C）}；\hyperref[idx-2009-T3-Q35]{35（A）}；\hyperref[idx-2009-T4-Q37]{37（D）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q21]{21（A）}；\hyperref[idx-2010-T2-Q30]{30（D）}；\hyperref[idx-2010-T3-Q32]{32（AB）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q22]{22（A）}；\hyperref[idx-2011-T1-Q23]{23（B）}；\hyperref[idx-2011-T1-Q24]{24（D）}；\hyperref[idx-2011-T1-Q25]{25（C）}；\hyperref[idx-2011-T2-Q30]{30（D）}；\hyperref[idx-2011-T3-Q33]{33（AD）}；\hyperref[idx-2011-T3-Q35]{35（C）}；\hyperref[idx-2011-T4-Q36]{36（D）}；\hyperref[idx-2011-T4-Q37]{37（A）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T2-Q29]{29（A）}；\hyperref[idx-2012-T2-Q30]{30（B）}；\hyperref[idx-2012-T3-Q31]{31（B）}；\hyperref[idx-2012-T3-Q33]{33（D）}；\hyperref[idx-2012-T3-Q34]{34（A）}；\hyperref[idx-2012-T4-Q38]{38（AC）}；\hyperref[idx-2012-T4-Q39]{39（D）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q24]{24（B）}；\hyperref[idx-2013-T4-Q37]{37（D）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q24]{24（B）}；\hyperref[idx-2014-T3-Q34]{34（AC）}；\hyperref[idx-2014-T4-Q36]{36（C）}；\hyperref[idx-2014-T4-Q39]{39（D）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q22]{22（D）}；\hyperref[idx-2015-T1-Q23]{23（A）}；\hyperref[idx-2015-T2-Q29]{29（B）}；\hyperref[idx-2015-T2-Q30]{30（BC）}；\hyperref[idx-2015-T3-Q33]{33（B）}；\hyperref[idx-2015-T3-Q34]{34（D）}；\hyperref[idx-2015-T4-Q38]{38（D）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q24]{24（D）}；\hyperref[idx-2016-T1-Q25]{25（B）}；\hyperref[idx-2016-T2-Q26]{26（B）}；\hyperref[idx-2016-T2-Q29]{29（D）}；\hyperref[idx-2016-T4-Q37]{37（A）}；\hyperref[idx-2016-T4-Q39]{39（D）}；\hyperref[idx-2016-T4-Q40]{40（C）}。\par
+\Needspace{15\baselineskip}
+\subsection{R09 推断过度}\label{class-R09}
+\noindent \hyperref[cat-R09]{定义与边界}\quad 75题／97项\quad \hyperref[case-2009-T3-Q34]{例17}, \hyperref[case-2015-T1-Q24]{例18}
+\noindent\textbf{2007}：\hyperref[idx-2007-T2-Q29]{29（BD）}；\hyperref[idx-2007-T3-Q33]{33（A）}；\hyperref[idx-2007-T3-Q34]{34（A）}；\hyperref[idx-2007-T4-Q40]{40（CD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q21]{21（C）}；\hyperref[idx-2008-T1-Q24]{24（A）}；\hyperref[idx-2008-T2-Q27]{27（BD）}；\hyperref[idx-2008-T2-Q29]{29（C）}；\hyperref[idx-2008-T3-Q33]{33（D）}；\hyperref[idx-2008-T3-Q34]{34（A）}；\hyperref[idx-2008-T3-Q35]{35（B）}；\hyperref[idx-2008-T4-Q37]{37（A）}；\hyperref[idx-2008-T4-Q38]{38（AB）}；\hyperref[idx-2008-T4-Q39]{39（C）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q24]{24（B）}；\hyperref[idx-2009-T2-Q26]{26（CD）}；\hyperref[idx-2009-T2-Q28]{28（A）}；\hyperref[idx-2009-T3-Q34]{34（C）}；\hyperref[idx-2009-T3-Q35]{35（A）}；\hyperref[idx-2009-T4-Q36]{36（D）}；\hyperref[idx-2009-T4-Q38]{38（A）}；\hyperref[idx-2009-T4-Q39]{39（C）}；\hyperref[idx-2009-T4-Q40]{40（B）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q23]{23（A）}；\hyperref[idx-2010-T2-Q27]{27（A）}；\hyperref[idx-2010-T3-Q32]{32（AB）}；\hyperref[idx-2010-T3-Q33]{33（B）}；\hyperref[idx-2010-T4-Q37]{37（B）}；\hyperref[idx-2010-T4-Q38]{38（C）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q22]{22（A）}；\hyperref[idx-2011-T1-Q23]{23（B）}；\hyperref[idx-2011-T1-Q24]{24（C）}；\hyperref[idx-2011-T1-Q25]{25（C）}；\hyperref[idx-2011-T2-Q26]{26（ACD）}；\hyperref[idx-2011-T2-Q27]{27（C）}；\hyperref[idx-2011-T3-Q33]{33（D）}；\hyperref[idx-2011-T3-Q34]{34（C）}；\hyperref[idx-2011-T3-Q35]{35（C）}；\hyperref[idx-2011-T4-Q36]{36（D）}；\hyperref[idx-2011-T4-Q38]{38（BD）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q25]{25（B）}；\hyperref[idx-2012-T2-Q28]{28（BD）}；\hyperref[idx-2012-T2-Q30]{30（BC）}；\hyperref[idx-2012-T3-Q31]{31（BC）}；\hyperref[idx-2012-T3-Q33]{33（AD）}；\hyperref[idx-2012-T3-Q34]{34（A）}；\hyperref[idx-2012-T4-Q36]{36（BD）}；\hyperref[idx-2012-T4-Q37]{37（AB）}；\hyperref[idx-2012-T4-Q38]{38（A）}；\hyperref[idx-2012-T4-Q39]{39（B）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T3-Q32]{32（B）}；\hyperref[idx-2013-T4-Q40]{40（A）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q25]{25（D）}；\hyperref[idx-2014-T2-Q29]{29（C）}；\hyperref[idx-2014-T3-Q34]{34（C）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q21]{21（B）}；\hyperref[idx-2015-T1-Q24]{24（CD）}；\hyperref[idx-2015-T1-Q25]{25（B）}；\hyperref[idx-2015-T2-Q30]{30（C）}；\hyperref[idx-2015-T3-Q34]{34（AD）}；\hyperref[idx-2015-T4-Q36]{36（B）}；\hyperref[idx-2015-T4-Q37]{37（AD）}；\hyperref[idx-2015-T4-Q38]{38（CD）}；\hyperref[idx-2015-T4-Q39]{39（B）}；\hyperref[idx-2015-T4-Q40]{40（D）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q21]{21（D）}；\hyperref[idx-2016-T1-Q23]{23（A）}；\hyperref[idx-2016-T2-Q27]{27（B）}；\hyperref[idx-2016-T2-Q28]{28（BD）}；\hyperref[idx-2016-T2-Q29]{29（D）}；\hyperref[idx-2016-T2-Q30]{30（D）}；\hyperref[idx-2016-T3-Q32]{32（BD）}；\hyperref[idx-2016-T3-Q34]{34（BD）}；\hyperref[idx-2016-T4-Q38]{38（D）}；\hyperref[idx-2016-T4-Q39]{39（D）}。\par
+\Needspace{15\baselineskip}
+\subsection{R10 态度误读}\label{class-R10}
+\noindent \hyperref[cat-R10]{定义与边界}\quad 39题／66项\quad \hyperref[case-2011-T1-Q25]{例19}, \hyperref[case-2016-T3-Q31]{例20}
+\noindent\textbf{2007}：\hyperref[idx-2007-T2-Q30]{30（ACD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T2-Q30]{30（C）}；\hyperref[idx-2008-T4-Q39]{39（D）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T2-Q30]{30（D）}；\hyperref[idx-2009-T3-Q31]{31（AB）}；\hyperref[idx-2009-T3-Q32]{32（C）}；\hyperref[idx-2009-T4-Q39]{39（B）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q23]{23（B）}；\hyperref[idx-2010-T2-Q28]{28（B）}；\hyperref[idx-2010-T4-Q40]{40（ABC）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q21]{21（ABD）}；\hyperref[idx-2011-T1-Q25]{25（BCD）}；\hyperref[idx-2011-T2-Q26]{26（AC）}；\hyperref[idx-2011-T2-Q29]{29（B）}；\hyperref[idx-2011-T3-Q33]{33（D）}；\hyperref[idx-2011-T4-Q37]{37（BC）}；\hyperref[idx-2011-T4-Q38]{38（C）}；\hyperref[idx-2011-T4-Q39]{39（A）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q25]{25（AB）}；\hyperref[idx-2012-T3-Q34]{34（C）}；\hyperref[idx-2012-T4-Q38]{38（AD）}；\hyperref[idx-2012-T4-Q40]{40（BCD）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q23]{23（ABC）}；\hyperref[idx-2013-T2-Q30]{30（ABC）}；\hyperref[idx-2013-T3-Q35]{35（D）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q24]{24（BCD）}；\hyperref[idx-2014-T1-Q25]{25（B）}；\hyperref[idx-2014-T3-Q34]{34（D）}；\hyperref[idx-2014-T3-Q35]{35（A）}；\hyperref[idx-2014-T4-Q36]{36（BCD）}；\hyperref[idx-2014-T4-Q40]{40（C）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q21]{21（C）}；\hyperref[idx-2015-T2-Q27]{27（BCD）}；\hyperref[idx-2015-T2-Q28]{28（A）}；\hyperref[idx-2015-T3-Q33]{33（B）}；\hyperref[idx-2015-T4-Q38]{38（C）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T2-Q29]{29（D）}；\hyperref[idx-2016-T2-Q30]{30（D）}；\hyperref[idx-2016-T3-Q31]{31（ACD）}。\par
+\Needspace{15\baselineskip}
+\subsection{R11 答题焦点与论证功能错判}\label{class-R11}
+\noindent \hyperref[cat-R11]{定义与边界}\quad 78题／121项\quad \hyperref[case-2007-T1-Q21]{例21}, \hyperref[case-2012-T3-Q35]{例22}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q21]{21（AB）}；\hyperref[idx-2007-T1-Q23]{23（D）}；\hyperref[idx-2007-T1-Q25]{25（AB）}；\hyperref[idx-2007-T2-Q28]{28（C）}；\hyperref[idx-2007-T3-Q31]{31（C）}；\hyperref[idx-2007-T3-Q33]{33（B）}；\hyperref[idx-2007-T3-Q35]{35（AC）}；\hyperref[idx-2007-T4-Q36]{36（C）}；\hyperref[idx-2007-T4-Q38]{38（AD）}；\hyperref[idx-2007-T4-Q39]{39（BD）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q25]{25（ABC）}；\hyperref[idx-2008-T2-Q26]{26（AC）}；\hyperref[idx-2008-T2-Q28]{28（C）}；\hyperref[idx-2008-T2-Q30]{30（AD）}；\hyperref[idx-2008-T3-Q31]{31（C）}；\hyperref[idx-2008-T3-Q35]{35（B）}；\hyperref[idx-2008-T4-Q36]{36（ABC）}；\hyperref[idx-2008-T4-Q39]{39（D）}；\hyperref[idx-2008-T4-Q40]{40（B）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q21]{21（B）}；\hyperref[idx-2009-T1-Q23]{23（D）}；\hyperref[idx-2009-T2-Q27]{27（B）}；\hyperref[idx-2009-T2-Q28]{28（C）}；\hyperref[idx-2009-T2-Q30]{30（AC）}；\hyperref[idx-2009-T3-Q33]{33（C）}；\hyperref[idx-2009-T4-Q39]{39（D）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q25]{25（AD）}；\hyperref[idx-2010-T2-Q26]{26（B）}；\hyperref[idx-2010-T2-Q30]{30（C）}；\hyperref[idx-2010-T3-Q31]{31（AD）}；\hyperref[idx-2010-T3-Q33]{33（D）}；\hyperref[idx-2010-T3-Q34]{34（B）}；\hyperref[idx-2010-T4-Q36]{36（D）}；\hyperref[idx-2010-T4-Q38]{38（D）}；\hyperref[idx-2010-T4-Q39]{39（ACD）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T1-Q22]{22（C）}；\hyperref[idx-2011-T1-Q23]{23（A）}；\hyperref[idx-2011-T2-Q26]{26（C）}；\hyperref[idx-2011-T2-Q30]{30（AB）}；\hyperref[idx-2011-T3-Q35]{35（BD）}；\hyperref[idx-2011-T4-Q37]{37（A）}；\hyperref[idx-2011-T4-Q40]{40（D）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T1-Q24]{24（D）}；\hyperref[idx-2012-T1-Q25]{25（C）}；\hyperref[idx-2012-T2-Q28]{28（D）}；\hyperref[idx-2012-T2-Q29]{29（AB）}；\hyperref[idx-2012-T3-Q32]{32（ACD）}；\hyperref[idx-2012-T3-Q33]{33（C）}；\hyperref[idx-2012-T3-Q34]{34（B）}；\hyperref[idx-2012-T3-Q35]{35（ABD）}；\hyperref[idx-2012-T4-Q38]{38（C）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q25]{25（ABD）}；\hyperref[idx-2013-T3-Q33]{33（C）}；\hyperref[idx-2013-T3-Q35]{35（BCD）}；\hyperref[idx-2013-T4-Q39]{39（B）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q23]{23（A）}；\hyperref[idx-2014-T2-Q26]{26（C）}；\hyperref[idx-2014-T2-Q30]{30（ACD）}；\hyperref[idx-2014-T3-Q31]{31（A）}；\hyperref[idx-2014-T3-Q33]{33（AD）}；\hyperref[idx-2014-T4-Q40]{40（AD）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T1-Q23]{23（ACD）}；\hyperref[idx-2015-T1-Q25]{25（ABD）}；\hyperref[idx-2015-T2-Q26]{26（A）}；\hyperref[idx-2015-T2-Q28]{28（BC）}；\hyperref[idx-2015-T2-Q29]{29（C）}；\hyperref[idx-2015-T2-Q30]{30（ABC）}；\hyperref[idx-2015-T3-Q32]{32（A）}；\hyperref[idx-2015-T3-Q35]{35（BC）}；\hyperref[idx-2015-T4-Q38]{38（B）}；\hyperref[idx-2015-T4-Q40]{40（C）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q24]{24（A）}；\hyperref[idx-2016-T1-Q25]{25（ABC）}；\hyperref[idx-2016-T2-Q29]{29（B）}；\hyperref[idx-2016-T2-Q30]{30（AB）}；\hyperref[idx-2016-T4-Q37]{37（AD）}；\hyperref[idx-2016-T4-Q39]{39（B）}；\hyperref[idx-2016-T4-Q40]{40（D）}。\par
+\Needspace{15\baselineskip}
+\subsection{R12 语境词义与搭配误读}\label{class-R12}
+\noindent \hyperref[cat-R12]{定义与边界}\quad 26题／51项\quad \hyperref[case-2009-T1-Q23]{例23}, \hyperref[case-2013-T1-Q21]{例24}
+\noindent\textbf{2007}：\hyperref[idx-2007-T1-Q22]{22（ACD）}；\hyperref[idx-2007-T1-Q24]{24（C）}。\par
+\noindent\textbf{2008}：\hyperref[idx-2008-T1-Q24]{24（CD）}；\hyperref[idx-2008-T4-Q39]{39（CD）}。\par
+\noindent\textbf{2009}：\hyperref[idx-2009-T1-Q21]{21（AB）}；\hyperref[idx-2009-T1-Q22]{22（B）}；\hyperref[idx-2009-T1-Q23]{23（BCD）}。\par
+\noindent\textbf{2010}：\hyperref[idx-2010-T1-Q22]{22（BC）}；\hyperref[idx-2010-T2-Q27]{27（B）}；\hyperref[idx-2010-T2-Q28]{28（ABD）}；\hyperref[idx-2010-T4-Q36]{36（C）}。\par
+\noindent\textbf{2011}：\hyperref[idx-2011-T2-Q28]{28（ABD）}；\hyperref[idx-2011-T3-Q32]{32（D）}。\par
+\noindent\textbf{2012}：\hyperref[idx-2012-T2-Q26]{26（ABD）}。\par
+\noindent\textbf{2013}：\hyperref[idx-2013-T1-Q21]{21（CD）}；\hyperref[idx-2013-T1-Q23]{23（ABC）}；\hyperref[idx-2013-T1-Q24]{24（D）}；\hyperref[idx-2013-T2-Q27]{27（B）}。\par
+\noindent\textbf{2014}：\hyperref[idx-2014-T1-Q22]{22（ABD）}；\hyperref[idx-2014-T3-Q31]{31（D）}。\par
+\noindent\textbf{2015}：\hyperref[idx-2015-T3-Q32]{32（ABD）}。\par
+\noindent\textbf{2016}：\hyperref[idx-2016-T1-Q22]{22（ABC）}；\hyperref[idx-2016-T3-Q33]{33（ABC）}；\hyperref[idx-2016-T3-Q35]{35（D）}；\hyperref[idx-2016-T4-Q38]{38（A）}；\hyperref[idx-2016-T4-Q39]{39（A）}。\par
+\Needspace{11\baselineskip}\section{年份题号索引：全部200题}\label{year-index}
+每年20题，Text 1—4各5题。每条显示题干直译、原解析答案及其直译，随后给出其余三项的本册机制编码；点击代码回到定义，点击题号打开原解析。为避免重印全文，本节不复制全部英文选项与长篇解析。原解析答案不另称为官方答案；争议题用A（待核）并标U。\par
+对照英文和全文时，以题号链接为准。原解析如以后修订，本册的固定版本仍由文末提交和核对记录追溯。每条“重点例”附本册页码，供纸质回查。\par
+\clearpage
+\subsection{2007年}\label{year-2007}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q21}{2007-T1-Q21}}　文章提到足球运动员中发现的出生月份现象，是为了……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：引出“卓越表现是如何形成的”这一话题。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R01]{R01}。　\hyperref[case-2007-T1-Q21]{重点例}（第\pageref{case-2007-T1-Q21}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q22}{2007-T1-Q22}}　第 2 段第 4 行的 mania 最可能是什么意思？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：狂热；一时盛行的热潮。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R08]{R08}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q23}{2007-T1-Q23}}　按照埃里克森的观点，良好的记忆能力……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：取决于对信息进行有意义的加工处理。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}。　\hyperref[case-2007-T1-Q23]{重点例}（第\pageref{case-2007-T1-Q23}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q24}{2007-T1-Q24}}　埃里克森及其同事认为……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：高成就者的成功主要归功于后天培养。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/\#q25}{2007-T1-Q25}}　下列哪句谚语最接近本文试图传达的主要思想？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：“熟能生巧”。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q26}{2007-T2-Q26}}　下列哪项可能是智力测验要求受试者完成的？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：选择与给定词语或图形具有相似关系的词语或图形。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R01]{R01}。　\hyperref[case-2007-T2-Q26]{重点例}（第\pageref{case-2007-T2-Q26}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q27}{2007-T2-Q27}}　从第 3 段可以推断出有关智力测试的什么情况？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：成人版与儿童版测试的内容和形式可能不同。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q28}{2007-T2-Q28}}　当今人们无法再取得萨凡特那样高的 IQ 分数，是因为……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：分数如今由不同的计算程序或方法得出。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q29}{2007-T2-Q29}}　从最后一段能够得出什么结论？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：考试分数可能不是个人能力的可靠指标。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R03]{R03}；D：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/\#q30}{2007-T2-Q30}}　作者对智商测试抱有怎样的态度？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：怀疑的；持审慎质疑态度的。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R10]{R10}；D：\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q31}{2007-T3-Q31}}　如今双份收入的家庭面临更大的经济风险，因为……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：他们过去享有的安全网已消失。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q32}{2007-T3-Q32}}　按照布什总统所推动的改革设想，退休人员可能会获得……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：保障程度更低的退休给付。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q33}{2007-T3-Q33}}　按照作者的说法，医疗储蓄计划将会……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：增加家庭所承担的投资风险。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q34}{2007-T3-Q34}}　根据最后一段可以推断出……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：经济问题可能引发政治问题。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/\#q35}{2007-T3-Q35}}　以下哪一个标题最适合这篇文章？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：站在悬崖边缘的中产阶级。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}。　\hyperref[case-2007-T3-Q35]{重点例}（第\pageref{case-2007-T3-Q35}页）\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q36}{2007-T4-Q36}}　开头的“祸不单行”这句话，是为了引出……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：数据泄露问题的严重性。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q37}{2007-T4-Q37}}　根据第 2 段，一些机构检查自身系统，是为了弄清……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：是否存在任何薄弱环节。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q38}{2007-T4-Q38}}　作者提出 GASP 这一概念，是为了说明……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：信息保护应受到应有的重视。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；D：\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q39}{2007-T4-Q39}}　根据第 4 段，使作者困惑的是，一些高管没能……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：看到信任与数据保护之间的联系。\par\nopagebreak
+\noindent B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。　\hyperref[case-2007-T4-Q39]{重点例}（第\pageref{case-2007-T4-Q39}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2007-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/\#q40}{2007-T4-Q40}}　从第 5 段能够推断出……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：美国联邦贸易委员会的决定对数据安全至关重要。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}。\par\smallskip
+\clearpage
+\subsection{2008年}\label{year-2008}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/\#q21}{2008-T1-Q21}}　根据前两段，下列哪一项是正确的？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：从生理上说，女性更容易受到压力的伤害。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/\#q22}{2008-T1-Q22}}　耶胡达博士的研究表明，女性……。\par\nopagebreak
+\noindent\textbf{原解析答案 D}：承受、接触到更多压力。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/\#q23}{2008-T1-Q23}}　根据第 4 段，女性面对的压力往往是……。\par\nopagebreak
+\noindent\textbf{原解析答案 C}：持久的、频繁发生的。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}；B：\hyperref[cat-R01]{R01}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/\#q24}{2008-T1-Q24}}　“我靠一份工资撑到下一次发工资。”（第 5 段第 6 行）这句话表明……。\par\nopagebreak
+\noindent\textbf{原解析答案 B}：阿尔瓦雷斯的工资勉强够支付家庭开销。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/\#q25}{2008-T1-Q25}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：性别不平等：压力下的女性。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/\#q26}{2008-T2-Q26}}　在第 1 段中，作者讨论的是……。\par\nopagebreak
+\noindent\textbf{原解析答案 D}：传统的期刊出版流程。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}；C：\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/\#q27}{2008-T2-Q27}}　关于 OECD 的这份报告，下列哪项是正确的？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：它令营利性的期刊出版商感到不安。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/\#q28}{2008-T2-Q28}}　根据文章，网络出版之所以重要，是因为……。\par\nopagebreak
+\noindent\textbf{原解析答案 A}：它使科研成果更容易被获取。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/\#q29}{2008-T2-Q29}}　在开放获取出版模式下，论文作者被要求……。\par\nopagebreak
+\noindent\textbf{原解析答案 A}：承担该论文的发表费用。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R06]{R06}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/\#q30}{2008-T2-Q30}}　下列哪一项最能概括全文？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：一种新的出版模式正在出现。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q31}{2008-T3-Q31}}　文章把威尔特·张伯伦作为例子，是为了……。\par\nopagebreak
+\noindent\textbf{原解析答案 A}：说明 NBA 球员身高的变化。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q32}{2008-T3-Q32}}　根据文章，下列哪一项在身体生长中起关键作用？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：生活水平。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q33}{2008-T3-Q33}}　作者最可能赞同下列哪一项说法？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：人的身高受到直立姿态的制约。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R07]{R07}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}。　\hyperref[case-2008-T3-Q33]{重点例}（第\pageref{case-2008-T3-Q33}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q34}{2008-T3-Q34}}　从最后一段可知，在不久的将来……。\par\nopagebreak
+\noindent\textbf{原解析答案 D}：现有人体身高数据仍然适用。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/\#q35}{2008-T3-Q35}}　本文意在告诉我们……。\par\nopagebreak
+\noindent\textbf{原解析答案 C}：美国人已经达到了其遗传所允许的生长极限。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q36}{2008-T4-Q36}}　提及乔治·华盛顿的牙科手术，是为了……。\par\nopagebreak
+\noindent\textbf{原解析答案 D}：揭示他生活中某个不为人熟知的方面。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；B：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q37}{2008-T4-Q37}}　我们可以从第 2 段推断出……。\par\nopagebreak
+\noindent\textbf{原解析答案 B}：美国在建国初期面临着脆弱、需要谨慎处理的局面。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R05]{R05}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q38}{2008-T4-Q38}}　关于托马斯·杰斐逊，我们可以了解到什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：他对奴隶制的态度是复杂的。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}。　\hyperref[case-2008-T4-Q38]{重点例}（第\pageref{case-2008-T4-Q38}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q39}{2008-T4-Q39}}　根据文章，下列哪项是正确的？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：一些开国元勋在政治上从奴隶制中获益。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R12]{R12}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R10]{R10}／\hyperref[cat-R12]{R12}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2008-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/\#q40}{2008-T4-Q40}}　华盛顿释放奴隶的决定源自他的……。\par\nopagebreak
+\noindent\textbf{原解析答案 A}：道德方面的考虑。\par\nopagebreak
+\noindent B：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}。\par\smallskip
+\clearpage
+\subsection{2009年}\label{year-2009}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q21}{2009-T1-Q21}}　在华兹华斯看来，“习惯”的突出特征是什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：机械的；不加思考的。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R11]{R11}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q22}{2009-T1-Q22}}　大脑研究人员发现，新习惯的形成能够被怎样处理？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：引导。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q23}{2009-T1-Q23}}　第 4 段的 ruts 与哪一词最接近？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：车辙；轨迹；道路。\par\nopagebreak
+\noindent B：\hyperref[cat-R12]{R12}；C：\hyperref[cat-R12]{R12}；D：\hyperref[cat-R11]{R11}／\hyperref[cat-R12]{R12}。　\hyperref[case-2009-T1-Q23]{重点例}（第\pageref{case-2009-T1-Q23}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q24}{2009-T1-Q24}}　道娜·马尔科娃最可能赞同下列哪一观点？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：好奇心激发创造性思维。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R05]{R05}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/\#q25}{2009-T1-Q25}}　瑞安的评论表明，标准化测试这一做法……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：妨碍新习惯的形成。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}／\hyperref[cat-R04]{R04}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q26}{2009-T2-Q26}}　在第 1、2 段中，文章表明亲子鉴定试剂盒 PTK 的什么特征？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：容易买到；获取便捷。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}。　\hyperref[case-2009-T2-Q26]{重点例}（第\pageref{case-2009-T2-Q26}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q27}{2009-T2-Q27}}　亲子鉴定试剂盒 PTK 用于……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：鉴定亲子关系。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q28}{2009-T2-Q28}}　持怀疑态度的观察者认为，祖源检测未能做到什么？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：达到所宣称的准确度。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q29}{2009-T2-Q29}}　根据最后一段，商业基因检测面临的一个问题是什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：数据收集缺乏系统性。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/\#q30}{2009-T2-Q30}}　下列哪一项最适合作为文章标题？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：DNA 检测及其存在的问题。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}／\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q31}{2009-T3-Q31}}　作者在第 1 段认为，教育在贫困国家的重要性……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：被高估了。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q32}{2009-T3-Q32}}　第 1 段明确指出，建立一个新的教育体系……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：需要几代人的努力。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q33}{2009-T3-Q33}}　日本与美国劳动力之间的一个主要差别是……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：日本劳动力的生产率更高。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q34}{2009-T3-Q34}}　作者列举祖先的事例，是为了表明教育是在什么条件下出现的？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：当人们有了足够时间时。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R05]{R05}／\hyperref[cat-R07]{R07}。　\hyperref[case-2009-T3-Q34]{重点例}（第\pageref{case-2009-T3-Q34}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/\#q35}{2009-T3-Q35}}　根据最后一段，教育的发展……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：随着生产率的提高而发展。\par\nopagebreak
+\noindent A：\hyperref[cat-R07]{R07}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/\#q36}{2009-T4-Q36}}　作者认为，在 17 世纪的新英格兰地区……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：知识活动与思想兴趣受到重视和鼓励。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/\#q37}{2009-T4-Q37}}　第 2 段暗示，新英格兰移民……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：把旧世界的文化带到了新大陆。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R01]{R01}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/\#q38}{2009-T4-Q38}}　早期马萨诸塞湾殖民地的牧师与政治领袖……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：在新英格兰营造了新的知识文化氛围。\par\nopagebreak
+\noindent A：\hyperref[cat-R09]{R09}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/\#q39}{2009-T4-Q39}}　约翰·戴恩的故事表明，受教育程度较低的新英格兰移民常常……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：受到迷信观念的影响。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2009-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/\#q40}{2009-T4-Q40}}　文章表明，早期的新英格兰定居者……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：具有不同的思想文化和知识背景。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R03]{R03}。\par\smallskip
+\clearpage
+\subsection{2010年}\label{year-2010}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/\#q21}{2010-T1-Q21}}　第 1、2 段表明下列哪一情况？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：英语报纸过去刊登的艺术评论比现在更多。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/\#q22}{2010-T1-Q22}}　二战以前，英国报纸上的评论以什么为主要特征？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：题材自由；评论主题不受严格限制。\par\nopagebreak
+\noindent B：\hyperref[cat-R12]{R12}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/\#q23}{2010-T1-Q23}}　下列哪一观点最可能得到萧伯纳与纽曼共同赞同？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：并非所有作家都具备新闻写作能力。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/\#q24}{2010-T1-Q24}}　根据最后两段，我们可以了解到卡杜斯的什么情况？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：他的音乐评论可能不再吸引今天的读者。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/\#q25}{2010-T1-Q25}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：报纸中消逝的风景；报业已失去的高度。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q26}{2010-T2-Q26}}　商业方法专利最近引起关注，是因为什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：这类专利的授予可能受到限制。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R06]{R06}。　\hyperref[case-2010-T2-Q26]{重点例}（第\pageref{case-2010-T2-Q26}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q27}{2010-T2-Q27}}　关于 Bilski 案，下列哪一说法正确？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：该案可能改变美国现行的相关法律实践。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R12]{R12}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q28}{2010-T2-Q28}}　第 3 段第 1 行的 about-face 最可能是什么意思？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：态度改变；立场逆转。\par\nopagebreak
+\noindent A：\hyperref[cat-R12]{R12}；B：\hyperref[cat-R10]{R10}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q29}{2010-T2-Q29}}　根据最后两段，我们了解到商业方法专利……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：常常被授予一些并无充分必要或不符合应有创新要求的专利。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/\#q30}{2010-T2-Q30}}　下列哪一项最能概括文章主题？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：商业方法专利面临的迫近威胁。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q31}{2010-T3-Q31}}　作者提及《引爆点》一书，是为了什么？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：讨论关键影响者在观念传播中发挥的作用。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q32}{2010-T3-Q32}}　作者暗示，“两级传播理论”……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：还需要坚实的证据来证明其有效性。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q33}{2010-T3-Q33}}　研究人员最近的观察表明什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：影响力的实际作用与社会交往的联系和传播情况密切相关。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q34}{2010-T3-Q34}}　第 4 段划线词组 these people 指的是哪一类人？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：受到影响之后又去影响其他人的人。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/\#q35}{2010-T3-Q35}}　在社会影响力传播的动态过程中，最关键的要素是什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：愿意接受他人影响的倾向。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R02]{R02}。　\hyperref[case-2010-T3-Q35]{重点例}（第\pageref{case-2010-T3-Q35}页）\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/\#q36}{2010-T4-Q36}}　银行家抱怨说，他们被迫……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：遵守对自身不利的资产估价规则。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/\#q37}{2010-T4-Q37}}　作者认为，美国财务会计准则委员会 FASB 对规则的改动，可能导致……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：该机构自身独立性的削弱。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/\#q38}{2010-T4-Q38}}　根据第 4 段，麦克里维反对国际会计准则理事会 IASB 试图……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：置身于政治影响之外。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/\#q39}{2010-T4-Q39}}　作者认为，银行仿佛“生活在另一个星球上”，是因为它们……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：夸大其资产的真实价值。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2010-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/\#q40}{2010-T4-Q40}}　作者对会计准则制定机构持什么态度？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：同情；理解并支持其处境。\par\nopagebreak
+\noindent A：\hyperref[cat-R10]{R10}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\subsection{2011年}\label{year-2011}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q21}{2011-T1-Q21}}　从第一段可知，对吉尔伯特的任命已经……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：获得了赞扬。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q22}{2011-T1-Q22}}　托马西尼认为吉尔伯特是一位怎样的艺术家？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：谦逊的；不摆架子的。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q23}{2011-T1-Q23}}　作者认为，那些忠实的音乐会听众……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：高估了现场演出的价值。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q24}{2011-T1-Q24}}　根据文章，下列关于录音的哪一说法是正确的？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：普通公众很容易获得或接触到它们。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}。　\hyperref[case-2011-T1-Q24]{重点例}（第\pageref{case-2011-T1-Q24}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/\#q25}{2011-T1-Q25}}　对于吉尔伯特在振兴爱乐乐团方面的作用，作者持何种态度？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：怀疑的；持保留态度的。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}。　\hyperref[case-2011-T1-Q25]{重点例}（第\pageref{case-2011-T1-Q25}页）\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/\#q26}{2011-T2-Q26}}　麦基宣布离职时，其表达方式最适合用哪个词形容？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：坦率的。\par\nopagebreak
+\noindent A：\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/\#q27}{2011-T2-Q27}}　根据第二段，高级管理人员的离职可能受到什么因素的推动？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：他们对新职业目标的追求。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/\#q28}{2011-T2-Q28}}　第四段第三行的 poached 最可能是什么意思？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：被寻觅、物色。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/\#q29}{2011-T2-Q29}}　根据最后一段，可以推断出什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：表现优秀的人过去往往紧守自己的职位。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/\#q30}{2011-T2-Q30}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：高管们不带安全网就跳槽。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q31}{2011-T3-Q31}}　消费者在什么情况下可能创造“赢得的媒体传播”？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：热衷于推荐自己喜爱的产品。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q32}{2011-T3-Q32}}　根据第二段，“售出媒体”具有怎样的特征？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：很大的用户访问流量。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q33}{2011-T3-Q33}}　作者在第三段暗示，赢得的媒体传播……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：可能被利用而对营销产生负面影响。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q34}{2011-T3-Q34}}　文章引用丰田汽车的经历，是为了举例说明什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：有效应对被反向利用的媒体传播。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/\#q35}{2011-T3-Q35}}　本文主要讨论下列哪一内容？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：传统付费媒体之外的其他选择。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/\#q36}{2011-T4-Q36}}　詹妮弗·西尼尔在文章中提出，养育孩子可以带来什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：回顾往事时感受到的幸福。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}；B：\hyperref[cat-R06]{R06}；D：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/\#q37}{2011-T4-Q37}}　根据第二段，可以得出下列哪一结论？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：生育子女受到公众的高度重视。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/\#q38}{2011-T4-Q38}}　第三段暗示，没有子女的人……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：不断受到批评或责难。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/\#q39}{2011-T4-Q39}}　根据第四段，明星杂志所传达的信息具有怎样的性质？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：有误导性的。\par\nopagebreak
+\noindent A：\hyperref[cat-R10]{R10}；B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2011-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/\#q40}{2011-T4-Q40}}　根据最后一段，可以推断出下列哪一结论？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：明星母亲已经影响了我们对养育孩子的态度。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage
+\subsection{2012年}\label{year-2012}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/\#q21}{2012-T1-Q21}}　根据第一段，同伴压力常常表现为……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：引起不良行为的一个原因。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R03]{R03}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/\#q22}{2012-T1-Q22}}　罗森伯格认为，公共卫生倡导者应该……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：学习广告商的经验。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/\#q23}{2012-T1-Q23}}　在作者看来，罗森伯格的书未能……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：充分探究社会因素和生物因素。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/\#q24}{2012-T1-Q24}}　第五段表明，我们对行为的模仿……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：在我们没有意识到的情况下发生。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/\#q25}{2012-T1-Q25}}　作者在最后一段暗示，同伴压力的作用效果是……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：值得怀疑的；尚不能确信的。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；B：\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q26}{2012-T2-Q26}}　第一段第三行的短语“reneging on”，意思最接近……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：不履行；违背。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q27}{2012-T2-Q27}}　通过签订2002年的协议，Entergy 意在……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：获得购买一座核电站的许可。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R06]{R06}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q28}{2012-T2-Q28}}　根据第四段，Entergy 似乎在哪方面存在问题？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：管理行为；管理做法。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R09]{R09}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q29}{2012-T2-Q29}}　在作者看来，佛蒙特州这起案件将检验……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：各州对核能事务所拥有权力的边界。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/\#q30}{2012-T2-Q30}}　根据最后一段可以推断……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：Entergy 在其他地方的业务可能受到影响。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R01]{R01}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q31}{2012-T3-Q31}}　根据第一段，发现过程具有怎样的特征？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：不确定性和复杂性。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q32}{2012-T3-Q32}}　由第二段可推知，可信度形成过程需要……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：共同努力。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q33}{2012-T3-Q33}}　第三段表明，一项发现主张在……之后才变得可信。\par\nopagebreak
+\noindent\textbf{原解析答案 B}：已经接受科学共同体的检验。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q34}{2012-T3-Q34}}　阿尔伯特·圣捷尔吉最可能赞同下列哪种观点？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：科学工作需要具有批判性的头脑。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/\#q35}{2012-T3-Q35}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：科学实践中可信度的形成与演变。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。　\hyperref[case-2012-T3-Q35]{重点例}（第\pageref{case-2012-T3-Q35}页）\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q36}{2012-T4-Q36}}　从第一段可以得知……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：工会扩大了其公共部门的会员规模。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R06]{R06}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。　\hyperref[case-2012-T4-Q36]{重点例}（第\pageref{case-2012-T4-Q36}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q37}{2012-T4-Q37}}　下列哪一项符合第二段的内容？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：公共部门工会很少因自身行动而陷入麻烦。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q38}{2012-T4-Q38}}　从第四段可以得知，公共部门的收入待遇是……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：通过间接方式增加的。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q39}{2012-T4-Q39}}　威斯康星州工会的例子说明，工会……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：可能成为公共部门改革的障碍。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R04]{R04}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2012-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/\#q40}{2012-T4-Q40}}　约翰·多纳休对公共部门制度持什么态度？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：不赞成；不认可。\par\nopagebreak
+\noindent B：\hyperref[cat-R03]{R03}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R10]{R10}；D：\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\subsection{2013年}\label{year-2013}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q21}{2013-T1-Q21}}　Priestly 因为她的助理的什么问题而批评她？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：对时尚不敏感；没有意识到时尚的影响。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}。　\hyperref[case-2013-T1-Q21]{重点例}（第\pageref{case-2013-T1-Q21}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q22}{2013-T1-Q22}}　根据 Cline 的观点，大众市场品牌促使消费者做什么？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：更频繁地购买衣服。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q23}{2013-T1-Q23}}　第二段第 2 行的 indictment 与哪个词意义最接近？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：指责；控诉。\par\nopagebreak
+\noindent A：\hyperref[cat-R10]{R10}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R10]{R10}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q24}{2013-T1-Q24}}　从最后一段可以推出以下哪一项？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：价格因素对环保型购买至关重要。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R05]{R05}／\hyperref[cat-R08]{R08}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/\#q25}{2013-T1-Q25}}　本文的主题是什么？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：对快时尚行业的批评。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q26}{2013-T2-Q26}}　第一段暗示，“行为定向”广告可以帮助广告商做什么？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：降低其运营成本。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q27}{2013-T2-Q27}}　第三段第 5 行的 the industry 指什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A（待核）}：互联网浏览器开发商。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R04]{R04}；D：\hyperref[dispute]{U}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q28}{2013-T2-Q28}}　Bob Liodice 认为，把 DNT 设置为默认状态会怎样？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：不会使消费者受益。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q29}{2013-T2-Q29}}　根据第六段，以下哪一项正确？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：DNT 可能无法实现其预期目的。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/\#q30}{2013-T2-Q30}}　作者对 Brendon Lynch 在博客中的说法持什么态度？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：怀疑；质疑。\par\nopagebreak
+\noindent A：\hyperref[cat-R10]{R10}；B：\hyperref[cat-R10]{R10}；C：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/\#q31}{2013-T3-Q31}}　过去，我们对未来的想象主要受到什么因素的激发？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：我们对科学与技术的信心。\par\nopagebreak
+\noindent A：\hyperref[cat-R07]{R07}；C：\hyperref[cat-R06]{R06}；D：\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/\#q32}{2013-T3-Q32}}　IUCN 的“红色名录”表明，人类是怎样的一种物种？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：一个能够持续存在、延续下去的物种。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；D：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/\#q33}{2013-T3-Q33}}　根据第五段，以下哪一项正确？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：我们的近未来很难构想。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；B：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R06]{R06}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/\#q34}{2013-T3-Q34}}　为了保障人类的未来，关键在于做什么？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：利用我们从过去获得的经验。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/\#q35}{2013-T3-Q35}}　以下哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：人类始终光明的前景；人类长期而言颇为光明的前景。\par\nopagebreak
+\noindent B：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/\#q36}{2013-T4-Q36}}　亚利桑那州方案中的三项规定被推翻，是因为什么？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：越过/侵犯了联邦移民法的权限边界。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/\#q37}{2013-T4-Q37}}　根据第四段，大法官们在哪一点上达成一致？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：各州在移民执法中的合法角色。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/\#q38}{2013-T4-Q38}}　从第五段可以推断，《外国人与煽动叛乱法》怎样？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：与支持州权的立场相关；站在有利于各州一边。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/\#q39}{2013-T4-Q39}}　白宫声称，它的执法权力怎样？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：比各州所拥有的权力更有分量、应当优先。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2013-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/\#q40}{2013-T4-Q40}}　从最后一段可以得出什么？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：大法官们意在制约行政当局的权力。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R04]{R04}。\par\smallskip
+\clearpage
+\subsection{2014年}\label{year-2014}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/\#q21}{2014-T1-Q21}}　乔治·奥斯本的计划旨在……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：鼓励求职者积极参与求职。\par\nopagebreak
+\noindent B：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R01]{R01}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/\#q22}{2014-T1-Q22}}　第 2 段第 3 行的短语 to sign on 最可能意为……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：登记申领政府津贴。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/\#q23}{2014-T1-Q23}}　是什么促使这位财政大臣制定这一计划？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：热切希望保障对纳税人的公平。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/\#q24}{2014-T1-Q24}}　根据第 3 段，失业会使人感到……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：不安的；忧虑的。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/\#q25}{2014-T1-Q25}}　作者最可能赞同下列哪一种说法？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：失业救济不应被附加领取条件。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/\#q26}{2014-T2-Q26}}　许多学生选择法律作为职业，是因为……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：经济回报的吸引力。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/\#q27}{2014-T2-Q27}}　在美国大多数州，下列哪一项增加了法律教育的成本？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：先攻读另一个专业的学士学位。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R01]{R01}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/\#q28}{2014-T2-Q28}}　法律制度改革的阻力来自……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：管理该行业的僵化机构。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}；C：\hyperref[cat-R07]{R07}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/\#q29}{2014-T2-Q29}}　这种类似行会的所有权结构被认为具有限制性，部分原因是它……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：禁止外部人士参与这一行业。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/\#q30}{2014-T2-Q30}}　在本文中，作者主要讨论……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：美国法律行业的一个问题及其解决办法。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/\#q31}{2014-T3-Q31}}　基础物理学奖被视为……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：给予研究者的一笔丰厚奖励。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/\#q32}{2014-T3-Q32}}　批评者认为，这些新奖项最有利于……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：这些新奖项的创办者。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/\#q33}{2014-T3-Q33}}　希格斯玻色子的发现是一个涉及下列哪种情况的典型例子？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：现代研究者的共同努力。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/\#q34}{2014-T3-Q34}}　根据第 4 段，关于诺贝尔奖，下列哪项说法正确？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：它们长期延续的历程使其价值获得了公正认可。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/\#q35}{2014-T3-Q35}}　作者认为，这些新奖项是……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：尽管受到批评，仍然可以接受的。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R01]{R01}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q36}{2014-T4-Q36}}　根据第 1 段，作者对美国艺术与科学院报告的态度是什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：批评的。\par\nopagebreak
+\noindent B：\hyperref[cat-R03]{R03}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q37}{2014-T4-Q37}}　国会中有影响力的人士要求美国艺术与科学院就如何……作出报告。\par\nopagebreak
+\noindent\textbf{原解析答案 D}：保持在博雅教育方面的领先地位。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；B：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q38}{2014-T4-Q38}}　根据第 3 段，这份报告建议……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：运用新兴技术。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}；B：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}。　\hyperref[case-2014-T4-Q38]{重点例}（第\pageref{case-2014-T4-Q38}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q39}{2014-T4-Q39}}　作者在第 5 段暗示，教授们……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：对古典自由主义思想抱有偏见。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2014-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/\#q40}{2014-T4-Q40}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：不开放的教育与《问题的核心》。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R05]{R05}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage
+\subsection{2015年}\label{year-2015}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q21}{2015-T1-Q21}}　根据前两段，西班牙国王胡安·卡洛斯……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：在尴尬中结束了自己的统治。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R04]{R04}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q22}{2015-T1-Q22}}　欧洲保留君主担任国家元首，主要是……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：由于他们不受质疑且受人尊敬的地位。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R04]{R04}；D：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q23}{2015-T1-Q23}}　根据第四段，下列哪一种现象显得奇怪？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：贵族在现代民主国家中的角色。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q24}{2015-T1-Q24}}　英国王室“最需要担心”，是因为查尔斯……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：未能使自己适应未来的角色。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。　\hyperref[case-2015-T1-Q24]{重点例}（第\pageref{case-2015-T1-Q24}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/\#q25}{2015-T1-Q25}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：卡洛斯：给所有欧洲君主的一课。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q26}{2015-T2-Q26}}　最高法院将判断，在逮捕过程中，做下列哪件事是否合法……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：未经授权就检查嫌疑人手机里的内容。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}；B：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R04]{R04}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q27}{2015-T2-Q27}}　作者对加州论点的态度是……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：不赞同。\par\nopagebreak
+\noindent B：\hyperref[cat-R10]{R10}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q28}{2015-T2-Q28}}　作者认为，查看一个人的手机内容可以类比于……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：进入某人的住宅。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}。　\hyperref[case-2015-T2-Q28]{重点例}（第\pageref{case-2015-T2-Q28}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q29}{2015-T2-Q29}}　在第五、六段中，作者表达的担忧是……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：公民隐私没有得到有效保护。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}；C：\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/\#q30}{2015-T2-Q30}}　引用奥林·克尔的比较，是为了说明……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：新技术要求对宪法作出新的解释。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}／\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q31}{2015-T3-Q31}}　从第一段可以得知……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：期刊正在加强统计核查。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R04]{R04}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q32}{2015-T3-Q32}}　第二段中短语 flagged up 的意思最接近……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：被标记出来。\par\nopagebreak
+\noindent A：\hyperref[cat-R11]{R11}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R12]{R12}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q33}{2015-T3-Q33}}　乔瓦尼·帕尔米贾尼认为，SBoRE 的设立可能……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：为其他期刊树立榜样。\par\nopagebreak
+\noindent A：\hyperref[cat-R03]{R03}／\hyperref[cat-R05]{R05}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R10]{R10}；C：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q34}{2015-T3-Q34}}　戴维·沃克斯认为，《科学》目前的做法……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：仍有进一步改进的空间。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。　\hyperref[case-2015-T3-Q34]{重点例}（第\pageref{case-2015-T3-Q34}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/\#q35}{2015-T3-Q35}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：《科学》加入推动核查论文统计数据的行列。\par\nopagebreak
+\noindent B：\hyperref[cat-R11]{R11}；C：\hyperref[cat-R06]{R06}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/\#q36}{2015-T4-Q36}}　根据前两段，令伊丽莎白不安的是……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：现行筛选机制所造成的后果。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R02]{R02}；D：\hyperref[cat-R02]{R02}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/\#q37}{2015-T4-Q37}}　从第三段可以推断……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：更多记者可能被判犯有电话窃听罪。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}；D：\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/\#q38}{2015-T4-Q38}}　作者认为，丽贝卡·布鲁克斯的辩护……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：几乎没有说服力。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/\#q39}{2015-T4-Q39}}　作者认为，当时人们共同接受的信条表明……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：普遍扭曲的价值观。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2015-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/\#q40}{2015-T4-Q40}}　最后一段暗示了下列哪一种观点？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：编辑报纸时，道德意识十分重要。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}。\par\smallskip
+\clearpage
+\subsection{2016年}\label{year-2016}
+\Needspace{13\baselineskip}\subsubsection{Text 1　21—25题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T1-Q21}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q21}{2016-T1-Q21}}　根据第一段，法国将会发生什么？\par\nopagebreak
+\noindent\textbf{原解析答案 A}：形体美将被重新界定。\par\nopagebreak
+\noindent B：\hyperref[cat-R04]{R04}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R05]{R05}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}。　\hyperref[case-2016-T1-Q21]{重点例}（第\pageref{case-2016-T1-Q21}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T1-Q22}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q22}{2016-T1-Q22}}　第二段第二行中的短语“impinging on”在含义上最接近……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：对……造成伤害。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R05]{R05}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T1-Q23}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q23}{2016-T1-Q23}}　关于时尚业，下列哪一项是正确的？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：丹麦正在制定新标准。\par\nopagebreak
+\noindent A：\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T1-Q24}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q24}{2016-T1-Q24}}　一名设计师最可能因何种原因被哥本哈根时装周拒绝？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：很少关注健康因素。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R08]{R08}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T1-Q25}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/\#q25}{2016-T1-Q25}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 D}：对时尚业理想体形标准的挑战。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R03]{R03}／\hyperref[cat-R04]{R04}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 2　26—30题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T2-Q26}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/\#q26}{2016-T2-Q26}}　英国公众对乡村的情感……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：没有在政治中得到充分体现。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R06]{R06}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T2-Q27}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/\#q27}{2016-T2-Q27}}　根据第二段，国民信托组织的成就如今正在……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：逐渐遭到破坏。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R05]{R05}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T2-Q28}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/\#q28}{2016-T2-Q28}}　从第三段可以推断出下列哪一项？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：英国独立党可能因支持乡村保护而获益。\par\nopagebreak
+\noindent A：\hyperref[cat-R01]{R01}／\hyperref[cat-R05]{R05}；B：\hyperref[cat-R05]{R05}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T2-Q29}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/\#q29}{2016-T2-Q29}}　作者认为，乔治·奥斯本的偏好……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：显示他忽视乡村地区的独特风貌。\par\nopagebreak
+\noindent B：\hyperref[cat-R01]{R01}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R05]{R05}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T2-Q30}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/\#q30}{2016-T2-Q30}}　在最后一段，作者表达了对什么的赞赏？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：英国的城乡规划。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R11]{R11}；B：\hyperref[cat-R01]{R01}／\hyperref[cat-R03]{R03}／\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R09]{R09}／\hyperref[cat-R10]{R10}。\par\smallskip
+\clearpage
+\Needspace{13\baselineskip}\subsubsection{Text 3　31—35题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T3-Q31}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q31}{2016-T3-Q31}}　作者以怎样的态度看待米尔顿·弗里德曼关于企业社会责任的说法？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：怀疑、质疑。\par\nopagebreak
+\noindent A：\hyperref[cat-R10]{R10}；C：\hyperref[cat-R01]{R01}／\hyperref[cat-R10]{R10}；D：\hyperref[cat-R10]{R10}。　\hyperref[case-2016-T3-Q31]{重点例}（第\pageref{case-2016-T3-Q31}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T3-Q32}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q32}{2016-T3-Q32}}　根据第二段，企业社会责任通过什么方式帮助公司？\par\nopagebreak
+\noindent\textbf{原解析答案 C}：赢得消费者的信任。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；B：\hyperref[cat-R04]{R04}／\hyperref[cat-R09]{R09}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T3-Q33}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q33}{2016-T3-Q33}}　第四段中的“more lenient”在含义上最接近……\par\nopagebreak
+\noindent\textbf{原解析答案 D}：更不严厉的、较轻的。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T3-Q34}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q34}{2016-T3-Q34}}　当检察官评估案件时，一家公司的企业社会责任记录……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：会影响他们的决定。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}；C：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。　\hyperref[case-2016-T3-Q34]{重点例}（第\pageref{case-2016-T3-Q34}页）\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T3-Q35}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/\#q35}{2016-T3-Q35}}　根据最后一段，关于企业社会责任，下列哪一项正确？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：企业为此所需投入的金额尚不清楚。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R04]{R04}；C：\hyperref[cat-R02]{R02}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}。\par\smallskip
+\Needspace{13\baselineskip}\subsubsection{Text 4　36—40题}
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T4-Q36}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/\#q36}{2016-T4-Q36}}　《纽约时报》考虑结束印刷版，部分原因是……\par\nopagebreak
+\noindent\textbf{原解析答案 A}：运营成本高。\par\nopagebreak
+\noindent B：\hyperref[cat-R02]{R02}／\hyperref[cat-R06]{R06}／\hyperref[cat-R07]{R07}；C：\hyperref[cat-R04]{R04}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R01]{R01}／\hyperref[cat-R06]{R06}／\hyperref[cat-R07]{R07}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T4-Q37}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/\#q37}{2016-T4-Q37}}　佩雷蒂建议，面对目前形势，《纽约时报》应该……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：作出战略调整。\par\nopagebreak
+\noindent A：\hyperref[cat-R08]{R08}／\hyperref[cat-R11]{R11}；C：\hyperref[cat-R01]{R01}；D：\hyperref[cat-R04]{R04}／\hyperref[cat-R11]{R11}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T4-Q38}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/\#q38}{2016-T4-Q38}}　从第五、六段可以推知，一种“保留下来的传统产品”……\par\nopagebreak
+\noindent\textbf{原解析答案 B}：是为最忠实的顾客准备的。\par\nopagebreak
+\noindent A：\hyperref[cat-R04]{R04}／\hyperref[cat-R12]{R12}；C：\hyperref[cat-R02]{R02}／\hyperref[cat-R07]{R07}；D：\hyperref[cat-R02]{R02}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T4-Q39}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/\#q39}{2016-T4-Q39}}　佩雷蒂认为，在不断变化的世界里，……\par\nopagebreak
+\noindent\textbf{原解析答案 C}：积极进取更能应对挑战。\par\nopagebreak
+\noindent A：\hyperref[cat-R02]{R02}／\hyperref[cat-R12]{R12}；B：\hyperref[cat-R11]{R11}；D：\hyperref[cat-R03]{R03}／\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}／\hyperref[cat-R09]{R09}。\par\smallskip
+\Needspace{6\baselineskip}\phantomsection\label{idx-2016-T4-Q40}\noindent\textbf{\href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/\#q40}{2016-T4-Q40}}　下列哪一项最适合作为本文标题？\par\nopagebreak
+\noindent\textbf{原解析答案 B}：把你的纸质报纸变成一种奢侈品。\par\nopagebreak
+\noindent A：\hyperref[cat-R05]{R05}；C：\hyperref[cat-R06]{R06}／\hyperref[cat-R08]{R08}；D：\hyperref[cat-R11]{R11}。\par\smallskip
+\clearpage\section{原解析目录与版本追溯}\label{sources}
+共40篇，按年份与Text编号排序。在线原解析用于阅读全文；固定版本入口用于核对本册当时引用的材料。每篇5题的源行号和完整内容哈希已写入配套JSON核对记录。\par
+\noindent\textbf{基准提交：}3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf\par
+\Needspace{8\baselineskip}
+\subsection{2007年}
+\noindent \href{https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-1.md}{固定版本}\quad Git blob 6ef2df89ffbf\par
+\noindent \href{https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-2.md}{固定版本}\quad Git blob 4010fc93ace5\par
+\noindent \href{https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-3.md}{固定版本}\quad Git blob ed7faf3eee8f\par
+\noindent \href{https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-4.md}{固定版本}\quad Git blob 96abefecadc1\par
+\Needspace{8\baselineskip}
+\subsection{2008年}
+\noindent \href{https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-1.md}{固定版本}\quad Git blob eab8e0aa1f8b\par
+\noindent \href{https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-2.md}{固定版本}\quad Git blob ff19fda38193\par
+\noindent \href{https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-3.md}{固定版本}\quad Git blob a30f91145b3b\par
+\noindent \href{https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-4.md}{固定版本}\quad Git blob d168fd526a7b\par
+\Needspace{8\baselineskip}
+\subsection{2009年}
+\noindent \href{https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-1.md}{固定版本}\quad Git blob f8057d45d28b\par
+\noindent \href{https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-2.md}{固定版本}\quad Git blob d7d880868b67\par
+\noindent \href{https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-3.md}{固定版本}\quad Git blob d87873f513ab\par
+\noindent \href{https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-4.md}{固定版本}\quad Git blob 3ddd55770c9b\par
+\Needspace{8\baselineskip}
+\subsection{2010年}
+\noindent \href{https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-1.md}{固定版本}\quad Git blob df558a131c76\par
+\noindent \href{https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-2.md}{固定版本}\quad Git blob 6acd6210414e\par
+\noindent \href{https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-3.md}{固定版本}\quad Git blob e4612e841cde\par
+\noindent \href{https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-4.md}{固定版本}\quad Git blob b3ad95ea07cc\par
+\Needspace{8\baselineskip}
+\subsection{2011年}
+\noindent \href{https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-1.md}{固定版本}\quad Git blob da0df854dec7\par
+\noindent \href{https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-2.md}{固定版本}\quad Git blob 5f612170a23f\par
+\noindent \href{https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-3.md}{固定版本}\quad Git blob 06e7bc2c3f3a\par
+\noindent \href{https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-4.md}{固定版本}\quad Git blob e63e64f3edbf\par
+\Needspace{8\baselineskip}
+\subsection{2012年}
+\noindent \href{https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-1.md}{固定版本}\quad Git blob 6d014f10ca11\par
+\noindent \href{https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-2.md}{固定版本}\quad Git blob 800315a8ec36\par
+\noindent \href{https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-3.md}{固定版本}\quad Git blob 69168747fe97\par
+\noindent \href{https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-4.md}{固定版本}\quad Git blob 4c1cddad7cef\par
+\Needspace{8\baselineskip}
+\subsection{2013年}
+\noindent \href{https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-1.md}{固定版本}\quad Git blob 116c37970e4f\par
+\noindent \href{https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-2.md}{固定版本}\quad Git blob 64145bee90bd\par
+\noindent \href{https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-3.md}{固定版本}\quad Git blob 1bd0155da15f\par
+\noindent \href{https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-4.md}{固定版本}\quad Git blob 01bc583e192d\par
+\Needspace{8\baselineskip}
+\subsection{2014年}
+\noindent \href{https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-1.md}{固定版本}\quad Git blob bcb24a261d37\par
+\noindent \href{https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-2.md}{固定版本}\quad Git blob 37d8d4ed2055\par
+\noindent \href{https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-3.md}{固定版本}\quad Git blob 3497638ee602\par
+\noindent \href{https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-4.md}{固定版本}\quad Git blob afd71dacf8ad\par
+\Needspace{8\baselineskip}
+\subsection{2015年}
+\noindent \href{https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-1.md}{固定版本}\quad Git blob 691bd7f72e29\par
+\noindent \href{https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-2.md}{固定版本}\quad Git blob c29a90db14be\par
+\noindent \href{https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-3.md}{固定版本}\quad Git blob 19db764487d7\par
+\noindent \href{https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-4.md}{固定版本}\quad Git blob 60c37a337f92\par
+\Needspace{8\baselineskip}
+\subsection{2016年}
+\noindent \href{https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/}{Text 1 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-1.md}{固定版本}\quad Git blob 429454f46f1a\par
+\noindent \href{https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/}{Text 2 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-2.md}{固定版本}\quad Git blob 6230e82e23b8\par
+\noindent \href{https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/}{Text 3 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-3.md}{固定版本}\quad Git blob 3e05f3190b5a\par
+\noindent \href{https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/}{Text 4 原解析}\quad \href{https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-4.md}{固定版本}\quad Git blob 239d89961bc5\par
+专册中的题干、选项与必要短引文取自站内对应真题解析；分类、跨年比较、边界讨论及复习方法为本册整理。保留原题编号与来源链接，便于逐项校核。\par
+\end{document}
