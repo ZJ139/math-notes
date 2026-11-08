@@ -151,11 +151,46 @@ if ((await fs.stat('content/problems/lou-analysis-b-25.md').catch(()=>null))?.is
   }
   if(!html.includes('/problems/a0a262f9a6114b75980fa4f7/')
      ||!source.includes('习题 7.4.B 第 1 题')||!source.includes('B176')
-     ||!chapter.includes('9 道已作答')||!chapter.includes('习题 7.3.B 第 2 题'))
+     ||!chapter.includes('习题 7.3.B'))
     throw new Error('第二十五批前后批次或第七章进度错误');
   console.log('Verified Lou analysis B169–B175: '+inline+' inline and '+display+' display formulas; seven original numbers, PDF pages, chapter entries and batch links.');
 }
 
+
+if ((await fs.stat('content/problems/lou-analysis-b-26.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-26.md','utf8');
+  const route='/problems/145412fe0d79fadb3bb3f7c0/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  if((html.match(/class="latex-svg"/g)||[]).length!==inline+display
+     ||(html.match(/class="katex-display"/g)||[]).length!==display||/katex-error/.test(html))
+    throw new Error('第二十六批公式未全部渲染');
+  const mapping=[
+    [176,'7.4',1,1,43],[177,'7.4',2,1,43],[178,'8.1',1,2,3],
+    [179,'8.2',1,2,5],[180,'8.2',2,2,5],[181,'8.2',3,2,5],
+    [182,'8.3',1,2,6],[183,'8.3',2,2,6],
+  ];
+  for(const [number,section,original,volume,page] of mapping){
+    const problem=source.split('## 问题 B'+number+'\n')[1]?.split(/^## /m)[0];
+    const chapter=await fs.readFile(path.join(root,`problems/collections/lou-analysis/chapters/${section.split('.')[0]}/index.html`),'utf8');
+    if(!html.includes('id="问题-b'+number+'"')
+       ||!problem?.includes('习题 '+section+'.B 第 '+original+' 题')
+       ||!problem.includes('楼分析习题-v'+volume+'.pdf#page='+page)
+       ||!chapter.includes(route+'#问题-b'+number))
+      throw new Error('第二十六批原题、册别页码或章节导航缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/149ff60b32b01ff69feab8a4/index.html','problems/f5ad6d5a3d50a93ac170639e/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第二十六批未接入两册资料页、总目录或上一批：'+file);
+  }
+  const directory=await fs.readFile(path.join(root,'problems/collections/lou-analysis/index.html'),'utf8');
+  if(!directory.includes('180 道已作答 · 3 道暂跳过')
+     ||(source.match(/^\*\*作答状态：\*\* 暂跳过/gm)||[]).length!==1
+     ||!source.includes('B184')||!source.includes('8.3.B 第 3 题'))
+    throw new Error('第二十六批完成数、待核状态或下一题错误');
+  console.log(`Verified Lou analysis B176–B183: seven completed, one reference pending; ${inline} inline and ${display} display formulas; cross-volume navigation.`);
+}
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {
   // Third batch: ensure every source $...$ and $...$ becomes rendered SVG.

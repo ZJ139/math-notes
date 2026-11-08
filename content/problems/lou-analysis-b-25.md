@@ -16,6 +16,8 @@ B116、B148 继续暂跳过，不补写缺失教材内容、不重排编号。�
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [原题 PDF 第 41 页](/files/problems/楼分析习题-v1.pdf#page=41) · [第 43 页](/files/problems/楼分析习题-v1.pdf#page=43)
 
+**下一批已发布：**[第二十六批 B176—B183（七题完成、一题文献待核）](/problems/145412fe0d79fadb3bb3f7c0/)。
+
 **批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [上一批 B162—B168](/problems/a0a262f9a6114b75980fa4f7/)
 
 以下矩阵范数均指 Euclid 向量范数所诱导的算子范数，不是矩阵各元素平方和的平方根。实矩阵的定义为 $\|A\|=\max_{|x|=1}|Ax|$；复矩阵的对应定义及实、复一致性在 B172 中说明。
@@ -609,6 +611,6 @@ $$
 | B174 | 共同特解与光滑齐次余项 | 正则性应先于高阶算子运算，代数抵消不能替代可微性论证。 |
 | B175 | 连续不可微右端与分项抵消 | 总和的高正则性不必由每个分项分别具有。 |
 
-本批七题均已完成，编号推进至 B175，累计 **173 道已作答、2 道暂跳过**。7.2.B、7.3.B 均已全部完成；下一题为[习题 7.4.B 第 1 题](/files/problems/楼分析习题-v1.pdf#page=43)，对应 **B176**。上册原题 PDF 在 7.4.B 第 2 题结束，因此该册尚余 B176、B177 两道新题；后续不为凑足七题而穿插 A 组或自动转入下册。B116、B148 继续保留原位置与暂跳过状态。
+本批七题均已完成，发布时编号推进至 B175，累计 **173 道已作答、2 道暂跳过**。7.2.B、7.3.B 均已全部完成。下一批已从 **B176＝习题 7.4.B 第 1 题** 继续，完成上册剩余两题后接入下册；详见[第二十六批 B176—B183](/problems/145412fe0d79fadb3bb3f7c0/)。B116、B148 继续保留原位置与暂跳过状态。
 
-**前后批次：**[上一批 B162—B168](/problems/a0a262f9a6114b75980fa4f7/) · [下一题原文：7.4.B 第 1 题](/files/problems/楼分析习题-v1.pdf#page=43) · [B 组章节目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/)
+**前后批次：**[上一批 B162—B168](/problems/a0a262f9a6114b75980fa4f7/) · [下一批 B176—B183](/problems/145412fe0d79fadb3bb3f7c0/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/)

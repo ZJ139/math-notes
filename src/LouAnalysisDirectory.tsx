@@ -7,8 +7,8 @@ export const louDirectoryUrl='/problems/collections/lou-analysis/';
 export const louIndexPath='problems/lou-analysis-v1.md';
 export const isLouBatch=(entry:PublicEntry)=>entry.section==='problems'&&/^problems\/lou-analysis-b-\d+\.md$/.test(entry.sourcePath);
 export const louChapterUrl=(chapter:number)=>`${louDirectoryUrl}chapters/${chapter}/`;
-const chapterNames=['实数','序列极限','函数极限与连续','导数与微分','不定积分','微分中值定理和 Taylor 展开式','微分问题'];
-const numerals=['一','二','三','四','五','六','七'];
+const chapterNames=['实数','序列极限','函数极限与连续','导数与微分','不定积分','微分中值定理和 Taylor 展开式','微分问题','积分'];
+const numerals=['一','二','三','四','五','六','七','八'];
 const chapterTitle=(number:number)=>`第${numerals[number-1]||number}章 ${chapterNames[number-1]||''}`;
 const sectionAnchor=(section:string)=>`section-${section.replace('.', '-')}-b`;
 export interface LouProblem {
