@@ -1,0 +1,1528 @@
+{
+  "title": "2007—2016年考研英语一阅读干扰项规律与解题方法",
+  "base_commit": "3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf",
+  "edition": "审阅版 · 2026年11月8日",
+  "coding": "# A主体归属 B概念 C范围 D无据 E方向 F时间 G因果 H程度 I推断 J态度 K焦点 L词义\n2007 21 K AK A\n2007 22 HL HL HL\n2007 23 E E HK\n2007 24 E BG EL\n2007 25 BK CK E\n2007 26 A B A\n2007 27 EF DF CD\n2007 28 AB GK BC\n2007 29 DI C HI\n2007 30 EJ J J\n2007 31 BG GK AB\n2007 32 E E E\n2007 33 DI CK ABG\n2007 34 DI B D\n2007 35 HK BK FH\n2007 36 D A GK\n2007 37 BF D D\n2007 38 K AB K\n2007 39 CK B CK\n2007 40 B CI GI\n2008 21 DG BI B\n2008 22 BG E B\n2008 23 EF A AH\n2008 24 HI DL L\n2008 25 K CK CK\n2008 26 BK BC K\n2008 27 A DI AHI\n2008 28 A K B\n2008 29 AF BI AF\n2008 30 CK DJ BK\n2008 31 D CK D\n2008 32 B B D\n2008 33 C D GFI\n2008 34 DI CF BD\n2008 35 D CFIK E\n2008 36 K K ACK\n2008 37 CI DE BCFH\n2008 38 FGI CGI DG\n2008 39 D LI JLK\n2008 40 GK DG BG\n2009 21 BL KL E\n2009 22 D BL B\n2009 23 L L KL\n2009 24 A ABI EG\n2009 25 EF ABD E\n2009 26 B DI ACI\n2009 27 AB BK B\n2009 28 HI D BK\n2009 29 B B B\n2009 30 K CK CHJ\n2009 31 EJ BJ E\n2009 32 A AJ AB\n2009 33 D BK D\n2009 34 EF HI DEG\n2009 35 GHI E AB\n2009 36 B DG BI\n2009 37 D A CH\n2009 38 I DF AC\n2009 39 BJ I BK\n2009 40 C CI C\n2010 21 FH D AB\n2010 22 L BL D\n2010 23 CI AJ A\n2010 24 B B E\n2010 25 CK C CK\n2010 26 D GK F\n2010 27 FI L DF\n2010 28 L JL L\n2010 29 E D AG\n2010 30 E CK CFH\n2010 31 BK A CK\n2010 32 HI HI A\n2010 33 BI E CK\n2010 34 E BK C\n2010 35 B E B\n2010 36 A BDL K\n2010 37 E GI BG\n2010 38 A CI BK\n2010 39 BK K BFK\n2010 40 J AJ J\n2011 21 EJ AJ BJ\n2011 22 BHI BK B\n2011 23 CK CHI A\n2011 24 E GI CH\n2011 25 AJ HIJ BJ\n2011 26 IJ IJK BI\n2011 27 DG B I\n2011 28 BL BL EL\n2011 29 BJ D EF\n2011 30 ACK K CH\n2011 31 B A AB\n2011 32 D D BDL\n2011 33 FH BG AHIJ\n2011 34 AE DI B\n2011 35 BCK HI CK\n2011 36 BF F FHI\n2011 37 FHK DJ BJ\n2011 38 BI AJ ACI\n2011 39 J B DG\n2011 40 BG BCG K\n2012 21 B BG C\n2012 22 AB E AC\n2012 23 AB E A\n2012 24 AB DG BGK\n2012 25 BJ IJ AK\n2012 26 BL EL EL\n2012 27 B A FG\n2012 28 BI D IK\n2012 29 BCHK K A\n2012 30 AHI DI A\n2012 31 BHI BI D\n2012 32 CK GK BK\n2012 33 BGI CK BHI\n2012 34 EHI K BJ\n2012 35 CK CK CK\n2012 36 AF ABFI BI\n2012 37 BGI BCI E\n2012 38 HIJ HK DJ\n2012 39 CD BFI CH\n2012 40 CJ J J\n2013 21 E DL BL\n2013 22 E D E\n2013 23 JL JL EJL\n2013 24 D EH EL\n2013 25 ABK CK CK\n2013 26 BC DG D\n2013 27 DL D U\n2013 28 E E BG\n2013 29 C DF BE\n2013 30 J J EJ\n2013 31 G F G\n2013 32 BI AB A\n2013 33 DF B FK\n2013 34 BG D AB\n2013 35 CK BK CKJ\n2013 36 A AB D\n2013 37 B E EH\n2013 38 E E D\n2013 39 E BK D\n2013 40 CI E D\n2014 21 E A B\n2014 22 BL BL DL\n2014 23 CK A E\n2014 24 BHJ BJ DJ\n2014 25 AJ E GI\n2014 26 DG AG GK\n2014 27 D A A\n2014 28 AE G D\n2014 29 E GI AE\n2014 30 BK CK BCK\n2014 31 BK D AL\n2014 32 A E E\n2014 33 AK B BK\n2014 34 FH HI EJ\n2014 35 EJ DF A\n2014 36 CJ HJ J\n2014 37 AB D B\n2014 38 C D AB\n2014 39 E AE BH\n2014 40 K EJ BCK\n2015 21 D AI ADJ\n2015 22 B D EFH\n2015 23 BHK AK BK\n2015 24 DF I BI\n2015 25 CK DIK BCK\n2015 26 K B D\n2015 27 J BJ AJ\n2015 28 AJ BK CK\n2015 29 B EFH K\n2015 30 CK HK HIK\n2015 31 E AD B\n2015 32 KL BFL DL\n2015 33 CE AHJ B\n2015 34 DI E FHI\n2015 35 K FK DF\n2015 36 BGI AB B\n2015 37 DI AE GI\n2015 38 BK IJ AHI\n2015 39 A BI E\n2015 40 B CK DI\n2016 21 D CE CI\n2016 22 BGL EL AL\n2016 23 FI DF AEF\n2016 24 BK E DH\n2016 25 BCK HK CDK\n2016 26 AH DF DG\n2016 27 B BI E\n2016 28 AE EFI BFI\n2016 29 AK E AHIJ\n2016 30 BK ACK CIJ\n2016 31 J AJ J\n2016 32 BG DI BGI\n2016 33 BL BL BFL\n2016 34 BI B BI\n2016 35 BD B BL\n2016 36 BFG DG AFG\n2016 37 HK A DK\n2016 38 DL BG BI\n2016 39 BL K CFHI\n2016 40 E FH K\n",
+  "categories": [
+    {
+      "code": "A",
+      "name": "张冠李戴",
+      "definition": "把原文已有的判断、动作、特征或责任交给另一个人、群体或事物；包括误认被引用者与作者。",
+      "method": "给关键句补全“谁—做什么—对谁”；逐项核对主语、代词、所有格及观点来源。",
+      "boundary": "原文根本没有这个判断时，主要是无中生有；原文有该判断但属于别人时，才突出归属错位。主体扩大到全体还可同时记范围失配。"
+    },
+    {
+      "code": "B",
+      "name": "偷换概念",
+      "definition": "保留相近词汇，却改变动作、对象、评价维度或命题性质，例如成本换成售价、处罚轻重换成受罚概率。",
+      "method": "将选项用简短中文说全，和证据逐格对应：到底量的是什么、改变的是什么？",
+      "boundary": "近义改写不等于偷换。须指出新旧概念为何不能在本题中互换；只有原词不同、关系相同，仍可正确。"
+    },
+    {
+      "code": "C",
+      "name": "以偏概全与范围失配",
+      "definition": "将部分人、一个环节或一个方面推广为全体，或把全文主题缩成局部；同时记录不当扩大与缩窄。",
+      "method": "圈出集合与量词：谁属于这个范围？这是个体、群体还是总体？标题能否涵盖各主要段落？",
+      "boundary": "合理的上位概括允许省略细节。不能只因选项较宽就排除，须证明它多承诺了什么，或遗漏了哪条主线。"
+    },
+    {
+      "code": "D",
+      "name": "无中生有",
+      "definition": "选项加入文中没有支持的动作、规则、对象、比较或评价；附近有相同名词不等于关系成立。",
+      "method": "指出缺失的关键证据，而非笼统说“没提到”：谁实施了什么？哪句提供这项比较或建议？",
+      "boundary": "有文内起点但推得太远时另记推断过度；与原文明示相反时优先记方向颠倒。不把现实中可能成立当作文中已证实。"
+    },
+    {
+      "code": "E",
+      "name": "逻辑关系颠倒",
+      "definition": "反转肯定与否定、主动与被动、比较方向、支持与反对，或把原文关系换成相反方向。",
+      "method": "用“甲高于乙”“甲影响乙”“作者否定甲”短句恢复关系，再与选项比方向。",
+      "boundary": "不是所有错误都叫反向。没有证据支持不等于有证据否定；时间倒置和因果倒置另加相应标签。"
+    },
+    {
+      "code": "F",
+      "name": "时间范围与状态变化",
+      "definition": "把过去搬到现在、旧背景当新原因、计划写成完成、条件假设写成既成事实，或擅自添加持续时长和变化趋势。",
+      "method": "圈 recently、used to、now、already、still；分别写出“何时”和“处于哪一阶段”。",
+      "boundary": "文中出现时间词不代表所有错项都是时间错误。只有选项的失真确实依赖时间、阶段或事实状态才编码。"
+    },
+    {
+      "code": "G",
+      "name": "因果关系误判",
+      "definition": "把并列、相关、结果、资料来源、比较事实写成原因；倒置因果，删掉必要的中间环节，或把原因错归另一个因素。",
+      "method": "分别写出原因和结果，再找连接依据。区分“已有特征”与“促成特征”，以及直接原因和背景条件。",
+      "boundary": "不要求正确选项必须含 because。因果可由上下文共同支持；没有连接词不能自动排除。"
+    },
+    {
+      "code": "H",
+      "name": "程度夸大与缩小",
+      "definition": "提高或压低数量、频率、必要性、确定性、情绪强度：如存在缺点变成必败、部分作用变成唯一条件。",
+      "method": "保留 may、some、not enough、tend to；同时检查 too weak：普通兴奋未必足以表达狂热。",
+      "boundary": "强词不是自动错误。正确选项也可能使用强措辞，必须由语境定其适用范围，不按“绝对词必错”作答。"
+    },
+    {
+      "code": "I",
+      "name": "推断过度",
+      "definition": "从真实线索跨过文本没有提供的桥梁，得到更强或不同层次的结论，如“不是最大敌人”推成“潜在盟友”。",
+      "method": "列出推理必须补上的前提。若它来自常识、猜测或心理想象，且文章未给出，就不能把结论当作可靠推断。",
+      "boundary": "合理推断允许同义归纳和必要的低强度概括。may 只是降低确定性，不能为完全无据的命题提供内容依据。"
+    },
+    {
+      "code": "J",
+      "name": "态度误读",
+      "definition": "把局部让步当总体赞成，把冷静批评当中立，把引用者态度当作者态度，或混淆怀疑、困惑、轻蔑等评价性质。",
+      "method": "先定发言者和评价对象，再看转折后的理由及结尾主张；用具体评价词校准倾向和强度。",
+      "boundary": "skeptical 常有明确理由，并非不知道答案；承认有优点也可总体批评。态度要针对题干对象，不能泛化到整个人或整类事物。"
+    },
+    {
+      "code": "K",
+      "name": "答题焦点与论证功能错判",
+      "definition": "选项可能谈到真实信息，但没有回答题干任务：用结果回答原因、用背景回答目的、用重要细节替代全文主题。",
+      "method": "先把问题改成中文任务：问事实、原因、用途、作者评价，还是例子为什么在这里出现？再找相应层级。",
+      "boundary": "这类选项不一定在字面上完全虚假。排除理由应写“未回答本题”或“覆盖不足”，不能伪称原文绝无此信息。"
+    },
+    {
+      "code": "L",
+      "name": "语境词义与搭配误读",
+      "definition": "按熟悉本义、词形或背景常识猜词，忽略当前搭配、比喻链与句法功能，例如 banking on 误读成银行业。",
+      "method": "找同位解释、重复表达、反义对照及后续结果；把候选义项放回句子检验主谓宾是否合理。",
+      "boundary": "猜词不能只凭褒贬。两个同为正面或负面的词，还要比较具体动作、程度和句法搭配。"
+    }
+  ],
+  "cases": [
+    {
+      "code": "A",
+      "id": "2007-T2-Q26",
+      "title": "专栏提问，不是智商测试任务",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "IQ tests ask you to complete verbal and visual analogies, to envision paper after it has been folded and cut, and to deduce numerical sequences, among other similar tasks.",
+          "智商测试要求完成词语与图形类比、想象折剪后的纸张、推导数列等任务。"
+        ]
+      ],
+      "context": "同段先介绍问答专栏，随后列测试任务，再举读者问爱、运气的哲学问题。三类内容挨得很近，却属于不同场景。",
+      "logic": "选 D。词语与图形类比对应选择相近的词或图形。A 的哲学问题确实出现，但提出者是专栏读者，不是测验机构；原词出现不能替代归属核对。",
+      "unknown": "不懂 analogies 时，先抓 IQ tests ask you to 后面的并列动词；verbal、visual 分别对应 words、graphs。爱与运气位于另一个提问场景，可先排除 A。",
+      "compare": "对照例2：本题把任务移错场景；2015年把被作者反对的类比移成作者自己的观点。共同检查“这是谁的内容”。"
+    },
+    {
+      "code": "A",
+      "id": "2015-T2-Q28",
+      "title": "钱包类比是谁的观点",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "They should start by discarding California’s lame argument",
+          "法官们首先应该抛弃加州站不住脚的论点。"
+        ],
+        [
+          "P4",
+          "But exploring one’s smartphone is more like entering his or her home.",
+          "但是，查看一个人的智能手机更像进入其住宅。"
+        ]
+      ],
+      "context": "加州把手机与钱包相类比，作者用 discarding 和 lame 否定它，随后 But 引出自己的住宅类比，后面的信息清单说明隐私范围。",
+      "logic": "选 D。entering home 与 getting into residence 成对对应。A 不是文中没出现，而是属于被反对的加州论证；把它算给作者就错了。",
+      "unknown": "不知道宪法条文也能作答。即便 lame 陌生，discarding 与 But 已指示立场转向；home 是住宅，不能因 wallet 熟悉就停在那里。",
+      "compare": "对照例1：两题都要越过词面重现，回到任务或观点的归属。法律背景不是完成本题的必要条件。"
+    },
+    {
+      "code": "B",
+      "id": "2007-T4-Q39",
+      "title": "恢复信任，不是恢复数据",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "trust, that most valuable of economic assets, is easily destroyed and hugely expensive to restore",
+          "信任这种极有价值的经济资产很容易毁坏，恢复起来却极其昂贵。"
+        ],
+        [
+          "P4",
+          "few things are more likely to destroy trust than a company letting sensitive personal data get into the wrong hands.",
+          "很少有什么比公司让敏感个人资料落入不该得到它们的人手中更容易破坏信任。"
+        ]
+      ],
+      "context": "作者困惑的是一些高管竟未明白数据保护与信任的联系。一个 that 从句讲信任易损、难恢复，另一个 that 从句讲泄露如何毁坏信任。",
+      "logic": "选 A。两条证据合成“数据保护关系到信任”。C 把 restore 的省略对象从 trust 换成 data，虽保留 high cost，却已谈另一件事。",
+      "unknown": "先删去插入的 that most valuable of economic assets，得到 trust is destroyed and expensive to restore；再把 restore 后面补回 trust，核心关系就清楚了。",
+      "compare": "对照例4：这里换的是动词对象；2016年换的是统计指标。都应先问“究竟在恢复或测量什么”。"
+    },
+    {
+      "code": "B",
+      "id": "2016-T3-Q34",
+      "title": "处罚轻重，不是受罚概率",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "among prosecuted firms, those with the most comprehensive CSR programmes tended to get more lenient penalties.",
+          "在被起诉的企业中，社会责任计划最全面的企业往往受到较宽松的处罚。"
+        ],
+        [
+          "P5",
+          "they do seem to be influenced by a company’s record in CSR.",
+          "检察官看来确实受到公司社会责任记录的影响。"
+        ]
+      ],
+      "context": "研究先限定被起诉企业，再比较处罚轻重。P5 对照“应按案件本身判断”与“实际似乎受既有形象影响”。",
+      "logic": "选 A，CSR 记录影响决定。C 讨论“是否受罚的机会增加”，原文比较的却是罚款与处罚强度，样本还已经限定为被起诉企业，不能换成受罚概率结论。",
+      "unknown": "CSR 可暂记“公司某项记录”。即使 lenient 不熟，lower fines 可回填“较轻”；chance 是机会，fines 是罚款，这两个量已经不同。",
+      "compare": "对照例3：同一主题中词汇相近仍可能改变命题。不要把“罚得轻”再推成“不受罚”或“不会违法”。"
+    },
+    {
+      "code": "C",
+      "id": "2008-T3-Q33",
+      "title": "球员群体，不能代替全国人口",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P2",
+          "In the case of NBA players, their increase in height appears to result from the increasingly common practice of recruiting players from all over the world.",
+          "就 NBA 球员而言，身高增加似乎来自越来越普遍的全球招募做法。"
+        ],
+        [
+          "P4",
+          "our feet and back continue to struggle with bipedal posture and cannot easily withstand repeated strain imposed by oversize limbs.",
+          "我们的脚和背仍在艰难适应双足直立，难以承受过大四肢反复施加的负荷。"
+        ]
+      ],
+      "context": "P1 的球员数据引入话题，P2 随即转向普通美国人口总体趋稳；P4 用身体负重解释身高限制。",
+      "logic": "选 B。身体承受负荷受限，支持直立姿态制约身高；condition 在此是“制约”。A 把全球招募造成的球员群体变化扩成全国人口平均身高变化。",
+      "unknown": "不懂 bipedal，可借 upright、feet and back、strain 串出直立负重。A 的 nation 与原句 NBA players 范围明显不同，可独立排除。",
+      "compare": "对照例6：本题把小群体扩成总体；2014年反过来把“尤其重视”缩成“只研究”。范围错误可向两个方向发生。"
+    },
+    {
+      "code": "C",
+      "id": "2014-T4-Q38",
+      "title": "尤其重视，不是排他研究",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P3",
+          "stresses the study of history and government, particularly American history and American government; and encourages the use of new digital technologies.",
+          "强调学习历史与政府体制，尤其是美国历史和美国政府体制；并鼓励使用新的数字技术。"
+        ]
+      ],
+      "context": "本段逐项列报告建议。particularly 在广泛学习历史与政府的框架内强调美国部分；分号后另列数字技术建议。",
+      "logic": "选 C，emerging technologies 对应 new digital technologies。A 将 particularly 改成 exclusive，把重点改为排他限制，删掉了原文保留的其他研究范围。",
+      "unknown": "即使 citizenry、curricula 不会，也可按分号分开建议。particularly 是“尤其”，exclusive 是“仅限、排他”；两词决定 A 的边界。",
+      "compare": "对照例5：先写原文集合，再写选项集合。不要把“强调一个成员”理解成“只允许这个成员”。"
+    },
+    {
+      "code": "D",
+      "id": "2009-T2-Q26",
+      "title": "有销量，不等于促销成功",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "All he needs to do is shell out $30 for a paternity testing kit (PTK) at his local drugstore",
+          "他只需在当地药店花30美元买一套亲子鉴定试剂盒。"
+        ],
+        [
+          "P2",
+          "More than 60,000 people have purchased the PTKs since they first became available without prescriptions last year",
+          "自去年开始无需处方即可购买以来，已有超过六万人买过这些试剂盒。"
+        ]
+      ],
+      "context": "前两段强调购买地点与无需处方，数字补充市场使用情况，并未介绍广告、打折或推广活动。",
+      "logic": "选 A。药店可买、无需处方共同支持 easy availability。C 需要“采取了推广活动且成功”的证据；销量本身不能补出这个过程，所以不能只凭数字看上去很大就选。",
+      "unknown": "PTK 可暂当作“某产品”。drugstore、without prescriptions 与 directly to the public 都在说明获取渠道；不必知道检测原理，也能区分“买得到”和“推广得好”。",
+      "compare": "对照例8：本题从销量补出促销活动，2016年从地点名词补出修建计划。两者都多加了一个动作。"
+    },
+    {
+      "code": "D",
+      "id": "2016-T1-Q21",
+      "title": "秀台这个地点，不证明修建计划",
+      "focus": [
+        "B"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "its fashion industry has lost an absolute right to define physical beauty for women.",
+          "其时尚业已经失去了定义女性形体美的绝对权利。"
+        ],
+        [
+          "P1",
+          "a law that would make it a crime to employ ultra-thin models on runways.",
+          "一项法律将使雇用过度瘦削的模特走秀成为犯罪。"
+        ]
+      ],
+      "context": "法国的立法动向被用来说明行业原有审美权威受到挑战。runways 是模特活动的地点，句子核心是限制 employ。",
+      "logic": "选 A，身体美的定义将被重新审视。B 添加 would be constructed，把背景地点升级为新建筑计划；原文没有修建者、建设行动或相关安排。",
+      "unknown": "不懂 ultra-thin，可从后文 dieting、thinness 知道在谈体形。先看谓语 employ，并未出现 build 或 construct，足以排除 B。",
+      "compare": "对照例7：看到熟悉名词时先问“它在句中扮演什么角色”。名词重现不能证明选项新加的谓语。"
+    },
+    {
+      "code": "E",
+      "id": "2007-T1-Q23",
+      "title": "认知多于直觉，不能倒过来",
+      "focus": [
+        "B"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "the act of memorizing is more of a cognitive exercise than an intuitive one.",
+          "记忆活动与其说是直觉活动，不如说更是一种认知训练。"
+        ],
+        [
+          "P4",
+          "the best way to learn how to encode information meaningfully",
+          "学会对信息作有意义编码的最佳方法。"
+        ]
+      ],
+      "context": "数字记忆训练实验说明表现可以改善，P4 进一步解释编码质量，随后把刻意练习与机械重复区分开。",
+      "logic": "选 A，meaningful processing 对应 encode information meaningfully。B 把 intuitive 放在 rather than 前、cognitive 放在后，正好反转原文更重视认知训练的方向。",
+      "unknown": "即便 cognitive 与 intuitive 都不熟，也可先记为甲、乙：原文“更是甲而非乙”，B 却是“乙而非甲”。排除方向错误不必先掌握专业名词。",
+      "compare": "对照例10：本题反转比较的两端；2010年反转影响的发出者与承受者。把两端写出来，比单独记关键词稳妥。"
+    },
+    {
+      "code": "E",
+      "id": "2010-T3-Q35",
+      "title": "影响别人，与受到影响",
+      "focus": [
+        "B"
+      ],
+      "excerpts": [
+        [
+          "P5",
+          "the presence not of a few influentials but, rather, of a critical mass of easily influenced people.",
+          "关键在于存在的不是少数影响者，而是达到一定规模、容易受到影响的人群。"
+        ]
+      ],
+      "context": "前文介绍少数关键人物理论，再用传播链和模拟研究提出修正：下游足够多的人愿意接收影响，传播才有扩大的条件。",
+      "logic": "选 C，readiness to be influenced 对应 easily influenced。B 是 impulse to influence others，强调向外影响他人，改变了原文结论中的被动方向。",
+      "unknown": "不懂 cascades 或 critical mass 的精确定义，也应保留 not...but... 和 influenced 的被动形式。先确定正确项在说“容易受影响”，再补上群体数量条件。",
+      "compare": "对照例9：把不熟的名词临时替换为甲乙仍可读关系；但不能删掉主动、被动与比较结构。"
+    },
+    {
+      "code": "F",
+      "id": "2010-T2-Q26",
+      "title": "十年前的争议，不是近期的新动向",
+      "focus": [
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P2",
+          "Now the nation’s top patent court appears completely ready to scale back on business-method patents, which have been controversial ever since they were first authorized 10 years ago.",
+          "如今，最高层级的专利法院看来已准备收紧商业方法专利；这类专利自十年前首次获准以来便一直有争议。"
+        ]
+      ],
+      "context": "P1 交代已有广泛授权，P2 的 Now 转到法院准备重新审查；which 从句补充长期争议背景。",
+      "logic": "选 C。题干 recently 问近因，possible restriction 对应准备收紧。D 所说授权争议不是凭空捏造，但属于持续多年的背景，未解释为什么最近引起新的关注。",
+      "unknown": "不懂专利名称也可把它当“某制度”。圈 Now 和 10 years ago，分别配对主句与 which 从句；近期变化在主句里。",
+      "compare": "对照例12：本题是旧背景冒充新原因；2012年是过去鼎盛冒充现今规模。事实本身出现过，仍须对齐时点。"
+    },
+    {
+      "code": "F",
+      "id": "2012-T4-Q36",
+      "title": "旧时鼎盛，不能直接搬到现在",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "When Hoffa’s Teamsters were in their prime in 1960, only one in ten American government workers belonged to a union; now 36% do.",
+          "1960年霍法的卡车司机工会处于鼎盛时，美国政府雇员仅十分之一入会；现在为36%。"
+        ],
+        [
+          "P1",
+          "In 2009 the number of unionists in America’s public sector passed that of their fellow members in the private sector.",
+          "2009年，美国公共部门工会会员人数超过了私营部门。"
+        ]
+      ],
+      "context": "本段以一个历史人物的虚拟设想引出工会重心转变，再比较公共部门的入会比例与人数。不是更新某一个旧工会的现有会员名册。",
+      "logic": "选 C，公共部门工会力量扩大。A 的 still 要求证明 Teamsters 现在仍有大量会员；in their prime 只限定1960年，now 36% 的对象又是政府雇员，不能挪用。",
+      "unknown": "先用 When...in 1960 与 now 分成两格，再把各格主语补全。do 代替 belong to a union，不是代替 Teamsters have many members。",
+      "compare": "对照例11：时间词与主语需要一起核对。即使数字更大，也先问它属于哪群人、哪一年、什么指标。"
+    },
+    {
+      "code": "G",
+      "id": "2008-T4-Q38",
+      "title": "亲子关系与释放行动，不自动组成因果",
+      "focus": [
+        "B"
+      ],
+      "excerpts": [
+        [
+          "P3",
+          "While Washington and Jefferson privately expressed distaste for slavery, they also understood that it was part of the political and economic bedrock of the country they helped to create.",
+          "虽然二人私下反感奴隶制，却也明白它属于这个国家政治经济根基的一部分。"
+        ],
+        [
+          "P6",
+          "Still, Jefferson freed Hemings’s children—though not Hemings herself or his approximately 150 other slaves.",
+          "尽管如此，杰斐逊释放了赫明斯的孩子，却未释放赫明斯本人及其余约150名奴隶。"
+        ]
+      ],
+      "context": "P2 提到亲子关系证据，P3 写道德反感与制度依赖，P5 写政治利益和扩张，P6 写有限释放。全篇呈现的是矛盾而复杂的态度与行动。",
+      "logic": "选 C。B 用 made him 将父亲身份定为释放的原因，原文没有建立这条因果；the child slaves 还可能使范围超出特定孩子。两个事实同时出现，不等于作者已经解释了动机。",
+      "unknown": "不认识 bedrock，可先抓 While 与 also，看到两种相冲突的考虑并存。排 B 时只需追问 made him 的因果证据在哪里，不能凭故事常识替文章补上。",
+      "compare": "对照例14：本题把两件事连接成动机因果；2011年把质量比较改成提升质量的作用。都应另找因果桥梁。"
+    },
+    {
+      "code": "G",
+      "id": "2011-T1-Q24",
+      "title": "质量更高，不等于使质量提高",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "These recordings are cheap, available everywhere, and very often much higher in artistic quality than today’s live performances; moreover, they can be “consumed” at a time and place of the listener’s choosing.",
+          "这些录音价格便宜、随处可得，艺术质量往往比当今现场演出高得多；听众还能自选欣赏时间和地点。"
+        ]
+      ],
+      "context": "作者解释录音为何能与现场演出竞争，列举价格、获取、已有质量与选择自由，没有研究录音技术如何改变演奏质量。",
+      "logic": "选 B，easily accessible 概括 cheap 与 available everywhere。C 的 help improve 新加“促使质量提升”的因果作用；原文只是在比较两类作品的既有质量。",
+      "unknown": "不懂 instrumentalists 也不影响定位。higher...than 是比较，help improve 是促成变化；把“甲比乙好”译成“甲使音乐变好”，关系就变了。",
+      "compare": "对照例13：并列事实和比较事实都不自带因果。想选因果项，必须确认文章不仅描述结果，还支持这个作用方向。"
+    },
+    {
+      "code": "H",
+      "id": "2007-T3-Q35",
+      "title": "悬崖边缘，不是已经成为废墟",
+      "focus": [
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "Now a pink slip, a bad diagnosis, or a disappearing spouse can reduce a family from solidly middle class to newly poor in a few months.",
+          "如今，一次解雇、不利诊断或配偶离开，都可能在几个月内使中产家庭陷入贫困。"
+        ]
+      ],
+      "context": "后文解释双职工家庭失去备用收入，以及养老医疗投资风险向家庭转移；结尾强调肩上负担加重。主线是脆弱性和滑落风险。",
+      "logic": "选 B，“悬崖边缘”对应一次变故即可滑落。D 的 in ruins 把可能的严重后果写成中产阶级已整体崩溃，既加重程度，也改变事实状态。",
+      "unknown": "不熟 pink slip 可先不译，它与坏诊断、配偶离开并列为变故。保留 can reduce，意思是“可能使之变成”，不是“现在已经全变成”。",
+      "compare": "对照例16：有风险不等于已毁灭，有弱点不等于必失败。否定一部分与否定整体之间往往正隔着一个错误选项。"
+    },
+    {
+      "code": "H",
+      "id": "2015-T3-Q34",
+      "title": "指出流程弱点，不是预言方案失败",
+      "focus": [
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P6",
+          "has some merit, but a weakness is that it relies on the board of reviewing editors to identify ‘the papers that need scrutiny’ in the first place",
+          "有一些可取之处，但弱点在于起初仍依赖审稿编辑委员会识别哪些论文需要细查。"
+        ]
+      ],
+      "context": "《科学》把部分论文交给统计专家。Vaux 的问题在入口识别：编辑如果漏掉需要复核的稿件，后面的专家审查就未必能覆盖它。",
+      "logic": "选 C，仍有改进空间。D 加入 is to fail 与 foreseeable future，把具体弱点提升为确定的近期失败预言；同时抹去 has some merit 的肯定。",
+      "unknown": "不认识委员会名称，仍能读懂 some merit 与 a weakness 的一正一负。先保留“有价值但有缺点”，再找既不全盘肯定也不全盘否定的概括。",
+      "compare": "对照例15：风险、弱点、失败三种强度不能混用。这里的 but 也没有把前面的优点从事实中删除。"
+    },
+    {
+      "code": "I",
+      "id": "2009-T3-Q34",
+      "title": "效率提高，不保证饥饿完全消失",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "When our ancestors were hunters and gatherers 10,000 years ago, they didn’t have time to wonder much about anything besides finding food.",
+          "一万年前祖先狩猎采集时，除寻找食物外几乎无暇思考其他事。"
+        ],
+        [
+          "P4",
+          "Only when humanity began to get its food in a more productive way was there time for other things.",
+          "只有在人类开始更高效地获取食物后，才有时间从事其他活动。"
+        ]
+      ],
+      "context": "本段用祖先的例子说明经济与生产率改善如何释放时间，从而促进教育。证据落点是 time，不是食物分配和饥饿是否彻底消除。",
+      "logic": "选 A。C 从“获取食物更高效”跳到“不再饥饿”，需要供给充足、分配等额外前提，文章没有证明。提高效率可以解释有时间，却不自动保证全体始终吃饱。",
+      "unknown": "先把倒装还原为 there was time only when...。即便 productive 不熟，主句仍明说 time，与 A 的 enough time 对应；不能用常识把它替换成食物结果。",
+      "compare": "对照例18：本题把程度改善推成完全解决；2015年把相对否定推成相反阵营。检查推理中偷偷补进的前提。"
+    },
+    {
+      "code": "I",
+      "id": "2015-T1-Q24",
+      "title": "不是最大敌人，不能推出是盟友",
+      "focus": [
+        "C"
+      ],
+      "excerpts": [
+        [
+          "P7",
+          "He has failed to understand that monarchies have largely survived because they provide a service — as non-controversial and non-political heads of state.",
+          "他没有理解，君主制大体得以延续，是因为其提供了中立、不卷入党派政治的国家元首服务。"
+        ],
+        [
+          "P7",
+          "it is kings, not republicans, who are the monarchy’s worst enemies.",
+          "君主制最大的敌人是国王本人，而不是共和派。"
+        ]
+      ],
+      "context": "作者此前批评奢华生活与等级观念，再指出未理解公共角色的风险；结尾通过强烈对照提醒君主审视自身做法。",
+      "logic": "选 A，未适应未来角色。C 声称查尔斯把共和派当潜在盟友，既增加他的心理判断，又把“不是最大敌人”推成“盟友”。比较中排除第一名，不等于归入相反类别。",
+      "unknown": "把 worst 当“最严重的”保留即可。not the worst enemy 仍可能是较小的敌手、中立者等；原文没有选项所需的 allies 或 Charles thinks。",
+      "compare": "对照例17：不能因结论听起来顺理成章就省掉证据。遇到“更多、更少、最大、较弱”，尤其避免直接跳到绝对结论。"
+    },
+    {
+      "code": "J",
+      "id": "2011-T1-Q25",
+      "title": "有理由的怀疑，不是困惑",
+      "focus": [
+        "B",
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P5",
+          "But what will be the nature of that difference? Merely expanding the orchestra’s repertoire will not be enough.",
+          "但这种不同究竟是什么？仅扩充乐团的演出曲目还不够。"
+        ],
+        [
+          "P5",
+          "If Gilbert and the Philharmonic are to succeed, they must first change the relationship",
+          "如果吉尔伯特和爱乐乐团要成功，他们首先必须改变有关关系。"
+        ]
+      ],
+      "context": "公众和评论家有积极反响，Ross 还给出乐观期待。作者却转向录音竞争，质疑单靠曲目变化是否足够，并提出与新听众关系的要求。",
+      "logic": "选 A，doubtful。B 挪用他人的热烈态度；D 把论证式提问读成茫然不解。作者能说清缺什么、需要做什么，所以是有理由的保留，不是没有理解。",
+      "unknown": "不熟 repertoire 可暂当“某种改动”，merely...not enough 已说明不充分；If...must 是成功的必要条件，不是保证成功。",
+      "compare": "对照例20：两题都要看作者拿出了什么反向理由，不能见 may 就判拿不准，也不能见问号就判困惑。"
+    },
+    {
+      "code": "J",
+      "id": "2016-T3-Q31",
+      "title": "让步接受前提，不是赞同结论",
+      "focus": [
+        "C",
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "But even if you accept Friedman’s premise and regard corporate social responsibility (CSR) policies as a waste of shareholders’ money, things may not be absolutely clear-cut.",
+          "但是，即使接受弗里德曼的前提，把企业社会责任政策看作浪费股东的钱，事情也未必如此分明。"
+        ],
+        [
+          "P1",
+          "New research suggests that CSR may create monetary value for companies",
+          "新研究表明，企业社会责任可能为公司创造经济价值。"
+        ]
+      ],
+      "context": "先引用企业应增加利润的主张，再暂且接受这一出发点，说明即便按金钱衡量，也不能轻率断定 CSR 没有价值。",
+      "logic": "选 B，skepticism。C 把 even if you accept 的假设读成作者实际赞同；D 只抓谨慎措辞，漏掉作者引入相反证据的论证方向。怀疑并不要求百分之百断言对方错误。",
+      "unknown": "把 premise 暂当“前提”，抓 even if 和 But：即便接受前提，结论仍受挑战。may create value 与 waste money 构成明显对照。",
+      "compare": "对照例19：态度要由作者的理由和论证方向确定。一个情态词只能告诉你强度，不能单独决定态度类别。"
+    },
+    {
+      "code": "K",
+      "id": "2007-T1-Q21",
+      "title": "开头引出问题，后文才给出解释",
+      "focus": [
+        "A"
+      ],
+      "excerpts": [
+        [
+          "P2",
+          "What might account for this strange phenomenon?",
+          "什么可能解释这一奇怪现象？"
+        ],
+        [
+          "P5",
+          "expert performers – whether in memory or surgery, ballet or computer programming – are nearly always made, not born.",
+          "无论记忆、外科、芭蕾还是编程，高手几乎总是后天培养而成，而非天生如此。"
+        ]
+      ],
+      "context": "P1 写足球运动员出生月份的异常，P2 提问，后续记忆实验与刻意练习给出机制，P5 归纳高手形成。",
+      "logic": "选 C。开篇现象引出“卓越表现如何形成”这一研究问题。A 的训练重要性与全文有关，但出生月份现象本身没有直接证明训练；它把后文结论倒填成开头的直接功能。",
+      "unknown": "遇到 is mentioned to，先找例子后的问题句，再读结尾。即便专业训练词汇不全，会认 What...account for 和 made, not born，也能把引子与答案分开。",
+      "compare": "对照例22：本题分清引子与结论；2012年分清重要机制与完整主题。选项真实相关仍不一定完成题干任务。"
+    },
+    {
+      "code": "K",
+      "id": "2012-T3-Q35",
+      "title": "集体审查重要，却不是全文全部",
+      "focus": [
+        "B"
+      ],
+      "excerpts": [
+        [
+          "P2",
+          "This is the credibility process",
+          "这就是可信度形成过程。"
+        ],
+        [
+          "P2",
+          "Objective knowledge is the goal, not the starting point.",
+          "客观知识是目标，而不是起点。"
+        ],
+        [
+          "P5",
+          "We reason together, challenge, revise, and complete each other’s reasoning and each other’s conceptions of reason.",
+          "我们共同推理，相互质疑、修正并完善彼此的推理及理性观念。"
+        ]
+      ],
+      "context": "文章从个人发现的不确定性出发，经集体审查与公开交流走向可信度；又说明新发现会遭怀疑、已有成果也可被修正。",
+      "logic": "选 C，可信度的形成与演变贯穿全文。B 确实是重要机制，不应说它“原文没提”，但不足以覆盖初始局限、接受过程及持续可修正性。标题须覆盖主线而非只选显眼关键词。",
+      "unknown": "将每段压成短语：个人局限—共同检验—交流接受—挑战修正—可信度形成。比较两个标题能覆盖几段，而不是只比出现次数。",
+      "compare": "对照例21：同样问“它在论证中处于哪一层”。不要把重要等同于全部，把正确细节等同于最佳标题。"
+    },
+    {
+      "code": "L",
+      "id": "2009-T1-Q23",
+      "title": "顺着道路比喻猜词",
+      "focus": [
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P4",
+          "once those ruts of procedure are worn into the brain, they’re there to stay.",
+          "程序性的那些痕迹一旦在大脑中磨出，就会一直保留。"
+        ],
+        [
+          "P4",
+          "the new habits we deliberately press into ourselves create parallel pathways that can bypass those old roads.",
+          "我们有意培养的新习惯形成平行通道，可以绕开那些旧路。"
+        ]
+      ],
+      "context": "作者不主张消灭旧习惯，而主张建立新的并行路径。ruts 与 pathways、old roads 构成连续的道路比喻。",
+      "logic": "选 A，tracks。D 的 connections 很像脑科学术语，却没有解释 worn into、parallel pathways、old roads 这一组局部语言关系。背景上相关不等于当前词义相同。",
+      "unknown": "不认识 ruts 时向后找 those old roads 的回指，再把四项代入“磨出的旧道路痕迹”。先用句内比喻解释，不必补充脑神经知识。",
+      "compare": "对照例24：本题防止背景常识替代语境；2013年防止相似词形替代搭配。猜词最终都要放回句子。"
+    },
+    {
+      "code": "L",
+      "id": "2013-T1-Q21",
+      "title": "bargain 与 imagining 的词面诱导",
+      "focus": [
+        "C",
+        "D"
+      ],
+      "excerpts": [
+        [
+          "P1",
+          "scolds her unattractive assistant for imagining that high fashion doesn’t affect her.",
+          "斥责她那位相貌不出众的助理，因为助理以为高级时装不影响自己。"
+        ],
+        [
+          "P1",
+          "to the bargain bin in which the poor girl doubtless found her garment.",
+          "流向廉价处理货区，那个女孩无疑在那里买到了衣服。"
+        ]
+      ],
+      "context": "电影例子讲时尚由秀场向大众商品传导。助理没有意识到自己也在这条影响链里，毛衣的来历用于反驳她。",
+      "logic": "选 A。C 把 bargain bin 的廉价区改成 bargaining skill 的砍价能力；D 把 imagining that 的“以为某命题”改成想象力不足。两项都借熟悉词形替换整句关系。",
+      "unknown": "先抓 scolds...for，for 后才是受批评的原因。imagining 后接的完整命题是“时尚不影响她”，不能只摘一个动词就给人物添加能力缺陷。",
+      "compare": "对照例23：遇到熟词也暂缓下结论。搭配、补语和指代链比“我好像认识这个词”更可靠。"
+    }
+  ],
+  "methods": [
+    [
+      "先定任务，再读证据",
+      [
+        "题干中的 according to、because、mentioned to、implies、attitude、best title 决定你要找什么。先圈年份、Text、题号及限定段落，再用一句中文写下任务。问“为什么提到例子”，就不能只复述例子内容。",
+        "每题先找定位句，再向前确认代词、比较对象和发言者，向后找解释、转折与结果。通常至少读相邻一句；主旨、例证和态度题还要连接段首、结尾或全文主线。不要固定成“定位句后一句永远优先”。"
+      ]
+    ],
+    [
+      "把选项还原为完整关系",
+      [
+        "按“主体—动作—对象—范围—时间—强度”读完整选项。比如“提高售价”与“降低印刷成本”都涉及钱，却是不同变量；“仍有大量成员”与“1960年处于鼎盛期”也不是同一时点。",
+        "先给候选答案找正面证据，再给干扰项指出具体改动。排除项时写“原文说甲，选项换成乙”，比只写“偷换概念”更有效。两个选项都有原词时，优先比较它们是否完成了同一个任务。"
+      ]
+    ],
+    [
+      "不会关键词时，保留哪些信息",
+      [
+        "可以先把生僻人名、机构名、技术名当作甲、乙、某方法；保留主干动词、否定、比较、情态与连接词。2010年第35题即使不懂 cascades，也能看出 influenced 是“受到影响”，不能变成 influence others。",
+        "用后文解释回填陌生词：2009年的 ruts 由 pathways 和 old roads 限定；2016年的 lenient 由 lower fines 与 less costly punishment 解释。不要只凭一个像中文意思的熟词完成选择。",
+        "若不认识的恰好是关键谓语或关系词，而两种解释都能成立，应保留待核。先排除已经确定不符的项，再比较剩余项；词汇不足不是凭空增加确定性的理由。"
+      ]
+    ],
+    [
+      "复盘时留下可迁移的一句话",
+      [
+        "重做前遮住答案，给每个候选项写一句证据依据。核对后记录：我漏读哪个词、错接哪个主语、把哪种关系换成哪种关系。只记录实际发生的误判，不把本册数量当作自己的成绩。",
+        "建议记录四栏：题号；首答及重做答案；漏读证据；下次检查动作。例如“2012-T4-Q36：把 in 1960 忽略；下次先标 now 与过去时间”。复习间隔按实际遗忘情况安排，本册不预设个人弱项。"
+      ]
+    ]
+  ],
+  "signals": [
+    [
+      "but",
+      "转折；核对前后评价对象",
+      "2011-T1-Q25"
+    ],
+    [
+      "however",
+      "转向新判断；前句事实未必失效",
+      "2012-T1-Q25"
+    ],
+    [
+      "while",
+      "让步、对照或同时，依句法判断",
+      "2008-T4-Q38"
+    ],
+    [
+      "although",
+      "承认一层事实，再看主句落点",
+      "2013-T2-Q29"
+    ],
+    [
+      "even if",
+      "即使假设成立，也不保证作者接受它",
+      "2016-T3-Q31"
+    ],
+    [
+      "if",
+      "条件或假设，不能直接改成现实",
+      "2012-T4-Q36"
+    ],
+    [
+      "only",
+      "限制词；找准所限制的动作或范围",
+      "2009-T3-Q34"
+    ],
+    [
+      "not",
+      "否定落在哪个成分上",
+      "2007-T1-Q23"
+    ],
+    [
+      "rather than",
+      "比较取舍，保持两端方向",
+      "2007-T1-Q23"
+    ],
+    [
+      "more than",
+      "数量比较或超出，依结构处理",
+      "2009-T2-Q26"
+    ],
+    [
+      "some",
+      "部分，不自动扩大为所有",
+      "2013-T2-Q29"
+    ],
+    [
+      "most",
+      "多数或最大程度，核对集合",
+      "2010-T3-Q33"
+    ],
+    [
+      "may",
+      "可能；降低确定性，不补充证据",
+      "2015-T4-Q37"
+    ],
+    [
+      "could",
+      "可能、能力或设想，结合时态",
+      "2011-T3-Q33"
+    ],
+    [
+      "must",
+      "必要性或强推断，不等于充分性",
+      "2011-T1-Q25"
+    ],
+    [
+      "should",
+      "应当，不等于实际已做到",
+      "2016-T3-Q34"
+    ],
+    [
+      "now",
+      "现在，与过去阶段比较",
+      "2010-T2-Q26"
+    ],
+    [
+      "still",
+      "仍然或尽管如此，依语境区分",
+      "2012-T4-Q36"
+    ],
+    [
+      "since",
+      "时间起点或原因，不固定一义",
+      "2009-T2-Q26"
+    ],
+    [
+      "because",
+      "原因，核对原因与结果两端",
+      "2015-T1-Q22"
+    ],
+    [
+      "as a result",
+      "结果回接前面的原因",
+      "2007-T3-Q31"
+    ],
+    [
+      "in other words",
+      "后句重新解释前句",
+      "2007-T1-Q23"
+    ],
+    [
+      "for example",
+      "例子回扣观点，不直接升为主旨",
+      "2008-T4-Q36"
+    ],
+    [
+      "yet",
+      "转折或尚未，兼查状态",
+      "2008-T3-Q35"
+    ]
+  ],
+  "vocabulary": [
+    [
+      "feed",
+      "输送人才",
+      "2007-T1-Q21",
+      "青年队为职业足坛输送球员；不是给球队喂食。"
+    ],
+    [
+      "subject",
+      "受试者",
+      "2007-T1-Q23",
+      "记忆实验中是参与测试的人，不是学科。"
+    ],
+    [
+      "envision",
+      "在脑中想象",
+      "2007-T2-Q26",
+      "想象折剪结果不等于亲手折剪。"
+    ],
+    [
+      "pink slip",
+      "解雇通知",
+      "2007-T3-Q35",
+      "与不利诊断并列，都是经济冲击来源。"
+    ],
+    [
+      "restore",
+      "恢复、重建",
+      "2007-T4-Q39",
+      "本句恢复的是信任，不是泄露的数据。"
+    ],
+    [
+      "return on investment",
+      "投资回报",
+      "2008-T2-Q28",
+      "已有投入带来的回报，不是增加投资行为。"
+    ],
+    [
+      "condition",
+      "制约、影响",
+      "2008-T3-Q33",
+      "作动词；身高受直立结构限制，不是给出一个条件句。"
+    ],
+    [
+      "will",
+      "遗嘱",
+      "2008-T4-Q40",
+      "in his will 是在遗嘱中；此处不是将来助动词。"
+    ],
+    [
+      "ruts / tracks",
+      "车辙、轨迹",
+      "2009-T1-Q23",
+      "依 old roads 的道路比喻理解，不能只看脑科学背景。"
+    ],
+    [
+      "over-the-counter",
+      "可直接购买的、非处方的",
+      "2009-T2-Q26",
+      "与 without prescriptions 相互解释，说明可获得性。"
+    ],
+    [
+      "counterpart",
+      "对应的人或单位",
+      "2009-T3-Q33",
+      "比较美国与日本的同类工厂或劳动者，保留比较基准。"
+    ],
+    [
+      "end",
+      "目的",
+      "2009-T4-Q40",
+      "main end 是主要目的，不是文章末尾。"
+    ],
+    [
+      "save",
+      "除了",
+      "2010-T1-Q24",
+      "save to specialists 说明少数专业人士例外，不能泛化为所有读者。"
+    ],
+    [
+      "about-face",
+      "立场逆转",
+      "2010-T2-Q28",
+      "从曾支持授权到准备收紧，依据前后对照猜义。"
+    ],
+    [
+      "embrace",
+      "接受、支持",
+      "2010-T3-Q32",
+      "Marketers embraced the theory 的主体是营销者。"
+    ],
+    [
+      "book losses",
+      "把损失记入账簿",
+      "2010-T4-Q39",
+      "确认已有损失，不是制造损失，也不是预订。"
+    ],
+    [
+      "air",
+      "神态、派头",
+      "2011-T1-Q22",
+      "no air of the formidable conductor 指不摆威严架子。"
+    ],
+    [
+      "poach",
+      "挖人、从别处招揽人才",
+      "2011-T2-Q28",
+      "猎头、在任 CEO 和候选人共同限定招聘语境。"
+    ],
+    [
+      "traffic",
+      "访问流量",
+      "2011-T3-Q32",
+      "网站人流量吸引广告投放，不是道路交通。"
+    ],
+    [
+      "in retrospect",
+      "回顾起来",
+      "2011-T4-Q36",
+      "后来回看产生满足感，不等于回报永久持续。"
+    ],
+    [
+      "take a page from",
+      "借鉴某人的做法",
+      "2012-T1-Q22",
+      "向广告商学习方法，不是招聘广告商。"
+    ],
+    [
+      "be subject to",
+      "须经、受制于",
+      "2012-T2-Q27",
+      "许可证延期须经批准，不是研究主题。"
+    ],
+    [
+      "credit / credibility",
+      "贡献荣誉／可信度",
+      "2012-T3-Q33",
+      "被承认提出了发现，不等于发现永远可靠。"
+    ],
+    [
+      "modest",
+      "幅度不大的",
+      "2012-T4-Q38",
+      "modest pay rises 是工资涨幅小，与人格谦逊不同。"
+    ],
+    [
+      "bargain bin",
+      "廉价处理货区",
+      "2013-T1-Q21",
+      "bargain 构成商品搭配，不能直接推成砍价技能。"
+    ],
+    [
+      "effect change",
+      "促成改变",
+      "2013-T1-Q24",
+      "effect 作动词；结合可持续购买看实际改变。"
+    ],
+    [
+      "check the power",
+      "制约权力",
+      "2013-T4-Q40",
+      "check 不是简单核对信息，而是限制权力扩张。"
+    ],
+    [
+      "sign on",
+      "登记申领救济",
+      "2014-T1-Q22",
+      "与找工作构成对照，不能同义重复成查询岗位。"
+    ],
+    [
+      "do justice to",
+      "给予公正评价、使获认可",
+      "2014-T3-Q34",
+      "时间积累为诺奖带来认可，不是一次法院判决。"
+    ],
+    [
+      "flag up",
+      "标出、提请注意",
+      "2015-T3-Q32",
+      "先标出需额外复核的稿件，再交专家审查，不是已修改完成。"
+    ],
+    [
+      "betray",
+      "显露、流露",
+      "2015-T4-Q40",
+      "betray any common humanity 在此是表现人性，不是背叛人类。"
+    ],
+    [
+      "on its merits",
+      "按其本身的是非曲直",
+      "2016-T3-Q34",
+      "评价案件本身，不是评价企业公益功劳。"
+    ],
+    [
+      "bank on",
+      "指望、寄望于",
+      "2016-T3-Q35",
+      "banking on the halo effect 与银行业无关。"
+    ],
+    [
+      "aggressive",
+      "积极进取的",
+      "2016-T4-Q39",
+      "语境是主动调整经营；不指对人有攻击性。"
+    ]
+  ],
+  "syntax": [
+    [
+      "2007-T1-Q23",
+      "P4",
+      "In other words, whatever inborn differences two people may exhibit in their abilities to memorize, those differences are swamped by how well each person “encodes” the information.",
+      "主句谓语为 are swamped；主语是 those differences。",
+      "whatever...memorize 是让步从句；how well...information 作 by 后的宾语内容。",
+      "inborn 修饰 differences；in their abilities to memorize 限定差异领域。不要把 how well 独立当作主句。",
+      "换言之，不管两人在记忆能力上有何先天差异，这些差异都会被各自加工信息的好坏所压倒。作答时保留“编码质量占主导”，不改成遗传决定。"
+    ],
+    [
+      "2007-T4-Q39",
+      "P4",
+      "Surely it should be obvious to the dimmest executive that trust, that most valuable of economic assets, is easily destroyed and hugely expensive to restore – and that few things are more likely to destroy trust than a company letting sensitive personal data get into the wrong hands.",
+      "外层为 it should be obvious；内容是后面两个并列 that 从句。第一从句的谓语是 is。",
+      "that trust...restore 与 and that few things...hands 并列；第二句用 few...more...than 表示泄露极易损害信任。",
+      "that most valuable of economic assets 是 trust 的插入同位语；先拿掉，再补回“宝贵的资产”。",
+      "即使迟钝的高管也该明白：信任易损而重建昂贵；资料泄露尤其容易毁坏信任。restore 的对象仍为 trust。"
+    ],
+    [
+      "2009-T3-Q34",
+      "P4",
+      "Only when humanity began to get its food in a more productive way was there time for other things.",
+      "主句是 there was time；was 被移到 there 前。",
+      "Only when...way 是前置时间兼条件从句，导致部分倒装。",
+      "in a more productive way 修饰 get its food，说明获取食物的方式更高效。",
+      "只有开始更高效地获取食物后，才有时间做其他事。结论是释放时间，而非已经消除一切饥饿。"
+    ],
+    [
+      "2011-T3-Q31",
+      "P1",
+      "Consumers passionate about a product may create “earned” media by willingly promoting it to friends, and a company may leverage “owned” media by sending e-mail alerts about products and sales to customers registered with its Web site.",
+      "两个并列主干：Consumers may create；a company may leverage。",
+      "and 连接两套主体与动作，不能把后一套邮件营销移给前一套自愿口碑。",
+      "passionate about...修饰 Consumers；registered with...修饰 customers；两个 by...各归自己的主句。",
+      "喜爱产品的消费者通过向朋友推荐形成口碑；企业通过给注册客户发邮件利用自有渠道。to friends 是“推荐给朋友”，不是“帮助朋友推广”。"
+    ],
+    [
+      "2012-T2-Q27",
+      "P3",
+      "As a condition of receiving state approval for the sale, the company agreed to seek permission from state regulators to operate past 2012.",
+      "主干是 the company agreed；agreed 后接 to seek permission。",
+      "As a condition of... 是条件性状语；to operate past 2012 说明将来申请的许可内容。",
+      "for the sale 修饰 approval；from state regulators 说明许可由谁给。两个许可属于不同阶段。",
+      "为获得当前交易批准，公司同意将来若要继续运营须申请州许可。眼下交易获批不能改成当时已经取得延期许可。"
+    ],
+    [
+      "2014-T4-Q37",
+      "P2",
+      "In 2010, leading congressional Democrats and Republicans sent letters to the AAAS asking that it identify actions that could be taken by ‘federal, state and local governments, universities, foundations, educators, individual benefactors and others’ to ‘maintain national excellence in humanities and social scientific scholarship and education.’",
+      "主干是 Democrats and Republicans sent letters。",
+      "asking that it identify... 表要求内容；actions 后 that could be taken...是定语从句，不能读成第二个要求。",
+      "长名单只说明谁可采取行动，暂时压成“政府、学校等”；句末 to maintain 表目的。",
+      "国会议员要求科学院找出政府、学校等可采取的行动，以保持人文社科学术与教育的领先地位。问目的时应看 maintain 的宾语，不应把名单当答案。"
+    ],
+    [
+      "2015-T1-Q23",
+      "P4",
+      "At a time when Thomas Piketty and other economists are warning of rising inequality and the increasing power of inherited wealth, it is bizarre that wealthy aristocratic families should still be the symbolic heart of modern democratic states.",
+      "主干是 it is bizarre；it 是形式主语，真正被评价的是 that 从句。",
+      "At a time when...是背景时间结构；that...states 说明“奇怪”的完整事情。",
+      "rising...与 increasing...是 warning of 的两个并列对象。它们不是 bizarre 的直接宾语。",
+      "经济学家警告不平等和继承财富势力上升之际，贵族家族竟仍代表民主国家，令人诧异。should still be 表惊讶，不是劝其应该继续。"
+    ],
+    [
+      "2016-T3-Q31",
+      "P1",
+      "But even if you accept Friedman’s premise and regard corporate social responsibility (CSR) policies as a waste of shareholders’ money, things may not be absolutely clear-cut.",
+      "主句是 things may not be absolutely clear-cut。",
+      "even if 引导让步假设；accept 与 regard 并列，仍受 even if 支配。",
+      "regard A as B 的 A 是 CSR policies，B 是 a waste；不能把这层假设抽成作者无条件判断。",
+      "即便接受那一前提并把 CSR 看作浪费，事情也未必如此分明。作者借让步提出反证，态度不是照单全收。"
+    ]
+  ],
+  "boundaries": [
+    [
+      "强词也可能在限定语境中正确",
+      "2009-T1-Q25",
+      "原解析选择 A，其中 prevents 表述较强。应限制为现有标准化测试对新思维习惯发展的阻碍，不能解释成所有情况下都绝无新习惯。相似地，2011-T4-Q38 的 constantly 描述持续社会压力，不是每人每秒都受当面责骂。强词出现只是复核信号，不是自动判错按钮。"
+    ],
+    [
+      "标题可以有概括性，但不能额外包办",
+      "2013-T3-Q35",
+      "原解析选 A（The Ever-bright Prospects of Mankind）。须与 not all rosy 合读：作者反对长期总体悲观，仍承认风险。不要用标题的亮色修辞推出未来毫无风险；也不能只抓近未来难预测，便把整篇说成悲观。"
+    ],
+    [
+      "部分否定不是完全否定",
+      "2012-T1-Q23",
+      "not enough exploration 只说论证不够充分，正确项 adequately probe 保留这一程度。把“探究不足”变成“完全没有探究”，或把“证据有限”变成“作用完全不存在”，都会额外提高断言强度。"
+    ],
+    [
+      "正确项的广义词须受题干限制",
+      "2014-T2-Q29",
+      "原解析选 B，outsiders’ involvement 应放在 ownership 语境，指非律师参与律所持股等所有权安排；不能泛化成外行不得接触任何法律事务。核对题干是读完整命题的一部分。"
+    ],
+    [
+      "真信息也可能不是最佳答案",
+      "2012-T3-Q32",
+      "strict inspection 与 scrutiny 有关系，但只保留严格检查，漏掉 collective 和 acceptance 的共同参与机制。排除这类近似项，应比较覆盖和题干焦点，而不是捏造一个原文不存在的反义关系。"
+    ],
+    [
+      "may 不给无据的命题开通行证",
+      "2015-T4-Q37",
+      "A 与 B 都可用 may。原解析选 B，有大规模窃听、他人待审等线索；A 关于某人可能否认犯罪性质，却没有立场证据。降低确定性只改变语气，不能替换所说的内容。"
+    ]
+  ],
+  "dispute": {
+    "id": "2013-T2-Q27",
+    "reason": "原解析把 A 记作常见参考答案口径，同时明确承认 D 存在真实的语篇指代依据。本册未取得官方答案核定材料，因此只保留“原解析记 A”，不把它提升为独立核定结论。D 标为 U（争议待核），不计入 R01—R12 的确定机制数量。",
+    "excerpts": [
+      [
+        "P3",
+        "In February the FTC and the Digital Advertising Alliance (DAA) agreed that the industry would get cracking on responding to DNT requests.",
+        "2月，FTC 与数字广告联盟约定，相关行业将尽快着手响应 DNT 请求。"
+      ],
+      [
+        "P6",
+        "It is not yet clear how advertisers will respond.",
+        "广告商将如何响应，目前仍不清楚。"
+      ]
+    ],
+    "analysis": "A 可沿本段前半的 browsers、IE、Safari、Chrome 主题链理解；D 可沿紧邻的 DAA 及后文 advertisers will respond 的角色链理解。两条解释都有文本抓手，所以不能声称 D 完全无据，也不能靠“最近名词必是指代对象”一锤定音。B、C 则没有同样的角色依据，仍保留其常规编码。",
+    "takeaway": "复习时分开记“题库给定答案”和“语义证据强弱”。争议题用于训练保留判断；不要用它制造排除口诀，也不要据此统计个人能力。"
+  },
+  "sources": [
+    {
+      "year": 2007,
+      "text": 1,
+      "path": "content/english/reading-answers/2007-reading-text-1.md",
+      "git_blob": "6ef2df89ffbf3f03b62d61c41dabde3bd2bd8240",
+      "sha256": "e4673e1129a5b09e3c52a39bc2886d1a2c272ee6a774cb54ea5705bf3577b82b",
+      "url": "https://zj139.github.io/math-notes/english/a69829b7fe6a2f532d31c053/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-1.md",
+      "bytes": 20816
+    },
+    {
+      "year": 2007,
+      "text": 2,
+      "path": "content/english/reading-answers/2007-reading-text-2.md",
+      "git_blob": "4010fc93ace5ddc206bf1b91460bbc47c4f6dc13",
+      "sha256": "15adf6296957b0ca08a0a38accb02141feea8155c91866d850c910873af48709",
+      "url": "https://zj139.github.io/math-notes/english/eee8045d74a87e7be65b79fe/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-2.md",
+      "bytes": 20984
+    },
+    {
+      "year": 2007,
+      "text": 3,
+      "path": "content/english/reading-answers/2007-reading-text-3.md",
+      "git_blob": "ed7faf3eee8f14c408eb10a0a0b35116c0a75a6c",
+      "sha256": "f1093ff3289aeb1939373e790eb2d8ee196ad973ee017b812e7e7a5515adfaf4",
+      "url": "https://zj139.github.io/math-notes/english/346f4d489f00121c1d163691/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-3.md",
+      "bytes": 20674
+    },
+    {
+      "year": 2007,
+      "text": 4,
+      "path": "content/english/reading-answers/2007-reading-text-4.md",
+      "git_blob": "96abefecadc10091a16cf16160c82fe37fb782a7",
+      "sha256": "d267d4e7c010d56155574811e3c421c99e062ab42668d035e3aa27f3ea24ea3c",
+      "url": "https://zj139.github.io/math-notes/english/4583f11cfad63caee815e722/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2007-reading-text-4.md",
+      "bytes": 21896
+    },
+    {
+      "year": 2008,
+      "text": 1,
+      "path": "content/english/reading-answers/2008-reading-text-1.md",
+      "git_blob": "eab8e0aa1f8bcdf488463c514d41e5ad4ad29acb",
+      "sha256": "aeee07d9c1e20933bafbf25b5689e8ee618cdeda50f1a94b37b4b1ff78dcfae6",
+      "url": "https://zj139.github.io/math-notes/english/c0860baac11c5ef23be4bfac/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-1.md",
+      "bytes": 24612
+    },
+    {
+      "year": 2008,
+      "text": 2,
+      "path": "content/english/reading-answers/2008-reading-text-2.md",
+      "git_blob": "ff19fda381930df9913d80fbdf33f40581208ab1",
+      "sha256": "5d1a02e5342bbb3cd9432afc16810585b77eb5d3fd696a7c5cc520d218f943eb",
+      "url": "https://zj139.github.io/math-notes/english/218b3a79bc4e7687dd26be0c/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-2.md",
+      "bytes": 23997
+    },
+    {
+      "year": 2008,
+      "text": 3,
+      "path": "content/english/reading-answers/2008-reading-text-3.md",
+      "git_blob": "a30f91145b3bb15705b603bb63b18e6cac24b86b",
+      "sha256": "cf42ecc2339bb850dc7b0af19b6cfe0441b970fdbf1959928723e51ca0bd8db8",
+      "url": "https://zj139.github.io/math-notes/english/a46a979d6c43850d2b57732f/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-3.md",
+      "bytes": 24482
+    },
+    {
+      "year": 2008,
+      "text": 4,
+      "path": "content/english/reading-answers/2008-reading-text-4.md",
+      "git_blob": "d168fd526a7b54bce8b09768db60768e69a8bbd7",
+      "sha256": "93129aff42d6886df7fe34fad25b59ed3a361f464efb2362f7a85607e72a1de5",
+      "url": "https://zj139.github.io/math-notes/english/a16ec662060c5d5cc8e15f6b/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2008-reading-text-4.md",
+      "bytes": 25138
+    },
+    {
+      "year": 2009,
+      "text": 1,
+      "path": "content/english/reading-answers/2009-reading-text-1.md",
+      "git_blob": "f8057d45d28bf898f85594f343d21366633a01c6",
+      "sha256": "9181264b1a02f23891ae11c1886f316c141a4c1f96f88a70d5ff5c7c78105b2c",
+      "url": "https://zj139.github.io/math-notes/english/67d0fd0739843c9aede29847/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-1.md",
+      "bytes": 22990
+    },
+    {
+      "year": 2009,
+      "text": 2,
+      "path": "content/english/reading-answers/2009-reading-text-2.md",
+      "git_blob": "d7d880868b67afafff3e0e41784719490f025547",
+      "sha256": "6be3b31f4c786075c13c953f6fde8604b47f31b2c9e83b752a16840cb3df3ebb",
+      "url": "https://zj139.github.io/math-notes/english/35e7c30a863ed5433f61ed2e/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-2.md",
+      "bytes": 23085
+    },
+    {
+      "year": 2009,
+      "text": 3,
+      "path": "content/english/reading-answers/2009-reading-text-3.md",
+      "git_blob": "d87873f513ab1b5e64a7d7c72cacd27ca67d88b3",
+      "sha256": "d5c76ba484b97fea6a537073b7e33a3ea4898a518d66aafdf22d11666316118e",
+      "url": "https://zj139.github.io/math-notes/english/218135c1190c9ac029fd9ef3/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-3.md",
+      "bytes": 24971
+    },
+    {
+      "year": 2009,
+      "text": 4,
+      "path": "content/english/reading-answers/2009-reading-text-4.md",
+      "git_blob": "3ddd55770c9b7751c7065dfb551b01a8d42f6420",
+      "sha256": "2c65bc5105d3762cd6985ef8a042fa530eaac3bc504ceacc238915d8e9a31af4",
+      "url": "https://zj139.github.io/math-notes/english/2431fdcbaabb4f629f70bb44/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2009-reading-text-4.md",
+      "bytes": 25293
+    },
+    {
+      "year": 2010,
+      "text": 1,
+      "path": "content/english/reading-answers/2010-reading-text-1.md",
+      "git_blob": "df558a131c76f8a658d975946b65132bae35236d",
+      "sha256": "30aefefa5be6886c83a34e5c176d4a1e51a5a6f99e82cbfddc102695af087f72",
+      "url": "https://zj139.github.io/math-notes/english/bfa65806b0e493e64d7761c2/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-1.md",
+      "bytes": 22270
+    },
+    {
+      "year": 2010,
+      "text": 2,
+      "path": "content/english/reading-answers/2010-reading-text-2.md",
+      "git_blob": "6acd6210414e06b77aeae87b273e931f54f30b5e",
+      "sha256": "59e5aa7bcc41ee5e2958eb96de69c58aaaffc55634531f1ea0caa697ff1b7f09",
+      "url": "https://zj139.github.io/math-notes/english/68417426c052b03f4b409683/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-2.md",
+      "bytes": 21646
+    },
+    {
+      "year": 2010,
+      "text": 3,
+      "path": "content/english/reading-answers/2010-reading-text-3.md",
+      "git_blob": "e4612e841cdeed16f577b85b4dfa242b7e086b8d",
+      "sha256": "b9a4564a62202767f02de86ecbaacc9d7bf2d586008be02b6bde5becc1c31885",
+      "url": "https://zj139.github.io/math-notes/english/2d3d87506df0a87664eef64d/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-3.md",
+      "bytes": 24171
+    },
+    {
+      "year": 2010,
+      "text": 4,
+      "path": "content/english/reading-answers/2010-reading-text-4.md",
+      "git_blob": "b3ad95ea07cca82d027acb1479196cc8a97aa134",
+      "sha256": "06cc5d2cacd3f147fbd00b434916ecd7c9e02d52e6be1bc3e90b79f81801fef3",
+      "url": "https://zj139.github.io/math-notes/english/cc5bcd527d8ad5bbc083e9f6/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2010-reading-text-4.md",
+      "bytes": 25134
+    },
+    {
+      "year": 2011,
+      "text": 1,
+      "path": "content/english/reading-answers/2011-reading-text-1.md",
+      "git_blob": "da0df854dec76c1264f1c0df68df2c81a4cc2ad2",
+      "sha256": "3661ec2b90180f97e8fe1ef86d5528e92c8ecb0e67aa372570416d38f2590e9f",
+      "url": "https://zj139.github.io/math-notes/english/9de80db7356ff635cec8a286/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-1.md",
+      "bytes": 23058
+    },
+    {
+      "year": 2011,
+      "text": 2,
+      "path": "content/english/reading-answers/2011-reading-text-2.md",
+      "git_blob": "5f612170a23f2a928c87bf903debe865e0a8aee2",
+      "sha256": "34c261f9aff04e5e0ad7a9b360d4791336b1f71c2a31004e14e7fcb8faa5bf9a",
+      "url": "https://zj139.github.io/math-notes/english/fab88b1777828e64dff31c90/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-2.md",
+      "bytes": 23530
+    },
+    {
+      "year": 2011,
+      "text": 3,
+      "path": "content/english/reading-answers/2011-reading-text-3.md",
+      "git_blob": "06e7bc2c3f3a80a906cfb2b12babe57bf09a3c9e",
+      "sha256": "063980c469eaa83edea7a3dcac2cdf02b0744f6dfdee03381f8dc75795b6a640",
+      "url": "https://zj139.github.io/math-notes/english/f805d4b3fde383fcf2cf2e5c/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-3.md",
+      "bytes": 24777
+    },
+    {
+      "year": 2011,
+      "text": 4,
+      "path": "content/english/reading-answers/2011-reading-text-4.md",
+      "git_blob": "e63e64f3edbfd77bb6a33b95d557997c09b1a154",
+      "sha256": "8a4808f96659f3ae4bc9ab44ab03be8d022dffb5040db6ea8d617c9e8986c205",
+      "url": "https://zj139.github.io/math-notes/english/e9415d068acb3ef20c371d2c/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2011-reading-text-4.md",
+      "bytes": 25584
+    },
+    {
+      "year": 2012,
+      "text": 1,
+      "path": "content/english/reading-answers/2012-reading-text-1.md",
+      "git_blob": "6d014f10ca119d6f2303374ab2de180ba8b482c4",
+      "sha256": "4080da2678b293531ec29e670e77f7faea940e4c762459d5f691a52d435b83a2",
+      "url": "https://zj139.github.io/math-notes/english/ff9729fa700fea3c5e7ecc04/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-1.md",
+      "bytes": 25409
+    },
+    {
+      "year": 2012,
+      "text": 2,
+      "path": "content/english/reading-answers/2012-reading-text-2.md",
+      "git_blob": "800315a8ec3680c086c5f79c919a1862f9ac3c2c",
+      "sha256": "994c43b2c10a630d12b079349f96bdf1a2e4d3b84611f19fe2bbebeb438683cd",
+      "url": "https://zj139.github.io/math-notes/english/a4585bde3b2a6d949145bd53/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-2.md",
+      "bytes": 25343
+    },
+    {
+      "year": 2012,
+      "text": 3,
+      "path": "content/english/reading-answers/2012-reading-text-3.md",
+      "git_blob": "69168747fe978be0ecb3e1c24566d7d7a708ff9a",
+      "sha256": "fe790650efea8656fb7abc4da82dc21edf30343328a472c1745266ddbb60ce40",
+      "url": "https://zj139.github.io/math-notes/english/8d32b42b276b1ab633d587b6/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-3.md",
+      "bytes": 26823
+    },
+    {
+      "year": 2012,
+      "text": 4,
+      "path": "content/english/reading-answers/2012-reading-text-4.md",
+      "git_blob": "4c1cddad7cef3c1e6d8b21bee39fb17f05a99b0e",
+      "sha256": "2258f05db253ed1bb18781d858aaf96506851d700ea0adee3ee8420a8d165d38",
+      "url": "https://zj139.github.io/math-notes/english/2567aa708876e7f62db07164/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2012-reading-text-4.md",
+      "bytes": 26252
+    },
+    {
+      "year": 2013,
+      "text": 1,
+      "path": "content/english/reading-answers/2013-reading-text-1.md",
+      "git_blob": "116c37970e4f3aef22bea38b01a949d1d1847aaf",
+      "sha256": "531b7323c4968af97ae26b5c063089bcb6be640df1921b4f8ce986491ddb0554",
+      "url": "https://zj139.github.io/math-notes/english/e12e6c6712b9ddb12ecc7057/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-1.md",
+      "bytes": 20658
+    },
+    {
+      "year": 2013,
+      "text": 2,
+      "path": "content/english/reading-answers/2013-reading-text-2.md",
+      "git_blob": "64145bee90bd3be1ac7e307bbebf7763900015eb",
+      "sha256": "b77459f19ed2477b857477c45fe47efcf019db33045f10c15351b2aa14b188d4",
+      "url": "https://zj139.github.io/math-notes/english/24e1f1efe1e982cf789b6917/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-2.md",
+      "bytes": 20174
+    },
+    {
+      "year": 2013,
+      "text": 3,
+      "path": "content/english/reading-answers/2013-reading-text-3.md",
+      "git_blob": "1bd0155da15f60f7da94e265c43f5674b9f4048b",
+      "sha256": "796b0c0686f493ed44cdf01239c54cd47959d6ddb899852a69e240e9c9cf4802",
+      "url": "https://zj139.github.io/math-notes/english/2d46a333fce8ad67ea684c5b/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-3.md",
+      "bytes": 19387
+    },
+    {
+      "year": 2013,
+      "text": 4,
+      "path": "content/english/reading-answers/2013-reading-text-4.md",
+      "git_blob": "01bc583e192dc8238be8b93a966e471014af93c5",
+      "sha256": "51fbebc4ab6ee76ddeec7458d276da74e72928a0da3c97eb180568d9ea6a27bf",
+      "url": "https://zj139.github.io/math-notes/english/97d8ddcd3db235aaa541d5d5/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2013-reading-text-4.md",
+      "bytes": 20749
+    },
+    {
+      "year": 2014,
+      "text": 1,
+      "path": "content/english/reading-answers/2014-reading-text-1.md",
+      "git_blob": "bcb24a261d374766b97d3a3b7d4b2e0e5bd57913",
+      "sha256": "ca6b658aa2f5c8fcc62aec15ca702aa3e31f16221a9d96f81fed04dce8a8bf5b",
+      "url": "https://zj139.github.io/math-notes/english/3becb5a63150d4e967a5c91f/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-1.md",
+      "bytes": 23056
+    },
+    {
+      "year": 2014,
+      "text": 2,
+      "path": "content/english/reading-answers/2014-reading-text-2.md",
+      "git_blob": "37d8d4ed2055b3a9fb253e336de74bde2d7845cb",
+      "sha256": "e9751034d915b1488871eaab404efbd838e2845ecbfcfd7e711ffdbadd766e2c",
+      "url": "https://zj139.github.io/math-notes/english/8f6f7a5e65fac14d43f1506b/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-2.md",
+      "bytes": 23329
+    },
+    {
+      "year": 2014,
+      "text": 3,
+      "path": "content/english/reading-answers/2014-reading-text-3.md",
+      "git_blob": "3497638ee60290d3c6f3065a30a435a389fc8825",
+      "sha256": "8278bb987c32fbcf242707b859628c5c5051fc48747fbccd281e47754856d300",
+      "url": "https://zj139.github.io/math-notes/english/ec4f22a05d5f681f24385a88/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-3.md",
+      "bytes": 22971
+    },
+    {
+      "year": 2014,
+      "text": 4,
+      "path": "content/english/reading-answers/2014-reading-text-4.md",
+      "git_blob": "afd71dacf8adfaba3f73502d07283f956a67c9c5",
+      "sha256": "93388da1b1756ee1ffc729a5b7363eae504aea626e020fd648c8c4cdccc5627b",
+      "url": "https://zj139.github.io/math-notes/english/d0543caa2ebd73b99c00cc00/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2014-reading-text-4.md",
+      "bytes": 24211
+    },
+    {
+      "year": 2015,
+      "text": 1,
+      "path": "content/english/reading-answers/2015-reading-text-1.md",
+      "git_blob": "691bd7f72e29f1849aa14b77b910c8fdf588261b",
+      "sha256": "f274ae2060c54ebf67365ffa185aed24e8c32a92d0b114902918fd12b29a9ccb",
+      "url": "https://zj139.github.io/math-notes/english/bd84b09056a8e650262124b0/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-1.md",
+      "bytes": 25686
+    },
+    {
+      "year": 2015,
+      "text": 2,
+      "path": "content/english/reading-answers/2015-reading-text-2.md",
+      "git_blob": "c29a90db14bedd5dfb303a05f3b6df6d223bd267",
+      "sha256": "fdcfee53481d0cfe4446889a82e2db6a54344dfe58da07454c32d35b2182fb58",
+      "url": "https://zj139.github.io/math-notes/english/1d136f1c0a2cc3e255b39ab4/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-2.md",
+      "bytes": 25666
+    },
+    {
+      "year": 2015,
+      "text": 3,
+      "path": "content/english/reading-answers/2015-reading-text-3.md",
+      "git_blob": "19db764487d766d323e854ce02848baf83772aa5",
+      "sha256": "9eb7bf77eb518a947d92d71df8a1cbde77e27510a882d0ba3a523b692ce4d148",
+      "url": "https://zj139.github.io/math-notes/english/0830618620ce5f72f771a130/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-3.md",
+      "bytes": 24592
+    },
+    {
+      "year": 2015,
+      "text": 4,
+      "path": "content/english/reading-answers/2015-reading-text-4.md",
+      "git_blob": "60c37a337f920fa964cad8b6058138b7ecc15cef",
+      "sha256": "b2293f47a296a94006f20f435e295fb249cc6d3b7c67ffc7aceb020e3e724eb0",
+      "url": "https://zj139.github.io/math-notes/english/cdca5e792ad64d07196bc0ec/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2015-reading-text-4.md",
+      "bytes": 26371
+    },
+    {
+      "year": 2016,
+      "text": 1,
+      "path": "content/english/reading-answers/2016-reading-text-1.md",
+      "git_blob": "429454f46f1a73a77125169d487a595b1d12bbe3",
+      "sha256": "37684d7a501de539f97fe947ae22f8cfb6a22274efed1694bd8768a60fe3f963",
+      "url": "https://zj139.github.io/math-notes/english/199237d5df9b8cc835b3f5e8/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-1.md",
+      "bytes": 23265
+    },
+    {
+      "year": 2016,
+      "text": 2,
+      "path": "content/english/reading-answers/2016-reading-text-2.md",
+      "git_blob": "6230e82e23b8c6e0071095590682033417c7d589",
+      "sha256": "1e3508b248a4ffba4684f3256f5ebc79095db4648899b53e53f9ad88258394c8",
+      "url": "https://zj139.github.io/math-notes/english/cace2d57f6e764744affd357/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-2.md",
+      "bytes": 24223
+    },
+    {
+      "year": 2016,
+      "text": 3,
+      "path": "content/english/reading-answers/2016-reading-text-3.md",
+      "git_blob": "3e05f3190b5a861d99a8a1db6cd2465640f926de",
+      "sha256": "b69e02583e927ea185ffc173c861ad50974d1a5cf123a2211f9ff5d0c9e2594a",
+      "url": "https://zj139.github.io/math-notes/english/b6f08ab4d489c8194307c00d/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-3.md",
+      "bytes": 23856
+    },
+    {
+      "year": 2016,
+      "text": 4,
+      "path": "content/english/reading-answers/2016-reading-text-4.md",
+      "git_blob": "239d89961bc56a500131bd0a207fce6e018440c6",
+      "sha256": "6f2085aa1421e5da7f99f1c0cd0bb23990951d6fe6c14b5b7dc27cb7587062c3",
+      "url": "https://zj139.github.io/math-notes/english/52a512b347cf9f366ac3f189/",
+      "pinned_url": "https://github.com/ZJ139/math-notes/blob/3ccbda98a5fa9e6f3553cd7e90493f5e322b42bf/content/english/reading-answers/2016-reading-text-4.md",
+      "bytes": 23828
+    }
+  ]
+}
