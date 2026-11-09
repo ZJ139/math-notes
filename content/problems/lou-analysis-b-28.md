@@ -14,7 +14,7 @@ updated_at: "2026-11-09"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [下册原题 PDF 第 8 页](/files/problems/楼分析习题-v2.pdf#page=8) · [第 9 页](/files/problems/楼分析习题-v2.pdf#page=9)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/)
+**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) · [下一批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/)
 
 ## 题号导航
 
@@ -497,4 +497,4 @@ $$
 
 编号推进至 **B197**；两册累计 **194 道已作答、3 道暂跳过**，其中上册完成 175 题，下册完成 19 题。8.4.B 全部九题已完成。下一题为下册 **8.5.B 第 1 题**，对应 **B198**，见[原题 PDF 第 10 页（印刷第 8 页）](/files/problems/楼分析习题-v2.pdf#page=10)。
 
-**前后批次：**[上一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+**前后批次：**[上一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) · [下一批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
