@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "上册", "下册", "曲率", "Riemann积分", "Borel集", "Lebesgue测度", "Lp空间", "B176-B183"]
 created_at: "2026-11-08"
-updated_at: "2026-11-08"
+updated_at: "2026-11-09"
 ---
 
 本批接续 B175，依次收录 **B176—B183**：上册 **7.4.B 第 1—2 题**，随后转入下册 **8.1.B 第 1 题、8.2.B 第 1—3 题、8.3.B 第 1—2 题**。不穿插 A 组，跨册后沿用连续编号；原题号与册别分别标明。
@@ -16,7 +16,7 @@ updated_at: "2026-11-08"
 
 [上册资料页](/problems/41e85e430c9d7f84a0863658/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [上册原题](/files/problems/楼分析习题-v1.pdf#page=43) · [下册原题](/files/problems/楼分析习题-v2.pdf#page=3)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/)
+**批次导航：**[下一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/)
 
 ## 题号导航
 
@@ -607,4 +607,4 @@ $$
 
 B180 另附 Borel 集族基数的独立证明，但指定文献 [20] 的方法仍待核，故未列入上表的七道完成题。编号推进至 **B183**，累计 **180 道已作答、3 道暂跳过**；上册完成 175 题、暂跳过 2 题，下册完成 5 题、暂跳过 1 题。下一题是下册 **8.3.B 第 3 题**，对应 **B184**，见[下册原题 PDF 第 6 页](/files/problems/楼分析习题-v2.pdf#page=6)。
 
-**前后批次：**[上一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+**前后批次：**[下一批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) · [上一批 B169—B175](/problems/f5ad6d5a3d50a93ac170639e/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
