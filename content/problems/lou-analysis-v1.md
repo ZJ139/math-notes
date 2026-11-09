@@ -71,6 +71,6 @@ updated_at: "2026-11-09"
 
 上册累计完成 **175 道 B 组习题**：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 9 题、第六章 48 题、第七章 11 题。上册全部 177 个原题位置均已编入目录，B116（5.5.B 第 1 题）与 B148（6.4.B 第 1 题）继续暂跳过，未计入完成数。
 
-两册合计 **187 道已作答、3 道暂跳过**；下册现完成十二题，另有 B180（8.2.B 第 2 题）待核文献。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) 已完成下册 8.3.B 第 3—7 题及 8.4.B 第 1—2 题。跨册沿用连续编号，下一题为下册 **8.4.B 第 3 题，即 B191**，见[下册原题 PDF 第 8 页](/files/problems/楼分析习题-v2.pdf#page=8)。
+两册合计 **194 道已作答、3 道暂跳过**；下册现完成十九题，另有 B180（8.2.B 第 2 题）待核文献。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/) 与[第二十八批 B191—B197](/problems/3394284a188dfc847fd02679/) 已接续完成至下册 8.4.B 第 9 题。跨册沿用连续编号，下一题为下册 **8.5.B 第 1 题，即 B198**，见[下册原题 PDF 第 10 页](/files/problems/楼分析习题-v2.pdf#page=10)。
 
 [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)

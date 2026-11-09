@@ -9,11 +9,11 @@ const entries=loadEntries(fileURLToPath(new URL('../content/',import.meta.url)))
 
 test('Lou chapter directory includes each solution once and merges sections across batches',async()=>{
   const items=await entries,problems=louProblems(items);
-  assert.equal(problems.length,190);
-  assert.equal(new Set(problems.map(p=>p.code)).size,190);
-  assert.equal(problems.filter(p=>!p.skipped).length,187);
+  assert.equal(problems.length,197);
+  assert.equal(new Set(problems.map(p=>p.code)).size,197);
+  assert.equal(problems.filter(p=>!p.skipped).length,194);
   assert.deepEqual(problems.filter(p=>p.skipped).map(p=>[p.code,p.section,p.original]),[['B116','5.5',1],['B148','6.4',1],['B180','8.2',2]]);
-  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,19],[5,10],[6,49],[7,11],[8,13]]);
+  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,19],[5,10],[6,49],[7,11],[8,20]]);
   const topology=problems.filter(p=>p.section==='2.3');
   assert.deepEqual(topology.map(p=>p.original),[1,2,3,4,5,6]);
   assert.equal(new Set(topology.map(p=>p.entry.id)).size,2);
@@ -81,14 +81,16 @@ test('Lou chapter directory includes each solution once and merges sections acro
     ...Array.from({length:5},(_,i)=>[`B${184+i}`,'8.3',i+3,false,false]),
     ['B189','8.4',1,false,false],['B190','8.4',2,false,false],
   ]);
+  assert.deepEqual(problems.filter(p=>p.number>=191&&p.number<=197).map(p=>[p.code,p.section,p.original,p.starred,p.skipped]),
+    Array.from({length:7},(_,i)=>[`B${191+i}`,'8.4',i+3,false,false]));
   for(const p of problems)assert.ok(p.entry.body.includes(`## 问题 ${p.code}\n`));
   assert.throws(()=>louProblems([...items,problems[0].entry]),/题号重复/);
 });
 test('a temporarily skipped Lou problem keeps its original position without inflating solved totals',async()=>{
   const items=await entries;
   const directory=renderToStaticMarkup(createElement(LouAnalysisDirectory,{items}));
-  assert.match(directory,/187 道已作答 · 3 道暂跳过/);
-  assert.doesNotMatch(directory,/190 道已作答/);
+  assert.match(directory,/194 道已作答 · 3 道暂跳过/);
+  assert.doesNotMatch(directory,/197 道已作答/);
   const chapter=renderToStaticMarkup(createElement(LouChapterPage,{items,chapter:5}));
   assert.match(chapter,/9 道已作答 · 1 道暂跳过/);
   assert.match(chapter,/1 道已作答 · 1 道暂跳过/);
@@ -116,7 +118,7 @@ test('Lou chapter pages provide section anchors and direct links to existing pro
     if(c.number===5)assert.match(html,/本章当前收录至习题 5\.5\.B 第 2 题/);
     if(c.number===6)assert.match(html,/本章当前收录至习题 6\.6\.B 第 8 题/);
     if(c.number===7){assert.match(html,/本章当前收录至习题 7\.4\.B 第 2 题/);assert.match(html,/11 道已作答/);}
-    if(c.number===8){assert.match(html,/第八章 积分/);assert.match(html,/本章当前收录至习题 8\.4\.B 第 2 题/);assert.match(html,/12 道已作答 · 1 道暂跳过/);assert.match(html,/原书第 2 题 · 暂跳过/);}
+    if(c.number===8){assert.match(html,/第八章 积分/);assert.match(html,/本章当前收录至习题 8\.4\.B 第 9 题/);assert.match(html,/19 道已作答 · 1 道暂跳过/);assert.match(html,/原书第 2 题 · 暂跳过/);}
     assert.match(html,/aria-current="page"/);
   }
 });
