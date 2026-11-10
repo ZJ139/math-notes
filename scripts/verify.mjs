@@ -306,16 +306,48 @@ if ((await fs.stat('content/problems/lou-analysis-b-30.md').catch(()=>null))?.is
     if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
       throw new Error('第三十批未接入资料页、总目录或上一批：'+file);
   }
+  if(!source.includes('**B212**')||!source.includes('**8.8.B 第 1 题**')
+     ||!html.includes('/problems/7eefe730d0abc9edb8bf7c08/'))
+    throw new Error('第三十批历史下一题或上一批入口错误');
+  console.log(`Verified Lou analysis B205–B211: ${inline} inline and ${display} display formulas; seven original numbers, PDF pages, methods and batch links.`);
+}
+
+
+if ((await fs.stat('content/problems/lou-analysis-b-31.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-31.md','utf8');
+  const route='/problems/276de8e86ac38b40563aa582/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  if(!Number.isInteger(inline)||!Number.isInteger(display)||display===0
+     ||(html.match(/class="latex-svg"/g)||[]).length!==inline+display
+     ||(html.match(/class="katex-display"/g)||[]).length!==display||/katex-error/.test(html))
+    throw new Error('第三十一批公式未全部渲染');
+  const chapter=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/8/index.html'),'utf8');
+  for(let i=0;i<7;i++){
+    const number=212+i,original=i+1;
+    const problem=source.split(`## 问题 B${number}\n`)[1]?.split(/^## /m)[0];
+    if(!html.includes(`id="问题-b${number}"`)
+       ||!problem?.includes(`习题 8.8.B 第 ${original} 题`)
+       ||!problem.includes('楼分析习题-v2.pdf#page=14')
+       ||!problem.includes('**方法总结：**')||!problem.includes('**思路来源：**')
+       ||!chapter.includes(`${route}#问题-b${number}`))
+      throw new Error('第三十一批原题、思路、方法、PDF 页码或章节导航缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html','problems/149ff60b32b01ff69feab8a4/index.html','problems/aeb90646cd67124999a7cba3/index.html','problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第三十一批未接入资料页、总目录或上一批：'+file);
+  }
   const directory=await fs.readFile(path.join(root,'problems/collections/lou-analysis/index.html'),'utf8');
   const lower=await fs.readFile('content/problems/lou-analysis-v2.md','utf8');
-  if(!directory.includes('208 道已作答 · 3 道暂跳过')
-     ||!chapter.includes('7 节 · 33 道已作答 · 1 道暂跳过')
-     ||!chapter.includes('本章当前收录至习题 8.7.B 第 8 题')
-     ||!lower.includes('B212＝8.8.B 第 1 题')
-     ||!source.includes('**B212**')||!source.includes('**8.8.B 第 1 题**')
-     ||!html.includes('/problems/7eefe730d0abc9edb8bf7c08/'))
-    throw new Error('第三十批累计数量、前后批次或下一题错误');
-  console.log(`Verified Lou analysis B205–B211: ${inline} inline and ${display} display formulas; seven original numbers, PDF pages, methods and batch links; 208 solved, three pending.`);
+  if(!directory.includes('215 道已作答 · 3 道暂跳过')
+     ||!chapter.includes('8 节 · 40 道已作答 · 1 道暂跳过')
+     ||!chapter.includes('本章当前收录至习题 8.8.B 第 7 题')
+     ||!lower.includes('B219＝8.9.B 第 1 题')
+     ||!source.includes('**B219**')||!source.includes('**8.9.B 第 1 题**')
+     ||!html.includes('/problems/aeb90646cd67124999a7cba3/'))
+    throw new Error('第三十一批累计数量、前后批次或下一题错误');
+  console.log(`Verified Lou analysis B212–B218: ${inline} inline and ${display} display formulas; seven original numbers, methods, PDF pages and batch links; 215 solved, three pending.`);
 }
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {
