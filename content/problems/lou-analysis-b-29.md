@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "下册", "积分", "Young不等式", "一致逼近", "B198-B204"]
 created_at: "2026-11-09"
-updated_at: "2026-11-09"
+updated_at: "2026-11-10"
 ---
 
 本批接续 B197，按下册原书顺序完成 **B198—B204** 七题，即 **8.5.B 第 1—4 题、8.6.B 第 1—2 题、8.7.B 第 1 题**。原题见题册 PDF 第 10—11 页（印刷第 8—9 页）；七题均无星号，均无编号小问。B199 保留开放推广题的性质，明确给出广义逆、扩展值积分、等号条件及特殊情形。
@@ -14,7 +14,7 @@ updated_at: "2026-11-09"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [下册原题 PDF 第 10 页](/files/problems/楼分析习题-v2.pdf#page=10) · [第 11 页](/files/problems/楼分析习题-v2.pdf#page=11)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B191—B197](/problems/3394284a188dfc847fd02679/)
+**批次导航：**[下一批 B205—B211](/problems/aeb90646cd67124999a7cba3/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B191—B197](/problems/3394284a188dfc847fd02679/)
 
 ## 题号导航
 
@@ -509,4 +509,4 @@ $$
 
 编号推进至 **B204**；两册累计 **201 道已作答、3 道暂跳过**，其中上册完成 175 题，下册完成 26 题。8.5.B 四题、8.6.B 两题均已完成。下一题为下册 **8.7.B 第 2 题**，对应 **B205**，见[原题 PDF 第 11 页（印刷第 9 页）](/files/problems/楼分析习题-v2.pdf#page=11)。
 
-**前后批次：**[上一批 B191—B197](/problems/3394284a188dfc847fd02679/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+**前后批次：**[下一批 B205—B211](/problems/aeb90646cd67124999a7cba3/) · [上一批 B191—B197](/problems/3394284a188dfc847fd02679/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
