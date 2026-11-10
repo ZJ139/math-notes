@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "下册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v2.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-09"
+updated_at: "2026-11-10"
 ---
 
 收录《数学分析》下册第 8—12 章：积分、函数列与函数项级数、反常积分与含参变量积分、曲线积分与曲面积分、Fourier 级数。
@@ -26,6 +26,8 @@ updated_at: "2026-11-09"
 
 - [第二十九批 B198—B204：8.5.B 第 1—4 题、8.6.B 第 1—2 题与 8.7.B 第 1 题](/problems/7eefe730d0abc9edb8bf7c08/)。七题完整解答；包括迭代函数方程、广义 Young 不等式、最优积分常数、混合偏导估计、均匀球体引力、一致一阶余项及 Weierstrass 逼近。
 
-下册当前 **26 道已作答、1 道暂跳过**；两册合计 **201 道已作答、3 道暂跳过**。8.5.B、8.6.B 全部完成；下一题为 **B205＝8.7.B 第 2 题**，见[原题 PDF 第 11 页（印刷第 9 页）](/files/problems/楼分析习题-v2.pdf#page=11)。
+- [第三十批 B205—B211：8.7.B 第 2—8 题](/problems/aeb90646cd67124999a7cba3/)。七题完整解答；包括两类 Weierstrass 逼近定理的反向推导、高维光滑截断、可测加性与中点凸函数、Bernstein 多项式和 Korovkin 定理，并说明原题的交叉引用笔误。
+
+下册当前 **33 道已作答、1 道暂跳过**；两册合计 **208 道已作答、3 道暂跳过**。8.5.B、8.6.B、8.7.B 全部完成；下一题为 **B212＝8.8.B 第 1 题**，见[原题 PDF 第 14 页（印刷第 12 页）](/files/problems/楼分析习题-v2.pdf#page=14)。
 
 [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
