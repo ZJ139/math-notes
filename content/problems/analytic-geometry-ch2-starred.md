@@ -10,7 +10,7 @@ updated_at: "2026-11-11"
 
 本篇依据《解析几何-问题》第二章“空间的平面和直线”，完成全部 **5 道星号题**。保留原节号与题号；第 2.1、2.4 节没有星号题。解答使用点的坐标、直线的分量参数方程、一次方程组及行列式，不使用向径。
 
-[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=9 "PDF 章节直达")
+[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [第四章星号题](/problems/f29634e763186144d9b3a627/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=9 "PDF 章节直达")
 
 ## 题目目录
 
