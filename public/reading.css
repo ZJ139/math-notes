@@ -586,3 +586,7 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
 .prose>p:has(.article-figure){text-indent:0;text-align:center;break-inside:avoid}
 .prose .article-figure{display:block;width:100%;height:auto;margin:1.3em auto;max-width:880px;background:#fff}
 @media print{.prose .article-figure{max-height:150mm;width:auto;max-width:100%;object-fit:contain;margin:5mm auto}}
+
+/* Analytic geometry: half the former full-column display width; original SVG stays linked. */
+.prose .article-figure[src*="/figures/analytic-geometry/"]{width:50%;max-width:440px}
+@media print{.prose .article-figure[src*="/figures/analytic-geometry/"]{width:50%;max-width:50%;max-height:75mm}}
