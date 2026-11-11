@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "上册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v1.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-10"
+updated_at: "2026-11-11"
 ---
 
 依据楼红卫编著《数学分析》上册（2022）整理，按原书章节及 A、B 组编排，保留原题号与星号。收录实数、序列极限、函数极限与连续、导数与微分、不定积分、微分中值定理与 Taylor 展开式、微分问题。
@@ -71,6 +71,6 @@ updated_at: "2026-11-10"
 
 上册累计完成 **175 道 B 组习题**：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 9 题、第六章 48 题、第七章 11 题。上册全部 177 个原题位置均已编入目录，B116（5.5.B 第 1 题）与 B148（6.4.B 第 1 题）继续暂跳过，未计入完成数。
 
-两册合计 **215 道已作答、3 道暂跳过**；下册现完成四十题，另有 B180（8.2.B 第 2 题）待核文献。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/)、[第二十八批 B191—B197](/problems/3394284a188dfc847fd02679/)、[第二十九批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/)、[第三十批 B205—B211](/problems/aeb90646cd67124999a7cba3/) 与[第三十一批 B212—B218](/problems/276de8e86ac38b40563aa582/) 已接续完成至下册 8.8.B 第 7 题。跨册沿用连续编号，下一题为下册 **8.9.B 第 1 题，即 B219**，见[下册原题 PDF 第 15 页](/files/problems/楼分析习题-v2.pdf#page=15)。
+两册合计 **222 道已作答、3 道暂跳过**；下册现完成四十七题，另有 B180（8.2.B 第 2 题）待核文献。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/)、[第二十八批 B191—B197](/problems/3394284a188dfc847fd02679/)、[第二十九批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/)、[第三十批 B205—B211](/problems/aeb90646cd67124999a7cba3/)、[第三十一批 B212—B218](/problems/276de8e86ac38b40563aa582/) 与[第三十二批 B219—B225](/problems/f22fb7377267be47a9e8df4f/) 已接续完成至下册 9.1.B 第 6 题。第八章各 B 组题号已收录，B180 仍待核；[第九章题解索引](/problems/collections/lou-analysis/chapters/9/)已启用。跨册沿用连续编号，下一题为下册 **9.1.B 第 7 题，即 B226**，见[下册原题 PDF 第 17 页](/files/problems/楼分析习题-v2.pdf#page=17)。
 
 [第五章索引](/problems/collections/lou-analysis/chapters/5/) · [第六章索引](/problems/collections/lou-analysis/chapters/6/) · [第七章索引](/problems/collections/lou-analysis/chapters/7/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)

@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "下册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v2.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-10"
+updated_at: "2026-11-11"
 ---
 
 收录《数学分析》下册第 8—12 章：积分、函数列与函数项级数、反常积分与含参变量积分、曲线积分与曲面积分、Fourier 级数。
@@ -30,6 +30,8 @@ updated_at: "2026-11-10"
 
 - [第三十一批 B212—B218：8.8.B 第 1—7 题](/problems/276de8e86ac38b40563aa582/)。七题完整解答；包括有限指数和的三种证明、线性系统渐近稳定、紧支高阶原函数的矩条件、高阶弱导数、多维均匀分布，以及平均与离散采样条件的减弱；明确修正系数的自由度和积分维数笔误。
 
-下册当前 **40 道已作答、1 道暂跳过**；两册合计 **215 道已作答、3 道暂跳过**。8.5.B、8.6.B、8.7.B、8.8.B 全部完成；下一题为 **B219＝8.9.B 第 1 题**，见[原题 PDF 第 15 页（印刷第 13 页）](/files/problems/楼分析习题-v2.pdf#page=15)。
+- [第三十二批 B219—B225：8.9.B 第 1 题与 9.1.B 第 1—6 题](/problems/f22fb7377267be47a9e8df4f/)。七题完整解答；包括 Riemann 可积复合、拟一致收敛及高维推广、连续函数逐点极限与导函数的连续点、对数分母级数，以及六类极限微积分运算交换的条件与反例。
 
-[第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
+下册当前 **47 道已作答、1 道暂跳过**；两册合计 **222 道已作答、3 道暂跳过**。第八章各节 B 组题号已全部收录，其中 B180 继续待核，不计入完成数；第九章完成 9.1.B 第 1—6 题。下一题为 **B226＝9.1.B 第 7 题**，见[原题 PDF 第 17 页（印刷第 15 页）](/files/problems/楼分析习题-v2.pdf#page=17)。
+
+[第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
