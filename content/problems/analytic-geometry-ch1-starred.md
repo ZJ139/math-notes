@@ -10,7 +10,7 @@ updated_at: "2026-11-11"
 
 本篇依据《解析几何-问题》第一章“几何空间的线性结构和度量结构”，完成全部 **8 道星号题**。题号与原册一致；第 1.2 节没有星号题。原题涉及定位向量的地方改写为等价的坐标条件，解答不使用向径。内积、外积及混合积题均落实到分量、线性方程组与行列式计算。
 
-[返回解析几何习题](/problems/collections/analytic-geometry/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [第四章星号题](/problems/f29634e763186144d9b3a627/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=4 "PDF 章节直达")
+[返回解析几何习题](/problems/collections/analytic-geometry/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [第四章星号题](/problems/f29634e763186144d9b3a627/) · [第五章星号题](/problems/2f6248a8deff112338e18ffa/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=4 "PDF 章节直达")
 
 ## 题目目录
 

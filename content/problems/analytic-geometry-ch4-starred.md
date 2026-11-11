@@ -10,7 +10,7 @@ updated_at: "2026-11-11"
 
 本篇逐页核对《解析几何-问题》PDF 第 19—22 页（纸面第 16—19 页），第四章“坐标变换”共有 **5 道星号题**：4.3 第 13 题，4.4 第 7、10、11、12 题；4.1、4.2 没有星号题。第五章从 PDF 第 23 页开始。本篇保留全部题干和设问，以坐标分量、方程组、行列式及初等正交变换作答，不使用向径。
 
-[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=19 "PDF 章节直达")
+[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第三章星号题](/problems/0d3badac32d9d743699495ef/) · [第五章星号题](/problems/2f6248a8deff112338e18ffa/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=19 "PDF 章节直达")
 
 ## 题目目录
 
@@ -534,4 +534,4 @@ $$
 
 至此，第一至第四章累计完成 **32 道星号题**：第一章 8 道、第二章 5 道、第三章 14 道、第四章 5 道。本篇未增补非星号题，也不将第五章题目计入本次进度。
 
-[第三章题解](/problems/0d3badac32d9d743699495ef/) · [第一章题解](/problems/39ad59127a8c032708a2f582/) · [第二章题解](/problems/679bfb85d47436cf5e1d34b1/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [返回解析几何习题](/problems/collections/analytic-geometry/)
+[第三章题解](/problems/0d3badac32d9d743699495ef/) · [第一章题解](/problems/39ad59127a8c032708a2f582/) · [第二章题解](/problems/679bfb85d47436cf5e1d34b1/) · [第五章题解](/problems/2f6248a8deff112338e18ffa/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [返回解析几何习题](/problems/collections/analytic-geometry/)
