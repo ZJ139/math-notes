@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "下册", "振荡平均", "弱导数", "均匀分布", "B212-B218"]
 created_at: "2026-11-10"
-updated_at: "2026-11-10"
+updated_at: "2026-11-11"
 ---
 
 本批接续 B211，按原书顺序完成 **B212—B218** 七题，即 **8.8.B 第 1—7 题**。原题全部位于下册 PDF 第 14 页（印刷第 12 页），均无星号；第 1 题要求多种证明，第 7 题为开放推广题。题面保留全部条件与交叉引用，第 5 题保留原式并说明题册脚注指出的维数笔误。
@@ -14,7 +14,7 @@ updated_at: "2026-11-10"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [原题 PDF 第 14 页（印刷第 12 页）](/files/problems/楼分析习题-v2.pdf#page=14) · [所引 A 组题第 13 页](/files/problems/楼分析习题-v2.pdf#page=13)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B205—B211](/problems/aeb90646cd67124999a7cba3/)
+**批次导航：**[下一批 B219—B225](/problems/f22fb7377267be47a9e8df4f/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [上一批 B205—B211](/problems/aeb90646cd67124999a7cba3/)
 
 ## 题号导航
 
@@ -519,3 +519,5 @@ $$
 编号推进至 **B218**；两册累计 **215 道已作答、3 道暂跳过**，其中上册完成 175 题，下册完成 40 题。**8.8.B 七题全部完成**。下一题为下册 **8.9.B 第 1 题**，对应 **B219**，见[原题 PDF 第 15 页（印刷第 13 页）](/files/problems/楼分析习题-v2.pdf#page=15)。
 
 **前后批次：**[上一批 B205—B211](/problems/aeb90646cd67124999a7cba3/) · [B 组章节目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+
+[下一批 B219—B225：可积复合、拟一致收敛与运算交换](/problems/f22fb7377267be47a9e8df4f/)，已接续完成 8.9.B 第 1 题及 9.1.B 第 1—6 题。以上累计数字与下一题说明保留本批发布时的历史进度。
