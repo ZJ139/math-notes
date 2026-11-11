@@ -18,6 +18,8 @@ const components: Components = {
   table: ({children}) => <div className="table-scroll" role="region" aria-label="表格，可横向滚动" tabIndex={0}><table>{children}</table></div>,
   img: ({alt, node, ...props}) => Array.isArray(node?.properties.className) && node.properties.className.includes('latex-svg')
     ? <img {...props} alt="" aria-hidden="true"/>
+    : typeof props.src === 'string' && /^\/figures\/[A-Za-z0-9/_-]+\.(?:svg|png|webp)$/.test(props.src)
+    ? <img {...props} alt={alt || ''} className="article-figure" loading="lazy" decoding="async"/>
     : <span className="muted">{alt ? `[图片：${alt}]` : '[图片]'}</span>,
 };
 const readingSections = [

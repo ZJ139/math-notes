@@ -581,3 +581,8 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
  .lou-batch-toc{padding:20px 16px}.lou-batch-section-heading{flex-wrap:wrap;gap:6px}.lou-batch-toc li a{font-size:17px}
 }
 @media print{.lou-chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lou-section,.lou-chapter-grid>a{break-inside:avoid}}
+
+/* Coordinate diagrams retain their aspect ratio on screen and on paper. */
+.prose>p:has(.article-figure){text-indent:0;text-align:center;break-inside:avoid}
+.prose .article-figure{display:block;width:100%;height:auto;margin:1.3em auto;max-width:880px;background:#fff}
+@media print{.prose .article-figure{max-height:150mm;width:auto;max-width:100%;object-fit:contain;margin:5mm auto}}
