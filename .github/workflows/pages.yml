@@ -28,17 +28,30 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          # Avoid the slow Azure HTTP mirror; keep Ubuntu's signed packages.
-          if [[ -f /etc/apt/apt-mirrors.txt ]]; then
-            sudo sed -i \
-              -e 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
-              -e 's|http://archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
-              -e 's|http://security.ubuntu.com/ubuntu|https://security.ubuntu.com/ubuntu|g' \
-              /etc/apt/apt-mirrors.txt
+          # Keep only reachable official mirrors, preserving apt signature checks.
+          source /etc/os-release
+          test -f /etc/apt/apt-mirrors.txt
+          mirror_list=$(mktemp)
+          trap 'rm -f "$mirror_list"' EXIT
+          priority=0
+          for mirror in https://archive.ubuntu.com/ubuntu https://azure.archive.ubuntu.com/ubuntu https://security.ubuntu.com/ubuntu; do
+            if curl --fail --silent --show-error --location --connect-timeout 5 --max-time 15 \
+              "$mirror/dists/$VERSION_CODENAME/InRelease" --output /dev/null; then
+              priority=$((priority + 1))
+              printf '%s/\tpriority:%s\n' "$mirror" "$priority" >> "$mirror_list"
+            else
+              echo "::warning::Ubuntu mirror unavailable: $mirror"
+            fi
+          done
+          if [[ ! -s "$mirror_list" ]]; then
+            echo '::error::No official Ubuntu mirror is reachable; stopping before apt installation.'
+            exit 1
           fi
-          apt_network=(-o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30)
-          sudo apt-get "${apt_network[@]}" update
-          sudo --preserve-env=DEBIAN_FRONTEND apt-get "${apt_network[@]}" install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-fonts-recommended poppler-utils poppler-data
+          sudo install -m 644 "$mirror_list" /etc/apt/apt-mirrors.txt
+          cat "$mirror_list"
+          apt_network=(-o Acquire::Retries=1 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15)
+          sudo timeout --kill-after=15s 180s apt-get "${apt_network[@]}" -o APT::Update::Error-Mode=any update
+          sudo --preserve-env=DEBIAN_FRONTEND timeout --kill-after=15s 450s apt-get "${apt_network[@]}" install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-fonts-recommended poppler-utils poppler-data
       - uses: actions/cache@v4
         with:
           path: .latex-cache
