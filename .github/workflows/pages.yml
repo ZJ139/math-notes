@@ -34,7 +34,7 @@ jobs:
           mirror_list=$(mktemp)
           trap 'rm -f "$mirror_list"' EXIT
           priority=0
-          for mirror in https://archive.ubuntu.com/ubuntu https://azure.archive.ubuntu.com/ubuntu https://security.ubuntu.com/ubuntu; do
+          for mirror in https://archive.ubuntu.com/ubuntu https://azure.archive.ubuntu.com/ubuntu https://security.ubuntu.com/ubuntu https://mirrors.kernel.org/ubuntu; do
             if curl --fail --silent --show-error --location --connect-timeout 5 --max-time 15 \
               "$mirror/dists/$VERSION_CODENAME/InRelease" --output /dev/null; then
               priority=$((priority + 1))
