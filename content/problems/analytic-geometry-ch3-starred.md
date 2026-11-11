@@ -10,7 +10,7 @@ updated_at: "2026-11-11"
 
 本篇逐页核对《解析几何-问题》物理第 14—18 页（纸面第 11—15 页），完成第三章“常见曲面”全部 **14 道星号题**：3.1 节 2 道、3.2 节 3 道、3.3 节 2 道、3.4 节 7 道；3.5 节没有星号题。全文使用坐标分量、方程组、行列式及初等坐标变换，不使用向径。
 
-[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [第四章星号题](/problems/f29634e763186144d9b3a627/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=14 "PDF 章节直达")
+[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第五章星号题](/problems/2f6248a8deff112338e18ffa/) · [原题资料页](/problems/37541d9c71795633206b9526/) · [第四章星号题](/problems/f29634e763186144d9b3a627/) · [打开原题册](/files/problems/解析几何-问题.pdf#page=14 "PDF 章节直达")
 
 ## 题目目录
 
@@ -692,4 +692,4 @@ $$
 - 单叶双曲面：将整条直线代入曲面方程，令参数多项式各项系数为零；两族母线要分别检查相交、平行和异面。
 - 马鞍面：按高度连接点，用异面条件保证行列式非零；消元后检查特殊高度，并用可逆坐标变换和配方完成曲面识别。
 
-[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [原题资料页](/problems/37541d9c71795633206b9526/)
+[返回解析几何习题](/problems/collections/analytic-geometry/) · [第一章星号题](/problems/39ad59127a8c032708a2f582/) · [第二章星号题](/problems/679bfb85d47436cf5e1d34b1/) · [第五章题解](/problems/2f6248a8deff112338e18ffa/) · [原题资料页](/problems/37541d9c71795633206b9526/)
