@@ -590,3 +590,16 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
 /* Analytic geometry: half the former full-column display width; original SVG stays linked. */
 .prose .article-figure[src*="/figures/analytic-geometry/"]{width:50%;max-width:440px}
 @media print{.prose .article-figure[src*="/figures/analytic-geometry/"]{width:50%;max-width:50%;max-height:75mm}}
+
+/* The theorem lecture uses larger diagrams and a compact, keyboard-accessible index. */
+.prose .article-figure[src*="/figures/analytic-geometry/theorems/"]{width:100%;max-width:880px}
+.lecture-toc{margin:28px 0 38px;padding:24px 28px;border:1px solid var(--line);border-top:2px solid var(--ink)}
+.lecture-toc h2{font-size:25px;margin:0 0 10px}.lecture-toc>p{font-size:17px;margin:0 0 14px;color:var(--muted)}
+.lecture-toc-shortcuts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:18px;font-size:18px}
+.lecture-toc-chapter{border-top:1px solid var(--line);padding:11px 0}.lecture-toc summary{cursor:pointer;font-size:19px;font-weight:700;line-height:1.6}
+.lecture-toc-start{display:inline-block;margin:10px 0 5px;font-size:17px;text-decoration:underline;text-underline-offset:.2em}
+.lecture-toc-section{margin:10px 0 0 18px;padding-left:12px;border-left:1px solid var(--line)}
+.lecture-toc-section summary{font-size:18px;font-weight:400}.lecture-toc-section summary span{font-size:15px;color:var(--muted);margin-left:12px;white-space:nowrap}
+.lecture-toc-section ul{padding-left:1.3em;margin:8px 0 12px;list-style:none}.lecture-toc-section li{margin:6px 0;font-size:17px;line-height:1.65}
+@media(max-width:700px){.lecture-toc{padding:18px 16px}.lecture-toc-section{margin-left:8px;padding-left:10px}.lecture-toc-section ul{padding-left:0}.lecture-toc-shortcuts{gap:8px 16px}}
+@media print{.lecture-toc{display:none}.prose .article-figure[src*="/figures/analytic-geometry/theorems/"]{width:auto;max-width:100%;max-height:125mm}}

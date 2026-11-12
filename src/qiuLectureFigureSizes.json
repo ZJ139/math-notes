@@ -1,0 +1,190 @@
+{
+  "/figures/analytic-geometry/theorems/ch1-addition.svg": {
+    "height": 219820,
+    "width": 370259
+  },
+  "/figures/analytic-geometry/theorems/ch1-affine-basis.svg": {
+    "height": 263020,
+    "width": 251668
+  },
+  "/figures/analytic-geometry/theorems/ch1-cross-product.svg": {
+    "height": 248620,
+    "width": 185657
+  },
+  "/figures/analytic-geometry/theorems/ch1-menelaus-ceva.svg": {
+    "height": 221858,
+    "width": 531620
+  },
+  "/figures/analytic-geometry/theorems/ch1-mixed-volume.svg": {
+    "height": 255820,
+    "width": 295903
+  },
+  "/figures/analytic-geometry/theorems/ch1-orthocenter.svg": {
+    "height": 227020,
+    "width": 305384
+  },
+  "/figures/analytic-geometry/theorems/ch1-planar-decomposition.svg": {
+    "height": 219305,
+    "width": 392620
+  },
+  "/figures/analytic-geometry/theorems/ch1-projection.svg": {
+    "height": 219820,
+    "width": 347003
+  },
+  "/figures/analytic-geometry/theorems/ch1-right-tetrahedron.svg": {
+    "height": 234220,
+    "width": 364803
+  },
+  "/figures/analytic-geometry/theorems/ch1-section-ratio.svg": {
+    "height": 128583,
+    "width": 431059
+  },
+  "/figures/analytic-geometry/theorems/ch1-spherical-triangle.svg": {
+    "height": 266400,
+    "width": 266400
+  },
+  "/figures/analytic-geometry/theorems/ch1-tetra-midpoints.svg": {
+    "height": 241420,
+    "width": 346454
+  },
+  "/figures/analytic-geometry/theorems/ch2-affine-plane.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch2-angles.svg": {
+    "height": 145800,
+    "width": 215100
+  },
+  "/figures/analytic-geometry/theorems/ch2-line-angle.svg": {
+    "height": 140256,
+    "width": 162432
+  },
+  "/figures/analytic-geometry/theorems/ch2-line-plane-angle.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch2-line-plane.svg": {
+    "height": 134712,
+    "width": 402552
+  },
+  "/figures/analytic-geometry/theorems/ch2-line-positions.svg": {
+    "height": 114452,
+    "width": 420120
+  },
+  "/figures/analytic-geometry/theorems/ch2-line.svg": {
+    "height": 97317,
+    "width": 219240
+  },
+  "/figures/analytic-geometry/theorems/ch2-pencil.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch2-plane-distance.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch2-plane-positions.svg": {
+    "height": 134712,
+    "width": 402552
+  },
+  "/figures/analytic-geometry/theorems/ch2-point-line.svg": {
+    "height": 120060,
+    "width": 219240
+  },
+  "/figures/analytic-geometry/theorems/ch2-skew.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch2-three-planes.svg": {
+    "height": 173520,
+    "width": 173520
+  },
+  "/figures/analytic-geometry/theorems/ch3-axonometry.svg": {
+    "height": 184208,
+    "width": 583243
+  },
+  "/figures/analytic-geometry/theorems/ch3-cone.svg": {
+    "height": 255456,
+    "width": 255456
+  },
+  "/figures/analytic-geometry/theorems/ch3-cylinders.svg": {
+    "height": 218550,
+    "width": 597420
+  },
+  "/figures/analytic-geometry/theorems/ch3-cylindrical.svg": {
+    "height": 249912,
+    "width": 249912
+  },
+  "/figures/analytic-geometry/theorems/ch3-degenerate.svg": {
+    "height": 367348,
+    "width": 551192
+  },
+  "/figures/analytic-geometry/theorems/ch3-ellipsoid.svg": {
+    "height": 253124,
+    "width": 238824
+  },
+  "/figures/analytic-geometry/theorems/ch3-hyperboloids.svg": {
+    "height": 288080,
+    "width": 536040
+  },
+  "/figures/analytic-geometry/theorems/ch3-paraboloids.svg": {
+    "height": 269756,
+    "width": 514677
+  },
+  "/figures/analytic-geometry/theorems/ch3-projection.svg": {
+    "height": 261000,
+    "width": 261000
+  },
+  "/figures/analytic-geometry/theorems/ch3-ruled-hyperboloid.svg": {
+    "height": 299808,
+    "width": 299808
+  },
+  "/figures/analytic-geometry/theorems/ch3-ruled-saddle.svg": {
+    "height": 272088,
+    "width": 272088
+  },
+  "/figures/analytic-geometry/theorems/ch3-spherical.svg": {
+    "height": 249912,
+    "width": 249912
+  },
+  "/figures/analytic-geometry/theorems/ch3-torus.svg": {
+    "height": 244368,
+    "width": 244368
+  },
+  "/figures/analytic-geometry/theorems/ch5-asymptotes.svg": {
+    "height": 197863,
+    "width": 273780
+  },
+  "/figures/analytic-geometry/theorems/ch5-centers.svg": {
+    "height": 117670,
+    "width": 402120
+  },
+  "/figures/analytic-geometry/theorems/ch5-diameters.svg": {
+    "height": 216648,
+    "width": 271349
+  },
+  "/figures/analytic-geometry/theorems/ch5-external-tangents.svg": {
+    "height": 216648,
+    "width": 245438
+  },
+  "/figures/analytic-geometry/theorems/ch5-line-intersection.svg": {
+    "height": 205560,
+    "width": 265779
+  },
+  "/figures/analytic-geometry/theorems/ch5-nine-conics.svg": {
+    "height": 373217,
+    "width": 391428
+  },
+  "/figures/analytic-geometry/theorems/ch5-principal-axes.svg": {
+    "height": 123405,
+    "width": 402120
+  },
+  "/figures/analytic-geometry/theorems/ch5-reduction.svg": {
+    "height": 222534,
+    "width": 264896
+  },
+  "/figures/analytic-geometry/theorems/ch5-tangent-normal.svg": {
+    "height": 221862,
+    "width": 252322
+  }
+}
