@@ -26,15 +26,15 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small 数学手记}
-\fancyhead[R]{\small 解析几何定理与结论}
+\fancyhead[R]{\small\hyperref[contents]{解析几何定理与结论\quad 目录}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
 \usepackage{bookmark}
-\bookmarksetup{depth=2}
+\bookmarksetup{depth=3}
 \hypersetup{pdftitle={解析几何：定理与结论图解汇总},pdfauthor={Vincent Arqain},pdfsubject={丘维声第三版第1、2、3、5章}}
 \renewcommand{\contentsname}{目录}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{2}
 \widowpenalty=10000
 \clubpenalty=10000
@@ -47,8 +47,9 @@
 \usepackage{graphicx,longtable,booktabs,array}
 \usepackage[font=small,labelfont=bf,hypcap=false]{caption}
 \renewcommand{\figurename}{图}
-\newcommand{\entry}[3]{\par\Needspace{5\baselineskip}\noindent\textbf{#1\quad #2}\par\nobreak{\small #3}\par\nobreak}
-\newcommand{\diagram}[3]{\begin{center}\begin{minipage}{\linewidth}\centering\includegraphics[width=.72\linewidth,height=66mm,keepaspectratio]{#1}\captionof{figure}{#2}\label{#3}\end{minipage}\end{center}}
+\renewcommand{\listfigurename}{配图目录}
+\newcommand{\entry}[3]{\par\Needspace{5\baselineskip}\noindent\phantomsection\label{entry:#1}\addcontentsline{toc}{subsubsection}{\protect\numberline{#1}#2}\textbf{#1\quad #2}\par\nobreak{\small #3}\par\nobreak}
+\newcommand{\diagram}[3]{\begin{center}\begin{minipage}{\linewidth}\centering\includegraphics[width=.96\linewidth,height=108mm,keepaspectratio]{#1}\captionof{figure}{#2}\label{#3}\end{minipage}\end{center}}
 \renewcommand{\thesection}{\arabic{section}}
 
 
@@ -69,7 +70,7 @@
 
 本册共 160 条，配有 47 幅图。
 
-\clearpage\tableofcontents\clearpage\pagenumbering{arabic}
+\clearpage\phantomsection\label{contents}\pdfbookmark[0]{目录}{toc}\tableofcontents\clearpage\phantomsection\addcontentsline{toc}{section}{配图目录}\listoffigures\clearpage\pagenumbering{arabic}
 
 \clearpage
 
@@ -903,7 +904,7 @@
 \[\begin{array}{cl}(9)\ \text{椭圆柱面}&x^2/a^2+y^2/b^2=1,\\(10)\ \text{虚椭圆柱面}&x^2/a^2+y^2/b^2=-1,\\(11)\ \text{直线}&x^2/a^2+y^2/b^2=0,\\(12)\ \text{双曲柱面}&x^2/a^2-y^2/b^2=1,\\(13)\ \text{一对相交平面}&x^2/a^2-y^2/b^2=0,\\(14)\ \text{抛物柱面}&x^2=2py,\\(15)\ \text{一对平行平面}&x^2=a^2,\\(16)\ \text{一对虚平行平面}&x^2=-a^2,\\(17)\ \text{一对重合平面}&x^2=0.\end{array}\]
 第(10)、(16)类实点集为空；第(11)类为\(z\)轴；第(13)类为\(x/a\pm y/b=0\)两个平面；第(15)类为\(x=\pm a\)；第(17)类的几何点集为平面\(x=0\)，方程具有二重因子。十七类的完备分类证明在本书此处未展开。
 
-\begin{center}\includegraphics[width=.96\linewidth,height=100mm,keepaspectratio]{print/qiu-analytic-geometry-summary/ch3-degenerate.pdf}\captionof{figure}{退化实二次曲面：点、直线、相交平面、平行平面、重合平面；三种虚类均没有实点，用空集符号表示。}\label{fig:ch3-degenerate}\end{center}
+\begin{center}\begin{minipage}{\linewidth}\centering\includegraphics[width=.98\linewidth,height=135mm,keepaspectratio]{print/qiu-analytic-geometry-summary/ch3-degenerate.pdf}\captionof{figure}{退化实二次曲面：点、直线、相交平面、平行平面、重合平面；三种虚类均没有实点，用空集符号表示。}\label{fig:ch3-degenerate}\end{minipage}\end{center}
 
 \Needspace{10\baselineskip}
 
@@ -1045,7 +1046,7 @@ a_3^2&=1/|\lambda_1|,&b_3^2&=1/|\lambda_2|.
 \end{aligned}\]
 每一行仅在对应情形使用，因而其中的尺度平方均为正。虚椭圆无实点；一个点即新原点。
 
-\begin{center}\includegraphics[width=.96\linewidth,height=100mm,keepaspectratio]{print/qiu-analytic-geometry-summary/ch5-nine-conics.pdf}\captionof{figure}{九类二次曲线；虚椭圆和虚平行直线没有实轨迹。}\label{fig:ch5-nine-conics}\end{center}
+\begin{center}\begin{minipage}{\linewidth}\centering\includegraphics[width=.98\linewidth,height=135mm,keepaspectratio]{print/qiu-analytic-geometry-summary/ch5-nine-conics.pdf}\captionof{figure}{九类二次曲线；虚椭圆和虚平行直线没有实轨迹。}\label{fig:ch5-nine-conics}\end{minipage}\end{center}
 
 \entry{5.1.5}{双曲型曲线的两种情形}{教材第5章§1.2，pp.152–153；图40}
 
@@ -1294,123 +1295,123 @@ F_1(M_1)F_2(M_1)&=a_{12}F(M_1),\end{aligned}\]
 
 \begin{longtable}{@{}cllp{65mm}@{}}\toprule 章&教材编号&本册条目&主题\\\midrule\endhead
 
-1&命题1.1&1.1.6&非零共线向量的唯一数乘表示\\
+1&命题1.1&\hyperref[entry:1.1.6]{1.1.6}&非零共线向量的唯一数乘表示\\
 
-1&命题1.2&1.1.7&两向量共线的线性关系判据\\
+1&命题1.2&\hyperref[entry:1.1.7]{1.1.7}&两向量共线的线性关系判据\\
 
-1&推论1.1&1.1.8&两向量不共线的判据\\
+1&推论1.1&\hyperref[entry:1.1.8]{1.1.8}&两向量不共线的判据\\
 
-1&命题1.3&1.1.9&两个向量的线性组合必与其共面\\
+1&命题1.3&\hyperref[entry:1.1.9]{1.1.9}&两个向量的线性组合必与其共面\\
 
-1&命题1.4&1.1.10&共面向量关于两个不共线向量的唯一分解\\
+1&命题1.4&\hyperref[entry:1.1.10]{1.1.10}&共面向量关于两个不共线向量的唯一分解\\
 
-1&命题1.5&1.1.11&三向量共面的线性关系判据\\
+1&命题1.5&\hyperref[entry:1.1.11]{1.1.11}&三向量共面的线性关系判据\\
 
-1&推论1.2&1.1.12&三向量不共面的判据\\
+1&推论1.2&\hyperref[entry:1.1.12]{1.1.12}&三向量不共面的判据\\
 
-1&定理2.1&1.2.1&几何空间的基与唯一分解定理\\
+1&定理2.1&\hyperref[entry:1.2.1]{1.2.1}&几何空间的基与唯一分解定理\\
 
-1&定理2.2&1.2.6&两点所确定向量的坐标\\
+1&定理2.2&\hyperref[entry:1.2.6]{1.2.6}&两点所确定向量的坐标\\
 
-1&命题2.1&1.2.7&平面两向量共线的行列式判据\\
+1&命题2.1&\hyperref[entry:1.2.7]{1.2.7}&平面两向量共线的行列式判据\\
 
-1&命题2.2&1.2.8&平面三点共线的行列式判据\\
+1&命题2.2&\hyperref[entry:1.2.8]{1.2.8}&平面三点共线的行列式判据\\
 
-1&命题2.3&1.2.9&空间两向量共线的三个子式判据\\
+1&命题2.3&\hyperref[entry:1.2.9]{1.2.9}&空间两向量共线的三个子式判据\\
 
-1&命题2.4&1.2.10&定比分点公式\\
+1&命题2.4&\hyperref[entry:1.2.10]{1.2.10}&定比分点公式\\
 
-1&推论2.1&1.2.11&中点坐标公式\\
+1&推论2.1&\hyperref[entry:1.2.11]{1.2.11}&中点坐标公式\\
 
-1&命题3.1&1.3.2&内射影的线性性质\\
+1&命题3.1&\hyperref[entry:1.3.2]{1.3.2}&内射影的线性性质\\
 
-1&命题3.2&1.3.3&分量的长度—夹角公式\\
+1&命题3.2&\hyperref[entry:1.3.3]{1.3.3}&分量的长度—夹角公式\\
 
-1&命题3.3&1.3.4&内射影与分量的关系\\
+1&命题3.3&\hyperref[entry:1.3.4]{1.3.4}&内射影与分量的关系\\
 
-1&命题3.4&1.3.5&分量的线性性质\\
+1&命题3.4&\hyperref[entry:1.3.5]{1.3.5}&分量的线性性质\\
 
-1&定理3.1&1.3.7&内积的运算规律\\
+1&定理3.1&\hyperref[entry:1.3.7]{1.3.7}&内积的运算规律\\
 
-1&定理3.2&1.3.10&直角坐标中的内积、长度与距离\\
+1&定理3.2&\hyperref[entry:1.3.10]{1.3.10}&直角坐标中的内积、长度与距离\\
 
-1&命题4.1&1.4.3&外积只取决于垂直分量\\
+1&命题4.1&\hyperref[entry:1.4.3]{1.4.3}&外积只取决于垂直分量\\
 
-1&命题4.2&1.4.4&单位轴向量的外积表示直角旋转\\
+1&命题4.2&\hyperref[entry:1.4.4]{1.4.4}&单位轴向量的外积表示直角旋转\\
 
-1&推论4.1&1.4.5&右手直角基的循环外积\\
+1&推论4.1&\hyperref[entry:1.4.5]{1.4.5}&右手直角基的循环外积\\
 
-1&定理4.1&1.4.6&外积的运算规律\\
+1&定理4.1&\hyperref[entry:1.4.6]{1.4.6}&外积的运算规律\\
 
-1&定理4.2&1.4.8&右手直角坐标中的外积及面积公式\\
+1&定理4.2&\hyperref[entry:1.4.8]{1.4.8}&右手直角坐标中的外积及面积公式\\
 
-1&命题4.3&1.4.9&二重外积公式与不满足结合律\\
+1&命题4.3&\hyperref[entry:1.4.9]{1.4.9}&二重外积公式与不满足结合律\\
 
-1&命题5.1&1.5.2&混合积为零的共面判据\\
+1&命题5.1&\hyperref[entry:1.5.2]{1.5.2}&混合积为零的共面判据\\
 
-1&命题5.2&1.5.4&仿射坐标中的混合积\\
+1&命题5.2&\hyperref[entry:1.5.4]{1.5.4}&仿射坐标中的混合积\\
 
-1&定理5.1&1.5.5&右手直角坐标中的混合积\\
+1&定理5.1&\hyperref[entry:1.5.5]{1.5.5}&右手直角坐标中的混合积\\
 
-1&定理5.2&1.5.6&三向量共面的仿射坐标判据\\
+1&定理5.2&\hyperref[entry:1.5.6]{1.5.6}&三向量共面的仿射坐标判据\\
 
-1&推论5.1&1.5.7&四点共面的仿射坐标判据\\
+1&推论5.1&\hyperref[entry:1.5.7]{1.5.7}&四点共面的仿射坐标判据\\
 
-1&定理5.3&1.5.8&拉格朗日恒等式\\
+1&定理5.3&\hyperref[entry:1.5.8]{1.5.8}&拉格朗日恒等式\\
 
-2&定理1.1&2.1.2&平面与三元一次方程\\
+2&定理1.1&\hyperref[entry:2.1.2]{2.1.2}&平面与三元一次方程\\
 
-2&定理1.2&2.1.3&平面的方向由一次项系数决定\\
+2&定理1.2&\hyperref[entry:2.1.3]{2.1.3}&平面的方向由一次项系数决定\\
 
-2&推论1.1&2.1.4&平行于坐标轴与经过原点的判据\\
+2&推论1.1&\hyperref[entry:2.1.4]{2.1.4}&平行于坐标轴与经过原点的判据\\
 
-2&定理1.3&2.1.5&两个平面的三种位置关系\\
+2&定理1.3&\hyperref[entry:2.1.5]{2.1.5}&两个平面的三种位置关系\\
 
-2&命题1.1&2.1.6&三个平面恰交于一点\\
+2&命题1.1&\hyperref[entry:2.1.6]{2.1.6}&三个平面恰交于一点\\
 
-2&定理1.4&2.1.7&有轴平面束的完整方程\\
+2&定理1.4&\hyperref[entry:2.1.7]{2.1.7}&有轴平面束的完整方程\\
 
-2&定理2.1&2.2.2&点到平面的距离与离差\\
+2&定理2.1&\hyperref[entry:2.2.2]{2.2.2}&点到平面的距离与离差\\
 
-2&命题4.1&2.4.3&公垂线的定义、存在性与唯一性\\
+2&命题4.1&\hyperref[entry:2.4.3]{2.4.3}&公垂线的定义、存在性与唯一性\\
 
-2&命题4.2&2.4.4&公垂线段实现最短距离\\
+2&命题4.2&\hyperref[entry:2.4.4]{2.4.4}&公垂线段实现最短距离\\
 
-2&命题4.3&2.4.5&异面直线的距离公式\\
+2&命题4.3&\hyperref[entry:2.4.5]{2.4.5}&异面直线的距离公式\\
 
-3&定理2.1&3.2.5&缺少一个变量的方程与柱面\\
+3&定理2.1&\hyperref[entry:3.2.5]{3.2.5}&缺少一个变量的方程与柱面\\
 
-3&定理2.2&3.2.11&齐次方程产生锥面\\
+3&定理2.2&\hyperref[entry:3.2.11]{3.2.11}&齐次方程产生锥面\\
 
-3&定理2.3&3.2.12&顶点为原点的锥面可用齐次方程表示\\
+3&定理2.3&\hyperref[entry:3.2.12]{3.2.12}&顶点为原点的锥面可用齐次方程表示\\
 
-3&定理4.1&3.4.2&单叶双曲面与双曲抛物面是直纹面\\
+3&定理4.1&\hyperref[entry:3.4.2]{3.4.2}&单叶双曲面与双曲抛物面是直纹面\\
 
-5&定理1.1&5.1.2&特征值、特征向量与二阶实对称矩阵\\
+5&定理1.1&\hyperref[entry:5.1.2]{5.1.2}&特征值、特征向量与二阶实对称矩阵\\
 
-5&性质2.1&5.2.1&正交不变量、矩阵的迹与迹的运算律\\
+5&性质2.1&\hyperref[entry:5.2.1]{5.2.1}&正交不变量、矩阵的迹与迹的运算律\\
 
-5&性质2.2&5.2.1&正交不变量、矩阵的迹与迹的运算律\\
+5&性质2.2&\hyperref[entry:5.2.1]{5.2.1}&正交不变量、矩阵的迹与迹的运算律\\
 
-5&定理2.1&5.2.2&三个正交不变量\\
+5&定理2.1&\hyperref[entry:5.2.2]{5.2.2}&三个正交不变量\\
 
-5&定理2.2&5.2.3&半不变量及其适用条件\\
+5&定理2.2&\hyperref[entry:5.2.3]{5.2.3}&半不变量及其适用条件\\
 
-5&定理3.1&5.3.2&渐近方向及三类型的方向数\\
+5&定理3.1&\hyperref[entry:5.3.2]{5.3.2}&渐近方向及三类型的方向数\\
 
-5&定理3.2&5.3.3&中心方程与移到中心后的方程\\
+5&定理3.2&\hyperref[entry:5.3.3]{5.3.3}&中心方程与移到中心后的方程\\
 
-5&定理3.3&5.3.4&中心的个数与中心直线\\
+5&定理3.3&\hyperref[entry:5.3.4]{5.3.4}&中心的个数与中心直线\\
 
-5&定理4.1&5.4.1&直径方程与平行弦中点\\
+5&定理4.1&\hyperref[entry:5.4.1]{5.4.1}&直径方程与平行弦中点\\
 
-5&推论4.1&5.4.2&直径经过中心\\
+5&推论4.1&\hyperref[entry:5.4.2]{5.4.2}&直径经过中心\\
 
-5&命题4.1&5.4.3&共轭方向的坐标与二次型恒等式\\
+5&命题4.1&\hyperref[entry:5.4.3]{5.4.3}&共轭方向的坐标与二次型恒等式\\
 
-5&定理4.2&5.4.6&从特征值判断长轴和实轴\\
+5&定理4.2&\hyperref[entry:5.4.6]{5.4.6}&从特征值判断长轴和实轴\\
 
-5&定理5.1&5.5.1&切线定义及曲线上点的切线\\
+5&定理5.1&\hyperref[entry:5.5.1]{5.5.1}&切线定义及曲线上点的切线\\
 
 \bottomrule\end{longtable}
 
