@@ -6,7 +6,7 @@ category: "cmc-mathematics"
 tags: ["CMC", "全国大学生数学竞赛", "数学类", "初赛", "决赛", "真题"]
 attachment: "problems/数学类CMC真题汇总.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-11"
+updated_at: "2026-11-12"
 ---
 
 收录第 1—17 届全国大学生数学竞赛（CMC）数学类试卷，共 60 套：初赛 30 套、决赛 30 套。采用题目与作答留白版式。
@@ -248,6 +248,7 @@ updated_at: "2026-11-11"
 ### 第 15 届初赛
 
 - [第 15 届初赛·数学 A 类](/files/problems/数学类CMC真题汇总.pdf#page=137)：PDF 第 137—138 页（纸面第 133—134 页）。
+- [第十五届初赛数学 A 类：六题完整解析与考场复盘](/essays/968abeeef5ad2a0653d8210d/)。
 - [第 15 届初赛·数学 B 类](/files/problems/数学类CMC真题汇总.pdf#page=139)：PDF 第 139—140 页（纸面第 135—136 页）。
 
 ### 第 15 届决赛
