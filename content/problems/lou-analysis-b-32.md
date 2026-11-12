@@ -14,7 +14,7 @@ updated_at: "2026-11-11"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [原题 PDF 第 15 页](/files/problems/楼分析习题-v2.pdf#page=15) · [第 16 页](/files/problems/楼分析习题-v2.pdf#page=16) · [第 17 页](/files/problems/楼分析习题-v2.pdf#page=17)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [上一批 B212—B218](/problems/276de8e86ac38b40563aa582/)
+**批次导航：**[下一批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第八章索引](/problems/collections/lou-analysis/chapters/8/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [上一批 B212—B218](/problems/276de8e86ac38b40563aa582/)
 
 ## 题号导航
 
@@ -594,3 +594,5 @@ $$
 编号推进至 **B225**；两册累计 **222 道已作答、3 道暂跳过**，其中上册完成 175 题、下册完成 47 题。第八章收录至 **8.9.B 第 1 题**，其中 B180 继续待核；第九章收录至 **9.1.B 第 6 题**。下一题为下册 **9.1.B 第 7 题**，对应 **B226**，见[原题 PDF 第 17 页（印刷第 15 页）](/files/problems/楼分析习题-v2.pdf#page=17)。
 
 [返回题号导航](#题号导航) · [上一批 B212—B218](/problems/276de8e86ac38b40563aa582/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+
+[下一批 B226—B232：正项级数、端点行为与 Taylor 半径](/problems/41a8fc025daa4bef6a32b3d1/)，已接续完成 9.1.B 第 7—8 题、9.2.B 第 1—2 题及 9.3.B 第 1—3 题。以上累计数字与下一题说明保留本批发布时的历史进度。
