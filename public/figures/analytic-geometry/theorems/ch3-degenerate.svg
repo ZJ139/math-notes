@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="551.192195pt" height="367.348pt" viewBox="0 0 551.192195 367.348" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T20:44:18.533673</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 367.348 
+L 551.192195 367.348 
+L 551.192195 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 5.76 185.532195 
+L 173.432195 185.532195 
+L 173.432195 17.86 
+L 5.76 17.86 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 53.469674 89.796412 
+L 131.071059 109.269078 
+" clip-path="url(#pbd60d41551)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 64.979385 113.188814 
+L 119.31646 85.378965 
+" clip-path="url(#pbd60d41551)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 91.861938 143.185585 
+L 91.861938 54.743965 
+" clip-path="url(#pbd60d41551)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="Path3DCollection_1">
+    <defs>
+     <path id="m794819cc50" d="M 0 3.162278 
+C 0.838646 3.162278 1.643056 2.82908 2.236068 2.236068 
+C 2.82908 1.643056 3.162278 0.838646 3.162278 0 
+C 3.162278 -0.838646 2.82908 -1.643056 2.236068 -2.236068 
+C 1.643056 -2.82908 0.838646 -3.162278 0 -3.162278 
+C -0.838646 -3.162278 -1.643056 -2.82908 -2.236068 -2.236068 
+C -2.82908 -1.643056 -3.162278 -0.838646 -3.162278 0 
+C -3.162278 0.838646 -2.82908 1.643056 -2.236068 2.236068 
+C -1.643056 2.82908 -0.838646 3.162278 0 3.162278 
+z
+" style="stroke: #315f87"/>
+    </defs>
+    <g clip-path="url(#pbd60d41551)">
+     <use xlink:href="#m794819cc50" x="91.861938" y="99.430257" style="fill: #315f87; stroke: #315f87"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <!-- $x$ -->
+    <g style="fill: #2a3238" transform="translate(129.224772 112.990279)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- $y$ -->
+    <g style="fill: #2a3238" transform="translate(117.460398 88.080369)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_3">
+    <!-- $z$ -->
+    <g style="fill: #2a3238" transform="translate(89.041938 56.193286)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">z</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- $O$ -->
+    <g style="fill: #2a3238" transform="translate(91.861938 102.688633)">
+     <text>
+      <tspan x="0" y="-0.953125" style="font-size: 10px; font-family: 'cmmi10'; fill: #2a3238">O</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <!-- $x^2/a^2+y^2/b^2+z^2/c^2=0$ -->
+    <g transform="translate(27.886098 15.11)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="11.523415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="17.023415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="40.482474" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">y</tspan>
+      <tspan x="51.119659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="56.619659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">b</tspan>
+      <tspan x="79.574538" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">z</tspan>
+      <tspan x="89.932426" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="95.432426" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">c</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="23.522666" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="46.568151" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="62.61473" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="85.380918" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="100.878942" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.005619" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="69.097683" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="107.361895" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="117.838751" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">0</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+  <g id="patch_3">
+   <path d="M 191.76 185.532195 
+L 359.432195 185.532195 
+L 359.432195 17.86 
+L 191.76 17.86 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_2">
+   <g id="line2d_4">
+    <path d="M 239.469674 89.796412 
+L 317.071059 109.269078 
+" clip-path="url(#p14e6fc588d)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 250.979385 113.188814 
+L 305.31646 85.378965 
+" clip-path="url(#p14e6fc588d)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 277.861938 143.185585 
+L 277.861938 54.743965 
+" clip-path="url(#p14e6fc588d)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 277.861938 140.806454 
+L 277.861938 58.054061 
+" clip-path="url(#p14e6fc588d)" style="fill: none; stroke: #315f87; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <!-- $x$ -->
+    <g style="fill: #2a3238" transform="translate(315.224772 112.990279)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <!-- $y$ -->
+    <g style="fill: #2a3238" transform="translate(303.460398 88.080369)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <!-- $z$ -->
+    <g style="fill: #2a3238" transform="translate(275.041938 56.193286)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">z</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_9">
+    <!-- $O$ -->
+    <g style="fill: #2a3238" transform="translate(277.861938 102.688633)">
+     <text>
+      <tspan x="0" y="-0.953125" style="font-size: 10px; font-family: 'cmmi10'; fill: #2a3238">O</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- $x^2/a^2+y^2/b^2=0$ -->
+    <g transform="translate(233.026098 15.11)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="11.523415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="17.023415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="40.482474" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">y</tspan>
+      <tspan x="51.119659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="56.619659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">b</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="23.522666" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="46.568151" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="62.61473" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.005619" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="69.097683" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="79.574538" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">0</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+  <g id="patch_4">
+   <path d="M 377.76 185.532195 
+L 545.432195 185.532195 
+L 545.432195 17.86 
+L 377.76 17.86 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_3">
+   <g id="line2d_8">
+    <path d="M 425.469674 89.796412 
+L 503.071059 109.269078 
+" clip-path="url(#p730d20ccba)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 436.979385 113.188814 
+L 491.31646 85.378965 
+" clip-path="url(#p730d20ccba)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 463.861938 143.185585 
+L 463.861938 54.743965 
+" clip-path="url(#p730d20ccba)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="Poly3DCollection_1">
+    <path d="M 412.423942 137.160785 
+L 515.299934 130.660057 
+L 515.299934 61.69973 
+L 412.423942 68.200457 
+z
+" clip-path="url(#p730d20ccba)" style="fill: #315f87; fill-opacity: 0.25"/>
+   </g>
+   <g id="text_11">
+    <!-- $x$ -->
+    <g style="fill: #2a3238" transform="translate(501.224772 112.990279)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_12">
+    <!-- $y$ -->
+    <g style="fill: #2a3238" transform="translate(489.460398 88.080369)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_13">
+    <!-- $z$ -->
+    <g style="fill: #2a3238" transform="translate(461.041938 56.193286)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">z</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_14">
+    <!-- $O$ -->
+    <g style="fill: #2a3238" transform="translate(463.861938 102.688633)">
+     <text>
+      <tspan x="0" y="-0.953125" style="font-size: 10px; font-family: 'cmmi10'; fill: #2a3238">O</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_15">
+    <!-- $x^2/a^2-y^2/b^2=0$ -->
+    <g transform="translate(419.026098 15.11)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="11.523415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="17.023415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="40.482474" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">y</tspan>
+      <tspan x="51.119659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="56.619659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">b</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="23.522666" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="46.568151" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="62.61473" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.005619" y="-0.661266" style="font-size: 11px; font-family: 'cmsy10'">¡</tspan>
+      <tspan x="69.097683" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="79.574538" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">0</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="Poly3DCollection_2">
+    <path d="M 454.792032 115.476692 
+L 472.931845 152.34415 
+L 472.931845 83.383822 
+L 454.792032 46.516364 
+z
+" clip-path="url(#p730d20ccba)" style="fill: #b56737; fill-opacity: 0.25"/>
+   </g>
+  </g>
+  <g id="patch_5">
+   <path d="M 5.76 361.588 
+L 173.432195 361.588 
+L 173.432195 193.915805 
+L 5.76 193.915805 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_4">
+   <g id="line2d_11">
+    <path d="M 53.469674 265.852217 
+L 131.071059 285.324883 
+" clip-path="url(#p850f88faf6)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 64.979385 289.244619 
+L 119.31646 261.43477 
+" clip-path="url(#p850f88faf6)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 91.861938 319.24139 
+L 91.861938 230.79977 
+" clip-path="url(#p850f88faf6)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="Poly3DCollection_3">
+    <path d="M 51.012825 315.873678 
+L 93.380914 294.189586 
+L 93.380914 225.229258 
+L 51.012825 246.913351 
+z
+" clip-path="url(#p850f88faf6)" style="fill: #b56737; fill-opacity: 0.25"/>
+   </g>
+   <g id="text_16">
+    <!-- $x$ -->
+    <g style="fill: #2a3238" transform="translate(129.224772 289.046084)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_17">
+    <!-- $y$ -->
+    <g style="fill: #2a3238" transform="translate(117.460398 264.136174)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_18">
+    <!-- $z$ -->
+    <g style="fill: #2a3238" transform="translate(89.041938 232.249091)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">z</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_19">
+    <!-- $O$ -->
+    <g style="fill: #2a3238" transform="translate(91.861938 278.744437)">
+     <text>
+      <tspan x="0" y="-0.953125" style="font-size: 10px; font-family: 'cmmi10'; fill: #2a3238">O</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_20">
+    <!-- $x^2=a^2$ -->
+    <g transform="translate(72.051098 191.628149)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="23.931716" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.430966" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="13.45486" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="Poly3DCollection_4">
+    <path d="M 90.342962 325.742866 
+L 132.711051 304.058773 
+L 132.711051 235.098445 
+L 90.342962 256.782538 
+z
+" clip-path="url(#p850f88faf6)" style="fill: #315f87; fill-opacity: 0.25"/>
+   </g>
+  </g>
+  <g id="patch_6">
+   <path d="M 191.76 361.588 
+L 359.432195 361.588 
+L 359.432195 193.915805 
+L 191.76 193.915805 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_5">
+   <g id="line2d_14">
+    <path d="M 239.469674 265.852217 
+L 317.071059 285.324883 
+" clip-path="url(#p2ad2f15248)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 250.979385 289.244619 
+L 305.31646 261.43477 
+" clip-path="url(#p2ad2f15248)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 277.861938 319.24139 
+L 277.861938 230.79977 
+" clip-path="url(#p2ad2f15248)" style="fill: none; stroke: #7d858b; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="Poly3DCollection_5">
+    <path d="M 256.677893 320.808272 
+L 299.045983 299.124179 
+L 299.045983 230.163852 
+L 256.677893 251.847945 
+z
+" clip-path="url(#p2ad2f15248)" style="fill: #315f87; fill-opacity: 0.25"/>
+   </g>
+   <g id="text_21">
+    <!-- $x$ -->
+    <g style="fill: #2a3238" transform="translate(315.224772 289.046084)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_22">
+    <!-- $y$ -->
+    <g style="fill: #2a3238" transform="translate(303.460398 264.136174)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">y</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_23">
+    <!-- $z$ -->
+    <g style="fill: #2a3238" transform="translate(275.041938 232.249091)">
+     <text>
+      <tspan x="0" y="-0.703125" style="font-size: 12px; font-family: 'cmmi10'; fill: #2a3238">z</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_24">
+    <!-- $O$ -->
+    <g style="fill: #2a3238" transform="translate(277.861938 278.744437)">
+     <text>
+      <tspan x="0" y="-0.953125" style="font-size: 10px; font-family: 'cmmi10'; fill: #2a3238">O</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_25">
+    <!-- $x^2=0$ -->
+    <g transform="translate(260.856098 191.628149)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="13.45486" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="23.931716" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">0</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+  <g id="patch_7">
+   <path d="M 377.76 361.588 
+L 545.432195 361.588 
+L 545.432195 193.915805 
+L 377.76 193.915805 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_6">
+   <g id="text_26">
+    <!-- $S=\emptyset$ -->
+    <g style="fill: #2a3238" transform="translate(430.096098 240.86402)">
+     <text>
+      <tspan x="0" y="-0.390625" style="font-size: 28px; font-family: 'cmmi10'; fill: #2a3238">S</tspan>
+      <tspan x="22.074609" y="-0.390625" style="font-size: 28px; font-family: 'cmr10'; fill: #2a3238">=</tspan>
+      <tspan x="48.742969" y="-0.390625" style="font-size: 28px; font-family: 'cmsy10'; fill: #2a3238">;</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_27">
+    <!-- $x^2/a^2+y^2/b^2+z^2/c^2=-1$ -->
+    <g transform="translate(395.651098 270.746204)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="11.523415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="17.023415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="40.482474" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">y</tspan>
+      <tspan x="51.119659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="56.619659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">b</tspan>
+      <tspan x="79.574538" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">z</tspan>
+      <tspan x="89.932426" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="95.432426" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">c</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="23.522666" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="46.568151" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="62.61473" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="85.380918" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="100.878942" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.005619" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="69.097683" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="107.361895" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="126.384161" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">1</tspan>
+      <tspan x="117.838751" y="-0.661266" style="font-size: 11px; font-family: 'cmsy10'">¡</tspan>
+     </text>
+    </g>
+    <!-- $x^2/a^2+y^2/b^2=-1$ -->
+    <g transform="translate(414.736098 288.456204)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="11.523415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="17.023415" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="40.482474" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">y</tspan>
+      <tspan x="51.119659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">=</tspan>
+      <tspan x="56.619659" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">b</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="23.522666" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="46.568151" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="62.61473" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="30.005619" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">+</tspan>
+      <tspan x="69.097683" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="88.119948" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">1</tspan>
+      <tspan x="79.574538" y="-0.661266" style="font-size: 11px; font-family: 'cmsy10'">¡</tspan>
+     </text>
+    </g>
+    <!-- $x^2=-a^2$ -->
+    <g transform="translate(439.816098 304.579454)">
+     <text>
+      <tspan x="0" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">x</tspan>
+      <tspan x="32.477126" y="-0.661266" style="font-size: 11px; font-family: 'cmmi10'">a</tspan>
+      <tspan x="6.971907" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="38.976377" y="-4.870313" style="font-size: 7.7px; font-family: 'cmr10'">2</tspan>
+      <tspan x="13.45486" y="-0.661266" style="font-size: 11px; font-family: 'cmr10'">=</tspan>
+      <tspan x="23.931716" y="-0.661266" style="font-size: 11px; font-family: 'cmsy10'">¡</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbd60d41551">
+   <rect x="5.76" y="17.86" width="167.672195" height="167.672195"/>
+  </clipPath>
+  <clipPath id="p14e6fc588d">
+   <rect x="191.76" y="17.86" width="167.672195" height="167.672195"/>
+  </clipPath>
+  <clipPath id="p730d20ccba">
+   <rect x="377.76" y="17.86" width="167.672195" height="167.672195"/>
+  </clipPath>
+  <clipPath id="p850f88faf6">
+   <rect x="5.76" y="193.915805" width="167.672195" height="167.672195"/>
+  </clipPath>
+  <clipPath id="p2ad2f15248">
+   <rect x="191.76" y="193.915805" width="167.672195" height="167.672195"/>
+  </clipPath>
+ </defs>
+</svg>
