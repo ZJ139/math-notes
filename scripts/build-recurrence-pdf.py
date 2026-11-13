@@ -15,7 +15,7 @@ text=text.replace('例如运行 `python3 scripts/explore-lou-logistic.py --r 3 3
 text=re.sub(r'^## (.*)$',r'\n\\clearpage\n\n## \1',text,flags=re.M)
 text=text.replace('\\clearpage\n\n## 阅读后的通用检查', '## 阅读后的通用检查')
 # Convert first group break into the native linked table of contents.
-text=text.replace('\\clearpage',r'\clearpage\hypertarget{contents}{}\label{contents}\pdfbookmark[0]{目录}{contents-bookmark}\tableofcontents\clearpage',1)
+text=text.replace('\\clearpage',r'\clearpage\phantomsection\label{contents}\pdfbookmark[0]{目录}{contents-bookmark}\tableofcontents\clearpage',1)
 tex=subprocess.run(['pandoc','-f','markdown+tex_math_dollars+raw_tex','-t','latex','--shift-heading-level-by=-1','--no-highlight'],input=text,text=True,capture_output=True,check=True).stdout
 # Prevent a problem heading at the foot of a page.
 tex=tex.replace('\\subsection{',r'\Needspace{7\baselineskip}'+'\n'+r'\subsection{')
