@@ -413,14 +413,64 @@ if ((await fs.stat('content/problems/lou-analysis-b-33.md').catch(()=>null))?.is
   }
   const directory=await fs.readFile(path.join(root,'problems/collections/lou-analysis/index.html'),'utf8');
   const lower=await fs.readFile('content/problems/lou-analysis-v2.md','utf8');
-  if(!directory.includes('229 道已作答 · 3 道暂跳过')
-     ||!ninth.includes('3 节 · 13 道已作答')
-     ||!ninth.includes('本章当前收录至习题 9.3.B 第 3 题')
-     ||!lower.includes('B233＝9.3.B 第 4 题')||!lower.includes('54 道已作答、1 道暂跳过')
+  if(!directory.includes('236 道已作答 · 3 道暂跳过')
+     ||!ninth.includes('4 节 · 20 道已作答')
+     ||!ninth.includes('本章当前收录至习题 9.4.B 第 3 题')
+     ||!lower.includes('B240＝9.4.B 第 4 题')||!lower.includes('61 道已作答、1 道暂跳过')
      ||!source.includes('**B233**')||!source.includes('**9.3.B 第 4 题**')
      ||!html.includes('/problems/f22fb7377267be47a9e8df4f/'))
     throw new Error('第三十三批累计数量、三节映射、前后批次或下一题错误');
   console.log(`Verified Lou analysis B226–B232: ${inline} inline and ${display} display formulas; seven source mappings, three sections and batch links; 229 solved, three pending.`);
+}
+
+
+if ((await fs.stat('content/problems/lou-analysis-b-34.md').catch(()=>null))?.isFile()) {
+  const source=await fs.readFile('content/problems/lou-analysis-b-34.md','utf8');
+  const route='/problems/ec0113af0ec041be81b6f081/';
+  const html=await fs.readFile(path.join(root,route,'index.html'),'utf8');
+  const inline=(source.match(/(?<!\$)\$(?!\$)/g)||[]).length/2;
+  const display=(source.match(/^\s*\$\$\s*$/gm)||[]).length/2;
+  if(!Number.isInteger(inline)||!Number.isInteger(display)||display===0
+     ||(html.match(/class="latex-svg"/g)||[]).length!==inline+display
+     ||(html.match(/class="katex-display"/g)||[]).length!==display||/katex-error/.test(html))
+    throw new Error('第三十四批公式未全部渲染');
+  const ninth=await fs.readFile(path.join(root,'problems/collections/lou-analysis/chapters/9/index.html'),'utf8');
+  const mapping=[[233,'9.3',4,20],[234,'9.3',5,20],[235,'9.3',6,20],[236,'9.3',7,20],
+                 [237,'9.4',1,21],[238,'9.4',2,21],[239,'9.4',3,21]];
+  for(const [number,section,original,page]of mapping){
+    const problem=source.split('## 问题 B'+number+'\n')[1]?.split(/^## /m)[0];
+    if(!html.includes('id="问题-b'+number+'"')
+       ||!problem?.includes('习题 '+section+'.B 第 '+original+' 题')
+       ||!problem.includes('楼分析习题-v2.pdf#page='+page)
+       ||!problem.includes('**思路来源：**')||!problem.includes('**方法总结：**')
+       ||!problem.includes('**条件核查：**')
+       ||!ninth.includes(route+'#问题-b'+number))
+      throw new Error('第三十四批题面、数学条件、PDF 页码或章节导航缺失：B'+number);
+  }
+  for(const file of ['problems/41e85e430c9d7f84a0863658/index.html',
+                     'problems/149ff60b32b01ff69feab8a4/index.html',
+                     'problems/41a8fc025daa4bef6a32b3d1/index.html',
+                     'problems/collections/lou-analysis/index.html']){
+    if(!(await fs.readFile(path.join(root,file),'utf8')).includes(route))
+      throw new Error('第三十四批未接入两册资料页、上一批或总目录：'+file);
+  }
+  const directory=await fs.readFile(path.join(root,'problems/collections/lou-analysis/index.html'),'utf8');
+  const lower=await fs.readFile('content/problems/lou-analysis-v2.md','utf8');
+  const upper=await fs.readFile('content/problems/lou-analysis-v1.md','utf8');
+  const older=await fs.readFile('content/problems/lou-analysis-b-33.md','utf8');
+  if(!directory.includes('236 道已作答 · 3 道暂跳过')
+     ||!ninth.includes('4 节 · 20 道已作答')
+     ||!ninth.includes('本章当前收录至习题 9.4.B 第 3 题')
+     ||!lower.includes('61 道已作答、1 道暂跳过')
+     ||!lower.includes('B240＝9.4.B 第 4 题')
+     ||!upper.includes('236 道已作答、3 道暂跳过')
+     ||!older.includes('229 道已作答、3 道暂跳过')
+     ||!older.includes(route)
+     ||!source.includes('**236 道已作答**')
+     ||!source.includes('**B116、B148、B180**'))
+    throw new Error('第三十四批累计数、待核题、四节索引、历史进度或下一题不一致');
+  console.log('Verified Lou analysis B233–B239: '+inline+' inline and '+display+
+              ' display formulas; seven mappings, four sections, links; 236 solved, three pending.');
 }
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {

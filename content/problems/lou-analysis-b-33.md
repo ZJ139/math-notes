@@ -14,7 +14,7 @@ updated_at: "2026-11-12"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [原题 PDF 第 17 页](/files/problems/楼分析习题-v2.pdf#page=17) · [第 18 页](/files/problems/楼分析习题-v2.pdf#page=18) · [第 20 页](/files/problems/楼分析习题-v2.pdf#page=20)
 
-**批次导航：**[B 组解答总目录](/problems/collections/lou-analysis/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [上一批 B219—B225](/problems/f22fb7377267be47a9e8df4f/)
+**批次导航：**[下一批 B233—B239](/problems/ec0113af0ec041be81b6f081/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [上一批 B219—B225](/problems/f22fb7377267be47a9e8df4f/)
 
 ## 题号导航
 
@@ -557,4 +557,4 @@ $$
 
 编号推进至 **B232**；两册累计 **229 道已作答、3 道暂跳过**，其中上册完成 175 题、下册完成 54 题。第九章完成 **9.1.B 第 1—8 题、9.2.B 第 1—2 题、9.3.B 第 1—3 题**。下一题为下册 **9.3.B 第 4 题**，对应 **B233**，即 Riemann $\zeta$ 函数在 $(1,+\infty)$ 上的实解析性，见[原题 PDF 第 20 页（印刷第 18 页）](/files/problems/楼分析习题-v2.pdf#page=20)。
 
-[返回题号导航](#题号导航) · [上一批 B219—B225](/problems/f22fb7377267be47a9e8df4f/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[返回题号导航](#题号导航) · [下一批 B233—B239](/problems/ec0113af0ec041be81b6f081/) · [上一批 B219—B225](/problems/f22fb7377267be47a9e8df4f/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
