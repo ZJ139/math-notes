@@ -1,0 +1,4423 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small\hyperref[contents]{递推数列专题\quad 目录}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={递推数列专题：已解题目与完整解答},pdfauthor={Vincent Arqain},pdfsubject={47道已解问题}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+\emergencystretch=2em
+
+\setCJKmonofont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{fancyvrb}
+\let\oldverbatim\verbatim
+\let\endoldverbatim\endverbatim
+\renewenvironment{verbatim}{\VerbatimEnvironment\begin{Verbatim}[fontsize=\footnotesize]}{\end{Verbatim}}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+\titleformat{\paragraph}[block]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\titleformat{\subparagraph}[block]{\normalfont\normalsize\bfseries}{}{0pt}{}
+\setlength{\LTpre}{6pt}
+\setlength{\LTpost}{6pt}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 递推数列专题\par}
+\vspace{8pt}{\large 已解题目、关键思路与完整解答\par}
+\vspace{5pt}{\small 2026年11月13日\quad 共47题\par}
+\end{center}
+截至 2026 年 11 月 13 日，按已经完成的题解与专题证明整理，共 \textbf{47
+题}（多小问保留在同一题内）。每题依次给出``原题、关键思路、解答、简单总结''，并链接原题解或原专题出处。正文与下载
+PDF 内容一致，均有可点击目录。
+
+收录范围包括直接定义的递推数列、嵌套根式、递推不等式、有限差分、数值系数递推，以及以数列递推为核心的函数迭代和矩阵应用。斐波那契专题中已经完整证明的结论按证明题重述，标明原专题编号；同一题在分批题解与精选文章中重复出现时只收录一次。题册中尚未作答的题、仅译介的论文、只陈述而未证明的深结果和开放问题不计入本次汇编。
+
+原题条件存在问题时保留原文，再明确说明修订：\textbf{B55
+原下极限结论不成立；B165 原初值不能保证递推始终有定义。} B37、B41、B166
+属于原书要求推广或编题的任务，所选推广及自拟题均沿用既有解答并明确标注。B116、B148、B180
+的待核状态不变。
+
+\clearpage\hypertarget{contents}{}
+
+\label{contents}\pdfbookmark[0]{目录}{contents-bookmark}\tableofcontents\clearpage
+
+\section{极限与精细渐近}\label{ux6781ux9650ux4e0eux7cbeux7ec6ux6e10ux8fd1}
+
+\Needspace{7\baselineskip}
+\subsection{问题 B32：不用 Stolz
+公式证明递推数列的渐近式（2.4.B-1）}\label{ux95eeux9898-b32ux4e0dux7528-stolz-ux516cux5f0fux8bc1ux660eux9012ux63a8ux6570ux5217ux7684ux6e10ux8fd1ux5f0f2.4.b-1}
+
+来源：\href{https://zj139.github.io/math-notes/problems/e7f87e98efda5bacdd444c79/\#问题-b32}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898}
+
+设 \(x_0\in(0,1)\)，\(x_{n+1}=x_n(1-x_n)\)（\(n\ge0\)）。不用 Stolz
+公式，按以下过程证明：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x_n\to0\)；
+\item
+  对每个 \(n\ge1\)，\((n+1)x_n<1\)；
+\item
+  从某一项开始，\(\{nx_n\}\) 单调有界；
+\item
+  \(nx_n\to1\)。
+\end{enumerate}
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def}
+
+先对倒数作差，得到尺度上界；再研究 \(nx_n\)
+的增量，用调和级数发散排除小于 \(1\) 的极限。
+
+\subsubsection{解答}\label{ux89e3ux7b54}
+
+\textbf{证明：}由 \(0<x_0<1\) 归纳可得 \(0<x_{n+1}<x_n<1\)，故 \(x_n\)
+单调下降且有非负极限 \(\ell\)。在递推式中取极限，得到
+\(\ell=\ell(1-\ell)\)，所以 \(\ell=0\)。
+
+对倒数作差，得到
+
+\[
+\frac1{x_{n+1}}-\frac1{x_n}
+=\frac1{1-x_n}>1.
+\]
+
+从 \(0\) 到 \(n-1\) 累加，并利用 \(1/x_0>1\)，得到
+
+\[
+\frac1{x_n}>n+\frac1{x_0}>n+1,
+\]
+
+因此
+
+\[
+\boxed{(n+1)x_n<1\quad(n\ge1).}
+\]
+
+令 \(y_n=nx_n\)（\(n\ge1\)）。直接作差可得
+
+\[
+\begin{aligned}
+y_{n+1}-y_n
+&=(n+1)x_n(1-x_n)-nx_n\\
+&=x_n\bigl(1-(n+1)x_n\bigr)>0.
+\end{aligned}
+\qquad\text{(1)}
+\]
+
+所以 \(y_n\) 从 \(n=1\) 起就严格递增；且 \(0<y_n<n/(n+1)<1\)，故存在极限
+\(L\in(0,1]\)。这里 \(L>0\) 是因为 \(y_n\ge y_1=x_1>0\)。
+
+若 \(L<1\)，由于 \(y_n\to L\) 且
+
+\[
+(n+1)x_n=\left(1+\frac1n\right)y_n\longrightarrow L,
+\]
+
+可取 \(N\)，使对所有 \(n\ge N\) 同时成立
+
+\[
+y_n\ge\frac L2,\qquad
+1-(n+1)x_n\ge\frac{1-L}{2}.
+\]
+
+代入式 (1)，得到
+
+\[
+y_{n+1}-y_n\ge\frac{L(1-L)}{4n}\qquad(n\ge N).
+\]
+
+将不等式累加至 \(M\)，得到
+
+\[
+y_{M+1}-y_N
+\ge\frac{L(1-L)}4\sum_{n=N}^{M}\frac1n.
+\]
+
+右端随 \(M\to\infty\) 趋于正无穷，左端却小于 \(1\)，矛盾。因此
+\(L=1\)，即
+
+\[
+\boxed{\lim_{n\to\infty}nx_n=1,\qquad x_n\sim\frac1n.}
+\]
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3}
+
+倒数差先提供尺度上界；再对归一化量 \(nx_n\)
+作差，得到单调性。如果其极限小于 \(1\)，增量就至少与 \(1/n\)
+同阶，与总增量有限相矛盾。全程只用了单调有界收敛定理与调和级数发散，没有使用
+Stolz 公式。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 B33：二次递推在参数小于 −3
+时的分类（2.4.B-2）}\label{ux95eeux9898-b33ux4e8cux6b21ux9012ux63a8ux5728ux53c2ux6570ux5c0fux4e8e-3-ux65f6ux7684ux5206ux7c7b2.4.b-2}
+
+来源：\href{https://zj139.github.io/math-notes/problems/e7f87e98efda5bacdd444c79/\#问题-b33}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-1}
+
+在习题 2.4.A 第 5 题中，数列定义为
+
+\[
+x_1=\frac c2,\qquad x_{n+1}=\frac{c+x_n^2}{2}\quad(n\ge1).
+\]
+
+原题讨论 \(c\ge-3\)；若 \(c<-3\)，会如何？
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-1}
+
+先找两个不动点与不变区间，再用误差的精确乘法关系说明：不稳定不动点仍可能被有限步精确命中。
+
+\subsubsection{解答}\label{ux89e3ux7b54-1}
+
+\textbf{解：}不能把结论写成``\(c<-3\)
+时全部不收敛''，也不能仅由不动点不稳定便排除所有收敛轨道。\textbf{有限步后恰好落到不动点}的参数确实存在。
+
+令
+
+\[
+s=\sqrt{1-c}>2,\qquad
+\alpha=1-s<-1,\qquad\beta=1+s>3.
+\]
+
+映射 \(f(x)=(x^2+c)/2\) 的两个不动点恰为 \(\alpha,\beta\)，且
+
+\[
+f(x)-x=\frac{(x-\alpha)(x-\beta)}2.
+\qquad\text{(1)}
+\]
+
+完整分类如下。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+参数范围
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数列行为
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(c<-8\) & \(x_n\to+\infty\) \\
+\(c=-8\) & \(x_1=-4\)，\(x_n=4\)（\(n\ge2\)） \\
+\(-8<c<-3\) & 数列有界；当且仅当某一项恰等于 \(\alpha=1-\sqrt{1-c}\)
+时收敛，且从该项起恒等于 \(\alpha\)；其余情形有界但不收敛 \\
+\end{longtable}
+
+下面证明这个分类，并给出中间区间内的两种具体例子。
+
+\paragraph{参数小于 −8}\label{ux53c2ux6570ux5c0fux4e8e-8}
+
+此时 \(s>3\)，从而
+
+\[
+x_1=\frac{1-s^2}{2}<-(1+s)=-\beta.
+\]
+
+所以 \(x_2=f(x_1)>f(\beta)=\beta\)。由式 (1)，只要 \(x_n>\beta\)，就有
+\(x_{n+1}>x_n>\beta\)。因此从第二项起数列严格递增。
+
+若它有有限极限，该极限必为不动点，且不小于 \(x_2>\beta\)，与不动点只有
+\(\alpha,\beta\) 矛盾。于是 \(x_n\to+\infty\)。
+
+\paragraph{参数等于 −8}\label{ux53c2ux6570ux7b49ux4e8e-8}
+
+直接计算得 \(x_1=-4\)、\(x_2=4\)、\(f(4)=4\)，所以数列收敛到 \(4\)。
+
+\paragraph{参数介于 −8 与 −3
+之间}\label{ux53c2ux6570ux4ecbux4e8e-8-ux4e0e-3-ux4e4bux95f4}
+
+此时 \(2<s<3\)，故
+
+\[
+-\beta<x_1=\frac c2<0<\beta.
+\]
+
+若 \(x\in(-\beta,\beta)\)，则
+
+\[
+x_1=\frac c2\le f(x)<\frac{\beta^2+c}{2}=\beta.
+\]
+
+由归纳法，所有 \(x_n\) 都位于
+\([x_1,\beta)\)，特别地数列有界，且任何一项都不等于 \(\beta\)。
+
+假设数列收敛到
+\(\ell\)。由递推式的连续性，\(\ell\in\{\alpha,\beta\}\)。利用
+\(f(\ell)=\ell\)，有精确的误差关系
+
+\[
+x_{n+1}-\ell
+=\frac{x_n+\ell}{2}(x_n-\ell).
+\qquad\text{(2)}
+\]
+
+因为 \(|\ell|>1\)，可选 \(q\) 使 \(1<q<|\ell|\)。若 \(x_n\to\ell\)，则当
+\(n\) 足够大时，
+
+\[
+\left|\frac{x_n+\ell}{2}\right|\ge q,
+\]
+
+所以
+\(|x_{n+1}-\ell|\ge q|x_n-\ell|\)。若此时有一项误差非零，之后的误差至少按几何级数增长，不能趋于零。因此\textbf{收敛必然意味着某项已精确等于
+\(\ell\)，随后恒等于它}。
+
+已知轨道不可能到达 \(\beta\)，故只能有限步后落到
+\(\alpha\)。反过来，若某个 \(x_N=\alpha\)，则显然 \(x_n=\alpha\) 对所有
+\(n\ge N\) 成立。这证明了表中的充要条件。
+
+该条件也可以写成关于参数的精确代数判别。递归定义多项式
+
+\[
+P_1(c)=\frac c2,\qquad
+P_{n+1}(c)=\frac{P_n(c)^2+c}{2}.
+\]
+
+则在 \(-8<c<-3\) 内，收敛当且仅当存在正整数 \(N\) 使
+
+\[
+\boxed{P_N(c)^2-2P_N(c)+c=0,\qquad P_N(c)<0.}
+\qquad\text{(3)}
+\]
+
+负号条件选出负不动点 \(\alpha\)。对固定的
+\(N\)，等式左端是非零多项式，只有有限多个实根，所以这类特殊收敛参数至多可列。式
+(3) 是精确分类，不需要假设整个参数区间具有同一种周期行为。
+
+\paragraph{有界不收敛与特殊收敛的实例}\label{ux6709ux754cux4e0dux6536ux655bux4e0eux7279ux6b8aux6536ux655bux7684ux5b9eux4f8b}
+
+取 \(c=-4\)，则
+
+\[
+x_1=-2,\quad x_2=0,\quad x_3=-2,\quad x_4=0,\quad\ldots,
+\]
+
+数列以周期 \(2\) 振荡，显然不收敛。
+
+为展示中间区间确有收敛例子，取 \(u\in(1,2)\) 为方程
+
+\[
+u^3+4u^2-16=0
+\qquad\text{(4)}
+\]
+
+的唯一根，并令 \(c=-u^2-2u\)。该根存在且唯一，是因为式 (4) 左端在
+\(u=1,2\) 时分别为 \(-11,8\)，且在 \((1,2)\) 上严格递增。于是
+\(-8<c<-3\)，并且
+
+\[
+\sqrt{1-c}=u+1,\qquad \alpha=-u.
+\]
+
+将式 (4) 乘以 \(u\)，得到 \(u^4+4u^3=16u\)，据此计算
+
+\[
+\begin{aligned}
+x_1&=-\frac{u^2+2u}{2},\\
+x_2&=\frac12\left(\frac{(u^2+2u)^2}{4}-u^2-2u\right)
+=\frac{u^4+4u^3-8u}{8}=u,\\
+x_3&=\frac{u^2-u^2-2u}{2}=-u,\\
+x_n&=-u\qquad(n\ge3).
+\end{aligned}
+\]
+
+这就是 \(-8<c<-3\)
+内一个有限步后变为常数的严格例子，说明``不动点不稳定''不能直接推出``所有初值轨道均不收敛''。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-1}
+
+先由不动点确定候选极限，再寻找不变区间与逃逸区间。对不稳定不动点，用精确误差恒等式区分``逐渐靠近''与``有限步精确命中''。本题无须使用混沌理论，也不能用有限次数值迭代替代收敛证明。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B35：逐层递增的嵌套根式及其渐近常数（2.4.B-4）}\label{ux95eeux9898-b35ux9010ux5c42ux9012ux589eux7684ux5d4cux5957ux6839ux5f0fux53caux5176ux6e10ux8fd1ux5e38ux65702.4.b-4}
+
+来源：\href{https://zj139.github.io/math-notes/problems/e7f87e98efda5bacdd444c79/\#问题-b35}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-2}
+
+设整数 \(m\ge1\)，证明极限
+
+\[
+a_m=\lim_{n\to\infty}
+\sqrt{m+\sqrt{m+1+\sqrt{m+2+\cdots+\sqrt{m+n}}}}
+\]
+
+存在，并计算
+
+\[
+\lim_{m\to\infty}(a_m-\sqrt m).
+\]
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-2}
+
+先证明每个有限截断单调有界，定义无穷根式后再利用相邻参数的递推关系有理化。
+
+\subsubsection{解答}\label{ux89e3ux7b54-2}
+
+\textbf{解：}用有限截断严格定义嵌套根式。对整数 \(N\ge m\)，令
+
+\[
+R_{N,N}=\sqrt N,\qquad
+R_{j,N}=\sqrt{j+R_{j+1,N}}\quad(m\le j<N).
+\]
+
+原题第 \(n\) 个根式就是 \(R_{m,m+n}\)。
+
+先证明截断随深度增加而严格增大。由于
+
+\[
+R_{N,N+1}=\sqrt{N+\sqrt{N+1}}>\sqrt N=R_{N,N},
+\]
+
+逐层利用平方根函数的严格递增性，得到 \(R_{m,N+1}>R_{m,N}\)。
+
+再证明对所有 \(N\ge j\ge1\)，都有统一估计
+
+\[
+\sqrt j\le R_{j,N}\le\sqrt j+1.
+\qquad\text{(1)}
+\]
+
+下界由递推式直接成立。上界对 \(j=N\) 显然；若对 \(j+1\) 成立，则
+
+\[
+R_{j,N}^2=j+R_{j+1,N}
+\le j+\sqrt{j+1}+1
+\le j+2\sqrt j+1=(\sqrt j+1)^2,
+\]
+
+其中最后一个不等式来自 \(j+1\le4j\)（\(j\ge1\)）。倒序归纳即得式
+(1)。因此对固定的 \(m\)，\(R_{m,N}\) 单调有界，所求极限 \(a_m\) 存在，且
+
+\[
+\sqrt m\le a_m\le\sqrt m+1.
+\qquad\text{(2)}
+\]
+
+在有限递推式 \(R_{m,N}^2=m+R_{m+1,N}\) 中令 \(N\to\infty\)，得到
+
+\[
+a_m^2=m+a_{m+1}.
+\]
+
+将差式有理化，便有
+
+\[
+a_m-\sqrt m
+=\frac{a_{m+1}}{a_m+\sqrt m}
+=\frac{a_{m+1}/\sqrt m}{a_m/\sqrt m+1}.
+\qquad\text{(3)}
+\]
+
+由式 (2)，\(a_m/\sqrt m\to1\)，并且
+
+\[
+\sqrt{1+\frac1m}
+\le\frac{a_{m+1}}{\sqrt m}
+\le\sqrt{1+\frac1m}+\frac1{\sqrt m},
+\]
+
+所以 \(a_{m+1}/\sqrt m\to1\)。由式 (3) 得到
+
+\[
+\boxed{\lim_{m\to\infty}(a_m-\sqrt m)=\frac12.}
+\]
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-2}
+
+先用有限截断建立嵌套根式，而不是预先假定无穷根式有意义；以简单的上界
+\(\sqrt m+1\)
+完成收敛证明，再利用相邻参数的递推关系。虽然目标是求一个常数阶差值，但只需先得到主项等价，随后有理化即可求出常数
+\(1/2\)。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B36：系数逐层递增的嵌套根式（2.4.B-5）}\label{ux95eeux9898-b36ux7cfbux6570ux9010ux5c42ux9012ux589eux7684ux5d4cux5957ux6839ux5f0f2.4.b-5}
+
+来源：\href{https://zj139.github.io/math-notes/problems/0ce2ad9c1d045270806e755b/\#问题-b36}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-3}
+
+证明
+
+\[
+\lim_{n\to\infty}\sqrt{1+2\sqrt{1+3\sqrt{1+4\sqrt{1+\cdots+n\sqrt{1+(n+1)}}}}}=3.
+\]
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-3}
+
+比较每层根式与
+\(j+2\)，把尾端误差逐层传到外侧；望远镜乘积使尾端影响消失。
+
+\subsubsection{解答}\label{ux89e3ux7b54-3}
+
+\textbf{证明：}先严格规定有限根式的截断方式。对整数 \(n\ge1\)，令
+
+\[
+R_{n+1,n}=1,\qquad R_{j,n}=\sqrt{1+(j+1)R_{j+1,n}}\quad(j=n,n-1,\ldots,1).
+\]
+
+原题的根式就是 \(R_{1,n}\)；例如 \(n=1\) 时为 \(\sqrt3\)，\(n=2\) 时为
+\(\sqrt{1+2\sqrt4}\)。尾端是 \(1\)，不能擅自把它替换为预想的无穷根式值。
+
+恒等式
+
+\[
+(j+2)^2=1+(j+1)(j+3)
+\]
+
+提示用 \(j+2\) 比较第 \(j\) 层。由 \(1\le R_{n+1,n}\le n+3\)
+及倒序归纳，得到
+
+\[
+1\le R_{j,n}\le j+2\qquad(1\le j\le n+1).
+\]
+
+记 \(d_{j,n}=j+2-R_{j,n}\ge0\)。将两个平方作差并有理化，有
+
+\[
+\begin{aligned}
+d_{j,n}
+&=\frac{(j+2)^2-R_{j,n}^2}{j+2+R_{j,n}}\\
+&=\frac{(j+1)d_{j+1,n}}{j+2+R_{j,n}}
+\le\frac{j+1}{j+3}d_{j+1,n}.
+\end{aligned}
+\]
+
+由 \(d_{n+1,n}=n+2\)，逐层相乘得
+
+\[
+0\le3-R_{1,n}
+\le(n+2)\prod_{j=1}^{n}\frac{j+1}{j+3}
+=\frac6{n+3}\longrightarrow0.
+\]
+
+故
+
+\[
+\boxed{\lim_{n\to\infty}R_{1,n}=3.}
+\]
+
+这个误差估计已直接证明收敛，无须先假定无穷根式存在。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-3}
+
+猜到每层的比较值后，仍须控制有限截断的尾端误差。利用平方差把误差逐层向外传递，再以望远镜乘积证明尾端影响消失，才能把形式恒等式变为严格的极限结论。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B37：嵌套根式的双参数推广（2.4.B-6）}\label{ux95eeux9898-b37ux5d4cux5957ux6839ux5f0fux7684ux53ccux53c2ux6570ux63a8ux5e7f2.4.b-6}
+
+来源：\href{https://zj139.github.io/math-notes/problems/0ce2ad9c1d045270806e755b/\#问题-b37}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-4}
+
+推广第 5 题。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-4}
+
+把每层比较值推广为一次式，再估计有限截断误差；特别注意参数 \(b=0\)
+的边界。
+
+\subsubsection{解答}\label{ux89e3ux7b54-4}
+
+\textbf{解：}给出一个同时推广常数项与各层系数的结论。设
+\(a>0\)、\(b\ge0\)，则
+
+\[
+\boxed{\lim_{N\to\infty}
+\sqrt{a^2+b\sqrt{a^2+(b+a)\sqrt{a^2+\cdots+(b+(N-1)a)a}}}=b+a.}
+\]
+
+上式含 \(N\) 层平方根；它的无歧义定义为
+
+\[
+s_j=b+(j-1)a,\qquad T_{N+1,N}=a,\qquad
+T_{j,N}=\sqrt{a^2+s_jT_{j+1,N}}\quad(j=N,\ldots,1).
+\]
+
+所求即 \(T_{1,N}\) 的极限。取 \(a=1,b=2\)，恰好回到 B36 的原题。
+
+证明如下。注意
+
+\[
+(s_j+a)^2=a^2+s_j(s_j+2a)=a^2+s_j(s_{j+1}+a).
+\]
+
+从尾端开始倒序归纳，得到
+
+\[
+a\le T_{j,N}\le s_j+a\qquad(1\le j\le N+1).
+\]
+
+令 \(D_{j,N}=s_j+a-T_{j,N}\)，则
+
+\[
+0\le D_{j,N}
+=\frac{s_jD_{j+1,N}}{s_j+a+T_{j,N}}
+\le\frac{s_j}{s_j+2a}D_{j+1,N}.
+\]
+
+当 \(b>0\) 时，利用 \(s_j+2a=s_{j+2}\) 及 \(D_{N+1,N}=s_{N+1}\)，得到
+
+\[
+\begin{aligned}
+0\le b+a-T_{1,N}
+&\le s_{N+1}\prod_{j=1}^{N}\frac{s_j}{s_{j+2}}\\
+&=\frac{s_1s_2}{s_{N+2}}
+=\frac{b(b+a)}{b+(N+1)a}\longrightarrow0.
+\end{aligned}
+\]
+
+当 \(b=0\) 时，最外层直接给出 \(T_{1,N}=a\)，结论仍成立。
+
+参数条件有实际作用：若允许 \(a=0,b>0\) 并仍以尾端 \(0\)
+截断，则所有有限根式都等于 \(0\)，极限不等于 \(b\)。因此不能把 \(a>0\)
+草率改为 \(a\ge0\)；形式上的逐层恒等式不足以决定截断极限。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-4}
+
+先把上一题的恒等式写成可调参数形式，再选择与之相容的等差系数。推广不仅要包含原题，还应给出明确的截断定义、统一误差界以及参数边界的检验。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B40：根式迭代误差的精确极限（2.4.B-9）}\label{ux95eeux9898-b40ux6839ux5f0fux8fedux4ee3ux8befux5deeux7684ux7cbeux786eux6781ux96502.4.b-9}
+
+来源：\href{https://zj139.github.io/math-notes/problems/0ce2ad9c1d045270806e755b/\#问题-b40}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-5}
+
+设 \(x_0\ge0\)，\(x_{n+1}=\sqrt{2+x_n}\)（\(n\ge0\)）。问
+\(\lim_{n\to\infty}4^n(2-x_n)\) 是否存在；存在时能否求出其值？
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-5}
+
+按初值在不动点 \(2\)
+的哪一侧，分别使用余弦或双曲余弦的半角恒等式，将迭代化为角度减半。
+
+\subsubsection{解答}\label{ux89e3ux7b54-5}
+
+\textbf{解：}对每个
+\(x_0\ge0\)，极限都存在且有限，但符号与数值取决于初值。结论为
+
+\[
+\boxed{\lim_{n\to\infty}4^n(2-x_n)=
+\begin{cases}
+\left(\arccos\dfrac{x_0}{2}\right)^2,&0\le x_0\le2,\\[6pt]
+-\left[\log\dfrac{x_0+\sqrt{x_0^2-4}}2\right]^2,&x_0>2.
+\end{cases}}
+\]
+
+当 \(0\le x_0\le2\) 时，令
+\(\theta=\arccos(x_0/2)\in[0,\pi/2]\)。由半角恒等式和余弦在此区间的非负性，归纳得到
+
+\[
+x_n=2\cos\frac{\theta}{2^n}.
+\]
+
+若 \(\theta=0\)，则数列恒等于 \(2\)，所求极限为 \(0\)。若
+\(\theta>0\)，利用 \(1-\cos u=2\sin^2(u/2)\)，有
+
+\[
+\begin{aligned}
+4^n(2-x_n)
+&=4^{n+1}\sin^2\frac{\theta}{2^{n+1}}\\
+&=\theta^2\left(\frac{\sin(\theta/2^{n+1})}{\theta/2^{n+1}}\right)^2
+\longrightarrow\theta^2.
+\end{aligned}
+\]
+
+当 \(x_0>2\) 时，令
+
+\[
+t=\log\frac{x_0+\sqrt{x_0^2-4}}2>0.
+\]
+
+定义 \(\cosh u=(e^u+e^{-u})/2\)、\(\sinh u=(e^u-e^{-u})/2\)，则
+\(x_0=2\cosh t\)。由 \(2+2\cosh u=4\cosh^2(u/2)\) 及
+\(\cosh(u/2)>0\)，归纳得到
+
+\[
+x_n=2\cosh\frac{t}{2^n}.
+\]
+
+再用 \(\cosh u-1=2\sinh^2(u/2)\) 及 \(\sinh v/v\to1\)，得到
+
+\[
+\begin{aligned}
+4^n(2-x_n)
+&=-4^{n+1}\sinh^2\frac{t}{2^{n+1}}\\
+&=-t^2\left(\frac{\sinh(t/2^{n+1})}{t/2^{n+1}}\right)^2
+\longrightarrow-t^2.
+\end{aligned}
+\]
+
+这里 \(\sinh v/v\to1\) 直接来自指数函数在零点的导数。两类公式也同时给出
+\(x_n\to2\)，无须预先假定收敛。
+
+特别地，\(x_0=0\) 时极限为 \(\pi^2/4\)；\(x_0=2\) 时为 \(0\)；\(x_0>2\)
+时为负数。对 \(x_0\ne2\)，这些公式还给出
+\(2-x_n\sim C(x_0)4^{-n}\)，其中 \(C(x_0)\) 就是上面的非零常数。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-5}
+
+递推中的 \(\sqrt{2+x}\)
+对应三角函数与双曲函数的半角公式。先按不动点两侧选择合适换元，把非线性迭代变为角度逐次减半，再由零点附近的基本极限确定误差常数；只写误差比趋于
+\(1/4\)，还不足以证明归一化误差有非零极限。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B41：寻找非零归一化极限与二阶渐近（2.4.B-10）}\label{ux95eeux9898-b41ux5bfbux627eux975eux96f6ux5f52ux4e00ux5316ux6781ux9650ux4e0eux4e8cux9636ux6e10ux8fd12.4.b-10}
+
+来源：\href{https://zj139.github.io/math-notes/problems/0ce2ad9c1d045270806e755b/\#问题-b41}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-6}
+
+一般地，对于所求过的极限，可考虑进一步的结果。例如，若已经得到
+\(x_n\to A\)，试试能否找到一个无穷大 \(y_n\)，使 \(y_n(x_n-A)\)
+收敛到一个非零实数。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-6}
+
+先检查误差是否最终同号且非零；对 \(x_{n+1}=x_n(1-x_n)\)
+的倒数差多保留一阶，识别累积的对数项。
+
+\subsubsection{解答}\label{ux89e3ux7b54-6}
+
+\textbf{解：}这是一道研究方法题，并不是断言任意收敛数列都能如此归一化。以下统一要求
+\(y_n\to+\infty\)，先说明存在性障碍，再用已解过的递推求一个有实质内容的二阶结果。
+
+\paragraph{归一化的必要条件与尺度选择}\label{ux5f52ux4e00ux5316ux7684ux5fc5ux8981ux6761ux4ef6ux4e0eux5c3aux5ea6ux9009ux62e9}
+
+若 \(y_n(x_n-A)\to c\ne0\)，则乘积最终与 \(c\) 同号，又因 \(y_n\)
+最终为正，所以 \(x_n-A\)
+必须最终非零且符号固定。反过来，若误差最终非零且符号固定，则形式上取
+\(y_n=1/|x_n-A|\) 就满足要求。
+
+这种形式选择只说明存在性，通常没有提供新信息。更有价值的是从递推、和式或积分的结构中找到可直接计算的尺度，例如
+\(n\)、\(n^2/\log n\)、\(4^n\)。若 \(x_n=A\)
+无穷多次，或者误差无穷多次改变符号，就不可能用趋于正无穷的尺度得到非零实极限。例如
+\(x_n=A+(-1)^n/n\) 的两侧符号无法被这种正尺度消除。
+
+\paragraph{已知一阶等价后的二阶结果}\label{ux5df2ux77e5ux4e00ux9636ux7b49ux4ef7ux540eux7684ux4e8cux9636ux7ed3ux679c}
+
+回到
+\href{https://zj139.github.io/math-notes/problems/e7f87e98efda5bacdd444c79/\#问题-b32}{B32}：
+
+\[
+0<x_0<1,\qquad x_{n+1}=x_n(1-x_n).
+\]
+
+该题已经严格证明 \(x_n\to0\) 与 \(nx_n\to1\)，因此最直接的归一化是
+\(y_n=n\)。在此基础上，可以进一步证明
+
+\[
+\boxed{\lim_{n\to\infty}\frac{n^2}{\log n}\left(x_n-\frac1n\right)=-1.}
+\qquad\text{(1)}
+\]
+
+这表示减去主项 \(1/n\) 后，误差的正确尺度是 \((\log n)/n^2\)。
+
+令 \(z_n=1/x_n\)。由递推关系，
+
+\[
+z_{n+1}-z_n
+=\frac1{1-x_n}
+=1+\frac{x_n}{1-x_n}.
+\]
+
+从 \(k=0\) 到 \(n-1\) 相加，有
+
+\[
+z_n-n=z_0+\sum_{k=0}^{n-1}\frac{x_k}{1-x_k}.
+\qquad\text{(2)}
+\]
+
+由 \(kx_k\to1\) 和 \(x_k\to0\)，得到
+
+\[
+\frac{kx_k}{1-x_k}\longrightarrow1.
+\]
+
+因而对任意 \(\varepsilon\in(0,1)\)，存在 \(K\ge1\)，使所有 \(k\ge K\)
+满足
+
+\[
+\frac{1-\varepsilon}{k}
+\le\frac{x_k}{1-x_k}
+\le\frac{1+\varepsilon}{k}.
+\]
+
+将这些不等式累加并除以 \(\log n\)，前 \(K\) 项之和除以 \(\log n\)
+趋于零，而
+
+\[
+\frac1{\log n}\sum_{k=K}^{n-1}\frac1k\longrightarrow1.
+\]
+
+最后一个极限可由 \(1/x\) 的积分上下估计得到。令
+\(\varepsilon\downarrow0\)，再由式 (2)，得
+
+\[
+\frac{z_n-n}{\log n}\longrightarrow1,\qquad
+z_n=n+\log n+o(\log n).
+\]
+
+由于 \(z_n/n=1/(nx_n)\to1\)，于是
+
+\[
+\frac{n^2}{\log n}\left(x_n-\frac1n\right)
+=-\frac n{z_n}\,\frac{z_n-n}{\log n}\longrightarrow-1,
+\]
+
+即式 (1)。等价地，
+
+\[
+x_n=\frac1n-\frac{\log n}{n^2}
++o\left(\frac{\log n}{n^2}\right).
+\]
+
+若一定要保持原题``趋于常数的数列''的形式，可令 \(u_n=nx_n\to1\)，则
+\(\frac n{\log n}(u_n-1)\to-1\)。这里 \(n/\log n\to+\infty\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-6}
+
+先检查误差的零点与符号，再寻找由结构决定的尺度。递推的倒数差中，常数项累积成
+\(n\)，与 \(1/k\) 等价的下一项累积成
+\(\log n\)，于是得到二阶渐近。主项等价求出后，再减去主项研究余项，常能发现新的尺度。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 B42：Logistic
+递推的全初值收敛范围（2.4.B-11）}\label{ux95eeux9898-b42logistic-ux9012ux63a8ux7684ux5168ux521dux503cux6536ux655bux8303ux56f42.4.b-11}
+
+来源：\href{https://zj139.github.io/math-notes/problems/0ce2ad9c1d045270806e755b/\#问题-b42}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-7}
+
+固定 \(r\in(0,4)\)，任取 \(x_0\in(0,1)\)，令
+
+\[
+x_{n+1}=rx_n(1-x_n)\qquad(n\ge0).
+\]
+
+问当 \(r\) 取什么值时，对任何
+\(x_0\in(0,1)\)，该数列一定收敛？试编写计算机程序，观察不同 \(r\)
+下充分多次迭代后的行为。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-7}
+
+局部导数只提供线索。建立全局不变区间，研究二次迭代，再用二周期方程确定临界参数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-7}
+
+\textbf{解：}准确的参数范围与极限是
+
+\[
+\boxed{
+\begin{aligned}
+&0<r\le1:\quad x_n\longrightarrow0\quad(\forall x_0\in(0,1));\\
+&1<r\le3:\quad x_n\longrightarrow1-\frac1r\quad(\forall x_0\in(0,1)).
+\end{aligned}}
+\]
+
+对每个 \(3<r<4\)，都能明确构造位于 \((0,1)\)
+中的二周期初值，故不再是所有初值都收敛。这个结论不表示此时每个初值都不收敛，例如从不动点出发仍是常数列。
+
+\paragraph{区间不变性与不动点}\label{ux533aux95f4ux4e0dux53d8ux6027ux4e0eux4e0dux52a8ux70b9}
+
+记 \(f(x)=rx(1-x)\)。因为 \(0<r<4\)，对任意 \(0<x<1\)，
+
+\[
+0<f(x)\le\frac r4<1.
+\]
+
+故全部迭代均有定义且留在 \((0,1)\)。当 \(r>1\) 时，记正不动点
+\(p=1-1/r\)；有
+
+\[
+f(x)-x=rx(p-x).
+\qquad\text{(1)}
+\]
+
+\paragraph{参数不超过 1}\label{ux53c2ux6570ux4e0dux8d85ux8fc7-1}
+
+若 \(0<r\le1\)，则 \(0<f(x)<x\) 对 \(0<x<1\)
+成立。因此数列严格递减且有非负极限 \(L\)。在递推中取极限得
+\(L=rL(1-L)\)。当 \(r<1\) 时，另一代数根 \(1-1/r\) 为负；当 \(r=1\)
+时两根合并为 \(0\)。故始终 \(L=0\)。
+
+\paragraph{参数大于 1 且不超过
+2}\label{ux53c2ux6570ux5927ux4e8e-1-ux4e14ux4e0dux8d85ux8fc7-2}
+
+设 \(1<r\le2\)，令 \(b=r/4\le1/2\)。从第一项起，\(x_n\in(0,b]\)。函数
+\(f\) 在 \([0,b]\) 上递增，且
+
+\[
+b-p=\frac{(r-2)^2}{4r}\ge0.
+\]
+
+若 \(0<x_1<p\)，则由式 (1)
+及递增性，\(x_1<f(x_1)<p\)；归纳可知此后数列递增且以 \(p\)
+为上界。其极限是不动点，且不小于 \(x_1>0\)，所以只能是 \(p\)。
+
+若 \(p<x_1\le b\)，则 \(p<f(x_1)<x_1\)，此后数列递减且以 \(p\)
+为下界，极限同样只能是 \(p\)。若 \(x_1=p\)，则从此恒等于 \(p\)。
+
+\paragraph{参数大于 2 且不超过 3，包括临界值
+3}\label{ux53c2ux6570ux5927ux4e8e-2-ux4e14ux4e0dux8d85ux8fc7-3ux5305ux62ecux4e34ux754cux503c-3}
+
+设 \(2<r\le3\)，令
+
+\[
+b=\frac r4,\qquad a=f(b)=\frac{r^2(4-r)}{16}.
+\]
+
+此时
+
+\[
+b>p>\frac12,\qquad
+ a-\frac12=\frac{(r-2)(-r^2+2r+4)}{16}>0.
+\]
+
+第二式中的 \(-r^2+2r+4\) 在 \([2,3]\) 上至少为 \(1\)。由于 \(f\) 在
+\([1/2,b]\) 上严格递减，\(b>p\) 蕴含 \(a=f(b)<f(p)=p\)。所以
+
+\[
+\frac12<a<p<b<1.
+\]
+
+区间 \([a,b]\) 在 \(f\)
+下不变：由递减性，\(f([a,b])=[a,f(a)]\)；又由全局上界
+\(f(a)\le b\)，得到 \(f([a,b])\subseteq[a,b]\)。
+
+还须证明任意初值的轨道都会进入这个区间。从第一项起已有
+\(x_n\le b\)。若尚未进入，则 \(0<x_n<a<p\)，由式 (1) 得
+\(x_{n+1}>x_n\)。假设永远不进入，则这个递增数列有极限
+\(L\in[x_1,a]\)。连续性给出 \(f(L)=L\)，但 \(L>0\) 且
+\(L\le a<p\)，与不动点只有 \(0,p\) 矛盾。因此必在有限步后进入
+\([a,b]\)。
+
+在这个区间上，\(f\) 递减，所以 \(g=f\circ f\) 递增。设从 \(x_N\)
+起轨道已进入 \([a,b]\)。若 \(g(x_N)\ge x_N\)，由 \(g\)
+的递增性，\(x_N,x_{N+2},x_{N+4},\ldots\) 递增；若
+\(g(x_N)\le x_N\)，同理该子列递减。它始终有界，故收敛到某个
+\(u\in[a,b]\)。由连续性，另一奇偶子列收敛到 \(v=f(u)\)，且
+\(u=f(v)\)，因此 \(g(u)=u\)。
+
+直接展开并因式分解得到
+
+\[
+f(f(x))-x
+=-rx(x-p)\left(r^2x^2-r(r+1)x+r+1\right).
+\qquad\text{(2)}
+\]
+
+括号内二次多项式的判别式为
+
+\[
+\Delta=r^2(r+1)(r-3).
+\]
+
+若 \(2<r<3\)，则 \(\Delta<0\)，故 \(g(x)=x\) 的实根只有 \(0,p\)；由于
+\(u\ge a>0\)，必有 \(u=p\)。若 \(r=3\)，则该二次多项式等于
+\((3x-2)^2\)，新增重根仍是 \(p=2/3\)，所以还是 \(u=p\)。因而
+\(v=f(u)=p\)。
+
+奇偶子列趋于同一个极限，整个数列便趋于 \(p\)：给定
+\(\varepsilon>0\)，在两个子列各自充分靠后的项中，距离 \(p\) 都小于
+\(\varepsilon\)，取两者所需指标的较大者即可。上述论证包含
+\(r=3\)，没有使用在临界点失效的严格压缩条件。
+
+\paragraph{每个大于 3
+的参数都有不收敛初值}\label{ux6bcfux4e2aux5927ux4e8e-3-ux7684ux53c2ux6570ux90fdux6709ux4e0dux6536ux655bux521dux503c}
+
+若 \(3<r<4\)，令
+
+\[
+q_\pm=\frac{r+1\pm\sqrt{(r-3)(r+1)}}{2r}.
+\]
+
+这两个数互异且都在 \((0,1)\)。事实上，根号小于 \(r+1\)，所以
+\(q_->0\)；又因为
+
+\[
+(r-1)^2-(r-3)(r+1)=4>0,
+\]
+
+根号小于 \(r-1\)，所以 \(q_+<1\)。它们是式 (2)
+中二次多项式的两个根，因此
+
+\[
+r^2q_\pm^2=r(r+1)q_\pm-(r+1),
+\]
+
+从而
+
+\[
+f(q_\pm)=rq_\pm-rq_\pm^2
+=\frac{r+1}{r}-q_\pm=q_\mp.
+\]
+
+取 \(x_0=q_-\)，数列便在 \(q_-,q_+\)
+之间交替，不能收敛。故``对所有初值都收敛''的参数范围恰为 \(0<r\le3\)。
+
+\paragraph{数值观察程序}\label{ux6570ux503cux89c2ux5bdfux7a0bux5e8f}
+
+以下 Python
+程序只依赖标准库，报告丢弃前若干项后的尾段范围和末八项。程序默认包含临界参数
+\(r=3\)；可以增加 \texttt{-\/-burn} 观察其较慢的收敛。
+
+\begin{verbatim}
+import argparse
+
+
+def tail_values(r, x0, burn, keep):
+    if not (0 < r < 4 and 0 < x0 < 1):
+        raise ValueError("require 0 < r < 4 and 0 < x0 < 1")
+    if burn < 0 or keep < 8:
+        raise ValueError("require burn >= 0 and keep >= 8")
+    x = x0
+    for _ in range(burn):
+        x = r * x * (1 - x)
+    values = []
+    for _ in range(keep):
+        x = r * x * (1 - x)
+        values.append(x)
+    return values
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--r", type=float, nargs="+",
+                        default=[0.8, 1, 2, 2.9, 3, 3.2, 3.5, 3.9])
+    parser.add_argument("--x0", type=float, default=0.2)
+    parser.add_argument("--burn", type=int, default=20000)
+    parser.add_argument("--keep", type=int, default=1000)
+    args = parser.parse_args()
+    for r in args.r:
+        values = tail_values(r, args.x0, args.burn, args.keep)
+        print(f"r={r:g}, min={min(values):.12g}, "
+              f"max={max(values):.12g}")
+        print("last 8:", " ".join(f"{x:.10f}" for x in values[-8:]))
+
+
+if __name__ == "__main__":
+    main()
+\end{verbatim}
+
+同一程序保存在仓库 \texttt{scripts/explore-lou-logistic.py}；例如运行：
+
+\begin{verbatim}
+python3 scripts/explore-lou-logistic.py --r 3 3.2 --burn 100000
+\end{verbatim}
+
+尾段很窄只是有限精度下的观察，不能作为对所有初值的证明；特别是 \(r=3\)
+附近可能收敛很慢，而 \(r>3\)
+仍存在不动点等特殊收敛轨道。上面的参数分类依赖严格证明，与数值表象分开。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-7}
+
+先建立不变区间，再按映射的递增或递减区间分情况。递减映射可通过二次迭代处理奇偶子列，而二周期方程的因式分解既证明临界值以内的全局收敛，也给出临界值以外的明确反例。局部导数判别只能提供线索，不能替代全初值的全局证明。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B69：非线性递推的相邻比值线性化（3.1.B-4）}\label{ux95eeux9898-b69ux975eux7ebfux6027ux9012ux63a8ux7684ux76f8ux90bbux6bd4ux503cux7ebfux6027ux53163.1.b-4}
+
+来源：\href{https://zj139.github.io/math-notes/problems/bba0529edd7210df6fd8f51a/\#问题-b69}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-8}
+
+设 \(a_0,a_1,\ell,\alpha>0\)，\(a_1\ne a_0\)，且
+
+\[
+a_{n+1}=\frac{(\ell+n^\alpha)a_n^2}
+{\ell a_n+n^\alpha a_{n-1}}\qquad(n\ge1).
+\]
+
+证明：（1）\(\alpha<1\) 时有正的极限；（2）\(\alpha=1,\ell>1\)
+时有正的极限；（3）\(\alpha>1\) 时发散或极限为零；（4）\(\alpha=\ell=1\)
+时发散或极限为零。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-8}
+
+齐次二阶递推先取相邻倒比值；减去不动点 \(1\)
+后得到乘积，再以对数级数判定原列的极限。
+
+\subsubsection{解答}\label{ux89e3ux7b54-8}
+
+\textbf{证明：} 分母始终为正，递推定义了唯一的正数列。令
+
+\[
+u_n=\frac{a_{n-1}}{a_n},\quad
+c=\frac{a_0}{a_1}-1\in(-1,+\infty)\setminus\{0\},\quad
+p_0=1,\quad p_n=\prod_{k=1}^{n}\frac{k^\alpha}{\ell+k^\alpha}.
+\]
+
+由递推式直接算得
+
+\[
+u_{n+1}=\frac{\ell+n^\alpha u_n}{\ell+n^\alpha},
+\qquad u_{n+1}-1=\frac{n^\alpha}{\ell+n^\alpha}(u_n-1).
+\]
+
+归纳可知 \(u_n=1+cp_{n-1}\)，从而
+
+\[
+a_n=a_0\prod_{j=1}^{n}(1+cp_{j-1})^{-1},\qquad
+\ln\frac{a_n}{a_0}=-\sum_{j=1}^{n}\ln(1+cp_{j-1}).
+\]
+
+所有对数均有意义，因为 \(0<p_j\le1\) 且 \(c>-1\)。若 \(c>0\)，则 \(a_n\)
+严格递减；若 \(c<0\)，则 \(a_n\) 严格递增。
+
+\paragraph{\texorpdfstring{当
+\(0<\alpha<1\)}{当 0\textless\textbackslash alpha\textless1}}\label{ux5f53-0alpha1}
+
+有
+
+\[
+-\ln p_n=\sum_{k=1}^{n}\ln\left(1+\frac{\ell}{k^\alpha}\right).
+\]
+
+对充分大 \(k\)，\(0\le\ell/k^\alpha\le1\)，由
+\(\ln(1+t)\ge t/(1+t)\ge t/2\) 得
+
+\[
+p_n\le C\exp\left(-\frac{\ell}{2}\sum_{k=k_0}^{n}k^{-\alpha}\right)
+\le C_1\exp(-C_2 n^{1-\alpha}),
+\]
+
+其中 \(C,C_1,C_2>0\) 与 \(n\) 无关。最后一步只需保留
+\(\lceil n/2\rceil\le k\le n\) 的项：其和至少为固定正数倍的
+\(n^{1-\alpha}\)。由于 \(\ln n/n^{1-\alpha}\to0\)，右端最终不超过
+\(C_1n^{-2}\)，故 \(\sum_{n=0}^{\infty}p_n<\infty\)。
+
+于是 \(p_n\to0\)，且当 \(j\) 充分大时 \(|cp_{j-1}|\le1/2\)，由
+\(|\ln(1+t)|\le2|t|\) 得
+
+\[
+\sum_{j=1}^{\infty}|\ln(1+cp_{j-1})|<\infty.
+\]
+
+所以 \(\ln(a_n/a_0)\) 收敛到有限实数，\(a_n\)
+收敛到严格正的有限数。这里绝对收敛只用于对数级数，未对原递推式作不合法的极限代入。
+
+\paragraph{\texorpdfstring{当
+\(\alpha=1\)}{当 \textbackslash alpha=1}}\label{ux5f53-alpha1}
+
+利用 \(\ln(1+t)=t+O(t^2)\)，有
+
+\[
+\ln p_n=-\sum_{k=1}^{n}\ln\left(1+\frac\ell k\right)
+=-\ell\sum_{k=1}^{n}\frac1k+O(1)
+=-\ell\ln n+O(1).
+\]
+
+第一处有界误差来自收敛级数
+\(\sum k^{-2}\)，第二处来自调和和与对数的有界差。因此存在常数
+\(C_-,C_+>0\)，使
+
+\[
+C_-n^{-\ell}\le p_n\le C_+n^{-\ell}\qquad(n\ge1).
+\]
+
+若 \(\ell>1\)，则 \(\sum p_n\)
+收敛，重复上一段的对数级数论证，得到正的有限极限，证明（2）。
+
+若 \(0<\ell\le1\)，则 \(p_n\to0\) 而 \(\sum p_n\) 发散。由
+
+\[
+\frac{\ln(1+cp_n)}{p_n}\longrightarrow c\ne0,
+\]
+
+比较可知：\(c>0\) 时 \(\sum\ln(1+cp_n)=+\infty\)，故
+\(a_n\to0\)；\(c<0\) 时此和为 \(-\infty\)，故
+\(a_n\to+\infty\)。这不仅证明（4），也补全了原题未单列的
+\(\alpha=1,0<\ell<1\) 情形。
+
+在 \(\ell=1\) 的边界上还可直接核验：
+
+\[
+p_n=\prod_{k=1}^{n}\frac{k}{k+1}=\frac1{n+1},\qquad
+\ln\frac{a_n}{a_0}=-\sum_{j=1}^{n}\ln\left(1+\frac cj\right).
+\]
+
+误差 \(\ln(1+c/j)-c/j\) 绝对可和，而调和级数发散，故结论完全一致。
+
+\paragraph{\texorpdfstring{当
+\(\alpha>1\)}{当 \textbackslash alpha\textgreater1}}\label{ux5f53-alpha1-1}
+
+因为
+
+\[
+0\le\sum_{k=1}^{\infty}\ln\left(1+\frac\ell{k^\alpha}\right)
+\le\ell\sum_{k=1}^{\infty}k^{-\alpha}<\infty,
+\]
+
+所以 \(p_n\to p_\infty>0\)。若 \(c>0\)，则 \(\ln(1+cp_n)\)
+趋于严格正数，故 \(a_n\to0\)；若 \(c<0\)，则其极限严格为负，故
+\(a_n\to+\infty\)。证明了（3），并明确了``发散''在此只能是趋于
+\(+\infty\)，不会振荡。
+
+综上，完整分类为：
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+参数范围 & \(a_1<a_0\) & \(a_1>a_0\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0<\alpha<1\)，或 \(\alpha=1,\ell>1\) & 收敛到正数 & 收敛到正数 \\
+\(\alpha>1\)，或 \(\alpha=1,0<\ell\le1\) & 趋于 \(0\) & 趋于
+\(+\infty\) \\
+\end{longtable}
+
+若去掉 \(a_1\ne a_0\) 的条件，则 \(c=0\)，数列恒为
+\(a_0\)；因此该条件对（3）、（4）的二分结论必不可少。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-8}
+
+对齐次的二阶非线性递推，先尝试相邻比值。本题的倒比值减去不动点 \(1\)
+后变成一阶乘法递推，再由乘积的对数和判断原序列。真正的临界量是
+\(\sum p_n\)，所以 \(p_n\to0\) 本身不足以推出正极限。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B165：延迟递推的条件辨析与精细渐近（6.6.B-7）}\label{ux95eeux9898-b165ux5ef6ux8fdfux9012ux63a8ux7684ux6761ux4ef6ux8fa8ux6790ux4e0eux7cbeux7ec6ux6e10ux8fd16.6.b-7}
+
+来源：\href{https://zj139.github.io/math-notes/problems/a0a262f9a6114b75980fa4f7/\#问题-b165}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-9}
+
+\textbf{原记号说明：} 设 \(x_0>1\)，\(x_1>0\)，
+
+\[
+x_{n+2}=x_{n+1}+\frac{x_n}{\ln x_n}\qquad(n\ge0).
+\]
+
+（1）计算 \(c\equiv\lim_{n\to+\infty}(\ln^2a_n)/n\) 以及
+\(\lim_{n\to+\infty}(\ln^2a_n-cn)/\sqrt n\)。（2）尝试给出比上述结果更精细的结果。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-9}
+
+先修正使递推无定义的初值条件，取对数后逐阶展开相邻增量，构造增量为 \(1\)
+加可求和误差的辅助函数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-9}
+
+\textbf{解：} 先辨析原题条件。递推定义的是 \(x_n\)，而 \(a_n\)
+未定义；此外，允许的初值 \(x_1=1\) 会使计算 \(x_3\) 时出现
+\(1/\ln1\)。即使只排除 \(x_1=1\) 也不够：取
+
+\[
+x_0=e,\qquad x_1=e^{-1/10},
+\]
+
+则 \(x_2=e+e^{-1/10}\)，\(x_3=e-9e^{-1/10}<0\)（例如由
+\(e^{11/10}<e^2<9\)
+得知），后续无法一直取实对数。因此原题按字面不能给出对所有允许初值成立的两个极限。
+
+以下明确采用充分修订条件 \textbf{\(x_0>1\)、\(x_1>1\)，且极限中的
+\(a_n\) 指
+\(x_n\)}。这一条件保证全程有定义；更一般地，只要某个时刻出现相邻两项均大于
+\(1\)，以下渐近结论同样适用于其后续数列。我们不声称 \(x_1>1\)
+是所有可行初值的必要条件。
+
+在上述修订条件下，所求结果为
+
+\[
+\boxed{c=2,\qquad
+\lim_{n\to\infty}\frac{\ln^2x_n-2n}{\sqrt n}=-3\sqrt2.}
+\]
+
+还存在依赖初值的实常数 \(K\)，使
+
+\[
+\boxed{\ln^2x_n
+=2n-3\sqrt{2n}+\frac{31}{12}\ln n+K+o(1).}
+\]
+
+下面同时证明这些结论及余项的有效性。
+
+由递推式归纳得 \(x_n>1\)，且从 \(n=1\) 起严格递增。若其有有限极限
+\(\ell>1\)，则相邻项差应趋于零，递推式却给出差趋于
+\(\ell/\ln\ell>0\)，矛盾。因此 \(x_n\to\infty\)。令
+
+\[
+y_n=\ln x_n,\qquad d_n=y_{n+1}-y_n\quad(n\ge1).
+\]
+
+则 \(y_n\to\infty\)、\(d_n>0\)，并有精确递推关系
+
+\[
+d_{n+1}=\ln\left(1+\frac{e^{-d_n}}{y_n}\right).
+\]
+
+由 \(0<d_{n+1}\le1/y_n\) 得 \(d_n\to0\)，故 \(y_n/y_{n-1}\to1\)，进而
+\(d_n=O(y_n^{-1})\)。对上式作有限阶 Taylor
+展开，并利用这一先验估计，可逐次提高精度。所有下列 \(O\) 常数对充分大的
+\(n\) 一致。
+
+先有 \(e^{-d_n}=1+O(y_n^{-1})\)，从而
+\(d_{n+1}=y_n^{-1}+O(y_n^{-2})\)。由于
+\(y_n-y_{n-1}=O(y_n^{-1})\)，移位后得到
+
+\[
+d_n=\frac1{y_n}+O(y_n^{-2}).
+\]
+
+代回精确递推，使用 \(e^{-d_n}=1-y_n^{-1}+O(y_n^{-2})\) 及
+\(\ln(1+u)=u-u^2/2+O(u^3)\)，得
+
+\[
+d_{n+1}=\frac1{y_n}-\frac3{2y_n^2}+O(y_n^{-3}).
+\]
+
+移位仍不改变二阶系数，故 \(d_n=y_n^{-1}-3/(2y_n^2)+O(y_n^{-3})\)。此时
+
+\[
+\begin{aligned}
+e^{-d_n}&=1-\frac1{y_n}+\frac2{y_n^2}+O(y_n^{-3}),\\
+d_{n+1}&=\frac1{y_n}-\frac3{2y_n^2}+\frac{10}{3y_n^3}+O(y_n^{-4}).
+\end{aligned}
+\]
+
+三阶精度下必须计入指标移位产生的修正。由
+\(d_{n-1}=y_n^{-1}+O(y_n^{-2})\) 得
+
+\[
+\begin{aligned}
+\frac1{y_{n-1}}&=\frac1{y_n}+\frac1{y_n^3}+O(y_n^{-4}),\\
+\frac1{y_{n-1}^2}&=\frac1{y_n^2}+O(y_n^{-4}),\qquad
+\frac1{y_{n-1}^3}=\frac1{y_n^3}+O(y_n^{-5}).
+\end{aligned}
+\]
+
+于是
+
+\[
+d_n=\frac1{y_n}-\frac3{2y_n^2}+\frac{13}{3y_n^3}+O(y_n^{-4}).
+\]
+
+首先，\(y_{n+1}^2-y_n^2=2y_nd_n+d_n^2\to2\)，对相邻差求和取平均便得
+\(y_n^2/n\to2\)，特别地
+\(y_n\sim\sqrt{2n}\)。为进一步处理不可求和的低阶误差，构造
+
+\[
+F(y)=\frac12y^2+\frac32y-\frac{31}{12}\ln y\qquad(y>0).
+\]
+
+利用上式展开及 \(\ln(1+d_n/y_n)=d_n/y_n+O(y_n^{-4})\)，有
+
+\[
+\begin{aligned}
+F(y_n+d_n)-F(y_n)
+&=y_nd_n+\frac12d_n^2+\frac32d_n
+-\frac{31}{12}\ln\left(1+\frac{d_n}{y_n}\right)\\
+&=1+\left(-\frac32+\frac32\right)\frac1{y_n}
++\left(\frac{13}{3}+\frac12-\frac94-\frac{31}{12}\right)\frac1{y_n^2}
++O(y_n^{-3})\\
+&=1+O(y_n^{-3}).
+\end{aligned}
+\]
+
+因为 \(y_n\sim\sqrt{2n}\)，误差级数绝对收敛，且其尾和为
+\(O(n^{-1/2})\)。所以存在实常数 \(C\)，使
+
+\[
+F(y_n)=n+C+O(n^{-1/2}).
+\]
+
+这是一个更精细的隐式渐近式。将其改写为
+
+\[
+y_n^2=2n-3y_n+\frac{31}{6}\ln y_n+2C+O(n^{-1/2}),
+\]
+
+先除以 \(y_n+\sqrt{2n}\)，结合 \(y_n\sim\sqrt{2n}\)，得到
+
+\[
+y_n-\sqrt{2n}
+=\frac{-3y_n+(31/6)\ln y_n+2C+O(n^{-1/2})}{y_n+\sqrt{2n}}
+\longrightarrow-\frac32.
+\]
+
+因此 \(y_n=\sqrt{2n}-3/2+o(1)\)，并且
+\(\ln y_n=\tfrac12\ln n+\tfrac12\ln2+o(1)\)。代回即得
+
+\[
+y_n^2=2n-3\sqrt{2n}+\frac{31}{12}\ln n+K+o(1),
+\qquad K=2C+\frac92+\frac{31}{12}\ln2.
+\]
+
+除以 \(n\) 或减去 \(2n\) 后除以
+\(\sqrt n\)，便得到两个所求极限。上述论证只用实变量 Taylor
+公式、相邻差求和与绝对收敛估计，未把形式渐近级数当作已证结论。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-9}
+
+先检查递推是否始终有定义，再取对数研究相邻增量。通过反复代回把先验误差逐阶收紧；延迟递推的指标移位会改变高阶系数。最后寻找
+\(F(y)\)，消去不可求和误差，使 \(F(y_n)-n\)
+收敛，从而得到含常数项的精细展开。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B166：由递推渐近编写两道习题（6.6.B-8）}\label{ux95eeux9898-b166ux7531ux9012ux63a8ux6e10ux8fd1ux7f16ux5199ux4e24ux9053ux4e60ux98986.6.b-8}
+
+来源：\href{https://zj139.github.io/math-notes/problems/a0a262f9a6114b75980fa4f7/\#问题-b166}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-10}
+
+仿第 7 题编写一些习题。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-10}
+
+分别改变延迟结构与对数幂次，寻找增量近于常数的变量，再分离平方根修正或对数修正。
+
+\subsubsection{解答}\label{ux89e3ux7b54-10}
+
+\textbf{解：} 以下两题为根据 B165
+的方法自拟的练习，不是原书另有的题目。均先给保证递推有定义的条件，再给完整解答。
+
+\textbf{自拟题一：去掉延迟后的次阶项。} 设 \(\lambda>0\)、\(u_0>1\)，
+
+\[
+u_{n+1}=u_n\left(1+\frac{\lambda}{\ln u_n}\right)\qquad(n\ge0).
+\]
+
+求 \(\lim_{n\to\infty}(\ln^2u_n)/n\) 及
+\(\lim_{n\to\infty}(\ln^2u_n-2\lambda n)/\sqrt n\)。
+
+\textbf{证明：} 递推保证 \(u_n>1\) 严格递增。若趋于有限的
+\(\ell>1\)，其相邻差将趋于 \(\lambda\ell/\ln\ell>0\)，矛盾，故
+\(u_n\to\infty\)。记 \(z_n=\ln u_n\)，则
+
+\[
+\begin{aligned}
+z_{n+1}-z_n
+&=\ln\left(1+\frac\lambda{z_n}\right)
+=\frac\lambda{z_n}-\frac{\lambda^2}{2z_n^2}+O(z_n^{-3}),\\
+z_{n+1}^2-z_n^2
+&=2\lambda-\frac{\lambda^2}{z_n}+O(z_n^{-2}).
+\end{aligned}
+\]
+
+相邻差趋于 \(2\lambda\)，故 \(z_n^2/n\to2\lambda\)。于是
+\(z_n\sim\sqrt{2\lambda n}\)，且
+\(\sum_{k=N}^{n-1}z_k^{-2}=O(\ln n)\)。又由
+\(z_k^{-1}\sim(2\lambda k)^{-1/2}\) 及积分比较，
+
+\[
+\sum_{k=N}^{n-1}\frac1{z_k}\sim\sqrt{\frac2\lambda}\sqrt n.
+\]
+
+这里可直接用尾部的 \((1\pm\eta)/\sqrt{2\lambda k}\) 夹逼求和，再令
+\(\eta\downarrow0\)，不需要交换无穷求和与极限。将相邻差公式从固定 \(N\)
+求和到 \(n-1\)，得到
+
+\[
+z_n^2-2\lambda n
+=-\lambda^2\sum_{k=N}^{n-1}\frac1{z_k}+O(\ln n).
+\]
+
+因此两极限分别为
+
+\[
+\boxed{2\lambda,\qquad-\sqrt2\,\lambda^{3/2}.}
+\]
+
+特别地，\(\lambda=1\) 时主项仍为 \(2n\)，但次阶系数从 B165 的
+\(-3\sqrt2\) 变成 \(-\sqrt2\)，说明延迟项不能在次阶分析中随意忽略。
+
+\textbf{自拟题二：改变增长尺度并求对数修正。} 设
+\(p>0\)、\(\alpha>0\)、\(u_0>1\)，
+
+\[
+u_{n+1}=u_n\exp\left(\frac\alpha{(\ln u_n)^p}\right).
+\]
+
+证明存在依赖初值的常数 \(C\)，使
+
+\[
+(\ln u_n)^{p+1}=(p+1)\alpha n+\frac{p\alpha}{2}\ln n+C+o(1).
+\]
+
+\textbf{证明：} 令 \(z_n=\ln u_n>0\)，则
+\(z_{n+1}=z_n+\alpha z_n^{-p}\)。它严格递增，若有有限正极限，则相邻差不会趋于零，矛盾，故
+\(z_n\to\infty\)。再令 \(w_n=z_n^{p+1}\)，得到精确关系
+
+\[
+w_{n+1}=w_n\left(1+\frac\alpha{w_n}\right)^{p+1}.
+\]
+
+对固定实参数 \(p>0\)，函数 \((1+t)^{p+1}\) 在零点附近光滑，Taylor
+公式及有界的三阶余项给出
+
+\[
+w_{n+1}-w_n=A+\frac B{w_n}+O(w_n^{-2}),
+\qquad A=(p+1)\alpha,\quad B=\frac{p(p+1)}2\alpha^2.
+\]
+
+因此 \(w_n/n\to A>0\)。特别地 \(w_n\ge An/2\) 对充分大的 \(n\)
+成立，求和上式得到 \(w_n=An+O(\ln n)\)。令 \(D=B/A=p\alpha/2\)，对
+\(n\ge1\) 定义 \(q_n=w_n-An-D\ln n\)。由
+
+\[
+\frac1{w_n}=\frac1{An}+O\left(\frac{\ln n}{n^2}\right),\qquad
+\ln(1+1/n)=\frac1n+O(n^{-2}),
+\]
+
+得到
+
+\[
+q_{n+1}-q_n
+=\frac B{w_n}-D\ln(1+1/n)+O(w_n^{-2})
+=O\left(\frac{\ln n}{n^2}\right).
+\]
+
+右端绝对可求和，故 \(q_n\) 收敛到某个有限的
+\(C\)，即得所求结论。进一步，尾和估计还给出 \(q_n-C=O((\ln n)/n)\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-10}
+
+编题时可以分别改变延迟结构与分母幂次：前者改变次阶系数，后者改变主增长尺度。先寻找把相邻增量化为常数的变量，再识别
+\(1/n\)
+量级误差，它累积成对数项；剩余误差绝对可求和时，才可断言存在常数项。
+
+\noindent\hyperref[contents]{返回目录}
+
+\clearpage
+
+\section{函数与矩阵迭代}\label{ux51fdux6570ux4e0eux77e9ux9635ux8fedux4ee3}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B56：周期严格压缩映射的迭代收敛（2.5.B-5）}\label{ux95eeux9898-b56ux5468ux671fux4e25ux683cux538bux7f29ux6620ux5c04ux7684ux8fedux4ee3ux6536ux655b2.5.b-5}
+
+来源：\href{https://zj139.github.io/math-notes/problems/6e82c6e274a8f219f40720c7/\#问题-b56}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-11}
+
+设 \(f:\mathbb R\to\mathbb R\) 的周期为 \(1\)，且对任意不同的实数
+\(x,y\)，
+
+\[
+|f(x)-f(y)|<|x-y|.
+\]
+
+任取 \(x_0\in\mathbb R\)，定义 \(x_{n+1}=f(x_n)\)（\(n\ge0\)）。证明
+\(\{x_n\}\) 收敛，且极限与 \(x_0\) 的选择无关。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-11}
+
+周期性给出有界轨道，严格缩距给出唯一不动点；用聚点论证排除正的极限距离。
+
+\subsubsection{解答}\label{ux89e3ux7b54-11}
+
+\textbf{证明：} 题设蕴含非严格的 Lipschitz 估计
+
+\[
+|f(x)-f(y)|\le|x-y|\qquad(x,y\in\mathbb R),
+\]
+
+所以 \(f\) 连续。另一方面，对每个 \(x\in\mathbb R\)，可写
+\(x=k+t\)，其中 \(k\in\mathbb Z\)、\(0\le t<1\)。由周期性，
+
+\[
+|f(x)|=|f(t)|
+\le |f(0)|+|f(t)-f(0)|
+\le |f(0)|+1.
+\]
+
+令 \(M=|f(0)|+1\)，\(K=[-M,M]\)，则 \(f(\mathbb R)\subseteq K\)，特别有
+\(f(K)\subseteq K\)，且所有迭代项
+\(x_n\)（\(n\ge1\)）都落在同一紧区间中。
+
+先证 \(f\) 有不动点。令 \(g(x)=|f(x)-x|\)，在 \(K\) 上取其下确界
+\(d\ge0\)，并选 \(y_j\in K\) 使
+\(g(y_j)\to d\)。由有界点列的收敛子列定理，存在子列
+\(y_{j_\ell}\to a\in K\)；由连续性，
+
+\[
+g(a)=\lim_{\ell\to\infty}g(y_{j_\ell})=d.
+\]
+
+若 \(d>0\)，则 \(a\ne f(a)\)。对这两个点使用严格不等式，得到
+
+\[
+g(f(a))=|f(f(a))-f(a)|
+<|f(a)-a|=d.
+\]
+
+但 \(f(a)\in K\)，这与 \(d\) 是 \(g\) 在 \(K\) 上的最小值矛盾。故
+\(d=0\)，存在 \(p\in K\) 使 \(f(p)=p\)。
+
+这个不动点唯一：若 \(f(p)=p\)、\(f(q)=q\) 且 \(p\ne q\)，则
+
+\[
+|p-q|=|f(p)-f(q)|<|p-q|,
+\]
+
+矛盾。
+
+对任意初值，记 \(r_n=|x_n-p|\)。若某项等于 \(p\)，后续恒等于
+\(p\)，结论已成立；否则
+
+\[
+r_{n+1}=|f(x_n)-f(p)|<r_n.
+\]
+
+因此 \(r_n\) 单调下降且非负，存在极限 \(r\ge0\)。由于
+\(\{x_n:n\ge1\}\subseteq K\)，可取子列 \(x_{n_j}\to a\in K\)。于是
+
+\[
+|a-p|=\lim_{j\to\infty}r_{n_j}=r.
+\]
+
+又由 \(f\) 连续，\(x_{n_j+1}=f(x_{n_j})\to f(a)\)，从而
+
+\[
+|f(a)-p|=\lim_{j\to\infty}r_{n_j+1}=r.
+\]
+
+若 \(a\ne p\)，严格不等式给出
+
+\[
+|f(a)-p|=|f(a)-f(p)|<|a-p|,
+\]
+
+与两边都等于 \(r\) 矛盾。因此 \(a=p\)，并且 \(r=0\)。于是整个数列满足
+\(|x_n-p|\to0\)，即 \(x_n\to p\)。
+
+因为 \(p\) 是 \(f\) 唯一的不动点，它与初值 \(x_0\)
+无关。此证明中，周期性的作用是使像集有界，从而让所有轨道进入同一个紧区间；仅有点对点的严格缩短，并不能未经论证就换成某个统一常数
+\(0<q<1\) 的压缩估计。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-11}
+
+用周期性得到有界像，用紧性使最小位移取得，从而证明不动点存在；再用``到不动点的距离单调
++ 轨道的收敛子列 +
+严格缩短''证明整列收敛。这里依靠紧性而非预先存在的统一压缩常数。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B79：介值函数的迭代方程与正数递推（3.3.B-3）}\label{ux95eeux9898-b79ux4ecbux503cux51fdux6570ux7684ux8fedux4ee3ux65b9ux7a0bux4e0eux6b63ux6570ux9012ux63a83.3.b-3}
+
+来源：\href{https://zj139.github.io/math-notes/problems/026454abe0373d4f9174aa05/\#问题-b79}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-12}
+
+设 \(a>0\)、\(a^2+4b<0\)。证明：不存在 \(\mathbb R\) 上具有介值性的函数
+\(f\) 满足
+
+\[
+f(f(x))=af(x)+bx,\qquad x\in\mathbb R.
+\]
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-12}
+
+比较两条保序轨道，使轨道差满足二阶线性递推；正比值的单调性与负判别式产生矛盾。
+
+\subsubsection{解答}\label{ux89e3ux7b54-12}
+
+\textbf{证明：} 由 \(a^2+4b<0\) 知 \(b<0\)。假设这样的 \(f\) 存在。若
+\(f(x)=f(y)\)，将 \(x,y\) 分别代入方程并相减，得到 \(b(x-y)=0\)，因而
+\(x=y\)。所以 \(f\) 是单射。
+
+单射与介值性共同保证 \(f\) 严格单调。为说明这一点，任取 \(u<v<w\)，若
+\(f(v)\) 不严格介于 \(f(u)\) 与 \(f(w)\)
+之间，由单射性，它必严格大于两者或严格小于两者。以前者为例，取
+
+\[
+\max\{f(u),f(w)\}<\eta<f(v).
+\]
+
+介值性在 \((u,v)\)、\((v,w)\) 中各给出一个函数值为 \(\eta\)
+的点，违背单射性；后者同理。因此每个有序三点的中间点，其函数值也严格居中。
+
+固定 \(p<q\)。若 \(f(p)<f(q)\)，对任意 \(x<y\)，将 \(p,q,x,y\)
+去重后按大小排列。刚得到的三点性质保证相邻函数值的差同号；其中
+\(f(q)-f(p)>0\)，所以所有相邻差都为正，特别有 \(f(x)<f(y)\)。若
+\(f(p)>f(q)\)，同理得到严格单减。这就证明了严格单调性。
+
+若 \(f\) 严格单减，对 \(x<y\) 有 \(f(x)>f(y)\)，再作用一次 \(f\) 得到
+
+\[
+f(f(x))<f(f(y)).
+\]
+
+但 \(a>0\)、\(b<0\) 又给出
+
+\[
+af(x)+bx>af(y)+by,
+\]
+
+与函数方程矛盾。所以 \(f\) 必须严格单增。
+
+取任意 \(x_0<y_0\)，递归定义
+\(x_{n+1}=f(x_n)\)、\(y_{n+1}=f(y_n)\)，其中 \(n\ge0\)。严格单增性保证
+\(x_n<y_n\) 对所有 \(n\) 成立。令 \(d_n=y_n-x_n>0\)，由函数方程得到
+
+\[
+d_{n+2}=a d_{n+1}+b d_n,\qquad n\ge0.
+\]
+
+设 \(c=-b>0\)，则 \(a^2<4c\)。定义正比值 \(r_n=d_{n+1}/d_n\)，可得
+
+\[
+r_{n+1}=a-\frac{c}{r_n}>0.
+\]
+
+因此 \(r_n>c/a\)。另一方面，
+
+\[
+\begin{aligned}
+r_{n+1}-r_n
+&=-\frac{r_n^2-a r_n+c}{r_n}\\
+&=-\frac{(r_n-a/2)^2+c-a^2/4}{r_n}<0.
+\end{aligned}
+\]
+
+故 \(\{r_n\}\) 严格递减且以下界 \(c/a>0\) 为界，存在极限
+\(r\ge c/a>0\)。在递推式中取极限合法，得到
+
+\[
+r=a-\frac cr,\qquad r^2-ar+c=0.
+\]
+
+然而 \(r^2-ar+c=(r-a/2)^2+c-a^2/4>0\) 对每个实数 \(r\)
+都成立，矛盾。故所求函数不存在。
+
+严格不等式的边界也须保留：当 \(a^2+4b=0\) 时，\(f(x)=(a/2)x\)
+就满足原方程并具有介值性。本证明没有把介值性直接替换为连续性，也没有预设
+\(f\) 有不动点；比较两条迭代轨道即可消去与初值无关的影响。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-12}
+
+先由函数方程得到单射，再以介值性排除局部峰谷，确定单调方向。比较两条保序轨道，将非线性迭代方程化为正数列的线性递推；正比值的单调性最终与负判别式冲突。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B128：有界严格缩距迭代（6.2.B-4）}\label{ux95eeux9898-b128ux6709ux754cux4e25ux683cux7f29ux8dddux8fedux4ee36.2.b-4}
+
+来源：\href{https://zj139.github.io/math-notes/problems/b69d1a64f6e3c089263e7de7/\#问题-b128}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-13}
+
+设实函数 \(f\) 在 \(\mathbb R\) 上有界、可导且
+\(|f'(x)|<1\)（\(\forall x\in\mathbb R\)），又设
+\(x_0\in\mathbb R\)，\(x_{n+1}=f(x_n)\)（\(n\ge0\)），证明 \(\{x_n\}\)
+收敛。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-13}
+
+先找不动点，再研究到不动点的距离；严格小于 \(1\)
+的逐点导数界不等于统一压缩系数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-13}
+
+\textbf{证明：} 取 \(R>0\) 使 \(|f(x)|<R\) 对所有 \(x\) 成立。函数
+\(g(x)=f(x)-x\) 连续，且
+
+\[
+g(-R)>0,\qquad g(R)<0.
+\]
+
+由介值定理，存在 \(p\in(-R,R)\) 使 \(f(p)=p\)。对任意
+\(u\ne v\)，在连接二者的闭区间上使用 Lagrange 中值定理，得到
+
+\[
+|f(u)-f(v)|=|f'(\xi)|\,|u-v|<|u-v|.
+\]
+
+因此不可能有两个不同的不动点，否则 \(|p-q|=|f(p)-f(q)|<|p-q|\)。
+
+令 \(d_n=|x_n-p|\)。若某项 \(d_n=0\)，则其后各项均为
+\(p\)，结论成立。否则 \(d_{n+1}<d_n\)，所以
+\(d_n\downarrow d\ge0\)。又因 \(x_n\in(-R,R)\)（\(n\ge1\)），存在子列
+\(x_{n_j}\to q\in[-R,R]\)。由连续性，
+
+\[
+|q-p|=\lim_{j\to\infty}d_{n_j}=d,
+\qquad
+|f(q)-p|=\lim_{j\to\infty}d_{n_j+1}=d.
+\]
+
+若 \(d>0\)，则 \(q\ne p\)，严格缩距性质给出
+
+\[
+d=|f(q)-f(p)|<|q-p|=d,
+\]
+
+矛盾。故 \(d=0\)，即 \(x_n\to p\)。极限是唯一不动点，与初值无关。
+
+这里没有使用
+\(\sup_{x\in\mathbb R}|f'(x)|<1\)；题设不保证这一一致估计，也不保证
+\(f'\)
+连续。有限维有界序列的子列紧致性足以将点态的严格缩距变为收敛结论。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-13}
+
+先用介值定理找不动点，再考察迭代点到不动点的距离。距离单调只能保证它有极限，不能直接保证该极限为零；必须把聚点代入严格缩距不等式，排除正的极限距离。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B129：去掉有界性后的发散反例（6.2.B-5）}\label{ux95eeux9898-b129ux53bbux6389ux6709ux754cux6027ux540eux7684ux53d1ux6563ux53cdux4f8b6.2.b-5}
+
+来源：\href{https://zj139.github.io/math-notes/problems/b69d1a64f6e3c089263e7de7/\#问题-b129}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-14}
+
+设实函数 \(f\) 在 \(\mathbb R\) 上可导且
+\(|f'(x)|<1\)（\(\forall x\in\mathbb R\)），又设
+\(x_0\in\mathbb R\)，\(x_{n+1}=f(x_n)\)（\(n\ge0\)），证明 \(\{x_n\}\)
+收敛或举例说明 \(\{x_n\}\) 可能发散。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-14}
+
+构造没有不动点的严格缩距映射，让每一步都增加；若有有限极限，便与不动点不存在矛盾。
+
+\subsubsection{解答}\label{ux89e3ux7b54-14}
+
+\textbf{解：} 去掉 \(f\) 有界这一条件后，迭代可能发散。取
+
+\[
+f(x)=x+\frac\pi2-\arctan x,\qquad x\in\mathbb R.
+\]
+
+它在实轴上光滑，且
+
+\[
+f'(x)=1-\frac1{1+x^2}=\frac{x^2}{1+x^2},
+\qquad 0\le f'(x)<1.
+\]
+
+由于 \(\arctan x<\pi/2\) 对每个有限实数 \(x\)
+都成立，任意初值产生的迭代都满足
+
+\[
+x_{n+1}-x_n=\frac\pi2-\arctan x_n>0.
+\]
+
+于是 \(x_n\) 严格递增。若它有上界，则收敛于某个有限实数
+\(L\)，连续性将给出
+
+\[
+L=f(L)=L+\frac\pi2-\arctan L,
+\]
+
+即 \(\arctan L=\pi/2\)，不可能。因此 \(x_n\) 无上界，由单调性可知
+
+\[
+x_n\longrightarrow+\infty.
+\]
+
+此反例对每个 \(x_0\in\mathbb R\)
+都成立，不仅适用于某个特殊初值。其导数上确界为 \(1\)，且没有不动点。
+
+\textbf{补充辨析：} 在本题的一维条件下，只要 \(f\) 有不动点
+\(p\)，迭代仍然收敛于 \(p\)：中值定理给出
+\(|x_{n+1}-p|\le|x_n-p|\)，故轨道自动有界，之后直接使用 B128
+的聚点论证。因此上一题的全局有界性是一种保证不动点存在的充分条件；这里的障碍可以表现为不动点根本不存在。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-14}
+
+构造``恒等映射加一个处处为正、逐渐趋零的位移''，既能使导数绝对值始终小于
+\(1\)，又能让轨道不断向右逃逸。相邻项差趋零不等于序列收敛，严格缩距也不等于存在全局统一的压缩系数。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B130：有限维严格缩距映射的不动点（6.2.B-6）}\label{ux95eeux9898-b130ux6709ux9650ux7ef4ux4e25ux683cux7f29ux8dddux6620ux5c04ux7684ux4e0dux52a8ux70b96.2.b-6}
+
+来源：\href{https://zj139.github.io/math-notes/problems/b69d1a64f6e3c089263e7de7/\#问题-b130}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-15}
+
+设 \(F:\mathbb R^n\to\mathbb R^n\)
+是可微的有界函数，\(\|F_x(x)\|<1\)（\(\forall x\in\mathbb R^n\)）。任取
+\(x_0\in\mathbb R^n\)，令 \(x_{k+1}=F(x_k)\)（\(k\ge0\)），证明
+\(\{x_k\}\) 收敛。
+
+这里 \(F_x(x)=DF(x)\) 是导数矩阵，\(|\cdot|\)
+表示欧氏范数，\(\|\cdot\|\)
+表示相应的算子范数。题设为处处可微，不另加导数连续的假设。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-15}
+
+标量投影给出严格缩距；在紧球上最小化位移得到不动点，再用距离与聚点完成收敛证明。
+
+\subsubsection{解答}\label{ux89e3ux7b54-15}
+
+\textbf{证明：} 先证对任意 \(u\ne v\)，
+
+\[
+|F(v)-F(u)|<|v-u|.
+\]
+
+若 \(F(v)=F(u)\)，结论显然。否则取单位向量
+
+\[
+e=\frac{F(v)-F(u)}{|F(v)-F(u)|},
+\qquad
+\varphi(t)=\langle e,F(u+t(v-u))\rangle,\quad 0\le t\le1.
+\]
+
+\(F\) 可微从而连续，故实函数 \(\varphi\) 在 \([0,1]\)
+上连续，在内部可导。由链式法则和实函数中值定理，存在 \(\theta\in(0,1)\)
+使
+
+\[
+\begin{aligned}
+|F(v)-F(u)|
+&=\varphi(1)-\varphi(0)=\varphi'(\theta)\\
+&=\langle e,DF(u+\theta(v-u))(v-u)\rangle\\
+&\le\|DF(u+\theta(v-u))\|\,|v-u|<|v-u|.
+\end{aligned}
+\]
+
+此处对标量投影应用中值定理，并未使用一般不成立的向量值中值等式。
+
+由 \(F\) 有界，可取闭球 \(K=\{x:|x|\le R\}\) 使
+\(F(\mathbb R^n)\subset K\)，于是 \(F(K)\subset K\)。在紧集 \(K\)
+上，连续函数
+
+\[
+h(x)=|F(x)-x|
+\]
+
+取得最小值，设最小值点为 \(p\)。若 \(F(p)\ne p\)，则
+\(F(p)\in K\)，且严格缩距给出
+
+\[
+h(F(p))=|F(F(p))-F(p)|<|F(p)-p|=h(p),
+\]
+
+与最小性矛盾。因此 \(F(p)=p\)。若 \(q\) 也是不动点且 \(q\ne p\)，则
+\(|q-p|=|F(q)-F(p)|<|q-p|\)，矛盾，所以不动点唯一。
+
+令 \(d_k=|x_k-p|\)。从 \(k=1\) 起 \(x_k\in K\)；若某项等于
+\(p\)，后续恒等于 \(p\)，否则 \(d_{k+1}<d_k\)。总有
+\(d_k\downarrow d\ge0\)。由 \(K\) 紧，取子列
+\(x_{k_j}\to q\in K\)。连续性给出
+
+\[
+|q-p|=d,\qquad |F(q)-p|=d.
+\]
+
+若 \(d>0\)，则 \(q\ne p\)，从而 \(d=|F(q)-F(p)|<|q-p|=d\)，矛盾。故
+\(d=0\)，即 \(x_k\to p\)。
+
+证明同时覆盖任意维数
+\(n\ge1\)、任意初值及轨道提前到达不动点的情形。闭球紧致是有限维性质；不能不加条件地将上述最小值与聚点论证搬到一般无限维空间。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-15}
+
+先将向量差投影到自身方向，用实函数中值定理获得严格缩距；再最小化位移
+\(|F(x)-x|\)
+构造不动点。这个证明只依靠紧致性与缩距性质，不需要预先得到一致压缩系数，也不需要调用更强的不动点定理。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B171：逆矩阵迭代的单调性与平方误差（7.2.B-4）}\label{ux95eeux9898-b171ux9006ux77e9ux9635ux8fedux4ee3ux7684ux5355ux8c03ux6027ux4e0eux5e73ux65b9ux8befux5dee7.2.b-4}
+
+来源：\href{https://zj139.github.io/math-notes/problems/f5ad6d5a3d50a93ac170639e/\#问题-b171}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-16}
+
+若 \(A\) 是 \(n\) 阶可逆矩阵，取 \(\alpha>0\) 足够小使得
+\(I-\alpha AA^{\mathsf T}\) 正定。令
+
+\[
+B_0=\alpha A^{\mathsf T},
+\qquad B_{k+1}=B_k(2I-AB_k)\quad(k\ge0).
+\]
+
+证明：\(\{AB_k\}\) 是单调增加的正定矩阵列，其极限为
+\(I\)。特别地，\(\lim_{k\to+\infty}B_k=A^{-1}\)。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-16}
+
+把未知矩阵误差记为 \(E_k=I-AB_k\)，原迭代立即变成
+\(E_{k+1}=E_k^2\)；对称正定性让各特征值分别平方。
+
+\subsubsection{解答}\label{ux89e3ux7b54-16}
+
+\textbf{证明：} 原题使用转置与正定，按本节语境 \(A\)
+为实矩阵；复矩阵的对应版本须将转置换成共轭转置。矩阵的``增加''按 Loewner
+偏序理解，即相邻差为半正定矩阵，不是逐个元素增加。
+
+令 \(H=AA^{\mathsf T}\)。对任意非零实向量
+\(x\)，\(x^{\mathsf T}Hx=|A^{\mathsf T}x|^2>0\)，故 \(H\)
+对称正定。设其特征值为 \(\mu_1,\ldots,\mu_n>0\)。题设对 \(\alpha\)
+的条件恰为
+
+\[
+0<\alpha<\frac1{\max_i\mu_i}.
+\]
+
+因而 \(E_0=I-\alpha H\) 的全部特征值 \(e_i=1-\alpha\mu_i\) 都在
+\((0,1)\) 内。
+
+记 \(X_k=AB_k\)，\(E_k=I-X_k\)。直接按原乘法顺序计算得
+
+\[
+\begin{aligned}
+X_{k+1}&=X_k(2I-X_k),\\
+E_{k+1}&=I-2X_k+X_k^2=(I-X_k)^2=E_k^2.
+\end{aligned}
+\]
+
+这里没有交换两个任意矩阵的次序；出现的都是同一矩阵的多项式。归纳得
+
+\[
+E_k=E_0^{\,2^k},
+\qquad X_k=I-E_0^{\,2^k}.
+\]
+
+取正交矩阵 \(U\) 使
+\(E_0=U\operatorname{diag}(e_1,\ldots,e_n)U^{\mathsf T}\)，则
+
+\[
+X_k=U\operatorname{diag}(1-e_1^{2^k},\ldots,1-e_n^{2^k})U^{\mathsf T}.
+\]
+
+各对角元素均在 \((0,1)\) 内，所以 \(X_k\) 对称正定，且
+\(X_k\prec I\)。此外，
+
+\[
+X_{k+1}-X_k
+=U\operatorname{diag}\bigl(e_i^{2^k}(1-e_i^{2^k})\bigr)_{i=1}^{n}U^{\mathsf T}
+\succ0.
+\]
+
+所以本题甚至有严格的 Loewner 单调性。令
+\(q=\max_i e_i\in(0,1)\)，利用正交变换保持 Euclid 范数，
+
+\[
+\|I-X_k\|=\|E_k\|=q^{2^k}\longrightarrow0.
+\]
+
+故 \(AB_k\to I\)。最后由 \(B_k=A^{-1}X_k\)，
+
+\[
+\|B_k-A^{-1}\|
+\le\|A^{-1}\|\,q^{2^k}\longrightarrow0.
+\]
+
+结论针对的是 \(AB_k\) 的对称正定性及单调性；一般的 \(B_k\)
+未必对称，不能将上述偏序结论直接转给 \(B_k\)。例如
+
+\[
+A=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+\quad\Longrightarrow\quad
+B_0=\alpha\begin{pmatrix}1&0\\1&1\end{pmatrix},
+\]
+
+后者就不是对称矩阵。另一方面，对任意初值，只要残差满足
+\(\|I-AB_0\|<1\)，同样的平方递推已足以证明
+\(B_k\to A^{-1}\)；但若残差不对称，就不由此得到 Loewner
+单调性。这一区分将收敛所需条件与本题更强的正定、单调条件分开。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-16}
+
+逆矩阵迭代宜考察残差
+\(I-AB_k\)。将非线性迭代化成精确的平方递推后，收敛速度一目了然；正定初值还允许用固定正交基逐个研究特征值。证明中始终保留乘法次序，并明确矩阵偏序的含义。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B198：带不动点的迭代函数方程（8.5.B-1）}\label{ux95eeux9898-b198ux5e26ux4e0dux52a8ux70b9ux7684ux8fedux4ee3ux51fdux6570ux65b9ux7a0b8.5.b-1}
+
+来源：\href{https://zj139.github.io/math-notes/problems/7eefe730d0abc9edb8bf7c08/\#问题-b198}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-17}
+
+设 \(f\in C(\mathbb R)\) 是双射，有不动点，又满足
+\(f(2x-f(x))=x\)（\(\forall x\in\mathbb R\)）。证明：\(f(x)\equiv x\)。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-17}
+
+沿双向迭代轨道把函数方程化为二阶差分为零；不动点限制轨道在同一侧，排除非零公差。
+
+\subsubsection{解答}\label{ux89e3ux7b54-17}
+
+\textbf{证明：} 因为 \(f\) 是双射，题设等价于
+
+\[
+f^{-1}(x)=2x-f(x),\qquad f(x)+f^{-1}(x)=2x.
+\]
+
+实区间上的连续单射必严格单调：否则可取三个依次排列的点，使中间函数值严格高于或低于两端；在两侧分别应用介值定理，就得到相同函数值的两个不同原像。若
+\(f\) 严格递减，则 \(f^{-1}\) 也严格递减，两者之和不可能等于严格递增的
+\(2x\)。故 \(f\) 严格递增。
+
+设 \(f(c)=c\)。任取 \(x\in\mathbb R\)，利用双射性定义双向迭代
+\(x_k=f^k(x)\)（\(k\in\mathbb Z\)）。将上式用于 \(x_k\)，得到
+
+\[
+x_{k+1}+x_{k-1}=2x_k.
+\]
+
+所以相邻差恒定，进而
+
+\[
+x_k=x+k\bigl(f(x)-x\bigr),\qquad k\in\mathbb Z.
+\]
+
+若 \(x>c\)，严格递增性以及 \(f(c)=f^{-1}(c)=c\) 保证所有 \(x_k>c\)；若
+\(x<c\)，同理所有 \(x_k<c\)。但当 \(f(x)-x\ne0\)
+时，上述双向等差数列向两个方向分别趋于正、负无穷，不可能始终位于 \(c\)
+的同一侧。因此 \(f(x)=x\)。对于 \(x=c\) 结论已经成立，故在全实轴上 \(f\)
+恒等于恒等映射。
+
+不动点条件不能删去：任意平移 \(f(x)=x+d\) 都满足原函数方程，只有 \(d=0\)
+时有不动点。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-17}
+
+先借助单射、满射把函数方程改写成含逆映射的对称关系，再沿双向轨道得到差分方程。不动点与单调性限制轨道所在的半轴，与非零等差增量矛盾。
+
+\noindent\hyperref[contents]{返回目录}
+
+\clearpage
+
+\section{竞赛中的递推数列}\label{ux7adeux8d5bux4e2dux7684ux9012ux63a8ux6570ux5217}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+CMC13补5：有限记忆递推与滑动最小值}\label{ux95eeux9898-cmc13ux88655ux6709ux9650ux8bb0ux5fc6ux9012ux63a8ux4e0eux6ed1ux52a8ux6700ux5c0fux503c}
+
+来源：\href{https://zj139.github.io/math-notes/essays/d27224ee77886a8a75ca7b76/\#问题-5}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-18}
+
+设正数列 \(\{a_n\}\) 的前 2021 项属于 \((0,1)\)，且
+
+\[
+a_{n+2021}^{2022}=a_n+a_{n+1}+\cdots+a_{n+2020},\qquad n\ge1.
+\]
+
+证明 \(\lim_{n\to\infty}a_n\) 存在。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-18}
+
+初始项可按任意顺序落在 \((0,1)\) 中，因此整个数列未必单调。强行证明
+\(a_{n+1}\ge a_n\) 从起点就缺乏依据。
+
+候选正平衡值为 \(L=2021^{1/2021}>1\)。若一个窗口中的项都不超过
+\(L\)，新项也不超过 \(L\)；若最小值为 \(m\le L\)，新项至少为
+\((2021m)^{1/2022}\ge m\)。所以滑动窗口的最小值不会下降。再经过一个完整窗口，旧项全部被替换，最小值还能得到一次严格的函数改进。这就能把它逼到
+\(L\)。
+
+先找平衡值作为不变上界；用滑动最小值取代原数列的单调性；利用整块更新将弱单调性增强为极限约束；保留正下界以排除零平衡值。
+
+\subsubsection{解答}\label{ux89e3ux7b54-18}
+
+证明：为简化下标，记
+
+\[
+k=2021,\qquad L=k^{1/k},\qquad F(t)=(kt)^{1/(k+1)}.
+\]
+
+则 \(L^{k+1}=kL\)。初始 \(k\) 项均小于 \(1<L\)。若当前 \(k\) 项均不超过
+\(L\)，由递推关系有
+
+\[
+a_{n+k}^{k+1}=\sum_{j=0}^{k-1}a_{n+j}\le kL=L^{k+1},
+\]
+
+故 \(a_{n+k}\le L\)。归纳可知所有项均满足 \(0<a_n\le L\)。
+
+定义滑动窗口的最小值
+
+\[
+m_n=\min\{a_n,a_{n+1},\ldots,a_{n+k-1}\}.
+\]
+
+由递推可得 \(a_{n+k}\ge F(m_n)\)。又因 \(0<m_n\le L\)，有
+\(m_n^k\le L^k=k\)，故
+
+\[
+F(m_n)=(km_n)^{1/(k+1)}\ge m_n.
+\]
+
+新窗口保留的旧项均不小于 \(m_n\)，新加入的项也不小于 \(m_n\)，因此
+\(m_{n+1}\ge m_n\)。于是 \(\{m_n\}\) 单调递增且有上界 \(L\)，存在极限
+
+\[
+m_n\longrightarrow m,\qquad 0<m_1\le m\le L.
+\]
+
+还需利用整块更新的信息。对 \(j=0,1,\ldots,k-1\)，由 \(m_{n+j}\ge m_n\)
+及 \(F\) 的单调性，得到
+
+\[
+a_{n+k+j}\ge F(m_{n+j})\ge F(m_n).
+\]
+
+这些恰好是窗口 \(m_{n+k}\) 中的全部项，所以
+
+\[
+m_{n+k}\ge F(m_n).
+\]
+
+令 \(n\to\infty\)，由 \(F\) 连续，得到 \(m\ge F(m)\)，即
+
+\[
+m^{k+1}\ge km.
+\]
+
+由于已经证明 \(m\ge m_1>0\)，可除以 \(m\)，得到 \(m^k\ge k\)，因此
+\(m\ge L\)。结合 \(m\le L\) 可知 \(m=L\)。最后，由
+
+\[
+m_n\le a_n\le L
+\]
+
+及夹逼定理，得到
+
+\[
+\boxed{\displaystyle\lim_{n\to\infty}a_n=2021^{1/2021}.}
+\]
+
+证毕
+
+\textbf{关键转折点有两处。}
+其一，将研究对象换成窗口最小值，使任意排列的初始数据也能产生单调量。其二，由
+\(m_{n+1}\ge m_n\) 进一步得到
+\(m_{n+k}\ge F(m_n)\)：前者只保证某个极限存在，后者才将极限锁定在平衡值。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-18}
+
+求候选平衡值；归纳得到全局上界；定义滑动最小值；证明新项不低于当前最小值；推出最小值序列单调且具有正下界；再写出整块更新不等式；取极限锁定平衡值；夹逼原数列。通用方法是：\textbf{带有限记忆的递推，常需要对整个记忆窗口构造单调量。}
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+CMC14补一5：双变量同步与临界二周期排除}\label{ux95eeux9898-cmc14ux8865ux4e005ux53ccux53d8ux91cfux540cux6b65ux4e0eux4e34ux754cux4e8cux5468ux671fux6392ux9664}
+
+来源：\href{https://zj139.github.io/math-notes/essays/ac24766aa5d8ff02f8d5946b/\#问题-5}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-19}
+
+设 \(x_0,y_0\in\mathbb R\)，并递推定义
+
+\[
+\begin{aligned}
+x_{n+1}&=\frac1{x_n^2+x_ny_n+2y_n^2+1},\\
+y_{n+1}&=\frac1{2x_n^2+x_ny_n+y_n^2+1}.
+\end{aligned}
+\]
+
+证明：（1）\(x_n-y_n\to0\)；（2）\(x_n\) 收敛。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-19}
+
+正定二次型保证分母严格为正；若 \(|d_{n+1}|\le q|d_n|\) 且
+\(0\le q<1\)，则 \(d_n\to0\)。
+
+有界实数列总有有限的下极限与上极限。若
+\(a=\liminf x_n\)、\(b=\limsup x_n\)，\(F\)
+在包含数列的闭区间上连续且递减，则
+
+\[
+\liminf F(x_n)=F(b),\qquad
+\limsup F(x_n)=F(a).
+\]
+
+理由是尾列最终在 \([a-\varepsilon,b+\varepsilon]\) 内，同时分别存在趋于
+\(a,b\)
+的子列；单调性给界，连续性使对应子列达到界。加上趋零误差不会改变上下极限。
+
+两个分母只把 \(x_n^2\)、\(y_n^2\) 的系数交换了，因此先作差。分子将出现
+\(x_n^2-y_n^2\)，便可把 \(x_n-y_n\)
+提出来。真正要做的是把剩余系数统一压到小于 1。
+
+第一问完成后，两变量渐渐接近，递推应接近
+
+\[
+F(t)=\frac1{1+4t^2}.
+\]
+
+固定点为 \(1/2\)，但
+
+\[
+F'(t)=-\frac{8t}{(1+4t^2)^2},\qquad F'(1/2)=-1.
+\]
+
+这揭示了常规方法的障碍：不能在固定点附近用统一小于 1
+的导数界直接证明压缩；迭代还可能交替位于固定点两侧，单调性也不现成。数值上``看起来靠近
+\(1/2\)''尤其不能排除缓慢振荡。
+
+递减映射最需要警惕的是二周期。用上下极限得到
+\(a=F(b)\)、\(b=F(a)\)，再证明这个二周期只能退化为
+\(a=b\)，便能不借助压缩映射而完成收敛论证。
+
+先证明正性与不变有界区间；对差建立几何衰减；把二维递推写成一维递推加趋零误差；利用上下极限排除非平凡二周期。
+
+\subsubsection{解答}\label{ux89e3ux7b54-19}
+
+证明：先说明递推始终有定义。对任意实数 \(x,y\)，
+
+\[
+\begin{aligned}
+x^2+xy+2y^2&=\left(x+\frac y2\right)^2+\frac74y^2\ge0,\\
+2x^2+xy+y^2&=\left(y+\frac x2\right)^2+\frac74x^2\ge0.
+\end{aligned}
+\]
+
+故 \(0<x_n,y_n\le1\) 对所有 \(n\ge1\) 成立。进而在 \(n\ge1\)
+时两个分母都不超过 5，所以
+
+\[
+\frac15\le x_n,y_n\le1\qquad(n\ge2).
+\]
+
+\textbf{（1）差趋于零。} 对 \(n\ge1\)，记
+
+\[
+D_n=1+x_n^2+x_ny_n+2y_n^2,\qquad
+E_n=1+2x_n^2+x_ny_n+y_n^2.
+\]
+
+直接相减，得
+
+\[
+x_{n+1}-y_{n+1}
+=\frac{(x_n-y_n)(x_n+y_n)}{D_nE_n}.
+\]
+
+令 \(s=x_n+y_n>0\)。因为此时 \(x_n,y_n\)
+非负，展开乘积并保留常数项与二次项，得到
+
+\[
+\begin{aligned}
+D_nE_n
+&\ge1+3x_n^2+2x_ny_n+3y_n^2\\
+&=1+2s^2+(x_n-y_n)^2\\
+&\ge1+2s^2\ge2s.
+\end{aligned}
+\]
+
+末步来自 \(1+2s^2-2s=2(s-1/2)^2+1/2>0\)。因此
+
+\[
+|x_{n+1}-y_{n+1}|\le\frac12|x_n-y_n|.
+\]
+
+归纳即得
+
+\[
+|x_n-y_n|\le2^{-(n-1)}|x_1-y_1|\longrightarrow0.
+\]
+
+\textbf{关键转折点一：控制的不是两个数列本身，而是它们的差。}
+差的几何衰减已经足够把第二问转成一维问题，却还不能直接宣布收敛。第一问得证。证毕
+
+\textbf{（2）收敛及其极限。} 证明：令 \(F(t)=1/(1+4t^2)\)。对
+\(n\ge1\)，利用 \(0<x_n,y_n\le1\)，有
+
+\[
+\begin{aligned}
+\left|x_{n+1}-F(x_n)\right|
+&=\frac{|(y_n-x_n)(3x_n+2y_n)|}
+{D_n(1+4x_n^2)}\\
+&\le5|x_n-y_n|\longrightarrow0.
+\end{aligned}
+\]
+
+记
+
+\[
+a=\liminf_{n\to\infty}x_n,\qquad
+b=\limsup_{n\to\infty}x_n.
+\]
+
+则 \(1/5\le a\le b\le1\)。移去有限项不改变上下极限；\(F\)
+在此区间连续且严格递减，由前述上下极限法则和趋零误差，得到
+
+\[
+a=F(b)=\frac1{1+4b^2},\qquad
+b=F(a)=\frac1{1+4a^2}.
+\]
+
+于是
+
+\[
+a+4ab^2=1,\qquad b+4a^2b=1.
+\]
+
+两式相减，得
+
+\[
+(a-b)(1-4ab)=0.
+\]
+
+若 \(a\ne b\)，则 \(4ab=1\)。代入两式之和，得
+
+\[
+(a+b)(1+4ab)=2,
+\qquad a+b=1.
+\]
+
+但这又给出
+
+\[
+(a-b)^2=(a+b)^2-4ab=1-1=0,
+\]
+
+矛盾。因此 \(a=b\)，数列 \(x_n\) 收敛。
+
+\textbf{关键转折点二：先让上下极限满足互相交换的方程，再排除不同的两个值。}
+这避免了尚未证明收敛就把 \(x_{n+1}\) 与 \(x_n\) 都替换成同一个极限。
+
+设共同极限为 \(\ell\)。由 \(\ell=F(\ell)\)，有
+
+\[
+4\ell^3+\ell-1
+=(2\ell-1)(2\ell^2+\ell+1)=0.
+\]
+
+因为第二个因子的判别式为 \(1-8<0\)，故
+\(\ell=1/2\)。结合第一问，实际上得到更强结论
+
+\[
+\boxed{x_n\longrightarrow\frac12,\qquad y_n\longrightarrow\frac12}.
+\]
+
+证毕
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-19}
+
+检查分母对任意实初值均为正；进入正的有界区间；作差并得到统一衰减系数；识别对角线映射；写出趋零误差；建立上下极限互换关系；排除非平凡二周期；最后才求共同极限。\textbf{先证明存在极限，再计算极限；临界导数情形尤其不能跳过前半句。}
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+CMC15正6：指数迭代与严格小于不动点的上界}\label{ux95eeux9898-cmc15ux6b636ux6307ux6570ux8fedux4ee3ux4e0eux4e25ux683cux5c0fux4e8eux4e0dux52a8ux70b9ux7684ux4e0aux754c}
+
+来源：\href{https://zj139.github.io/math-notes/essays/968abeeef5ad2a0653d8210d/\#问题-6}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-20}
+
+设
+
+\[
+a=\sqrt[3]{3},\qquad x_1=a,\qquad x_{n+1}=a^{x_n}\quad(n\ge1).
+\]
+
+证明数列 \(\{x_n\}\) 的极限存在，但不是 \(3\)。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-20}
+
+因为 \(a^3=3\)，最先能想到的上界确实是 \(3\)：\(x_n<3\) 会推出
+\(x_{n+1}<3\)。但这只能说明极限不超过 \(3\)，完全无法证明极限不等于
+\(3\)。
+
+因此应该把目标改成：找一个严格小于 \(3\) 的共同上界
+\(b\)。试探简单数值时，
+
+\[
+a^2=\sqrt[3]{9}>2,
+\]
+
+所以 \(2\) 太低；再试 \(2\) 与 \(3\) 的中点 \(5/2\)。要判断
+\(a^{5/2}<5/2\)，两边取六次方即可变成整数比较。这比先精确求不动点容易得多。
+
+由递增映射传递相邻两项的严格不等式；用有理数作不变上界；以整数幂比较避免小数近似；把``证明收敛''与``识别极限''分开处理。
+
+\subsubsection{解答}\label{ux89e3ux7b54-20}
+
+证明：因为 \(a=3^{1/3}>1\)，有
+
+\[
+x_2=a^a>a=x_1.
+\]
+
+若 \(x_n>x_{n-1}\)，由 \(x\mapsto a^x\) 严格递增可得
+
+\[
+x_{n+1}=a^{x_n}>a^{x_{n-1}}=x_n.
+\]
+
+归纳可知 \(\{x_n\}\) 严格递增。
+
+下面建立小于 \(3\) 的上界。注意
+
+\[
+\left(a^{5/2}\right)^6=3^5=243,
+\qquad
+\left(\frac52\right)^6=\frac{15625}{64},
+\]
+
+而 \(243\cdot64=15552<15625\)，故
+
+\[
+a^{5/2}<\frac52.
+\]
+
+又 \(x_1=a<2<5/2\)。若 \(x_n<5/2\)，则
+
+\[
+x_{n+1}=a^{x_n}<a^{5/2}<\frac52.
+\]
+
+由归纳法，\(x_n<5/2\) 对所有 \(n\) 成立。
+
+\textbf{关键转折点：把上界从 \(3\) 压低到一个固定的 \(5/2\)。}
+这使``不等于 \(3\)''由统一间隔保证，而不依赖``每一项小于
+\(3\)''这一不足以控制极限的事实。
+
+因此 \(\{x_n\}\) 单调递增且有上界，极限 \(L\) 存在，并且
+
+\[
+\boxed{L\le\frac52<3}.
+\]
+
+故该极限不是 \(3\)。证毕
+
+\textbf{进一步理解不动点。}
+以下用于复盘，正式作答到``证毕''已经完整。由连续性，\(L=a^L\)；又
+\(L\le5/2\)，所以
+
+\[
+L=a^L\le a^{5/2}<\frac52.
+\]
+
+考虑 \(h(t)=\log t/t\)，则
+
+\[
+h'(t)=\frac{1-\log t}{t^2}.
+\]
+
+它在 \((0,e)\) 上严格递增，在 \((e,\infty)\) 上严格递减。因为
+\(5/2<e<3\)，且
+
+\[
+\frac{\log2}{2}<\frac{\log3}{3}
+\quad\Longleftrightarrow\quad 2^3<3^2,
+\]
+
+而 \(h(L)=\log a=\log3/3\)，可得 \(2<L<5/2\)。方程 \(t=a^t\) 有一个位于
+\((2,5/2)\) 的解和解 \(3\)，由 \(h\)
+的单调性可知没有其他正解。本题迭代从 \(x_1=a\)
+出发，收敛到较小的那个解；数值约为
+\(2.4780526803\)，此近似值不参与证明。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-20}
+
+先比较首两项，利用映射递增证明数列递增；检查自然上界 \(3\)
+能证明到哪里；为排除等号，寻找更低的不变上界；试 \(5/2\)
+并作精确比较；由单调有界收敛；最后直接用 \(L\le5/2<3\)
+完成目标。核心经验是：\textbf{当目标涉及严格极限不等式，应寻找统一间隔；固定点方程须结合迭代所在区间。}
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+CMC16正6：任意次序复合与统一吸引}\label{ux95eeux9898-cmc16ux6b636ux4efbux610fux6b21ux5e8fux590dux5408ux4e0eux7edfux4e00ux5438ux5f15}
+
+来源：\href{https://zj139.github.io/math-notes/essays/bcc6708ecabf713a6483efa8/\#问题-6}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-21}
+
+（1）设
+
+\[
+f_1(t)=\frac{t+3}{2},\qquad
+f_2(t)=\frac{t+6}{3},
+\]
+
+\(n_k\in\{1,2\}\)，\(F_1=f_{n_1}\)，\(F_{k+1}=F_k\circ f_{n_{k+1}}\)。证明对任意
+\(x\in\mathbb R\)，\(\lim_{k\to\infty}F_k(x)\) 存在且与 \(x\) 无关。
+
+（2）若改为
+
+\[
+f_1(t)=t-\arctan t,\qquad
+f_2(t)=2\arctan t-t,
+\]
+
+结论如何？
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-21}
+
+第一问先解不动点方程，两个函数的共同不动点都是 \(3\)。减去 \(3\)
+后只剩分别除以 \(2\)、除以 \(3\)，任何次序都可统一处理。
+
+第二问的共同不动点变为
+\(0\)。对非零输入，两个函数都严格缩小绝对值，但这还不足以直接说明序列
+\(|F_k(x)|\) 随 \(k\) 单调，因为新函数加在最内层。
+
+应把问题改成：\textbf{长度为 \(k\)
+的任意复合，是否都能把给定输入送进任意小的零点邻域？}
+固定一个有限复合，从最内层向外执行；只要当前模长还不小于
+\(\varepsilon\)，每次都会减少至少一个固定正数，因而不可能无限停留在外面。
+
+第一问平移到共同不动点；第二问先证共同的严格模长下降，再用紧性把逐点严格下降升级为远离零时的统一下降；论证对所有有限复合次序同时成立，从而避免错误递推。
+
+\subsubsection{解答}\label{ux89e3ux7b54-21}
+
+证明：（1）注意到
+
+\[
+f_1(t)-3=\frac{t-3}{2},\qquad
+f_2(t)-3=\frac{t-3}{3}.
+\]
+
+设前 \(k\) 个指标中，\(1\) 出现 \(p_k\) 次，\(2\) 出现 \(q_k\) 次，则
+\(p_k+q_k=k\)。依次复合可得
+
+\[
+F_k(x)=3+\frac{x-3}{2^{p_k}3^{q_k}}.
+\qquad\text{(6.1)}
+\]
+
+因此
+
+\[
+|F_k(x)-3|\le2^{-k}|x-3|\longrightarrow0.
+\]
+
+故对任何指标序列和任何 \(x\in\mathbb R\)，
+
+\[
+\boxed{\lim_{k\to\infty}F_k(x)=3}.
+\]
+
+极限与 \(x\) 无关，也与指标序列无关。证毕
+
+证明：（2）结论仍成立，但极限改为 \(0\)。
+
+两个函数都是奇函数，且均把 \(0\) 映到 \(0\)。对 \(t>0\)，由
+\(0<\arctan t<t\) 得
+
+\[
+0<t-\arctan t<t,
+\qquad
+-t<2\arctan t-t<t.
+\]
+
+利用奇性，对所有 \(t\ne0\) 都有
+
+\[
+|f_1(t)|<|t|,\qquad |f_2(t)|<|t|.
+\qquad\text{(6.2)}
+\]
+
+固定 \(x\ne0\)，记 \(R=|x|\)。任取 \(0<\varepsilon<R\)，在紧集
+\(\{t:\varepsilon\le|t|\le R\}\) 上定义连续函数
+
+\[
+d(t)=|t|-\max\{|f_1(t)|,|f_2(t)|\}.
+\]
+
+由式（6.2），它处处为正，故
+
+\[
+\delta=\min_{\varepsilon\le|t|\le R}d(t)>0.
+\qquad\text{(6.3)}
+\]
+
+\textbf{关键转折点：固定 \(\varepsilon\)
+后，零点邻域之外存在与函数选择无关的正减少量 \(\delta\)。}
+这使任意复合次序都能统一估计，不需要假设 \(F_k(x)\) 是普通迭代序列。
+
+具体地，对任意长度 \(k\) 的复合，从最内层向外计算，记
+
+\[
+y_0=x,\qquad
+y_j=f_{n_{k-j+1}}(y_{j-1})\quad(1\le j\le k).
+\]
+
+于是 \(y_k=F_k(x)\)。由式（6.2），所有 \(|y_j|\le R\)，且一旦某项满足
+\(|y_j|<\varepsilon\)，以后各项仍小于 \(\varepsilon\)。若执行前一直有
+\(|y_j|\ge\varepsilon\)，则每次由式（6.3）至少减少 \(\delta\)。
+
+当 \(k>R/\delta\) 时，不可能在这 \(k\) 次运算中始终不进入
+\((-\varepsilon,\varepsilon)\)，否则
+
+\[
+0\le |y_k|\le R-k\delta<0,
+\]
+
+矛盾。因此对所有这样的 \(k\)，以及任意指标选择，都有
+\(|F_k(x)|<\varepsilon\)。这证明
+
+\[
+\boxed{\lim_{k\to\infty}F_k(x)=0}.
+\]
+
+当 \(x=0\)
+时显然也成立。所以第二问的极限存在，与初值及指标序列都无关。证毕
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-21}
+
+先展开两三层复合确认方向；第一问找共同不动点
+\(3\)，平移后相乘系数；第二问找共同不动点
+\(0\)，证明每个函数都缩小模长；固定输入范围和目标精度；在远离零的紧集上找统一减少量；对任意有限复合从内向外计算，证明有限步后进入小邻域并留在其中。可迁移的原则是：\textbf{没有统一压缩比例时，可以用紧性获得局部统一下降；次序不固定时，应直接控制所有有限复合。}
+
+\noindent\hyperref[contents]{返回目录}
+
+\clearpage
+
+\section{递推不等式、差分与系数}\label{ux9012ux63a8ux4e0dux7b49ux5f0fux5deeux5206ux4e0eux7cfbux6570}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B52：次乘性与有界加法误差的推广（2.5.B-1）}\label{ux95eeux9898-b52ux6b21ux4e58ux6027ux4e0eux6709ux754cux52a0ux6cd5ux8befux5deeux7684ux63a8ux5e7f2.5.b-1}
+
+来源：\href{https://zj139.github.io/math-notes/problems/6e82c6e274a8f219f40720c7/\#问题-b52}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-22}
+
+推广习题 2.5.A 中的第 2 题和第 4 题。两道原结论分别为：
+
+\begin{itemize}
+\tightlist
+\item
+  若 \(0\le x_{m+n}\le x_mx_n\)（\(m,n\ge1\)），则 \(\sqrt[n]{x_n}\)
+  收敛。
+\item
+  若 \(a_m+a_n-1\le a_{m+n}\le a_m+a_n+1\)，则 \(a_n/n\) 收敛；记极限为
+  \(q\)，有 \(nq-1\le a_n\le nq+1\)。
+\end{itemize}
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-22}
+
+将乘法不等式取对数，将近似可加关系平移为次可加与超可加关系；固定块长后反复展开。
+
+\subsubsection{解答}\label{ux89e3ux7b54-22}
+
+\textbf{解：}
+以下将乘法中的常数因子、加法中的两侧误差都纳入，并给出极限的精确表示。
+
+\paragraph{次可加引理}\label{ux6b21ux53efux52a0ux5f15ux7406}
+
+设实数列 \(\{u_n\}\) 满足
+
+\[
+u_{m+n}\le u_m+u_n\qquad(m,n\ge1).
+\]
+
+则在扩充实数意义下，
+
+\[
+\lim_{n\to\infty}\frac{u_n}{n}
+=\inf_{k\ge1}\frac{u_k}{k}\in[-\infty,\infty).
+\]
+
+为证此结论，固定正整数 \(k\)，将 \(n\) 写成 \(n=mk+r\)，其中
+\(0\le r<k\)，并为记号方便置 \(u_0=0\)。重复使用次可加性得到
+
+\[
+u_n\le m u_k+u_r.
+\]
+
+当 \(r=0\) 时，右边的 \(u_0\)
+只是零项，并未额外假设涉及下标零的次可加关系。因 \(r\)
+只有有限种取值，\(u_r/n\to0\)，且 \(m/n\to1/k\)，故
+
+\[
+\limsup_{n\to\infty}\frac{u_n}{n}\le\frac{u_k}{k}.
+\]
+
+对 \(k\) 取下确界，而每一项 \(u_n/n\)
+都不小于这个下确界，便得到结论。若下确界为 \(-\infty\)，则对任意实数
+\(M\) 可选 \(k\) 使 \(u_k/k<M\)，同一估计给出 \(u_n/n\to-\infty\)。
+
+对 \(-u_n\) 应用此引理，还得到超可加形式：
+
+\[
+u_{m+n}\ge u_m+u_n
+\quad\Longrightarrow\quad
+\lim_{n\to\infty}\frac{u_n}{n}
+=\sup_{k\ge1}\frac{u_k}{k}.
+\]
+
+此时极限允许为 \(+\infty\)。
+
+\paragraph{对 A 组第 2
+题的推广}\label{ux5bf9-a-ux7ec4ux7b2c-2-ux9898ux7684ux63a8ux5e7f}
+
+设 \(C>0\)，\(\{x_n\}\) 为非负数列，且
+
+\[
+x_{m+n}\le Cx_mx_n\qquad(m,n\ge1).
+\]
+
+则
+
+\[
+\boxed{\lim_{n\to\infty}\sqrt[n]{x_n}
+=\inf_{k\ge1}(Cx_k)^{1/k}.}
+\]
+
+若存在 \(x_k=0\)，则对每个 \(j\ge1\)，有
+\(0\le x_{k+j}\le Cx_kx_j=0\)，故数列从该项起恒为零，结论成立。
+
+若各项均正，令 \(y_n=Cx_n\)，则 \(y_{m+n}\le y_my_n\)，因而
+\(u_n=\log y_n\) 次可加。由引理，
+
+\[
+\frac{\log y_n}{n}\longrightarrow
+\inf_{k\ge1}\frac{\log y_k}{k}.
+\]
+
+取指数，允许右侧为 \(-\infty\) 时对应极限零，便得
+
+\[
+y_n^{1/n}\longrightarrow\inf_{k\ge1}y_k^{1/k}.
+\]
+
+又 \(C^{1/n}\to1\)，所以 \(x_n^{1/n}\) 有同一极限。取 \(C=1\)
+就恢复原题，并补充了极限的精确值。
+
+相应地，若 \(x_n>0\) 且 \(x_{m+n}\ge Cx_mx_n\)，则超可加形式给出
+
+\[
+\lim_{n\to\infty}\sqrt[n]{x_n}
+=\sup_{k\ge1}(Cx_k)^{1/k},
+\]
+
+这里允许极限为 \(+\infty\)。
+
+\paragraph{对 A 组第 4
+题的推广}\label{ux5bf9-a-ux7ec4ux7b2c-4-ux9898ux7684ux63a8ux5e7f}
+
+设常数 \(A,B\ge0\)，实数列满足
+
+\[
+-A\le a_{m+n}-a_m-a_n\le B
+\qquad(m,n\ge1).
+\]
+
+则存在有限实数 \(q\)，使
+
+\[
+\boxed{
+\begin{aligned}
+\frac{a_n}{n}&\longrightarrow q,\\
+nq-B&\le a_n\le nq+A\qquad(n\ge1).
+\end{aligned}}
+\]
+
+并且
+
+\[
+q=\inf_{n\ge1}\frac{a_n+B}{n}
+=\sup_{n\ge1}\frac{a_n-A}{n}.
+\]
+
+事实上，令 \(b_n=a_n+B\)、\(c_n=a_n-A\)，则
+
+\[
+\begin{aligned}
+b_{m+n}&\le b_m+b_n,\\
+c_{m+n}&\ge c_m+c_n.
+\end{aligned}
+\]
+
+故引理保证 \(b_n/n\)、\(c_n/n\)
+都有扩充实数极限。另一方面，对原不等式迭代可得
+
+\[
+na_1-(n-1)A\le a_n\le na_1+(n-1)B,
+\]
+
+所以这两个极限都是有限数。又
+
+\[
+\frac{b_n}{n}-\frac{c_n}{n}=\frac{A+B}{n}\to0,
+\]
+
+它们的极限必相同，记为 \(q\)，并且
+\(a_n/n\to q\)。利用引理给出的确界公式，
+
+\[
+\frac{a_n-A}{n}\le q\le\frac{a_n+B}{n},
+\]
+
+移项即为所需误差估计。
+
+取 \(A=B=1\) 就得到原题。两侧误差的方向应特别留意：加法误差下界为
+\(-A\)，对应 \(a_n-nq\) 的上界为 \(A\)；加法误差上界为 \(B\)，对应
+\(a_n-nq\) 的下界为 \(-B\)。数列 \(a_n=nq+A\) 与 \(a_n=nq-B\)
+分别取到这两个界，故它们一般不能缩小。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-22}
+
+次可加问题用``按固定块长分段，余项只有有限种''来控制上极限；乘法关系取对数，加法中有界的误差则通过常数平移吸收。这样既证明极限存在，也给出最优的确界表示和误差界。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B55：下极限反例与正确的上极限不等式（2.5.B-4）}\label{ux95eeux9898-b55ux4e0bux6781ux9650ux53cdux4f8bux4e0eux6b63ux786eux7684ux4e0aux6781ux9650ux4e0dux7b49ux5f0f2.5.b-4}
+
+来源：\href{https://zj139.github.io/math-notes/problems/6e82c6e274a8f219f40720c7/\#问题-b55}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-23}
+
+\textbf{原记号说明：} 设 \(\{x_n\}\) 为正数列，证明
+
+\[
+\liminf_{n\to\infty}
+n\left(\frac{1+x_{n+1}}{x_n}-1\right)\ge1.
+\]
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-23}
+
+先用两周期列检验原命题，再把正确结论的否定写成递推不等式，归一化后累加得到矛盾。
+
+\subsubsection{解答}\label{ux89e3ux7b54-23}
+
+\textbf{解：} 这个下极限命题不成立。正确的普遍结论是将 \(\liminf\) 改为
+\(\limsup\)，且常数 \(1\) 不能提高。
+
+\paragraph{原表述的反例}\label{ux539fux8868ux8ff0ux7684ux53cdux4f8b}
+
+令
+
+\[
+x_{2k-1}=1,\qquad x_{2k}=2\qquad(k\ge1),
+\]
+
+并记
+
+\[
+A_n=n\left(\frac{1+x_{n+1}}{x_n}-1\right).
+\]
+
+则
+
+\[
+A_{2k}=0,\qquad A_{2k-1}=2(2k-1).
+\]
+
+所以
+\(\liminf A_n=0<1\)，已经否定原表述。以下不对这一错误命题作形式证明。
+
+\paragraph{正确结论及证明}\label{ux6b63ux786eux7ed3ux8bbaux53caux8bc1ux660e}
+
+对任意正数列 \(\{x_n\}\)，都有
+
+\[
+\boxed{\limsup_{n\to\infty}
+n\left(\frac{1+x_{n+1}}{x_n}-1\right)\ge1.}
+\]
+
+事实上，必有无穷多个 \(n\) 使 \(A_n>1\)。
+
+否则存在 \(N\)，使所有 \(n\ge N\) 都满足 \(A_n\le1\)。由于
+\(x_n>0\)，这等价于
+
+\[
+x_{n+1}\le\left(1+\frac1n\right)x_n-1.
+\]
+
+两边除以 \(n+1\)，得到
+
+\[
+\frac{x_{n+1}}{n+1}\le\frac{x_n}{n}-\frac1{n+1}.
+\]
+
+从 \(n=N\) 累加到 \(m-1\)，中间项相消，便得
+
+\[
+0<\frac{x_m}{m}
+\le\frac{x_N}{N}-\sum_{n=N}^{m-1}\frac1{n+1}.
+\]
+
+调和和式趋于 \(+\infty\)，右端最终为负，与左端为正矛盾。故 \(A_n>1\)
+必出现无穷多次，从而 \(\limsup A_n\ge1\)。
+
+这里所用的调和和式发散只需分组观察：从 \(2^{j-1}+1\) 到 \(2^j\)
+的每一组有 \(2^{j-1}\) 项，每项不小于 \(2^{-j}\)，故每组之和至少为
+\(1/2\)。
+
+\paragraph{常数 1
+的最佳性}\label{ux5e38ux6570-1-ux7684ux6700ux4f73ux6027}
+
+令
+
+\[
+H_n=\sum_{k=1}^{n}\frac1k,\qquad x_n=nH_n.
+\]
+
+因为
+
+\[
+x_{n+1}-x_n
+=(n+1)\left(H_n+\frac1{n+1}\right)-nH_n
+=H_n+1,
+\]
+
+所以
+
+\[
+A_n=n\frac{1+x_{n+1}-x_n}{x_n}
+=1+\frac2{H_n}\longrightarrow1.
+\]
+
+因此不存在比 \(1\) 更大的普适下界。这个例子还说明：``无穷多项严格大于
+\(1\)''并不意味着上极限严格大于 \(1\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-23}
+
+先检验上下极限的方向，再把假设改写为递推不等式。除以 \(n+1\)
+恰好将乘法因子消去，使 \(x_n/n\)
+每步至少减少一个调和项；累加后与正性冲突。取 \(x_n=nH_n\)
+则可精确验证常数的最佳性。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B57：指定比值上下极限的收敛与发散级数（2.6.B-1）}\label{ux95eeux9898-b57ux6307ux5b9aux6bd4ux503cux4e0aux4e0bux6781ux9650ux7684ux6536ux655bux4e0eux53d1ux6563ux7ea7ux65702.6.b-1}
+
+来源：\href{https://zj139.github.io/math-notes/problems/66783d8d0bfbf0815b31a433/\#问题-b57}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-24}
+
+给定 \(0\le\ell\le1\le L\le+\infty\)，是否存在收敛或发散的正项级数
+\(\sum_{n=0}^{\infty}a_n\)，使得
+
+\[
+\limsup_{n\to\infty}\frac{a_{n+1}}{a_n}=L,
+\qquad
+\liminf_{n\to\infty}\frac{a_{n+1}}{a_n}=\ell\,?
+\]
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-24}
+
+通过指定相邻项比值构造正数列，再用长度可控的块分别安排比值的上下极限与级数的敛散。
+
+\subsubsection{解答}\label{ux89e3ux7b54-24}
+
+\textbf{解：} 对每一组允许的
+\(\ell,L\)，收敛与发散两种情形都能实现；甚至可要求发散例子的通项也趋于零。下面给出同时处理
+\(\ell=0\)、\(L=+\infty\) 及 \(\ell=L=1\) 的构造。
+
+\paragraph{构造具有指定比值极限的缓慢扰动}\label{ux6784ux9020ux5177ux6709ux6307ux5b9aux6bd4ux503cux6781ux9650ux7684ux7f13ux6162ux6270ux52a8}
+
+对整数 \(k\ge2\)，令
+
+\[
+\lambda_k=\max\left\{\ell,\frac1k\right\},
+\qquad \Lambda_k=\min\{L,k\},
+\qquad m_k=\lceil k\ln k\rceil.
+\]
+
+当 \(L=+\infty\) 时约定 \(\Lambda_k=k\)。于是
+
+\[
+\frac1k\le\lambda_k\le1\le\Lambda_k\le k,
+\qquad \lambda_k\to\ell,
+\qquad \Lambda_k\to L.
+\]
+
+选取严格递增的整数 \(N_k\)，使
+
+\[
+N_k\ge k^4,
+\qquad N_{k+1}>N_k+2m_k+2.
+\]
+
+例如先取 \(N_2=16\)，以后递归取满足这两个条件的整数即可。以下构造正数列
+\(c_n\)（\(n\ge1\)）。在每个区间 \([N_k,N_k+2m_k+2]\) 的起点令
+\(c_{N_k}=1\)，依次规定相邻项比值为
+
+\[
+\begin{gathered}
+\lambda_k,
+\quad \underbrace{\lambda_k^{-1/m_k},\ldots,
+\lambda_k^{-1/m_k}}_{m_k\text{ 个}},\\
+\Lambda_k,
+\quad \underbrace{\Lambda_k^{-1/m_k},\ldots,
+\Lambda_k^{-1/m_k}}_{m_k\text{ 个}}.
+\end{gathered}
+\]
+
+这段数列先从 \(1\) 降到 \(\lambda_k\)，以 \(m_k\) 小步回到 \(1\)，再升到
+\(\Lambda_k\)，又以 \(m_k\) 小步回到 \(1\)。各区间互不相交；区间外令
+\(c_n=1\)，因而端点与外部的定义完全相容。
+
+两种回程比值满足
+
+\[
+\left|\ln\lambda_k^{-1/m_k}\right|\le\frac1k,
+\qquad
+\left|\ln\Lambda_k^{-1/m_k}\right|\le\frac1k.
+\]
+
+所以回程比值都趋于 \(1\)，其余比值或者是 \(1\)，或者是每段分别出现一次的
+\(\lambda_k,\Lambda_k\)。因此
+
+\[
+\liminf_{n\to\infty}\frac{c_{n+1}}{c_n}=\ell,
+\qquad
+\limsup_{n\to\infty}\frac{c_{n+1}}{c_n}=L.
+\]
+
+更具体地，若 \(\ell>0\)，每个充分靠后的比值都不小于
+\(\min\{\lambda_k,e^{-1/k},1\}\)，而取各段首次下降的比值便得到趋于
+\(\ell\) 的子列；\(\ell=0\) 时利用所有比值为正及该子列即可。若
+\(L<\infty\)，用相应的上界
+\(\max\{\Lambda_k,e^{1/k},1\}\)；\(L=+\infty\) 时，各段上升比值
+\(\Lambda_k=k\) 已给出趋于无穷的子列。这也核对了两个扩充实数端点。
+
+在第 \(k\) 段中始终有 \(1/k\le c_n\le k\)，且 \(n\ge k^4\)，故
+
+\[
+n^{-1/4}\le c_n\le n^{1/4}.
+\]
+
+区间外 \(c_n=1\)，同一估计仍成立。
+
+\paragraph{分别控制级数敛散性}\label{ux5206ux522bux63a7ux5236ux7ea7ux6570ux655bux6563ux6027}
+
+定义
+
+\[
+u_n=\frac{c_n}{n^2},
+\qquad v_n=\frac{c_n}{\sqrt n}\qquad(n\ge1).
+\]
+
+由上述估计，
+
+\[
+0<u_n\le\frac1{n^{7/4}},
+\qquad
+\frac1{n^{3/4}}\le v_n\le\frac1{n^{1/4}}.
+\]
+
+因此 \(\sum u_n\) 收敛，\(\sum v_n\) 发散到 \(+\infty\)，同时
+\(v_n\to0\)。另一方面，对 \(p=2\) 或 \(p=1/2\)，都有
+
+\[
+\frac{c_{n+1}/(n+1)^p}{c_n/n^p}
+=\frac{c_{n+1}}{c_n}\left(\frac n{n+1}\right)^p.
+\]
+
+最后的正因子趋于 \(1\)。对于任意 \(\varepsilon\in(0,1)\)，它在充分大的
+\(n\) 时介于 \(1-\varepsilon\) 与 \(1+\varepsilon\)
+之间，故乘上它不改变非负数列的上下极限；这一夹逼也适用于极限为 \(0\) 或
+\(+\infty\)。所以 \(u_n,v_n\)
+的相邻项比值都具有题目要求的上下极限。补取任意 \(u_0,v_0>0\)，即得到从
+\(n=0\) 开始的两个正项级数。
+
+当 \(\ell=L=1\) 时所有指定比值均为 \(1\)，可直接取
+\(c_n\equiv1\)；构造退化为熟悉的收敛级数 \(\sum n^{-2}\) 与发散级数
+\(\sum n^{-1/2}\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-24}
+
+将``局部比值''和``整体大小''分别控制：在越来越靠后的有限区段制造指定比值，再用趋于
+\(1\)
+的小步恢复原值；最后乘以不同幂次的衰减因子改变敛散性，却不改变比值的上下极限。仅知道比值的上下极限跨过
+\(1\)，不能判定级数敛散性。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 B159：正割函数的 Maclaurin
+展开（6.6.B-1）}\label{ux95eeux9898-b159ux6b63ux5272ux51fdux6570ux7684-maclaurin-ux5c55ux5f006.6.b-1}
+
+来源：\href{https://zj139.github.io/math-notes/problems/07a9f1208dd119dd666e6278/\#问题-b159}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-25}
+
+考察如何求 \(\sec x\) 的 Maclaurin 展开式。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-25}
+
+从乘积恒等式递推正割级数的数值系数，再分别证明收敛、等式与端点发散。
+
+\subsubsection{解答}\label{ux89e3ux7b54-25}
+
+\textbf{解：} \(\sec x=1/\cos x\) 在 \((-\pi/2,\pi/2)\)
+上光滑且为偶函数，所以奇数阶 Maclaurin 系数全为零。记
+
+\[
+c_{2r}=\frac{(\sec x)^{(2r)}\big|_{x=0}}{(2r)!},\qquad c_0=1.
+\]
+
+对恒等式 \((\sec x)\cos x=1\) 使用 Leibniz 公式，或将任意固定阶数的有限
+Taylor 展开相乘，得到
+
+\[
+\sum_{j=0}^{r}\frac{(-1)^j}{(2j)!}c_{2r-2j}=0\qquad(r\ge1).
+\]
+
+因而可以逐项递推：
+
+\[
+c_{2r}=\sum_{j=1}^{r}\frac{(-1)^{j+1}}{(2j)!}c_{2r-2j}.
+\]
+
+例如
+
+\[
+\begin{aligned}
+c_2&=\frac12,\\
+c_4&=\frac{c_2}{2!}-\frac1{4!}=\frac5{24},\\
+c_6&=\frac{c_4}{2!}-\frac{c_2}{4!}+\frac1{6!}=\frac{61}{720}.
+\end{aligned}
+\]
+
+继续计算可得
+
+\[
+\begin{aligned}
+\sec x={}&1+\frac{x^2}{2}+\frac{5x^4}{24}
++\frac{61x^6}{720}+\frac{1385x^8}{40320}\\
+&+\frac{50521x^{10}}{3628800}+O(x^{12})\qquad(x\to0).
+\end{aligned}
+\]
+
+余项写成 \(O(x^{12})\)
+是因为本函数在原点邻域光滑，可展开到十一阶，而十一阶及其余奇数阶系数为零。若用整数
+\(E_{2r}=(2r)!c_{2r}\) 表示正割数，则
+
+\[
+E_0=1,\qquad
+E_{2r}=\sum_{j=1}^{r}(-1)^{j+1}\binom{2r}{2j}E_{2r-2j},
+\]
+
+前六个值依次为 \(1,1,5,61,1385,50521\)。此处 \(E_{2r}\)
+采用正割数的正号约定，避免与带交替符号的 Euler 数记法混淆。
+
+还须证明无穷级数确实等于原函数，而不只得到形式系数。以下给出实变量证明。设
+\(u=\sec x\)、\(v=\tan x\)，则
+
+\[
+u'=uv,\qquad v'=u^2.
+\]
+
+从 \(u\) 出发反复求导，每阶导数均为 \(u,v\) 的非负系数多项式：若该阶为
+\(A(u,v)\)，下一阶为 \(A_u(u,v)uv+A_v(u,v)u^2\)，其系数仍非负。在
+\(0\le x<\pi/2\) 上，\(u>0\)、\(v\ge0\)，故所有阶导数均非负，特别有
+\(c_{2r}\ge0\)。
+
+固定 \(0<\rho<\pi/2\)。Taylor 定理的 Lagrange 余项非负，因而对任意
+\(R\ge0\)，
+
+\[
+\sum_{r=0}^{R}c_{2r}\rho^{2r}\le\sec\rho.
+\]
+
+这说明系数级数在 \(\rho\) 处收敛；从而在每个 \(|x|<\pi/2\)
+处绝对收敛。记其和为 \(S(x)\)。它与处处绝对收敛的 \(\cos x\)
+级数相乘，可以合法重排；上面的递推关系表明
+
+\[
+S(x)\cos x=1,
+\]
+
+所以
+
+\[
+\sec x=\sum_{r=0}^{\infty}\frac{E_{2r}}{(2r)!}x^{2r}
+\qquad(|x|<\pi/2).
+\]
+
+在 \(x=\pi/2\) 处，若该非负项级数的和有限，则对所有 \(0\le x<\pi/2\)
+都有 \(\sec x\le\sum c_{2r}(\pi/2)^{2r}<\infty\)，与
+\(\sec x\to+\infty\) 矛盾。因此端点级数发散；偶性给出 \(-\pi/2\)
+也发散，而在 \(|x|>\pi/2\) 时逐项不小于端点级数，也发散。实收敛区间恰为
+\((-\pi/2,\pi/2)\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-25}
+
+求倒数函数展开时，先用乘积恒等式递推系数；形式运算之外，另证收敛与等式。非负导数带来的
+Taylor 部分和上界，可以在纯实变量框架中证明正割级数的整个收敛区间。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B161：差分估计及任意高阶推广（6.6.B-3）}\label{ux95eeux9898-b161ux5deeux5206ux4f30ux8ba1ux53caux4efbux610fux9ad8ux9636ux63a8ux5e7f6.6.b-3}
+
+来源：\href{https://zj139.github.io/math-notes/problems/07a9f1208dd119dd666e6278/\#问题-b161}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-26}
+
+对于数列 \(\{a_n\}\)，定义
+
+\[
+\Delta a_n=a_{n+1}-a_n,\qquad
+\Delta^{j+1}a_n=\Delta^ja_{n+1}-\Delta^ja_n
+\quad(n\ge1,\ j\ge1).
+\]
+
+（1）证明：存在常数 \(C\)，使对任何数列及整数 \(k\ge2\)，成立
+
+\[
+k\sup_{n\ge1}|\Delta a_n|
+\le C\left(\sup_{n\ge1}|a_n|+k^2\sup_{n\ge1}|\Delta^2a_n|\right).
+\]
+
+（2）证明：存在常数 \(C_1,C_2\)，使对任何数列及整数 \(k\ge3\)，成立
+
+\[
+\begin{aligned}
+k\sup_{n\ge1}|\Delta a_n|
+&\le C_1\left(\sup_{n\ge1}|a_n|+k^3\sup_{n\ge1}|\Delta^3a_n|\right),\\
+k^2\sup_{n\ge1}|\Delta^2a_n|
+&\le C_2\left(\sup_{n\ge1}|a_n|+k^3\sup_{n\ge1}|\Delta^3a_n|\right).
+\end{aligned}
+\]
+
+（3）试考察更高阶差分的结果。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-26}
+
+离散 Taylor
+公式将远处项写成初始差分与高阶差分余项，再选择两种步长消去未知量。
+
+\subsubsection{解答}\label{ux89e3ux7b54-26}
+
+\textbf{证明：} 记 \(M_j=\sup_{n\ge1}|\Delta^ja_n|\)，其中
+\(\Delta^0a_n=a_n\)。所有上确界允许为
+\(+\infty\)；右端无穷时不等式在扩充非负实数意义下成立。以下每个估计只需在对应的
+\(M_0,M_r\) 有限时证明，不预先假定中间各阶差分有界。
+
+先建立带余项的离散 Taylor 公式：对整数 \(r\ge1\)、\(h\ge r\)，
+
+\[
+\begin{aligned}
+a_{n+h}
+&=\sum_{j=0}^{r-1}\binom hj\Delta^ja_n+R_r(n,h),\\
+R_r(n,h)
+&=\sum_{s=0}^{h-r}\binom{h-1-s}{r-1}\Delta^ra_{n+s},\\
+|R_r(n,h)|&\le\binom hr M_r.
+\end{aligned}
+\]
+
+为核实公式，\(r=1\) 时它就是望远镜求和。若已知阶数 \(r\)
+的公式，在余项中代入
+
+\[
+\Delta^ra_{n+s}=\Delta^ra_n+\sum_{t=0}^{s-1}\Delta^{r+1}a_{n+t}.
+\]
+
+用有限和恒等式 \(\sum_{q=r-1}^{h-1}\binom q{r-1}=\binom hr\)
+收集常数项，再交换有限求和次序；\(\Delta^{r+1}a_{n+t}\) 的系数为
+
+\[
+\sum_{s=t+1}^{h-r}\binom{h-1-s}{r-1}
+=\binom{h-1-t}{r}.
+\]
+
+这正是阶数 \(r+1\) 的公式，归纳完成。余项权重非负且和为
+\(\binom hr\)，故相应估计也成立。
+
+对（1）取 \(r=2\)、\(h=k\)，得到
+
+\[
+k|\Delta a_n|
+\le|a_{n+k}-a_n|+|R_2(n,k)|
+\le2M_0+\binom k2M_2.
+\]
+
+对 \(n\) 取上确界，便有
+
+\[
+kM_1\le2M_0+\frac{k^2}{2}M_2
+\le2(M_0+k^2M_2).
+\]
+
+所以可取 \(C=2\)，且该论证也直接证明 \(M_1\) 有限。
+
+对（2）固定 \(n\)，记 \(d=\Delta a_n\)、\(e=\Delta^2a_n\)，分别取
+\(r=3\)、\(h=k,2k\)：
+
+\[
+\begin{aligned}
+U:=a_{n+k}-a_n&=kd+\frac{k(k-1)}2e+R_3(n,k),\\
+V:=a_{n+2k}-a_n&=2kd+k(2k-1)e+R_3(n,2k).
+\end{aligned}
+\]
+
+相减消去 \(d\)，得到
+
+\[
+k^2e=V-2U-R_3(n,2k)+2R_3(n,k).
+\]
+
+由 \(|V-2U|=|a_{n+2k}-2a_{n+k}+a_n|\le4M_0\)，以及
+
+\[
+\binom{2k}{3}+2\binom k3
+\le\frac{(2k)^3+2k^3}{6}=\frac53k^3,
+\]
+
+可得
+
+\[
+k^2M_2\le4M_0+\frac53k^3M_3.
+\]
+
+将其代回 \(U\) 的等式，并用 \(k(k-1)/2\le k^2/2\)，有
+
+\[
+\begin{aligned}
+kM_1
+&\le2M_0+\frac12k^2M_2+\frac16k^3M_3\\
+&\le4M_0+k^3M_3.
+\end{aligned}
+\]
+
+因而 \(C_1=C_2=4\) 是一组对所有数列、所有 \(k\ge3\)
+同时有效的常数。这里无需声称这些常数最优。
+
+对（3），一般结论为：对每个整数 \(r\ge2\) 及
+\(1\le j\le r-1\)，存在仅依赖 \(r,j\) 的常数
+\(C_{r,j}>0\)，使任意数列、任意整数 \(k\ge r\) 都满足
+
+\[
+k^jM_j\le C_{r,j}(M_0+k^rM_r).
+\]
+
+下面证明常数确实可以与 \(k\) 和数列无关。固定 \(n\)，在离散 Taylor
+公式中依次取 \(h=ik\)（\(1\le i\le r-1\)），移去常数项，置
+
+\[
+z_j=k^j\Delta^ja_n,\qquad
+A_{ij}(k)=\frac{\binom{ik}{j}}{k^j},\qquad
+b_i=a_{n+ik}-a_n-R_r(n,ik).
+\]
+
+于是 \(Az=b\)，且
+
+\[
+|b_i|\le2M_0+\binom{ik}{r}M_r
+\le2M_0+\frac{(r-1)^r}{r!}k^rM_r.
+\]
+
+为了控制逆矩阵，将 \(q_j(t)=\binom{kt}{j}/k^j\) 看成变量 \(t\)
+的多项式：
+
+\[
+q_j(t)=\frac1{j!}\prod_{\ell=0}^{j-1}\left(t-\frac\ell k\right).
+\]
+
+其常数项为零，次数为 \(j\)，最高次系数为 \(1/j!\)。因此从列向量
+\(t,t^2,\ldots,t^{r-1}\) 变换到 \(q_1,\ldots,q_{r-1}\)
+的系数矩阵为三角矩阵，对角元依次为 \(1/j!\)。在节点 \(t=1,\ldots,r-1\)
+取值，Vandermonde 行列式给出
+
+\[
+\begin{aligned}
+\det A(k)
+&=\frac{\displaystyle\prod_{i=1}^{r-1}i
+\prod_{1\le i<\ell\le r-1}(\ell-i)}
+{\displaystyle\prod_{j=1}^{r-1}j!}=1.
+\end{aligned}
+\]
+
+最后一个等号可由
+\(\prod_{i<\ell}(\ell-i)=\prod_{\ell=2}^{r-1}(\ell-1)!\)
+直接约去阶乘得到。这个行列式不是仅在极限中非零，而是对每个 \(k\) 恒等于
+\(1\)。
+
+各矩阵元都是 \(1/k\) 的多项式；当 \(k\ge r\) 时，参数
+\(1/k\in[0,1/r]\)，故它们及全部余子式一致有界。由伴随矩阵公式和
+\(\det A=1\)，存在只依赖 \(r\) 的
+\(K_r\)，使每行逆矩阵元素的绝对值之和不超过 \(K_r\)。于是
+
+\[
+|z_j|\le K_r\left(2M_0+\frac{(r-1)^r}{r!}k^rM_r\right).
+\]
+
+对 \(n\)
+取上确界，并吸收固定系数，便得到所述高阶推广。所有取样点都在原数列的正整数定义域内，不需要向负指标延拓。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-26}
+
+用离散 Taylor
+公式把低阶差分转化为相隔一定距离的函数值与高阶余项。二、三阶时直接消元，高阶时用固定数量的等距取样组成插值矩阵；缩放之后，逆矩阵的一致有界性保证常数与取样尺度无关。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+B224：递增数列与对数分母级数（9.1.B-5）}\label{ux95eeux9898-b224ux9012ux589eux6570ux5217ux4e0eux5bf9ux6570ux5206ux6bcdux7ea7ux65709.1.b-5}
+
+来源：\href{https://zj139.github.io/math-notes/problems/f22fb7377267be47a9e8df4f/\#问题-b224}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-27}
+
+设 \(\{a_n\}\) 是递增数列，\(a_1>1\)。求证：级数
+
+\[
+\sum_{n=1}^{\infty}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}
+\]
+
+收敛的充要条件是 \(\{a_n\}\) 有界。又问级数通项分母中的 \(a_n\)
+能不能换成 \(a_{n+1}\)？
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-27}
+
+正向用差分望远镜；逆向把对数增量写成相对增量，并通过乘积说明无界性。反例展示相邻项跳跃的影响。
+
+\subsubsection{解答}\label{ux89e3ux7b54-27}
+
+\textbf{证明：}
+证明对非减数列也成立，因而覆盖``递增''解释为严格递增的情形。所有分母为正，通项非负。
+
+若 \(a_n\le A\)，则对任意 \(M\ge1\)，
+
+\[
+\begin{aligned}
+0\le\sum_{n=1}^{M}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}
+&\le\frac1{a_1\ln a_1}\sum_{n=1}^{M}(a_{n+1}-a_n)\\
+&=\frac{a_{M+1}-a_1}{a_1\ln a_1}
+\le\frac{A-a_1}{a_1\ln a_1}.
+\end{aligned}
+\]
+
+非负级数部分和有上界，故收敛。
+
+反之，若数列无界，则单调性给出 \(a_n\to+\infty\)。设
+\(b_n=\ln a_n>0\)，则 \(b_n\uparrow+\infty\)。由
+\(e^t-1\ge t\)（\(t\ge0\)），
+
+\[
+\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}
+=\frac{e^{b_{n+1}-b_n}-1}{b_{n+1}}
+\ge\frac{b_{n+1}-b_n}{b_{n+1}}=:r_n.
+\]
+
+证明 \(\sum r_n\) 发散。若它收敛，则 \(r_n\to0\)，存在 \(N\) 使
+\(0\le r_n\le1/2\)（\(n\ge N\)）。由于 \(b_n/b_{n+1}=1-r_n\)，且
+
+\[
+-\ln(1-r)=\int_0^r\frac{dt}{1-t}\le2r
+\qquad(0\le r\le1/2),
+\]
+
+可得
+
+\[
+\ln\frac{b_{M+1}}{b_N}
+=\sum_{n=N}^{M}\ln\frac{b_{n+1}}{b_n}
+=\sum_{n=N}^{M}-\ln(1-r_n)
+\le2\sum_{n=N}^{\infty}r_n<\infty.
+\]
+
+这将使 \(b_{M+1}\) 一致有界，与 \(b_n\to\infty\) 矛盾。因此 \(\sum r_n\)
+发散，由比较判别法原级数发散。充要性得证。
+
+\textbf{分母替换的辨析：} 不能在保留原充要结论的前提下，把因子 \(a_n\)
+换成 \(a_{n+1}\)。取
+
+\[
+a_n=e^{2^n},
+\]
+
+它严格递增且无界，但替换后的项满足
+
+\[
+0<\frac{a_{n+1}-a_n}{a_{n+1}\ln a_{n+1}}
+=\frac{1-e^{-2^n}}{2^{n+1}}\le\frac1{2^{n+1}},
+\]
+
+故新级数收敛。有界仍是新级数收敛的充分条件，证明同前；但不再是必要条件。新级数也并非总收敛：取
+\(a_n=e^n\)，其通项为 \((1-e^{-1})/(n+1)\)，故发散。
+
+\textbf{条件核查：} \(a_1>1\)
+保障对数分母统一为正；单调性使差分非负并把无界升级为趋于无穷。对数变换后的增量可以很大，上述证明没有假设相邻项比值趋于
+\(1\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-27}
+
+对含相邻差分的正项级数，可先用单调变换规范尺度，再研究相对增量；判断分母可否替换，应检查快速增长数列，而不只检查等差、等比数列。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 B232：正切函数在正点的 Taylor
+收敛半径（9.3.B-3）}\label{ux95eeux9898-b232ux6b63ux5207ux51fdux6570ux5728ux6b63ux70b9ux7684-taylor-ux6536ux655bux534aux5f849.3.b-3}
+
+来源：\href{https://zj139.github.io/math-notes/problems/41a8fc025daa4bef6a32b3d1/\#问题-b232}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-28}
+
+设 \(x_0\in(0,\pi/2)\)，试考察 \(\tan x\) 在点 \(x_0\) 处的 Taylor
+展开式的收敛半径。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-28}
+
+用导数多项式证明 Taylor 系数非负，再由 \(f\prime=1+f^2\)
+得到数值系数递推；半径上下界分别论证。
+
+\subsubsection{解答}\label{ux89e3ux7b54-28}
+
+\textbf{解：} 记
+
+\[
+d=\frac\pi2-x_0>0,\qquad
+c_n=\frac{\tan^{(n)}x_0}{n!},\qquad
+Y(t)=\sum_{n=0}^{\infty}c_nt^n.
+\]
+
+先证明 \(c_n>0\)。定义多项式 \(P_0(u)=u\)，递归地令
+
+\[
+P_{n+1}(u)=(1+u^2)P_n'(u).
+\]
+
+由链式法则，\(\tan^{(n)}x=P_n(\tan x)\)。这些多项式均有非负系数且为非恒定多项式：从
+\(P_0\) 出发，求导保留非负系数，乘以 \(1+u^2\) 后仍非恒定。因此
+\(P_n(u)>0\) 对 \(u>0\) 成立，特别地 \(c_n>0\)。
+
+固定 \(0<t<d\)。对任意 \(N\ge0\)，Taylor 公式给出某个
+\(\xi\in(x_0,x_0+t)\)，使
+
+\[
+\tan(x_0+t)=\sum_{n=0}^Nc_nt^n
++\frac{\tan^{(N+1)}\xi}{(N+1)!}t^{N+1}.
+\]
+
+因为 \(0<\xi<\pi/2\)，余项为正，故
+
+\[
+0\le\sum_{n=0}^Nc_nt^n\le\tan(x_0+t)<\infty.
+\]
+
+部分和关于 \(N\) 递增而有界，所以级数在每个 \(t\in(0,d)\) 收敛。对任意
+\(|t|<d\)，取 \(|t|<r<d\)，由 \(c_n\ge0\) 和 \(\sum c_nr^n<\infty\)
+可知在 \(t\) 处绝对收敛。因此收敛半径 \(R\ge d\)。
+
+还需说明这确为函数的展开，而不只是一个收敛的形式 Taylor 级数。由
+\((\tan x)'=1+\tan^2x\) 在 \(x_0\) 处逐次求导并应用 Leibniz
+公式，得到系数关系
+
+\[
+\begin{aligned}
+c_0&=\tan x_0,\\
+c_1&=1+c_0^2,\\
+(n+1)c_{n+1}&=\sum_{j=0}^nc_jc_{n-j}\qquad(n\ge1).
+\end{aligned}
+\]
+
+在 \(|t|<d\) 内，幂级数可逐项求导且可作 Cauchy 乘积，因此这些等式推出
+
+\[
+Y'(t)=1+Y(t)^2,\qquad Y(0)=\tan x_0.
+\]
+
+于是
+
+\[
+\frac d{dt}\arctan Y(t)=\frac{Y'(t)}{1+Y(t)^2}=1.
+\]
+
+积分并用 \(\arctan(\tan x_0)=x_0\)，得到 \(\arctan Y(t)=x_0+t\)，所以
+
+\[
+Y(t)=\tan(x_0+t)\qquad(|t|<d).
+\]
+
+若 \(R>d\)，幂级数和 \(Y\) 就在 \(t=d\) 的邻域内连续，特别地
+\(\lim_{t\uparrow d}Y(t)=Y(d)\) 有限；但上式右侧趋于
+\(+\infty\)，矛盾。因此
+
+\[
+\boxed{R=\frac\pi2-x_0}.
+\]
+
+\textbf{条件核查：} 右侧实轴奇点只给出半径的上界；下界必须另证。Taylor
+余项为正只证明部分和有界，并未证明余项趋零，因此还须借助系数递推和微分方程识别和函数。\(x_0>0\)
+保证所用导数为正，而 \(x_0<\pi/2\) 保证所考察区间内函数光滑。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-28}
+
+确定 Taylor 半径时分别证明上下界：正系数与有限阶 Taylor
+公式给出收敛下界，系数满足的微分方程确认函数身份，已知的实轴发散点再排除更大的半径。
+
+\noindent\hyperref[contents]{返回目录}
+
+\clearpage
+
+\section{递推在高等代数中的应用}\label{ux9012ux63a8ux5728ux9ad8ux7b49ux4ee3ux6570ux4e2dux7684ux5e94ux7528}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+2017S08：三对角坐标递推与简单谱}\label{ux95eeux9898-2017s08ux4e09ux5bf9ux89d2ux5750ux6807ux9012ux63a8ux4e0eux7b80ux5355ux8c31}
+
+来源：\href{https://zj139.github.io/math-notes/essays/39a692552e042a7b089919e3/\#问题-2017s08}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-29}
+
+实对称三对角矩阵 \(A\) 的主对角元为 \(a_1,\ldots,a_n\)，上下次对角元均为
+\(1\)，其余元素为零。证明 \(A\) 有 \(n\) 个互异特征值，并求
+
+\[
+\mathcal C(A)=\{B\in M_n(\mathbb R):AB=BA\}
+\]
+
+作为实线性空间的维数。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-29}
+
+不求出一个特征值，也能由递推证明所有特征值互异；进而把交换矩阵全部化为多项式。
+
+\subsubsection{解答}\label{ux89e3ux7b54-29}
+
+\textbf{证明：} 对 \(x\in\ker(A-\lambda I)\)，约定
+\(x_0=x_{n+1}=0\)，逐行得到
+
+\[
+x_{k+1}=(\lambda-a_k)x_k-x_{k-1}\qquad(1\le k\le n).
+\]
+
+故 \(x\) 由首坐标 \(x_1\) 唯一决定，特别地 \(x_1=0\) 时
+\(x=0\)。于是映射 \(x\mapsto x_1\)
+在特征子空间上为单射，每个特征子空间至多一维。实对称矩阵可以正交对角化，各特征子空间维数之和为
+\(n\)，故恰有 \(n\) 个互异实特征值。
+
+取正交阵 \(Q\) 使
+\(Q^{\mathsf T}AQ=D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)\)。设
+\(Y=Q^{\mathsf T}BQ=(y_{ij})\)，则 \(AB=BA\) 等价于
+
+\[
+(\lambda_i-\lambda_j)y_{ij}=0\qquad(1\le i,j\le n).
+\]
+
+由于特征值互异，\(Y\) 恰为任意对角阵，故 \(\dim\mathcal C(A)=n\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-29}
+
+将上下次对角元中的 \(1\) 换成任意非零实数 \(b_k\)，递推变为
+\(b_kx_{k+1}=(\lambda-a_k)x_k-b_{k-1}x_{k-1}\)，结论仍成立。还可由
+Lagrange 插值选出次数小于 \(n\) 的 \(p\)，使
+\(p(\lambda_i)=y_{ii}\)，于是所有交换矩阵均为
+\(B=p(A)\)。这也说明``递推唯一性→简单谱→多项式表示''是一条完整的方法链。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+2018A04：变系数三对角行列式的降阶递推}\label{ux95eeux9898-2018a04ux53d8ux7cfbux6570ux4e09ux5bf9ux89d2ux884cux5217ux5f0fux7684ux964dux9636ux9012ux63a8}
+
+来源：\href{https://zj139.github.io/math-notes/essays/52bc0e24478b1b81c7ab09fc/\#问题-2018a04}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-30}
+
+计算三对角矩阵 \(A_n(x)\) 的行列式，其中主对角元均为
+\(x\)，上次对角元依次为 \(1,2,\ldots,n-1\)，下次对角元依次为
+\(n-1,n-2,\ldots,1\)，其余元素为零。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-30}
+
+相邻差分与累加互相配合，可以保持原来的矩阵族，同时把规模和参数各减一。这里应寻找封闭递推，而非逐项展开复杂行列式。
+
+\subsubsection{解答}\label{ux89e3ux7b54-30}
+
+\textbf{解：} 记 \(D_n(x)=\det A_n(x)\)，\(D_1(x)=x\)。依次作
+
+\[
+C_j\leftarrow C_j-C_{j+1}\quad(j=1,\ldots,n-1),
+\]
+
+再依次作
+
+\[
+R_i\leftarrow R_i+R_{i-1}\quad(i=2,\ldots,n).
+\]
+
+列变换中减去的是尚未改变的下一列；行变换中加上的是已经累加过的上一行。故若原矩阵为
+\((a_{ij})\)，新矩阵的元素为
+
+\[
+b_{ij}=\sum_{k=1}^i(a_{kj}-a_{k,j+1})\quad(j<n),
+\qquad b_{in}=\sum_{k=1}^ia_{kn}.
+\]
+
+代入三对角元素即可看出：最后一行为 \((0,\ldots,0,x+n-1)\)；左上角
+\((n-1)\) 阶块的主对角元为 \(x-1\)，上次对角元为
+\(1,\ldots,n-2\)，下次对角元为 \(n-2,\ldots,1\)，恰为
+\(A_{n-1}(x-1)\)。所有变换保持行列式，所以
+
+\[
+D_n(x)=(x+n-1)D_{n-1}(x-1).
+\]
+
+递推展开得到
+
+\[
+D_n(x)=\prod_{k=0}^{n-1}(x+n-1-2k).
+\]
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-30}
+
+记 \(A_n(x)=xI+B_n\)，则 \(B_n\) 的特征值为
+\(n-1,n-3,\ldots,1-n\)，互不相同，因而可对角化。这里完全不需要先构造特征向量，行列式递推本身就给出了全部谱信息。实施差分与累加时，操作顺序必须明确；换序会改变使用的是原行还是已更新的行。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+2016A01：行列式的一阶降阶递推}\label{ux95eeux9898-2016a01ux884cux5217ux5f0fux7684ux4e00ux9636ux964dux9636ux9012ux63a8}
+
+来源：\href{https://zj139.github.io/math-notes/files/problems/16S17-16S20_16A01-16A03.pdf\#page=7}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-31}
+
+求 \(n+1\) 阶三对角矩阵 \(T_n(x)\) 的行列式 \(D_n(x)\)。其元素为 \[
+(T_n)_{ii}=x-n+2(i-1),\quad
+(T_n)_{i,i+1}=n-i+1,\quad
+(T_n)_{i+1,i}=-i\quad(1\le i\le n),
+\] 其余元素为零，主对角公式适用于 \(1\le i\le n+1\)。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-31}
+
+相邻行作差后逐列累加，使最后一列除末项外全部为零，左上角恰好恢复同族的低一阶矩阵。
+
+\subsubsection{解答}\label{ux89e3ux7b54-31}
+
+解：约定 \(T_0(x)=(x)\)、\(D_0(x)=x\)。依次作 \[
+R_i\leftarrow R_i-R_{i+1}\quad(i=1,\ldots,n),\qquad
+C_j\leftarrow C_j+C_{j-1}\quad(j=2,\ldots,n+1).
+\]
+两组操作均按指标从小到大进行。第一组减去尚未改变的下一行；第二组加入已经累加的上一列。若原元素为
+\(t_{ij}\)，所得前 \(n\) 行元素为
+\(\sum_{k=1}^{j}(t_{ik}-t_{i+1,k})\)。代入三对角元素，得前 \(n\) 行仅有
+\[
+M_{i,i-1}=-(i-1),\quad M_{ii}=x-n+2i-1,\quad M_{i,i+1}=n-i
+\] 可能非零；越界项省略。末行只有 \(M_{n+1,n}=-n\)、\(M_{n+1,n+1}=x\)
+可能非零。因此 \[
+M=\begin{pmatrix}T_{n-1}(x)&0\\(0,\ldots,0,-n)&x\end{pmatrix}.
+\] 初等变换保持行列式，故 \(D_n(x)=xD_{n-1}(x)\)。结合
+\(D_0(x)=x\)，归纳得到 \[\boxed{D_n(x)=x^{n+1}.}\] 推导未除以
+\(x\)，所以 \(x=0\) 时也成立。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-31}
+
+行列式的阶数就是递推下标。先使变换后的矩阵回到同一族，再使用初值展开递推。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+2019A05：五对角行列式与二阶线性递推}\label{ux95eeux9898-2019a05ux4e94ux5bf9ux89d2ux884cux5217ux5f0fux4e0eux4e8cux9636ux7ebfux6027ux9012ux63a8}
+
+来源：\href{https://zj139.github.io/math-notes/files/problems/19S15-19S15_19A01-19A06.pdf\#page=6}{原题解与原编号}。
+
+\subsubsection{原题}\label{ux539fux9898-32}
+
+求下列 \(n\) 阶五对角矩阵 \(M\) 的行列式（\(n\ge2\)）：两端主对角元为
+\(a^2+bc\)，其余主对角元为 \(a^2+2bc\)；第一上、下次对角元分别为
+\(2ab,2ac\)；第二上、下次对角元分别为
+\(b^2,c^2\)，其余元素为零。原图的省略号表示相同带状结构继续平移。
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-32}
+
+先识别它是常系数三对角矩阵的平方，再对三对角行列式建立二阶递推。使用有限和公式可以同时覆盖重根与零参数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-32}
+
+解：令 \(T_n\) 的主对角元为 \(a\)，上、下次对角元分别为
+\(b,c\)，其余为零。逐项相乘可知 \(M=T_n^2\)，故
+\(\det M=(\det T_n)^2\)。置 \(d_0=1\)，记
+\(d_n=\det T_n\)。沿首行展开，再沿第二项余子式的首列展开，得到
+\[d_0=1,\qquad d_1=a,\qquad d_n=ad_{n-1}-bc\,d_{n-2}\quad(n\ge2).\] 令
+\[s_n=\sum_{k=0}^{\lfloor n/2\rfloor}\binom{n-k}{k}(-bc)^k a^{n-2k}.\]
+它满足 \(s_0=1,s_1=a\)，而 \(as_{n-1}-bc\,s_{n-2}\) 中
+\((-bc)^ka^{n-2k}\) 的系数为
+\[\binom{n-1-k}{k}+\binom{n-1-k}{k-1}=\binom{n-k}{k}.\]
+越界二项式系数取零。于是 \(s_n\) 与 \(d_n\) 满足同一递推及初值，归纳知
+\(s_n=d_n\)。故
+\[\boxed{\det M=\left[\sum_{k=0}^{\lfloor n/2\rfloor}\binom{n-k}{k}(-bc)^ka^{n-2k}\right]^2.}\]
+该式为多项式恒等式，对所有参数的退化取值也成立。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-32}
+
+二阶线性递推不仅可用特征根，还可由同递推、同初值验证显式多项式公式；后一种写法没有重根分支。
+
+\noindent\hyperref[contents]{返回目录}
+
+\clearpage
+
+\section{斐波那契数列的已证问题}\label{ux6590ux6ce2ux90a3ux5951ux6570ux5217ux7684ux5df2ux8bc1ux95eeux9898}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F01：矩阵表示与 Cassini
+恒等式}\label{ux95eeux9898-f01ux77e9ux9635ux8868ux793aux4e0e-cassini-ux6052ux7b49ux5f0f}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-33}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明对
+\(n\ge1\)，
+\[A^n=\begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix},\quad A=\begin{pmatrix}1&1\\1&0\end{pmatrix},\]
+并推出 \(F_{n+1}F_{n-1}-F_n^2=(-1)^n\)。（原专题定理1.1、推论1.2。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-33}
+
+把相邻两项作为一个状态，递推成为矩阵乘法；取行列式将加法递推变成乘法不变量。
+
+\subsubsection{解答}\label{ux89e3ux7b54-33}
+
+证明：\(n=1\) 时直接成立。若第 \(n\) 步成立，则 \[
+A^{n+1}=\begin{pmatrix}F_{n+1}+F_n&F_{n+1}\\F_n+F_{n-1}&F_n\end{pmatrix}
+=\begin{pmatrix}F_{n+2}&F_{n+1}\\F_{n+1}&F_n\end{pmatrix}.
+\] 归纳即得矩阵式。两边取行列式，并用 \(\det A=-1\)，得到
+\(F_{n+1}F_{n-1}-F_n^2=(-1)^n\)。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-33}
+
+二阶递推适合提升为二维状态。矩阵幂同时保存相邻项，行列式给出 Cassini
+恒等式。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F02：Binet
+公式、最近整数与增长}\label{ux95eeux9898-f02binet-ux516cux5f0fux6700ux8fd1ux6574ux6570ux4e0eux589eux957f}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-34}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 令
+\(\alpha=(1+\sqrt5)/2\)、\(\beta=(1-\sqrt5)/2\)。证明
+\[F_n=\frac{\alpha^n-\beta^n}{\sqrt5},\qquad F_n=\left\lfloor\frac{\alpha^n}{\sqrt5}+\frac12\right\rfloor,\]
+并证明
+\(F_{n+1}>F_n\)（\(n\ge2\)）。（原专题定理1.3、推论1.4、命题1.5。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-34}
+
+特征方程的根产生两个基本解；与原列核对两个初值，便唯一确定通项。
+
+\subsubsection{解答}\label{ux89e3ux7b54-34}
+
+证明：\(\alpha^2=\alpha+1\)、\(\beta^2=\beta+1\)，故
+\(u_n=(\alpha^n-\beta^n)/\sqrt5\) 满足 \(u_{n+2}=u_{n+1}+u_n\)，且
+\(u_0=0,u_1=1\)。逐项归纳得 \(u_n=F_n\)。因为 \(|\beta|<1\)，
+\[\left|F_n-\frac{\alpha^n}{\sqrt5}\right|=\frac{|\beta|^n}{\sqrt5}<\frac12,\]
+故 \(F_n\) 是相应实数的唯一最近整数，取整公式成立。\(n\ge2\) 时
+\(F_{n-1}>0\)，所以 \(F_{n+1}=F_n+F_{n-1}>F_n\)。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-34}
+
+通项由递推和两个初值唯一确定。小下标 \(F_1=F_2=1\)
+不应被严格增长的结论遗漏。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F03：加法公式与倍角公式}\label{ux95eeux9898-f03ux52a0ux6cd5ux516cux5f0fux4e0eux500dux89d2ux516cux5f0f}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-35}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明对
+\(m\ge1,n\ge0\)， \[F_{m+n}=F_mF_{n+1}+F_{m-1}F_n,\] 并推出
+\(F_{2n}=F_n(F_{n-1}+F_{n+1})\)（\(n\ge1\)）。（原专题定理2.1、推论2.2。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-35}
+
+矩阵幂的指数加法对应下标加法；也可固定一个下标后验证两边满足同一递推。
+
+\subsubsection{解答}\label{ux89e3ux7b54-35}
+
+证明：固定 \(m\ge1\)，记 \(u_n=F_mF_{n+1}+F_{m-1}F_n\)。直接有
+\(u_0=F_m\)、\(u_1=F_m+F_{m-1}=F_{m+1}\)，且
+\(u_{n+2}=u_{n+1}+u_n\)。由递推唯一性，\(u_n=F_{m+n}\)。令
+\(m=n\ge1\)，便得到倍角公式。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-35}
+
+下标加法公式是整除理论的入口；证明恒等式时，同递推同初值通常比展开通项更短。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F04：d'Ocagne 与 Catalan
+恒等式}\label{ux95eeux9898-f04docagne-ux4e0e-catalan-ux6052ux7b49ux5f0f}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-36}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明
+\[F_mF_{n+1}-F_{m+1}F_n=(-1)^nF_{m-n}\quad(m\ge n\ge0),\]
+\[F_{n+r}F_{n-r}-F_n^2=(-1)^{n-r+1}F_r^2\quad(n\ge r\ge0).\]
+（原专题定理2.3、2.4；此处 Catalan 指恒等式名称。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-36}
+
+第一式固定 \(n\) 后对 \(m\) 作递推，第二式利用 Binet 公式中的
+\(\alpha\beta=-1\)。
+
+\subsubsection{解答}\label{ux89e3ux7b54-36}
+
+证明：固定 \(n\)，令 \(D_m=F_mF_{n+1}-F_{m+1}F_n\)。则
+\(D_{m+2}=D_{m+1}+D_m\)，且
+\(D_n=0\)、\(D_{n+1}=F_{n+1}^2-F_{n+2}F_n=(-1)^n\)；末式由 Cassini
+恒等式得到，也对 \(n=0\) 成立。由初值唯一性，\(D_{n+r}=(-1)^nF_r\)。
+
+再由 Binet 公式和 \(\alpha\beta=-1\)，直接展开得 \[
+\begin{aligned}
+F_{n+r}F_{n-r}-F_n^2
+&=\frac{(-1)^{n-r}}5\bigl[-\alpha^{2r}-\beta^{2r}+2(-1)^r\bigr]\\
+&=(-1)^{n-r+1}\left(\frac{\alpha^r-\beta^r}{\sqrt5}\right)^2
+=(-1)^{n-r+1}F_r^2.
+\end{aligned}
+\] 证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-36}
+
+恒等式中的符号取决于下标奇偶；先固定一个下标，再检验两个初值，可以避免符号猜测。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F05：最大公因数与强整除}\label{ux95eeux9898-f05ux6700ux5927ux516cux56e0ux6570ux4e0eux5f3aux6574ux9664}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-37}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明
+\(\gcd(F_m,F_n)=F_{\gcd(m,n)}\)（\(m,n\ge0\)），约定
+\(\gcd(0,0)=0\)。（原专题引理3.1、定理3.2、推论3.3。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-37}
+
+在下标上执行欧几里得算法；关键是证明减去一个下标不改变对应数值的最大公因数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-37}
+
+证明：由递推，\(\gcd(F_{n+1},F_n)=\gcd(F_n,F_{n-1})\)，反复下降到
+\(\gcd(F_1,F_0)=1\)，故相邻项互素。对 \(m>n\ge1\)，加法公式给出
+\[F_m=F_{m-n}F_{n+1}+F_{m-n-1}F_n.\] 因此
+\[\gcd(F_m,F_n)=\gcd(F_{m-n}F_{n+1},F_n)=\gcd(F_{m-n},F_n),\]
+其中最后一步使用
+\(\gcd(F_{n+1},F_n)=1\)。对下标重复较大者减较小者，最终到达
+\((d,0)\)，其中 \(d=\gcd(m,n)\)，故最大公因数为
+\(\gcd(F_d,F_0)=F_d\)。零下标情形直接成立。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-37}
+
+递推的加法公式把数论中的欧几里得算法搬到下标上，避免计算巨大的项。例如
+\(\gcd(F_{84},F_{126})=F_{42}\)。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F06：下标整除与数值整除}\label{ux95eeux9898-f06ux4e0bux6807ux6574ux9664ux4e0eux6570ux503cux6574ux9664}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-38}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明对
+\(m\ge3,n\ge1\)，\(F_m\mid F_n\) 当且仅当
+\(m\mid n\)，并说明小下标例外。（原专题定理3.4、注3.5。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-38}
+
+先把整除改写为最大公因数等于其中一项，再用强整除与严格增长识别下标。
+
+\subsubsection{解答}\label{ux89e3ux7b54-38}
+
+证明：若 \(m\mid n\)，强整除公式给出 \(\gcd(F_m,F_n)=F_m\)，故
+\(F_m\mid F_n\)。反之，若 \(F_m\mid F_n\)，则
+\[F_m=\gcd(F_m,F_n)=F_{\gcd(m,n)}.\] 由于 \(m\ge3\)，\(F_m\ge2\)，且
+\(F_k\) 从下标 \(2\) 起严格增长，故 \(\gcd(m,n)=m\)，即 \(m\mid n\)。当
+\(m=2\) 时 \(F_2=1\) 整除一切项，但 \(2\) 不整除所有下标；\(m=1\)
+时两边均成立。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-38}
+
+从数值相等反推下标时，必须单独处理 \(F_1=F_2=1\)。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F07：模整数的纯周期性}\label{ux95eeux9898-f07ux6a21ux6574ux6570ux7684ux7eafux5468ux671fux6027}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-39}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 对整数
+\(m\ge2\)，证明 \(F_n\pmod m\) 从 \(n=0\) 起纯周期，最小正周期
+\(\pi(m)\) 存在且 \(\pi(m)\le m^2\)。（原专题定理4.2。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-39}
+
+将相邻两项作为有限状态，递推映射可逆，因而轨道一开始就在循环上，不存在进入循环前的尾段。
+
+\subsubsection{解答}\label{ux89e3ux7b54-39}
+
+证明：令 \(X_n=(F_n,F_{n+1})\in(\mathbb Z/m\mathbb Z)^2\)。递推映射为
+\[T(a,b)=(b,a+b),\qquad T^{-1}(a,b)=(b-a,a).\] 有限状态数为
+\(m^2\)，故前 \(m^2+1\) 个状态中有 \(X_i=X_j\)（\(i<j\)）。作用
+\(T^{-i}\) 得 \(X_0=X_{j-i}\)。于是 \(F_{n+j-i}\equiv F_n\pmod m\)
+对所有 \(n\ge0\) 成立。所有正返回时刻中取最小者即 \(\pi(m)\)，且不超过
+\(m^2\)。标量序列的周期必同时使相邻两项返回，所以这也是原数列的最小周期。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-39}
+
+有限状态只保证最终周期；可逆性才保证从第一项起纯周期。模 \(2\)
+时状态给出 \(0,1,1\) 的三周期。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F08：出现秩与全部整除位置}\label{ux95eeux9898-f08ux51faux73b0ux79e9ux4e0eux5168ux90e8ux6574ux9664ux4f4dux7f6e}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-40}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 对
+\(m\ge2\)，定义
+\(z(m)=\min\{r\ge1:m\mid F_r\}\)。证明其存在，\(z(m)\le\pi(m)\)，且
+\[m\mid F_n\quad\Longleftrightarrow\quad z(m)\mid n\qquad(n\ge1).\]
+（原专题命题5.2、定理5.3、推论5.4。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-40}
+
+周期性先保证某项被整除；再将任意整除位置与最小位置取最大公因数。
+
+\subsubsection{解答}\label{ux89e3ux7b54-40}
+
+证明：周期性给出 \(F_{\pi(m)}\equiv F_0=0\pmod m\)，所以 \(z=z(m)\)
+存在且 \(z\le\pi(m)\)。若 \(z\mid n\)，由下标整除推出
+\(F_z\mid F_n\)，进而 \(m\mid F_n\)。若 \(m\mid F_n\)，则
+\[m\mid\gcd(F_z,F_n)=F_{\gcd(z,n)}.\] 由 \(z\) 的最小性，正整数
+\(\gcd(z,n)\le z\) 必等于 \(z\)，故 \(z\mid n\)。直接算得
+\(z(2)=3,z(5)=5\)，所以
+\(2\mid F_n\Leftrightarrow3\mid n\)，\(5\mid F_n\Leftrightarrow5\mid n\)。证毕。
+
+原专题例题中 \(z(12)=12\)：前 \(12\) 项依次为
+\(1,1,2,3,5,8,13,21,34,55,89,144\)，故 \(12\mid F_n\) 当且仅当
+\(12\mid n\)；这不表示一般地 \(z(m)=m\)，例如 \(z(4)=6\)。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-40}
+
+最小整除下标决定全部整除位置；数值 \(m\) 本身通常不是那个下标。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F09：素数下标同余与 Fibonacci--Fermat
+整除}\label{ux95eeux9898-f09ux7d20ux6570ux4e0bux6807ux540cux4f59ux4e0e-fibonaccifermat-ux6574ux9664}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-41}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 设
+\(p\ne2,5\) 为素数，\(\varepsilon=(5/p)\) 为 Legendre 符号。证明
+\[F_p\equiv\varepsilon\pmod p,\qquad p\mid F_{p-\varepsilon},\qquad z(p)\mid p-\varepsilon.\]
+并按 \(p\pmod5\) 分类。（原专题引理6.1、定理6.2---6.3、推论6.4---6.5。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-41}
+
+在二次代数中使用 Frobenius，将 Binet
+公式中的两个根交换或固定；先明确分母与根都是可逆元。
+
+\subsubsection{解答}\label{ux89e3ux7b54-41}
+
+证明：在交换代数 \(R=\mathbb F_p[t]/(t^2-5)\) 中，\(t\) 可逆，逆元为
+\(t/5\)。由 Euler 判别准则， \[t^p=t\,5^{(p-1)/2}=\varepsilon t.\] 令
+\(a=(1+t)/2,b=(1-t)/2\)，则
+\(ab=-1\)，二者也可逆；由同递推同初值，\(F_n=(a^n-b^n)/t\) 在 \(R\)
+中成立。特征 \(p\) 的 Frobenius 给出
+\[a^p=(1+\varepsilon t)/2,\qquad b^p=(1-\varepsilon t)/2,\] 故
+\(F_p=\varepsilon\)。若 \(\varepsilon=1\)，则 \(a^p=a,b^p=b\)，因而
+\(a^{p-1}=b^{p-1}=1\)，得到 \(F_{p-1}=0\)。若 \(\varepsilon=-1\)，则
+\(a^p=b,b^p=a\)，于是 \(a^{p+1}=b^{p+1}=-1\)，得到
+\(F_{p+1}=0\)。这些等式对常数子域就是模 \(p\) 同余。出现秩结论随后由 F08
+得到。
+
+二次互反律给出 \((5/p)=(p/5)\)。模 \(5\) 的非零平方是 \(1,4\)，故
+\(p\equiv\pm1\pmod5\) 时
+\(p\mid F_{p-1}\)、\(F_p\equiv1\pmod p\)；\(p\equiv\pm2\pmod5\) 时
+\(p\mid F_{p+1}\)、\(F_p\equiv-1\pmod p\)。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-41}
+
+二次代数可能分裂，但上述证明只用交换性和指定元素的可逆性，不需要误称它始终为域。例如
+\(7\mid F_8=21\)。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F10：Fibonacci
+素数的下标限制}\label{ux95eeux9898-f10fibonacci-ux7d20ux6570ux7684ux4e0bux6807ux9650ux5236}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-42}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 若 \(n>4\)
+且 \(F_n\) 为素数，证明 \(n\)
+必为素数；说明逆命题是否成立。（原专题定理7.2、注7.3。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-42}
+
+若下标合成，就寻找至少为 \(3\) 的真因子，让它对应的 Fibonacci
+数成为非平凡因子。
+
+\subsubsection{解答}\label{ux89e3ux7b54-42}
+
+证明：反设 \(n>4\) 为合数。若它有奇素因子，取该真因子 \(d\)；若没有，则
+\(n\) 为 \(2\) 的幂，取 \(d=4\)。均有 \(3\le d<n\) 且 \(d\mid n\)。于是
+\(F_d\mid F_n\)，并由严格增长有 \(2\le F_d<F_n\)，与 \(F_n\)
+为素数矛盾。
+
+逆命题不成立：\(19\) 是素数，但 \(F_{19}=4181=37\cdot113\)。小下标例外
+\(F_4=3\) 也说明 \(n>4\) 不能直接删去。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-42}
+
+整除序列的素数项对下标施加必要条件，但不会自动给出充分条件。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F11：Lucas 数、Pell
+恒等式与最大公因数}\label{ux95eeux9898-f11lucas-ux6570pell-ux6052ux7b49ux5f0fux4e0eux6700ux5927ux516cux56e0ux6570}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-43}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 再令
+\(L_0=2,L_1=1,L_{n+2}=L_{n+1}+L_n\)。证明 \[
+L_n=\alpha^n+\beta^n,\quad L_n=F_{n-1}+F_{n+1}\ (n\ge1),\quad F_{2n}=F_nL_n,
+\] \[L_n^2-5F_n^2=4(-1)^n,\] 并求
+\(\gcd(F_n,L_n)\)（\(n\ge1\)）。（原专题定理8.2---8.4、推论8.5。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-43}
+
+同一特征方程产生 Fibonacci 与 Lucas 两组初值。和差相乘得到 Pell
+恒等式；最大公因数也可直接用相邻项互素。
+
+\subsubsection{解答}\label{ux89e3ux7b54-43}
+
+证明：\(\alpha^n+\beta^n\) 满足 Lucas 递推且初值为 \(2,1\)，故等于
+\(L_n\)。数列 \(F_{n-1}+F_{n+1}\)（\(n\ge1\)）满足同一递推，并在
+\(n=1,2\) 时分别等于 \(1,3\)，故也等于 \(L_n\)。F03 的倍角公式给出
+\(F_{2n}=F_nL_n\)。由 \(\alpha\beta=-1\)，
+\[L_n^2-5F_n^2=(\alpha^n+\beta^n)^2-(\alpha^n-\beta^n)^2=4(-1)^n.\] 又
+\(L_n=F_n+2F_{n-1}\)，相邻项互素，故
+\[\gcd(F_n,L_n)=\gcd(F_n,2F_{n-1})=\gcd(F_n,2).\] 由模 \(2\)
+的三周期，\(F_n\) 为偶数当且仅当 \(3\mid n\)，所以
+\[\boxed{\gcd(F_n,L_n)=\begin{cases}2,&3\mid n,\\1,&3\nmid n.\end{cases}}\]
+证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-43}
+
+最大公因数结论用 \(L_n=F_n+2F_{n-1}\) 最直接，避免仅凭 Pell
+恒等式作不充分的整除推断。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F12：前项和与平方和}\label{ux95eeux9898-f12ux524dux9879ux548cux4e0eux5e73ux65b9ux548c}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-44}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。 证明
+\[\sum_{k=1}^nF_k=F_{n+2}-1,\qquad\sum_{k=1}^nF_k^2=F_nF_{n+1}\quad(n\ge1).\]
+（原专题定理9.1---9.2。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-44}
+
+把待求和项写成相邻表达式的差，再望远镜相消。
+
+\subsubsection{解答}\label{ux89e3ux7b54-44}
+
+证明：由递推有 \(F_k=F_{k+2}-F_{k+1}\)，故
+\[\sum_{k=1}^nF_k=F_{n+2}-F_2=F_{n+2}-1.\] 又
+\[F_k^2=F_k(F_{k+1}-F_{k-1})=F_kF_{k+1}-F_{k-1}F_k,\] 因此
+\[\sum_{k=1}^nF_k^2=F_nF_{n+1}-F_0F_1=F_nF_{n+1}.\] 证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-44}
+
+和式先找差分原函数：一次和对应相邻项之差，平方和对应相邻乘积之差。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题 F13：Zeckendorf
+唯一表示}\label{ux95eeux9898-f13zeckendorf-ux552fux4e00ux8868ux793a}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-45}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。
+证明每个正整数 \(N\) 都唯一表示为若干互不相邻的 Fibonacci 数之和：
+\[N=F_{i_1}+\cdots+F_{i_r},\qquad i_1>\cdots>i_r\ge2,\quad i_j-i_{j+1}\ge2.\]
+（原专题引理10.1、定理10.2。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-45}
+
+贪心选取最大的可用项；递推保证余量跳过相邻下标。唯一性依赖小于某个下标的合法和的最大值。
+
+\subsubsection{解答}\label{ux89e3ux7b54-45}
+
+证明：令 \(M_k\) 为只使用 \(F_2,\ldots,F_{k-1}\)
+且不选相邻下标时的最大和。\(M_2=0=F_2-1\)、\(M_3=1=F_3-1\)。对
+\(k\ge4\)，按是否选择 \(F_{k-1}\) 分类，
+\[M_k=\max\{M_{k-1},F_{k-1}+M_{k-2}\}=F_k-1.\] 这里归纳假设给出第二项
+\(F_{k-1}+F_{k-2}-1=F_k-1\)，且不小于第一项。
+
+对 \(N\) 强归纳证明存在性。取最大 \(k\ge2\) 使 \(F_k\le N\)，则
+\(0\le R=N-F_k<F_{k+1}-F_k=F_{k-1}\)。若 \(R=0\) 即完成；否则对 \(R<N\)
+用归纳假设，它的合法表示只能使用至多 \(k-2\) 的下标。加上 \(F_k\)
+仍合法。
+
+若有两个不同表示，消去共有的最大项，直到最大下标不同。设一边最大下标为
+\(k\)，另一边更小，则前者至少 \(F_k\)，后者至多
+\(M_k=F_k-1\)，矛盾。故表示唯一。例如
+\(100=F_{11}+F_6+F_4=89+8+3\)。证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-45}
+
+贪心法需要余量界来证明合法性；唯一性需要最大和引理，不能只凭算法确定就断言表示唯一。
+
+\noindent\hyperref[contents]{返回目录}
+
+\Needspace{7\baselineskip}
+\subsection{问题
+F14：原始素因子与倍角时的赋值}\label{ux95eeux9898-f14ux539fux59cbux7d20ux56e0ux5b50ux4e0eux500dux89d2ux65f6ux7684ux8d4bux503c}
+
+来源：既有讲义《斐波那契数列的数论性质与证明》；以下按原已证结论重述。
+
+\subsubsection{原题}\label{ux539fux9898-46}
+
+本组统一令 \(F_0=0,F_1=1,F_{n+2}=F_{n+1}+F_n\)（\(n\ge0\)）。
+（1）称素数 \(q\) 为 \(F_n\) 的原始素因子，是指 \(q\mid F_n\) 而
+\(q\nmid F_1\cdots F_{n-1}\)。证明这等价于 \(z(q)=n\)。
+
+（2）若奇素数 \(p\mid F_n\)，证明 \(p\nmid L_n\)，从而
+\(v_p(F_{2n})=v_p(F_n)\)。其中 \(v_p\) 为素数 \(p\)
+的赋值。（原专题命题11.2、12.2与推论12.3；不包含原文未证明的一般提升指数定理。）
+
+\subsubsection{关键思路}\label{ux5173ux952eux601dux8def-46}
+
+第一问展开最小下标的定义；第二问用 Pell
+恒等式排除共同奇素因子，再使用倍角公式。
+
+\subsubsection{解答}\label{ux89e3ux7b54-46}
+
+证明：（1）\(z(q)\) 正是 \(q\) 第一次整除 Fibonacci 数的正下标。因此
+\(z(q)=n\) 与 \(q\mid F_n\) 且对所有 \(1\le j<n\) 有 \(q\nmid F_j\)
+等价，这又等价于原始素因子的定义。
+
+（2）若奇素数 \(p\) 同时整除 \(F_n,L_n\)，则由 \(L_n^2-5F_n^2=4(-1)^n\)
+得 \(p\mid4\)，矛盾。因此 \(v_p(L_n)=0\)。再由 \(F_{2n}=F_nL_n\)，
+\[v_p(F_{2n})=v_p(F_n)+v_p(L_n)=v_p(F_n).\] 证毕。
+
+\subsubsection{简单总结}\label{ux7b80ux5355ux603bux7ed3-46}
+
+本题只覆盖已有完整证明的特例。原始素因子的一般存在定理、完全平方项分类与一般赋值公式并未在旧讲义中证明，不能混入``已解题''计数。
+
+\noindent\hyperref[contents]{返回目录}
+
+\section{阅读后的通用检查}\label{ux9605ux8bfbux540eux7684ux901aux7528ux68c0ux67e5}
+
+先确认所有项始终有定义，再寻找不变区间、单调量或可求和的误差。只有收敛已经建立，才能把相邻项同时替换成同一个极限。遇到临界参数，应单独排除二周期或其他振荡；遇到渐近展开，应把余项累积是否收敛写清楚。对线性递推，初值、递推阶数与特征根的退化情形必须同时核对。
+
+\end{document}
