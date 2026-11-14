@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "下册", "实解析", "Borel定理", "Cauchy乘积", "Tauber定理", "B233-B239"]
 created_at: "2026-11-13"
-updated_at: "2026-11-13"
+updated_at: "2026-11-14"
 ---
 
 本批承接第三十三批 B226—B232，按照《楼分析习题-v2.pdf》原题顺序，完整处理 **B233—B239**：**9.3.B 第 4—7 题**以及 **9.4.B 第 1—3 题**，七题均无星号。原题分别位于 PDF 实际第 **20、21** 页（印刷第 **18、19** 页）。B238 的“各种收敛情形”按两因子的三类敛散状态逐一作可行性与不可能性判断；B239 的两个小问均保留“原级数有 Abel 和”这一共同前提。
@@ -14,7 +14,7 @@ updated_at: "2026-11-13"
 
 [下册资料页](/problems/149ff60b32b01ff69feab8a4/) · [原题 PDF 第 20 页](/files/problems/楼分析习题-v2.pdf#page=20) · [第 21 页](/files/problems/楼分析习题-v2.pdf#page=21)
 
-**批次导航：** [上一批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/) · [B 组总目录](/problems/collections/lou-analysis/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/)
+**批次导航：** [下一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [上一批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/) · [B 组总目录](/problems/collections/lou-analysis/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/)
 
 ## 题号导航
 
@@ -771,6 +771,6 @@ $$
 | B238 | Mertens 定理、差分与部分和算子、生成函数反例 | C+C 的乘积可 A、C、D；不能误用乘法法则。 |
 | B239 | $r_n=1-1/n$ 的 Tauber 比较；Cesàro 差分归约 | 两问共同依赖 Abel 和；注意 $o(1)$ 的精确位置。 |
 
-**本批累计：** 两册 **236 道完成**（上册 175、下册 61），另有 **B116、B148、B180** 三道待核。第九章完成 **20 题**。下一题按原书为 **B240＝9.4.B 第 4 题**，含 Hardy–Littlewood 定理的四个指定小问，题干跨原题 PDF **第 21—22 页**；具体作答留待下一批。
+**本批累计：** 两册 **236 道完成**（上册 175、下册 61），另有 **B116、B148、B180** 三道待核。第九章完成 **20 题**。下一题按原书为 **B240＝9.4.B 第 4 题**，含 Hardy–Littlewood 定理的四个指定小问，题干跨原题 PDF **第 21—22 页**；完整作答见第三十五批。
 
-[返回题号导航](#题号导航) · [上一批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[返回题号导航](#题号导航) · [下一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [上一批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
