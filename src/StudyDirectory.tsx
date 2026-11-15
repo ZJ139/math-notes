@@ -1,6 +1,6 @@
 import React from 'react';
 import type {PublicEntry} from './content';
-import {englishStudyCategories,entryUrl,mathSections,sections} from './model';
+import {englishStudyCategories,examTranslation,entryUrl,mathSections,sections} from './model';
 import {readingAnswersIndexUrl} from './ReadingAnswersDirectory';
 import {writingIndexUrl} from './WritingDirectory';
 import {readingPracticeUrl} from './ReadingPractice';
@@ -8,6 +8,16 @@ import {practiceIndexUrl} from './WritingPractice';
 import {populatedCollections,collectionDestination,ProblemCollectionCards} from './ProblemCollections';
 import {problemLinks} from './problemLinks';
 import {ustcAnalysisTitle,ustcAnalysisUrl} from './UstcAnalysisDirectory';
+
+export const examTranslationUrl = `/english/${examTranslation.id}/`;
+const englishDirectories: Readonly<Partial<Record<string, string>>> = {
+  [examTranslation.id]: examTranslationUrl,
+  'reading-practice': readingPracticeUrl,
+  'reading-answers': readingAnswersIndexUrl,
+  writing: writingIndexUrl,
+};
+export const englishCategoryUrl = (id: string) =>
+  englishDirectories[id] ?? '/english/?category=' + encodeURIComponent(id || 'uncategorized');
 
 export function MathNavigation({section}:{section?:string}) {
   return <nav className="section-tabs" aria-label="数学栏目">
@@ -31,7 +41,7 @@ export function StudyDirectory({items}:{items:PublicEntry[]}) {
       </section>
       <section className="study-room" aria-labelledby="english-heading">
         <div className="room-heading"><span className="room-number" aria-hidden="true">03</span><h2 id="english-heading"><a href="/english/">英语</a></h2></div>
-        <nav className="directory-links english-directory" aria-label="英语入口">{englishStudyCategories.map(c=><a key={c.id} href={c.id==='reading-practice'?readingPracticeUrl:c.id==='writing'?writingIndexUrl:c.id==='reading-answers'?readingAnswersIndexUrl:'/english/?category='+c.id}><span>{c.label}</span></a>)}<a href={practiceIndexUrl}><span>考研作文练习</span></a></nav>
+        <nav className="directory-links english-directory" aria-label="英语入口">{englishStudyCategories.map(c=><a key={c.id} href={englishCategoryUrl(c.id)}><span>{c.label}</span></a>)}<a href={practiceIndexUrl}><span>考研作文练习</span></a></nav>
       </section>
     </div>
   </section>;
