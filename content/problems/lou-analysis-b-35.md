@@ -5,12 +5,12 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "下册", "幂级数", "椭圆积分", "Bernoulli多项式", "B240-B246"]
 created_at: "2026-11-14"
-updated_at: "2026-11-14"
+updated_at: "2026-11-15"
 ---
 
 第三十五批收录下册 9.4.B 第 4—10 题，七题均无星号。题册实际第 21—23 页对应印刷第 19—21 页。B240 第（4）问所列有限等式少算一项，正文保留原式、给出反例，并按原有假设完成定理证明。B243 的变换将在 B244 中再次使用，B245 的反射公式将在 B246 中给出正割系数。
 
-[上一批 B233—B239](/problems/ec0113af0ec041be81b6f081/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B247—B253](/problems/618570a832067bb616fcf965/) · [上一批 B233—B239](/problems/ec0113af0ec041be81b6f081/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
@@ -359,6 +359,6 @@ $$
 
 **从对称性到系数（B245、B246）。** 先在生成函数中识别平移或反射，再比较某一阶系数。对称性可消去整类奇次项，也可与零均值配合确定积分常数。展开式得到后，仍需单独检查最近奇点及端点通项。
 
-本批七个原题位置均已作答。B240 的有限等式由反例判定，定理已在原假设下证明。两册累计 **243 道已作答**，其中上册 175 道、下册 68 道，第九章已完成 27 道。**B116、B148、B180** 仍待核。下一题为 B247，即 9.4.B 第 11 题，见[原题 PDF 第 23 页](/files/problems/楼分析习题-v2.pdf#page=23)。
+本批七个原题位置均已作答。B240 的有限等式由反例判定，定理已在原假设下证明。两册累计 **243 道已作答**，其中上册 175 道、下册 68 道，第九章已完成 27 道。**B116、B148、B180** 仍待核。本批结束时的下一题为 [B247](/problems/618570a832067bb616fcf965/#问题-b247)，即 9.4.B 第 11 题，见[原题 PDF 第 23 页](/files/problems/楼分析习题-v2.pdf#page=23)。
 
 [返回题号导航](#题号导航) · [上一批 B233—B239](/problems/ec0113af0ec041be81b6f081/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/)

@@ -458,7 +458,7 @@ if ((await fs.stat('content/problems/lou-analysis-b-34.md').catch(()=>null))?.is
               ' display formulas; seven mappings, four sections, links; 236 solved, three pending.');
 }
 
-// Check the current directory totals and all incoming links at the built site.
+// Preserve batch 35’s historical totals and incoming links.
 if ((await fs.stat('content/problems/lou-analysis-b-35.md').catch(()=>null))?.isFile()) {
   const route='/problems/f9511a07a0549fd8dfe204f6/';
   const readPage=url=>fs.readFile(path.join(root,url,'index.html'),'utf8');
@@ -477,11 +477,10 @@ if ((await fs.stat('content/problems/lou-analysis-b-35.md').catch(()=>null))?.is
   for(const page of [chapter,directory,previous,upper,lower]){
     if(!page.includes(route))throw new Error('第三十五批缺少目录或相邻页面入口');
   }
-  if(!html.includes('/problems/ec0113af0ec041be81b6f081/')||!directory.includes('243 道已作答 · 3 道暂跳过')
-     ||!chapter.includes('4 节 · 27 道已作答')||!chapter.includes('本章当前收录至习题 9.4.B 第 10 题')
-     ||!lower.includes('68 道已作答、1 道暂跳过')||!lower.includes('B247＝9.4.B 第 11 题')
-     ||!upper.includes('243 道已作答 · 3 道暂跳过')||!previous.includes('236 道已作答'))
-    throw new Error('第三十五批当前进度、上一批历史进度或下一题错误');
+  if(!html.includes('/problems/ec0113af0ec041be81b6f081/')||!html.includes('243 道已作答')
+     ||!html.includes('下册 68 道')||!html.includes('第九章已完成 27 道')
+     ||!previous.includes('236 道已作答'))
+    throw new Error('第三十五批或上一批历史进度错误');
   const pagesByProblem=[[21,22],[22],[22],[22],[22],[22,23],[23]];
   for(const [i,pages] of pagesByProblem.entries()){
     const number=240+i;
@@ -492,6 +491,47 @@ if ((await fs.stat('content/problems/lou-analysis-b-35.md').catch(()=>null))?.is
       throw new Error(`第三十五批题号、原页、证明结构或索引错误：B${number}`);
   }
   console.log(`Verified Lou analysis B240–B246: ${inline} inline and ${display} display formulas; seven source mappings, chapter and batch navigation; 243 solved, three pending.`);
+}
+
+if ((await fs.stat('content/problems/lou-analysis-b-36.md').catch(() => null))?.isFile()) {
+  const route = '/problems/618570a832067bb616fcf965/';
+  const previousRoute = '/problems/f9511a07a0549fd8dfe204f6/';
+  const chapterRoute = '/problems/collections/lou-analysis/chapters/9/';
+  const directoryRoute = '/problems/collections/lou-analysis/';
+  const lowerRoute = '/problems/149ff60b32b01ff69feab8a4/';
+  const upperRoute = '/problems/41e85e430c9d7f84a0863658/';
+  const readPage = url => fs.readFile(path.join(root, url, 'index.html'), 'utf8');
+  const [html, previous, chapter, directory, lower, upper, source] = await Promise.all([
+    ...[route, previousRoute, chapterRoute, directoryRoute, lowerRoute, upperRoute].map(readPage),
+    fs.readFile('content/problems/lou-analysis-b-36.md', 'utf8'),
+  ]);
+  const inline = (source.match(/(?<!\$)\$(?!\$)/g) || []).length / 2;
+  const display = (source.match(/^\s*\$\$\s*$/gm) || []).length / 2;
+  if (!display || (html.match(/class="latex-svg"/g) || []).length !== inline + display
+      || (html.match(/class="katex-display"/g) || []).length !== display || html.includes('katex-error'))
+    throw new Error('第三十六批公式渲染不完整');
+  for (const page of [previous, chapter, directory, lower, upper]) {
+    if (!page.includes(route)) throw new Error('第三十六批缺少入口');
+  }
+  for (const url of [previousRoute, chapterRoute, directoryRoute, lowerRoute]) {
+    if (!html.includes(url)) throw new Error('第三十六批缺少返回链接：' + url);
+  }
+  if (![directory, upper].every(page => page.includes('249 道已作答 · 4 道暂跳过'))
+      || !chapter.includes('5 节 · 33 道已作答 · 1 道暂跳过')
+      || !chapter.includes('本章当前收录至习题 9.5.B 第 4 题')
+      || !lower.includes('74 道已作答、2 道暂跳过') || !lower.includes('B254＝9.5.B 第 5 题')
+      || !html.includes('B116、B148、B180、B247') || !previous.includes('243 道已作答'))
+    throw new Error('第三十六批计数、待核名单或前后批次进度不符');
+  const mapping = [[247,'9.4',11,23], [248,'9.4',12,23], [249,'9.4',13,23],
+                   [250,'9.5',1,24], [251,'9.5',2,24], [252,'9.5',3,25], [253,'9.5',4,25]];
+  for (const [number, section, original, page] of mapping) {
+    const part = source.split(`## 问题 B${number}\n`)[1]?.split(/^## /m)[0] || '';
+    if (!part.includes(`习题 ${section}.B 第 ${original} 题`) || !part.includes(`楼分析习题-v2.pdf#page=${page}`)
+        || !part.includes('**思路来源**') || !part.includes('**方法总结**')
+        || !html.includes(`id="问题-b${number}"`) || !chapter.includes(`${route}#问题-b${number}`))
+      throw new Error(`第三十六批原题、题解或章节链接不符：B${number}`);
+  }
+  console.log(`Verified Lou analysis B247–B253: ${inline} inline and ${display} display formulas; seven mappings, six solved, B247 pending.`);
 }
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {
