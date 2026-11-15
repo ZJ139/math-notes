@@ -603,3 +603,9 @@ html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-
 .lecture-toc-section ul{padding-left:1.3em;margin:8px 0 12px;list-style:none}.lecture-toc-section li{margin:6px 0;font-size:17px;line-height:1.65}
 @media(max-width:700px){.lecture-toc{padding:18px 16px}.lecture-toc-section{margin-left:8px;padding-left:10px}.lecture-toc-section ul{padding-left:0}.lecture-toc-shortcuts{gap:8px 16px}}
 @media print{.lecture-toc{display:none}.prose .article-figure[src*="/figures/analytic-geometry/theorems/"]{width:auto;max-width:100%;max-height:125mm}}
+
+.ustc-exercises{margin:.5em 0 1.1em}
+.ustc-exercises summary{cursor:pointer}
+.ustc-exercises h4{margin:.8em 0 .3em}
+.ustc-exercises ul{padding-left:1.2em;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(15em,100%),1fr));column-gap:1.2em}
+.ustc-exercises li{margin:0}
