@@ -10,6 +10,7 @@ import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,MathOverview,
 import {ReadingPracticeIndex,ReadingPracticePage,readingExercises,exerciseUrl,readingPracticeUrl} from '../src/ReadingPractice';
 import {WritingPracticeIndex,WritingPracticePage,practiceExams} from '../src/WritingPractice';
 import config from '../site.config.json';
+import {UstcAnalysisDirectory,ustcAnalysisUrl,ustcAnalysisTitle} from '../src/UstcAnalysisDirectory';
 import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
@@ -83,6 +84,7 @@ async function redirect(route:string,target:string){
 }
 await page('','学习目录',<Home items={items}/>);
 await page('math/','数学',<MathOverview items={items}/>);
+await page(ustcAnalysisUrl.slice(1),ustcAnalysisTitle,<UstcAnalysisDirectory items={items}/>);
 for(const [section,title]of Object.entries(sections))await page(section+'/',title,<Collection section={section as Section} items={items.filter(e=>e.section===section)}/>);
 for(const collection of populatedCollections(items)){
   const route=collectionRoute(collection.id),target=collectionDestination(items,collection.id);
