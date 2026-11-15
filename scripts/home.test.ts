@@ -55,9 +55,9 @@ test('home exposes three fixed study areas and the English study destinations wi
   const areas=[...home.matchAll(/<h2 id="(math|problems|english)-heading">/g)].map(m=>m[1]);
   assert.deepEqual(areas,['math','problems','english']);
   for(const href of ['/math/','/notes/','/problems/','/papers/','/essays/'])assert.ok(home.includes(`href="${href}"`));
-  assert.equal(englishStudyCategories.length,10);
+  assert.equal(englishStudyCategories.length,11);
   for(const category of englishStudyCategories){
-    assert.ok(home.includes(`href="${category.id==='reading-practice'?'/english/reading-practice/':category.id==='writing'?'/english/writing/':category.id==='reading-answers'?'/english/reading-answers/':'/english/?category='+category.id}"`));
+    assert.ok(home.includes(`href="${'directory' in category?`/english/${category.id}/`:category.id==='writing'?'/english/writing/':category.id==='reading-answers'?'/english/reading-answers/':'/english/?category='+category.id}"`));
     assert.ok(home.includes(category.label));
   }
   const html=renderToStaticMarkup(createElement(Layout,{title:'数学',path:'/notes/',children:null}));

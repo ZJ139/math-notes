@@ -5,8 +5,9 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadEntries} from '../src/content';
-import {sections,compareRecentEntries,type Section} from '../src/model';
-import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,MathOverview,WritingLibrary} from '../src/components';
+import {sections,examTranslation,compareRecentEntries,type Section} from '../src/model';
+import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,ExamTranslationIndex,MathOverview,WritingLibrary} from '../src/components';
+import {examTranslationUrl} from '../src/StudyDirectory';
 import {ReadingPracticeIndex,ReadingPracticePage,readingExercises,exerciseUrl,readingPracticeUrl} from '../src/ReadingPractice';
 import {WritingPracticeIndex,WritingPracticePage,practiceExams} from '../src/WritingPractice';
 import config from '../site.config.json';
@@ -103,6 +104,7 @@ for(const group of sentenceGroups(items)){
   for(const text of group.texts.filter(text=>text.entries.length))await page(`english/sentences/years/${group.year}/text-${text.text}/`,`${group.year} 年 Text ${text.text} 长难句`,<SentenceYearPage items={items} year={group.year} text={text.text}/>);
 }
 await page('english/writing/','作文',<WritingLibrary items={items}/>);
+await page(examTranslationUrl.slice(1),examTranslation.label,<ExamTranslationIndex items={items}/>);
 await page(readingPracticeUrl.slice(1),'阅读训练',<ReadingPracticeIndex/>);
 for(const exercise of readingExercises)await page(exerciseUrl(exercise).slice(1),exercise.title+' · 阅读训练',<ReadingPracticePage exercise={exercise}/>);
 await page('english/writing-practice/','考研作文练习',<WritingPracticeIndex/>);

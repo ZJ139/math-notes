@@ -2,11 +2,12 @@ export const sections = { notes: '讲义', problems: '题库与作答', essays: 
 export type Section = keyof typeof sections;
 export const descriptions: Record<Section, string> = { notes: '概念、定理与推导。', problems: '按专题阅读，按题号查找题目与解答。', essays: '数学文章与学习札记。', books: '参考书与阅读资料。', papers: '论文与研究资料。', links: '常用网站与参考来源。', english: '真题、阅读、写作与词句。' };
 export const mathSections = ['notes','problems','papers','essays'] as const;
+export const examTranslation = {id:'exam-translation', label:'考研英语翻译', directory:true} as const;
 export const englishStudyCategories = [
   {id:'exams',label:'往年考研真题'}, {id:'reading-answers',label:'真题阅读解答'},
-  {id:'writing',label:'作文'}, {id:'translation',label:'文章与直译'},
+  {id:'writing',label:'作文'}, {id:'translation',label:'文章与直译'}, examTranslation,
   {id:'sentences',label:'长难句'}, {id:'sentence-patterns',label:'不同句式'}, {id:'core-vocabulary',label:'核心单词'},
-  {id:'vocabulary',label:'熟词僻义'}, {id:'reading-types',label:'阅读技巧'}, {id:'reading-practice',label:'阅读训练'},
+  {id:'vocabulary',label:'熟词僻义'}, {id:'reading-types',label:'阅读技巧'}, {id:'reading-practice',label:'阅读训练',directory:true},
 ] as const;
 export const sentencePatternCategories = [
   {id:'sentence-patterns/complex',label:'长难句句式',description:'归纳从句、非谓语、倒装与复杂结构的拆解方法。'},
