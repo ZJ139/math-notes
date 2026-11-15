@@ -1,0 +1,1126 @@
+[
+  {
+    "id": "2023-text-3",
+    "year": 2023,
+    "text": 3,
+    "title": "书店与出版社",
+    "source": "/english/0b41d98590bdcf819b5d5556/",
+    "paragraphs": [
+      {
+        "number": 1,
+        "parts": [
+          {
+            "text": "If you’re heading for your nearest branch of Waterstones, the biggest book retailer in the UK, in search of the Duchess of Sussex’s new children’s book The Bench, you might have to be prepared to hunt around a bit; the same may be true of The President’s Daughter, the new thriller by Bill Clinton and James Patterson. Both of these books are published next week by Penguin Random House (PRH), a company currently involved in a stand-off with Waterstones."
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "parts": [
+          {
+            "text": "The problem began late last year, when PRH confirmed that it had introduced a credit limit with Waterstones “at a very significant level”.",
+            "mark": 1,
+            "question": 32
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "The trade magazine The Bookseller reported that Waterstones branch managers were being told to remove PRH books from prominent areas such as tables, display spaces and windows, and were “quietly retiring them to their relevant sections”.",
+            "mark": 2,
+            "question": 32
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "parts": [
+          {
+            "text": "PRH declined to comment on the issue, but a spokesperson for Waterstones told me: “Waterstones are currently operating with reduced credit terms from PRH, the only publisher in the UK to place any limitations on our ability to trade. We are not boycotting PRH titles but we are doing our utmost to ensure that availability for customers remains good despite the lower overall levels of stock. "
+          },
+          {
+            "text": "We are hopeful with our shops now open again that normality will return and that we will be allowed to buy appropriately.",
+            "mark": 3,
+            "question": 33
+          },
+          {
+            "text": " Certainly, our shops are exceptionally busy. "
+          },
+          {
+            "text": "The sales for our May Books of the Month surpassed any month since 2018.",
+            "mark": 4,
+            "question": 33
+          },
+          {
+            "text": "”"
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 32,
+        "stem": "Why did Waterstones shops retire PRH books to their relevant sections?",
+        "translation": "为什么水石书店把 PRH 的图书撤回各自所属的分类书区？",
+        "answer": "C",
+        "options": [
+          {
+            "letter": "A",
+            "text": "To make them easily noticeable.",
+            "translation": "为了让这些书更容易被注意到。",
+            "reason": "从 prominent areas 撤下会降低曝光。若要让书更显眼，移动方向应当相反。"
+          },
+          {
+            "letter": "B",
+            "text": "To comply with PRH’s requirement.",
+            "translation": "为了遵守 PRH 的要求。",
+            "reason": "being told 只说明分店经理接到指示。PRH 对书店施加的是信用限制，文章没有说 PRH 指示书店撤书。"
+          },
+          {
+            "letter": "C",
+            "text": "To respond to PRH’s business move.",
+            "translation": "为了回应 PRH 的商业举措。",
+            "reason": "出版社改变交易条件，书店随之调整陈列。respond to 保留了两方各自的动作，也解释了撤书的时机。"
+          },
+          {
+            "letter": "D",
+            "text": "To arrange them in a systematic way.",
+            "translation": "为了把这些书有条理地排列。",
+            "reason": "relevant sections 确实指各书所属的分类书区。选项多加了一个目的，即书店想系统整理图书；文中没有书摆乱了这一前提。"
+          }
+        ],
+        "logic": "P1 末句把事件定为 stand-off。P2 先写 PRH 收紧赊购额度，接着写书店经理接到撤换陈列的指示。题干 Why did … retire 要把这两个动作连起来。",
+        "contrast": "把 Why 改成 Where，便能答“各自的分类书区”。要从“移到分类区”走到“为了整理”，还缺一条动机证据。"
+      },
+      {
+        "number": 33,
+        "stem": "What message does the spokesperson for Waterstones seem to convey?",
+        "translation": "水石书店的发言人似乎想传达什么信息？",
+        "answer": "B",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Their customers remain loyal.",
+            "translation": "他们的顾客仍然忠诚。",
+            "reason": "畅销属实，但购买者可能是第一次进店。判断老顾客忠诚，需要回购或持续光顾的证据。"
+          },
+          {
+            "letter": "B",
+            "text": "The credit limit will be removed.",
+            "translation": "信用额度限制将会被取消。",
+            "reason": "normality will return 和 be allowed to buy appropriately 合起来，指书店期待恢复正常进货。B 表达发言人对解除限制的预期，尚不能当作出版社的承诺。"
+          },
+          {
+            "letter": "C",
+            "text": "Their stock is underestimated.",
+            "translation": "他们的库存被低估了。",
+            "reason": "lower overall levels of stock 描写库存已经减少。underestimated 则要求有人估计过库存，并且估得偏低。"
+          },
+          {
+            "letter": "D",
+            "text": "The book market is rather slack.",
+            "translation": "图书市场相当萧条。",
+            "reason": "门店异常繁忙，推荐书销量超过 2018 年以来其他月份。库存减少可以由信用限制解释，推不出市场低迷。"
+          }
+        ],
+        "logic": "P3 引语中 we are hopeful 支配后面的两个愿望。紧接着的门店客流和五月销量，是发言人表达乐观的背景。题干 seem to convey 问话中之意。",
+        "contrast": "若问“发言人用什么说明需求旺盛”，五月推荐书的销量就是答案。若问“出版社是否已经答应解除限制”，单凭这段引语还不能确定。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "credit limit",
+          "n. 赊购额度上限",
+          "此处是出版社允许书店赊购的额度。"
+        ],
+        [
+          "prominent",
+          "adj. 显眼的；重要的",
+          "prominent areas 指橱窗、展示台等醒目位置。"
+        ],
+        [
+          "remove",
+          "v. 移开；移除",
+          "remove A from B 表示把 A 从 B 处移走。"
+        ],
+        [
+          "relevant",
+          "adj. 相关的；相应的",
+          "their relevant sections 指各本书所属的分类区。"
+        ],
+        [
+          "convey",
+          "v. 传达",
+          "seem to convey 问话中传达的信息。"
+        ]
+      ],
+      "extra": [
+        [
+          "retire",
+          "v. 撤下；退出使用",
+          "retire books to their sections 指把书撤回分类区。"
+        ],
+        [
+          "stock",
+          "n. 库存",
+          "lower levels of stock 指可供销售的存书减少。"
+        ],
+        [
+          "surpass",
+          "v. 超过",
+          "销量 surpass 以往水平，可证明需求旺盛。"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "2017-text-4",
+    "year": 2017,
+    "text": 4,
+    "title": "公职行为与法院裁决",
+    "source": "/english/8cff8caf05cedde82f613013/",
+    "paragraphs": [
+      {
+        "number": 1,
+        "parts": [
+          {
+            "text": "In a rare unanimous ruling, the US Supreme Court has overturned the corruption conviction of a former Virginia governor, Robert McDonnell. But it did so while holding its nose at the ethics of his conduct, which included accepting gifts such as a Rolex watch and a Ferrari automobile from a company seeking access to government."
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "parts": [
+          {
+            "text": "The high court’s decision said the judge in Mr. McDonnell’s trial failed to tell a jury that it must look only at his “official acts,” or the former governor’s decisions on “specific” and “unsettled” issues related to his duties."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "parts": [
+          {
+            "text": "Merely helping a gift-giver gain access to other officials, unless done with clear intent to pressure those officials, is not corruption, the justices found."
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "parts": [
+          {
+            "text": "The court did suggest that accepting favors in return for opening doors is “distasteful” and “nasty.” "
+          },
+          {
+            "text": "But under anti-bribery laws, proof must be made of concrete benefits, such as approval of a contract or regulation.",
+            "mark": 1,
+            "question": 37
+          },
+          {
+            "text": " Simply arranging a meeting, making a phone call, or hosting an event is not an “official act”."
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "parts": [
+          {
+            "text": "The court’s ruling is legally sound in defining a kind of favoritism that is not criminal. "
+          },
+          {
+            "text": "Elected leaders must be allowed to help supporters deal with bureaucratic problems without fear of prosecution for bribery.",
+            "mark": 2,
+            "question": 38
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "“The basic compact underlying representative government,” wrote Chief Justice John Roberts for the court, “assumes that public officials will hear from their constituents and act on their concerns.”",
+            "mark": 3,
+            "question": 38
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "parts": [
+          {
+            "text": "But the ruling reinforces the need for citizens and their elected representatives, not the courts, to ensure equality of access to government. Officials must not be allowed to play favorites in providing information or in arranging meetings simply because an individual or group provides a campaign donation or a personal gift. This type of integrity requires well-enforced laws in government transparency, such as records of official meetings, rules on lobbying, and information about each elected leader’s source of wealth."
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 37,
+        "stem": "According to Paragraph 4, an official act is deemed corruptive only if it involves",
+        "translation": "根据第四段，一项职务行为只有涉及下列哪项时，才被认定具有腐败性质？",
+        "answer": "C",
+        "options": [
+          {
+            "letter": "A",
+            "text": "leaking secrets intentionally.",
+            "translation": "故意泄露秘密。",
+            "reason": "P3 的 clear intent 修饰向其他官员施压。即使看到“故意”，也没有任何句子涉及泄密。"
+          },
+          {
+            "letter": "B",
+            "text": "sizable gains in the form of gifts.",
+            "translation": "以礼物形式获得的可观收益。",
+            "reason": "官员收到了贵重礼物，这件事成立。原文没有给礼物定金额门槛，收礼一端也不能单独证明送礼者得到了回报。"
+          },
+          {
+            "letter": "C",
+            "text": "concrete returns for gift-givers.",
+            "translation": "给予送礼者的具体回报。",
+            "reason": "returns for gift-givers 写对了利益流向。就文中讨论的案件而言，要举出送礼者从具体职务决定中获益的证据。"
+          },
+          {
+            "letter": "D",
+            "text": "breaking contracts officially.",
+            "translation": "以官方行为违反合同。",
+            "reason": "contract 是原词，动作却变了。approval of a contract 是批准合同，breaking contracts 是违约。"
+          }
+        ],
+        "logic": "P1 写一家公司送给州长手表和汽车。P4 的 But 把讨论从道德评价转到本文所述的法律举证标准，批准合同或规章是 concrete benefits 的例子。",
+        "contrast": "“官员从公司收到了什么？”可答手表、汽车。“哪一端还要举证？”要找由官员的具体决定回到送礼者那一端的利益。"
+      },
+      {
+        "number": 38,
+        "stem": "The court’s ruling is based on the assumption that public officials are",
+        "translation": "法院裁决所依据的前提是，公职人员……",
+        "answer": "A",
+        "options": [
+          {
+            "letter": "A",
+            "text": "justified in addressing the needs of their constituents.",
+            "translation": "回应其选区民众的需要是正当的。",
+            "reason": "引语中的 constituents 是官员所代表的选民。hear from them and act on their concerns 与回应他们的需要对应，justified 概括这种职责的正当性。"
+          },
+          {
+            "letter": "B",
+            "text": "qualified to deal independently with bureaucratic issues.",
+            "translation": "有资格独立处理官僚机构中的事务。",
+            "reason": "qualified 说具备能力或资格，independently 又加入独立处理。原文论述的是帮助民众的正当性。"
+          },
+          {
+            "letter": "C",
+            "text": "allowed to focus on the concerns of their supporters.",
+            "translation": "被允许把关注重点放在其支持者的关切上。",
+            "reason": "help supporters 在引语前确实出现。允许帮助支持者，推不出可以把关注重点放在支持者身上；引语谈的是全体 constituents。"
+          },
+          {
+            "letter": "D",
+            "text": "exempt from conviction on the charge of favoritism.",
+            "translation": "可免于因偏袒指控而被定罪。",
+            "reason": "P5 仅说某一类偏向不构成犯罪。P3 还单列明确施压的情形，不能推得公职人员在此类指控中普遍豁免。"
+          }
+        ],
+        "logic": "P5 先举民选官员帮助支持者处理事务的例子，再由首席大法官的引语点明 assumes 的内容。P6 关于平等接触政府的讨论，可以检验选项有没有缩窄对象。",
+        "contrast": "若问“作者在引语前举了哪种可允许的帮助”，可以答“协助支持者处理官僚程序”。原题要找裁决背后的普遍前提，须继续读到 assumes。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "conduct",
+          "n. 行为；举止",
+          "the ethics of his conduct 指其行为是否合乎道德。"
+        ],
+        [
+          "benefit",
+          "n. 利益；好处",
+          "concrete benefits 在文中指具体职务决定带来的利益。"
+        ],
+        [
+          "approval",
+          "n. 批准；认可",
+          "approval of a contract 指批准一项合同。"
+        ],
+        [
+          "assumption",
+          "n. 假设；前提",
+          "is based on the assumption that 引出裁决的前提。"
+        ],
+        [
+          "address",
+          "v. 处理；回应",
+          "address the needs 指回应需要。"
+        ]
+      ],
+      "extra": [
+        [
+          "constituent",
+          "n. 选民；选区居民",
+          "their constituents 指公职人员所代表的选民。"
+        ],
+        [
+          "favoritism",
+          "n. 偏袒",
+          "a kind of favoritism 把判断限于某一类偏袒。"
+        ],
+        [
+          "exempt",
+          "adj. 获豁免的",
+          "be exempt from 表示免受某项义务或责任约束。"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "2019-text-1",
+    "year": 2019,
+    "text": 1,
+    "title": "企业投资与长期决策",
+    "source": "/english/1977a3ff9804ae89e29c2489/",
+    "paragraphs": [
+      {
+        "number": 2,
+        "parts": [
+          {
+            "text": "“Short-termism” or the desire for quick profits, has worsened in publicly traded companies, says the Bank of England’s top economist, Andrew Haldane. He quotes a giant of classical economics, Alfred Marshall, in describing this financial impatience as acting like “children who pick the plums out of their pudding to eat them at once” rather than putting them aside to be eaten last."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "parts": [
+          {
+            "text": "The average time for holding a stock in both the United States and Britain, he notes, has dropped from seven years to seven months in recent decades. "
+          },
+          {
+            "text": "Transient investors, who demand high quarterly profits from companies, can hinder a firm’s efforts to invest in long-term research or to build up customer loyalty.",
+            "mark": 1,
+            "question": 23
+          },
+          {
+            "text": " This has been dubbed “quarterly capitalism.”"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "parts": [
+          {
+            "text": "In addition, new digital technologies have allowed more rapid trading of equities, quicker use of information, and thus shorter attention spans in financial markets. “There seems to be a predominance of short-term thinking at the expense of long-term investing,” said Commissioner Daniel Gallagher of the US Securities and Exchange Commission in a speech this week."
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "parts": [
+          {
+            "text": "In the US, the Sarbanes-Oxley Act of 2002 has pushed most public companies to defer performance bonuses for senior executives by about a year, slightly helping reduce “short-termism.”",
+            "mark": 2,
+            "question": 24
+          },
+          {
+            "text": " In its latest survey of CEO pay, The Wall Street Journal finds that “a substantial part” of executive pay is now tied to performance."
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "parts": [
+          {
+            "text": "Much more could be done to encourage “long-termism,” such as changes in the tax code and quicker disclosure of stock acquisitions.",
+            "mark": 3,
+            "question": 24
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "In France, shareholders who hold onto a company investment for at least two years can sometimes earn more voting rights in a company.",
+            "mark": 4,
+            "question": 24
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 23,
+        "stem": "It is argued that the influence of transient investment on public companies can be",
+        "translation": "文中认为，短期投资对上市公司的影响可能是什么样的？",
+        "answer": "B",
+        "options": [
+          {
+            "letter": "A",
+            "text": "indirect.",
+            "translation": "间接的。",
+            "reason": "企业受到投资者施压，文章却没有拿直接影响和间接影响作比较。只凭能画出一条因果链，定不了 indirect。"
+          },
+          {
+            "letter": "B",
+            "text": "adverse.",
+            "translation": "不利的。",
+            "reason": "hinder 的宾语是企业投资长期研究、培养客户忠诚度的努力。两项活动受到妨碍，说明这种影响可能有害，支持 adverse。"
+          },
+          {
+            "letter": "C",
+            "text": "minimal.",
+            "translation": "极小的。",
+            "reason": "原文没有说影响轻微。P5 的 slightly 修饰某项制度减少短期主义的效果，也量不出这里的危害大小。"
+          },
+          {
+            "letter": "D",
+            "text": "temporary.",
+            "translation": "暂时的。",
+            "reason": "temporary 读起来很像 transient，但前者在选项里说的是影响持续多久。持股短的投资者可能使公司放弃一项长期研究，不能推出影响也短。"
+          }
+        ],
+        "logic": "P3 先以持股时间缩短说明 transient，再用 can hinder 评价这种投资对企业的影响。P4 的 at the expense of 指出牺牲的是长期投资。",
+        "contrast": "问“投资者持股多久”，七年缩至七个月是证据；问“企业受到了怎样的影响”，决定答案的是 hinder。换了被评价的对象，就要换证据。"
+      },
+      {
+        "number": 24,
+        "stem": "The US and France examples are used to illustrate",
+        "translation": "美国与法国的例子被用来说明什么？",
+        "answer": "C",
+        "options": [
+          {
+            "letter": "A",
+            "text": "the obstacles to preventing “short-termism”.",
+            "translation": "阻止短期主义的障碍。",
+            "reason": "两个例子介绍已采取的措施。稍有成效不等于本段在列举阻碍措施推行的因素。"
+          },
+          {
+            "letter": "B",
+            "text": "the significance of long-term thinking.",
+            "translation": "长期思维的重要性。",
+            "reason": "长期思维的重要性与全文立场相容，但只说“很重要”解释不了为什么要特写延后奖金和增加投票权这两种制度设计。"
+          },
+          {
+            "letter": "C",
+            "text": "the approaches to promoting “long-termism”.",
+            "translation": "促进长期主义的办法。",
+            "reason": "一项调整奖金兑现时间，一项在特定条件下增加投票权。抽去国名，二者都给长期行为提供激励，正是 approaches。"
+          },
+          {
+            "letter": "D",
+            "text": "the prevalence of short-term thinking.",
+            "translation": "短期思维的普遍存在。",
+            "reason": "短期思维盛行是 P2—P4 的真实判断。P5—P6 举这两个政策例子时，已经从描述问题转到提出办法。"
+          }
+        ],
+        "logic": "P4 末句指出市场短期思维占上风。P5 改写美国怎样延后奖金，P6 先说 Much more could be done，再写法国怎样奖励长期持股者。两段都在回答“可以怎样改变激励”。",
+        "contrast": "若问“Gallagher 怎样描述当时的市场”，D 中的 prevalence 有直接依据。若问“美国和法国分别做了什么”，两国的答案都必须带一个表示施策的动词。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "profit",
+          "n. 利润",
+          "quarterly profits 指季度利润。"
+        ],
+        [
+          "hinder",
+          "v. 妨碍；阻碍",
+          "hinder a firm’s efforts 表示企业的努力受到阻碍。"
+        ],
+        [
+          "adverse",
+          "adj. 不利的",
+          "an adverse influence 指有害影响。"
+        ],
+        [
+          "approach",
+          "n. 方法；途径",
+          "an approach to doing sth. 指做某事的方法。"
+        ],
+        [
+          "promote",
+          "v. 促进；推动",
+          "promote long-termism 指鼓励长期决策。"
+        ]
+      ],
+      "extra": [
+        [
+          "transient",
+          "adj. 短暂的",
+          "transient investors 在文中指持股时间短的投资者。"
+        ],
+        [
+          "defer",
+          "v. 延期；推迟",
+          "defer performance bonuses 指推迟发放绩效奖金。"
+        ],
+        [
+          "at the expense of",
+          "以……为代价",
+          "短期收益可能以牺牲长期投资为代价。"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "2024-text-3",
+    "year": 2024,
+    "text": 3,
+    "title": "艺术家与图像生成工具",
+    "source": "/english/45e4c8a550f2be01daf2d7ac/",
+    "paragraphs": [
+      {
+        "number": 4,
+        "parts": [
+          {
+            "text": "According to the website Lexica, which tracks over 10 million images and prompts generated by Stable Diffusion, Rutkowski’s name has been used as a prompt around 93,000 times. Some of the world’s most famous artists, such as Michelangelo, Pablo Picasso, and Leonardo da Vinci, brought up around 2,000 prompts each or less. Rutkowski’s name also features as a prompt thousands of times in the Discord of another text-to-image generator, Midjourney. "
+          },
+          {
+            "text": "Rutkowski was initially surprised but thought it might be a good way to reach new audiences.",
+            "mark": 1,
+            "question": 33
+          },
+          {
+            "text": " Then he tried searching for his name to see if a piece he had worked on had been published. "
+          },
+          {
+            "text": "The online search brought back work that had his name attached to it but wasn’t his.",
+            "mark": 2,
+            "question": 33
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "parts": [
+          {
+            "text": "“It’s been just a month. What about in a year? I probably won’t be able to find my work out there because the internet will be flooded with AI art,” Rutkowski says. “That’s concerning.”"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "parts": [
+          {
+            "text": "Other artists besides Rutkowski have been surprised by the apparent popularity of their work in text-to-image generators—and some are now fighting back."
+          }
+        ]
+      },
+      {
+        "number": 7,
+        "parts": [
+          {
+            "text": "Karla Ortiz, an illustrator based in San Francisco who found her work in Stable Diffusion’s data set, has been raising awareness about the issues around AI art and copyright. Artists say they risk losing income as people start using AI-generated images based on copyrighted material for commercial purposes. But it’s also a lot more personal, Ortiz says, arguing that because art is so closely linked to a person, it could raise data protection and privacy problems."
+          }
+        ]
+      },
+      {
+        "number": 8,
+        "parts": [
+          {
+            "text": "“There is a coalition growing within artist industries to figure out how to tackle or mitigate this,” says Ortiz. "
+          },
+          {
+            "text": "The group is in its early days of mobilization, which could involve pushing for new policies or regulation.",
+            "mark": 3,
+            "question": 34
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "One suggestion is that AI models could be trained on images in the public domain, and AI companies could forge partnerships with museums and artists, Ortiz says.",
+            "mark": 4,
+            "question": 34
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 33,
+        "stem": "After searching online, Rutkowski found ____",
+        "translation": "在网上搜索之后，鲁特科夫斯基发现了……。",
+        "answer": "C",
+        "options": [
+          {
+            "letter": "A",
+            "text": "a unique way to reach audiences",
+            "translation": "一种接触受众的独特方式。",
+            "reason": "他起初的确想过这种流行也许能让自己接触新受众。它发生在检索之前；文中也没有证实这是一条 unique 的途径。"
+          },
+          {
+            "letter": "B",
+            "text": "a new method to identify AI images",
+            "translation": "一种识别AI图像的新方法。",
+            "reason": "知道那些图不是自己画的，并不等于找到了一种辨认 AI 图像的新方法。选项把一次个人核认扩成技术成果。"
+          },
+          {
+            "letter": "C",
+            "text": "AI-generated work bearing his name",
+            "translation": "带着他名字的AI生成作品。",
+            "reason": "结果中的图像挂着他的名字，却不出自他之手。结合本段的生成工具及 P5 对 AI 图像泛滥的担忧，C 准确还原了检索所得。"
+          },
+          {
+            "letter": "D",
+            "text": "heated disputes regarding his copyright",
+            "translation": "有关他版权的激烈争论。",
+            "reason": "版权是 P7 艺术家讨论的话题。P4 没有说他输入姓名后搜到围绕本人版权的激烈争论。"
+          }
+        ],
+        "logic": "P4 中 initially … thought it might 是原先的设想；Then 引出查询，The online search brought back 才报告结果。P5 的担心说明他为什么介意这个发现。",
+        "contrast": "若问“搜索以前，他觉得名字被用作提示词有什么可能的好处”，可以答“接触新受众”。把 A 搬回来时还要去掉 unique，保留 might。"
+      },
+      {
+        "number": 34,
+        "stem": "According to Ortiz, AI companies are advised to",
+        "translation": "根据奥尔蒂斯的说法，AI公司被建议……。",
+        "answer": "D",
+        "options": [
+          {
+            "letter": "A",
+            "text": "campaign for new policies or regulation",
+            "translation": "为新政策或监管规定开展倡议活动。",
+            "reason": "推动新政策确实是文中提到的一种行动，could involve 把它归给正在动员的艺术家联盟。把行动指派给 AI 公司就错了。"
+          },
+          {
+            "letter": "B",
+            "text": "offer their services to public institutions",
+            "translation": "向公共机构提供服务。",
+            "reason": "museums 出现在 partners 的位置。与博物馆合作，不足以推出向公共机构提供服务；public domain 说的是作品的权利状态。"
+          },
+          {
+            "letter": "C",
+            "text": "strengthen their relationships with AI users",
+            "translation": "加强它们与AI用户的关系。",
+            "reason": "合作对象写明为 museums and artists。换成 AI users 扩换了建议所针对的群体，文中没有这种概括。"
+          },
+          {
+            "letter": "D",
+            "text": "adopt a different strategy for AI model training",
+            "translation": "采用不同的AI模型训练策略。",
+            "reason": "建议用公有领域图像训练模型，并与博物馆及艺术家合作。前一项直接支持调整训练策略，后一项与改变素材获取方式相容。"
+          }
+        ],
+        "logic": "P8 的引语都来自 Ortiz。先找 The group 的先行词 a coalition，再读 One suggestion 之后 AI models 与 AI companies 分别要改变什么。",
+        "contrast": "只改题干中的执行者：若问“艺术家联盟可能怎样行动”，A 的政策倡议便有出处。according to Ortiz 只告诉你谁在说话，不能代替“谁来做”的判断。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "audience",
+          "n. 受众；观众",
+          "reach new audiences 指触达新的受众。"
+        ],
+        [
+          "identify",
+          "v. 识别；认出",
+          "identify AI images 指辨别 AI 图像。"
+        ],
+        [
+          "commercial",
+          "adj. 商业的",
+          "for commercial purposes 指用于商业目的。"
+        ],
+        [
+          "regulation",
+          "n. 监管；规章",
+          "new policies or regulation 指新的政策或监管规定。"
+        ],
+        [
+          "strategy",
+          "n. 策略",
+          "a different strategy 指一种不同的做法。"
+        ]
+      ],
+      "extra": [
+        [
+          "coalition",
+          "n. 联盟",
+          "a coalition within artist industries 指艺术行业内部的联盟。"
+        ],
+        [
+          "public domain",
+          "n. 公有领域",
+          "images in the public domain 指处于公有领域的图像。"
+        ],
+        [
+          "forge",
+          "v. 建立；形成",
+          "forge partnerships 表示建立合作关系。"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "2022-text-4",
+    "year": 2022,
+    "text": 4,
+    "title": "解雇保护与收入门槛",
+    "source": "/english/a004b252764da10cc908bfd6/",
+    "paragraphs": [
+      {
+        "number": 1,
+        "parts": [
+          {
+            "text": "The personal grievance provisions of New Zealand’s Employment Relations Act 2000 (ERA) prevent an employer from firing an employee without good cause. Instead, dismissals must be justified. Employers must both show cause and act in a procedurally fair way."
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "parts": [
+          {
+            "text": "Consequently — and paradoxically — laws introduced to protect the jobs of ordinary workers may be placing those jobs at risk."
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "parts": [
+          {
+            "text": "If not placing jobs at risk, to the extent employment protection laws constrain business owners from dismissing underperforming managers, those laws act as a constraint on firm productivity and therefore on workers’ wages. Indeed, in “An International Perspective on New Zealand’s Productivity Paradox” (2014), the Productivity Commission singled out the low quality of managerial capabilities as a cause of the country’s poor productivity growth record."
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "parts": [
+          {
+            "text": "Nor are highly paid managers themselves immune from the harm caused by the ERA’s unjustified dismissal procedures. "
+          },
+          {
+            "text": "Because employment protection laws make it costlier to fire an employee, employers are more cautious about hiring new staff.",
+            "mark": 1,
+            "question": 39
+          },
+          {
+            "text": " This makes it harder for the marginal manager to gain employment. "
+          },
+          {
+            "text": "And firms pay staff less because firms carry the burden of the employment arrangement going wrong.",
+            "mark": 2,
+            "question": 39
+          }
+        ]
+      },
+      {
+        "number": 7,
+        "parts": [
+          {
+            "text": "Society also suffers from excessive employment protections. Stringent job dismissal regulations adversely affect productivity growth and hamper both prosperity and overall well-being."
+          }
+        ]
+      },
+      {
+        "number": 8,
+        "parts": [
+          {
+            "text": "Across the Tasman Sea, Australia deals with the unjustified dismissal paradox by excluding employees earning above a specified “high-income threshold” from the protection of its unfair dismissal laws.",
+            "mark": 3,
+            "question": 40
+          },
+          {
+            "text": " In New Zealand, a 2016 private members’ Bill tried to permit firms and high-income employees to contract out of the unjustified dismissal regime. "
+          },
+          {
+            "text": "However, the mechanisms proposed were unwieldy and the Bill was voted down following the change in government later that year.",
+            "mark": 4,
+            "question": 40
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 39,
+        "stem": "What might be an effect of ERA’s unjustified dismissal procedures?",
+        "translation": "ERA 中有关无正当理由解雇的程序，可能产生什么影响？",
+        "answer": "B",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Highly paid managers lose their jobs.",
+            "translation": "高薪管理者失去工作。",
+            "reason": "harder … to gain employment 指求职困难，不能用来证明在职高薪经理丢掉工作。所谈人群和就业状态都变了。"
+          },
+          {
+            "letter": "B",
+            "text": "Employees suffer from salary cuts.",
+            "translation": "员工遭遇减薪。",
+            "reason": "pay staff less 直接支持薪酬受压。题干问 might，B 概括一种可能后果，无须推断所有现职员工都收到过降薪通知。"
+          },
+          {
+            "letter": "C",
+            "text": "Society sees a rise in overall well-being.",
+            "translation": "社会整体福祉上升。",
+            "reason": "P7 的 hamper both prosperity and overall well-being 说明总体福祉受到妨碍。选项把后果方向翻转。"
+          },
+          {
+            "letter": "D",
+            "text": "Employers need to hire new staff.",
+            "translation": "雇主需要招聘新员工。",
+            "reason": "hiring new staff 确实出现，原句说企业在招聘时更加谨慎。谨慎程度的变化不能证明企业出现了新增用人需求。"
+          }
+        ],
+        "logic": "P6 中 Because 引出解雇成本上升，雇主招聘因而更谨慎。末句另列薪酬后果，firms pay staff less，因为用工安排出问题的风险由企业承担。",
+        "contrast": "设问“边缘管理者在求职时有什么困难”，gain employment 就能直接作答。设问若改为“谁被解雇了”，文段并未报告具体解雇结果。"
+      },
+      {
+        "number": 40,
+        "stem": "It can be inferred that the “high-income threshold” in Australia",
+        "translation": "可以推断，澳大利亚的“高收入门槛”……。",
+        "answer": "C",
+        "options": [
+          {
+            "letter": "A",
+            "text": "has secured managers’ earnings.",
+            "translation": "保障了管理者的收入。",
+            "reason": "high-income threshold 划定特定解雇保护的适用范围。它没有承诺给经理保底薪资。"
+          },
+          {
+            "letter": "B",
+            "text": "has produced undesired results.",
+            "translation": "产生了不理想的结果。",
+            "reason": "P8 用 deals with 引出澳方办法。后面的困难和否决说的是新西兰法案，文章没有报告澳方出现不良结果。"
+          },
+          {
+            "letter": "C",
+            "text": "is beneficial to business owners.",
+            "translation": "有利于企业主。",
+            "reason": "超过门槛者被排除在这项特定保护之外，企业主调换相关管理人员的约束因而减轻。在文中讨论的这个问题上，对企业主有利。"
+          },
+          {
+            "letter": "D",
+            "text": "is difficult to put into practice.",
+            "translation": "难以付诸实施。",
+            "reason": "unwieldy 确有“操作繁琐”之意，修饰 the mechanisms proposed，即新西兰拟议的机制。两国都提到高薪人员，不能据此共用对实施难度的评价。"
+          }
+        ],
+        "logic": "P5 说明解雇低绩效经理受到约束会拖累生产率，P6 转到高薪经理的处境。P8 首句写澳大利亚怎样处理这一矛盾；In New Zealand 开启另一国的方案。",
+        "contrast": "若问“作者如何描述新西兰法案所提机制”，D 所说的操作困难有原文依据。原题指定 in Australia，读到 In New Zealand 就要另起一个政策对象。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "dismiss",
+          "v. 解雇；驳回",
+          "dismiss underperforming managers 指辞退表现欠佳的经理。"
+        ],
+        [
+          "protection",
+          "n. 保护",
+          "employment protection 指雇佣关系中的保障。"
+        ],
+        [
+          "cautious",
+          "adj. 谨慎的",
+          "be cautious about hiring 指招聘时更为谨慎。"
+        ],
+        [
+          "exclude",
+          "v. 排除",
+          "exclude A from B 表示将 A 排除在 B 的适用范围外。"
+        ],
+        [
+          "threshold",
+          "n. 门槛；界限",
+          "high-income threshold 在此划定特定保护的适用范围。"
+        ]
+      ],
+      "extra": [
+        [
+          "grievance",
+          "n. 申诉；不满",
+          "personal grievance provisions 是处理个人申诉的条款。"
+        ],
+        [
+          "constraint",
+          "n. 限制；制约",
+          "a constraint on productivity 表示对生产率的制约。"
+        ],
+        [
+          "unwieldy",
+          "adj. 笨重的；难以操作的",
+          "这里形容新西兰提案中的机制过于繁琐。"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "2026-text-4",
+    "year": 2026,
+    "text": 4,
+    "title": "树木年轮与森林火灾",
+    "source": "/english/3818065bbaff4edfe310657e/",
+    "paragraphs": [
+      {
+        "number": 2,
+        "parts": [
+          {
+            "text": "The fact that fires happened so often meant they couldn’t have been severe enough to kill most trees. Instead, a growing body of research showed that frequent, low-severity fires made many ecosystems healthier. They rid the forest of dead and sick trees, reducing competition and curbing the spread of disease. Because flammable material couldn’t build up on the landscape, blazes tended to move slowly and peter out when they reached the footprints of previous burns."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "parts": [
+          {
+            "text": "In 2022, Swetnam and other scientists teamed up to compile a database of fire-scarred trees from across the continent. Their North American tree-ring fire-scar network (NAFSN) provided the basis for a study published last month. "
+          },
+          {
+            "text": "In the study, the researchers compared the historical fire cadence with the wildfires recorded over the past few decades, and uncovered a striking shortfall.",
+            "mark": 1,
+            "question": 38
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "The NAFSN sites experienced less than a quarter of the number of fires that would have been expected without fire suppression.",
+            "mark": 2,
+            "question": 38
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "parts": [
+          {
+            "text": "This deficit is a testament to the effectiveness of modern firefighting, said Kelly Martin, a past president of the International Association of Wildland Fire.",
+            "mark": 3,
+            "question": 39
+          },
+          {
+            "text": " "
+          },
+          {
+            "text": "Yet the combined consequences of suppression and climate change have eroded humanity’s ability to suppress fires, particularly those that ignite under the most dangerous weather conditions.",
+            "mark": 4,
+            "question": 39
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "parts": [
+          {
+            "text": "To prevent entire ecosystems from going up in smoke, Martin said, people must bring healthy fire back to places that need it. At Yosemite National Park, Martin oversaw the use of what are known as prescribed burns to make the landscape more resilient. These fires were carefully planned and intentionally ignited during periods when weather kept the blazes easy to control, and helped eliminate some of the fuel that had built up around important park facilities. Research shows that these prescribed burns make subsequent wildfires less severe, even if later fires happen under the most dangerous weather conditions."
+          }
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "number": 38,
+        "stem": "What did the study find about the wildfires over the past few decades?",
+        "translation": "该研究对过去几十年的野火发现了什么？",
+        "answer": "B",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Their intensity has vastly fluctuated.",
+            "translation": "它们的烈度大幅波动。",
+            "reason": "intensity 指烈度，fluctuated 还要求显示上下波动。P3 数的是火灾次数，P5 关于后续火势的研究也没有给出这种波动轨迹。"
+          },
+          {
+            "letter": "B",
+            "text": "Their frequency has markedly decreased.",
+            "translation": "它们的发生频率显著降低。",
+            "reason": "相对于历史节律所提示的无干预基准，实际火灾次数明显偏少，支持频率显著下降。文中没有给出某两个实测年份之间的降幅。"
+          },
+          {
+            "letter": "C",
+            "text": "Their threats have been underestimated.",
+            "translation": "它们的威胁被低估了。",
+            "reason": "P4 提到危险天气下的威胁，但研究没有衡量公众或专家对风险的估计。存在威胁不能推出威胁遭到低估。"
+          },
+          {
+            "letter": "D",
+            "text": "Their records have been misinterpreted.",
+            "translation": "它们的记录被误读了。",
+            "reason": "用记录发现现实与预期之间有差距，本身不说明记录被人误读。D 需要有以往解释记录出错的证据。"
+          }
+        ],
+        "logic": "P3 写明用历史火灾节律对照近几十年的记录。less than a quarter 的中心词是 number；比较基准是没有灭火干预时的预计次数。",
+        "contrast": "如果题干追问“不足四分之一具体比的是什么”，应答实际起火次数与无干预时预计的次数。这里既没有报告烈度减了多少，也没有说火灾逐年下降。"
+      },
+      {
+        "number": 39,
+        "stem": "What can be inferred about modern firefighting?",
+        "translation": "关于现代灭火工作，可以推知什么？",
+        "answer": "D",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Its workforce needs more training.",
+            "translation": "其工作人员需要更多培训。",
+            "reason": "能力受损并没有被归因为人员训练不足。要选 A，需要文章指出技能缺口或培训成效。"
+          },
+          {
+            "letter": "B",
+            "text": "Its effectiveness is questioned by the public.",
+            "translation": "其有效性受到公众质疑。",
+            "reason": "Martin 明确认可对减少起火次数的成效。随后说的是长期抑火的后果，文中没有调查公众是否质疑当代灭火。"
+          },
+          {
+            "letter": "C",
+            "text": "It may render traditional tactics useless.",
+            "translation": "它可能使传统策略完全失效。",
+            "reason": "eroded … ability 表示能力受损。推到传统方法变得无用，既换了讨论对象，又把程度推到了极端。"
+          },
+          {
+            "letter": "D",
+            "text": "It may make severe fires harder to put out.",
+            "translation": "它可能使严重火灾更难扑灭。",
+            "reason": "低烈度火本可清除部分可燃物。长期压制火灾与气候因素叠加，可能使严重火情更难扑灭；may 保留了原文的条件和力度。"
+          }
+        ],
+        "logic": "P4 先以次数减少肯定灭火的成效，Yet 后换了衡量对象。长期压制火灾与气候变化共同削弱了控制危险火情的能力；P2 和 P5 的可燃物解释了其中一条机制。",
+        "contrast": "问“现代灭火取得了什么效果”，可以答“起火次数比预计少”。问“压火也可能带来什么后果”，须读 Yet 后的能力变化。次数和扑救难度可以同时朝不同方向变化。"
+      }
+    ],
+    "vocabulary": {
+      "core": [
+        [
+          "frequency",
+          "n. 频率",
+          "frequency of fires 指起火的频率。"
+        ],
+        [
+          "intensity",
+          "n. 强度；烈度",
+          "火灾的 intensity 与发生次数衡量的是不同属性。"
+        ],
+        [
+          "reduce",
+          "v. 减少；降低",
+          "reducing competition 指减少树木之间的竞争。"
+        ],
+        [
+          "severe",
+          "adj. 严重的；剧烈的",
+          "less severe 表示后续火灾的严重程度较低。"
+        ],
+        [
+          "suppress",
+          "v. 压制；遏制",
+          "suppress fires 在这里指遏制或扑灭火灾。"
+        ]
+      ],
+      "extra": [
+        [
+          "shortfall",
+          "n. 缺口；不足",
+          "a striking shortfall 指实测次数明显低于预计次数。"
+        ],
+        [
+          "erode",
+          "v. 削弱；侵蚀",
+          "erode our ability 指使原有能力逐步减弱。"
+        ],
+        [
+          "prescribed burn",
+          "n. 计划烧除",
+          "按预定条件有控制地点火，以减少可燃物。"
+        ]
+      ]
+    }
+  }
+]

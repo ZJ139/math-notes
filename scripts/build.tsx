@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {loadEntries} from '../src/content';
 import {sections,compareRecentEntries,type Section} from '../src/model';
 import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,MathOverview,WritingLibrary} from '../src/components';
+import {ReadingPracticeIndex,ReadingPracticePage,readingExercises,exerciseUrl,readingPracticeUrl} from '../src/ReadingPractice';
 import {WritingPracticeIndex,WritingPracticePage,practiceExams} from '../src/WritingPractice';
 import config from '../site.config.json';
 import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
@@ -38,16 +39,18 @@ const siteCode=algebraCode+'\n'+fragmentCode+'\n'+await readFile(path.join(root,
 const siteScript=`site.${createHash('sha256').update(siteCode).digest('hex').slice(0,16)}.js`;
 const practiceCode=await readFile(path.join(root,'public/writing-practice.js'),'utf8');
 const practiceScript=`writing-practice.${createHash('sha256').update(practiceCode).digest('hex').slice(0,16)}.js`;
+const readingScript='reading-practice.'+createHash('sha256').update(await readFile(path.join(root,'public/reading-practice.js'))).digest('hex').slice(0,16)+'.js';
 const stylesheets=new Map<string,string>();
 const prefix=(html:string)=>{
   for(const [source,target]of stylesheets)html=html.replace(`href="/${source}"`,`href="/${target}"`);
-  return html.replace('src="/writing-practice.js"',`src="/${practiceScript}"`).replace('src="/site.js"',`src="/${siteScript}"`).replace(/((?:href|src|action)=")\/(?!\/)/g,`$1${base}/`);
+  return html.replace('src="/reading-practice.js"',`src="/${readingScript}"`).replace('src="/writing-practice.js"',`src="/${practiceScript}"`).replace('src="/site.js"',`src="/${siteScript}"`).replace(/((?:href|src|action)=")\/(?!\/)/g,`$1${base}/`);
 };
 await rm(output,{recursive:true,force:true});
 await mkdir(output,{recursive:true});
 await cp(path.join(root,'public'),output,{recursive:true});
 await rm(path.join(output,'site.js'));
 await writeFile(path.join(output,siteScript),siteCode);
+await rename(path.join(output,'reading-practice.js'),path.join(output,readingScript));
 await rename(path.join(output,'writing-practice.js'),path.join(output,practiceScript));
 await rm(path.join(output,'algebra-index.js'));
 await rm(path.join(output,'fragment-navigation.js'));
@@ -55,7 +58,7 @@ const fonts=await readFile(path.join(output,'fonts.css'),'utf8');
 await writeFile(path.join(output,'fonts.css'),fonts.replaceAll('/fonts/',`${base}/fonts/`));
 // New pages must not reuse cached typography or a different renderer's CSS.
 // Keep each stylesheet in its directory so relative font URLs still resolve.
-for(const file of ['fonts.css','reading.css','writing-practice.css']){
+for(const file of ['fonts.css','reading.css','writing-practice.css','reading-practice.css']){
   const digest=createHash('sha256').update(await readFile(path.join(output,file))).digest('hex').slice(0,16);
   const fingerprinted=file.replace(/\.css$/,`.${digest}.css`);
   await rename(path.join(output,file),path.join(output,fingerprinted));
@@ -98,6 +101,8 @@ for(const group of sentenceGroups(items)){
   for(const text of group.texts.filter(text=>text.entries.length))await page(`english/sentences/years/${group.year}/text-${text.text}/`,`${group.year} 年 Text ${text.text} 长难句`,<SentenceYearPage items={items} year={group.year} text={text.text}/>);
 }
 await page('english/writing/','作文',<WritingLibrary items={items}/>);
+await page(readingPracticeUrl.slice(1),'阅读训练',<ReadingPracticeIndex/>);
+for(const exercise of readingExercises)await page(exerciseUrl(exercise).slice(1),exercise.title+' · 阅读训练',<ReadingPracticePage exercise={exercise}/>);
 await page('english/writing-practice/','考研作文练习',<WritingPracticeIndex/>);
 for(const exam of practiceExams)await page(`english/writing-practice/${exam.year}/`,`${exam.year} 年考研作文练习`,<WritingPracticePage year={exam.year}/>);
 await page(readingAnswersIndexUrl.slice(1),'真题阅读解答',<ReadingAnswersIndexPage items={items}/>);
