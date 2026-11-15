@@ -48,16 +48,16 @@ test('English highlights take the latest item from up to three distinct top-leve
   assert.deepEqual(ids(selectHomeEntries([entry('uncategorized','english')]).english),['uncategorized']);
 });
 
-test('home exposes three fixed study areas and nine English destinations without decorative imagery',()=>{
+test('home exposes three fixed study areas and the English study destinations without decorative imagery',()=>{
   const home=renderToStaticMarkup(createElement(Home,{items:[]}));
   assert.match(home,/暂无公开资料/);
   assert.doesNotMatch(home,/<(?:svg|figure|img)\b|一间安静的电子书房|思考的地方/);
   const areas=[...home.matchAll(/<h2 id="(math|problems|english)-heading">/g)].map(m=>m[1]);
   assert.deepEqual(areas,['math','problems','english']);
   for(const href of ['/math/','/notes/','/problems/','/papers/','/essays/'])assert.ok(home.includes(`href="${href}"`));
-  assert.equal(englishStudyCategories.length,9);
+  assert.equal(englishStudyCategories.length,10);
   for(const category of englishStudyCategories){
-    assert.ok(home.includes(`href="${category.id==='writing'?'/english/writing/':category.id==='reading-answers'?'/english/reading-answers/':'/english/?category='+category.id}"`));
+    assert.ok(home.includes(`href="${category.id==='reading-practice'?'/english/reading-practice/':category.id==='writing'?'/english/writing/':category.id==='reading-answers'?'/english/reading-answers/':'/english/?category='+category.id}"`));
     assert.ok(home.includes(category.label));
   }
   const html=renderToStaticMarkup(createElement(Layout,{title:'数学',path:'/notes/',children:null}));

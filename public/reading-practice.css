@@ -1,0 +1,28 @@
+.reading-trainer { max-width: 52rem; }
+.reading-trainer [hidden] { display: none !important; }
+.reading-trainer :is(p,legend,.rt-option,dd,dt) { font-size: clamp(19px, 1.7vw, 21px); line-height: 1.55; }
+.rt-index,.rt-reasons { padding: 0; list-style: none; }
+.rt-index li,.rt-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid #d9dde3; }
+.rt-index h3,.rt-index small { margin: .2em 0; }
+.rt-index .button { flex: none; }
+.rt-passage p { margin: 0 0 1.1em; }
+.rt-paragraph { font-size: .78em; color: #536071; padding-right: .35em; }
+.rt-reviewed .rt-evidence { background: #ffe4ef; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.rt-marker { font-weight: 700; vertical-align: super; font-size: .76em; padding: 0 .2em; }
+.rt-evidence,.rt-analysis { scroll-margin-top: 1.5rem; }
+.rt-form { border-top: 1px solid #cbd2d9; padding-top: 1.4rem; }
+.rt-form fieldset { margin: 0 0 1.5rem; padding: 0; border: 0; min-inline-size: 0; }
+.rt-form legend { font-weight: 700; padding: 0 0 .5rem; }
+.rt-option { cursor: pointer; display: flex; align-items: baseline; gap: .8rem; padding: .35rem .6rem; border: 1px solid transparent; border-radius: 4px; }
+.rt-option input { accent-color: #2563eb; flex: none; }
+.rt-option:has(input:checked) { border-color: #2563eb; background: #f4f8ff; }
+.rt-option:focus-within { outline: 2px solid #2563eb; outline-offset: 1px; }
+.rt-reviewed .rt-option { cursor: default; }
+.rt-analysis,.rt-vocabulary,[data-review] { margin-top: 2rem; }
+.rt-evidence-links { display: flex; align-items: baseline; flex-wrap: wrap; gap: .6rem 1rem; }
+.rt-evidence-links a,.rt-marker { color: #174ea6; text-decoration: underline; }
+.rt-reasons li,.rt-contrast,.rt-vocabulary dl > div { padding: .7rem 0; border-top: 1px solid #d9dde3; }
+.rt-reasons p,.rt-vocabulary dd { margin: .3rem 0 0; }
+.rt-vocabulary dt { font-weight: 700; }
+.rt-bottom { margin-top: 2rem; flex-wrap: wrap; }
+@media print { .rt-form button,.rt-bottom { display: none; } .rt-reviewed .rt-evidence { text-decoration: underline; } }
