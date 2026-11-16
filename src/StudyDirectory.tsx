@@ -7,6 +7,7 @@ import {readingPracticeUrl} from './ReadingPractice';
 import {practiceIndexUrl} from './WritingPractice';
 import {populatedCollections,collectionDestination,ProblemCollectionCards} from './ProblemCollections';
 import {problemLinks} from './problemLinks';
+import {realFunctionsTitle,realFunctionsUrl} from './RealFunctionsDirectory';
 import {ustcAnalysisTitle,ustcAnalysisUrl} from './UstcAnalysisDirectory';
 
 export const examTranslationUrl = `/english/${examTranslation.id}/`;
@@ -23,6 +24,7 @@ export function MathNavigation({section}:{section?:string}) {
   return <nav className="section-tabs" aria-label="数学栏目">
     <a href="/math/" aria-current={section?undefined:'page'}>数学总览</a>
     <a href={ustcAnalysisUrl}>{ustcAnalysisTitle}</a>
+    <a href={realFunctionsUrl}>{realFunctionsTitle}</a>
     {mathSections.map(key=><a key={key} href={`/${key}/`} aria-current={section===key?'page':undefined}>{key==='problems'?'题库':sections[key]}</a>)}
   </nav>;
 }
@@ -33,7 +35,7 @@ export function StudyDirectory({items}:{items:PublicEntry[]}) {
     <div className="study-grid">
       <section className="study-room" aria-labelledby="math-heading">
         <div className="room-heading"><span className="room-number" aria-hidden="true">01</span><h2 id="math-heading"><a href="/math/">数学</a></h2></div>
-        <nav className="directory-links" aria-label="数学入口"><a href={ustcAnalysisUrl}><span>{ustcAnalysisTitle}</span></a>{mathSections.map(key=><a key={key} href={`/${key}/`}><span>{key==='problems'?'题库':sections[key]}</span></a>)}</nav>
+        <nav className="directory-links" aria-label="数学入口"><a href={ustcAnalysisUrl}><span>{ustcAnalysisTitle}</span></a><a href={realFunctionsUrl}><span>{realFunctionsTitle}</span></a>{mathSections.map(key=><a key={key} href={`/${key}/`}><span>{key==='problems'?'题库':sections[key]}</span></a>)}</nav>
       </section>
       <section className="study-room" aria-labelledby="problems-heading">
         <div className="room-heading"><span className="room-number" aria-hidden="true">02</span><h2 id="problems-heading"><a href="/problems/">题库与作答</a></h2></div>

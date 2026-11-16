@@ -1,0 +1,568 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 实变函数论 · 第一章}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={实变函数讲义：第一章},pdfauthor={Vincent Arqain},pdfsubject={集合运算、集合的势、集类}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+
+\usepackage{tabularx,booktabs,array}
+\renewcommand{\thesection}{1.\arabic{section}}
+\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 实变函数讲义\par}
+\vspace{8pt}{\large 第一章\quad 集合运算、集合的势、集类\par}
+\vspace{6pt}{\small 依徐森林、薛春华《实变函数论》\quad 教材第 1—97 页\par}
+\end{center}
+\vspace{8pt}
+\noindent\textbf{本章的问题}\quad 给定一个实函数，怎样描述它的例外点？
+单调性使不同跳跃点可以用不同的有理数标记；振幅把一般函数的不连续点写成闭集的可数并；
+如果函数还是连续函数列的逐点极限，Baire 定理进一步限制这个集合的内部结构。
+最后，Cantor 集把这些尺度分开：它与实轴等势，疏朗，长度却为零。
+\par
+本讲义以教材前言的第三层次为目标。六节正文给出定义、构造和证明，节后练习与章末复习题按原题号收在
+\href{https://zj139.github.io/math-notes/notes/6791bad7fbcd02aefb8473b6/}{\underline{第一章习题与复习题}}。
+\tableofcontents
+\section{集合运算及其性质}
+
+对应教材 §1.1，正文第 1---15 页。本节把``逐点是否成立''写成集合等式。到第 3 章，这些等式会把函数收敛的问题转成可测集合的问题。
+
+\subsection{从逻辑量词到集合运算}
+
+固定全集 \(X\)。教材以 \(A\subset B\) 表示 \(A\) 的每个元素都属于 \(B\)，允许 \(A=B\)。因此证明集合相等，只须对任意 \(x\in X\) 证明两个归属条件等价。对以 \(\Gamma\) 为指标集的集合族，\(x\in\bigcup_{\alpha\in\Gamma}A_\alpha\) 意为存在 \(\alpha\) 使 \(x\in A_\alpha\)，\(x\in\bigcap_{\alpha\in\Gamma}A_\alpha\) 意为对每个 \(\alpha\) 都有 \(x\in A_\alpha\)。取补 \(A^c=X-A\) 就是否定归属条件。直积 \(\prod_{\alpha\in\Gamma}X_\alpha\) 的元素则是逐坐标取值的族 \((x_\alpha)_{\alpha\in\Gamma}\)，不同坐标的位置有区别。
+
+这套翻译一次给出并与交的交换律、结合律和分配律（定理 1.1.1）。例如，\(x\in B\) 且有某个 \(\alpha\) 使 \(x\in A_\alpha\)，等价于有某个 \(\alpha\) 使 \(x\in B\cap A_\alpha\)。取否定时``存在''与``任意''互换，因而有 de Morgan 公式（定理 1.1.2）
+
+\[
+\left(\bigcup_\alpha A_\alpha\right)^c=\bigcap_\alpha A_\alpha^c,\qquad
+\left(\bigcap_\alpha A_\alpha\right)^c=\bigcup_\alpha A_\alpha^c.
+\]
+
+对称差 \(A\triangle B=(A-B)\cup(B-A)\) 收集恰属于两者之一的点。把``属于''记为 \(1\)、``不属于''记为 \(0\)，对称差就对应模 \(2\) 加法，交对应乘法。由此读出定理 1.1.3 的结合律、消去律和分配律。例如 \((A\triangle B)\triangle C\) 收集在三个集合中出现奇数次的点，所以与加括号的位置无关。由 \(A\triangle A=\varnothing\) 得到 \(E\triangle A=B\) 的唯一解 \(E=B\triangle A\)。两集合的并也可按出现次数拆成不交的两块 \(A\cap B\) 与 \(A\triangle B\)。
+
+\textbf{从任意并到不交并。} 设 \(B_1=A_1\)，\(B_n=A_n-\bigcup_{j<n}A_j\)。每个属于 \(\bigcup_n A_n\) 的点都有第一次出现的指标，恰落在对应的 \(B_n\) 中。因此 \(B_n\) 两两不交，且每个有限部分并和全并均保持不变。这是以后把可数可加性用于有重叠的覆盖时要用的分解。
+
+\subsection{集合列何时有极限}
+
+设 \(A_k\subset X\)。对一个固定的 \(x\)，``进入无穷多项''意为每段尾列里至少出现一次，``从某项起一直在内''意为有一段尾列里每次都出现。按量词的先后顺序，定理 1.1.4 给出
+
+\[
+\begin{aligned}
+\varlimsup_{k\to\infty}A_k&=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}A_k,\\
+\varliminf_{k\to\infty}A_k&=\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty}A_k .
+\end{aligned}
+\]
+
+下极限总包含在上极限中。两者之差恰是那些既进入无穷多项又离开无穷多项的点。故 \(\lim_k A_k\) 存在，当且仅当对每个 \(x\)，其归属状态最终稳定；稳定时仍在内的点构成极限集。这里的``最终''允许起始指标依赖于 \(x\)。
+
+若 \(A_k\) 递增，一个点一旦进入便一直在内，故极限为 \(\bigcup_k A_k\)；若 \(A_k\) 递减，极限为 \(\bigcap_k A_k\)（定理 1.1.5）。对尾并、尾交相继取补，又得 \((\varlimsup A_k)^c=\varliminf A_k^c\) 和 \((\varliminf A_k)^c=\varlimsup A_k^c\)（定理 1.1.6）。
+
+例如令 \(A_k=[1/k,3+(-1)^k]\)。\(0\) 始终在外，\((0,2]\) 中每个点最终一直在内，\((2,4]\) 中每个点在所有充分大的偶数项中出现，却在奇数项中缺席。因此下极限为 \((0,2]\)，上极限为 \((0,4]\)。另一方面，取两两不同的 \(a_k\) 并令 \(A_k=\{a_k\}\)，每个点最多出现一次，故这列非单调集合也有极限 \(\varnothing\)。
+
+\subsection{把函数的收敛写成误差集}
+
+设 \(f_k,f:E\to\mathbb R\)，记 \(E(f>c)=\{x\in E:f(x)>c\}\)。例如 \(E(f\ne0)=\bigcup_{n\ge1}E(|f|>1/n)\)，因为每个正数都严格大于某个 \(1/n\)。若 \(f_k(x)\uparrow f(x)\)，则
+
+\[
+E(f>c)=\bigcup_{k\ge1}E(f_k>c),\qquad
+E(f\le c)=\bigcap_{k\ge1}E(f_k\le c).
+\]
+
+第一个等式的关键是从 \(f(x)>c\) 中留出正余量；把严格不等号改成 \(\ge\) 就可能失败，例如常值函数 \(f_k=c-1/k\) 递增到 \(c\)。
+
+一般函数列无须单调。设 \(A_{k,n}=E(|f_k-f|\ge1/n)\)。在 \(x\) 处不收敛于 \(f(x)\)，等价于某个固定的精度 \(1/n\) 被破坏无穷多次。因此（例 1.1.8）
+
+\[
+\{x\in E:f_k(x)\not\to f(x)\}
+=\bigcup_{n=1}^{\infty}\varlimsup_{k\to\infty} A_{k,n}
+=\bigcup_{n=1}^{\infty}\bigcap_{N=1}^{\infty}\bigcup_{k=N}^{\infty} A_{k,n}.
+\]
+
+先固定误差尺度，再检查所有尾列，正是此式并、交顺序的来由。若精度允许随 \(k\) 改变，右边就不能再刻画不收敛。
+
+\subsection{像、原像与特征函数}
+
+映射 \(f:X\to Y\) 把每个 \(x\) 指定到唯一的 \(f(x)\)。每个 \(y\) 至多有一个原像称为单射，至少有一个称为满射，恰有一个称为双射。对 \(A\subset X\)、\(B\subset Y\)，记 \(f(A)=\{f(x):x\in A\}\)，\(f^{-1}(B)=\{x:f(x)\in B\}\)；后一个记号对任意映射都有意义。
+
+像保持任意并，对非空指标族通常只有 \(f(\bigcap_\alpha A_\alpha)\subset\bigcap_\alpha f(A_\alpha)\)。取 \(f(x)=x^2\)，\(A=\{-1\}\)、\(B=\{1\}\)，两个像都有 \(1\)，两个集合却没有共同的点。若 \(f\) 单射，属于所有像的 \(y\) 只有一个可能的原像，便有等号。原像的判断只看已经确定的 \(f(x)\)，因此原像同时保持并、交、差和补（定理 1.1.7），例如 \(f^{-1}(Y-B)=X-f^{-1}(B)\)。以后检验可测性时，正可沿着原像逐层拆开集运算。
+
+令 \(\chi_A(x)=1\)（\(x\in A\)），\(\chi_A(x)=0\)（\(x\notin A\)）。集合的包含关系等价于逐点不等式 \(\chi_A\le\chi_B\)。其余常用的翻译（定理 1.1.8）为
+
+\[
+\begin{aligned}
+\chi_{A\cap B}&=\chi_A\chi_B,&
+\chi_{A\cup B}&=\chi_A+\chi_B-\chi_A\chi_B,\\
+\chi_{A-B}&=\chi_A(1-\chi_B),&
+\chi_{A\triangle B}&=|\chi_A-\chi_B|.
+\end{aligned}
+\]
+
+由于 \(0,1\) 数列收敛当且仅当它最终恒定，集合列 \(A_k\) 收敛到 \(A\) 当且仅当 \(\chi_{A_k}\) 逐点收敛到 \(\chi_A\)。这也解释了积分理论为何先定义特征函数的积分，再通过线性组合与极限处理一般函数。
+\section{集合的势与实函数}
+
+对应教材 §1.2，正文第 17---41 页。本节要解决两个问题：怎样给一个无限集合计数，以及怎样用计数限制实函数的间断、不可导和极值行为。
+
+\subsection{两个集合怎样比较大小}
+
+有双射 \(\varphi:A\to B\) 时记 \(A\sim B\)，称二者对等。教材以 \(\overline{\overline A}\) 记 \(A\) 的势；\(\overline{\overline A}\le\overline{\overline B}\) 表示存在从 \(A\) 到 \(B\) 的单射。与 \(\mathbb N=\{1,2,\dots\}\) 对等的集称为可数集，其势为 \(\aleph_0\)；``至多可数''包括有限情形。连续势记为 \(\aleph=\overline{\overline{(0,1]}}\)。
+
+\textbf{无限集能容纳怎样的删减。} 在通常的集合论框架下，从无限集 \(A\) 中递次取互异元素 \(a_1,a_2,\ldots\)。把 \(a_n\) 移到 \(a_{n+1}\)，其余点固定，得到 \(A\sim A-\{a_1\}\)。有限集不可能与真子集对等，故这也刻画了无限性。若 \(A\) 不可数而 \(B\subset A\) 至多可数，则 \(A-B\) 仍不可数，否则 \(A\) 为两个至多可数集之并。在 \(A-B\) 中取可数子集 \(C\)，将可数集 \(B\cup C\) 与 \(C\) 双射，其余点固定，便得 \(A\sim A-B\)（定理 1.2.1---1.2.3）。
+
+\textbf{幂集总有更大的势（定理 1.2.4）。} 教材记 \(2^A=\{B:B\subset A\}\)。单点集映射 \(x\mapsto\{x\}\) 给出单射。任给 \(h:A\to 2^A\)，作 \(D=\{x\in A:x\notin h(x)\}\)。若 \(D=h(d)\)，就有 \(d\in D\iff d\notin D\)。故每个这样的 \(h\) 至少漏掉一个集合，从而 \(\overline{\overline A}<\overline{\overline{2^A}}\)。对角线构造的要点是给第 \(x\) 个候选集合指定一个它必定答错的坐标 \(x\)。
+
+\textbf{Cantor--Bernstein 定理（1.2.5）。} 若有单射 \(f:X\to Y\)、\(g:Y\to X\)，则 \(X\sim Y\)。要拼出双射，理想的分割是某个 \(A\subset X\) 满足 \(X-A=g(Y-f(A))\)，这时在 \(A\) 上用 \(f\)，在补集上用 \(g^{-1}\)。
+
+这个分割正是教材的 Banach 引理 1.2.1，甚至对一般映射 \(f,g\) 也成立。为得到它，对 \(E\subset X\) 置 \(T(E)=X-g(Y-f(E))\)。若 \(E\subset F\)，则 \(T(E)\subset T(F)\)。取所有满足 \(E\subset T(E)\) 的集合之并 \(A\)。对其中每个 \(E\)，有 \(E\subset T(E)\subset T(A)\)，所以 \(A\subset T(A)\)；再用单调性得 \(T(A)\subset T(T(A))\)。因此 \(T(A)\) 自身也参与了定义 \(A\) 的并，故 \(T(A)\subset A\)。于是 \(A=T(A)\)，即得所需分割。当 \(f,g\) 都是单射时，两块上分别给出 \(A\sim f(A)\)、\(X-A\sim Y-f(A)\)，拼接即得定理。特别地，若 \(X\subset Y\subset Z\) 且 \(X\sim Z\)，则三者对等；常常给出上下界就可省去构造显式双射的困难。
+
+\subsection{可数编码与连续势}
+
+有限或可数个至多可数集的并至多可数。把各集合中的元素编号，沿 \((i,j)\) 表中 \(i+j\) 递增的对角线逐行读，每条对角线只有有限个位置，跳过空位和重复项即可。若某一项可数，则全并可数。类似地，\(\mathbb N^k\) 对每个有限的 \(k\ge1\) 可数；所有有限长自然数串再按长度并起来，仍可数（定理 1.2.6）。所以 \(\mathbb Z\)、\(\mathbb Q\) 和 \(\mathbb Q^n\) 均可数。\(\mathbb R^n\) 中两两不交的非空开集族也至多可数：把 \(\mathbb Q^n\) 排列，每个开集取其中编号最早的有理点，不同开集取到不同点。
+
+可数无穷长的串则不同。对任意集 \(A\)，映射 \(E\mapsto\chi_E\) 把幂集 \(2^A\) 双射到 \(\{0,1\}^A\)，其逆把函数送到它取值为 \(1\) 的点集。故 \(\overline{\overline{2^A}}=2^{\overline{\overline A}}\)（定理 1.2.7）。特别地，把 \(E\subset\mathbb N\) 对应到特征函数 \(\chi_E\)，就有 \(2^{\mathbb N}\sim\{0,1\}^{\mathbb N}\)。二进表示给出 \((0,1]\to\{0,1\}^{\mathbb N}\) 的单射，对有两种表示的数固定使用无限多个 \(1\) 的表示（\(1=0.111\ldots\)）。反过来，把 \(\varepsilon=(\varepsilon_n)\) 送到 \(\sum_{n\ge1}2\varepsilon_n/3^n\in[0,1]\)。若两串首次在第 \(k\) 位不同，该位差 \(2/3^k\)，以后各位能抵消的总量至多 \(1/3^k\)，故这是单射。\([0,1]\sim(0,1]\)，因为沿一个以 \(1\) 为首项的互异可数点列平移即可给 \(0\) 腾出位置。由 Cantor--Bernstein 定理和幂集定理，
+
+\[
+\aleph=2^{\aleph_0}>\aleph_0 .
+\]
+
+也可直接看出 \([0,1]\) 不可数。若有人列出 \(x_1,x_2,\ldots\)，在每个保留闭区间的左、右三分之一中选一个避开下一项。闭区间套定理给出一点同时避开全部 \(x_n\)。这里必须保留闭区间，以保证留下的点仍在每一层里。
+
+\textbf{连续势的计算。} 仿射变换、正切变换和有限端点的添删表明，每个非退化区间与 \(\mathbb R\) 对等。删去 \(\mathbb Q\) 也保持其势。教材例 1.2.4 中，单位球面 \(S^n\) 去掉北极 \(P_0\) 后，经球极投影 \((u,t)\mapsto u/(1-t)\) 双射到 \(\mathbb R^n\)；其逆为 \(y\mapsto(2y/(1+|y|^2),(|y|^2-1)/(1+|y|^2))\)。沿球面上任一以 \(P_0\) 为首项的互异点列平移，便可将 \(P_0\) 添回而不改变势（\(n\ge1\)）。
+
+对一般的 \(B^A=\{f:f:A\to B\}\)，若 \(\overline{\overline A}=\alpha\)、\(\overline{\overline B}=\beta\)，教材记其势为 \(\beta^\alpha\)；基数和取不交并的势，基数积取直积的势。由 \(\mathbb N\times\mathbb N\sim\mathbb N\)，一个以自然数编号的二进串序列可重排为单个二进串，且能还原，故
+
+\[
+\overline{\overline{\mathbb R^\infty}}=\aleph^{\aleph_0}
+=(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0}=\aleph .
+\]
+
+因此有限维 \(\mathbb R^n\)、所有自然数列组成的 \(\mathbb N^\infty\) 皆有连续势。更一般地，若 \(2\le\overline{\overline{A_n}}\le\aleph\)，则 \(\prod_n A_n\) 的势夹在 \(\overline{\overline{\{0,1\}^{\mathbb N}}}\) 与 \(\overline{\overline{\mathbb R^\infty}}\) 之间，也等于 \(\aleph\)。至多连续势个集合，每个的势至多为 \(\aleph\)，其并的势至多为 \(\aleph\)：取每个集合带指标的不交副本，总量至多 \(\aleph\cdot\aleph=\aleph\)；若已有一个集合达此势，则全并亦达此势。
+
+\textbf{反向计数（例 1.2.20---1.2.21）。} 若 \(A=\bigcup_n A_n\) 且 \(\overline{\overline A}=\aleph\)，则某个 \(A_n\) 已有连续势。不能只从``某个 \(A_n\) 不可数''推出这一步。将 \(A\) 双射到 \(\mathbb R^\infty\)，记 \(A_n\) 的像为 \(U_n\)。若每个 \(U_n\) 的势都小于 \(\aleph\)，则 \(U_n\) 的第 \(n\) 坐标投影必漏掉一个 \(t_n\in\mathbb R\)。序列 \((t_1,t_2,\ldots)\) 在第 \(n\) 坐标与 \(U_n\) 中的每一点区别，故落在所有 \(U_n\) 之外，矛盾。此证没有假设不可数势一定是连续势。
+
+\subsection{用可数信息识别实函数}
+
+设 \(a<b\)。连续函数在稠密集 \(D=\mathbb Q\cap[a,b]\) 上的取值决定它在全区间上的取值：给定 \(x\)，取 \(D\) 中趋于 \(x\) 的点列，再取函数值的极限。故限制映射 \(C[a,b]\to\mathbb R^D\) 为单射，而常值函数已经有连续势，于是 \(\overline{\overline{C[a,b]}}=\aleph\)。对任意实函数，这个稠密集不再足够。记 \(\mathbb R[a,b]\) 为全体实函数，每个 \(E\subset[a,b]\) 给出不同的 \(\chi_E\)，而每个函数的图形又是 \(\mathbb R^2\) 的子集。夹逼得（例 1.2.15---1.2.16）
+
+\[
+\overline{\overline{\mathbb R[a,b]}}=2^\aleph>\aleph.
+\]
+
+\textbf{单调函数的间断点（例 1.2.11）。} 设 \(f:\mathbb R\to\mathbb R\) 单调增。对每个 \(x\)，\(f(x^-)\le f(x)\le f(x^+)\)，间断恰当 \(f(x^-)<f(x^+)\)。把 \(x\) 对应到纵轴上的开区间 \((f(x^-),f(x^+))\)。若 \(x<y\)，则 \(f(x^+)\le f(y^-)\)，故各区间两两不交，每个可用不同的有理数标记。因此间断点集 \(D_f\) 至多可数。单调减时以 \(-f\) 代替 \(f\)。
+
+\textbf{一个单侧极限就能施加限制（例 1.2.12）。} 任给 \(f:\mathbb R\to\mathbb R\)，考察右极限存在且有限、但 \(f\) 不连续的点。对每个 \(n\)，记 \(D_n\) 为其中在每个邻域内都能找到两点、使函数值相差至少 \(1/n\) 的点。因连续等价于局部振幅趋零，这些 \(D_n\) 的并包括所考察的全部点。对 \(x\in D_n\)，由右极限的存在，可取 \(\delta_x>0\) 使 \((x,x+\delta_x)\) 内任意两个函数值的差的绝对值小于 \(1/n\)。该开区间内的点都有一个更小邻域处于其中，故不含 \(D_n\) 的点。若 \(x<y\) 都在 \(D_n\)，必有 \(x+\delta_x\le y\)。这些向右的开区间两两不交，所以每个 \(D_n\) 至多可数，所求点集也至多可数。
+
+\textbf{左右导数不等（例 1.2.13）。} 在左右导数均存在的点，允许单侧导数取 \(\pm\infty\)。考虑 \(f'_-(x)>f'_+(x)\) 的情形。取有理数 \(r\) 严格夹在二者之间，并取有理数 \(s<x<t\)，使 \((s,x)\) 中所有割线斜率均大于 \(r\)，\((x,t)\) 中均小于 \(r\)。两个不等式乘上各自的分母后，恰都成为
+
+\[
+f(y)-ry<f(x)-rx,\qquad s<y<t,\quad y\ne x.
+\]
+
+于是 \(x\) 是函数 \(y\mapsto f(y)-ry\) 在 \((s,t)\) 上唯一的最大值点。同一 \((r,s,t)\in\mathbb Q^3\) 只能对应一个 \(x\)，故这类点至多可数。另一种大小关系对 \(-f\) 应用同一论证。
+
+特别地，开区间上的有限凸函数只在至多可数点不可导（例 1.2.14）。事实上，\(u<v<w\) 时，由凸性得到
+
+\[
+\frac{f(v)-f(u)}{v-u}
+\le\frac{f(w)-f(u)}{w-u}
+\le\frac{f(w)-f(v)}{w-v}.
+\]
+
+固定内点 \(x\)，右割线斜率随右端点递增，左割线斜率随左端点递增，且任一左斜率不超过任一右斜率。用 \(x\) 两侧固定点的斜率给邻近的斜率作上下界，得到有限单侧导数 \(f'_-(x)\le f'_+(x)\)。二者不同的点已由上段计数；凹函数可取负化归。
+
+\textbf{局部极值的个数（例 1.2.17---1.2.18）。} 任给 \(f:\mathbb R\to\mathbb R\)，其局部极小值集 \(f_{\min}\) 至多可数。每个局部极小值 \(v=f(x)\) 必是某个有理端点开区间 \((p,q)\ni x\) 上的最小值。这样的区间至多可数，每个区间至多给出一个最小值。极大值集 \(f_{\max}\) 同理。这里数的是函数值；常值函数的每一点都是极值点。若 \(f\) 还连续且每一点都是极值点，则 \(f(\mathbb R)=f_{\min}\cup f_{\max}\) 至多可数，而只要 \(f\) 取到两个不同的值，介值定理就迫使值域包含整个非退化区间。因此 \(f\) 必为常数。换成 \(\mathbb R^n\)，极值仍可由有理中心、有理半径的球标记；沿两点间的线段用介值定理，结论相同。
+
+这些证明中的编码可以直接辨认：跳跃给出互不相交的区间，单侧导数差给出有理斜率和一个唯一极值点，连续性给出稠密集上的可数记录。要把编码用于新的异常点集，须说明同一个标签能标记多少个点或多少个值；仅仅给每个点选一个有理数并不能证明可数。
+\section{集类与单调类定理}
+
+教材 §1.3，正文第 42---49 页。测度最初往往只在区间这类简单集合上给出。若要把区间分割、拼接，再令分割无限进行，就必须先弄清每一种运算把集合带到哪个集类中。
+
+\subsection{环与代数，有限运算与可列运算}
+
+固定基本空间 \(X\)，集类是 \(2^X\) 的子集，以下各类均假定非空。补集均相对于 \(X\)，记 \(E^c=X-E\)。
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}p{.21\linewidth}p{.33\linewidth}X@{}}
+\toprule
+集类 & 判定条件 & 随之得到的运算 \\ \midrule
+环 $\mathcal R$ & 对二元并、差封闭 & 含空集，对有限并和有限非空交封闭 \\
+代数（域） & 环且含 $X$ & 可取补集 \\
+$\sigma$ 环 & 对可列并、差封闭 & 对可列非空交、集列的上极限和下极限封闭 \\
+$\sigma$ 代数 & $\sigma$ 环且含 $X$ & 等价于含空集且对取补、可列并封闭 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+环内有 \(\varnothing=E-E\) 和 \(E\cap F=E-(E-F)\)。在 \(\sigma\) 环中，令 \(S=\bigcup_{j\ge1}E_j\)，就可以用 \(S\) 做局部的基本空间，得到
+
+\[
+\bigcap_{j\ge1}E_j=S-\bigcup_{j\ge1}(S-E_j).
+\]
+
+集列的上极限是尾并的交，下极限是尾交的并，故也在此类中。这里不能擅自取相对于 \(X\) 的补；若 \(X\) 不属于这个环，甚至 \(\varnothing^c\) 都不在其中。
+
+\textbf{从单点集看四种区别（例 1.3.8）。} 在不可数集 \(X\) 上，以全体单点集作生成元。有限次并、差恰好得到全体有限集。再准许取补，得到有限集和余有限集（补集有限）；准许可列并、差，得到至多可数集；同时准许可列并和取补，则得到至多可数集和余至多可数集。验证最后一项时，若并的各项都至多可数，则并也如此；若有一项的补至多可数，则并的补含于这一项的补。反过来，列出单点再取并和补，便取得所列全部集合。例如 \(X=\mathbb R\) 时，半直线及其补均不可数，故半直线不在最后一个集类中。
+
+\subsection{生成集类的最小性}
+
+用 \(\mathcal R(\mathcal E),\mathcal A(\mathcal E),\mathcal R_\sigma(\mathcal E),\mathcal A_\sigma(\mathcal E)\) 分别记集类 \(\mathcal E\) 生成的环、代数、\(\sigma\) 环、\(\sigma\) 代数。以 \(\sigma\) 环为例，把所有包含 \(\mathcal E\) 的 \(\sigma\) 环相交即可。这些候选者至少有 \(2^X\)，而同类相交仍为同类。因此所得者存在、包含 \(\mathcal E\)，并且包含于每一个候选者，唯一性也随之得到。证明集合属于生成类时可以用运算构造它；证明整个生成类满足性质时，可以反过来证明满足性质的集合构成一个候选者。
+
+例如 \(\mathcal R(\mathcal E)\) 是含 \(\mathcal E\) 的最小环，故 \(\mathcal E\subseteq\mathcal R(\mathcal E)\subseteq\mathcal R_\sigma(\mathcal E)\)。对两端再生成 \(\sigma\) 环，得到定理 1.3.4：
+
+\[
+\mathcal R_\sigma(\mathcal E)=\mathcal R_\sigma\bigl(\mathcal R(\mathcal E)\bigr).
+\]
+
+同理，把 \(X\) 作为附加生成元，就有 \(\mathcal A(\mathcal E)=\mathcal R(\mathcal E\cup\{X\})\) 及其 \(\sigma\) 版本。这解释了为何构造测度时可以先把区间扩充到环。
+
+\textbf{半开区间给出的环。} 令 \(\mathcal P\) 为 \(\mathbb R^1\) 上的有界区间 \((a,b]\) 的全体，\(\mathcal R_0\) 为它们的有限并（含空集）。将有限多个区间的所有端点排序，相邻端点划出的每个左开右闭小区间，对每一个原区间都或者全在其中，或者全在其外。并和差都只保留一些小区间，故 \(\mathcal R(\mathcal P)=\mathcal R_0\)。其成员有界，而 \(\mathbb R^1=\bigcup_{k\in\mathbb Z}(k,k+1]\)，所以 \(\mathcal R_0\) 既不含基本空间，也不对可列并封闭；生成的 \(\sigma\) 环却已经含有基本空间。在 \(\mathbb R^n\) 上按每个坐标分别切割，同样得到半开有界矩形有限并所成的环。若改用开区间有限并，\((0,2)-(0,1)=[1,2)\) 立即破坏差的封闭性。
+
+\subsection{单调类定理，怎样从一个变量推广到两个变量}
+
+单调类 \(\mathcal M\) 对单调递增集列的并和单调递减集列的交封闭。记包含 \(\mathcal E\) 的所有单调类之交为 \(\mathcal M(\mathcal E)\)。一个单调类未必是环，例如只含 \([0,1]\) 和 \([2,3]\) 两个元素的集类，其单调列都是常列，却不含这两个区间的并。
+
+\textbf{定理 1.3.8---1.3.9。} 一个环是 \(\sigma\) 环当且仅当它又是单调类。若 \(\mathcal E\) 本身是环，则
+
+\[
+\mathcal M(\mathcal E)=\mathcal R_\sigma(\mathcal E).
+\]
+
+\textbf{证明}　\(\sigma\) 环对单调极限封闭。反之，在一个环内，任何可列并都是有限部分并的递增极限，所以单调环必为 \(\sigma\) 环。
+
+写 \(\mathcal M=\mathcal M(\mathcal E)\)。由最小性已有 \(\mathcal M\subseteq\mathcal R_\sigma(\mathcal E)\)，为反推只需证 \(\mathcal M\) 是环。对固定的 \(E\in\mathcal M\)，设
+
+\[
+\mathcal K(E)=\{F\in\mathcal M:F-E,\ E-F,\ E\cup F\in\mathcal M\}.
+\]
+
+若 \(F_j\uparrow F\)，则 \(F_j-E\uparrow F-E\)、\(E-F_j\downarrow E-F\)、\(E\cup F_j\uparrow E\cup F\)。若 \(F_j\downarrow F\)，三种单调方向随之反转。所以 \(\mathcal K(E)\) 是单调类。
+
+先固定 \(E\in\mathcal E\)。因为 \(\mathcal E\) 是环，每个 \(F\in\mathcal E\) 都属于 \(\mathcal K(E)\)，最小性给出 \(\mathcal K(E)=\mathcal M\)。再固定任意 \(F\in\mathcal M\)。刚证出的关系对 \(E,F\) 对称，于是每个 \(E\in\mathcal E\) 都属于 \(\mathcal K(F)\)。再次使用最小性，得到 \(\mathcal K(F)=\mathcal M\)。现在两变量都能任取，得证。两次推广分别解除一个变量属于原环的限制，缺少其中一次只得到一个旧元素与一个新元素之间的运算。
+
+\textbf{应用（推论 1.3.1，例 1.3.11）。} 若要把已在环 \(\mathcal E\) 上成立的性质推广到 \(\mathcal R_\sigma(\mathcal E)\)，只需证明具有该性质的集合对两种单调极限封闭。若生成元仅是非空集类，也有一条有用的覆盖结论：每个 \(F\in\mathcal R_\sigma(\mathcal E)\) 都能由 \(\mathcal E\) 中至多可数个集合覆盖。事实上，所有能这样覆盖的集合构成一个 \(\sigma\) 环：作差后沿用被减集的覆盖，作可列并时把所有覆盖排成一列。它包含 \(\mathcal E\)，故由最小性得到结论。这里得到的是覆盖，通常不能把 \(F\) 写成生成元的并。
+\section{欧氏空间的拓扑与 Borel 集}
+
+教材 §1.4，正文第 50---65 页。本节有两条贯通的线索。一条从邻域出发，给出聚点、闭集和紧集的判别；另一条利用可数拓扑基，把开集、连续点集乃至可导点集写成可列集合运算的结果。
+
+\subsection{邻域、导集与闭包}
+
+在 \(\mathbb R^n\) 中，教材记欧氏距离为
+
+\[
+\rho_0^n(x,y)=\|x-y\|=\left(\sum_{i=1}^n(x_i-y_i)^2\right)^{1/2}.
+\]
+
+\(B(x^0;\delta)\)、\(\overline{B(x^0;\delta)}\)、\(S(x^0;\delta)\) 分别由距离小于、不大于、等于 \(\delta>0\) 的点组成。开集族 \(\mathcal T\) 由能在每一点容下一个开球的集组成。任意并保持开性；有限交时取各个球半径的最小值。\(\varnothing,\mathbb R^n\in\mathcal T\)。闭集是开集的补，因而闭集族 \(\mathcal F\) 对任意交、有限并封闭。
+
+\(x\) 是 \(E\) 的聚点，当且仅当每个删心球 \(B(x;\delta)-\{x\}\) 都与 \(E\) 相交，等价于存在 \(E\) 中互异的点 \(x^k\to x\)。为构造点列，取一个异于 \(x\) 的 \(x^1\)，此后把新半径取为 \(1/k\) 与前一距离一半的较小者，即可同时保证收敛和互异。全体聚点作成导集 \(E'\)，\(E-E'\) 是孤立点集，\(\overline E=E\cup E'\) 是闭包。闭包也可由``每一开球都与 \(E\) 相交''判定，其补开，故闭包确为闭集。于是
+
+\[
+E\text{ 闭}\quad\Longleftrightarrow\quad E'\subseteq E
+\quad\Longleftrightarrow\quad \overline E=E
+\quad\Longleftrightarrow\quad
+\big[(x^k\in E,\ x^k\to x)\Longrightarrow x\in E\big].
+\]
+
+有限并有 \((E_1\cup E_2)'=E_1'\cup E_2'\)：一个点若不是两者中任何一个的聚点，把两个避开其余点的邻域相交即可。可列并不同，取 \(E_k=\{1/k\}\)，各 \(E_k'\) 为空，而 \(0\) 属于并集的导集。
+
+\(E^\circ\) 是包含于 \(E\) 的最大开集，\((E^c)^\circ\) 是外点集。边界 \(\partial E=\overline E\cap\overline{E^c}\) 由每个邻域都遇到两方的点组成。这三个集合两两不交，并为全空间。\(E\) 开当且仅当 \(E=E^\circ\)。在子空间 \(E\) 中一律采用 \(B_E(x;\delta)=E\cap B(x;\delta)\) 与 \(\mathcal T_E=\{E\cap G:G\in\mathcal T\}\)；例如 \([0,1/2)\) 在 \([0,1]\) 中相对开。
+
+\subsection{三种紧性论证}
+
+\textbf{聚点与闭集套（定理 1.4.1---1.4.2）。} \(\mathbb R^n\) 中有界无限点集必有聚点。将包住该集的闭立方体逐边二等分，总有一个子立方体含无穷多个原集的点。反复选取，所得嵌套闭立方体的各坐标区间分别套定一点，从而确定同一个点 \(x\)。立方体直径趋于零，其中可以逐次选出互异原集点趋向 \(x\)。
+
+若非空有界闭集 \(F_1\supseteq F_2\supseteq\cdots\)，选 \(x^k\in F_k\)。它们都在 \(F_1\) 中，有收敛子列（有限值时取常子列，无限值时用上段）。每个 \(F_j\) 包含子列的一段尾项且闭，故子列极限属于 \(\bigcap_j F_j\)。若再有 \(\operatorname{diam}F_k\to0\)，任意两个公共点的距离都不超过每个 \(\operatorname{diam}F_k\)，于是公共点唯一。有界性防止极限逃向无穷，例如 \([k,+\infty)\) 的交为空。
+
+\textbf{有限覆盖（定理 1.4.3）。} \(E\subseteq\mathbb R^n\) 紧，指其每个开覆盖都有有限子覆盖。紧等价于有界且闭。事实上，用 \(B(0;k)\) 覆盖紧集得到有界性。若 \(z\notin E\)，用 \(B(y;\|y-z\|/2)\)，\(y\in E\)，覆盖 \(E\)。对非空 \(E\)，有限子覆盖中最小的半径给出一个以 \(z\) 为心、避开 \(E\) 的开球，故 \(E\) 闭；空集本来就是闭集。
+
+反过来，设 \(E\) 有界闭，某开覆盖无有限子覆盖。包住 \(E\) 的闭立方体中，至少一个二等分子立方体与 \(E\) 的交仍无法有限覆盖，否则合并各有限覆盖即可。重复选取，得到直径趋零的闭立方体 \(I_k\)。闭集套 \(E\cap I_k\) 有公共点 \(x\)，覆盖中某个开集含 \(x\) 的一个球，因而当 \(k\) 足够大时，它已盖住整个 \(I_k\)，矛盾。
+
+\textbf{紧性对函数的作用（定理 1.4.7）。} 非空紧集 \(E\) 上 \(f\in C(E)=C^0(E)\) 必取最大、最小值。由开覆盖的逆像，\(f(E)\) 紧，故是实轴上的有界闭集，包含自身的上下确界。\(f\) 还一致连续：若不然，有 \(\|x^k-y^k\|\to0\) 而两函数值之差始终至少为某个正数。取 \(x^k\) 的收敛子列，配对的 \(y^k\) 便趋于同一点，与连续性矛盾。另一方面，连续函数列的一致极限在任意定义域 \(E\) 上仍连续：先选定一项使两端一致逼近误差都小于 \(\varepsilon/3\)，再用该项在所考察点的连续性控制中间项。
+
+\subsection{可数基、开覆盖与开集的分解}
+
+不同点 \(p,q\) 各取半径为 \(\|p-q\|/2\) 的开球即可分离，故空间为 Hausdorff（\(T_2\)）空间。更重要的是，全体 \(B(q;1/k)\)，\(q\in\mathbb Q^n,k\in\mathbb N\)，给出一个可数拓扑基（\(A_2\)）。事实上，若 \(x\in B(x;\delta)\subseteq G\)，先取 \(2/k<\delta\)，再取 \(\|q-x\|<1/k\)，则 \(x\in B(q;1/k)\subseteq G\)。
+
+\textbf{Lindelöf 定理（定理 1.4.4）。} 任意点集 \(E\subseteq\mathbb R^n\) 的任何开覆盖都有至多可数的子覆盖。对每个能装入某一覆盖成员的基元素，选一个包含它的覆盖成员。基元素至多可数，而每个 \(x\in E\) 总落在一个这样的基元素里。这里无须有界或闭；把结论提高到有限时才需要紧性。
+
+\textbf{定理 1.4.5。} 实轴上每个非空开集 \(G\) 唯一分解为至多可数个互不相交的极大开区间（允许无穷端点）。对每个 \(a\in G\)，把 \(G\) 中所有含 \(a\) 的开区间取并，仍是含 \(a\) 的开区间 \(I_a\)。两个极大区间若相交，它们的并仍是区间，故两者相同。每个不同区间含一个有理数，因而个数至多可数；极大性给出唯一性。
+
+在 \(\mathbb R^n\) 中，任一非空开集可分解为至多可数个互不相交的半开立方体。先用边长 \(1\) 的半开格子铺满全空间，挑出包含于 \(G\) 的格子；把其余格子二等分，再挑出包含于 \(G\) 的格子。各轮保留的格子互不重叠。若 \(x\in G\) 落在球 \(B(x;\delta)\subseteq G\) 的中心，则包含 \(x\) 的第 \(k\) 层格子直径为 \(\sqrt n\,2^{-k}\)，足够细时必全落入该球，每一点终会被选中。半开端点使相邻格子的公共面恰归其中一侧，今后可逐块计算测度。
+
+\subsection{从开集到 Borel 集，为什么还会有非 Borel 集}
+
+记 \(G_\delta\) 为至多可数个开集的交，\(F_\sigma\) 为至多可数个闭集的并。两者互为补类，前者对可列交、后者对可列并封闭。以非空闭集 \(F\) 为例，令 \(d(x,F)=\inf_{y\in F}\|x-y\|\)，此函数是 \(1\)-Lipschitz 的，且 \(F=\bigcap_{k\ge1}\{x:d(x,F)<1/k\}\)。故闭集也是 \(G_\delta\)，取补即得开集也是 \(F_\sigma\)；空集的情形直接成立。可数集是单点闭集之并，故 \(\mathbb Q\) 为 \(F_\sigma\)，无理数集为 \(G_\delta\)。
+
+\(\mathcal B=\mathcal A_\sigma(\mathcal T)\) 是 Borel 代数，包含上述各类及由它们反复作可列并、交和补所得的集合。在实轴上，用 §1.3 的半开区间环 \(\mathcal R_0\) 生成同一集类：半开区间是 Borel 集；反之，开区间是有界半开区间的可列并，开集再由定理 1.4.5 分解，且 \(\mathbb R\) 本身已在生成的 \(\sigma\) 环中。因此 \(\mathcal B=\mathcal R_\sigma(\mathcal R_0)=\mathcal A_\sigma(\mathcal R_0)\)。
+
+\textbf{势的估计（定理 1.4.6）。} 记连续统的势为 \(\aleph\)。开集由所含的基元素完全确定，故开集族的势至多为 \(2^{\aleph_0}=\aleph\)；不同半径的同心球给出相反的不等式。取补得闭集族也有势 \(\aleph\)。对整个 Borel 代数，还要处理可列运算的反复嵌套，仅数一次并、交不够。
+
+为此把每个集合构造记成一棵有根树：叶子标记一个可数基元素或空集，取补的结点有一个子结点，可列并的结点把子结点编号为自然数。允许树的枝长无统一上界，要求每条枝都在有限步后到达叶子。这样的树若实现一个集合，它的值唯一：若有两种赋值在根处不同，总能向下找到仍有分歧的子结点，最终将在标记确定的叶子发生矛盾。可实现的集合含全部基元素并对取补、可列并封闭，因为在已有的一棵或可数棵树上补一个新根，就得到相应运算的树；故其中含全部 Borel 集。每个结点以从根到它的有限自然数串定位，而这类串仅可数，结点和标记都能用自然数集合编码，树总数至多 \(2^{\aleph_0}\)。合并开集给出的下界，得 \(\overline{\overline{\mathcal B}}=\aleph\)。但 \(2^{\mathbb R}\) 的势为 \(2^{\aleph}>\aleph\)，所以存在非 Borel 集。
+
+更一般地，若生成集类本身的势为 \(\aleph\)，每个生成元可由一个二进制序列作标签，至多可数个这样的标签仍可编码成一个二进制序列。只用差和可列并作结点，便得其生成的 \(\sigma\) 环仍有势 \(\aleph\)。
+
+\subsection{函数的连续点和可导点能复杂到什么程度}
+
+函数 \(f:E\to\mathbb R\) 在 \(x\in E\) 连续，是指任给 \(\varepsilon>0\)，存在 \(\delta>0\)，使 \(y\in B_E(x;\delta)\) 时 \(|f(y)-f(x)|<\varepsilon\)。因此每个孤立点自动是连续点。若 \(f\in C(E)\)，则 \(\{x\in E:f(x)>t\}\) 和 \(\{x\in E:f(x)<t\}\) 在 \(E\) 中开，相应的非严格水平集在 \(E\) 中闭。这直接来自连续性与严格不等号留下的余量。若 \(f\) 本身任意，考察它在一点附近函数值之间的最大摆动。令
+
+\[
+\omega_E(x;\delta)=\sup_{u,v\in B_E(x;\delta)}|f(u)-f(v)|,
+\qquad \omega_E(x)=\inf_{\delta>0}\omega_E(x;\delta).
+\]
+
+这一下确界就是半径趋零时的极限，可以取 \(+\infty\)。连续等价于 \(\omega_E(x)=0\)：连续时用三角不等式控制两个函数值之差，反之在上式中取 \(v=x\) 即可。若 \(\omega_E(x)<t\)，有一个球的振幅已小于 \(t\)；其内每个点都可取更小的球装在原球内，故 \(\{\omega_E<t\}\) 相对开。于是连续点集相对 \(E\) 为 \(G_\delta\) 集，
+
+\[
+\{x\in E:f\text{ 在 }x\text{ 连续}\}
+=\bigcap_{k\ge1}\{x\in E:\omega_E(x)<1/k\}.
+\]
+
+若 \(E\) 开，这也是 \(\mathbb R^n\) 中的 \(G_\delta\) 集。\textbf{原书例 1.4.3 的辨析（第 61---62 页）。} 此处成立的是上半连续性，即 \(\{\omega_E<t\}\) 相对开、\(\{\omega_E\ge t\}\) 相对闭。原例还列出的反向不等式并不普遍成立。例如 \(E=\mathbb R\)，\(f=\chi_{\{0\}}\)，则 \(\omega_E(0)=1\)，其余点的振幅为 \(0\)。取 \(t=1/2\)，\(\{\omega_E>t\}=\{0\}\) 非开，\(\{\omega_E\le t\}=\mathbb R-\{0\}\) 非闭。
+
+\textbf{可导点集（例 1.4.7）。} 若 \(f\in C(\mathbb R)\)，其具有有限导数的点构成 \(F_{\sigma\delta}\) 集，即可数个 \(F_\sigma\) 集的交。令 \(D_hf(x)=(f(x+h)-f(x))/h\)，对 \(h\ne0\) 它连续依赖于 \(x\)。令 \(H_m=\{h\in\mathbb Q:0<|h|<1/m\}\)，则可导点集恰是
+
+\[
+\bigcap_{k\ge1}\ \bigcup_{m\ge1}\
+\bigcap_{h,l\in H_m}
+\{x:|D_hf(x)-D_lf(x)|\le 1/k\}.
+\]
+
+固定 \(h,l\) 后大括号内是闭集，最内层的交仍闭，故得到所称类型。为验证等号，若导数存在，则小增量的差商满足 Cauchy 条件，\(x\) 属于右端。反之，对给定 \(x,k\) 取右端允许的 \(m\)。差商对非零增量连续，用有理数逼近，便把同一界传到一切 \(0<|h|,|l|<1/m\)。现在差商在 \(h\to0\) 时满足实数的 Cauchy 判别，故有限导数存在。取补可知不可导点集是 \(G_{\delta\sigma}\) 集，即可列个 \(G_\delta\) 集的并。这里集合的交、并、交，正好对应``每一个精度、存在一个尺度、该尺度内所有增量''的量词次序。
+\section{Baire 定理及其应用}
+
+教材第 67---79 页，定理 1.5.1---1.5.2，例 1.5.1---1.5.10。给每个点各选一个整数，同在一个小球上的点能共用这个整数吗？在非空完备度量空间中，如果只有可数种选择，而且每一种选择所确定的点集都闭，Baire 定理给出了肯定回答。这一问法贯穿本节。
+
+\subsection{完备性与闭球套}
+
+在非空集合 \(X\) 上，距离 \(\rho(x,y)\) 具有非负性、对称性和三角不等式，且 \(\rho(x,y)=0\) 当且仅当 \(x=y\)。由开球 \(B(x;\delta)=\{y:\rho(x,y)<\delta\}\) 定义开集，得到拓扑 \(\mathcal T_\rho\)。若对每个 \(\varepsilon>0\)，从某项起任意两项间的距离都小于 \(\varepsilon\)，就称此点列为基本点列（Cauchy 点列）。每个基本点列都收敛到 \(X\) 中的点时，称 \((X,\rho)\) 完备。欧氏空间 \((\mathbb R^n,\rho_0^n)\) 完备。完备空间中的闭集继承完备性，因为闭集包含其中收敛点列的极限。
+
+\textbf{Baire 定理。} 在完备度量空间 \((X,\rho)\) 中，若 \(G_k\) 是稠密开集，则 \(\bigcap_{k=1}^{\infty}G_k\) 稠密。等价地，若闭集 \(F_k\) 都无内点，则 \(\bigcup_{k=1}^{\infty}F_k\) 无内点。取 \(X=\mathbb R^n\) 即得教材定理 1.5.1。开集稠密恰指其补集无内点，两种表述由 de Morgan 公式互推。
+
+证明　任取非空开集 \(U\)。由 \(G_1\) 稠密，\(U\cap G_1\) 非空。由它开，可在其中取一个半径 \(\delta_1<1\) 的闭球 \(K_1\)。设已取闭球 \(K_k\)，其同心开球与 \(G_{k+1}\) 的交是非空开集，可在交内取闭球 \(K_{k+1}\)，使其半径 \(\delta_{k+1}<2^{-k}\)。记各球心为 \(x^k\)。若 \(j,l\ge k\)，两个球心都在 \(K_k\)，故 \(\rho(x^j,x^l)\le 2\delta_k\)。完备性给出极限 \(x\)。对每个固定的 \(k\)，闭性又给出 \(x\in K_k\)。于是 \(x\in U\cap\bigcap_k G_k\)。任意非空开集都遇到这个交集，稠密性得证。
+
+证明中各条件都有用途。开性使小球还可缩小，稠密性保证下一次交集非空，完备性使所有有限次选择最终落在同一个点上。例如列举 \(\mathbb Q=\{r_1,r_2,\ldots\}\)，\(\mathbb Q-\{r_k\}\) 都在 \(\mathbb Q\) 中开且稠密，交却为空。若 \(F\subset\mathbb R^n\) 闭，\(G_i\) 在 \(\mathbb R^n\) 中开且 \(\overline{G_i\cap F}=F\)，可把定理用于完备空间 \(F\) 及其相对开集 \(G_i\cap F\)，得到
+
+\[
+\overline{\left(\bigcap_{i=1}^{\infty}G_i\right)\cap F}=F.
+\]
+
+这里的稠密性必须在 \(F\) 上检查。例如 \(\mathbb R-\{0\}\) 在 \(\mathbb R\) 中开且稠密，却与闭集 \(\{0\}\) 无交点。
+
+\subsection{哪些点可以恰好是连续点}
+
+取 \(n\ge1\)。可数集 \(\mathbb Q^n\) 是单点闭集的并，故为 \(F_\sigma\) 集，其补为 \(G_\delta\) 集。如果 \(\mathbb Q^n=\bigcap_k G_k\) 且 \(G_k\) 开，则由 \(\mathbb Q^n\) 稠密，每个 \(G_k\) 都稠密。各 \(G_k^c\) 和 \(\mathbb Q^n\) 中各单点都是无内点的闭集，却可数地覆盖 \(\mathbb R^n\)，与定理矛盾。故 \(\mathbb Q^n\) 不是 \(G_\delta\) 集，\(\mathbb R^n-\mathbb Q^n\) 不是 \(F_\sigma\) 集。
+
+对任意实函数 \(f\)，记 \(\omega_{\mathbb R^n}(x;\delta)\) 为 \(f\) 在 \(B(x;\delta)\) 上的振幅，即任意两函数值之差的绝对值的上确界，允许等于 \(+\infty\)。点振幅 \(\omega_{\mathbb R^n}(x)=\inf_{\delta>0}\omega_{\mathbb R^n}(x;\delta)\) 为零恰指 \(f\) 在 \(x\) 连续。\(\{x:\omega_{\mathbb R^n}(x)<t\}\) 对每个 \(t>0\) 都开，因为一个小球上的振幅小于 \(t\) 时，球内各点都有同样性质。因此连续点集是 \(G_\delta\) 集。在 \(\mathbb R\) 上，它不能恰为 \(\mathbb Q\)。
+
+反过来，连续点集可以恰为 \(\mathbb R-\mathbb Q\)。教材的 Riemann 函数在既约分数 \(x=q/p\)（\(p>0\)）处取值 \(R(x)=1/p\)，在无理数处取 \(0\)。任意有界区间中分母不超过 \(N\) 的既约分数只有有限个。给定 \(x_0\)，在它的去心邻域里避开这些点，即有 \(0\le R(x)\le1/(N+1)\)。于是每一点的去心极限都是 \(0\)，连续性只取决于该点的函数值是否为 \(0\)。
+
+\subsection{连续函数列逐点收敛后能保留什么}
+
+设 \(f_i:\mathbb R^n\to\mathbb R\) 连续，且处处有 \(f_i(x)\to f(x)\)。对每个开集 \(G\subset\mathbb R\)，\(f^{-1}(G)\) 是 \(F_\sigma\) 集。证明的关键是给严格不等式留出余量。
+
+\[
+\{f>a\}
+ =\bigcup_{j=1}^{\infty}\bigcup_{k=1}^{\infty}
+   \bigcap_{i=k}^{\infty}\{f_i\ge a+1/j\}.
+\]
+
+若 \(f(x)>a\)，先取 \(1/j<f(x)-a\)，再取足够大的 \(k\)。反向只须在末尾的不等式中令 \(i\to\infty\)。内层交是闭集，故左端为 \(F_\sigma\) 集。用 \(-f\) 可处理 \(\{f<b\}\)，两者取交便处理开区间。实直线上每个开集是至多可数个开区间之并，结论遂得。
+
+更强的结论是，\(f\) 的连续点构成稠密的 \(G_\delta\) 集。上段的振幅表述已给出 \(G_\delta\) 性，余下只须证明每个 \(H_\varepsilon=\{x:\omega_{\mathbb R^n}(x)<\varepsilon\}\) 稠密。任给非空开球 \(U\)，取有正半径的闭球 \(K\subset U\)。点点收敛意味着点点 Cauchy，于是下列相对闭集覆盖 \(K\)：
+
+\[
+E_k=\bigcap_{i,j\ge k}\{x\in K:|f_i(x)-f_j(x)|\le\varepsilon/4\},
+\qquad K=\bigcup_{k=1}^{\infty}E_k .
+\]
+
+在完备空间 \(K\) 中用 Baire 定理，某个 \(E_k\) 含相对非空开集。因闭球的内部在其中稠密，\(E_k\) 含有欧氏开球 \(V\)。在 \(V\) 上令 \(j\to\infty\)，得 \(|f-f_k|\le\varepsilon/4\)。再利用单个连续函数 \(f_k\) 的连续性，选更小开球 \(W\subset V\)，使 \(f_k\) 在 \(W\) 的振幅小于 \(\varepsilon/4\)。三角不等式给出 \(f\) 在 \(W\) 的振幅至多 \(3\varepsilon/4\)。故 \(U\) 包含 \(H_\varepsilon\) 中的点。最后对稠密开集 \(H_{1/m}\) 再用一次 Baire 定理，得到它们的交处处稠密。其补即不连续点集 \(D(f)\)，是无内点的 \(F_\sigma\) 集。更确切地说，它是无内点闭集 \(H_{1/m}^c\) 的可数并。闭包无内点的集称为疏朗集，可数个疏朗集的并称为第一纲集。故这个不连续点集为第一纲；它仍可能稠密，例如上文 Riemann 函数的间断点集。
+
+于是 Dirichlet 函数 \(D=\chi_{\mathbb Q}\) 不能是连续函数列的逐点极限，它在每个区间的振幅都是 \(1\)。还可直接看出矛盾的制造方法。若 \(f_i\to D\)，在任一开区间选无理数，用逐点收敛选出某一项在该点接近 \(0\)，再用连续性把这个估计保持在一段小闭区间上。在其内部改选有理数，使较晚一项在更小闭区间上接近 \(1\)。交替重复，令误差及区间长度趋零。闭区间套的公共点上，两个子列分别趋于 \(0\) 和 \(1\)，与收敛矛盾。
+
+\subsection{导函数可以在哪些点不连续}
+
+若 \(f:\mathbb R\to\mathbb R\) 处处可导，则连续函数 \(f_n(x)=n[f(x+1/n)-f(x)]\) 逐点趋于 \(f'(x)\)。故 \(f'\) 的连续点集是稠密 \(G_\delta\) 集。特别地，导函数不可能恰在所有有理点连续。
+
+可以构造一个导函数，使其恰在 \([0,1]\) 上的有理点不连续。先取 \(\varphi(0)=0\)，\(\varphi(t)=t^2\sin(1/t)\)（\(t\ne0\)）。差商给出 \(\varphi'(0)=0\)，其余点有 \(\varphi'(t)=2t\sin(1/t)-\cos(1/t)\)，故 \(\varphi'\) 只在 \(0\) 不连续。将 \([0,1]\cap\mathbb Q\) 无重复列为 \(\{r_n\}\)，令
+
+\[
+g(x)=\sum_{n=1}^{\infty}2^{-n}\varphi(x-r_n).
+\]
+
+在 \([0,1]\) 上，\(|\varphi(x-r_n)|\le 1\)、\(|\varphi'(x-r_n)|\le 3\)，两级数一致收敛。由逐项求导定理，\(g'(x)=\sum_n2^{-n}\varphi'(x-r_n)\)（端点按单侧导数理解）。在无理点，每一项都连续，一致收敛使和也连续。在 \(r_j\)，删去第 \(j\) 项后仍为一致收敛级数，且余下的每一项都在 \(r_j\) 连续。第 \(j\) 项在这一点的振荡便不可能被其余项抵消。这也解释了为何不能直接令 \(g'=R\)。导数具介值性，而 \(R\) 的值域只含 \(0\) 和正整数的倒数。
+
+\subsection{从逐点条件得到同一区间上的估计}
+
+\textbf{整数倍上的衰减（例 1.5.8）。} 设 \(f\) 在 \([0,+\infty)\) 上连续，对每个 \(r>0\) 都有 \(f(nr)\to0\)。证明 \(f(x)\to0\)（\(x\to+\infty\)）。固定 \(\varepsilon>0\)，在完备区间 \([1,2]\) 取闭集
+
+\[
+B_k=\bigcap_{n>k}\{r\in[1,2]:|f(nr)|\le\varepsilon\}.
+\]
+
+逐点条件给出 \([1,2]=\bigcup_kB_k\)。Baire 定理给出正长区间 \([a,b]\subset B_k\)。对于每个 \(n>k\)，\(|f|\le\varepsilon\) 便在整个 \([na,nb]\) 上成立。若 \(n(b-a)\ge a\)，则 \(nb\ge(n+1)a\)，相邻区间从此搭接，盖住一条完整的尾射线。因 \(\varepsilon\) 任意，所求极限成立。这里连续性保证 \(B_k\) 闭，Baire 定理统一起始下标，区间搭接把离散信息变成对一切充分大实数的估计。
+
+\textbf{Taylor 级数的正收敛半径（例 1.5.9）。} 设 \(f\in C^\infty((a,b))\)，它在每点的 Taylor 级数均有正收敛半径。则在某个非空开子区间上，\(f\) 是实解析函数。任取正长闭区间 \(I\subset(a,b)\)，令
+
+\[
+E_m=\bigcap_{n\ge1}\{x\in I:|f^{(n)}(x)|\le n!m^n\},
+\qquad m=1,2,\ldots .
+\]
+
+各导函数连续，故各 \(E_m\) 闭。对固定的 \(x\)，正收敛半径给出 \(\limsup_{n\to\infty}(|f^{(n)}(x)|/n!)^{1/n}<\infty\)。有限个首项也有界，故 \(x\) 属于某个 \(E_m\)。由 Baire 定理，有开区间 \(J\subset I\) 及同一个 \(m\) 使 \(J\subset E_m\)。对 \(x_0,x\in J\) 作 \(N\) 阶 Taylor 展开，Lagrange 余项在两点之间某点取值，因而
+
+\[
+\left|f(x)-\sum_{j=0}^{N}\frac{f^{(j)}(x_0)}{j!}(x-x_0)^j\right|
+\le (m|x-x_0|)^{N+1}.
+\]
+
+在 \(|x-x_0|<1/m\) 且 \(x\in J\) 时，右端趋零，幂级数确实收敛到 \(f(x)\)。单点的收敛半径只控制该点的 Taylor 系数。把它提升为区间上一致的各阶导数界，才能控制展开余项。
+\section{连续延拓、Cantor 集与 Cantor 函数}
+
+教材 §1.6，印刷页 80--94。本节的两个构造都从闭集出发。距离函数把闭集变成连续函数的零点集，由此可在整个空间延拓函数。反复三等分则把一个闭集编码为无限二元数列，由此可分别计算它的势与长度，并构造连续、几乎处处导数为零的非常数函数。
+
+\subsection{距离函数与闭集分离}
+
+对非空集 \(E,E_1,E_2\subset\mathbb R^n\)，定义
+
+\[
+\rho_0^n(x,E)=\inf_{y\in E}\|x-y\|,\qquad
+\rho_0^n(E_1,E_2)=\inf_{x\in E_1}\rho_0^n(x,E_2).
+\]
+
+\(\rho_0^n(x,E)=0\) 当且仅当 \(x\) 的每个开邻域都交 \(E\)。因此当 \(E\) 闭时，其零点集恰是 \(E\)。三角不等式给出 \(\|x-z\|\leq\|x-y\|+\|y-z\|\)；对 \(z\in E\) 取下确界并交换 \(x,y\)，即得
+
+\[
+\big|\rho_0^n(x,E)-\rho_0^n(y,E)\big|\leq\|x-y\|.
+\]
+
+引理 1.6.1--1.6.3 中还有两项取到距离的结论。对非空闭集 \(F\)，取 \(y_k\in F\) 使 \(\|x-y_k\|\to\rho_0^n(x,F)\)。列 \(\{y_k\}\) 有界，取收敛子列，极限仍在 \(F\) 且实现此距离。若 \(F_1,F_2\) 非空闭且至少一个有界，令有界者为 \(F_1\)，则连续函数 \(x\mapsto\rho_0^n(x,F_2)\) 在紧集 \(F_1\) 上取得最小值，再用点到闭集的结论即可。因此两个不交的非空闭集中，只要一个有界，其距离就严格为正。若二者都无界，平面中 \(y=0\) 与 \(xy=1\) 是不交闭集，但点 \((t,0)\) 与 \((t,1/t)\) 的距离随 \(t\to+\infty\) 趋于零。
+
+给定不交非空闭集 \(A,B\)，定义
+
+\[
+h(x)=\frac{\rho_0^n(x,A)}{\rho_0^n(x,A)+\rho_0^n(x,B)}.
+\]
+
+每个点处的分母都为正。于是 \(h\) 连续，\(0\leq h\leq1\)，而 \(h^{-1}(\{0\})=A\)、\(h^{-1}(\{1\})=B\)。两开集 \(\{h<1/2\}\)、\(\{h>1/2\}\) 分别包含 \(A,B\) 且互不相交。这给出 \(\mathbb R^n\) 的正规性（定理 1.6.1），也给出了下面构造延拓所需的分离函数。
+
+\subsection{Tietze 延拓的构造}
+
+\textbf{定理 1.6.2--1.6.3}　设 \(F\subset\mathbb R^n\) 闭，\(f:F\to\mathbb R\) 连续，则有连续的 \(f^*:\mathbb R^n\to\mathbb R\) 满足 \(f^*|_F=f\)。若在 \(F\) 上有 \(|f|\leq M\) 或 \(|f|<M\)，延拓可分别保持相应的不等式。
+
+\textbf{证明}　先设 \(|f|\leq M\)。问题在于从 \(F\) 上的函数值确定整个空间的函数值，同时保证边界连续。对任一连续余项 \(r:F\to[-a,a]\)，取闭集 \(A=\{r\geq a/3\}\)、\(B=\{r\leq-a/3\}\)（\(a>0\)）。由分离函数可作连续 \(g\)，其在 \(A,B\) 上分别为 \(a/3,-a/3\)，处处位于这两值之间。具体取 \(g=(a/3)(1-2h)\)。若只有一边非空，取相应的常数；两边都空则取零。于是在整个空间 \(|g|\leq a/3\)，而在 \(F\) 上 \(|r-g|\leq2a/3\)。后一估计在 \(A,B\) 上由 \(g\) 的定值成立，在其余处由 \(|r|<a/3\) 成立。
+
+对 \(r=f\) 开始反复构造。每取出一项 \(g_j\)，便对余项使用上一估计。所得
+
+\[
+\begin{aligned}
+|g_j(x)|&\leq\frac M3\left(\frac23\right)^{j-1}
+&& (x\in\mathbb R^n),\\
+\left|f(x)-\sum_{j=1}^k g_j(x)\right|
+&\leq M\left(\frac23\right)^k && (x\in F).
+\end{aligned}
+\]
+
+由第一式，\(f^*=\sum_{j=1}^{\infty}g_j\) 在全空间一致收敛、连续，且 \(|f^*|\leq M\)；第二式保证 \(f^*|_F=f\)。\(M=0\) 时直接取零。
+
+若 \(|f|<M\)，先得满足非严格上界的延拓 \(g\)。坏点集 \(K=\{x:|g(x)|=M\}\) 闭且与 \(F\) 不交。若 \(K\) 非空，用分离函数取 \(h|_K=0\)、\(h|_F=1\)、\(0\leq h\leq1\)，则 \(hg\) 处处满足严格上界，在 \(F\) 上值不变。若 \(K\) 为空，原 \(g\) 已满足要求。最后对一般 \(f\)，将 \(\arctan f\) 严格延拓到 \((-\pi/2,\pi/2)\)，再取正切即可。空集上的函数可直接延拓为零。
+
+闭性实际控制着边界值。例如 \((0,1]\) 上的 \(f(x)=\sin(1/x)\) 虽然有界且连续，却无法跨过 \(0\) 连续延拓。整套证明中，先把两组闭水平集分开，再用一致收敛补足误差，这两处分别承担了拓扑条件与定量估计。
+
+\subsection{Cantor 疏朗三分集的四种性质}
+
+\(E\) 在 \(\mathbb R^n\) 中\textbf{稠密}指每个非空开集交 \(E\)；\(E\) \textbf{疏朗}（无处稠密）指每个非空开集内都含有一个与 \(E\) 不交的非空开集。这也等价于 \(E\) 的闭包没有内点。若 \(E\) 疏朗，则 \(E^c\) 稠密；反过来，\(E^c\) 稠密仅说明 \(E\) 无内点。取 \(E=\mathbb Q\)，\(E\) 与 \(E^c\) 都稠密。
+
+从 \([0,1]\) 开始，每次从每个余下闭区间删去中央的开三分之一。第 \(n\) 次所删的开区间记为 \(I_n^k\)，\(1\leq k\leq2^{n-1}\)；余下的 \(2^n\) 个闭区间记为 \(F_n^k\)，各长 \(3^{-n}\)。教材例 1.6.3 的集合为
+
+\[
+F_n=\bigcup_{k=1}^{2^n}F_n^k,\qquad C=\bigcap_{n=1}^{\infty}F_n.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{紧且完全。} \(0,1\in C\)，各 \(F_n\) 闭且有界，故 \(C\) 非空紧。对 \(x\in C\)，在包含它的第 \(n\) 级闭区间中，至少有一个端点异于 \(x\)，而两个端点都永远保留。由 \(3^{-n}\to0\) 知 \(x\) 是 \(C\) 的聚点。闭性又保证 \(C'\subset C\)，故 \(C=C'\)，即 \(C\) 是完全集。
+\item
+  \textbf{疏朗。} 若开区间包含 \(x\in C\)，取足够大的 \(n\)，则包含 \(x\) 的 \(F_n^k\) 整个落在该开区间中；下一次将在 \(F_n^k\) 中删去一个非空开区间。与 \(C\) 不交的开区间本身已合要求。
+\item
+  \textbf{具有连续势。} 每个 \(x\in C\) 唯一对应一串 \(\alpha_i\in\{0,1\}\)，其中 \(0\)、\(1\) 分别表示在第 \(i\) 次保留左段或右段。反过来，闭区间套给每串数字唯一一点，且 \(x=2\sum_{i\geq1}\alpha_i3^{-i}\)。因此 \(\overline{\overline C}=2^{\aleph_0}=\aleph\)。判别点是否属于 \(C\)，应问它\textbf{是否有一种}只用 \(0,2\) 的三进展开，例如 \(1/3=0.0222\cdots\)。所有各级端点合起来只可数，它们虽在 \(C\) 中稠密，却只占 \(C\) 的一部分。
+\item
+  \textbf{长度为零。} \(C\subset F_n\) 而 \(m(F_n)=2^n3^{-n}\)，故 \(m(C)=0\)。等价地，所删区间的总长度为 \(\sum_{n\geq1}2^{n-1}3^{-n}=1\)。此处的长度在第 2 章成为 Lebesgue 测度。
+\end{itemize}
+
+\textbf{疏朗性与长度可以分开控制。} 若每轮都按剩余各段的同一比例 \(a\in(0,1)\) 删去中央开区间，\(n\) 轮后总长度为 \((1-a)^n\)，仍趋于零。为保留正测度，给定待删总长度 \(0<\delta<1\)，取 \(p=\delta/(1+2\delta)<1/3\)，第 \(n\) 轮从各段删去长 \(p^n\) 的中央开区间。它们的总长度为
+
+\[
+\sum_{n=1}^{\infty}2^{n-1}p^n=\frac p{1-2p}=\delta.
+\]
+
+每一轮的删除都能进行，因为扣除前 \(n\) 轮的预定长度后总余量仍大于 \(1-\delta>0\)，且同级各段等长。余集 \(C_p\) 有 \(m(C_p)=1-\delta\)。每轮仍保留两条闭子段，且第 \(n\) 轮每段长度至多为 \(2^{-n}\)，故上述闭区间套、端点和空隙的证明仍适用，\(C_p\) 同样完全、疏朗，具有连续势。
+
+\subsection{Cantor 函数为何连续而非常数}
+
+在 \(C\) 上将上面的左右选择解释为二进位，定义
+
+\[
+\varphi\!\left(2\sum_{i=1}^{\infty}\frac{\alpha_i}{3^i}\right)
+=\sum_{i=1}^{\infty}\frac{\alpha_i}{2^i},\qquad \alpha_i\in\{0,1\}.
+\]
+
+每个二进小数都可取到，故 \(\varphi(C)=[0,1]\)。若 \(x<y\)，看两串在首个分歧位 \(k\) 的数字，左串为 \(0\)、右串为 \(1\)。右串在该位取得的优势为 \(2^{-k}\)，左串余项最多补回 \(\sum_{i>k}2^{-i}=2^{-k}\)，故 \(\varphi(x)\leq\varphi(y)\)。等号恰可由左串随后全 \(1\)、右串随后全 \(0\) 取得。特别地，挖去区间的两个端点具有相同函数值，例如 \(\varphi(1/3)=\varphi(2/3)=1/2\)。教材第 87 页证法 2 的末步须辨明端点。与 \(C\) 一一对应的是\textbf{二元数列}，取成二进小数实值后会识别上述两串。
+
+按例 1.6.4 令
+
+\[
+\Phi(x)=\sup\{\varphi(y):y\in C,\ y\leq x\},\qquad 0\leq x\leq1.
+\]
+
+\(\Phi\) 单调不减，在 \(C\) 上等于 \(\varphi\)，在每条被删开区间上等于其端点的共同值。因为 \(\Phi(C)=[0,1]\)，单调函数可能出现的跳跃均被排除。若左右极限之间有空隙，则除 \(\Phi(x)\) 外该空隙的任何数都不可能取到；端点处同理。故 \(\Phi\) 连续。它在 \([0,1]-C\) 上局部为常数，而该集的长度为 \(1\)，于是 \(\Phi'=0\) 几乎处处，但 \(\Phi(1)-\Phi(0)=1\)。到第 3 章比较变上限积分与绝对连续函数时，这给出等式 \(\Phi(1)-\Phi(0)=\int_0^1\Phi'(x)\,dx\) 失效的具体原因。
+
+\subsection{凝点与实直线上闭集的势}
+
+\textbf{定理 1.6.4}　\(\mathbb R^1\) 中每个非空完全集 \(F\) 都有连续势。证明的关键是把 Cantor 集构造中的``左右两支''搬到 \(F\) 内。先取一个内部交 \(F\) 的有界闭区间。因 \(F\) 无孤立点，其内部可取 \(F\) 的两个不同点，分别用更小的、互不相交的闭区间围住，使两点都在相应区间的内部。逐层重复，要求第 \(n\) 层的区间直径小于 \(2^{-n}\)，且子区间包含在母区间内部。每一无限二元串给出一列闭区间套，也给出唯一极限点；每层都含 \(F\) 的点，\(F\) 又闭，故极限在 \(F\) 中。不同串在最初分支处就落进互不相交的区间，所得点不同。于是 \(2^{\aleph_0}\leq\overline{\overline F}\leq\overline{\overline{\mathbb R^1}}=2^{\aleph_0}\)。
+
+对 \(E\subset\mathbb R^1\)，称 \(x\) 为 \(E\) 的\textbf{凝点}，若它的每个开邻域含 \(E\) 中不可数多个点；定义允许 \(x\notin E\)。凝点必为聚点，反向不成立，例如 \(0\) 是 \(\{1/n:n\in\mathbb N\}\) 的聚点，却不是凝点。
+
+\textbf{定理 1.6.5（凝点与 Cantor--Bendixson 分解）}　记 \(P\) 为 \(E\) 的凝点全体。取所有与 \(E\) 至多可数相交的有理端点开区间，并记其并为 \(U\)。有理端点区间构成可数基，所以 \(P=\mathbb R^1-U\) 闭，且 \(E-P=E\cap U\) 至多可数。若 \(E\) 不可数，\(E\cap P\) 便不可数。对 \(x\in P\)，每个邻域含 \(E\) 的不可数多个点，去掉 \(E-P\) 后仍有不可数多个 \(P\) 中的点。故 \(x\) 也是 \(P\) 的凝点，特别地 \(P\) 无孤立点。这样就同时得到了凝点的存在性及 \(P\) 的完全性。
+
+当 \(E\) 还是闭集时，凝点均为聚点，故 \(P\subset E\)。因此每个不可数闭集都可分解成不交并 \(E=P\cup D\)，其中 \(P\) 为非空完全集，\(D=E-P\) 至多可数。由定理 1.6.4，实直线上的闭集只能具有有限势、可数势或连续势。
+
+两个直接检验有助于使用这套方法。其一，若 \(E\subset\mathbb R^n\) 的导集 \(E'\) 至多可数，则 \(E\) 至多可数。对每个 \(x\in E-E'\) 选一个与 \(E\) 只交于 \(x\) 的有理球，不同 \(x\) 对应不同球；另一部分包含在 \(E'\) 中。其二，直线上非空至多可数闭集必有孤立点，否则它就是非空完全集，与定理 1.6.4 矛盾。第一个论证使用可数基，第二个还用到了闭性；\(\mathbb Q\) 表明闭性不可少。
+\end{document}
