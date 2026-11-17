@@ -1,3 +1,4 @@
+import {ComplexFunctionsDirectory,complexFunctionsUrl,complexFunctionsTitle} from '../src/ComplexFunctionsDirectory';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {cp,mkdir,writeFile,readFile,rm,readdir,stat,rename} from 'node:fs/promises';
@@ -87,6 +88,7 @@ async function redirect(route:string,target:string){
 await page('','学习目录',<Home items={items}/>);
 await page('math/','数学',<MathOverview items={items}/>);
 await page(realFunctionsUrl.slice(1),realFunctionsTitle,<RealFunctionsDirectory items={items}/>);
+await page(complexFunctionsUrl.slice(1),complexFunctionsTitle,<ComplexFunctionsDirectory items={items}/>);
 await page(ustcAnalysisUrl.slice(1),ustcAnalysisTitle,<UstcAnalysisDirectory items={items}/>);
 for(const [section,title]of Object.entries(sections))await page(section+'/',title,<Collection section={section as Section} items={items.filter(e=>e.section===section)}/>);
 for(const collection of populatedCollections(items)){
