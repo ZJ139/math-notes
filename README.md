@@ -4,6 +4,10 @@
 
 部署目标：https://zj139.github.io/math-notes/
 
+## 复变函数讲义
+
+数学板块的 [复变函数](https://zj139.github.io/math-notes/math/complex-functions/) 栏目依史济怀、刘太顺教材建立九章四十八节目录。已完成第一章七节讲义与 63 道原题，定理、性质附证明；后续章节明确标记待编。讲义 PDF 由 `python scripts/build-complex-functions-pdf.py` 从同一份 Markdown 生成，需要 Pandoc、XeLaTeX 与 xeCJK；排版参数继承已确定的实变函数讲义模板。
+
 ## 上传资料
 
 总容量 **50 GB**，单个文件统一不超过 **500 MB**。单位采用十进制：1 MB = 1,000,000 字节，1 GB = 1,000,000,000 字节；恰好达到上限允许上传。
