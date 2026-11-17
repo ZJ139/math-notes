@@ -1,0 +1,1052 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 实变函数论 · 第三章}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={实变函数讲义：第三章},pdfauthor={Vincent Arqain},pdfsubject={积分理论}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+
+\usepackage{tabularx,booktabs,array}
+\renewcommand{\thesection}{3.\arabic{section}}
+\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 实变函数讲义\par}
+\vspace{8pt}{\large 第三章\quad 积分理论\par}
+\vspace{6pt}{\small 依徐森林、薛春华《实变函数论》\quad 教材第 174—379 页\par}
+\end{center}
+\vspace{8pt}
+\noindent\textbf{本章的问题}\quad 从可测集的测度如何得到函数的积分？先用简单函数逼近建立积分，再辨认可以交换的极限、求和与积分。最后考察变上限积分的导数，以及哪一类函数能由导数还原。章后收录 110 道节后练习和 63 道复习题。
+\tableofcontents
+
+\section{可测空间、可测函数}
+对应教材 §3.1，第 174---184 页。设温度由实函数 \(f\) 描述。要谈温度超过某个阈值的区域有多大，先得知道这个区域属于测度的定义域。教材用集合 \(E(c<f)=\{x\in E\mid c<f(x)\}\) 表达这个要求；本节只用集类的封闭性。
+
+\subsection*{用有理水平集判别可测性}\label{ux7528ux6709ux7406ux6c34ux5e73ux96c6ux5224ux522bux53efux6d4bux6027}
+
+设 \(\mathcal R\) 是 \(X\) 上的 \(\sigma\) 环，\(X=\bigcup_{A\in\mathcal R}A\)，称 \((X,\mathcal R)\) 为可测空间。\(X\) 本身可能不在 \(\mathcal R\) 中。有限实函数 \(f:E\to\mathbb R\) 称为可测函数，如果每个 \(E(c<f)\) 都在 \(\mathcal R\) 中。于是 \(E=\bigcup_{n\ge1}E(-n<f)\in\mathcal R\)。以下的补集均相对于 \(E\) 取。
+
+\textbf{判别定理（3.1.1）}　只需检验有理阈值。因为
+
+\[
+E(c<f)=\bigcup_{\substack{r\in\mathbb Q\\r>c}}E(r<f),\qquad
+E(c\le f)=\bigcap_{k\ge1}E(c-1/k<f).
+\]
+
+取相对补即得另外两个方向的不等号。令 \(\mathcal D=\{B\subset\mathbb R\mid f^{-1}(B)\in\mathcal R\}\)。它包含全直线，对补与可数并封闭，故包含由开射线生成的全部 Borel 集。于是可测性也等价于每个 Borel 集的原像可测。
+
+这给出两条常用推论。可测函数限制在可测子集上仍可测，可数个可测块上的可测函数也可拼接。在任意可测空间上，可测 \(f\) 与 Borel 可测的外函数 \(h\) 的复合 \(h\circ f\) 可测，理由是对任一开集 \(G\)，其原像为 \(f^{-1}(h^{-1}(G))\)。
+
+\subsection*{运算与可数极限}\label{ux8fd0ux7b97ux4e0eux53efux6570ux6781ux9650}
+
+比较两个函数时，用有理数把两个实数隔开：
+
+\[
+E(f<g)=\bigcup_{r\in\mathbb Q}\bigl(E(f<r)\cap E(r<g)\bigr).
+\]
+
+将 \(g\) 换为 \(c-g\) 可处理和；平方是连续函数，利用 \(4fg=(f+g)^2-(f-g)^2\) 可处理积。在分母非零的可测集上可作商。对广义实函数，先划出取 \(\pm\infty\) 的水平集，再在运算有定义的范围内使用这些结论。
+
+若 \(f_n\) 可测，则 \(E(c<\sup_n f_n)=\bigcup_n E(c<f_n)\)。取负号得下确界也可测；再用 \(\varlimsup f_n=\inf_k\sup_{n\ge k}f_n\) 得上极限可测，同理得下极限。因而有限函数列的收敛点集可由两个极限相等且有限来刻画。这里每个运算都是可数的。任取不可测集 \(A\subset[0,1]\)，其单点特征函数族的上确界恰为 \(\chi_A\)，说明指标集的大小不能随意放宽。
+
+\subsection*{把函数值分层}\label{ux628aux51fdux6570ux503cux5206ux5c42}
+
+\textbf{简单函数逼近（3.1.5、3.1.6）}　对非负广义可测 \(f\)，在 \(f<n\) 处令 \(s_n=2^{-n}\lfloor 2^nf\rfloor\)，在 \(f\ge n\) 处令 \(s_n=n\)。每个 \(s_n\) 只取有限多个值，原像都是可测层，故为可测集特征函数的有限线性组合。二进网格逐次加细，截断高度逐次增加，故 \(s_n\uparrow f\)。若 \(f\) 有界，取 \(n>\sup f\)，全域误差小于 \(2^{-n}\)。对有正负号的函数分别逼近 \(f^+=\max(f,0)\) 与 \(f^-=\max(-f,0)\) 即可。
+
+\textbf{Borel 代表元（3.1.7）}　直线上每个 Lebesgue 可测的有限实函数在其定义域上几乎处处等于一个全直线的 Borel 函数。把上述简单函数的每个可测层换成相差零集的 Borel 集，得到 Borel 简单函数列；在可数个例外零集的并以外，所有近似逐项相等。取极限，在未收敛到有限值之处置零，便得到所需代表元。此处只保证几乎处处相等：取 Lebesgue 零测 Cantor 集的非 Borel 子集，其特征函数就是两类可测性不同的实例。
+
+\section{测度空间、可测函数的收敛性、Lebesgue 可测函数的结构}
+对应教材 §3.2，第 185---208 页。在 \((X,\mathcal R)\) 上指定测度 \(\mu\)，即得测度空间 \((X,\mathcal R,\mu)\)。以下讨论 \(E\in\mathcal R\)，函数取有限值，或在可测零集上重定义后取有限值。说一个命题在 \(E\) 上几乎处处成立，意为所有例外点包含在某个 \(\mu\) 零测集内。若测度完全，在零测集的任意子集上改值仍保可测性；对未完全的空间，须检验改值后的代表元是否可测。
+
+\subsection*{两种收敛看的是不同的集合}\label{ux4e24ux79cdux6536ux655bux770bux7684ux662fux4e0dux540cux7684ux96c6ux5408}
+
+\(f_n\to f\) 几乎处处，指存在一个零集，删去后每个点上的数列都收敛。依测度收敛记为 \(f_n\underset{\mu}{\Rightarrow}f\)，指每个 \(\varepsilon>0\) 都满足 \(\mu(E(|f_n-f|>\varepsilon))\to0\)。前者要在同一点控制所有足够靠后的项，后者逐项测量误差集。
+
+若 \(\mu(E)<\infty\)，几乎处处收敛蕴含依测度收敛。事实上，令 \(A_N=\bigcup_{n\ge N}E(|f_n-f|>\varepsilon)\)，则 \(A_N\) 递减，交集是零集，故 \(\mu(A_N)\downarrow0\)。在 \(\mathbb R\) 上，\(f_n=\chi_{[n,n+1)}\) 逐点趋零，每项的误差集却长为 \(1\)。反过来，在 \([0,1)\) 上依次枚举每一层二等分半开小区间，取其特征函数，单项支集的长度趋零，但每点在每一层都取到一次 \(1\)，也取到 \(0\)。
+
+\subsection*{从依测度基本列抽出几乎处处收敛子列}\label{ux4eceux4f9dux6d4bux5ea6ux57faux672cux5217ux62bdux51faux51e0ux4e4eux5904ux5904ux6536ux655bux5b50ux5217}
+
+\textbf{Riesz 构造（3.2.1、3.2.3）}　称 \(\{f_n\}\) 为依测度基本列，如果对任意 \(\eta,\delta>0\)，当 \(p,q\) 充分大时，\(\mu(E(|f_p-f_q|>\eta))<\delta\)。依测度收敛显然蕴含此条件。反过来，递选 \(n_j\)，使
+
+\[
+B_j=E(|f_{n_{j+1}}-f_{n_j}|>2^{-j}),\qquad \mu(B_j)<2^{-j}.
+\]
+
+尾并 \(H_k=\bigcup_{j\ge k}B_j\) 的测度至多为 \(\sum_{j\ge k}2^{-j}\)。在 \(E-H_k\) 上，从第 \(k\) 项起的相邻差由可求和级数控制，故子列一致 Cauchy。在 \(\bigcap_k H_k\) 外取逐点极限，在这个可测零集上置零，就得可测极限 \(f\)。在 \(E-H_k\) 上 \(|f-f_{n_k}|\le\sum_{j\ge k}2^{-j}\)，故子列还依测度收敛于 \(f\)。三角不等式把子列结论传给整列。这个证明对 \(\mu(E)=\infty\) 也有效。
+
+依测度极限在几乎处处意义下唯一：\(E(|f-g|>2\eta)\) 包含于相对于 \(f,g\) 的两个误差集的并。让 \(n\) 趋于无穷，再取 \(\eta=1/j\) 即得。特别地，一列依测度收敛的函数的每个子列，都有更深的子列几乎处处收敛于同一极限。在有限测度集上这还是充要条件：若整列不依测度收敛，有一个子列的某个误差集测度始终大于固定正数，与其子子列几乎处处收敛矛盾。
+
+\subsection*{Egorov 定理与 Lusin 定理}\label{egorov-ux5b9aux7406ux4e0e-lusin-ux5b9aux7406}
+
+\textbf{Egorov 定理（3.2.7）}　若 \(\mu(E)<\infty\) 且 \(f_n\to f\) 几乎处处，则给定 \(\delta>0\)，存在可测 \(F\subset E\)，使 \(\mu(E-F)<\delta\) 且 \(f_n\) 在 \(F\) 上一致收敛于 \(f\)。
+
+\textbf{证明}　对每个 \(j\)，用上一段的尾并估计，选 \(N_j\) 使 \(\mu(\bigcup_{n\ge N_j}E(|f_n-f|>1/j))<\delta 2^{-j}\)。把这些尾并全部删掉。在余集上，只要 \(n\ge N_j\)，误差就对所有点同时不超过 \(1/j\)。这个选择使同一个 \(F\) 适用于全部精度。
+
+\textbf{Lusin 定理（3.2.10、3.2.11）}　若 \(E\subset\mathbb R^d\) 为 Lebesgue 可测集，\(f\) 可测且几乎处处有限，则给定 \(\delta>0\) 可取闭集 \(F\subset E\)，使 \(m(E-F)<\delta\)，且限制 \(f|_F\) 连续。
+
+\textbf{证明}　在一个有界可测块内，先用内正则性取得紧子集，再删去函数无限的例外集与一个很小的高值尾集。对余下有界函数用 §3.1 的一致简单逼近。每个简单函数的有限个水平集都可从内部用紧集逼近，使第 \(j\) 次总共损失小于 \(\delta 2^{-j-2}\)。在这些有限个不交紧集之并上，第 \(j\) 个简单函数连续；取所有这些并的交，全部简单函数都连续，其一致极限也连续。一般的 \(E\) 按半开单位立方体分块，把误差可求和地分配给各块。每块留下紧集，这族紧集局部有限且两两不交，故其并闭，在其并上的限制连续。
+
+有限实值时，由闭集上的连续延拓还可得到全空间连续函数，在 \(F\) 上与 \(f\) 相等。若 \(E\) 有界，可再乘以在 \(E\) 上等于 \(1\) 的紧支连续截断函数。注意 \(f|_F\) 连续只比较 \(F\) 中的点；Dirichlet 函数在所有无理点上限制为常数，却在整个区间上处处不连续。
+
+\section{积分理论}
+对应教材 §3.3，第 208---228 页。测度给每个可测集指定大小。若一个函数在若干可测块上各取常值，积分应是各块的``高度乘测度''之和。下面逐次放开对高度、取值个数和符号的限制。记 \(\mathcal L(E)\) 为在 \(E\) 上可积的函数类，\(\chi_A\) 为 \(A\) 的特征函数。
+
+\subsection*{简单函数与非负积分}\label{ux7b80ux5355ux51fdux6570ux4e0eux975eux8d1fux79efux5206}
+
+设 \(h=\sum_{i=1}^p c_i\chi_{A_i}\)，其中 \(A_i\) 可测、两两不交，\(c_i\ge0\)，令
+
+\[
+(L)\int_E h\,d\mu=\sum_{i=1}^p c_i\mu(E\cap A_i),\qquad 0\cdot\infty=0.
+\]
+
+两种表示可用所有块的两两相交共同细分，有限可加性表明数值与表示无关。同一次细分也给出简单函数的单调性与正线性。一般非负广义可测 \(f\) 的积分，是所有 \(0\le h\le f\) 的简单函数积分的上确界，允许为 \(+\infty\)。
+
+\textbf{Levi 递增积分定理（3.3.4）}　若 \(0\le f_n\uparrow f\)，则 \(\int_E f_n\,d\mu\uparrow\int_E f\,d\mu\)。
+
+\textbf{证明}　以 \(I\) 记左端极限，单调性给出 \(I\le\int_E f\)。任取 \(0\le h\le f\) 为简单函数，\(0<c<1\)。令 \(A_n=E(f_n\ge ch)\)。若 \(h(x)>0\)，则 \(f(x)\ge h(x)>ch(x)\)；若 \(h(x)=0\)，则不等式从首项成立。故 \(A_n\uparrow E\)。按 \(h\) 的每个水平集用测度的下连续性可得
+
+\[
+I\ge\lim_n c\int_{A_n}h\,d\mu=c\int_E h\,d\mu.
+\]
+
+先令 \(c\uparrow1\)，再对 \(h\) 取上确界。引入 \(c\) 解决的是 \(f_n\) 可能始终达不到极限高度的问题。
+
+由此可用任一递增简单逼近计算非负积分。分别逼近 \(f,g\) 再相加，导出正线性；对非负级数的部分和用同一定理，得到逐项积分。令各项为 \(f\chi_{E_k}\)，就得到 \(A\mapsto\int_A f\,d\mu\) 的可数可加性。若 \(f\ge0\)，则 \(\int_E f=0\) 等价于 \(f=0\) 几乎处处：由 \(\mu(E(f>1/k))/k\le\int_E f\) 及可数并即可验证。若 \(\int_E f<\infty\)，另由 \(t\mu(E(f>t))\le\int_E f\) 得知 \(f\) 几乎处处有限。
+
+\subsection*{带符号函数与积分绝对连续性}\label{ux5e26ux7b26ux53f7ux51fdux6570ux4e0eux79efux5206ux7eddux5bf9ux8fdeux7eedux6027}
+
+写 \(f=f^+-f^-\)，\(|f|=f^++f^-\)。当两部分的积分均有限时，称 \(f\) 可积，此时 \(\int_E f=\int_E f^+-\int_E f^-\)。这等价于 \(\int_E|f|<\infty\)。非负部分的线性立即给出可积函数的线性，例如用 \((f+g)^++f^-+g^-=(f+g)^-+f^++g^+\) 即可避免对正负部作错误分配。由 \(-|f|\le f\le|f|\) 得 \(|\int_E f|\le\int_E|f|\)。
+
+\textbf{积分的绝对连续性（3.3.15）}　若 \(f\in\mathcal L(E)\)，给定 \(\varepsilon>0\)，存在 \(\delta>0\)，使每个可测 \(A\subset E\) 满足 \(\mu(A)<\delta\) 时都有 \(\int_A|f|<\varepsilon\)。由递增定理，选 \(K>0\) 使 \(\int_{E(|f|>K)}|f|<\varepsilon/2\)，于是
+
+\[
+\int_A |f|\,d\mu\le K\mu(A)+\int_{E(|f|>K)}|f|\,d\mu.
+\]
+
+取 \(\delta=\varepsilon/(2K)\) 即得。另有有限测度集 \(B\subset E\) 使 \(\int_{E-B}|f|<\varepsilon\)：取 \(B=E(|f|>1/n)\)，其测度至多为 \(n\int_E|f|\)，再令 \(n\) 增大。这分别控制小集上的积分和无穷远处的尾量。
+
+\subsection*{函数值分层与平均收敛}\label{ux51fdux6570ux503cux5206ux5c42ux4e0eux5e73ux5747ux6536ux655b}
+
+在 \(\mu(E)<\infty\) 时，以步长至多 \(\delta\) 的网格 \(0=y_0<y_1<\cdots\uparrow\infty\) 划分值域；令 \(E_k=E(y_k\le f<y_{k+1})\)。对几乎处处有限的非负 \(f\)，下和 \(\sum y_k\mu(E_k)\) 与上和 \(\sum y_{k+1}\mu(E_k)\) 夹住积分，逐层宽度总贡献不超过 \(\delta\mu(E)\)。因此下和有限当且仅当可积；令 \(\delta\downarrow0\) 可由这些和恢复积分（3.3.11）。有限测度假设恰在对总误差的估计中使用。
+
+平均收敛指 \(\int_E|f_n-f|\,d\mu\to0\)。对每个 \(\eta>0\)，
+
+\[
+\eta\,\mu(E(|f_n-f|>\eta))\le\int_E|f_n-f|\,d\mu,
+\]
+
+故平均收敛蕴含依测度收敛（3.3.17）。在 \((0,1)\) 上令 \(f_n=n\chi_{(0,1/n)}\)，则 \(f_n\) 逐点也依测度趋零，而积分恒等于 \(1\)。高度增长正好抵消了支集长度的下降。
+
+\section{积分收敛定理（Lebesgue 控制收敛定理、Levi 引理、Fatou 引理）}
+对应教材 §3.4，第 228---244 页。收敛定理回答一个具体问题：逐点或依测度收敛时，积分可能从哪里损失？非负性只保证一个方向的不等式，单调性或一个共同的可积控制函数才能把它提升为等式。以下各函数均可测，积分在同一集合 \(E\) 上进行。
+
+\subsection*{Fatou 引理与 Levi 引理}\label{fatou-ux5f15ux7406ux4e0e-levi-ux5f15ux7406}
+
+若 \(f_n\ge0\)，令 \(h_k=\inf_{n\ge k}f_n\)。则 \(h_k\uparrow\varliminf f_n\)，且当 \(n\ge k\) 时有 \(h_k\le f_n\)。由递增积分定理，
+
+\[
+\int_E\varliminf_n f_n\,d\mu
+=\lim_k\int_E h_k\,d\mu
+\le\lim_k\inf_{n\ge k}\int_E f_n\,d\mu.
+\]
+
+若各项都大于同一个可积函数 \(g\)，对 \(f_n-g\) 应用上式即可。相应地，若 \(f_n\le G\) 且 \(G\) 可积，对 \(G-f_n\) 应用上式得到上极限的反向不等式。没有共同的可积下界时，负峰可在极小的集合上带走固定的积分。
+
+\textbf{Levi 引理}　设 \(f_n\in\mathcal L(E)\) 且 \(f_n\uparrow f\) 几乎处处。若 \(\sup_n\int_E f_n\,d\mu<\infty\)，则 \(f\) 几乎处处有限、可积，且 \(\int_E|f-f_n|\,d\mu\to0\)。事实上 \(f_n-f_1\ge0\)，其极限的积分等于 \(\lim_n\int_E(f_n-f_1)\,d\mu<\infty\)。加回 \(f_1\) 得到结论。若从一开始各项非负，递增积分等式在极限为无穷时也成立。
+
+\subsection*{Lebesgue 控制收敛定理}\label{lebesgue-ux63a7ux5236ux6536ux655bux5b9aux7406}
+
+设 \(|f_n|\le F\) 几乎处处，\(F\in\mathcal L(E)\)。若 \(f_n\to f\) 几乎处处，则 \(|f|\le F\) 几乎处处，且
+
+\[
+\int_E|f_n-f|\,d\mu\longrightarrow0,\qquad
+\int_E f_n\,d\mu\longrightarrow\int_E f\,d\mu.
+\]
+
+\textbf{证明}　对非负函数 \(2F-|f_n-f|\) 用 Fatou 引理，得 \(\int_E2F\le\int_E2F-\varlimsup_n\int_E|f_n-f|\)。由于 \(\int_E2F\) 有限，可以相消，第一式成立。第二式从积分的三角不等式得到。
+
+教材的依测度收敛形式同样成立，毋须假定 \(\mu(E)<\infty\)。由 Riesz 子列定理，先抽取一个几乎处处收敛的子列，得 \(|f|\le F\) 几乎处处。若平均收敛失败，必有一子列使误差积分均大于某个 \(\varepsilon>0\)；对这条子列再用 Riesz 定理，与刚证的几乎处处收敛形式矛盾。这里不能把依测度收敛直接当作原列逐点收敛。
+
+在 \(\mathbb R\) 上取 \(f_n=\chi_{[n,n+1]}\)，则 \(f_n\to0\) 逐点、\(|f_n|\le1\)，而积分恒为 \(1\)。此处统一界 \(1\) 的积分无穷。§3.3 的窄高峰说明即使定义域有限，各项分别可积也不能替代共同控制。
+
+\subsection*{逐项积分与含参积分}\label{ux9010ux9879ux79efux5206ux4e0eux542bux53c2ux79efux5206}
+
+若 \(\sum_n\int_E|u_n|\,d\mu<\infty\)，则由非负项逐项积分，\(F=\sum_n|u_n|\) 可积，因而级数几乎处处绝对收敛。各部分和由 \(F\) 控制，可交换求和与积分。构造控制函数时应估计绝对值，这样有限部分和的抵消不影响结论。
+
+设 \(I(t)=\int_E u(x,t)\,d\mu(x)\)。若几乎每个 \(x\) 处 \(u(x,t)\) 在 \(t_0\) 连续，且在 \(t_0\) 的一个邻域有共同的可积界，则沿每个序列 \(t_n\to t_0\) 应用控制收敛，得 \(I\) 在 \(t_0\) 连续。若几乎每个 \(x\) 处对 \(t\) 在该邻域可微，并有 \(|\partial_tu(x,t)|\le F(x)\)，又 \(u(\cdot,t_0)\) 可积，则差商由中值定理受 \(F\) 控制。对差商用同一定理便有 \(I'(t_0)=\int_E\partial_tu(x,t_0)\,d\mu\)。控制条件必须作用在通向极限的全过程。
+
+\textbf{复习题的零项}　复习题 3 第 27 题对所有整数 \(n\) 求和，\(n=0\) 时得到常数 \(f(0)\)。在整条直线上这一项可积须有 \(f(0)=0\)，也可把求和范围改为非零整数。余项满足 \(\int_{\mathbb R}|f(n^2x)|\,dx=n^{-2}\|f\|_1\)，正好符合上面的绝对可积级数判据。
+
+\section{Lebesgue 可积函数与连续函数、Lebesgue 积分与 Riemann 积分}
+对应教材 §3.5，第 244---256 页。Lebesgue 积分把几乎处处相等的函数看成同一个积分对象。要把连续函数上已知的结论推到一般可积函数，合适的误差是 \(\|f-h\|_1=\int|f-h|\)。Riemann 可积性还要求控制每个小区间的振幅，因而对零集上的改值更敏感。
+
+\subsection*{用连续函数和阶梯函数作平均逼近}\label{ux7528ux8fdeux7eedux51fdux6570ux548cux9636ux68afux51fdux6570ux4f5cux5e73ux5747ux903cux8fd1}
+
+对 \(f\in\mathcal L(\mathbb R^n)\) 及 \(\varepsilon>0\)，存在紧支撑连续函数 \(\varphi\) 使 \(\|f-\varphi\|_1<\varepsilon\)。先截去大球外的尾量及大函数值，再按值域等距分层，就把问题化为逼近有界可测集 \(A\) 的特征函数。由测度正则性取紧集 \(K\subset A\) 和有界开集 \(G\supset A\)，使 \(m(G-K)<\eta\)。当 \(K\) 非空时令
+
+\[
+u(x)=\frac{d(x,G^c)}{d(x,K)+d(x,G^c)}.
+\]
+
+分母处处正，\(0\le u\le1\)，\(u\) 在 \(K\) 上等于 \(1\)，在 \(G^c\) 上等于 \(0\)，故 \(\|\chi_A-u\|_1<\eta\)；空紧集情形取零函数即可。对简单函数的有限多个系数分别分配误差即得结论。在有界区间上，连续函数一致连续，在足够细的分割上取常值即可一致逼近；结合前述估计便得到阶梯函数的平均逼近。
+
+\textbf{平移连续性}　若 \(f\in\mathcal L(\mathbb R^n)\)，则 \(\int|f(x+h)-f(x)|\,dx\to0\)（\(h\to0\)）。以紧支撑连续函数 \(\varphi\) 代替 \(f\)。两项替换误差的积分各等于 \(\|f-\varphi\|_1\)，中间一项由一致连续性及一个固定有界支集趋零。这一结论将在 §3.8 用来识别变上限积分的导数。
+
+\subsection*{Riemann 可积的充要条件}\label{riemann-ux53efux79efux7684ux5145ux8981ux6761ux4ef6}
+
+\textbf{Lebesgue 判别准则}　闭区间 \([a,b]\) 上的有界实函数 \(f\) 为 Riemann 可积，当且仅当其不连续点集 \(D_f\) 是 Lebesgue 零集；这时两种积分相等。
+
+\textbf{证明}　在逐次二等分的分割上，取每小区间上确界与下确界得阶梯函数 \(u_n,l_n\)。略去所有分点后，\(u_n\downarrow u\)、\(l_n\uparrow l\)，且 \(u(x)-l(x)\) 是 \(f\) 在 \(x\) 的振幅。两函数有共同常数界，在有限区间上可用控制收敛。当 \(D_f\) 是零集时，\(\int(u_n-l_n)\to0\)，即 Darboux 上下和可任意接近；夹逼还说明两种积分相等。反之，若 \(f\) 为 Riemann 可积，任取一个使上下和之差小于 \(\varepsilon\) 的分割。二等分网格中碰到这个分割的内分点的小区间总长趋零，其余小区间可按原分割归组；故二等分的上下和之差也趋零。于是 \(\int(u-l)=0\)，振幅几乎处处为零。
+
+特别地，\(\chi_A\) 的不连续点恰为 \(A\) 的相对边界。\(\chi_{\mathbb Q\cap[0,1]}\) 几乎处处等于零而处处不连续，说明改变零集上的函数值可能破坏 Riemann 可积性。
+
+\subsection*{反常积分与绝对可积}\label{ux53cdux5e38ux79efux5206ux4e0eux7eddux5bf9ux53efux79ef}
+
+若 \(f\) 在每个 \([a,T]\) 上 Riemann 可积，则 \(f\in\mathcal L([a,\infty))\) 等价于 \(\sup_T\int_a^T|f|<\infty\)。对 \(|f|\chi_{[a,T]}\) 用递增积分定理即得；此时对正、负部分分别取极限，反常积分等于 Lebesgue 积分。仅条件收敛时不能相减两个无穷积分。例如 \(\int_1^\infty(\sin x)/x\,dx\) 由分部积分收敛，但在每个正弦半波的中间部分，\(|\sin x|\) 有正下界，各段的绝对积分之和支配发散的调和级数。
+
+\subsection*{振荡平均与原题校注}\label{ux632fux8361ux5e73ux5747ux4e0eux539fux9898ux6821ux6ce8}
+
+若 \(g\) 有界、周期为 \(T\) 且在一周期可积，记 \(M=T^{-1}\int_0^Tg\)。\(g-M\) 的变上限积分是有界周期函数，因而对每个固定区间 \([u,v]\)，\(\int_u^v(g(nx)-M)\,dx=O(1/n)\)。先对阶梯函数 \(s\) 逐区间求和，再用 \(\|g-M\|_\infty\|f-s\|_1\) 控制替换误差，便得
+
+\[
+\lim_{n\to\infty}\int_a^b f(x)g(nx)\,dx=M\int_a^b f(x)\,dx
+\quad(f\in\mathcal L([a,b])).
+\]
+
+教材第 255---256 页练习 3.5 第 6 题印出的两个右端都缺少系数 \(2/\pi\)。取 \(f=1\)、\([a,b]=[0,\pi]\) 即可检验：左端恒为 \(2\)。因为 \(|\sin x|\) 与 \(|\cos x|\) 在一个周期上的平均值均为 \(2/\pi\)，两式修正后均由上面的逼近论证给出。
+
+\section{单调函数、有界变差函数、Vitali 覆盖定理}
+对应教材 §3.6，第 256---283 页。单调函数可以有跳跃，也可以把全部增长集中在零集附近。要从它的区间增量中分离出导数，先要把逐点存在的任意小区间，选成一组能够相加的不交区间。
+
+\subsection*{Vitali 覆盖定理}\label{vitali-ux8986ux76d6ux5b9aux7406}
+
+若对每个 \(x\in E\) 和每个 \(\delta>0\)，一族闭区间中都有包含 \(x\)、长度介于 \(0\) 与 \(\delta\) 之间的区间，称它在 \(E\) 上构成 Vitali 覆盖。若 \(m^*(E)<\infty\)，则可从中选出有限或可数个两两不交的区间 \(I_j\)，使 \(m^*(E-\bigcup_j I_j)=0\)。
+
+\textbf{证明}　取有限测度开集 \(G\supset E\)，只保留含于 \(G\) 的区间。在与已选各区间不交的候选中，选长度超过剩余长度上确界一半的 \(I_j\)。若过程终止，有限个闭区间之外的任何遗漏点都仍有可选区间，故已盖住 \(E\)。否则 \(\sum_j|I_j|\le m(G)\)，特别地 \(|I_j|\to0\)。对任一未被盖住的 \(x\) 及任一 \(N\)，取含 \(x\) 的小区间 \(J\) 避开前 \(N\) 项。必有第一个与 \(J\) 相交的 \(I_j\)；否则 \(J\) 将始终可选，与 \(|I_j|\to0\) 矛盾。由选择规则 \(|J|\le2|I_j|\)，故 \(x\) 落在与 \(I_j\) 同中心、长度为其五倍的区间内。遗漏集外测度不超过 \(5\sum_{j>N}|I_j|\)，令 \(N\to\infty\) 即得。
+
+\subsection*{单调函数几乎处处有有限导数}\label{ux5355ux8c03ux51fdux6570ux51e0ux4e4eux5904ux5904ux6709ux6709ux9650ux5bfcux6570}
+
+对递增函数 \(f\) 在内点取左右差商的上、下极限，得到四个 Dini 导数。以下记全部差商的上、下极限为 \(U,L\)，均非负。若 \(U=L<\infty\)，则通常的双侧导数存在。
+
+\textbf{证明}　对 \(M>0\)，在 \(\{U>M\}\) 的每点，以该点为端点、斜率大于 \(M\) 的区间构成 Vitali 覆盖。选出不交区间，由单调性，各区间增量之和不超过 \(f(b)-f(a)\)，故 \(m^*(U>M)\le(f(b)-f(a))/M\)。于是 \(U=\infty\) 的点集为零集。
+
+取有理数 \(0<u<v\)，令 \(A=\{L<u<v<U\}\)。在包含 \(A\) 的开集 \(G\) 内，先用斜率小于 \(u\) 的区间作 Vitali 选取，记为 \(I_j\)。除去零集与所选区间的端点，\(A\) 已落入各 \(I_j\) 的内部。在每个 \(I_j\) 内再用斜率大于 \(v\) 的区间覆盖其中的 \(A\) 并选取。这第二层区间的增量总和不超过第一层对应区间的增量 \(\Delta f(I_j)\)。故
+
+\[
+v\,m^*(A)\le\sum_j\Delta f(I_j)\le u\sum_j|I_j|\le u\,m(G).
+\]
+
+对 \(G\) 取下确界，由 \(v>u\) 得 \(m^*(A)=0\)。所有有理数对只构成可数族，故除去零集后 \(L=U<\infty\)。
+
+将 \(f\) 在 \(b\) 右侧延为常值。对 \([a,b]\) 上的非负前向差商用 Fatou 引理，其积分是右、左两端长度为 \(h\) 的平均值之差，不大于 \(f(b)-f(a)\)，故 \(\int_a^b f'\le f(b)-f(a)\)。取 Cantor 函数，导数几乎处处为零而总增量为 \(1\)，可见此处的不等式确可严格。
+
+\subsection*{有界变差与 Jordan 分解}\label{ux6709ux754cux53d8ux5deeux4e0e-jordan-ux5206ux89e3}
+
+写 \(P:a=x_0<\cdots<x_n=b\)。总变差 \(V_a^b(f)=\sup_P\sum_i|f(x_i)-f(x_{i-1})|\)；将每项换成增量的正部或负部，分别得正、负变差。插入新分点只会增大这些和，故变差按相邻区间可加。令 \(V(x)=V_a^x(f)\)。若总变差有限，则
+
+\[
+p(x)=\tfrac12[V(x)+f(x)-f(a)],\qquad
+q(x)=\tfrac12[V(x)-f(x)+f(a)]
+\]
+
+分别是从 \(a\) 到 \(x\) 的正、负变差，且递增，因为 \(V(y)-V(x)\ge|f(y)-f(x)|\)。于是 \(f=f(a)+p-q\)。反过来，两个递增函数之差的每个分割变差和都不超过两者总增量之和。这就证明了 Jordan 分解及其逆命题。分别对 \(p,q\) 使用单调函数微分定理知 \(f'\) 几乎处处存在且 \(\int_a^b|f'|\le V_a^b(f)\)。
+
+\subsection*{单调函数级数的逐项微分}\label{ux5355ux8c03ux51fdux6570ux7ea7ux6570ux7684ux9010ux9879ux5faeux5206}
+
+若 \(u_k\) 均递增，且 \(\sum_k u_k(x)=S(x)\) 在 \([a,b]\) 逐点收敛，则 \(S'=\sum_k u_k'\) 几乎处处。令 \(R_N=S-\sum_{k\le N}u_k\)。各尾和是递增函数，\(R_N'=u_{N+1}'+R_{N+1}'\) 在共同的满测集上成立。因此 \(R_N'\downarrow r\ge0\)，且
+
+\[
+\int_a^b r\le\int_a^b R_N'\le R_N(b)-R_N(a)\longrightarrow0.
+\]
+
+故 \(r=0\) 几乎处处。这里的单调性属于各项作为自变量的函数；普通的逐点收敛级数没有这一逐项微分性质。
+
+\section{重积分与累次积分、Fubini 定理}
+对应教材 §3.7，第 283---304 页。设 \(x\in\mathbb R^p\)、\(y\in\mathbb R^q\)。对 \(E\subset\mathbb R^{p+q}\)，定义截面 \(E_x=\{y:(x,y)\in E\}\)、\(E^y=\{x:(x,y)\in E\}\)。把二重积分写成两次积分前，必须先知道截面可测，再知道内积分有意义。
+
+\subsection*{由长方体到可测集}\label{ux7531ux957fux65b9ux4f53ux5230ux53efux6d4bux96c6}
+
+对长方体 \(A\times B\)，截面测度为 \(\chi_A(x)m_q(B)\)，从而体积等于 \(\int_{\mathbb R^p}m_q(E_x)\,dx\)。在一个固定有限长方体内，满足此公式且截面可测、截面测度函数可测的 Borel 集类，对相对补集和可数不交并封闭：前者利用有限体积作差，后者利用递增积分定理。因此由长方体生成的全部 Borel 集都满足公式。再用递增的有界长方体穷尽全空间，公式仍成立。
+
+一般 Lebesgue 可测集与某 Borel 集只相差一个 Borel 零集的子集。若 \(Z\) 是这样的 Borel 零集，则 \(\int m_q(Z_x)\,dx=0\)，故几乎所有 \(x\) 处 \(m_q(Z_x)=0\)。利用 Lebesgue 测度的完全性，一般可测集的截面在几乎所有 \(x\) 处可测，截面测度的积分仍为 \(m_{p+q}(E)\)。这里的``几乎所有''确实需要保留：取不可测集 \(A\subset[0,1]\)，集合 \(\{0\}\times A\) 在平面上是零测集，其 \(x=0\) 截面却是 \(A\)。
+
+\subsection*{非负函数与可积函数的换序}\label{ux975eux8d1fux51fdux6570ux4e0eux53efux79efux51fdux6570ux7684ux6362ux5e8f}
+
+\textbf{Tonelli 与 Fubini 公式}　对非负 Lebesgue 可测函数 \(f\)，有
+
+\[
+\int_{\mathbb R^{p+q}} f(x,y)\,d(x,y)
+=\int_{\mathbb R^p}\!\left(\int_{\mathbb R^q}f(x,y)\,dy\right)dx
+=\int_{\mathbb R^q}\!\left(\int_{\mathbb R^p}f(x,y)\,dx\right)dy.
+\]
+
+允许两边同为无穷。先对示性函数使用截面公式，再作非负有限线性组合，最后递增逼近即可；只须合并可数个截面例外集。对一般实值可测 \(f\)，若对 \(|f|\) 的任意一种累次积分有限，则 \(\int|f|<\infty\)，几乎所有截面绝对可积，对 \(f^+,f^-\) 分别应用上式再相减即得 Fubini 定理。若积分域不是整个空间，可将函数在域外补零。
+
+取 \(D=(0,1)^2\)，令 \(f(x,y)=(x^2-y^2)/(x^2+y^2)^2\)。先对 \(y\) 积分，用原函数 \(y/(x^2+y^2)\) 得 \(1/(1+x^2)\)；先对 \(x\) 积分，用原函数 \(-x/(x^2+y^2)\) 得 \(-1/(1+y^2)\)。两种累次积分分别为 \(\pi/4\) 和 \(-\pi/4\)。因此 \(\int_D|f|\) 必为无穷。仅验证各个内积分存在，会漏掉靠近原点时两变量一起趋零带来的问题。
+
+\subsection*{从两个方向切同一集合}\label{ux4eceux4e24ux4e2aux65b9ux5411ux5207ux540cux4e00ux96c6ux5408}
+
+对非负可测 \(h\) 作 \(D=\{(x,t):0<t<h(x)\}\)。按 \(t\) 方向量取截面长度得 \(h(x)\)；按 \(x\) 方向量取得水平集 \(\{h>t\}\) 的测度。于是
+
+\[
+\int h(x)\,dx=\int_0^\infty m(\{x:h(x)>t\})\,dt.
+\]
+
+更一般地，用 \(h^p=\int_0^{h}pt^{p-1}\,dt\) 得 \(\int h^p=p\int_0^\infty t^{p-1}m(h>t)\,dt\)（\(p>0\)）。反过来，若有限非负 \(h\) 的纵标集 \(D\) 为 Lebesgue 可测集，则几乎所有 \(x\) 的截面长度是某可测函数的值，而截面长度按定义就是 \(h(x)\)。由完全性得 \(h\) 可测。纵标集、分布函数和积分给出了同一对象的三种描述。
+
+教材练习 3.7 第 3 题的排除条件是 \(\int_0^\infty f>0\)。若 \(f=0\) 几乎处处，则其平均函数也处处为零。复习题 3 第 34 题中，\(F(y)\) 保留参数 \(y\)，故定义式的积分变量应为 \(dx\)，与后面求出的 \(F'(y)\) 一致。
+
+\section{变上限积分的导数、绝对（全）连续函数与 Newton–Leibniz 公式}
+对应教材 §3.8，第 304---343 页。给定可积函数 \(f\)，变上限积分 \(F(x)=\int_a^x f(t)\,dt\) 在哪里能恢复 \(f\)？反过来，已知一个函数几乎处处有导数，能否积分还原它？前一个问题由 Lebesgue 点回答，后一个问题的准确条件是绝对连续。
+
+\subsection*{区间平均与 Lebesgue 点}\label{ux533aux95f4ux5e73ux5747ux4e0e-lebesgue-ux70b9}
+
+将 \(f\) 在 \([a,b]\) 之外补零，令 \(A_h f(x)=h^{-1}\int_x^{x+h}f(t)\,dt\)。对 \(h>0\)，由积分三角不等式及 §3.7 的换序，
+
+\[
+\|A_h f-f\|_1\le\frac1h\int_0^h\|f(\,\cdot+t)-f\|_1\,dt\longrightarrow0
+\]
+
+其中极限来自平移连续性；负 \(h\) 同理。另一方面，任意分割上 \(F\) 的变差和不超过 \(\int_a^b|f|\)，故 \(F\) 几乎处处可导。沿 \(h=1/n\)，由平均收敛抽出几乎处处收敛到 \(f\) 的子列，而差商在 \(F\) 的可导点只能趋于 \(F'\)。于是 \(F'=f\) 几乎处处。
+
+\textbf{Lebesgue 点定理}　几乎每个 \(x\) 都满足 \(\lim_{h\to0}|h|^{-1}\int_{\min(x,x+h)}^{\max(x,x+h)}|f(t)-f(x)|\,dt=0\)。证明时对每个有理数 \(r\) 的函数 \(|f-r|\) 应用上一段的微分结论，去掉所有例外点及 \(f\) 的非有限点，仍是满测集。给定其中一点 \(x\)，取 \(r\) 使 \(|f(x)-r|<\varepsilon\)。所求平均的上极限不超过 \(|f(x)-r|+|r-f(x)|<2\varepsilon\)。可数稠密集使一个共同的满测集对所有 \(x\) 都够用。任何这样的点都有 \(F'(x)=f(x)\)，包括某些不连续点。
+
+\subsection*{绝对连续与微积分基本公式}\label{ux7eddux5bf9ux8fdeux7eedux4e0eux5faeux79efux5206ux57faux672cux516cux5f0f}
+
+称 \(H\) 在 \([a,b]\) 上绝对连续，若对任意 \(\varepsilon>0\) 存在 \(\delta>0\)，使每组内部不交的有限个区间 \([u_j,v_j]\) 满足 \(\sum_j(v_j-u_j)<\delta\) 时，必有 \(\sum_j|H(v_j)-H(u_j)|<\varepsilon\)。取一个区间得到一致连续；把 \([a,b]\) 预分成有限个长度小于 \(\delta\) 的区间，再在每块内任意细分，得有界变差。每个可积函数的变上限积分都绝对连续，因为增量绝对值的和不超过它在区间并上的绝对积分。
+
+\textbf{Newton--Leibniz 公式（3.8.7）}　\(H\) 绝对连续，当且仅当存在 \(f\in\mathcal L([a,b])\) 使 \(H(x)=H(a)+\int_a^x f(t)\,dt\) 对每个 \(x\) 成立。此时 \(H'=f\) 几乎处处，且
+
+\[
+V_a^b(H)=\int_a^b|H'(t)|\,dt.
+\]
+
+\textbf{证明}　先证绝对连续函数 \(K\) 若 \(K'=0\) 几乎处处，便为常值。在任意 \([u,v]\) 上，对每个导数为零的内点，取以该点为端点、增量绝对值不超过 \(\eta\) 倍区间长的任意小区间。Vitali 定理给出不交的一列，盖住几乎整个 \([u,v]\)。从中取有限项，使余下间隙总长小于绝对连续性对应于 \(\varepsilon\) 的 \(\delta\)。顺次拼接区间及间隙，得 \(|K(v)-K(u)|\le\eta(v-u)+\varepsilon\)。令二者趋零即得。
+
+现设 \(H\) 绝对连续。由有界变差知 \(H'\) 几乎处处存在且可积。取 \(K(x)=H(x)-\int_a^x H'\)，前段及变上限积分的微分结论表明 \(K\) 为常值。逆向已由积分绝对连续性得到。变差等式的一侧来自各区间上 \(|\int H'|\le\int|H'|\)，另一侧来自 §3.6 的有界变差估计。Cantor 函数把 \([0,1]\) 的两个端点送到 \(0,1\)，却在 Cantor 集的余集上局部为常数；因此仅有连续性、有界变差与几乎处处可导仍可能遗漏整个增量。
+
+\subsection*{从基本公式得到的运算}\label{ux4eceux57faux672cux516cux5f0fux5f97ux5230ux7684ux8fd0ux7b97}
+
+若各 \(u_k\) 绝对连续，\(\sum_k u_k(c)\) 在某一点收敛，且 \(\sum_k\int_a^b|u_k'|<\infty\)，则 \(\sum_k u_k\) 一致收敛，和函数绝对连续且几乎处处可逐项求导。因为每个尾和在任意 \(x\) 的绝对值都不超过其在 \(c\) 的绝对值加相应导数绝对积分的尾和；再用逐项积分把极限写成变上限积分。
+
+若 \(u,v\) 绝对连续，则二者有界，乘积亦绝对连续。对 \((uv)'=u'v+uv'\) 积分便得分部积分公式。若 \(\varphi\) 连续、\(w\ge0\) 可积，则 \(\int_a^b\varphi w=\varphi(\xi)\int_a^b w\)：有正质量时用最小值、最大值夹逼，再用介值性；零质量时两边为零。若 \(f\) 可积、\(g\) 单调，则另有 \(\xi\in[a,b]\) 使
+
+\[
+\int_a^b fg=g(a)\int_a^\xi f+g(b)\int_\xi^b f .
+\]
+
+可先对单调阶梯函数逐段求和，将结果写成 \(F(x)=\int_a^x f\) 的值的加权平均，再用单调阶梯逼近和 \(F\) 的连续性取极限。此处允许 \(f\) 变号。
+
+\subsection*{水平集的重数、零集的像与换元}\label{ux6c34ux5e73ux96c6ux7684ux91cdux6570ux96f6ux96c6ux7684ux50cfux4e0eux6362ux5143}
+
+对连续 \(H\)，令 \(N(y)\) 为 \(H(x)=y\) 在 \([a,b]\) 中的解数，允许无穷。Banach 指示函数定理给出 \(V_a^b(H)=\int_{\mathbb R}N(y)\,dy\)。在细分网格上把每个相邻端值之间的纵向区间计一次，积分正好是该分割的变差和。网格取嵌套且稠密，除去网格点的函数值和局部极值这些可数个值后，穿越次数递增并趋于 \(N(y)\)：不同的有限多个原像可各选互不相交的邻域，细网格终将在每个邻域内检出穿越。由递增积分定理即得公式。
+
+性质 \((N)\) 指函数把每个零测集映成零测集。Banach--Zarecki 定理说明，在闭区间上，连续、有界变差且具有性质 \((N)\) 三个条件合在一起等价于绝对连续。绝对连续性蕴含前两项；以总长度任意小的开区间覆盖零集，并在这些区间内细分以控制变差，便得性质 \((N)\)。
+
+\textbf{充分性的证明}　若 \(H\) 不绝对连续，则存在 \(\varepsilon>0\)，对每个 \(n\) 都能选取有限个内部不交的闭区间，其并记为 \(E_n\)，使 \(m(E_n)<2^{-n}\)，而端值差绝对值之和至少为 \(\varepsilon\)。由可数次可加性，\(m(\varlimsup E_n)=0\)，故性质 \((N)\) 给出 \(m(H(\varlimsup E_n))=0\)。Banach 定理又表明几乎每个 \(y\) 只有有限个原像。对这样的 \(y\)，只要它不在前述零测像集中，每个原像都仅属于有限多个 \(E_n\)，故 \(N_n(y)=\#\{x\in E_n:H(x)=y\}\) 最终为零。\(N_n\le N\)，由控制收敛其积分趋零。但介值定理使所选区间的端值差绝对值之和不超过 \(\int N_n\)，矛盾。
+
+作为应用，两个绝对连续函数的复合连续且仍有性质 \((N)\)，所以其复合绝对连续当且仅当它有界变差（3.8.14）。若内函数单调，其相继取值仍按顺序排列，复合的变差便不超过外函数变差。
+
+若 \(H\) 在可测集 \(A\) 的每一点有有限导数，且 \(H\) 可测，则 \(m^*(H(A))\le\int_A|H'|\)（3.8.16）。把 \(A\) 按导数大小及差商估计有效的邻域大小分层，在每层用小区间覆盖并估计像的直径，最后令分层宽度趋零。特别地，若 \(H\) 在闭区间处处可导且 \(H'\) 可积，把估计用于每组短区间，连续性保证每个像覆盖两端值之间的区间，从而 \(H\) 绝对连续。这里的处处可导比几乎处处可导多控制了例外集的像。
+
+设 \(f\in\mathcal L([c,d])\)，\(\Phi(y)=\int_c^y f\)，\(g:[a,b]\to[c,d]\) 几乎处处可导。教材定理 3.8.20 将换元归结为判断 \(\Phi\circ g\) 是否绝对连续；这等价于 \(f(g(t))g'(t)\) 可积且对每个 \([u,v]\subset[a,b]\) 有
+
+\[
+\int_{g(u)}^{g(v)} f(y)\,dy=\int_u^v f(g(t))g'(t)\,dt .
+\]
+
+其中 \(g'=0\) 处乘积取零，可在剩余零集上补定义。其理由是绝对连续的 \(\Phi\) 把零集映为零集，教材的几乎处处链式法则可用于 \(\Phi\circ g\)，再对复合函数用基本公式。反之，若等式对每个区间成立，固定 \(u=a\) 就把复合函数写成可积函数的变上限积分。当 \(g\) 单调且绝对连续时，上段已保证复合绝对连续；单独一个端点等式则不足以判定。
+
+\textbf{复习题中的代表元}　复习题 3 第 38 题的几乎处处极限 \(g\) 可以在稠密零集上任意改值；谈导数应先取其绝对连续代表元。第 54 题中测试函数的支集应由 \(\varphi(x)\ne0\) 定义。与 \(\int f\varphi'=0\) 对应的结论是 \(f\) 几乎处处等于常数；只假定 \(f\) 可积时，不能直接写其逐点导数。
+
+\section{Lebesgue–Stieltjes 积分、Riemann–Stieltjes 积分（选读）}
+对应教材 §3.9，第 343---372 页。在通常的积分和中，每个函数值乘一段长度。将长度改为另一个函数 \(g\) 的增量即可让一个点带有质量，也能让全部质量集中在一个零长度的连续点集上。教材把本节标为选读。
+
+\subsection*{用测度定义与用分割定义}\label{ux7528ux6d4bux5ea6ux5b9aux4e49ux4e0eux7528ux5206ux5272ux5b9aux4e49}
+
+若 \(g\) 递增且右连续，Lebesgue--Stieltjes 测度由 \(m_g((u,v])=g(v)-g(u)\) 确定。记 \(\int_{(a,b]} f\,dm_g\) 为相应的 Lebesgue--Stieltjes 积分。半开区间的约定排除 \(a\) 而计入 \(b\)；内点 \(c\) 的原子质量是 \(g(c)-g(c-)\)。对右连续有界变差函数，可用递增函数之差分别积分。
+
+Riemann--Stieltjes 积分取分割 \(P:a=x_0<\cdots<x_n=b\)、任意标记 \(\xi_i\in[x_{i-1},x_i]\)，作和
+
+\[
+S(P,\xi)=\sum_{i=1}^n f(\xi_i)\,[g(x_i)-g(x_{i-1})].
+\]
+
+若随网格最大长度趋零，任意标记的和都趋于同一有限极限，就记为 \((R\!-\!S)\int_a^b f\,dg\)。当 \(g\) 递增、\(f\) 有界时，同一分割上所有标记和的振幅是 \(\sum_i\omega_i(f)\Delta g_i\)，其中 \(\omega_i\) 是闭小区间上的振幅。即使上下确界取不到，也可在有限多个区间分别逼近它们。
+
+\subsection*{连续被积函数、极限与分部积分}\label{ux8fdeux7eedux88abux79efux51fdux6570ux6781ux9650ux4e0eux5206ux90e8ux79efux5206}
+
+若 \(f\) 连续、\(g\) 有界变差，则 Riemann--Stieltjes 积分存在，且 \(|\int_a^b f\,dg|\le\|f\|_\infty V_a^b(g)\)。事实上，由分割到其任意加细，标记和的差不超过 \(\omega_f(\|P\|)V_a^b(g)\)。两个分割可经公共加细比较，右端由一致连续性趋零。分部积分由分割上的乘积增量求和得到：在两积分存在时，
+
+\[
+\int_a^b f\,dg+\int_a^b g\,df=f(b)g(b)-f(a)g(a).
+\]
+
+对固定的有界变差积分函数 \(g\)，若可积函数 \(f_n\) 一致趋于 \(f\)，则 \(f\) 仍可积且积分收敛；误差至多为 \(\|f_n-f\|_\infty V_a^b(g)\)。另一个方向是 Helly 积分极限定理：若 \(g_n(x)\to g(x)\) 处处成立、\(\sup_n V_a^b(g_n)\le C\)，则对每个连续 \(f\) 有 \(\int f\,dg_n\to\int f\,dg\)。先在固定分割取极限，可知 \(V_a^b(g)\le C\)；再用同一组足够细的分割逼近所有积分，误差统一不超过 \(C\omega_f(\|P\|)\)。固定分割的有限和只用到各分点处 \(g_n\) 的收敛。
+
+\subsection*{绝对连续部分、跳跃与奇异连续部分}\label{ux7eddux5bf9ux8fdeux7eedux90e8ux5206ux8df3ux8dc3ux4e0eux5947ux5f02ux8fdeux7eedux90e8ux5206}
+
+若 \(g\) 递增且绝对连续，\(g(v)-g(u)=\int_u^v g'(t)\,dt\)，故在区间上 \(dm_g=g'(t)\,dt\)。于是对 \(m_g\) 可积的 Borel 函数 \(f\)，有 \(\int_{(a,b]}f\,dm_g=\int_a^b fg'\,dt\)。对有界变差的绝对连续 \(g\) 用正、负变差可得相应的有符号公式。若 \(g\) 处处可导、\(g'\) Riemann 可积、\(f\) 连续，两端还可分别理解成 Riemann--Stieltjes 与普通 Riemann 积分；对每个 \(\Delta g_i\) 用中值定理即可验证。
+
+若 \(g=\chi_{[c,\infty)}\)，\(a<c<b\)，则 \(m_g\) 是在 \(c\) 的单位点质量，Lebesgue--Stieltjes 积分为 \(f(c)\)。对同一个 \(f=g\)，在跨过 \(c\) 的区间取 \(c\) 左侧或右侧标记分别可得 \(0\) 或 \(1\)，故 Riemann--Stieltjes 积分不存在。若 \(g\) 是 \([0,1]\) 上的 Cantor 函数，\(m_g\) 没有原子，总质量却等于 \(1\)，而 \(\int_0^1 g'\,dx=0\)。这说明写 \(dg=g'\,dx\) 所需的绝对连续性同时排除了跳跃和奇异连续增长。
+
+\subsection*{两种积分何时一致}\label{ux4e24ux79cdux79efux5206ux4f55ux65f6ux4e00ux81f4}
+
+设 \(g\) 递增且右连续、\(f\) 有界。若 \(f\) 关于 \(g\) 是 Riemann--Stieltjes 可积的，则它关于完成的 \(m_g\) 可积，两种积分在 \((a,b]\) 上一致（3.9.7）。取嵌套细分，用每小区间上 \(f\) 的下、上确界构成阶梯函数，在 \((x_{i-1},x_i]\) 上赋相应常值。这两个函数按 \(m_g\) 的积分恰为两种和，差趋零，故极限几乎处处相等，并把 \(f\) 夹在中间。
+
+当 \(g\) 还连续时，Riemann--Stieltjes 可积等价于 \(m_g(D_f)=0\)，也等价于 Darboux 上积分与下积分相等。连续性保证分点的 \(m_g\) 质量为零。沿二等分网格，下、上阶梯函数之差在非分点处趋于点的振幅；再用有界收敛即可在零振幅条件下得到上下和相合。从一个好分割转到任意细分割时，只有跨过旧分点的小区间需要额外估计，而它们的 \(m_g\) 总质量随网格趋细而趋零。取 \(g(x)=x\) 便恢复 §3.5 的 Lebesgue 判别准则。
+
+\par\Needspace{15\baselineskip}
+\phantomsection\addcontentsline{toc}{section}{第三章习题与复习题}
+\section*{第三章习题与复习题}
+题号与小问沿用教材。§3.9 后直接进入复习题 3。
+\par\noindent
+\hyperlink{ex1}{练习题 3.1}\quad \hyperlink{ex2}{练习题 3.2}\quad \hyperlink{ex3}{练习题 3.3}\quad \hyperlink{ex4}{练习题 3.4}\quad \hyperlink{ex5}{练习题 3.5}\quad \hyperlink{ex6}{练习题 3.6}\quad \hyperlink{ex7}{练习题 3.7}\quad \hyperlink{ex8}{练习题 3.8}\quad \hyperlink{exr}{复习题 3}
+
+\Needspace{10\baselineskip}\hypertarget{ex1}{}\subsection*{练习题 3.1}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.1}
+\noindent 教材第 183—184 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \((X,\mathcal R)\) 为可测空间，\(E\in\mathcal R\)。证明：\(f\) 为 \(E\in\mathcal R\) 上的可测函数，当且仅当对每个 \(r\in\mathbb Q\)，\(E(r\le f)\) 为可测集。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　设 \(f:[a,b]\to\mathbb R\) 为实函数，如果对 \(\forall[\alpha,\beta]\subset(a,b)\)，\(f\) 为 \([\alpha,\beta]\) 上的 Lebesgue 可测函数。证明：\(f\) 为 \([a,b]\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \((X,\mathcal R)\) 为可测空间，\(E\) 为可测集，\(f\) 为 \(E\) 上的可测函数。证明：对 \(\forall a\in\mathbb R\)，\(E(f=a)\) 为可测集。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　任取 \(x\in[0,1]\)，\(x\) 有小数表示 \(x=0.n_1n_2n_3\cdots\)（\(0.2\) 不取 \(0.1\dot9\)，只用 \(0.2\) 表示），定义 \(f:[0,1]\to\mathbb R\)，
+
+\[
+f(x)=\begin{cases}\max_{1\le i<+\infty}\{n_i\},&x=0.n_1n_2n_3\cdots,\\1,&x=1.\end{cases}
+\]
+
+证明：\(f\) 为 \([0,1]\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \((X,\mathcal R)\) 为可测空间，\(E\) 为可测集，\(f\) 为 \(E\) 上的可测函数。\(M\) 为 \(\mathbb R\) 中的开集，或闭集，或 \(G_\delta\) 集，或 \(F_\sigma\) 集，或 Borel 集。证明：\(f^{-1}(M)\) 为 \((X,\mathcal R)\) 中的可测集。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \((X,\mathcal R)\) 为可测空间，\(E\) 为可测集，\(\{f_n\}\) 为 \(E\) 上的一列可测函数，并且 \(\{f_n\}\) 在 \(E\) 上有极限函数 \(f\)（允许极限值为 \(\pm\infty\)）。证明：\(E(f=+\infty)\)、\(E(f=-\infty)\) 都为可测集，且对 \(\forall c\in\mathbb R\)，\(E(c\le f)\) 也为可测集。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \((X,\mathcal R)\) 为可测空间，\(E\) 为可测集，\(f\) 为 \(E\) 上的可测函数，又 \(h\) 为直线 \(\mathbb R^1\) 上的 Borel 可测函数。证明：\(h\circ f=h(f)\) 为 \(E\) 上的可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \((\mathbb R^1,\mathcal L)\) 为 Lebesgue 可测空间，\(E\) 为 Lebesgue 可测集，\(f\) 为 \(E\) 上的 Lebesgue 可测函数，\(h\) 为 \(\mathbb R^1\) 上的 Lebesgue 可测函数。问：\(h\circ f=h(f)\) 是否必为 \(E\) 上的 Lebesgue 可测函数？
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \((\mathbb R^n,\mathcal L)\) 为 Lebesgue 可测空间，\(f^2\) 为 \(\mathbb R^n\) 上的 Lebesgue 可测函数，且点集 \(E(f>0)\) 为可测集。证明：\(f\) 为 \(\mathbb R^n\) 上的可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(f\) 为直线 \(\mathbb R^1\) 上的 Lebesgue（或 Borel）可测函数，\(\alpha\in\mathbb R\) 为常数。证明：\(f(\alpha x)\) 为 \(\mathbb R^1\) 上的 Lebesgue（或 Borel）可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \(f\) 为直线 \(\mathbb R^1\) 上的 Lebesgue（或 Borel）可测函数。证明：\(f(x^2)\)，\(f(x^3)\)，\(f(1/x)\)（当 \(x=0\) 时，规定 \(f(1/0)=0\)）都为 Lebesgue（或 Borel）可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　证明：
+
+（1）当 \(f\) 为 \([a,b]\) 上的连续函数、单调函数、阶梯函数时，它必为 \([a,b]\) 上的 Borel 可测函数。
+
+（2）当 \(f\) 为 \(\mathbb R^n\) 中 Lebesgue 可测集 \(E\) 上的连续函数时，其必为 \(E\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{13.}　设 \(f(x)\) 为 \([a,b]\) 上的可导函数。证明：\(f'(x)\) 为 \([a,b]\) 上的可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{14.}　设 \(f(\xi)=f(\xi_1,\xi_2)\) 为 \(\mathbb R^2\) 上的连续函数，\(g_1,g_2\) 为 \([a,b]\subset\mathbb R^1\) 上的 Lebesgue 可测函数。证明：\(F(x)=f(g_1(x),g_2(x))\) 为 \([a,b]\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{15.}　设 \(f,g\) 为 \((0,1)\subset\mathbb R^1\) 上的 Lebesgue 可测函数，且对 \(\forall t\in\mathbb R\)，有
+
+\[
+m(\{x\mid f(x)\ge t\})=m(\{x\mid g(x)\ge t\}),
+\]
+
+即互为等可测函数。如果 \(f,g\) 都为单调减且左连续的函数。证明：\(f(x)=g(x)\)，\(\forall x\in(0,1)\)。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex2}{}\subsection*{练习题 3.2}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.2}
+\noindent 教材第 207—208 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \((X,\mathcal R,\mu)\) 为测度空间，\(f\) 为 \(E\in\mathcal R\) 上的几乎处处有限的可测函数，\(\mu(E)<+\infty\)。证明：对 \(\forall\varepsilon>0\)，存在 \(E\) 上的有界可测函数 \(g(x)\)，使得 \(\mu(\{x\in E\mid |f(x)-g(x)|>0\})<\varepsilon\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　设 \((\mathbb R^1,\mathcal L,m)\) 为 Lebesgue 测度空间，\(f\) 为 \(\mathbb R^1\) 上的可测函数，且有 \(f(x+1)\underset{m}{\overset{\cdot}{=}} f(x)\)。作函数 \(g:\mathbb R^1\to\mathbb R\)，使 \(g(x+1)=g(x)\)，\(\forall x\in\mathbb R^1\)，且在 \(\mathbb R^1\) 上 \(g(x)\underset{m}{\overset{\cdot}{=}} f(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(\{f_k\}\) 为 \([a,b]\) 上的 Lebesgue 可测函数列。证明：存在正数列 \(\{a_k\}\)，使得在 \([a,b]\) 上有 \(\lim_{k\to\infty}a_k f_k(x)\underset{m}{\overset{\cdot}{=}} 0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　设 \((\mathbb R^n,\mathcal L,m)\) 为 Lebesgue 测度空间，\(G\subset\mathbb R^n\) 为开集，\(f:G\to\mathbb R\) 为实函数。证明下列两条等价：
+
+（1）\(f\) 在 \(G\) 上几乎处处连续。
+
+（2）对 \(\forall t\in\mathbb R\)，点集 \(E_1(t)=\{x\in G\mid f(x)>t\}\)，\(E_2(t)=\{x\in G\mid f(x)<t\}\) 中几乎处处是内点。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \((\mathbb R^1,\mathcal L^g,m_g)\) 为 Lebesgue--Stieltjes 测度空间，\(f\) 为 \(E\in\mathcal L^g\) 上的 Lebesgue--Stieltjes 可测函数。证明：必存在 \(\mathbb R^1\) 上的 Borel 可测函数 \(h\)，使得 \(m_g(E(f\ne h))=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \(\Gamma\) 为指标集，\(\{f_\alpha\mid\alpha\in\Gamma\}\) 为 \(\mathbb R^n\) 上的 Lebesgue 可测函数族。问：\(S(x)=\sup\{f_\alpha(x)\mid\alpha\in\Gamma\}\) 为 \(\mathbb R^n\) 上的可测函数吗？
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \((\mathbb R^n,\mathcal L,m)\) 为 Lebesgue 测度空间，\(\{f_k\}\) 为 \(E\in\mathcal L\) 上的可测函数列，\(m(E)<+\infty\)。证明：在 \(E\) 上，\(\lim_{k\to\infty} f_k(x)\underset{m}{\overset{\cdot}{=}} 0\) 当且仅当对 \(\forall\varepsilon>0\)，有
+
+\[
+\lim_{j\to\infty}m\bigl(\{x\in E\mid \sup_{k\ge j}|f_k(x)|\ge\varepsilon\}\bigr)=0.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(f,f_1,f_2,\ldots\) 为 \([a,b]\) 上的几乎处处有限的 Lebesgue 可测函数，且 \(\lim_{k\to\infty}f_k(x)\underset{m}{\overset{\cdot}{=}} f(x)\)。证明：存在 \(E_n\subset[a,b]\)，\(n\in\mathbb N\)，使 \(m([a,b]-\bigcup_{n=1}^\infty E_n)=0\)，而 \(\{f_k\}\) 在每个 \(E_n\) 上一致收敛于 \(f(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \(\{f_n\}\) 为 \([0,1]\) 上几乎处处收敛于 \(0\) 的几乎处处有限的 Lebesgue 可测函数列。证明：存在数列 \(\{t_n\}\) 满足 \(\sum_{n=1}^\infty|t_n|=+\infty\)，使得在 \([0,1]\) 上 \(\sum_{n=1}^\infty|t_nf_n(x)|<+\infty\) 几乎处处成立。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(m(E)<+\infty\)，\(f,f_1,f_2,\ldots\) 为 \(E\in\mathcal L\) 上几乎处处有限的 Lebesgue 可测函数。证明：\(f_k\) 在 \(E\) 上依 Lebesgue 测度收敛于 \(f\) 当且仅当
+
+\[
+\lim_{k\to\infty}\inf_{\alpha>0}\{\alpha+m(\{x\in E\mid |f_k(x)-f(x)|>\alpha\})\}=0.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \((\mathbb R^1,\mathcal L,m)\) 为 Lebesgue 测度空间。如果对任何固定的 \(n\)，当 \(k\to+\infty\) 时有 \(f_k^n\Rightarrow f^n\)，而当 \(n\to+\infty\) 时有 \(f^n\Rightarrow f\)。证明：在 \(\{f_k^n(x)\}\) 中可选取函数列使其度量收敛于 \(f\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　设 \((X,\mathcal R,\mu)\) 为测度空间，\(E\subset X\)，\(\mu(E)<+\infty\)，且 \(E\) 上的可测函数列 \(\{f_k\}\) 满足 \(f_k\underset{\mu}{\Rightarrow} f\)（有限函数），则对 \(\forall\alpha>0\)，证明：
+
+（1）\(|f_k|^\alpha\underset{\mu}{\Rightarrow} |f|^\alpha\)。
+
+（2）对 \(E\) 上的任何可测函数 \(h\)，有 \(|f_k-h|^\alpha\underset{\mu}{\Rightarrow} |f-h|^\alpha\)。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex3}{}\subsection*{练习题 3.3}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.3}
+\noindent 教材第 225—228 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \(f\) 为 \(E\subset\mathbb R^n\) 上几乎处处大于 \(0\) 的 Lebesgue 可测函数，且满足 \((L)\int_E f\,dm=0\)。证明：\(m(E)=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　设 \(f\) 为 \(E\subset\mathbb R^n\) 上的非负 Lebesgue 可积函数，\(E_k=\{x\in E\mid f(x)\ge k\}\)，\(k=1,2,\ldots\)。证明：\(\sum_{k=1}^\infty m(E_k)<+\infty\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(f\) 为 \(E\subset\mathbb R^n\) 上的非负 Lebesgue 可测函数，且 \(m(E)<+\infty\)。证明：\(f\) 为 \(E\) 上的 Lebesgue 可积函数当且仅当 \(\sum_{k=0}^\infty 2^k m(\{x\in E\mid f(x)\ge 2^k\})\) 收敛。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　设 \(f\) 为 \(E\subset\mathbb R^n\) 上的 Lebesgue 可测函数，\(m(E)<+\infty\)。证明：\(f^2\) 为 \(E\) 上的 Lebesgue 可积函数当且仅当 \(\sum_{k=1}^\infty k\,m(\{x\in E\mid |f(x)|>k\})<+\infty\)。如果 \(m(E)=+\infty\)，举例说明充分性不成立。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(f\) 为 \(E=[a,b]\) 上的正值 Lebesgue 可积函数，\(0<q\le b-a\)，\(\mathcal A=\{e\subset[a,b]\mid m(e)\ge q\}\)。证明：\(\inf_{e\in\mathcal A}\{(L)\int_e f\,dm\}>0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \(f,g\) 为测度空间 \((X,\mathcal R,\mu)\) 上的可积函数。证明：\(\sqrt{f^2+g^2}\) 也为 \((X,\mathcal R,\mu)\) 上的可积函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \(f\) 为 \((0,1)\) 上的非负 Lebesgue 可测函数，如果存在常数 \(c\)，使 \((L)\int_0^1[f(x)]^n\,dx=c\)，\(n=1,2,\ldots\)。证明：存在可测集 \(E\subset(0,1)\)，使得在 \((0,1)\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}}\chi_E(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(f\in\mathcal L(\mathbb R^1)\)，\(f(0)=0\)，且 \(f'(0)\) 存在有限。证明：\((L)\int_{\mathbb R^1}f(x)/x\,dx\) 存在有限，即 \(f(x)/x\) 在 \(\mathbb R^1\) 上 Lebesgue 可积。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \((L)\int_0^{2\pi}|f(x)|\ln(1+|f(x)|)\,dx<+\infty\)。证明：\(f\in\mathcal L([0,2\pi])\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(E\subset\mathbb R^n\)，\(f\in\mathcal L(E)\)，且有 \((L)\int_E f(x)\,dx=r>0\)。证明：\(E\) 中存在可测子集 \(e\)，使 \((L)\int_e f(x)\,dx=r/3\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \(f\) 为 \(E\subset\mathbb R^1\) 上非负 Lebesgue 可测函数，且对 \(\forall\varepsilon>0\)，有 \(E\) 中可测子集 \(E_\varepsilon\)，使 \(m(E-E_\varepsilon)<\varepsilon\)，\(\lim_{\varepsilon\to0^+}(L)\int_{E_\varepsilon} f(x)\,dx\) 存在有限。证明：\(f\in\mathcal L(E)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　设 \(f\in\mathcal L(\mathbb R^1)\)，\(\alpha>0\)。证明：在 \(\mathbb R^1\) 上，\(\lim_{n\to\infty}n^{-\alpha} f(nx)\underset{m}{\overset{\cdot}{=}} 0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{13.}　设 \(f\) 为 \([a,b]\) 上的非负连续函数，且 \((L)\int_a^b f(x)\,dx=0\)。证明：\(f(x)=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{14.}　（A. Lebesgue）设 \(q>1\)，正数 \(p\) 满足 \(1/p+1/q=1\)，\(f\) 在 \(E\subset\mathbb R^n\) 上为 Lebesgue 可测函数。如果对 \(E\) 上任何满足 \(|h|^q\) Lebesgue 可积的函数 \(h\)，\(fh\) 必为 Lebesgue 可积函数。证明：\(|f|^p\) 为 Lebesgue 可积函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{15.}　设 \(\mu_1,\mu_2\) 为可测空间 \((X,\mathcal R)\) 上的两个测度，并且对 \(\forall E\in\mathcal R\)，\(\mu_1(E)\le\mu_2(E)\)。证明：如果 \(f\) 在 \(E\) 上关于 \(\mu_2\) 可积，则 \(f\) 在 \(E\) 上关于 \(\mu_1,\mu_1+\mu_2\) 也可积，且
+
+\[
+\int_E f\,d(\mu_1+\mu_2)=\int_E f\,d\mu_1+\int_E f\,d\mu_2.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{16.}　设 \(\{f_k\}\) 为 \(E\subset\mathbb R^1\) 上的非负可测函数列，\(m(E)<+\infty\)。证明：在 \(E\) 上有 \(f_k\underset{m}{\Rightarrow}0\) 当且仅当 \(\lim_{k\to\infty}(L)\int_E f_k(x)/(1+f_k(x))\,dx=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{17.}　设 \(\{f_k\}\) 为 \(E\subset\mathbb R^1\) 上的非负 Lebesgue 可测函数列，并且 \(f_k(x)\ge f_{k+1}(x)\)（\(k=1,2,\ldots\)），\(\lim_{k\to\infty} f_k(x)=f(x)\)。又 \(\exists k_0\in\mathbb N\)，使 \((L)\int_E f_{k_0}\,dm<+\infty\)。证明：\(\lim_{k\to\infty}(L)\int_E f_k\,dm=(L)\int_E f\,dm\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{18.}　设 \(\{f_k\}\) 为 \(\mathbb R^n\) 上非负的 Lebesgue 可积函数列，若对任何可测集 \(E\subset\mathbb R^n\)，都有 \(\int_E f_k\,dm\le\int_E f_{k+1}\,dm\)。证明：\(\lim_{k\to\infty}\int_E f_k\,dm=\int_E\lim_{k\to\infty}f_k\,dm\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{19.}　设 \(E\subset\mathbb R^1\)，\(f\in\mathcal L(E)\)，\(f_k\in\mathcal L(E)\)，\(k=1,2,\ldots\)，且 \(\lim_{k\to\infty}(L)\int_E |f_k(x)-f(x)|\,dx=0\)。证明：存在子列 \(\{f_{k_i}\}\)，使在 \(E\) 上有 \(\lim_{i\to\infty}f_{k_i}(x)\underset{m}{\overset{\cdot}{=}} f(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{20.}　设 \(\{E_k\}\) 为 \(\mathbb R^n\) 上测度有限的 Lebesgue 可测集列，且有 \(\lim_{k\to\infty}(L)\int_{\mathbb R^n}|\chi_{E_k}(x)-f(x)|\,dx=0\)。证明：存在 Lebesgue 可测集 \(E\)，使得在 \(\mathbb R^n\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}}\chi_E(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{21.}　设 \((X,\mathcal R,\mu)\) 为测度空间，\(E\in\mathcal R\)，\(f\) 为 \(E\) 上的几乎处处有限的广义可测函数。证明：\(f\) 在 \(E\) 上可积当且仅当 \(\sum_{n=1}^\infty n\,\mu(E_n)<+\infty\)，其中 \(E_n=E(n\le |f|<n+1)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{22.}　设 \((X,\mathcal R,\mu)\) 为全 \(\sigma\) 有限的测度空间，\(f\) 为 \((X,\mathcal R)\) 上非负实值可测函数。\(E\in\mathcal R\)，它关于 \(\mu\) 的积分记为 \(\nu(E)=\int_E f\,d\mu\)（积分值可取 \(+\infty\)）。并且当 \(\mu(E)<+\infty\) 时，总有 \(\int_E f\,d\mu<+\infty\)。证明：\((X,\mathcal R,\nu)\) 为全 \(\sigma\) 有限测度空间。而对 \(\forall E\in\mathcal R\)，只要 \(\mu(E)=0\)，总有 \(\nu(E)=0\)。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex4}{}\subsection*{练习题 3.4}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.4}
+\noindent 教材第 243—244 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \(f,f_k\in\mathcal L(\mathbb R^n)\)（\(k=1,2,\ldots\)），且对任一 Lebesgue 可测集 \(E\subset\mathbb R^n\)，有 \((L)\int_E f_k(x)\,dx\le(L)\int_E f_{k+1}(x)\,dx\)，\(k=1,2,\ldots\)，且 \(\lim_{k\to\infty}(L)\int_E f_k(x)\,dx=(L)\int_E f(x)\,dx\)。证明：在 \(\mathbb R^n\) 上，\(\lim_{k\to\infty}f_k(x)\underset{m}{\overset{\cdot}{=}} f(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　（1）设 \(f,f_1,f_2,\ldots\) 为 \(E\subset\mathbb R^n\) 上的非负 Lebesgue 可积函数，且在 \(E\) 上 \(\lim_{k\to\infty} f_k(x)\underset{m}{\overset{\cdot}{=}} f(x)\)，且有 \[\lim_{k\to\infty}(L)\int_E f_k(x)\,dx=(L)\int_E f(x)\,dx.\]证明：对 \(E\) 中任一可测子集 \(e\)，有 \(\lim_{k\to\infty}(L)\int_e f_k(x)\,dx=(L)\int_e f(x)\,dx\)。
+
+（2）若将上述``几乎处处收敛''的条件改为``依测度收敛''，证明结论仍成立。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(f\) 为定义在 \(\mathbb R^n\) 上的实函数，对 \(\forall\varepsilon>0\)，\(\exists g,h\in\mathcal L(\mathbb R^n)\) 满足 \(g(x)\le f(x)\le h(x)\)，\(\forall x\in\mathbb R^n\)，且 \((L)\int_{\mathbb R^n}[h(x)-g(x)]\,dx<\varepsilon\)。证明：\(f\in\mathcal L(\mathbb R^n)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　设 \(x^s f(x),x^t f(x)\) 在 \((0,+\infty)\) 上 Lebesgue 可积，其中 \(s<t\)。证明：积分 \((L)\int_0^{+\infty}x^u f(x)\,dx\)，\(u\in(s,t)\)，存在有限，且为 \(u\in(s,t)\) 的连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(E\subset\mathbb R^1\)，\(m(E)<+\infty\)，\(f\) 为 \(E\) 上的 Lebesgue 可测函数，\(0<s<+\infty\)。证明：
+
+\[
+\lim_{t\nearrow s}(L)\int_E |f(x)|^t\,dx=(L)\int_E|f(x)|^s\,ds.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　给出注 3.4.2 中（4）\(\Rightarrow\)（5）的新证明。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　对于 \((X,\mathcal R,\mu)=(\mathbb R^n,\mathcal L,m)\) 证明定理 3.4.1。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(\{f_k\}\) 为 \(E\subset\mathbb R^1\) 上的非负 Lebesgue 可积的函数列，\(f\in\mathcal L(E)\)，在 \(E\) 上 \(f_k\underset{m}{\Rightarrow}f\)。如果 \(\lim_{k\to\infty}(L)\int_E f_k(x)\,dx=(L)\int_E f(x)\,dx\)。证明：\(\lim_{k\to\infty}(L)\int_E|f_k(x)-f(x)|\,dx=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \(\{f_k\},\{g_k\}\) 为 \(E\subset\mathbb R^1\) 上的两个 Lebesgue 可测函数列，且 \(|f_k(x)|\le g_k(x)\)，\(\forall x\in E\)。如果对 \(\forall x\in E\)，\(\lim_{k\to\infty}f_k(x)=f(x)\)，\(\lim_{k\to\infty}g_k(x)=g(x)\)，且 \(\lim_{k\to\infty}(L)\int_E g_k(x)\,dx=(L)\int_E g(x)\,dx<+\infty\)，证明：\(\lim_{k\to\infty}(L)\int_E f_k(x)\,dx=(L)\int_E f(x)\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(\{f_n\}\) 为测度空间 \((X,\mathcal R,\mu)\) 的集 \(E\) 上的可测函数列，如果：
+
+（1）存在 \(E\) 上的可积函数 \(F\)，使 \(|f_n|\le F\) 几乎处处成立，\(n=1,2,\ldots\)；
+
+（2）在 \(E\) 上，\(\{f_n\}\) 几乎处处收敛于可测函数 \(f\)。
+
+证明：在 \(E\) 上，\(f_n\underset{\mu}{\Rightarrow} f\)。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex5}{}\subsection*{练习题 3.5}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.5}
+\noindent 教材第 255—256 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　证明：
+
+（1）\((L)\int_0^1\dfrac{\ln x}{1-x}\,dx=-\dfrac{\pi^2}{6}\)。
+
+（2）\((L)\int_0^1\ln\dfrac{1+x}{1-x}\,dx=2\ln 2\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　（1）设 \(f(x)=\sin(1/x)/x^\alpha\)（\(0<x\le1\)），\(f(0)=0\)。讨论当 \(\alpha\) 为何值时，\(f\) 在 \([0,1]\) 上 Lebesgue 可积或不可积。
+
+（2）设 \(f(x)=\sin(1/x)/x^\alpha\)（\(|x|>0\)），\(f(0)=0\)。讨论当 \(\alpha>0\) 为何值时，\(f\) 在 \((-\infty,+\infty)\) 上 Lebesgue 可积或不可积。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　证明：
+
+（1）\(\displaystyle\lim_{n\to\infty}(L)\int_0^{+\infty}\frac{dx}{(1+x/n)^n x^{1/n}}=1\)。
+
+（2）\(\displaystyle\lim_{n\to\infty}(L)\int_0^{+\infty}\frac{\ln^p(x+n)}n e^{-x}\cos x\,dx=0\)，其中 \(p\) 为固定的正数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　如果 \(f(x)\) 在 \([a,b]\) 上 Lebesgue 可积，则对 \(\forall\varepsilon>0\)，\(\exists\varphi\in C([a,b])\)，使 \((L)\int_a^b|f(x)-\varphi(x)|\,dx<\varepsilon\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(f(x)\) 为 \([a,b]\) 上的 Lebesgue 可积函数，则对 \(\forall\varepsilon>0\)，存在 \([a,b]\) 上的阶梯函数 \(s(x)\)，使 \(\int_a^b|f(x)-s(x)|\,dx<\varepsilon\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \(f\) 在 \([a,b]\) 上 Lebesgue 可积。证明：
+
+\[
+\lim_{n\to\infty}\int_a^b f(x)|\sin nx|\,dx=\int_a^b f(x)\,dx,
+\]
+
+\[
+\lim_{n\to\infty}\int_a^b f(x)|\cos nx|\,dx=\int_a^b f(x)\,dx.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \(F\) 为 \([0,1]\) 中的闭集，\(m(F)=0\)。问：\(\chi_F(x)\) 在 \([0,1]\) 上 Riemann 可积吗？
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(E\subset[0,1]\)。证明：\(\chi_E\) 在 \([0,1]\) 上 Riemann 可积当且仅当 \(m(\overline E-E^\circ)=m(\partial E)=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \(f,g\) 为 \([a,b]\) 上的 Riemann 可积函数，并且在 \([a,b]\) 的一个稠密子集 \(D\) 上其值相等。证明：\((R)\int_a^b f(x)\,dx=(R)\int_a^b g(x)\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(f\) 为 \([a,b]\) 上的有界函数，其不连续点集 \(D_f\) 只有至多可数个聚点。证明：\(f\) 为 \([a,b]\) 上的 Riemann 可积函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \(f\) 为 \(\mathbb R^1\) 上的有界函数。如果对每一点 \(x\in\mathbb R^1\)，极限函数 \(\lim_{h\to0} f(x+h)\) 存在有限。证明：\(f\) 在任一区间 \([a,b]\) 上是 Riemann 可积的。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　设 \(f\in\mathcal L(\mathbb R^1)\)。证明：\((L)\int_a^b f(x+t)\,dx=(L)\int_{a+t}^{b+t}f(x)\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{13.}　设 \(f(x)\) 为 \([0,1]\) 上的递增函数。证明：对 \(E\subset[0,1]\)，\(m(E)=t\)，有 \((L)\int_0^t f(x)\,dx\le(L)\int_E f(x)\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{14.}　设 \(f\in\mathcal L(\mathbb R^1)\)，\(a>0\)。证明：级数 \(F(x)=\sum_{n=-\infty}^{\infty}f(x/a+n)\) 在 \(\mathbb R^1\) 上几乎处处绝对收敛，且 \(F(x)\) 为以 \(a\) 为周期的周期函数，\(F\in\mathcal L([0,a])\)。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex6}{}\subsection*{练习题 3.6}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.6}
+\noindent 教材第 282—283 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \(E\subset(a,b)\) 为稠密集，\(f,g:[a,b]\to\mathbb R\) 为两个单调函数，且 \(f(x)=g(x)\)，\(\forall x\in E\)。证明：\(f\) 与 \(g\) 有相同的连续点，并且在不连续点 \(x\) 的跳跃度相等，即 \(|f(x^+)-f(x^-)|=|g(x^+)-g(x^-)|\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　设 \(f\) 在 \([0,a]\) 上为有界变差函数。证明：函数 \(F(x)=x^{-1}\int_0^x f(t)\,dt\)（\(x\in(0,a]\)），\(F(0)=f(0^+)\)，为 \([0,a]\) 上的有界变差函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(\{f_k\}\) 为 \([a,b]\) 上的有界变差函数列，且有 \(\bigvee_a^b(f_k)\le M\)，\(k=1,2,\ldots\)，\(\lim_{k\to\infty}f_k(x)=f(x)\)，\(\forall x\in[a,b]\)。证明：\(f\in\mathrm{BV}([a,b])\)，且 \(\bigvee_a^b(f)\le M\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　设 \(f\in\mathrm{BV}([a,b])\)，\(f_n\in\mathrm{BV}([a,b])\)，\(n=1,2,\ldots\)，且有 \(\lim_{n\to\infty}\bigvee_a^b(f-f_n)=0\)。证明：存在 \(\{f_n\}\) 的子列 \(\{f_{n_i}\}\)，使在 \([a,b]\) 上有 \(\lim_{i\to\infty} f'_{n_i}(x)\underset{m}{\overset{\cdot}{=}} f'(x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(f\) 为 \((a,b)\) 上的单调增函数，\(E\subset(a,b)\)。如果对 \(\forall\varepsilon>0\)，存在 \((a_i,b_i)\subset(a,b)\)，\(i=1,2,\ldots\)，使 \(\bigcup_{i=1}^\infty(a_i,b_i)\supset E\)，\(\sum_{i=1}^\infty[f(b_i)-f(a_i)]<\varepsilon\)。证明：在 \(E\) 上有 \(f'(x)\underset{m}{\overset{\cdot}{=}}0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \(E\) 为 \(\mathbb R^1\) 中一族（开、闭、半开闭）区间的并集。证明：\(E\) 为 Lebesgue 可测集。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \(f\in\mathrm{BV}([a,b])\)，且点 \(x_0\in[a,b]\) 为 \(f(x)\) 的连续点。证明：\(\bigvee_a^x(f)\) 在点 \(x_0\) 处连续。进而，证明有界变差的连续函数可用两个连续的增函数之差来表示。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(a<c<b\)，\(f:[a,b]\to\mathbb R\) 为有界变差函数。证明：
+
+（1）\(\mathop{\bigvee\nolimits^{+}}\limits_a^b(f)=\mathop{\bigvee\nolimits^{+}}\limits_a^c(f)+\mathop{\bigvee\nolimits^{+}}\limits_c^b(f)\)。
+
+（2）\(\mathop{\bigvee\nolimits^{-}}\limits_a^b(f)=\mathop{\bigvee\nolimits^{-}}\limits_a^c(f)+\mathop{\bigvee\nolimits^{-}}\limits_c^b(f)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　设 \(f\) 为 \([a,b]\) 上的有界变差函数，且连续。证明：对 \(\forall\varepsilon>0\)，必 \(\exists\delta>0\)，当 \([a,b]\) 的分割 \(\Delta:a=x_0<x_1<\cdots<x_n=b\) 的模 \(\|\Delta\|=\max_{1\le i\le n}(x_i-x_{i-1})<\delta\) 时，总有 \(v_\Delta(f)>\bigvee_a^b(f)-\varepsilon\)。由此立知 \(\lim_{\|\Delta\|\to0}v_\Delta(f)=\bigvee_a^b(f)\)（参阅引理 3.8.4）。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　试在 \([0,1]\) 上作一严格单调增的函数 \(f(x)\)，使 \(f'(x)\underset{m}{\overset{\cdot}{=}}0\)，\(x\in[0,1]\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \(\{x_n\}\subset[a,b]\)。试作 \([a,b]\) 上的单调增函数，其不连续点集恰为 \(\{x_n\}\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　设 \(\alpha>0\)，\(M\) 为常数。如果 \(|f(y)-f(x)|\le M|y-x|^\alpha\)，\(\forall x,y\in[a,b]\)，则称 \(f\) 满足 \(\alpha\) 次的 Hölder 条件。证明：
+
+（1）当 \(\alpha>1\) 时，\(f\) 恒为常数。
+
+（2）作一个不满足任何次 Hölder 条件的有界变差函数。
+
+（3）当 \(0<\alpha<1\) 时，作一个函数满足 \(\alpha\) 次 Hölder 条件，但不是有界变差的。
+
+（4）作一个不满足任何 \(\alpha\)（\(1/3<\alpha<+\infty\)）次 Hölder 条件的绝对连续函数。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex7}{}\subsection*{练习题 3.7}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.7}
+\noindent 教材第 304 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　设 \(f(x,y)\) 在 \([0,1]\times[0,1]\) 上为 Lebesgue 可积函数。证明：
+
+\[
+\int_0^1\left[\int_0^x f(x,y)\,dy\right]dx=\int_0^1\left[\int_y^1 f(x,y)\,dx\right]dy.
+\]
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　证明：\(\displaystyle (L)\iint_{[0,+\infty)^2}\frac{dx\,dy}{(1+y)(1+x^2y)}=\frac{\pi^2}{2}\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(f\in\mathcal L((0,+\infty))\) 为非负函数，令 \(F(x)=x^{-1}\int_0^x f(t)\,dt\)，\(x>0\)。证明：\(F\notin\mathcal L((0,+\infty))\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　\(f(x),g(x)\) 为 \(E\subset\mathbb R^1\) 上非负 Lebesgue 可测函数，\(fg\in\mathcal L(E)\)。令 \(E_y=\{x\in E\mid g(x)\ge y\}\)。证明：对 \(\forall y>0\)，\(F(y)=(L)\int_{E_y} f(x)\,dx\) 均存在有限，且有 \((L)\int_0^{+\infty}F(y)\,dy=(L)\int_E f(x)g(x)\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(A,B\) 为 \(\mathbb R^n\) 中的 Lebesgue 可测集。证明：\((L)\int_{\mathbb R^n}m((A-\{x\})\cap B)\,dx=m(A)\cdot m(B)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　设 \(f(x),g(x)\) 为 \(E\subset\mathbb R^1\) 上的 Lebesgue 可测函数，\(m(E)<+\infty\)。如果 \(f(x)+g(y)\) 在 \(E\times E\) 上 Lebesgue 可积。证明：\(f(x),g(x)\) 都为 \(E\) 上的可积函数。
+
+
+\Needspace{10\baselineskip}\hypertarget{ex8}{}\subsection*{练习题 3.8}\phantomsection\addcontentsline{toc}{subsection}{练习题 3.8}
+\noindent 教材第 340—343 页
+
+\par\Needspace{3\baselineskip}\noindent \textbf{1.}　证明：绝对连续函数四种定义是等价的。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{2.}　设 \(f:[a,b]\to[f(a),f(b)]\) 为绝对连续的严格增函数，\(g(y)\) 为 \([f(a),f(b)]\) 上的绝对连续函数。证明：\(g\circ f(x)=g(f(x))\) 为 \([a,b]\) 上的绝对连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{3.}　设 \(g(x)\) 为 \([a,b]\) 上的绝对连续函数，\(f\) 在 \(\mathbb R^1\) 上满足 Lipschitz 条件。证明：\(f\circ g(x)=f(g(x))\) 为 \([a,b]\) 上的绝对连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{4.}　设 \(f\) 为 \([a,b]\) 上的非负绝对连续函数。证明：\(f^p(x)\)（\(p>1\)）为 \([a,b]\) 上的绝对连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{5.}　设 \(f\) 为 \([a,b]\) 上的有界变差函数，则 \(\dfrac d{dx}\bigvee_a^x(f)\underset{m}{\overset{\cdot}{=}}|f'(x)|\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{6.}　（1）设 \(f\) 为 \([a,b]\) 上的绝对连续函数。证明：\(\bigvee_a^b(f)=(L)\int_a^b|f'(x)|\,dx\)。
+
+（2）设 \(f\) 在 \([a,b]\) 上可导，且 \(f'\in\mathcal R([a,b])\)，即 \(f'\) 在 \([a,b]\) 上是 Riemann 可积的。证明：\(\bigvee_a^b(f)=(R)\int_a^b|f'(x)|\,dx\)。
+
+（3）设 \(f\) 在 \([a,b]\) 上可导，且 \(f'\) 在 \([a,b]\) 上是广义 Riemann 可积的。证明：\(\bigvee_a^b(f)=(R)\int_a^b|f'(x)|\,dx\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{7.}　设 \(f\) 为 \([a,b]\) 上的有界变差函数，则
+
+\[
+p(x)=\tfrac12\left[\bigvee_a^x(f)+f(x)-f(a)\right],
+\]
+
+\[
+n(x)=\tfrac12\left[\bigvee_a^x(f)-f(x)+f(a)\right]
+\]
+
+分别称为 \(f\) 的正变差函数与负变差函数。我们还称 \(\bigvee_a^x(f)=p(x)+n(x)\)，\(f(x)-f(a)=p(x)-n(x)\) 为 \(f(x)\) 的正规分解。证明：
+
+（1）\(p(x),n(x)\) 为 \([a,b]\) 上的单调增的函数。
+
+（2）\(f\) 与 \(\bigvee_a^x(f)\) 有相同的右（左）连续点，有相同的连续点。
+
+（3）\(x_0\) 为 \(f\) 的连续点当且仅当 \(x_0\) 同时为 \(p,n\) 两个函数的连续点。
+
+（4）惟一地存在 \((a,b)\) 上右连续的有界变差函数 \(g\)，使得（a）在 \((a,b)\) 中 \(f\) 的连续点上 \(g(x)=f(x)\)；（b）\(g(a)=f(a),g(b)=f(b)\)；（c）\(\bigvee_a^b(g)\le\bigvee_a^b(f)\)（考察 \(g(x)=f(x^+)\)）。
+
+（5）设 \(\{x_k\}\) 为 \(f\) 的不连续点的全体（至多可数）。易见，
+
+\[
+\sum_k[|f(x_k^+)-f(x_k)|+|f(x_k)-f(x_k^-)|]\le\bigvee_a^b(f)<+\infty.
+\]
+
+作 \(f\) 的跳跃函数
+
+\[
+\begin{aligned}\varphi(x)={}&\sum_k[f(x_k^+)-f(x_k)]\theta(x-x_k)\\&+\sum_k[f(x_k)-f(x_k^-)]\theta_1(x-x_k),\end{aligned}
+\]
+
+则 \(g=f-\varphi\) 为连续的有界变差函数。换言之，任何一个有界变差函数总可以表示为一个连续的有界变差函数与一个跳跃函数之和，即 \(f=(f-\varphi)+\varphi\)。其中 \(\theta(x)\) 在 \(x>0\) 时为 \(1\)，在 \(x\le0\) 时为 \(0\)，称为 Heaviside 函数。它单调增，在 \(x=0\) 左连续但非右连续。再设 \(\theta_1(x)\) 在 \(x\ge0\) 时为 \(1\)，在 \(x<0\) 时为 \(0\)，它也单调增，在 \(x=0\) 右连续但非左连续，且 \(\theta_1(x)=1-\theta(-x)\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{8.}　设 \(f\) 为 \([a,b]\) 上的绝对连续函数。证明：\(\bigvee_a^x(f),p(x),n(x)\) 都为绝对连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{9.}　（Lebesgue 分解定理）设 \(f\) 为 \([a,b]\) 上的有界变差函数。证明：\(f\) 可分解为 \(f=f_c+f_s+\varphi\)，其中 \(\varphi\) 为 \(f\) 在 \([a,b]\) 上的跳跃函数，\(f_c\) 为 \([a,b]\) 上的绝对连续函数，\(f_s\) 为奇异的有界变差函数（当然，\(f_c,f_s,\varphi\) 三个函数可以在上述分解中不全出现）。在相差一个常数意义下，三个函数 \(f_c,f_s,\varphi\) 均由 \(f\) 惟一决定。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{10.}　设 \(f\) 为 \(\mathbb R^1\) 上的有界可测函数，且对 \(\forall t\in\mathbb R^1\)，关于 \(x\in\mathbb R^1\)，有 \(f(x)\underset{m}{\overset{\cdot}{=}} f(x-t)\)。证明：存在常数 \(c\)，使得在 \(\mathbb R^1\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}} c\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{11.}　设 \(f\) 为 \(\mathbb R^1\) 上的有界增函数，且在 \(\mathbb R^1\) 上可导。记 \(\lim_{x\to-\infty} f(x)=A\)，\(\lim_{x\to+\infty}f(x)=B\)。证明：\(\int_{\mathbb R^1}f'(x)\,dx=B-A\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{12.}　设 \(f\) 在 \(\mathbb R^1\) 上可导，且 \(f\) 与 \(f'\) 都为 \(\mathbb R^1\) 上的 Lebesgue 可积函数。证明：\(\int_{\mathbb R^1}f'(x)\,dx=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{13.}　设 \(f\) 为 \([a,b]\) 上的单调函数。证明：\(f\) 为 \([a,b]\) 上的绝对连续函数当且仅当对 \(\forall E\subset[a,b]\)，\(E\in\mathcal R_\sigma(\mathcal P)=\mathcal R(\mathcal J)=\mathcal B\)（Borel 集类），\(m(E)=0\)，必有 \(m(f(E))=m(\{f(x)\mid x\in E\})=0\)。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{14.}　（1）设 \(f:\mathbb R^1\to\mathbb R\) 为 \(C^1\) 映射，\(E\) 为 Lebesgue 可测集，且 \(m(E)=0\)，则 \(m(f(E))=0\)。
+
+（2）若 \(f\) 只是可导函数，上述结论仍成立。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{15.}　证明：\([a,b]\) 上导数处处存在且有限的单调函数（或有界变差函数）\(f\) 必为绝对连续函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{16.}　设 \(f\in\mathcal L([0,1])\)，\(g\) 为定义在 \([0,1]\) 上的单调增函数。如果对 \(\forall[a,b]\subset[0,1]\)，有
+
+\[
+\left|(L)\int_a^b f(x)\,dx\right|^2\le[g(b)-g(a)](b-a).
+\]
+
+证明：\(f^2\) 为 \([0,1]\) 上的 Lebesgue 可积函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{17.}　证明：\(f\) 在 \([a,b]\) 上满足 Lipschitz 条件当且仅当存在 \([a,b]\) 上有界的 Lebesgue 可测函数 \(g\)（此时 \(g\in\mathcal L([a,b])\)），使 \(f(x)=f(a)+\int_a^x g(t)\,dt\)。充分性中，有界条件能否删去？\([a,b]\) 上的绝对连续函数是否必满足 Lipschitz 条件？
+
+\par\Needspace{3\baselineskip}\noindent \textbf{18.}　设 \(f\) 为 \([a,b]\) 上的凸函数，即对任何 \(a\le x_1<x_2\le b\)，\(\forall\lambda\in(0,1)\)，总有 \(f(\lambda x_1+(1-\lambda)x_2)\le\lambda f(x_1)+(1-\lambda)f(x_2)\)。它等价于：对任何 \(a\le x_1<x_2<x_3\le b\)，有
+
+\[
+\frac{f(x_2)-f(x_1)}{x_2-x_1}\le\frac{f(x_3)-f(x_1)}{x_3-x_1}\le\frac{f(x_3)-f(x_2)}{x_3-x_2}
+\]
+
+（参阅 {[}13{]} 222 页定理 3.6.1）。证明：凸函数 \(f\) 必为 \((a,b)\) 上的连续函数。如果 \(f\) 在 \(a,b\) 两点连续，则 \(f\) 为 \([a,b]\) 上的绝对连续函数。\(f'_+\)（右导数）在 \([a,b)\) 上处处存在有限，且为单调增函数。
+
+\par\Needspace{3\baselineskip}\noindent \textbf{19.}　构造 \(\mathbb R^1\) 上具有连续导数的严格增函数，使其导函数在一个已给定的完全疏朗集 \(C\) 上恒为零。
+
+
+\Needspace{10\baselineskip}\hypertarget{exr}{}\subsection*{复习题 3}\phantomsection\addcontentsline{toc}{subsection}{复习题 3}
+\noindent 教材第 372—379 页
+
+\noindent 复习题题号\par
+\noindent \hyperlink{review1}{1}\quad \hyperlink{review2}{2}\quad \hyperlink{review3}{3}\quad \hyperlink{review4}{4}\quad \hyperlink{review5}{5}\quad \hyperlink{review6}{6}\quad \hyperlink{review7}{7}\quad \hyperlink{review8}{8}\quad \hyperlink{review9}{9}\quad \hyperlink{review10}{10}\quad \hyperlink{review11}{11}\quad \hyperlink{review12}{12}\quad \hyperlink{review13}{13}\quad \hyperlink{review14}{14}\quad \hyperlink{review15}{15}\par
+\noindent \hyperlink{review16}{16}\quad \hyperlink{review17}{17}\quad \hyperlink{review18}{18}\quad \hyperlink{review19}{19}\quad \hyperlink{review20}{20}\quad \hyperlink{review21}{21}\quad \hyperlink{review22}{22}\quad \hyperlink{review23}{23}\quad \hyperlink{review24}{24}\quad \hyperlink{review25}{25}\quad \hyperlink{review26}{26}\quad \hyperlink{review27}{27}\quad \hyperlink{review28}{28}\quad \hyperlink{review29}{29}\quad \hyperlink{review30}{30}\par
+\noindent \hyperlink{review31}{31}\quad \hyperlink{review32}{32}\quad \hyperlink{review33}{33}\quad \hyperlink{review34}{34}\quad \hyperlink{review35}{35}\quad \hyperlink{review36}{36}\quad \hyperlink{review37}{37}\quad \hyperlink{review38}{38}\quad \hyperlink{review39}{39}\quad \hyperlink{review40}{40}\quad \hyperlink{review41}{41}\quad \hyperlink{review42}{42}\quad \hyperlink{review43}{43}\quad \hyperlink{review44}{44}\quad \hyperlink{review45}{45}\par
+\noindent \hyperlink{review46}{46}\quad \hyperlink{review47}{47}\quad \hyperlink{review48}{48}\quad \hyperlink{review49}{49}\quad \hyperlink{review50}{50}\quad \hyperlink{review51}{51}\quad \hyperlink{review52}{52}\quad \hyperlink{review53}{53}\quad \hyperlink{review54}{54}\quad \hyperlink{review55}{55}\quad \hyperlink{review56}{56}\quad \hyperlink{review57}{57}\quad \hyperlink{review58}{58}\quad \hyperlink{review59}{59}\quad \hyperlink{review60}{60}\par
+\noindent \hyperlink{review61}{61}\quad \hyperlink{review62}{62}\quad \hyperlink{review63}{63}\par
+\par\Needspace{3\baselineskip}\hypertarget{review1}{}\noindent \textbf{1.}　设 \(\{f_k\}\) 在 \([a,b]\) 上依 Lebesgue 测度收敛于 \(f\)，\(g\) 为 \(\mathbb R^1\) 上的连续函数。证明：\(\{g(f_k(x))\}\) 在 \([a,b]\) 上依测度收敛于 \(g(f(x))\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review2}{}\noindent \textbf{2.}　（定理 3.2.10 的逆定理）设 \(f\) 为 Lebesgue 可测集 \(E\subset\mathbb R^n\) 上的实函数，且对 \(\forall\delta>0\)，存在 \(E\) 中的闭集 \(F\)，\(m(E-F)<\delta\)，使 \(f\) 在 \(F\) 上连续。证明：\(f\) 为 \(E\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review3}{}\noindent \textbf{3.}　设 \(f:\mathbb R^1\to\mathbb R\) 为有界函数。证明：存在 \(\mathbb R^1\) 上几乎处处连续的函数 \(g\)，使 \(f(x)\underset{m}{\overset{\cdot}{=}} g(x)\)，当且仅当 \(\exists E\subset\mathbb R^1\)，使 \(m(\mathbb R^1-E)=0\)，\(f\) 在 \(E\) 上连续。
+
+\par\Needspace{3\baselineskip}\hypertarget{review4}{}\noindent \textbf{4.}　设 \(\{f_{k,i}\}\) 为 \([0,1]\) 上的 Lebesgue 可测函数列，且满足：
+
+（1）\(\lim_{i\to\infty} f_{k,i}(x)\underset{m}{\overset{\cdot}{=}} f_k(x)\)；
+
+（2）\(\lim_{k\to\infty} f_k(x)\underset{m}{\overset{\cdot}{=}} g(x)\)。
+
+证明：存在 \(\{k_j\},\{i_j\}\)，使 \(\lim_{j\to\infty}f_{k_j,i_j}(x)\underset{m}{\overset{\cdot}{=}} g(x)\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review5}{}\noindent \textbf{5.}　设 \(E\subset\mathbb R^1\) 为 Lebesgue 可测集，\(f\) 为 \(E\) 上的 Lebesgue 可测函数。证明：对任一 Borel 可测集 \(B\)，\(f^{-1}(B)=\{x\mid f(x)\in B\}\) 为 Lebesgue 可测集。
+
+\par\Needspace{3\baselineskip}\hypertarget{review6}{}\noindent \textbf{6.}　设 \(E\subset\mathbb R^1\) 为 Lebesgue 可测集，\(\{f_k\}\) 为 \(E\) 上依 Lebesgue 测度的收敛列，且存在常数 \(M\)，对 \(\forall k\in\mathbb N\)，有 \(|f_k(x_1)-f_k(x_2)|\le M|x_1-x_2|\)，\(\forall x_1,x_2\in E\)。问：\(\{f_k\}\) 为 \(E\) 上的几乎处处收敛列吗？
+
+\par\Needspace{3\baselineskip}\hypertarget{review7}{}\noindent \textbf{7.}　设 \((X,\mathcal R)\) 为可测空间，\(E\in\mathcal R\)，\(f\) 为 \(E\) 上的有界可测函数。证明：必存在可测集的特征函数线性组合构成的函数列 \(\{f_n\}\) 在 \(E\) 上一致收敛于 \(f\)，并且 \(|f_n(x)|\le\sup_{x\in E}|f(x)|\)，\(n\in\mathbb N\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review8}{}\noindent \textbf{8.}　设 \(f(x)\) 为 \(E\) 上的实值 Lebesgue 可测函数，\(g(x)\) 为 \(\mathbb R^1\) 上的实值 Borel 可测函数。证明：\(h(x)=g(f(x))\) 为 \(E\) 上的 Lebesgue 可测函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review9}{}\noindent \textbf{9.}　设 \(\{f_n\}\) 为 \(\mathbb R^1\) 上的 Lebesgue 可测函数，\(\{\lambda_n\}\) 为正数列。如果 \(\sum_{n=1}^\infty m(\{x\mid |f_n(x)|/\lambda_n>1\})<+\infty\)，证明：\(\varlimsup_{n\to\infty}|f_n(x)|/\lambda_n\le1\) 几乎处处成立。
+
+\par\Needspace{3\baselineskip}\hypertarget{review10}{}\noindent \textbf{10.}　设 \(f\in\mathcal L((0,+\infty))\)，\([a_\lambda,b_\lambda]\) 为 \((0,+\infty)\) 上的与正数 \(\lambda\) 有关的区间。证明 \[\lim_{\lambda\to+\infty}(L)\int_{a_\lambda}^{b_\lambda}f(t)\cos\lambda t\,dt=0.\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review11}{}\noindent \textbf{11.}　（1）设 \(f\) 为 \([a,b]\) 上的凸函数，\((X,\mathcal R,\mu)\) 为测度空间，\(E\in\mathcal R\)，\(p\) 为 \(E\) 上非负可积函数。又设 \(\varphi\) 为 \(E\) 上的可测函数，且对 \(\forall x\in E\)，\(\varphi(x)\in[a,b]\)。证明 Jensen 不等式
+
+\[
+f\left(\frac{\int_E\varphi(x)p(x)\,d\mu}{\int_Ep(x)\,d\mu}\right)\le\frac{\int_E f(\varphi(x))p(x)\,d\mu}{\int_Ep(x)\,d\mu}.
+\]
+
+它等价于：\(\int_Ep(x)\,d\mu=1\) 时，\(f(\int_E\varphi(x)p(x)\,d\mu)\le\int_E f(\varphi(x))p(x)\,d\mu\)。
+
+（2）设 \(\varphi(x),p(x)\) 为 \([0,1]\) 上的正值 Lebesgue 可测函数。如果 \(\varphi(x)p(x)\ge1\)，\(\forall x\in[0,1]\)。证明：\((L)\int_0^1\varphi(x)\,dx\cdot(L)\int_0^1p(x)\,dx\ge1\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review12}{}\noindent \textbf{12.}　（Riemann--Lebesgue）设 \(g\) 为 \(\mathbb R^1\) 上的有界 Lebesgue 可测的周期函数，周期为 \(T>0\)。证明：对 \(f\in\mathcal L(\mathbb R^1)\)，有
+
+\[
+\lim_{|\lambda|\to+\infty}\int_{\mathbb R^1}f(x)g(\lambda x)\,dx=\left(\frac1T\int_0^T g(x)\,dx\right)\left(\int_{\mathbb R^1} f(x)\,dx\right).
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review13}{}\noindent \textbf{13.}　设 \(\{a_n\}\) 为实数列，并令 \(E=\{x\in\mathbb R^1\mid\lim_{n\to\infty}e^{ia_nx}\text{ 存在有限}\}\)，若 \(m(E)>0\)。证明：\(\{a_n\}\) 为收敛列。
+
+\par\Needspace{3\baselineskip}\hypertarget{review14}{}\noindent \textbf{14.}　设 \(E_k\subset[a,b]\)，\(m(E_k)\ge\delta>0\)（\(k=1,2,\ldots\)），\(\{a_k\}\) 为一实数列，且在 \([a,b]\) 上满足 \(\sum_{k=1}^\infty|a_k|\chi_{E_k}(x)<+\infty\) 几乎处处成立。证明：\(\sum_{k=1}^\infty |a_k|<+\infty\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review15}{}\noindent \textbf{15.}　设 \(\{f_n\}\) 为 \([0,1]\) 上的 Lebesgue 可测函数列，且存在实数列 \(\{t_n\}\)，使 \(\sum_{n=1}^\infty |t_n|=+\infty\)，而 \(\sum_{n=1}^\infty t_nf_n(x)\) 在 \([0,1]\) 上几乎处处绝对收敛。证明：存在 \(\{n_k\}\)，使 \(\{f_{n_k}(x)\}\) 在 \([0,1]\) 上几乎处处收敛于 \(0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review16}{}\noindent \textbf{16.}　设 \(\{n_k\}\) 为自然数子列，\(n_1<n_2<\cdots<n_k<\cdots\)，且令 \(E=\{x\in[0,2\pi]\mid\{\sin n_kx\}\text{ 为收敛列}\}\)。证明：\(m(E)=0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review17}{}\noindent \textbf{17.}　设 \(f,g\in\mathcal L(\mathbb R^1)\)，且满足 \((L)\int_{\mathbb R^1}f(x)\,dx=(L)\int_{\mathbb R^1}g(x)\,dx=1\)。证明：对 \(\forall\lambda\in(0,1)\)，\(\exists E\subset\mathbb R^1\)，使 \((L)\int_E f(x)\,dx=(L)\int_Eg(x)\,dx=\lambda\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review18}{}\noindent \textbf{18.}　证明：不存在 \(g\in\mathcal L(\mathbb R^n)\)，使对 \(\forall f\in\mathcal L(\mathbb R^n)\)，在 \(\mathbb R^n\) 上有 \((g*f)(x)\underset{m}{\overset{\cdot}{=}} f(x)\)，其中 \((g*f)(x)=\int_{\mathbb R^n}g(x-y)f(y)\,dy\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review19}{}\noindent \textbf{19.}　设 \(f\) 为 \(\mathbb R^1\) 上的 Lebesgue 可测函数，并且它在任何有限区间 \((a,b)\) 上 Lebesgue 可积，而 \(h\) 在 \(\mathbb R^1\) 上有 \(n\) 阶连续导数，在 \([-M,M]\) 外为零。证明：函数 \((f*h)(t)=(L)\int_{\mathbb R^1} f(t-x)h(x)\,dx\) 为对 \(t\) 具有 \(n\) 阶导数的函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review20}{}\noindent \textbf{20.}　设 \(f(x)\) 为 \(E\subset\mathbb R^1\) 上的 Lebesgue 可测函数。对 \(\forall\lambda>0\)，作点集 \(\{x\in E\mid |f(x)|>\lambda\}\)，它是 Lebesgue 可测集。显然 \(f_*(\lambda)=m(\{x\in E\mid |f(x)|>\lambda\})\) 为 \((0,+\infty)\) 上的单调减函数。我们有
+
+\[
+\int_E |f(x)|^p\,dx=p\int_0^{+\infty}\lambda^{p-1} f_*(\lambda)\,d\lambda,
+\]
+
+其中 \(1\le p<+\infty\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review21}{}\noindent \textbf{21.}　设 \(f\) 为 \(E\subset\mathbb R^1\) 上的有界 Lebesgue 可测函数，且 \(\exists M>0\) 以及 \(\alpha<1\)，使对 \(\forall\lambda>0\)，有 \(m(\{x\in E\mid |f(x)|>\lambda\})<M/\lambda^\alpha\)。证明：\(f\in\mathcal L(E)\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review22}{}\noindent \textbf{22.}　设 \(f\) 在 \(\mathbb R^n\) 中的任一具有有限测度的 Lebesgue 可测集上都是 Lebesgue 可积的。证明：\(f\) 可分解为两部分 \(f(x)=f_1(x)+f_2(x)\)，其中 \(f_1\in\mathcal L(\mathbb R^n)\)，\(f_2\) 在 \(\mathbb R^n-B\) 上为有界函数，而 \(m(B)=0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review23}{}\noindent \textbf{23.}　设 \(f\) 在 \([a,b+\delta]\)（\(\delta>0\)）上 Lebesgue 可积，则
+
+\[
+\lim_{h\to0^+}\int_a^b|f(x+h)-f(x)|\,dx=0,
+\]
+
+\[
+\lim_{h\to0^+}\int_a^b f(x+h)\,dx=\int_a^b f(x)\,dx.
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review24}{}\noindent \textbf{24.}　设 \(f\) 为 \([a,b+\delta]\)（\(\delta>0\)）上的 Lebesgue 可积函数。\(E\subset[a,b]\) 为 Lebesgue 可测集。则
+
+\[
+\lim_{h\to0^+}\int_E|f(x+h)-f(x)|\,dx=0,
+\]
+
+\[
+\lim_{h\to0^+}\int_E f(x+h)\,dx=\int_E f(x)\,dx.
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review25}{}\noindent \textbf{25.}　设有界的非负 Lebesgue 可测函数 \(f\) 在 \(\mathbb R^1\) 上具有可任意小的周期。证明：在 \(\mathbb R^1\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}}\lambda\)，其中 \(\lambda\) 为常数。试具体给出两个此类函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review26}{}\noindent \textbf{26.}　设 \(f\) 在 \([0,+\infty)\) 上 Lebesgue 可积，并且一致连续。证明：\(\lim_{x\to+\infty}f(x)=0\)。举例说明``一致连续''条件不可删去。
+
+\par\Needspace{3\baselineskip}\hypertarget{review27}{}\noindent \textbf{27.}　设 \(f\) 为 \(\mathbb R^1\) 上的 Lebesgue 可积函数。证明：\(\sum_{n=-\infty}^{\infty}f(n^2x)\) 在 \(\mathbb R^1\) 上关于 Lebesgue 测度几乎处处等于一个 Lebesgue 可积函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review28}{}\noindent \textbf{28.}　设 \(f:[a,b]\to\mathbb R\) 为增函数。
+
+（1）如果 \(f\) 具有性质 \((N)\)：对 \(\forall e\subset[a,b]\)，\(m(e)=0\)，必定有 \(m(f(e))=0\)。且对 \(\forall x\in E\subset[a,b]\)，至少有一个导出数 \(Df(x)\le p\)（\(0\le p<+\infty\)），则 \(m^*(f(E))\le p\,m^*(E)\)。
+
+（2）如果对 \(\forall x\in E\subset[a,b]\)，至少有一个导出数 \(Df(x)\ge q\)（\(q\ge0\)），则 \(m^*(f(E))\ge q\,m^*(E)\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review29}{}\noindent \textbf{29.}　设 \(f\in\mathrm{BV}([a,b])\)。证明：\(\exists M>0,\delta>0\)，使当 \(0<|h|<\delta\) 时，有 \(|h|^{-1}(L)\int_a^b|f(x+h)-f(x)|\,dx\le M\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review30}{}\noindent \textbf{30.}　设 \(f\) 在 \((a,b)\) 上 Lebesgue 可积，且对 \(\forall[\alpha,\beta]\subset(a,b)\)，\(\exists\delta>0\)，使当 \(|h|<\delta\) 时，有 \((L)\int_\alpha^\beta|f(x+h)-f(x)|\,dx\le M|h|\)。证明：在 \((a,b)\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}} g(x)\)，其中 \(g\in\mathrm{BV}([\alpha,\beta])\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review31}{}\noindent \textbf{31.}　设 \(f:[a,b]\to[c,d]\) 为连续函数，且对 \(\forall y\in[c,d]\)，点集 \(f^{-1}(y)\) 至多有 20 个点。证明：\(\bigvee_a^b(f)\le20(d-c)\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review32}{}\noindent \textbf{32.}　设 \(f\) 为 \([a,b]\) 上单调增的函数，且有 \((L)\int_a^b f'(x)\,dx=f(b)-f(a)\)。证明：\(f\) 为 \([a,b]\) 上的绝对连续函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review33}{}\noindent \textbf{33.}　设 \(f_k\)（\(k=1,2,\ldots\)）为定义在 \([a,b]\) 上的单调增且绝对连续的函数列，级数 \(\sum_{k=1}^\infty f_k(x)\) 在 \([a,b]\) 上处处收敛。证明：和函数 \(\sum_{k=1}^\infty f_k(x)\) 在 \([a,b]\) 上为绝对连续函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review34}{}\noindent \textbf{34.}　设 \(f(x,y)\) 为定义在 \([a,b]\times[c,d]\) 上的二元函数，且 \(\exists y_0\in(c,d)\)，使 \(f(x,y_0)\) 在 \([a,b]\) 上是 Lebesgue 可积的；又对 \(\forall x\in[a,b]\)，\(f(x,y)\) 是 \([c,d]\) 上关于 \(y\) 的绝对连续函数，\(f'_y(x,y)\) 在 \([a,b]\times[c,d]\) 上是 Lebesgue 可积的。证明：\(F(y)=(L)\int_a^b f(x,y)\,dy\) 是定义在 \([c,d]\) 上的绝对连续函数，且关于 Lebesgue 测度对几乎所有的 \(y\in[c,d]\) 有 \(F'(y)=(L)\int_a^b f'_y(x,y)\,dx\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review35}{}\noindent \textbf{35.}　设 \(f\) 为 \([a,b]\) 上的单调增函数。证明：\(f\) 可分解为 \(f(x)=g(x)+h(x)\)，\(x\in[a,b]\)，其中 \(g\) 为单调增的绝对连续函数，\(h\) 为单调增函数，且在 \([a,b]\) 上有 \(h'(x)\underset{m}{\overset{\cdot}{=}}0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review36}{}\noindent \textbf{36.}　设 \(f\) 在任一区间 \([a,b]\subset\mathbb R^1\) 上都绝对连续。证明：对 \(\forall y\in\mathbb R^1\)，有
+
+\[
+\frac d{dy}\int_a^b f(x+y)\,dx=\int_a^b\frac d{dy}f(x+y)\,dx.
+\]
+
+其中上式左右两端的积分均为 Lebesgue 积分。
+
+\par\Needspace{3\baselineskip}\hypertarget{review37}{}\noindent \textbf{37.}　举例说明绝对连续函数关于 Lebesgue 测度几乎处处可导这个结论一般是不能改进的。
+
+\par\Needspace{3\baselineskip}\hypertarget{review38}{}\noindent \textbf{38.}　设 \(\{g_k\}\) 为 \([a,b]\) 上的绝对连续函数列，又在 \([a,b]\) 上，有 \(|g'_k(x)|\le F(x)\) 几乎处处成立，\(k=1,2,\ldots\)，且 \(F\in\mathcal L([a,b])\)。如果在 \([a,b]\) 上，有 \(\lim_{k\to\infty}g_k(x)\underset{m}{\overset{\cdot}{=}} g(x)\)，\(\lim_{k\to\infty}g'_k(x)\underset{m}{\overset{\cdot}{=}} f(x)\)，证明：\(g'(x)\underset{m}{\overset{\cdot}{=}} f(x)\)，\(x\in[a,b]\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review39}{}\noindent \textbf{39.}　（1）设 \(f\) 为 \([a,b]\) 上的绝对连续函数，则 \(|f(x)|\) 在 \([a,b]\) 上也为绝对连续函数。
+
+（2）举例说明：\(|f(x)|\) 为 \([a,b]\) 上的绝对连续函数，但 \(f(x)\) 却未必为 \([a,b]\) 上的绝对连续函数。
+
+（3）设 \(f\) 为 \([a,b]\) 上的连续函数，\(|f(x)|\) 为 \([a,b]\) 上的绝对连续函数。问：\(f(x)\) 为 \([a,b]\) 上的绝对连续函数吗？
+
+\par\Needspace{3\baselineskip}\hypertarget{review40}{}\noindent \textbf{40.}　设 \(f(x)\) 为 \([a,b]\) 上的连续函数。如果 \(f(x)\) 为有界变差函数，且具有性质 \((N)\)，则 \(f(x)\) 为 \([a,b]\) 上的绝对连续函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review41}{}\noindent \textbf{41.}　设 \(f\) 为 \([a,b]\) 上严格增的连续函数，\(E=\{x\in[a,b]\mid f'(x)=\infty\}\)。证明：\(f\) 为 \([a,b]\) 上的绝对连续函数当且仅当 \(m(f(E))=0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review42}{}\noindent \textbf{42.}　试作 \([0,1]\) 上的绝对连续函数 \(f(x),g(x)\)，使得：
+
+（1）\(f(x)\) 严格递增，且 \(f'(x)=0\)（\(x\in E\)），\(m(E)>0\)。
+
+（2）\(g(x)\) 不在任一区间上单调。
+
+\par\Needspace{3\baselineskip}\hypertarget{review43}{}\noindent \textbf{43.}　设 \(f\) 在 \(x_0\) 的开邻域中，存在有限的极限
+
+\[
+\lim_{\substack{x_1\ne x_2\\(x_1,x_2)\to(x_0,x_0)}}\frac{f(x_2)-f(x_1)}{x_2-x_1}\overset{\mathrm{def}}{=}\overset{\nabla}{f}(x_0),
+\]
+
+则称 \(f\) 在点 \(x_0\) 处强可导。证明：如果 \(f\) 在 \([a,b]\) 中每一点上均强可导，则 \(f\) 在 \([a,b]\) 上为绝对连续函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review44}{}\noindent \textbf{44.}　证明：\(f\) 在 \([a,b]\) 上绝对连续当且仅当对 \(\forall\varepsilon>0\)，\(\exists A>0\)，使对 \([a,b]\) 中的任何有限个互不相交的子区间 \(\{[x_i,y_i]\mid i=1,\ldots,n\}\)，有
+
+\[
+\sum_{i=1}^n |f(x_i)-f(y_i)|\le A\sum_{i=1}^n |x_i-y_i|+\varepsilon.
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review45}{}\noindent \textbf{45.}　设 \(f\) 为 \(\mathbb R^1\) 上非负实值 Lebesgue 可测函数，\(\varphi\) 在 \([0,+\infty)\) 上单调增，且在任一区间 \([0,a]\)（\(a>0\)）上绝对连续，又 \(\varphi(0)=0\)。令 \(G_t=\{x\mid f(x)>t\}\)，\(t>0\)。证明：对 \(\mathbb R^1\) 中任何 Lebesgue 可测集 \(E\)，有
+
+\[
+(L)\int_E\varphi(f(x))\,dx=(L)\int_0^{+\infty}m(E\cap G_t)\varphi'(t)\,dt.
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review46}{}\noindent \textbf{46.}　设 \(\{f_n\}\) 为支集含于 \((a,b)\) 的连续可导函数列，且满足
+
+\[
+\lim_{n\to\infty}(L)\int_a^b|f_n(x)-f(x)|\,dx=0=\lim_{n\to\infty}(L)\int_a^b|f'_n(x)-F(x)|\,dx,
+\]
+
+其中 \(f\) 在 \([a,b]\) 上连续。证明：\(F(x)\underset{m}{\overset{\cdot}{=}} f'(x)\)，\(x\in[a,b]\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review47}{}\noindent \textbf{47.}　设 \(f\) 为 \(\mathbb R^1\) 上的函数，在任何有限子区间上 Lebesgue 可积，且满足 \(f(x+y)=f(x)f(y)\)，\(\forall x,y\in\mathbb R^1\)。证明：\(f(x)=e^{Bx}\)，其中 \(B\) 为常数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review48}{}\noindent \textbf{48.}　设 \(f\) 为 \([a,b]\) 上的单调增函数。令 \(E=\{x\in[a,b]\mid f'(x)\text{ 存在有限}\}\)。证明：\((L)\int_a^b f'(x)\,dx=m^*(f(E))\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review49}{}\noindent \textbf{49.}　设 \(f\) 为定义在 \([a,b]\) 上的连续函数，除一至多可数集外，\(f'(x)\) 存在有限，且 \(f'\) 在 \([a,b]\) 上为 Lebesgue 可积函数。证明：\(f(x)-f(a)=(L)\int_a^x f'(t)\,dt\)，\(x\in[a,b]\)（对照 {[}13{]} 374 页定理 6.3.4，本题条件比它弱，因此它是本题之推广）。
+
+\par\Needspace{3\baselineskip}\hypertarget{review50}{}\noindent \textbf{50.}　设 \(f\) 为 \([a,b]\) 上单调增的连续函数。如果 \(\exists E\subset[a,b]\)，使 \(m(E)=0\)，且 \(m(f(E))=f(b)-f(a)\)。证明：在 \([a,b]\) 上 \(f'(x)\underset{m}{\overset{\cdot}{=}}0\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review51}{}\noindent \textbf{51.}　构造 \([0,1]\) 上的绝对连续函数 \(f\)，使得 \(f\) 不在 \([0,1]\) 的任何子区间上单调。
+
+\par\Needspace{3\baselineskip}\hypertarget{review52}{}\noindent \textbf{52.}　设 \(f\in C^0([a,b])\)，记 \(E=\{x\in[a,b]\mid D^+f(x)\le0\}\)。如果 \(f(E)\) 无内点，证明：\(f(x)\) 单调递增。
+
+\par\Needspace{3\baselineskip}\hypertarget{review53}{}\noindent \textbf{53.}　设 \(f\in\mathcal L(\mathbb R^1)\)，如果对 \(\mathbb R^1\) 上的任一具有紧支集的连续函数 \(g(x)\)，都有 \((L)\int_{\mathbb R^1}f(x)g(x)\,dx=0\)。证明：在 \(\mathbb R^1\) 上 \(f(x)\underset{m}{\overset{\cdot}{=}}0\)。如果``连续''改为``\(C^\infty\)''，上述结论是否仍成立？
+
+\par\Needspace{3\baselineskip}\hypertarget{review54}{}\noindent \textbf{54.}　设 \(f\in\mathcal L((0,1))\)，如果对任意支集 \(\operatorname{supp}\varphi=\overline{\{x\in(0,1)\mid f(x)\ne0\}}\subset(0,1)\) 的函数 \(\varphi\in C^1((0,1))\)，有 \((L)\int_0^1f(x)\varphi'(x)\,dx=0\)。证明：在 \((0,1)\) 上，\(f'(x)\underset{m}{\overset{\cdot}{=}} c\)。若将``\(\varphi\in C^1((0,1))\)''改为``\(\varphi\in C^\infty((0,1))\)''结论是否仍成立？
+
+\par\Needspace{3\baselineskip}\hypertarget{review55}{}\noindent \textbf{55.}　设 \(E\subset[a,b]\)。证明：\(\lim_{h\to0^+}\dfrac{m^*(E\cap[x-h,x+h])}{2h}\underset{m}{\overset{\cdot}{=}}1\)，\(x\in E\)。
+
+\par\Needspace{3\baselineskip}\hypertarget{review56}{}\noindent \textbf{56.}　设 \(\{r_n\}\) 为 \([0,1]\) 中有理数的全体。试用两种不同的方法证明：\(\sum_{n=1}^\infty\dfrac{\cos nx}{n^2|x-r_n|^{1/2}}\) 在 \(\mathbb R\) 中几乎处处收敛。
+
+\par\Needspace{3\baselineskip}\hypertarget{review57}{}\noindent \textbf{57.}　设 \((L)\int_0^1|f(x)|\,dx<+\infty\)，\((L)\int_1^{+\infty}|f(x)|x^{-2}\,dx<+\infty\)，证明：
+
+\[
+\int_0^{+\infty}\sin ax\,dx\int_0^{+\infty}f(y)e^{-xy}\,dy=a\int_0^{+\infty}\frac{f(y)}{a^2+y^2}\,dy,\qquad a>0.
+\]
+
+\par\Needspace{3\baselineskip}\hypertarget{review58}{}\noindent \textbf{58.}　设 \(f(x)\) 的所有导出数都满足不等式 \(|Df(x)|\le K\)。证明：\(f(x)\) 满足 Lipschitz 条件。
+
+\par\Needspace{3\baselineskip}\hypertarget{review59}{}\noindent \textbf{59.}　（菲赫金哥尔茨）设 \(F(x)\) 是 \((-\infty,+\infty)\) 上定义的函数。如果对 \((-\infty,+\infty)\) 上任何绝对连续函数 \(f(x)\)，\(F(f(x))\) 是绝对连续的。证明：\(F(x)\) 满足 Lipschitz 条件。
+
+\par\Needspace{3\baselineskip}\hypertarget{review60}{}\noindent \textbf{60.}　（菲赫金哥尔茨）设 \(f(x)\) 为在 \([a,b]\) 上定义的函数。如果对 \(\forall\varepsilon>0\)，\(\exists\delta>0\)，当有限个区间 \(\{(a_k,b_k)\mid k=1,2,\ldots,n\}\)（可以彼此相交）的全长满足 \(\sum_{k=1}^n(b_k-a_k)<\delta\) 时，有 \(|\sum_{k=1}^n[f(b_k)-f(a_k)]|<\varepsilon\)。证明：\(f(x)\) 必满足 Lipschitz 条件。
+
+\par\Needspace{3\baselineskip}\hypertarget{review61}{}\noindent \textbf{61.}　如果 \(\exists\delta_0>0\)，\(\forall x\in(x_0-\delta_0,x_0+\delta_0)\)，当 \(x<x_0\) 时 \(f(x)<f(x_0)\)，而当 \(x>x_0\) 时 \(f(x)>f(x_0)\)，则称 \(f(x)\) 在点 \(x_0\) 处是严格增的。现设 \(f(x)\) 在 \([a,b]\) 上每点处均严格增。证明：\(f(x)\) 在 \([a,b]\) 上严格增。
+
+\par\Needspace{3\baselineskip}\hypertarget{review62}{}\noindent \textbf{62.}　设 \(f(x)\) 是在 \([a,b]\) 上定义的有限函数。
+
+（1）如果 \(f(x)\) 在每一点的一切导出数都为正数，则 \(f(x)\) 为一个严格增函数。
+
+（2）如果 \(f(x)\) 在每一点的一切导出数都大于或等于 \(0\)，则 \(f(x)\) 为一个增函数。
+
+\par\Needspace{3\baselineskip}\hypertarget{review63}{}\noindent \textbf{63.}　（1）设 \(f(x)\) 在 \([a,b]\) 上绝对连续，且 \(|f'(x)|\le M\)，a.e. \(x\in[a,b]\)，则 \(|f(y)-f(x)|\le M|y-x|\)，\(\forall x,y\in[a,b]\)，即 \(f(x)\) 在 \([a,b]\) 上满足 Lipschitz 条件。
+
+（2）设 \(f(x)\) 定义在 \([a,b]\) 上满足 Lipschitz 条件，即 \(|f(y)-f(x)|\le M|y-x|\)，\(x,y\in[a,b]\)，则 \(|f'(x)|\le M\)，a.e. \(x\in[a,b]\)。
+
+（3）设 \(f(x)\) 的所有导出数都满足 \(|Df(x)|\le M\)，则 \(f(x)\) 满足 Lipschitz 条件。
+
+\end{document}
