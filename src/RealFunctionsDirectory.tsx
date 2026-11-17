@@ -54,7 +54,6 @@ const chapters: Chapter[] = [
 export function RealFunctionsDirectory({items}: {items: PublicEntry[]}) {
   const notes = new Map(items.filter(e => e.sourcePath.startsWith('notes/real-functions/'))
     .map(e => [e.sourcePath, e]));
-  const practice = notes.get('notes/real-functions/ch01-practice.md');
   return <article className="wrap article-shell">
     <div className="breadcrumb"><a href="/">首页</a><span>/</span><a href="/math/">数学</a></div>
     <div className="reading-page">
@@ -66,22 +65,24 @@ export function RealFunctionsDirectory({items}: {items: PublicEntry[]}) {
         </nav>
         {chapters.map((c, i) => {
           const n = i + 1;
+          const prefix = 'notes/real-functions/ch' + String(n).padStart(2, '0');
+          const practice = notes.get(prefix + '-practice.md');
+          const sectionCount = c.sections.filter((_, j) => notes.has(prefix + '-s' + (j + 1) + '.md')).length;
           return <section key={n} id={'chapter-' + n}>
             {n === 4 ? <Markdown body={String.raw`## 第 4 章　函数空间 $\mathcal L^p$（$p\geq 1$）`}/> : <h2>第 {n} 章　{c.title}</h2>}
-            <p>教材第 {c.pages} 页 · {n === 1 ? '六节讲义' : '教材目录，讲义待编'}。</p>
+            <p>教材第 {c.pages} 页 · {sectionCount ? sectionCount + ' 节讲义' : '教材目录，讲义待编'}。</p>
             <p>{c.description}</p>
             <Markdown body={c.sections.map(([title, firstPage], j) => {
-              const sourcePath = 'notes/real-functions/ch' + String(n).padStart(2,'0') + '-s' + (j+1) + '.md';
+              const sourcePath = prefix + '-s' + (j+1) + '.md';
               const note = notes.get(sourcePath);
               const number = n + '.' + (j+1);
               const label = '§' + number + (number === '2.4' || number === '3.9' ? '∗' : '') + '　' + title;
               return '- ' + (note ? '[' + label + '](' + entryUrl(note) + '/)' : label) + '（第 ' + firstPage + ' 页）';
             }).join('\n')}/>
-            {n === 1 && <>
-              <Markdown body={String.raw`**贯穿本章的问题**　给定一个函数，它的例外点集能有多大？§1.2 用有理数给单调函数的跳跃点编号，得到至多可数；§1.4 用振幅的水平集描述不连续点，得到 $F_\sigma$ 集；§1.5 加上连续函数列逐点收敛的条件，又得到第一纲。§1.6 的 Cantor 集则有连续势，同时疏朗且长度为零。这些结论分别控制点的数目、拓扑结构和长度。`}/>
-              {practice && <p><a href={entryUrl(practice) + '/'}>第一章习题与复习题</a>
-                {' · '}<a href="/files/notes/real-functions/real-functions-chapter-1.pdf" download>下载第一章讲义 PDF</a></p>}
-            </>}
+            {n === 1 && <Markdown body={String.raw`**贯穿本章的问题**　给定一个函数，它的例外点集能有多大？§1.2 用有理数给单调函数的跳跃点编号，得到至多可数；§1.4 用振幅的水平集描述不连续点，得到 $F_\sigma$ 集；§1.5 加上连续函数列逐点收敛的条件，又得到第一纲。§1.6 的 Cantor 集则有连续势，同时疏朗且长度为零。这些结论分别控制点的数目、拓扑结构和长度。`}/>}
+            {n === 2 && <p><strong>贯穿本章的问题</strong>　区间上的长度能决定哪些集合的测度？先检验覆盖费用与分割判据，再追踪延拓所需的有限性。章末用这些结论研究差集的内点、临界值的零测性与导函数的间断点。</p>}
+            {practice && <p><a href={entryUrl(practice) + '/'}>{practice.title}</a>
+              {' · '}<a href={'/files/notes/real-functions/real-functions-chapter-' + n + '.pdf'} download>下载第{['一','二','三','四'][i]}章讲义 PDF</a></p>}
           </section>;
         })}
         <p className="muted">∗ 沿用教材目录中的选读标记。</p>
@@ -90,18 +91,21 @@ export function RealFunctionsDirectory({items}: {items: PublicEntry[]}) {
   </article>;
 }
 
-const exercisePages = [
-  ['练习 1.1', 15], ['练习 1.2', 41], ['练习 1.3', 49],
-  ['练习 1.4', 65], ['练习 1.5', 80], ['练习 1.6', 95], ['复习题 1', 95],
-] as const;
+const exercisePages = {
+  1: [
+    ['练习 1.1', 15], ['练习 1.2', 41], ['练习 1.3', 49],
+    ['练习 1.4', 65], ['练习 1.5', 80], ['练习 1.6', 95], ['复习题 1', 95],
+  ],
+  2: [['练习 2.1', 112], ['练习 2.2', 121], ['练习 2.3', 144], ['复习题 2', 171]],
+} as const;
 
-export function RealFunctionsExerciseReader() {
+export function RealFunctionsExerciseReader({chapter}: {chapter: keyof typeof exercisePages}) {
   return <details hidden data-textbook-reader="" className="ustc-exercises">
     <summary>用自己的教材 PDF 打开原题</summary>
     <p>选择与本书相同的 430 页版本，即可按题组打开原页。文件仅在当前浏览器中读取。</p>
     <label>选择教材 PDF　<input type="file" accept="application/pdf,.pdf"/></label>
     <nav hidden aria-label="教材习题原页" className="lecture-toc-shortcuts">
-      {exercisePages.map(([label, printedPage]) => <a key={label} data-pdf-page={printedPage + 6}
+      {exercisePages[chapter].map(([label, printedPage]) => <a key={label} data-pdf-page={printedPage + 6}
         target="_blank" rel="noopener noreferrer">{label}（第 {printedPage} 页）</a>)}
     </nav>
     <script defer src="/real-functions-reader.js"/>
