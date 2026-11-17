@@ -16,9 +16,9 @@ updated_at: "2026-11-17"
 
 教材第 112 页
 
-**1.**　举例说明定理 2.1.1（8）与（9）中条件 $\mu\left(\bigcup_{n=m}^{\infty}E_n\right)<+\infty$，（10）中条件 $\sum_{n=m}^{\infty}\mu(E_n)<+\infty$ 都不能删去。
+**1.** 举例说明定理 2.1.1（8）与（9）中条件 $\mu\left(\bigcup_{n=m}^{\infty}E_n\right)<+\infty$，（10）中条件 $\sum_{n=m}^{\infty}\mu(E_n)<+\infty$ 都不能删去。
 
-**2.**　设 $\{\mu_n\}$ 为环 $\mathcal R$ 上的一列测度。证明：
+**2.** 设 $\{\mu_n\}$ 为环 $\mathcal R$ 上的一列测度。证明：
 
 $$
 \mu(E)=\sum_{n=1}^{\infty}\frac1{2^n}\mu_n(E),\quad E\in\mathcal R
@@ -28,23 +28,23 @@ $$
 
 如果对 $\forall E\in\mathcal R,\forall n\in\mathbb N,\mu_n(E)\leq1$，则 $\mu(E)\leq1,E\in\mathcal R$。
 
-**3.**　设 $\mathcal R$ 为集合 $X$ 上的环，$\{\mu_n\}$ 为 $\mathcal R$ 上的一列测度，并且对 $\forall E\in\mathcal R$，极限 $\lim_{n\to+\infty}\mu_n(E)$ 存在，记为 $\mu(E)$。证明：$\mu$ 为 $\mathcal R$ 上非负，空集上取值为 $0$ 的有限可加的广义集函数。
+**3.** 设 $\mathcal R$ 为集合 $X$ 上的环，$\{\mu_n\}$ 为 $\mathcal R$ 上的一列测度，并且对 $\forall E\in\mathcal R$，极限 $\lim_{n\to+\infty}\mu_n(E)$ 存在，记为 $\mu(E)$。证明：$\mu$ 为 $\mathcal R$ 上非负，空集上取值为 $0$ 的有限可加的广义集函数。
 
 举例说明 $\mu$ 未必为 $\mathcal R$ 上的测度。
 
-**4.**　设 $\mu$ 为基本空间 $X$ 的环 $\mathcal R$ 上的测度。如果对 $\forall E\in\mathcal R,\mu(E)\leq1$。证明：$\mu$ 的“原子”（即是 $\mathcal R$ 中的元素，它为 $X$ 中的独点集 $\{x\}$，且 $\mu(\{x\})>0$）的全体为至多可数集。
+**4.** 设 $\mu$ 为基本空间 $X$ 的环 $\mathcal R$ 上的测度。如果对 $\forall E\in\mathcal R,\mu(E)\leq1$。证明：$\mu$ 的“原子”（即是 $\mathcal R$ 中的元素，它为 $X$ 中的独点集 $\{x\}$，且 $\mu(\{x\})>0$）的全体为至多可数集。
 
-**5.**　设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的一个测度，对 $\forall E\in\mathcal H(\mathcal R)$，证明：$E$ 必有等测包 $H$，即 $H\in\mathcal R,H\supset E$，且 $\mu(H)=\mu^*(E)$。当 $\mathcal R$ 仅为环时，上述结论仍正确吗？
+**5.** 设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的一个测度，对 $\forall E\in\mathcal H(\mathcal R)$，证明：$E$ 必有等测包 $H$，即 $H\in\mathcal R,H\supset E$，且 $\mu(H)=\mu^*(E)$。当 $\mathcal R$ 仅为环时，上述结论仍正确吗？
 
 ## 练习题 2.2
 
 教材第 121–122 页
 
-**1.**　设 $X=\{x_n\mid n\in\mathbb N\}$ 为可数集，$\mathcal R$ 为 $X$ 中有限子集所成的环。对于 $\forall E\in\mathcal R,\mu_1(E)$ 为 $E$ 中的点数，$\mu_2(E)=\alpha\mu_1(E),\alpha\in[0,+\infty)$（由例 2.1.1 知，$\mu_1,\mu_2$ 均为 $\mathcal R$ 上的测度）。证明：$\mu_1^*,\mu_2^*$ 都为 $\mathcal H(\mathcal R)$ 上的测度。
+**1.** 设 $X=\{x_n\mid n\in\mathbb N\}$ 为可数集，$\mathcal R$ 为 $X$ 中有限子集所成的环。对于 $\forall E\in\mathcal R,\mu_1(E)$ 为 $E$ 中的点数，$\mu_2(E)=\alpha\mu_1(E),\alpha\in[0,+\infty)$（由例 2.1.1 知，$\mu_1,\mu_2$ 均为 $\mathcal R$ 上的测度）。证明：$\mu_1^*,\mu_2^*$ 都为 $\mathcal H(\mathcal R)$ 上的测度。
 
-**2.**　举例说明环 $\mathcal R$ 上测度 $\mu$ 按 Caratheodory 条件所得的扩张 $\mathcal R^*,\mu^*$ 并不一定为 $\mathcal R,\mu$ 的最大扩张。
+**2.** 举例说明环 $\mathcal R$ 上测度 $\mu$ 按 Caratheodory 条件所得的扩张 $\mathcal R^*,\mu^*$ 并不一定为 $\mathcal R,\mu$ 的最大扩张。
 
-**3.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。任取 $E\subset X$，令
+**3.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。任取 $E\subset X$，令
 
 $$
 \mathcal R_E=\{F\mid F\in\mathcal R,F\subset E\},
@@ -56,11 +56,11 @@ $$
 \mathcal R_E^*\ne\mathcal R^*\cap E.
 $$
 
-**4.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R_\sigma(\mathcal R)$ 上的测度。如果 $\mu$ 在 $\mathcal R$ 上是 $\sigma$ 有限的，则 $\mu$ 在 $\mathcal R_\sigma(\mathcal R)$ 上是 $\sigma$ 有限的。
+**4.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R_\sigma(\mathcal R)$ 上的测度。如果 $\mu$ 在 $\mathcal R$ 上是 $\sigma$ 有限的，则 $\mu$ 在 $\mathcal R_\sigma(\mathcal R)$ 上是 $\sigma$ 有限的。
 
 举例说明，如果 $\mu$ 在 $\mathcal R_\sigma(\mathcal R)$ 上是 $\sigma$ 有限的，$\mu$ 限制到 $\mathcal R$ 上不必是 $\sigma$ 有限的。
 
-**5.**　设 $\mathcal R$ 为 $X$ 某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。证明：
+**5.** 设 $\mathcal R$ 为 $X$ 某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。证明：
 
 （1）$\mu$ 零集全体为 $\mathcal R$ 的子环。
 
@@ -70,15 +70,18 @@ $$
 
 （4）举例说明 $\mathcal R$ 虽不为 $\sigma$ 环，但 $\mu$ 零集全体却为 $\sigma$ 环。
 
-**6.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 环，$\mu$ 为 $\mathcal R$ 上的测度。证明：$\mathcal H(\mathcal R)$ 上的广义集函数
+**6.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 环，$\mu$ 为 $\mathcal R$ 上的测度。证明：$\mathcal H(\mathcal R)$ 上的广义集函数
 
 $$
-\mu^{**}(E)=\inf\{\mu(F)\mid E\subset F\in\mathcal R\},\quad E\in\mathcal H(\mathcal R)
+\begin{gathered}
+\mu^{**}(E)=\inf\{\mu(F)\mid E\subset F\in\mathcal R\}, \\
+E\in\mathcal H(\mathcal R)
+\end{gathered}
 $$
 
 就是外测度 $\mu^*(E)$。
 
-**7.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。则 $\mathcal H(\mathcal R)$ 上的集函数
+**7.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。则 $\mathcal H(\mathcal R)$ 上的集函数
 
 $$
 \mu_*(E)=\sup\{\mu(F)\mid E\supset F\in\mathcal R\}
@@ -107,22 +110,29 @@ $$
 （5）对 $E\in\mathcal R,F\in\mathcal H(\mathcal R)$，有
 
 $$
-\mu_*(F)=\mu_*(F\cap E)+\mu_*(F-E)=\mu_*(F\cap E)+\mu_*(F\cap E^c).
+\begin{gathered}
+\mu_*(F) \\
+{}=\mu_*(F\cap E)+\mu_*(F-E) \\
+{}=\mu_*(F\cap E)+\mu_*(F\cap E^c).
+\end{gathered}
 $$
 
 （6）如果 $\mathcal R$ 为 $\sigma$ 环，则 $\mu_*(E)\leq\mu^*(E),\quad E\in\mathcal H(\mathcal R)$。
 
-**8.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的代数，$\mu$ 为 $\mathcal R$ 上的有限测度（即 $\mu(X)<+\infty$），定义
+**8.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的代数，$\mu$ 为 $\mathcal R$ 上的有限测度（即 $\mu(X)<+\infty$），定义
 
 $$
-\mu_{**}(E)=\mu(X)-\mu^*(X-E),\quad E\in\mathcal H(\mathcal R).
+\begin{gathered}
+\mu_{**}(E)=\mu(X)-\mu^*(X-E), \\
+E\in\mathcal H(\mathcal R).
+\end{gathered}
 $$
 
 证明：$\mu_{**}$ 满足题 7 中 $\mu_*$ 的（1）（2）（3）（5）（6）和（4）的第 1 个不等式；如果 $\mathcal R$ 为 $\sigma$ 代数，则 $\mu_{**}$ 也满足（4）中第 2 式。
 
 此外，$\mu_{**}\geq\mu_*$，并可举出 $\mu_{**}>\mu_*$ 的例子。如果 $\mathcal R$ 为 $\sigma$ 代数，则 $\mu_{**}=\mu_*$。
 
-**9.**　设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 代数，$\mu$ 为 $\mathcal R$ 上的有限测度，对 $E\in\mathcal H(\mathcal R)$，定义
+**9.** 设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 代数，$\mu$ 为 $\mathcal R$ 上的有限测度，对 $E\in\mathcal H(\mathcal R)$，定义
 
 $$
 \mu_*(E)=\sup\{\mu(F)\mid E\supset F\in\mathcal R\}.
@@ -132,27 +142,30 @@ $$
 
 举例说明，如果删去条件“有限测度”，则 $\mu^*(E)=\mu_*(E)\not\Rightarrow E\in\mathcal R^*$。
 
-**10.**　设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的测度，$A,B\in\mathcal R^*$（即为 $\mu^*$ 可测集），$A\cap B=\varnothing$。则对 $\forall E\in\mathcal H(\mathcal R)$ 有
+**10.** 设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的测度，$A,B\in\mathcal R^*$（即为 $\mu^*$ 可测集），$A\cap B=\varnothing$。则对 $\forall E\in\mathcal H(\mathcal R)$ 有
 
 $$
-\begin{aligned}\mu^*(E\cap(A\cup B))&=\mu^*(E\cap A)+\mu^*(E\cap B),\\ \mu_*(E\cap(A\cup B))&=\mu_*(E\cap A)+\mu_*(E\cap B).\end{aligned}
+\begin{gathered}
+\mu^*(E\cap(A\cup B)) \\
+{}=\mu^*(E\cap A)+\mu^*(E\cap B), \\
+\mu_*(E\cap(A\cup B)) \\
+{}=\mu_*(E\cap A)+\mu_*(E\cap B).
+\end{gathered}
 $$
 
 ## 练习题 2.3
 
 教材第 144–147 页
 
-**1.**　设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$。如果 $0<a<m(E)$，证明：存在无内点的有界闭集 $F\subset E$，s.t. $m(F)=a$。
+**1.** 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$。如果 $0<a<m(E)$，证明：存在无内点的有界闭集 $F\subset E$，s.t. $m(F)=a$。
 
-**2.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
+**2.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
 
 （1）$A_1,A_2\subset\mathbb R^n,A_1\subset A_2,A_1\in\mathcal L$ 且 $m(A_1)=m^*(A_2)<+\infty$。证明：$A_2\in\mathcal L$。
 
 （2）$A,B\subset\mathbb R^n,A\in\mathcal L$ 且 $m^*(B)<+\infty$。证明：
 
-$$
-m^*(A\cup B)=m^*(A)+m^*(B)-m^*(A\cap B).
-$$
+$\displaystyle m^*(A\cup B)=m^*(A)+m^*(B)$ $\displaystyle {}-m^*(A\cap B).$
 
 （3）对 $\forall E\subset\mathbb R^n$，证明：$\exists F_\sigma$ 集 $K$ 和 $G_\delta$ 集 $H$，s.t.
 
@@ -160,17 +173,17 @@ $$
 K\subset E\subset H,
 $$
 
-且 $m(K)=m_*(E),\quad m(H)=m^*(E)$。
+且 $m(K)=m_*(E)$，$m(H)=m^*(E)$。
 
-**3.**　设 $\mu$ 为集 $X$ 上的环 $\mathcal R$ 的测度。
+**3.** 设 $\mu$ 为集 $X$ 上的环 $\mathcal R$ 的测度。
 
-（1）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R),E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，则
+（1）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R)$，$E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，则
 
 $$
 \lim_{n\to+\infty}\mu^*(E_n)=\mu^*\left(\bigcup_{n=1}^\infty E_n\right).
 $$
 
-（2）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R),E_1\supset E_2\supset\cdots\supset E_n\supset\cdots$，且至少有一个 $E_{n_0}$，s.t. $\mu_*(E_{n_0})<+\infty$，则
+（2）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R)$，$E_1\supset E_2\supset\cdots\supset E_n\supset\cdots$，且至少有一个 $E_{n_0}$，s.t. $\mu_*(E_{n_0})<+\infty$，则
 
 $$
 \lim_{n\to+\infty}\mu_*(E_n)=\mu_*\left(\bigcap_{n=1}^\infty E_n\right).
@@ -178,19 +191,19 @@ $$
 
 举例说明“$\mu_*(E_{n_0})<+\infty$”不能删去。
 
-（3）举例说明，虽有（1）中条件：$E_n\in\mathcal H(\mathcal R),E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，但
+（3）举例说明，虽有（1）中条件：$E_n\in\mathcal H(\mathcal R)$，$E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，但
 
 $$
 \lim_{n\to+\infty}\mu_*(E_n)\ne\mu_*\left(\bigcup_{n=1}^\infty E_n\right).
 $$
 
-（4）举例说明，虽有（2）中条件：$E_n\in\mathcal H(\mathcal R),E_1\supset E_2\supset\cdots\supset E_n\supset\cdots,\mu^*(E_{n_0})<+\infty$，但
+（4）举例说明，虽有（2）中条件：$E_n\in\mathcal H(\mathcal R)$，$E_1\supset E_2\supset\cdots\supset E_n\supset\cdots$，$\mu^*(E_{n_0})<+\infty$，但
 
 $$
 \lim_{n\to+\infty}\mu^*(E_n)\ne\mu^*\left(\bigcap_{n=1}^\infty E_n\right).
 $$
 
-**4.**　设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间。
+**4.** 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间。
 
 （1）作出一个由 $\mathbb R^1$ 中某些无理数构成的闭集 $F$，s.t. $m(F)>0$。
 
@@ -202,37 +215,43 @@ $$
 
 证明：任一闭集 $F\subset\mathbb R^1$，有 $m(G\triangle F)>0$。
 
-**5.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。证明：
+**5.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。证明：
 
 （1）$E\in\mathcal L\Leftrightarrow$ 对 $\forall\varepsilon>0$，存在开集 $G_1,G_2$，s.t. $G_1\supset E,G_2\supset E^c$，且 $m(G_1\cap G_2)<\varepsilon$。
 
-（2）$E\subset\mathbb R^n$，且 $m^*(E)<+\infty$。如果 $m^*(E)=\sup\{m(F)\mid F\subset E\text{ 为有界闭集}\}$，证明：$E\in\mathcal L$。
+（2）$E\subset\mathbb R^n$，且 $m^*(E)<+\infty$。如果 $m^*(E)=\sup\{m(F)\mid F\subset E$ 为有界闭集 $\}$，证明：$E\in\mathcal L$。
 
 （3）设 $E\in\mathcal L$ 且 $m(E)>0$。证明：$\exists\boldsymbol{x}\in E$，s.t. 对 $\forall\delta>0$，有 $m(E\cap B(\boldsymbol{x};\delta))>0$。
 
 （4）设 $\{B_k\}$ 为 $\mathbb R^n$ 中递减可测集列，$m^*(A)<+\infty$。令
 
 $$
-E_k=A\cap B_k,k\in\mathbb N,\qquad E=\bigcap_{k=1}^\infty E_k.
+\begin{gathered}
+E_k=A\cap B_k,k\in\mathbb N, \\
+E=\bigcap_{k=1}^\infty E_k.
+\end{gathered}
 $$
 
 证明：$\lim_{k\to+\infty}m^*(E_k)=m^*(E)$。
 
-**6.**　设 $(\mathbb R^2,\mathcal L,m)$ 为 Lebesgue 测度空间，$[0,1]^2=[0,1]\times[0,1]$。令
+**6.** 设 $(\mathbb R^2,\mathcal L,m)$ 为 Lebesgue 测度空间，$[0,1]^2=[0,1]\times[0,1]$。令
 
 $$
-E=\left\{(x,y)\in[0,1]^2\ \bigg|\ |\sin x|<\frac12,\quad \cos(x+y)\text{ 为无理数}\right\}.
+\begin{gathered}
+E=\Bigl\{(x,y)\in[0,1]^2\ \Big|\ |\sin x|<\tfrac12, \\
+\cos(x+y)\text{ 为无理数}\Bigr\}.
+\end{gathered}
 $$
 
 证明：$m(E)=\frac{\pi}{6}$。
 
-**7.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E_k\in\mathcal L,k\in\mathbb N$。证明：
+**7.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E_k\in\mathcal L,k\in\mathbb N$。证明：
 
-（1）$m\left(\varliminf_{k\to+\infty}E_k\right)\leq\varliminf_{k\to+\infty}m(E_k)$。
+（1）$m\left(\varliminf_{k\to+\infty}E_k\right)$ ${}\leq\varliminf_{k\to+\infty}m(E_k)$。
 
-（2）如果 $\exists k_0\in\mathbb N$，s.t. $m\left(\bigcup_{k=k_0}^\infty E_k\right)<+\infty$，则 $m\left(\varlimsup_{k\to+\infty}E_k\right)\geq\varlimsup_{k\to+\infty}m(E_k)$。
+（2）如果 $\exists k_0\in\mathbb N$，s.t. $m\left(\bigcup_{k=k_0}^\infty E_k\right)<+\infty$，则 $m\left(\varlimsup_{k\to+\infty}E_k\right)$ ${}\geq\varlimsup_{k\to+\infty}m(E_k)$。
 
-**8.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
+**8.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
 
 （1）$E\subset\mathbb R^n,H\supset E$ 且 $H$ 为可测集。证明：
 
@@ -248,7 +267,7 @@ $$
 
 如果 $m^*(E)=+\infty$，结论如何？
 
-（3）设 $A,B\subset\mathbb R^n,A\cup B\in\mathcal L,m(A\cup B)<+\infty$，且
+（3）设 $A,B\subset\mathbb R^n$，$A\cup B\in\mathcal L,m(A\cup B)<+\infty$，且
 
 $$
 m(A\cup B)=m^*(A)+m^*(B).
@@ -256,7 +275,7 @@ $$
 
 证明：$A,B$ 皆为可测集。
 
-**9.**　设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。$\mathcal L\cap[0,1]$ 为 $[0,1]$ 中 Lebesgue 可测集的全体。
+**9.** 设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。$\mathcal L\cap[0,1]$ 为 $[0,1]$ 中 Lebesgue 可测集的全体。
 
 （1）$\{E_k\}$ 为 $[0,1]$ 中的可测集列，$m(E_k)=1,k\in\mathbb N$。证明：$m\left(\bigcap_{k=1}^\infty E_k\right)=1$。
 
@@ -274,37 +293,38 @@ $$
 
 证明：
 
-$$
-m\left(\left(\bigcup_{k=1}^\infty I_k\right)\cap E\right)\geq\frac13 m\left(\bigcup_{k=1}^\infty I_k\right).
-$$
+$\displaystyle m\left(\left(\bigcup_{k=1}^\infty I_k\right)\cap E\right)$ $\displaystyle {}\geq\frac13 m\left(\bigcup_{k=1}^\infty I_k\right).$
 
-**10.**　设 $f:[a,b]\to\mathbb R$。若对 $[a,b]$ 中任一 Lebesgue 可测集 $E$，$f(E)$ 必为 $\mathbb R$ 中的 Lebesgue 可测集。证明：对于 $[a,b]$ 中任一 Lebesgue 零测集 $Z$，必有 $m(f(Z))=0$。
+**10.** 设 $f:[a,b]\to\mathbb R$。若对 $[a,b]$ 中任一 Lebesgue 可测集 $E$，$f(E)$ 必为 $\mathbb R$ 中的 Lebesgue 可测集。证明：对于 $[a,b]$ 中任一 Lebesgue 零测集 $Z$，必有 $m(f(Z))=0$。
 
-**11.**　设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$，且 $\exists q\in(0,1)$，s.t. 对任何开区间 $(a,b)$，总有开区间列 $\{I_k\}$ 满足：
+**11.** 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$，且 $\exists q\in(0,1)$，s.t. 对任何开区间 $(a,b)$，总有开区间列 $\{I_k\}$ 满足：
 
 $$
-E\cap(a,b)\subset\bigcup_{k=1}^\infty I_k,\qquad\sum_{k=1}^\infty m(I_k)<q(b-a).
+\begin{gathered}
+E\cap(a,b)\subset\bigcup_{k=1}^\infty I_k, \\
+\sum_{k=1}^\infty m(I_k)<q(b-a).
+\end{gathered}
 $$
 
 证明：$m(E)=0$。
 
-**12.**　设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。
+**12.** 设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。
 
 （1）证明：不存在具有下列性质的可测集 $E\subset[0,1]$，对 $\forall(a,b)\subset[0,1]$，有 $m(E\cap(a,b))=\frac{b-a}{2}$。
 
-（2）设 $E\subset[0,1]$ 为可测集且有 $m(E)\geq\varepsilon>0,x_i\in[0,1],i=1,2,\cdots,n$，其中 $n>\frac2\varepsilon$。证明：$E$ 中存在两点其距离等于 $\{x_1,x_2,\cdots,x_n\}$ 中某两个点之间的距离。
+（2）设 $E\subset[0,1]$ 为可测集且有 $m(E)\geq\varepsilon>0$，$x_i\in[0,1],i=1,2,\cdots,n$，其中 $n>\frac2\varepsilon$。证明：$E$ 中存在两点其距离等于 $\{x_1,x_2,\cdots,x_n\}$ 中某两个点之间的距离。
 
-（3）在 $[0,1]$ 中作点集 $E=\{x\in[0,1]\mid\text{在 }x\text{ 的十进位制小数表示中只出现 9 个数码}\}$，求 $m(E)$ 和 $\overline{\overline E}$。
+（3）在 $[0,1]$ 中作点集 $E=\{x\in[0,1]\mid$ 在 $x$ 的十进位制小数表示中只出现 9 个数码 $\}$，求 $m(E)$ 和 $\overline{\overline E}$。
 
 （4）设 $W\subset[0,1]$ 为不可数集。证明：$\exists\varepsilon\in(0,1)$，s.t. 对于 $[0,1]$ 中任一满足 $m(E)\geq\varepsilon$ 的可测集 $E$，$W\cap E$ 为不可测集。
 
-**13.**　设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$ 为可测集，$a\in\mathbb R^1,\delta>0$。如果对满足 $|x|<\delta$ 的 $x$，$a+x$ 与 $a-x$ 之中必有一点属于 $E$。证明：$m(E)\geq\delta$。
+**13.** 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$ 为可测集，$a\in\mathbb R^1,\delta>0$。如果对满足 $|x|<\delta$ 的 $x$，$a+x$ 与 $a-x$ 之中必有一点属于 $E$。证明：$m(E)\geq\delta$。
 
-**14.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$W\subset\mathbb R^n$ 为不可测集，$E\subset\mathbb R^n$ 为可测集。证明：$E\triangle W$ 为不可测集。
+**14.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$W\subset\mathbb R^n$ 为不可测集，$E\subset\mathbb R^n$ 为可测集。证明：$E\triangle W$ 为不可测集。
 
-**15.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$T:\mathbb R^n\to\mathbb R^n$ 为一一映射，且保持点集的外测度不变。证明：对 $\forall E\in\mathcal L$，有 $T(E)\in\mathcal L$。
+**15.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$T:\mathbb R^n\to\mathbb R^n$ 为一一映射，且保持点集的外测度不变。证明：对 $\forall E\in\mathcal L$，有 $T(E)\in\mathcal L$。
 
-**16.**　设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^n$。如果存在可测集列 $\{A_k\},\{B_k\}$，s.t. $A_k\subset E\subset B_k,k\in\mathbb N$，且
+**16.** 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^n$。如果存在可测集列 $\{A_k\},\{B_k\}$，s.t. $A_k\subset E\subset B_k,k\in\mathbb N$，且
 
 $$
 \lim_{k\to+\infty}m(B_k-A_k)=0.
@@ -312,11 +332,11 @@ $$
 
 证明：$E$ 为 Lebesgue 可测集。
 
-**17.**　举例说明引理 2.3.3 中开集 $G$ 不能换成闭集。
+**17.** 举例说明引理 2.3.3 中开集 $G$ 不能换成闭集。
 
-**18.**　构造一个开集 $G\subset\mathbb R^1$，s.t. Lebesgue 测度 $m(G)\ne m(\overline G)$，其中 $\overline G$ 为 $G$ 的闭包。
+**18.** 构造一个开集 $G\subset\mathbb R^1$，s.t. Lebesgue 测度 $m(G)\ne m(\overline G)$，其中 $\overline G$ 为 $G$ 的闭包。
 
-**19.**　设 $E\subset[0,1]$ 为 $[0,1]$ 中的 Lebesgue 可测集。如果 $\exists\alpha>0$，s.t. 对任意的 $0\leq a<b\leq1$，有
+**19.** 设 $E\subset[0,1]$ 为 $[0,1]$ 中的 Lebesgue 可测集。如果 $\exists\alpha>0$，s.t. 对任意的 $0\leq a<b\leq1$，有
 
 $$
 m(E\cap[a,b])\geq\alpha(b-a).
@@ -324,12 +344,15 @@ $$
 
 证明：$m(E)=1$。
 
-**20.**　设 $T$ 为指标集，且对 $\forall t\in T,G_t$ 为 $\mathbb R^1$ 中的开集。问：$\bigcap_{t\in T}G_t$ 为 Borel 可测集吗？$\bigcap_{t\in T}G_t$ 为 Lebesgue 可测集吗？
+**20.** 设 $T$ 为指标集，且对 $\forall t\in T,G_t$ 为 $\mathbb R^1$ 中的开集。问：$\bigcap_{t\in T}G_t$ 为 Borel 可测集吗？$\bigcap_{t\in T}G_t$ 为 Lebesgue 可测集吗？
 
-**21.**　设 $(\mathbb R^2,\mathcal L,m)$ 为平面上的 Lebesgue 测度空间。旋转
+**21.** 设 $(\mathbb R^2,\mathcal L,m)$ 为平面上的 Lebesgue 测度空间。旋转
 
 $$
-\varphi_\theta:\mathbb R^2\to\mathbb R^2,\qquad(x,y)\mapsto(x',y')=\varphi_\theta(x,y)
+\begin{gathered}
+\varphi_\theta:\mathbb R^2\to\mathbb R^2, \\
+(x,y)\mapsto(x',y')=\varphi_\theta(x,y)
+\end{gathered}
 $$
 
 为
@@ -369,7 +392,10 @@ $$
 设 $E\subset(-\pi,\pi),0<a<b<+\infty$。在平面上定义扇面集：
 
 $$
-S=\{(r\cos\theta,r\sin\theta)\mid a<r<b,\theta\in E\}.
+\begin{gathered}
+S=\{(r\cos\theta,r\sin\theta)\mid \\
+a<r<b,\theta\in E\}.
+\end{gathered}
 $$
 
 证明：$m^*(S)\leq\frac12(b^2-a^2)m^*(E)$。
@@ -382,9 +408,7 @@ $$
 
 （2）作（向量差）点集 $E_{-}E=\{\boldsymbol{x}-\boldsymbol{y}\mid\boldsymbol{x},\boldsymbol{y}\in E\}$。证明：必存在 $\delta>0$，s.t.
 
-$$
-E_{-}E\supset B(\boldsymbol{0};\delta)=\{\boldsymbol{x}\in\mathbb R^n\mid\|\boldsymbol{x}\|<\delta\}.
-$$
+$\displaystyle E_{-}E\supset B(\boldsymbol{0};\delta)$ $\displaystyle {}=\{\boldsymbol{x}\in\mathbb R^n\mid\|\boldsymbol{x}\|<\delta\}.$
 
 ### 第 5 题
 
@@ -398,9 +422,7 @@ $$
 
 设 $(\mathbb R^1,\mathcal L,m)$ 为测度空间，$\alpha>2$，令
 
-$$
-E=\left\{x\in\mathbb R^1\ \bigg|\ \text{存在无限个分数 }\frac pq,\ p,q\text{ 是互素的自然数, s.t. }\left|x-\frac pq\right|<\frac1{q^\alpha}\right\}.
-$$
+$E=\bigl\{x\in\mathbb R^1\mid$ 存在无限个分数 $\frac pq$，$p,q$ 是互素的自然数，s.t. $\left|x-\frac pq\right|<\frac1{q^\alpha}\bigr\}$。
 
 证明：$m(E)=0$。
 
@@ -427,7 +449,10 @@ $$
 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，函数 $f:\mathbb R^1\to\mathbb R$ 在正测集 $E\in\mathcal L$ 上是有界的，且满足
 
 $$
-f(x+y)=f(x)+f(y),\quad x,y\in\mathbb R^1.
+\begin{gathered}
+f(x+y)=f(x)+f(y), \\
+x,y\in\mathbb R^1.
+\end{gathered}
 $$
 
 证明：$f(x)=xf(1)$ 为线性函数。
@@ -440,11 +465,9 @@ $$
 
 设 $E\subset[a,b],f:[a,b]\to\mathbb R$ 为实函数。如果 $f'(x)$ 在 $E$ 上存在有限，且 $|f'(x)|\leq M$（常数），则：
 
-（1）对 $\forall\varepsilon>0,\forall n\in\mathbb N$，有 $m^*(f(E_n))\leq(M+\varepsilon)(m^*(E_n)+\varepsilon)$，其中
+（1）对 $\forall\varepsilon>0,\forall n\in\mathbb N$，有 $m^*(f(E_n))$ ${}\leq(M+\varepsilon)(m^*(E_n)+\varepsilon)$，其中
 
-$$
-\begin{aligned}E_n=\{x\in E\mid{}&\text{当 }y\in[a,b]\text{ 且 }|y-x|\leq\tfrac1n\text{ 时, 有}\\ &|f(y)-f(x)|\leq(M+\varepsilon)|y-x|\}.\end{aligned}
-$$
+$E_n=\{x\in E\mid$ 当 $y\in[a,b]$ 且 $|y-x|\leq\frac1n$ 时，有 $|f(y)-f(x)|$ ${}\leq(M+\varepsilon)|y-x|\}$。
 
 （2）$m^*(f(E))\leq M m^*(E)$。
 
