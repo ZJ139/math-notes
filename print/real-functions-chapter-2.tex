@@ -237,184 +237,188 @@ m((A+h)\triangle A)\leq 2m(A\triangle P)+m((P+h)\triangle P).
 
 \textbf{例 2.5.8}　要使每个非退化子区间内 \(E\) 与其补集都占正测度，不能在任何一边留下整段开区间。列出 \((0,1)\) 内所有有理端点开区间 \(I_j\)。在 \(I_1\) 中放两个不交的正测度疏朗紧集 \(K_1,L_1\)。第 \(j\) 次，先删掉此前有限多个这样的紧集，\(I_j\) 仍含开区间，在其中再放 \(K_j,L_j\)。所需紧集可在任一闭小区间中挖去覆盖其有理点的开区间，总长取小于原长的一半。令 \(E=\bigcup_j K_j\)。它是 Borel 集，每个非退化区间都包含某个 \(I_j\)，其中 \(K_j\subset E\) 且 \(L_j\subset E^c\)，故两侧都有正测度。这个构造也为复习题中``正测度却没有内部''的问题提供了例子。
 
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 \clearpage\phantomsection\addcontentsline{toc}{section}{第二章习题与复习题}\section*{第二章习题与复习题}
-教材第二章的三组节后练习分别有 5、10、21 题，共 36 道大题。\S{}2.4 没有单列练习，\S{}2.5 的八个例子见分节讲义。章末复习题另有 18 道，以下按原号给出问题、方法和论证。页码为印刷页；430 页扫描版的 PDF 页码须加 6。
-
-\noindent\textbf{复习题题号}\quad \hyperlink{review-q1}{1}\quad  \hyperlink{review-q2}{2}\quad  \hyperlink{review-q3}{3}\quad  \hyperlink{review-q4}{4}\quad  \hyperlink{review-q5}{5}\quad  \hyperlink{review-q6}{6}\quad  \hyperlink{review-q7}{7}\quad  \hyperlink{review-q8}{8}\quad  \hyperlink{review-q9}{9}\quad  \hyperlink{review-q10}{10}\quad  \hyperlink{review-q11}{11}\quad  \hyperlink{review-q12}{12}\quad  \hyperlink{review-q13}{13}\quad  \hyperlink{review-q14}{14}\quad  \hyperlink{review-q15}{15}\quad  \hyperlink{review-q16}{16}\quad  \hyperlink{review-q17}{17}\quad  \hyperlink{review-q18}{18}
-
-\subsection*{练习 2.1 · 测度与外测度（第 112 页）}\label{ux7ec3ux4e60-2.1-ux6d4bux5ea6ux4e0eux5916ux6d4bux5ea6ux7b2c-112-ux9875}
-
-\textbf{1}　对上极限、极限和尾和中的有限性条件，分别考察计数测度的递减尾集，以及各项测度趋于零而尾和仍发散的区间列。例如在 \([0,1)\) 逐层列出二进分割的全部区间：单项长度趋于零，每点仍出现无穷多次。
-
-\textbf{2}　以 \(2^{-n}\) 为权将测度相加。对不交集列所得双重非负级数，两种求和次序均等于有限矩形部分和的上确界。若各测度均不超过 \(1\)，权重之和即给出界。
-
-\textbf{3}　逐集取测度的极限保留有限可加性。反例取 \(\mathbb N\) 的有限或余有限代数，在第 \(n\) 点放一单位质量；极限对有限集为零，对余有限集为一。所有单点零测，全集却不为零。
-
-\textbf{4}　教材此处的``原子''指有正测度的单点。按 \(\mu(\{x\})\geq 1/k\) 分层，若所有环集的测度至多为 \(1\)，每层最多有 \(k\) 个点。
-
-\textbf{5}　在 \(\sigma\) 环上，把近似最优覆盖分别取并，再对这些并取交，得到等测包；费用为无穷时任一生成域覆盖包已经等测。仅有环时可取半开区间环及单点集；该点外测度为零，却没有含它的零长度环集。
-
-\subsection*{练习 2.2 · 延拓与内测度（第 121---122 页）}\label{ux7ec3ux4e60-2.2-ux5ef6ux62d3ux4e0eux5185ux6d4bux5ea6ux7b2c-121122-ux9875}
-
-\textbf{1}　可数全集上，有限子集环的计数测度延拓给所有子集通常的点数。权重 \(\alpha=0\) 时所有子集均取零；\(\alpha>0\) 时按点数乘权，包括无穷点数。
-
-\textbf{2}　令 \(X\) 至少有两点，在平凡代数上给 \(X\) 质量 \(1\)。Carathéodory 域只有平凡两集，任一指定点的单位点质量却把它延拓到整个幂集。
-
-\textbf{3}　比较先限制环再延拓与先延拓再取迹。取实轴的半开区间环，\(E=\{0\}\)。包含在 \(E\) 中的原环集只有空集，不能覆盖 \(E\)；而原延拓在 \(E\) 上的迹包含 \(E\)。
-
-\textbf{4}　原环上的有限块可数覆盖性质对差和可数并封闭，因而传到生成域。反向用 \S{}2.2 中数有理点的反例，比较同一个测度在两个定义域中可用的覆盖块。
-
-\textbf{5}　原环中零测集对差与有限并封闭；若原环是 \(\sigma\) 环，则亦对可数并封闭。取有限集环上的零测度，零测集族未必为 \(\sigma\) 环；换成计数测度后该族只含空集。
-
-\textbf{6}　在 \(\sigma\) 环上，任一环覆盖可取其并，所以外测度也可写成所有环集大包的测度下确界。反向将单个大包看成一组覆盖。
-
-\textbf{7}　内测度 \(\mu_*(E)=\sup\{\mu(F):F\in\mathcal R,\ F\subset E\}\) 从里逼近。对不交集各取有限个内逼近块再取并，得到超可加不等式；在 \(\sigma\) 环中可先取可数并。用原环集分割时，把每个逼近块也作同一分割；另外从两边分别选块合并，得到反向不等式。
-
-\textbf{8}　在总测度有限的代数上考察 \(\mu(X)-\mu^*(X-E)\)。对余集用外测度不等式，与第 7 题逐项比较。严格差别可取 \([0,1]\) 上的有限区间并代数（端点可单列）、长度测度，以及形如正测度疏朗紧集的 \(E\)。无非退化区间能从内逼近它，但其余集的外测度等于余集的长度。
-
-\textbf{9}　对有限测度的 \(\sigma\) 代数，分别取趋近内、外测度的内外包，用可数并、交达到两端。数值相等时，内外包之差为零。无限总测度时，半直线与有界不可测集的不交并可使两值都为无穷而集合不可测。
-
-\textbf{10（原题条件辨析）}　外测度等式总成立，把测试集沿不交的 \(A,B\in\mathcal R^*\) 依次切开即可。内测度等式在原题的一般条件下不成立。取 \(X=\{a,b\}\)，\(\mathcal R=\{\varnothing,X\}\)，\(\mu(X)=+\infty\)。任一非空集的外测度为无穷，两个单点都满足分割判据；但两单点的内测度均为零，取 \(E=X\)，它们的并的内测度为无穷。若增加原测度 \(\sigma\) 有限，则 \S{}2.2 的夹逼定理使每个完成域可测块都有原域中的等测内核。用 \(A,B\) 切开 \(E\cap(A\cup B)\) 中任一原域内逼近块，再取这两个内核，即得所缺的一向不等式；另一向由分别内逼近后取并得到。
-
-\subsection*{练习 2.3 · 具体测度（第 144---147 页）}\label{ux7ec3ux4e60-2.3-ux5177ux4f53ux6d4bux5ea6ux7b2c-144147-ux9875}
-
-\textbf{1}　欲从可测 \(E\) 中取指定测度 \(a<m(E)\) 的无内点紧集，先取测度大于 \(a\) 的紧子集，再挖去覆盖有理点的小开集，使余量仍大于 \(a\)。用半直线水平截取；累计长度随端点连续。
-
-\textbf{2}　用分割判据处理``可测小集与大集等外测度''和容斥式。一般集合的外包取 \(G_\delta\)，内逼近取 \(F_\sigma\)；需分别达到外测度、内测度，不能据此断言内外包之差为零。
-
-\textbf{3}　对递增集列分别取等外测包，交叠成嵌套的包，可推出外测度下连续。对递减集列用内逼近和有限性。有意交换内外测度时，可以把一个区间分成可数个分别不含正测可测子集的集合，考察有限部分并与余下的尾集；构造时还须验证有限并的内测度仍为零，例如用有理差代表集的有限个有理平移（再避开有限多个平移之差，作不交的小有理平移）。
-
-\textbf{4}　在有界区间中删去覆盖有理点的小开集，留下只含无理点的正测闭集。题给的稠密开集 \(G\) 总长有限，若与闭集 \(F\) 几乎相等，\(G-F\) 是零测开集，必空；稠密性将迫使 \(F=\mathbb R\)，产生矛盾。
-
-\textbf{5}　同时从外侧用开集包住 \(E\) 与 \(E^c\)，其重叠就是误差。用紧内逼近判别可测性；从可数拓扑基删去所有与 \(E\) 交成零集的球，就能找到每个邻域中都有正测度的点。对任意 \(A\) 与递减可测集的交，先给 \(A\) 取局部等测包，再用有限测度的上连续性。
-
-\textbf{6}　在单位正方形中，\(|\sin x|<1/2\) 留下宽 \(\pi/6\) 的竖条。\(\cos(x+y)\) 取有理值的点落在可数条直线上，删去它们不改面积，故答案为 \(\pi/6\)。
-
-\textbf{7}　下极限用递增尾交，上极限用递减尾并；后者按题设从一个有限测度的尾并开始。
-
-\textbf{8}　有限外测度时，等测包与原集之间不能再放进正测可测块。将等测包沿任一可测集切开，所得两边同时保持等测；无限情形可分有界块构造局部等测包。对于两个集合并可测且外测度之和等于并的有限测度，先取各自的可测包限制在并内；两包的交为零，两集合即分别可测。
-
-\textbf{9}　满测度集取可数交可对补集求并；正下界由余集测度相加得到。区间覆盖小问可先作有限并，逐次剔除被其余区间覆盖的区间；不冗余的有限族覆盖重数至多二。对并集的补误差计数，再令有限部分并递增。
-
-\textbf{10}　若零集 \(Z\) 的像为正测度，就从 \(f(Z)\) 中取不可测子集 \(V\)。集合 \(Z\cap f^{-1}(V)\) 是零集的子集，按假设其像 \(V\) 应可测，矛盾。
-
-\textbf{11}　将有界区间内的覆盖重复细化。每轮的总长度至多乘以同一个 \(q<1\)，极限给出零外测度。
-
-\textbf{12}　四小问分别考察每个区间固定占半、点差碰撞、十进数码限制、不可测集与大测度集之交。第一问用正则逼近得到占比可任意接近一的区间；第二问比较 \(E+x_i\) 在长 \(2\) 的区间内能否互不重叠（所给点须互异才保证距离非零）。第三问固定缺失的数码，每层至多留下 \(9^k\) 个长 \(10^{-k}\) 的区间，再处理有限种缺失数码及双重展开；势的下界可用只含给定数码的无限尾数编码。第四问比较不可测集的内、外测度缺口与删去部分的测度。
-
-\textbf{13}　\(E\) 与关于 \(a\) 的反射像合起来覆盖 \((a-\delta,a+\delta)\)，反射保持测度，故 \(m(E)\geq\delta\)。
-
-\textbf{14}　用 \(W=(W\triangle E)\triangle E\)，检验对称差与可测域的封闭性。
-
-\textbf{15}　把任意测试集和它被 \(T(E)\) 分出的两块拉回，以外测度不变性使用分割判据。若``一一''仅指单射，可先在像域中操作；像域可测性需要另外证明。按一一对应理解时可直接用逆映射。
-
-\textbf{16}　\(A_k\subset E\subset B_k\)，且 \(m(B_k-A_k)\to0\)。用 \(\bigcup_k A_k\) 与 \(\bigcap_k B_k\) 夹住 \(E\)，两者之差外测度为零。
-
-\textbf{17}　取 \(\mathbb Q\cap[0,1]\)。任一包含它的闭集含整个 \([0,1]\)，故一般的开外逼近不能换为闭外逼近。
-
-\textbf{18}　给 \([0,1]\) 内所有有理点取很短的开邻域，构造在 \((0,1)\) 中稠密且长度小于 \(1/2\) 的开集；闭包的测度为 \(1\)。
-
-\textbf{19}　若补集有正测度，可在某段上使补集占比任意接近一，这与原集在所有子区间的统一正比例下界矛盾。
-
-\textbf{20}　任意点集都是开集族的交：把每个不在其中的单点删去。因此任意交甚至可能不可测。可数交才由 Borel 代数保证封闭。
-
-\textbf{21}　要从矩形推广旋转不变性，可先在开集上作可数个近乎不交的方形分解。旋转后的方形仍有原面积（Jordan 体积），边界零测；由开包逼近得到任意集合的外测度在旋转下不变。可测性再由分割判据推出。
-
-\subsection*{复习题 2 · 覆盖、平移与零集（第 171---172 页）}\label{ux590dux4e60ux9898-2-ux8986ux76d6ux5e73ux79fbux4e0eux96f6ux96c6ux7b2c-171172-ux9875}
-
-\subsubsection*{问题 1　子列的公共部分}\hypertarget{review-q1}{}\label{ux95eeux9898-1-ux5b50ux5217ux7684ux516cux5171ux90e8ux5206}
-
-设 \(E_n\subset[0,1]\) 可测。若 \(m(E_n)\to1\)，给定 \(0<\alpha<1\)，依次取 \(n_k>n_{k-1}\) 使 \(m(E_{n_k}^c)<(1-\alpha)2^{-k-1}\)（补集在 \([0,1]\) 中取）。由次可加性，交集测度至少为 \(1-(1-\alpha)/2>\alpha\)。若只有某子列的测度趋于 \(1\)，在该子列中作同样选择即可。
-
-统一正下界则不足。令 \(E_n\) 为 \([0,1)\) 中二进展开第 \(n\) 位为 \(1\) 的点集；双重展开取以零结尾的表示。指定 \(k\) 个位置的数字时，将区间分到最大位数对应的层，每种指定模式占总长 \(2^{-k}\)。所以 \(m(E_n)=1/2\)，任意无限子列的交集测度却为零。这些 \(E_n\) 彼此不同。
-
-\subsubsection*{问题 2　不可测集与其补集的外包}\hypertarget{review-q2}{}\label{ux95eeux9898-2-ux4e0dux53efux6d4bux96c6ux4e0eux5176ux8865ux96c6ux7684ux5916ux5305}
-
-设不可测 \(E\subset\mathbb R^n\)。如果不存在题设的统一正下界，就有可测 \(A_k\supset E\)、\(B_k\supset E^c\) 满足 \(m(A_k\cap B_k)<2^{-k}\)。令 \(A=\bigcap_k A_k\)、\(B=\bigcap_k B_k\)，则 \(m(A\cap B)=0\)。由于 \(B^c\subset E\subset A\) 且两侧相差 \(A\cap B\)，完全性将推出 \(E\) 可测，矛盾。
-
-\subsubsection*{问题 3　任意角集的扇面外测度}\hypertarget{review-q3}{}\label{ux95eeux9898-3-ux4efbux610fux89d2ux96c6ux7684ux6247ux9762ux5916ux6d4bux5ea6}
-
-设 \(E\subset(-\pi,\pi)\)，扇面由 \(a<r<b\) 和 \(\theta\in E\) 确定。用开区间覆盖角集，先与 \((-\pi,\pi)\) 相交。每段长 \(\ell\) 的角区间生成一个面积为 \((b^2-a^2)\ell/2\) 的普通扇环；边界圆弧和线段零测。对覆盖的各段求和、再取下确界即得 \(m^*(S)\leq (b^2-a^2)m^*(E)/2\)。角集无需可测。
-
-\subsubsection*{问题 4　高占比方体与差集}\hypertarget{review-q4}{}\label{ux95eeux9898-4-ux9ad8ux5360ux6bd4ux65b9ux4f53ux4e0eux5deeux96c6}
-
-设 \(m(E)>0\)。截取有限正测部分 \(A\)，选开集 \(G\supset A\) 使 \(\lambda m(G)<m(A)\)，其中 \(0<\lambda<1\)。用半开二进方体分解 \(G\)：从边长不超过一且闭包在 \(G\) 内的方体中取极大者。每点都在某个这样的方体内，二进方体或嵌套或不交，故这些极大方体可数、不交且盖满 \(G\)。若每块 \(Q\) 均有 \(m(E\cap Q)\leq\lambda m(Q)\)，求和就与 \(m(A)>\lambda m(G)\) 矛盾。将找到的方体改为开方体只改变零测边界。
-
-差集包含零点邻域可直接应用 \S{}2.5 的小平移引理。也可取前问中 \(m(E\cap Q)>3m(Q)/4\) 的方体，令 \(A=E\cap Q\)。对足够小的 \(h\)，\(m(Q\cup(Q+h))<3m(Q)/2\)。若 \(A\) 与 \(A+h\) 不交，它们之并的测度将大于这个界，故 \(h\in A-A\subset E-E\)。
-
-\subsubsection*{问题 5　和集与中点封闭}\hypertarget{review-q5}{}\label{ux95eeux9898-5-ux548cux96c6ux4e0eux4e2dux70b9ux5c01ux95ed}
-
-正测可测集 \(E\) 有 \(E+E\) 包含一个开区间，由第 16 题对 \(A=B=E\) 的证明即得。若还对中点封闭，则 \((E+E)/2\subset E\)，将该开区间缩小一半便落在 \(E\) 中。差集定理本身给出的是 \(E-E\)，若改用它，须先作反射并证明适当的交集为正测。
-
-\subsubsection*{问题 6　过快的有理逼近}\hypertarget{review-q6}{}\label{ux95eeux9898-6-ux8fc7ux5febux7684ux6709ux7406ux903cux8fd1}
-
-固定 \(M\in\mathbb N\)，只看 \(x\in[-M,M]\)。对分母 \(q\)，能出现的分子有至多 \(2(M+1)q+1\) 个，每个贡献一个长 \(2q^{-\alpha}\) 的区间。因 \(\alpha>2\)，这些覆盖在 \(q\geq N\) 处的总长度不超过常数乘以 \(\sum_{q\geq N}q^{1-\alpha}\to0\)。有无穷多个互素分数逼近的点必在每个尾覆盖中，故它们在此盒内为零集；再令 \(M\) 遍历自然数。上界估计中允许非互素分数，只会扩大覆盖。
-
-\subsubsection*{问题 7　有理差代表集}\hypertarget{review-q7}{}\label{ux95eeux9898-7-ux6709ux7406ux5deeux4ee3ux8868ux96c6}
-
-令 \(W\) 在 \(\mathbb R^n/\mathbb Q^n\) 的每个等价类中恰取一点。若 \(W\) 可测且正测，由第 4 题，\(W-W\) 含零点邻域，故含非零有理向量，违背代表的唯一性。若 \(W\) 可测且零测，可数个平移 \(W+q\) 的并仍零测，却覆盖 \(\mathbb R^n\)。因此 \(W\) 不可测。
-
-\subsubsection*{问题 8　单调光滑映射的原像}\hypertarget{review-q8}{}\label{ux95eeux9898-8-ux5355ux8c03ux5149ux6ed1ux6620ux5c04ux7684ux539fux50cf}
-
-设 \(f\in C^1(\mathbb R)\) 且 \(f'>0\)。对 \([-k,k]\) 有 \(c_k=\min f'>0\)，中值定理给出该区间像上的逆函数为 \(1/c_k\)-Lipschitz。Lipschitz 函数把零集映成零集，因为可将区间覆盖的总长至多放大 Lipschitz 常数倍。若 \(E\) 可测，将它写成 Borel 集与零集之并。前者由连续性有 Borel 原像；后者在每个 \([-k,k]\) 内的原像由上述逆映射送出，故为零集。可数取并，得到 \(f^{-1}(E)\) 可测。
-
-\subsubsection*{问题 9　稠密平移决定 Borel 测度}\hypertarget{review-q9}{}\label{ux95eeux9898-9-ux7a20ux5bc6ux5e73ux79fbux51b3ux5b9a-borel-ux6d4bux5ea6}
-
-设 \(\mu\) 对紧集有限，题设半开区间的质量在稠密集 \(D\) 给出的平移下不变。先消除端点：对任意 \(x\)，令区间 \((x-1/k,x]\) 递减到 \(\{x\}\)，由上连续性知 \(\mu(\{x+h\})=\mu(\{x\})\) 对 \(h\in D\) 成立。若有一个正质量点，选无穷多个有界的不同 \(h\in D\)，会在某个紧区间内累积无穷质量，矛盾。因此无原子。
-
-固定 \((a,b]\)。当 \(h_j\to h\)，两个平移区间的对称差只落在端点附近；由于单点零测且紧区间测度有限，这些小邻域的质量趋于零。故稠密平移不变性延伸到所有实数平移。令 \(\lambda=\mu((0,1])\)，等分单位区间先得有理长度区间的质量为长度乘 \(\lambda\)，再由下连续性推广到任意长度。在半开区间环上两测度均 \(\sigma\) 有限，由定理 2.2.1 得 \(\mu=\lambda m\) 在所有 Borel 集上成立。其中 \(\lambda=0\) 时指零测度。
-
-\subsubsection*{问题 10　正测集上有界的加法函数}\hypertarget{review-q10}{}\label{ux95eeux9898-10-ux6b63ux6d4bux96c6ux4e0aux6709ux754cux7684ux52a0ux6cd5ux51fdux6570}
-
-设 \(f(x+y)=f(x)+f(y)\)，且在正测集 \(E\) 上 \(|f|\leq M\)。由第 4 题，\(E-E\) 含 \((-\delta,\delta)\)，故其上 \(|f|\leq2M\)。若 \(|x|<\delta/n\)，则 \(|f(x)|=|f(nx)|/n\leq2M/n\)，从而 \(f\) 在零点连续。加法性给出各处连续和 \(f(q)=qf(1)\)（\(q\in\mathbb Q\)），取有理数逼近任意实数便得 \(f(x)=xf(1)\)。
-
-\subsubsection*{问题 11　完全集中的零测完全集}\hypertarget{review-q11}{}\label{ux95eeux9898-11-ux5b8cux5168ux96c6ux4e2dux7684ux96f6ux6d4bux5b8cux5168ux96c6}
-
-在与非空完全集 \(E\) 的点相交于内部的闭区间中，取两个不同的 \(E\) 点，在它们周围取不交的更小闭区间，均含于父区间内部。每个点都是聚点，故每支均可继续。第 \(k\) 层的 \(2^k\) 个区间各长至多 \(4^{-k}\)。各层并的交 \(K\) 是非空紧集，所有分支的极限点因 \(E\) 闭而属于 \(E\)；第 \(k\) 层总长至多 \(2^{-k}\)，故 \(m(K)=0\)。每个分支在任一深层都有另一条分支与它分开，故 \(K\) 无孤立点。
-
-\subsection*{复习题 2 · 导数、像集与构造（第 172---173 页）}\label{ux590dux4e60ux9898-2-ux5bfcux6570ux50cfux96c6ux4e0eux6784ux9020ux7b2c-172173-ux9875}
-
-\subsubsection*{问题 12　只在给定点集上控制导数}\hypertarget{review-q12}{}\label{ux95eeux9898-12-ux53eaux5728ux7ed9ux5b9aux70b9ux96c6ux4e0aux63a7ux5236ux5bfcux6570}
-
-设 \(f\) 在 \(E\subset[a,b]\) 的各点可导，\(|f'|<M\)。固定 \(\varepsilon>0\)，令 \(E_n\) 收集满足题设一致半径条件的点：当 \(y\in[a,b]\) 且 \(|y-x|\leq1/n\) 时，\(|f(y)-f(x)|\leq(M+\varepsilon)|y-x|\)。则 \(E_n\uparrow E\)。以长小于 \(1/n\)、总长小于 \(m^*(E_n)+\varepsilon\) 的区间 \(I_j\) 覆盖 \(E_n\)（较长区间可细分并略放宽）。在 \(E_n\cap I_j\) 上任意两点的像差至多为 \((M+\varepsilon)|I_j|\)，故像的外测度不超过此数。求和得 \[
-m^*(f(E_n))\leq(M+\varepsilon)(m^*(E_n)+\varepsilon).
-\]
-
-此处像集未必已知可测。所需的外测度下连续性可这样证明：若 \(S_n\uparrow S\)，分别取 Borel 等测包 \(H_j\supset S_j\)，令 \(G_n=\bigcap_{j\geq n} H_j\)，则 \(S_n\subset G_n\subset H_n\) 且 \(G_n\uparrow\)。对 \(G_n\) 用测度下连续性，得 \(m^*(S)\leq\lim m(G_n)=\lim m^*(S_n)\)，另一向由单调性。应用于 \(f(E_n)\)，再令 \(\varepsilon\downarrow0\)，结论为 \(m^*(f(E))\leq M m^*(E)\)。
-
-\subsubsection*{问题 13　可导函数保持零集的像零测}\hypertarget{review-q13}{}\label{ux95eeux9898-13-ux53efux5bfcux51fdux6570ux4fddux6301ux96f6ux96c6ux7684ux50cfux96f6ux6d4b}
-
-对 \(C^1\) 函数，在每个紧区间上用导数上界和中值定理，便得局部 Lipschitz 性及结论。若只知处处可导，令 \(Z_{k,j}=Z\cap[-j,j]\cap\{x:|f'(x)|<k\}\)，每个 \(Z_{k,j}\) 仍有外测度零。第 12 题给出 \(m^*(f(Z_{k,j}))=0\)，取可数并即得 \(m(f(Z))=0\)。这里无需给导数找一个邻域内的上界。
-
-\subsubsection*{问题 14　像零测与导数几乎处处为零}\hypertarget{review-q14}{}\label{ux95eeux9898-14-ux50cfux96f6ux6d4bux4e0eux5bfcux6570ux51e0ux4e4eux5904ux5904ux4e3aux96f6}
-
-若 \(f'=0\) 在 \(E\) 上除一零集外成立，例外集的像由第 13 题的分层证明为零（该证明只用到这些点处可导）。在余下各点对第 12 题取任意 \(M>0\)，令 \(M\downarrow0\)，其像亦零测。
-
-反之，设 \(m(f(E))=0\)。把 \(E\) 中 \(f'(x)\ne0\) 的点按 \(k,n\) 分组，使 \(|f(y)-f(x)|\geq k^{-1}|y-x|\) 对 \(|y-x|<1/n\) 的所有定义域内 \(y\) 成立。导数非零保证这样的组覆盖全部待证点。在每一组中再按长小于 \(1/n\) 的区间切块；对块内任意两点上述估计同时有效，故 \(f\) 在该块上单射且逆为 \(k\)-Lipschitz。块的像是零集的子集，逆映射也把它送成零集（用覆盖和像的直径估计即可）。对所有块取并，得到 \(f'=0\) 在 \(E\) 上几乎处处成立。
-
-\subsubsection*{问题 15　一维 Sard 结论}\hypertarget{review-q15}{}\label{ux95eeux9898-15-ux4e00ux7ef4-sard-ux7ed3ux8bba}
-
-取临界点集 \(E=\{x:f'(x)=0\}\)。第 12 题对每个 \(M>0\) 都给出 \(m^*(f(E))\leq M(b-a)\)，故临界值集零测。这里只要求临界点处的导数存在并为零。
-
-\subsubsection*{问题 16　两个正测集的和含有开区间}\hypertarget{review-q16}{}\label{ux95eeux9898-16-ux4e24ux4e2aux6b63ux6d4bux96c6ux7684ux548cux542bux6709ux5f00ux533aux95f4}
-
-分别在 \(A\)、\(B\) 中找到占比大于 \(3/4\) 的二进区间 \(I,J\)（第 4 题的证明）。可使两者等长：将较长的二进区间细分，至少一个子段保留原占比。设共同长度为 \(\ell\)，两段中点之和为 \(s\)。则 \(I\) 与 \(s-J\) 除端点外重合。对 \(|t-s|<\ell/4\)，\(I\cup(t-J)\) 的长度小于 \(5\ell/4\)；而 \(A\cap I\) 与 \(t-(B\cap J)\) 的长度之和大于 \(3\ell/2\)，必相交。交点给出 \(t=a+b\)。整个 \((s-\ell/4,s+\ell/4)\) 都在 \(A+B\) 中。
-
-\subsubsection*{问题 17　无正测乘积子集的平面正测集}\hypertarget{review-q17}{}\label{ux95eeux9898-17-ux65e0ux6b63ux6d4bux4e58ux79efux5b50ux96c6ux7684ux5e73ux9762ux6b63ux6d4bux96c6}
-
-从单位正方形删去所有 \(x+y\in\mathbb Q\) 的点，余集 \(S\) 的面积为 \(1\)，因为只删去了可数条直线的一部分。若 \(A\times B\subset S\) 且 \(A,B\) 都是正测集，则 \(A+B\) 不含有理数。第 16 题却说明 \(A+B\) 含有一个区间，矛盾。
-
-\subsubsection*{问题 18　导函数在完全集上的间断性}\hypertarget{review-q18}{}\label{ux95eeux9898-18-ux5bfcux51fdux6570ux5728ux5b8cux5168ux96c6ux4e0aux7684ux95f4ux65adux6027}
-
-\textbf{原题的限制。} 第（1）问要求在给定的非空完全集 \(C\) 的每一点使导函数不连续。取 \(C=[0,1]\) 即见原断言不能成立：导函数在内部是连续差商的逐点极限，第一章的 Baire 定理保证它在任一内区间有连续点。对一般闭集，同一理由说明无内点是必要条件。以下对无内点的非空完全集给出构造，连续与间断均相对于函数的整个定义域而言。
-
-\textbf{构造}　列出 \([0,1]\) 中所有与 \(C\) 相交的有理端点相对开基区间 \(U_j\)（包括端点处的相对邻域）。在每个 \(U_j-C\) 内取闭小区间 \(J_j\)，使它们两两不交，且 \(J_j\) 上每一点到 \(C\) 的距离小于 \(1/j\)。确可做到：在 \(U_j\cap C\) 取一点，它同先前有限个闭小区间有正距离，而其任意小邻域都含有补集的开小段。
-
-取一个光滑函数 \(\phi\)，支集在 \((-1,1)\) 内，满足 \(|\phi|\leq1\)，且某点的 \(|\phi'|=1\)。在 \(J_j\) 内以中心 \(c_j\) 和半径 \(r_j\) 放入小峰 \[
-u_j(x)=r_j\,\phi((x-c_j)/r_j),\qquad
-0<r_j<\min\{|J_j|/2,\operatorname{dist}(J_j,C)^2\}.
-\] 令 \(f=\sum_j u_j\)。每点至多遇到一峰，在 \(C\) 外局部只有有限项（各区间最终都靠近 \(C\)），故在补集上光滑。在 \(C\) 上 \(f=0\)，且 \(|f(y)|\leq\operatorname{dist}(y,C)^2\)，所以在那里导数为零。每个 \(C\) 点的任意邻域都含某个所列基区间，其中有 \(|f'|=1\) 的点。因此 \(f'\) 在 \(C\) 的每一点都不连续。端点处使用单侧导数即可。
-
-第（2）问取一个正测度疏朗完全集 \(C\) 即可。例如在 \([0,1]\) 的第 \(k\) 步，从每个保留区间的中央删去长 \(4^{-k}\) 的开段，共删去 \(\sum_{k\geq1}2^{k-1}4^{-k}=1/2\)。极限集无内点、无孤立点且测度为 \(1/2\)。代入上述构造，导函数间断点集即为 \(C\)。
-
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 2.1}\subsection*{练习题 2.1}
+\noindent 教材第 112 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 举例说明定理 2.1.1（8）与（9）中条件 $\mu\left(\bigcup_{n=m}^{\infty}E_n\right)<+\infty$，（10）中条件 $\sum_{n=m}^{\infty}\mu(E_n)<+\infty$ 都不能删去。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $\{\mu_n\}$ 为环 $\mathcal R$ 上的一列测度。证明：
+\[\mu(E)=\sum_{n=1}^{\infty}\frac1{2^n}\mu_n(E),\quad E\in\mathcal R\]
+\par\noindent 也为 $\mathcal R$ 上的测度。
+\par\noindent 如果对 $\forall E\in\mathcal R,\forall n\in\mathbb N,\mu_n(E)\leq1$，则 $\mu(E)\leq1,E\in\mathcal R$。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $\mathcal R$ 为集合 $X$ 上的环，$\{\mu_n\}$ 为 $\mathcal R$ 上的一列测度，并且对 $\forall E\in\mathcal R$，极限 $\lim_{n\to+\infty}\mu_n(E)$ 存在，记为 $\mu(E)$。证明：$\mu$ 为 $\mathcal R$ 上非负，空集上取值为 $0$ 的有限可加的广义集函数。
+\par\noindent 举例说明 $\mu$ 未必为 $\mathcal R$ 上的测度。
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $\mu$ 为基本空间 $X$ 的环 $\mathcal R$ 上的测度。如果对 $\forall E\in\mathcal R,\mu(E)\leq1$。证明：$\mu$ 的“原子”（即是 $\mathcal R$ 中的元素，它为 $X$ 中的独点集 $\{x\}$，且 $\mu(\{x\})>0$）的全体为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的一个测度，对 $\forall E\in\mathcal H(\mathcal R)$，证明：$E$ 必有等测包 $H$，即 $H\in\mathcal R,H\supset E$，且 $\mu(H)=\mu^*(E)$。当 $\mathcal R$ 仅为环时，上述结论仍正确吗？
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 2.2}\subsection*{练习题 2.2}
+\noindent 教材第 121--122 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 设 $X=\{x_n\mid n\in\mathbb N\}$ 为可数集，$\mathcal R$ 为 $X$ 中有限子集所成的环。对于 $\forall E\in\mathcal R,\mu_1(E)$ 为 $E$ 中的点数，$\mu_2(E)=\alpha\mu_1(E),\alpha\in[0,+\infty)$（由例 2.1.1 知，$\mu_1,\mu_2$ 均为 $\mathcal R$ 上的测度）。证明：$\mu_1^*,\mu_2^*$ 都为 $\mathcal H(\mathcal R)$ 上的测度。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 举例说明环 $\mathcal R$ 上测度 $\mu$ 按 Caratheodory 条件所得的扩张 $\mathcal R^*,\mu^*$ 并不一定为 $\mathcal R,\mu$ 的最大扩张。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。任取 $E\subset X$，令
+\[\mathcal R_E=\{F\mid F\in\mathcal R,F\subset E\},\]
+\par\noindent $\mu_E$ 为 $\mu$ 在环 $\mathcal R_E$ 上的限制。$\mathcal R_E^*,\mu_E^*$ 为 $\mathcal R_E$ 上 $\mu_E$ 按 Caratheodory 条件的扩张。举例说明
+\[\mathcal R_E^*\ne\mathcal R^*\cap E.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R_\sigma(\mathcal R)$ 上的测度。如果 $\mu$ 在 $\mathcal R$ 上是 $\sigma$ 有限的，则 $\mu$ 在 $\mathcal R_\sigma(\mathcal R)$ 上是 $\sigma$ 有限的。
+\par\noindent 举例说明，如果 $\mu$ 在 $\mathcal R_\sigma(\mathcal R)$ 上是 $\sigma$ 有限的，$\mu$ 限制到 $\mathcal R$ 上不必是 $\sigma$ 有限的。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $\mathcal R$ 为 $X$ 某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。证明：
+\par\noindent （1）$\mu$ 零集全体为 $\mathcal R$ 的子环。
+\par\noindent （2）如果 $\mathcal R$ 为 $\sigma$ 环，则 $\mu$ 零集的全体为 $\sigma$ 环。
+\par\noindent （3）举例说明 $\mu$ 零集全体不必为 $\sigma$ 环。
+\par\noindent （4）举例说明 $\mathcal R$ 虽不为 $\sigma$ 环，但 $\mu$ 零集全体却为 $\sigma$ 环。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 环，$\mu$ 为 $\mathcal R$ 上的测度。证明：$\mathcal H(\mathcal R)$ 上的广义集函数
+\[\mu^{**}(E)=\inf\{\mu(F)\mid E\subset F\in\mathcal R\},\quad E\in\mathcal H(\mathcal R)\]
+\par\noindent 就是外测度 $\mu^*(E)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的环，$\mu$ 为 $\mathcal R$ 上的测度。则 $\mathcal H(\mathcal R)$ 上的集函数
+\[\mu_*(E)=\sup\{\mu(F)\mid E\supset F\in\mathcal R\}\]
+\par\noindent （称 $\mu_*$ 为\textbf{内测度}）具有下列各性质：
+\par\noindent （1）非负性：$\mu_*(E)\geq0$，特别地，$\mu_*(\varnothing)=0$；
+\par\noindent （2）单调性：若 $E_1,E_2\in\mathcal H(\mathcal R),E_1\subset E_2$，则 $\mu_*(E_1)\leq\mu_*(E_2)$。
+\par\noindent （3）若 $E\in\mathcal R$，则 $\mu_*(E)=\mu(E)$。
+\par\noindent （4）若 $E_n\in\mathcal H(\mathcal R),E_i\cap E_j=\varnothing,i\ne j$，则
+\[\mu_*\left(\bigcup_{n=1}^m E_n\right)\geq\sum_{n=1}^m\mu_*(E_n).\]
+\par\noindent 进而，如果 $\mathcal R$ 为 $\sigma$ 环，则有
+\[\mu_*\left(\bigcup_{n=1}^\infty E_n\right)\geq\sum_{n=1}^\infty\mu_*(E);\]
+\par\noindent （5）对 $E\in\mathcal R,F\in\mathcal H(\mathcal R)$，有
+\[\mu_*(F)=\mu_*(F\cap E)+\mu_*(F-E)=\mu_*(F\cap E)+\mu_*(F\cap E^c).\]
+\par\noindent （6）如果 $\mathcal R$ 为 $\sigma$ 环，则 $\mu_*(E)\leq\mu^*(E),\quad E\in\mathcal H(\mathcal R)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{8.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的代数，$\mu$ 为 $\mathcal R$ 上的有限测度（即 $\mu(X)<+\infty$），定义
+\[\mu_{**}(E)=\mu(X)-\mu^*(X-E),\quad E\in\mathcal H(\mathcal R).\]
+\par\noindent 证明：$\mu_{**}$ 满足题 7 中 $\mu_*$ 的（1）（2）（3）（5）（6）和（4）的第 1 个不等式；如果 $\mathcal R$ 为 $\sigma$ 代数，则 $\mu_{**}$ 也满足（4）中第 2 式。
+\par\noindent 此外，$\mu_{**}\geq\mu_*$，并可举出 $\mu_{**}>\mu_*$ 的例子。如果 $\mathcal R$ 为 $\sigma$ 代数，则 $\mu_{**}=\mu_*$。
+\par\Needspace{3\baselineskip}\noindent\textbf{9.}\quad 设 $\mathcal R$ 为 $X$ 的某些子集所成的 $\sigma$ 代数，$\mu$ 为 $\mathcal R$ 上的有限测度，对 $E\in\mathcal H(\mathcal R)$，定义
+\[\mu_*(E)=\sup\{\mu(F)\mid E\supset F\in\mathcal R\}.\]
+\par\noindent 证明：$\mu^*(E)=\mu_*(E)\Leftrightarrow E\in\mathcal R^*$（即 $E$ 为 $\mu^*$ 可测集）。
+\par\noindent 举例说明，如果删去条件“有限测度”，则 $\mu^*(E)=\mu_*(E)\not\Rightarrow E\in\mathcal R^*$。
+\par\Needspace{3\baselineskip}\noindent\textbf{10.}\quad 设 $\mu$ 为 $\sigma$ 环 $\mathcal R$ 上的测度，$A,B\in\mathcal R^*$（即为 $\mu^*$ 可测集），$A\cap B=\varnothing$。则对 $\forall E\in\mathcal H(\mathcal R)$ 有
+\[\begin{aligned}\mu^*(E\cap(A\cup B))&=\mu^*(E\cap A)+\mu^*(E\cap B),\\ \mu_*(E\cap(A\cup B))&=\mu_*(E\cap A)+\mu_*(E\cap B).\end{aligned}\]
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 2.3}\subsection*{练习题 2.3}
+\noindent 教材第 144--147 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$。如果 $0<a<m(E)$，证明：存在无内点的有界闭集 $F\subset E$，s.t. $m(F)=a$。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
+\par\noindent （1）$A_1,A_2\subset\mathbb R^n,A_1\subset A_2,A_1\in\mathcal L$ 且 $m(A_1)=m^*(A_2)<+\infty$。证明：$A_2\in\mathcal L$。
+\par\noindent （2）$A,B\subset\mathbb R^n,A\in\mathcal L$ 且 $m^*(B)<+\infty$。证明：
+\[m^*(A\cup B)=m^*(A)+m^*(B)-m^*(A\cap B).\]
+\par\noindent （3）对 $\forall E\subset\mathbb R^n$，证明：$\exists F_\sigma$ 集 $K$ 和 $G_\delta$ 集 $H$，s.t.
+\[K\subset E\subset H,\]
+\par\noindent 且 $m(K)=m_*(E),\quad m(H)=m^*(E)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $\mu$ 为集 $X$ 上的环 $\mathcal R$ 的测度。
+\par\noindent （1）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R),E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，则
+\[\lim_{n\to+\infty}\mu^*(E_n)=\mu^*\left(\bigcup_{n=1}^\infty E_n\right).\]
+\par\noindent （2）如果 $\mathcal R$ 为 $\sigma$ 环，$E_n\in\mathcal H(\mathcal R),E_1\supset E_2\supset\cdots\supset E_n\supset\cdots$，且至少有一个 $E_{n_0}$，s.t. $\mu_*(E_{n_0})<+\infty$，则
+\[\lim_{n\to+\infty}\mu_*(E_n)=\mu_*\left(\bigcap_{n=1}^\infty E_n\right).\]
+\par\noindent 举例说明“$\mu_*(E_{n_0})<+\infty$”不能删去。
+\par\noindent （3）举例说明，虽有（1）中条件：$E_n\in\mathcal H(\mathcal R),E_1\subset E_2\subset\cdots\subset E_n\subset\cdots$，但
+\[\lim_{n\to+\infty}\mu_*(E_n)\ne\mu_*\left(\bigcup_{n=1}^\infty E_n\right).\]
+\par\noindent （4）举例说明，虽有（2）中条件：$E_n\in\mathcal H(\mathcal R),E_1\supset E_2\supset\cdots\supset E_n\supset\cdots,\mu^*(E_{n_0})<+\infty$，但
+\[\lim_{n\to+\infty}\mu^*(E_n)\ne\mu^*\left(\bigcap_{n=1}^\infty E_n\right).\]
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间。
+\par\noindent （1）作出一个由 $\mathbb R^1$ 中某些无理数构成的闭集 $F$，s.t. $m(F)>0$。
+\par\noindent （2）设有理数集 $\mathbb Q=\{r_n\mid n\in\mathbb N\}$，令
+\[G=\bigcup_{n=1}^\infty\left(r_n-\frac1{n^2},r_n+\frac1{n^2}\right).\]
+\par\noindent 证明：任一闭集 $F\subset\mathbb R^1$，有 $m(G\triangle F)>0$。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。证明：
+\par\noindent （1）$E\in\mathcal L\Leftrightarrow$ 对 $\forall\varepsilon>0$，存在开集 $G_1,G_2$，s.t. $G_1\supset E,G_2\supset E^c$，且 $m(G_1\cap G_2)<\varepsilon$。
+\par\noindent （2）$E\subset\mathbb R^n$，且 $m^*(E)<+\infty$。如果 $m^*(E)=\sup\{m(F)\mid F\subset E\text{ 为有界闭集}\}$，证明：$E\in\mathcal L$。
+\par\noindent （3）设 $E\in\mathcal L$ 且 $m(E)>0$。证明：$\exists\boldsymbol{x}\in E$，s.t. 对 $\forall\delta>0$，有 $m(E\cap B(\boldsymbol{x};\delta))>0$。
+\par\noindent （4）设 $\{B_k\}$ 为 $\mathbb R^n$ 中递减可测集列，$m^*(A)<+\infty$。令
+\[E_k=A\cap B_k,k\in\mathbb N,\qquad E=\bigcap_{k=1}^\infty E_k.\]
+\par\noindent 证明：$\lim_{k\to+\infty}m^*(E_k)=m^*(E)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 设 $(\mathbb R^2,\mathcal L,m)$ 为 Lebesgue 测度空间，$[0,1]^2=[0,1]\times[0,1]$。令
+\[E=\left\{(x,y)\in[0,1]^2\ \bigg|\ |\sin x|<\frac12,\quad \cos(x+y)\text{ 为无理数}\right\}.\]
+\par\noindent 证明：$m(E)=\frac{\pi}{6}$。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E_k\in\mathcal L,k\in\mathbb N$。证明：
+\par\noindent （1）$m\left(\varliminf_{k\to+\infty}E_k\right)\leq\varliminf_{k\to+\infty}m(E_k)$。
+\par\noindent （2）如果 $\exists k_0\in\mathbb N$，s.t. $m\left(\bigcup_{k=k_0}^\infty E_k\right)<+\infty$，则 $m\left(\varlimsup_{k\to+\infty}E_k\right)\geq\varlimsup_{k\to+\infty}m(E_k)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{8.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间。
+\par\noindent （1）$E\subset\mathbb R^n,H\supset E$ 且 $H$ 为可测集。证明：
+\par\noindent $H$ 为 $E$ 的等测包 $\underset{m^*(E)<+\infty}{\Longleftrightarrow}H-E$ 中任一可测子集 $e$ 皆为 Lebesgue 零测集。
+\par\noindent 如果删去“$m^*(E)<+\infty$”上述结论是否正确？
+\par\noindent （2）设 $E\subset\mathbb R^n,m^*(E)<+\infty$。证明：存在 $G_\delta$ 集 $H\supset E$，s.t. 对任一可测集 $A\subset\mathbb R^n$，有
+\[m^*(E\cap A)=m(H\cap A).\]
+\par\noindent 如果 $m^*(E)=+\infty$，结论如何？
+\par\noindent （3）设 $A,B\subset\mathbb R^n,A\cup B\in\mathcal L,m(A\cup B)<+\infty$，且
+\[m(A\cup B)=m^*(A)+m^*(B).\]
+\par\noindent 证明：$A,B$ 皆为可测集。
+\par\Needspace{3\baselineskip}\noindent\textbf{9.}\quad 设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。$\mathcal L\cap[0,1]$ 为 $[0,1]$ 中 Lebesgue 可测集的全体。
+\par\noindent （1）$\{E_k\}$ 为 $[0,1]$ 中的可测集列，$m(E_k)=1,k\in\mathbb N$。证明：$m\left(\bigcap_{k=1}^\infty E_k\right)=1$。
+\par\noindent （2）$E_1,E_2,\cdots,E_k$ 为 $[0,1]$ 中的可测集，$\sum_{i=1}^k m(E_i)>k-1$。证明：
+\[m\left(\bigcap_{i=1}^k E_i\right)>0.\]
+\par\noindent （3）$E$ 为 $[0,1]$ 中的可测集，$I_k\subset[a,b],k\in\mathbb N$ 为开区间列，满足：
+\[m(I_k\cap E)\geq\frac23m(I_k),\quad k\in\mathbb N.\]
+\par\noindent 证明：
+\[m\left(\left(\bigcup_{k=1}^\infty I_k\right)\cap E\right)\geq\frac13 m\left(\bigcup_{k=1}^\infty I_k\right).\]
+\par\Needspace{3\baselineskip}\noindent\textbf{10.}\quad 设 $f:[a,b]\to\mathbb R$。若对 $[a,b]$ 中任一 Lebesgue 可测集 $E$，$f(E)$ 必为 $\mathbb R$ 中的 Lebesgue 可测集。证明：对于 $[a,b]$ 中任一 Lebesgue 零测集 $Z$，必有 $m(f(Z))=0$。
+\par\Needspace{3\baselineskip}\noindent\textbf{11.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$，且 $\exists q\in(0,1)$，s.t. 对任何开区间 $(a,b)$，总有开区间列 $\{I_k\}$ 满足：
+\[E\cap(a,b)\subset\bigcup_{k=1}^\infty I_k,\qquad\sum_{k=1}^\infty m(I_k)<q(b-a).\]
+\par\noindent 证明：$m(E)=0$。
+\par\Needspace{3\baselineskip}\noindent\textbf{12.}\quad 设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。
+\par\noindent （1）证明：不存在具有下列性质的可测集 $E\subset[0,1]$，对 $\forall(a,b)\subset[0,1]$，有 $m(E\cap(a,b))=\frac{b-a}{2}$。
+\par\noindent （2）设 $E\subset[0,1]$ 为可测集且有 $m(E)\geq\varepsilon>0,x_i\in[0,1],i=1,2,\cdots,n$，其中 $n>\frac2\varepsilon$。证明：$E$ 中存在两点其距离等于 $\{x_1,x_2,\cdots,x_n\}$ 中某两个点之间的距离。
+\par\noindent （3）在 $[0,1]$ 中作点集 $E=\{x\in[0,1]\mid\text{在 }x\text{ 的十进位制小数表示中只出现 9 个数码}\}$，求 $m(E)$ 和 $\overline{\overline E}$。
+\par\noindent （4）设 $W\subset[0,1]$ 为不可数集。证明：$\exists\varepsilon\in(0,1)$，s.t. 对于 $[0,1]$ 中任一满足 $m(E)\geq\varepsilon$ 的可测集 $E$，$W\cap E$ 为不可测集。
+\par\Needspace{3\baselineskip}\noindent\textbf{13.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^1$ 为可测集，$a\in\mathbb R^1,\delta>0$。如果对满足 $|x|<\delta$ 的 $x$，$a+x$ 与 $a-x$ 之中必有一点属于 $E$。证明：$m(E)\geq\delta$。
+\par\Needspace{3\baselineskip}\noindent\textbf{14.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$W\subset\mathbb R^n$ 为不可测集，$E\subset\mathbb R^n$ 为可测集。证明：$E\triangle W$ 为不可测集。
+\par\Needspace{3\baselineskip}\noindent\textbf{15.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$T:\mathbb R^n\to\mathbb R^n$ 为一一映射，且保持点集的外测度不变。证明：对 $\forall E\in\mathcal L$，有 $T(E)\in\mathcal L$。
+\par\Needspace{3\baselineskip}\noindent\textbf{16.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^n$。如果存在可测集列 $\{A_k\},\{B_k\}$，s.t. $A_k\subset E\subset B_k,k\in\mathbb N$，且
+\[\lim_{k\to+\infty}m(B_k-A_k)=0.\]
+\par\noindent 证明：$E$ 为 Lebesgue 可测集。
+\par\Needspace{3\baselineskip}\noindent\textbf{17.}\quad 举例说明引理 2.3.3 中开集 $G$ 不能换成闭集。
+\par\Needspace{3\baselineskip}\noindent\textbf{18.}\quad 构造一个开集 $G\subset\mathbb R^1$，s.t. Lebesgue 测度 $m(G)\ne m(\overline G)$，其中 $\overline G$ 为 $G$ 的闭包。
+\par\Needspace{3\baselineskip}\noindent\textbf{19.}\quad 设 $E\subset[0,1]$ 为 $[0,1]$ 中的 Lebesgue 可测集。如果 $\exists\alpha>0$，s.t. 对任意的 $0\leq a<b\leq1$，有
+\[m(E\cap[a,b])\geq\alpha(b-a).\]
+\par\noindent 证明：$m(E)=1$。
+\par\Needspace{3\baselineskip}\noindent\textbf{20.}\quad 设 $T$ 为指标集，且对 $\forall t\in T,G_t$ 为 $\mathbb R^1$ 中的开集。问：$\bigcap_{t\in T}G_t$ 为 Borel 可测集吗？$\bigcap_{t\in T}G_t$ 为 Lebesgue 可测集吗？
+\par\Needspace{3\baselineskip}\noindent\textbf{21.}\quad 设 $(\mathbb R^2,\mathcal L,m)$ 为平面上的 Lebesgue 测度空间。旋转
+\[\varphi_\theta:\mathbb R^2\to\mathbb R^2,\qquad(x,y)\mapsto(x',y')=\varphi_\theta(x,y)\]
+\par\noindent 为
+\[\begin{cases}x'=x\cos\theta-y\sin\theta,\\ y'=x\sin\theta+y\cos\theta.\end{cases}\]
+\par\noindent 证明：对平面上任何 Lebesgue 可测集 $E,\varphi_\theta(E)$ 也为 Lebesgue 可测集，且 $m(\varphi_\theta(E))=m(E)$。
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{复习题 2}\subsection*{复习题 2}
+\noindent 教材第 171--173 页。
+\noindent 题号\quad \hyperlink{review-q1}{1}\enspace \hyperlink{review-q2}{2}\enspace \hyperlink{review-q3}{3}\enspace \hyperlink{review-q4}{4}\enspace \hyperlink{review-q5}{5}\enspace \hyperlink{review-q6}{6}\enspace \hyperlink{review-q7}{7}\enspace \hyperlink{review-q8}{8}\enspace \hyperlink{review-q9}{9}\enspace \hyperlink{review-q10}{10}\enspace \hyperlink{review-q11}{11}\enspace \hyperlink{review-q12}{12}\enspace \hyperlink{review-q13}{13}\enspace \hyperlink{review-q14}{14}\enspace \hyperlink{review-q15}{15}\enspace \hyperlink{review-q16}{16}\enspace \hyperlink{review-q17}{17}\enspace \hyperlink{review-q18}{18}\enspace
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q1}{}\textbf{1.}\quad 设 $([0,1],\mathcal L\cap[0,1],m)$ 为 $[0,1]$ 上的 Lebesgue 测度空间。
+\par\noindent （1）设 $\{E_n\}$ 为 $[0,1]$ 中的可测集列，且 $\varlimsup_{n\to+\infty}m(E_n)=1$。证明：对 $0<\alpha<1$，必存在 $\{E_{n_k}\}$，s.t.
+\[m\left(\bigcap_{k=1}^\infty E_{n_k}\right)>\alpha.\]
+\par\noindent （2）$\{E_n\}$ 为 $[0,1]$ 中互不相同的可测集列，且 $\exists\varepsilon>0,m(E_n)>\varepsilon\ (n\in\mathbb N)$。
+\par\noindent 问：是否存在子列 $\{E_{n_k}\}$，s.t. $m\left(\bigcap_{k=1}^\infty E_{n_k}\right)>0$？又若 $\{m(E_n)\}$ 中存在收敛于 $1$ 的子列，则上述结论是否成立？
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q2}{}\textbf{2.}\quad 设 $E$ 为 $\mathbb R^n$ 中的不可测集。证明：$\exists\varepsilon>0$，s.t. 对满足 $A\supset E,\ B\supset E^c$ 的任意 Lebesgue 可测集 $A$ 与 $B$，均有 $m(A\cap B)\geq\varepsilon$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q3}{}\textbf{3.}\quad 设 $E\subset(-\pi,\pi),0<a<b<+\infty$。在平面上定义扇面集：
+\[S=\{(r\cos\theta,r\sin\theta)\mid a<r<b,\theta\in E\}.\]
+\par\noindent 证明：$m^*(S)\leq\frac12(b^2-a^2)m^*(E)$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q4}{}\textbf{4.}\quad 设 $(\mathbb R^n,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\subset\mathbb R^n$ 为 Lebesgue 可测集，$m(E)>0$。
+\par\noindent （1）$0<\lambda<1$，证明：存在 $n$ 维开方体 $I$，s.t. $\lambda m(I)<m(E\cap I)$。
+\par\noindent （2）作（向量差）点集 $E_{-}E=\{\boldsymbol{x}-\boldsymbol{y}\mid\boldsymbol{x},\boldsymbol{y}\in E\}$。证明：必存在 $\delta>0$，s.t.
+\[E_{-}E\supset B(\boldsymbol{0};\delta)=\{\boldsymbol{x}\in\mathbb R^n\mid\|\boldsymbol{x}\|<\delta\}.\]
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q5}{}\textbf{5.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，$E\in\mathcal L$。
+\par\noindent （1）如果 $m(E)>0$，证明：点集 $E+E\overset{\mathrm{def}}{=}\{x+y\mid x\in E,y\in E\}$ 必包含一个开区间。
+\par\noindent （2）如果 $m(E)>0$，且 $\frac12(x+y)\in E,\ \forall x,y\in E$，证明：$E$ 必包含一个开区间。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q6}{}\textbf{6.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为测度空间，$\alpha>2$，令
+\[E=\left\{x\in\mathbb R^1\ \bigg|\ \text{存在无限个分数 }\frac pq,\ p,q\text{ 是互素的自然数, s.t. }\left|x-\frac pq\right|<\frac1{q^\alpha}\right\}.\]
+\par\noindent 证明：$m(E)=0$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q7}{}\textbf{7.}\quad 在 $\mathbb R^n$ 中，设 $\boldsymbol{x}\sim\boldsymbol{y}\Leftrightarrow\boldsymbol{x}-\boldsymbol{y}\in\mathbb Q^n$。记 $[\boldsymbol{x}]=\{\boldsymbol{y}\in\mathbb R^n\mid\boldsymbol{y}\sim\boldsymbol{x}\}$，于是在 $\sim$ 下 $\mathbb R^n$ 划分为若干等价类。在每一类中选一元且只选一元构成集合 $W$。试应用上面题 4 中（2）的结论证明 $W$ 为不可测集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q8}{}\textbf{8.}\quad 设 $f(x)$ 为定义在 $\mathbb R^1$ 上的连续可导的函数，并且 $f'(x)>0$。证明：当 $E$ 为 Lebesgue 可测集时，$f^{-1}(E)$ 也为 Lebesgue 可测集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q9}{}\textbf{9.}\quad 设 $D$ 为 $\mathbb R^1$ 中的稠密集，$\mu$ 为 $\mathbb R^1$ 上的 Borel 测度（Borel 集组成的 $\sigma$ 代数（Borel 代数）$\mathcal B=\mathcal A_\sigma(\mathcal P)=\mathcal R_\sigma(\mathcal R_0)$ 上的测度 $\mu$，且对任何紧集 $K\subset\mathbb R^1$，有 $\mu(K)<+\infty$，则称 $\mu$ 为 \textbf{Borel 测度}）。如果对 $\forall x_0\in D$ 以及 $\forall a,b\in\mathbb R^1,a<b$ 有
+\[\mu((a,b]+x_0)=\mu((a,b]).\]
+\par\noindent 证明：对 $\forall E\in\mathcal B$（即 $E$ 为 Borel 集），有 $\mu(E)=\lambda\cdot m(E)$，其中 $\lambda=\mu((0,1])$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q10}{}\textbf{10.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间，函数 $f:\mathbb R^1\to\mathbb R$ 在正测集 $E\in\mathcal L$ 上是有界的，且满足
+\[f(x+y)=f(x)+f(y),\quad x,y\in\mathbb R^1.\]
+\par\noindent 证明：$f(x)=xf(1)$ 为线性函数。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q11}{}\textbf{11.}\quad 设 $(\mathbb R^1,\mathcal L,m)$ 为 Lebesgue 测度空间。证明：$\mathbb R^1$ 上的每个非空完全集 $E$ 必含有一个测度为 $0$ 的非空完全集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q12}{}\textbf{12.}\quad 设 $E\subset[a,b],f:[a,b]\to\mathbb R$ 为实函数。如果 $f'(x)$ 在 $E$ 上存在有限，且 $|f'(x)|\leq M$（常数），则：
+\par\noindent （1）对 $\forall\varepsilon>0,\forall n\in\mathbb N$，有 $m^*(f(E_n))\leq(M+\varepsilon)(m^*(E_n)+\varepsilon)$，其中
+\[\begin{aligned}E_n=\{x\in E\mid{}&\text{当 }y\in[a,b]\text{ 且 }|y-x|\leq\tfrac1n\text{ 时, 有}\\ &|f(y)-f(x)|\leq(M+\varepsilon)|y-x|\}.\end{aligned}\]
+\par\noindent （2）$m^*(f(E))\leq M m^*(E)$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q13}{}\textbf{13.}\quad （1）设 $f:\mathbb R^1\to\mathbb R$ 为 $C^1$ 映射（即连续可导），$E\subset\mathbb R^1$ 为 Lebesgue 零测集，则 $m(f(E))=0$。
+\par\noindent （2）进一步，即使 $f:\mathbb R^1\to\mathbb R$ 只是可导函数，$m(E)=0$，仍有 $m(f(E))=0$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q14}{}\textbf{14.}\quad 设 $f:[a,b]\to\mathbb R$ 在 $E\subset[a,b]$ 上每一点处可导，则
+\par\noindent $f'$ 在 $E$ 上几乎处处为 $0\ (f'\underset{m}{\overset{\cdot}{=}}0)\Leftrightarrow m(f(E))=0$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q15}{}\textbf{15.}\quad （特殊 Sard 定理）设 $f:[a,b]\to\mathbb R$ 的临界点集为 $E=\{x\in[a,b]\mid f'(x)=0\}$。则 $f$ 的临界值集 $f(E)$ 为 Lebesgue 零测集，即 $m(f(E))=0$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q16}{}\textbf{16.}\quad 设 $A,B$ 为 $(\mathbb R^1,\mathcal L,m)$ 中两个正测度集。证明：$A+B=\{x+y\mid x\in A,y\in B\}$ 必包含一个内点。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q17}{}\textbf{17.}\quad 设 $(\mathbb R^2,\mathcal L,m)$ 为 Lebesgue 测度空间。试作 $\mathbb R^2$ 中一个正测集，使其任一正测子集 $E$ 皆不能表示成 $E=A\times B$，其中 $A,B$ 为 $(\mathbb R^1,\mathcal L,m)$ 中的正测集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q18}{}\textbf{18.}\quad （1）构造 $[0,1]$ 上的一个可导函数，其导函数在已给的非空完全集 $C$ 上无处连续。
+\par\noindent （2）构造 $[0,1]$ 上一个可导函数 $f$，使 $f'$ 在 $[0,1]$ 上不连续点的全体具有正的 Lebesgue 测度。
 \end{document}

@@ -58,8 +58,7 @@
 如果函数还是连续函数列的逐点极限，Baire 定理进一步限制这个集合的内部结构。
 最后，Cantor 集把这些尺度分开：它与实轴等势，疏朗，长度却为零。
 \par
-本讲义以教材前言的第三层次为目标。六节正文给出定义、构造和证明，节后练习与章末复习题按原题号收在
-\href{https://zj139.github.io/math-notes/notes/6791bad7fbcd02aefb8473b6/}{\underline{第一章习题与复习题}}。
+本讲义以教材前言的第三层次为目标。六节正文给出定义、构造和证明。节后练习与章末复习题按教材原题号收于本章末尾。
 \tableofcontents
 \section{集合运算及其性质}
 
@@ -565,4 +564,237 @@ F_n=\bigcup_{k=1}^{2^n}F_n^k,\qquad C=\bigcap_{n=1}^{\infty}F_n.
 当 \(E\) 还是闭集时，凝点均为聚点，故 \(P\subset E\)。因此每个不可数闭集都可分解成不交并 \(E=P\cup D\)，其中 \(P\) 为非空完全集，\(D=E-P\) 至多可数。由定理 1.6.4，实直线上的闭集只能具有有限势、可数势或连续势。
 
 两个直接检验有助于使用这套方法。其一，若 \(E\subset\mathbb R^n\) 的导集 \(E'\) 至多可数，则 \(E\) 至多可数。对每个 \(x\in E-E'\) 选一个与 \(E\) 只交于 \(x\) 的有理球，不同 \(x\) 对应不同球；另一部分包含在 \(E'\) 中。其二，直线上非空至多可数闭集必有孤立点，否则它就是非空完全集，与定理 1.6.4 矛盾。第一个论证使用可数基，第二个还用到了闭性；\(\mathbb Q\) 表明闭性不可少。
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+\clearpage\phantomsection\addcontentsline{toc}{section}{第一章习题与复习题}\section*{第一章习题与复习题}
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.1}\subsection*{练习题 1.1}
+\noindent 教材第 15--17 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 证明：de Morgan 公式中的第 1 式
+\[X-\bigcup_{\alpha\in\Gamma}A_\alpha=\bigcap_{\alpha\in\Gamma}(X-A_\alpha).\]
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $\{A_\alpha\}\;(\alpha=1,2,\cdots)$ 为一集列。
+\par\noindent （1）令 $B_1=A_1,\ B_n=A_n-\bigcup_{i=1}^{n-1}A_i\ (n\geq 2)$。证明：$\{B_n\}\;(n=1,2,\cdots)$ 为一个彼此不相交的集列，并且
+\[\bigcup_{i=1}^n A_i=\bigcup_{i=1}^n B_i,\quad n=1,2,\cdots;\qquad \bigcup_{i=1}^\infty A_i=\bigcup_{i=1}^\infty B_i.\]
+\par\noindent （2）如果 $\{A_n\}\;(n=1,2,\cdots)$ 为单调减（即 $A_1\supset A_2\supset\cdots\supset A_n\supset\cdots$）的集列，证明：
+\[A_1=(A_1-A_2)\cup(A_2-A_3)\cup\cdots\cup(A_n-A_{n+1})\cup\cdots\cup\left(\bigcap_{i=1}^\infty A_i\right),\]
+\par\noindent 并且其中各项互不相交。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $\{A_n\}$ 和 $\{B_n\}\;(n=1,2,\cdots)$ 为两个集列。
+\par\noindent （1）证明：$\bigcup_{n=1}^\infty(A_n\cap B_n)\subset\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right)$。
+\par\noindent （2）举例说明：$\bigcup_{n=1}^\infty(A_n\cap B_n)\not\supset\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right)$。
+\par\noindent （3）如果 $\{A_n\}$ 和 $\{B_n\}\;(n=1,2,\cdots)$ 都是单调增的集列，证明：
+\[\bigcup_{n=1}^\infty(A_n\cap B_n)=\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right).\]
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $A,B,E$ 为全集 $X$ 中的子集，证明：
+\[B=(E\cap A)^c\cap(E^c\cup A)\Leftrightarrow B^c=E.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $A_{2n-1}=\left(0,\frac1n\right),A_{2n}=(0,n),n=1,2,\cdots$，求 $\varlimsup_{n\to+\infty} A_n$ 和 $\varliminf_{n\to+\infty} A_n$。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 设 $f(x)$ 为 $E$ 上的一个实函数，$c$ 为任何实数，
+\[E(f>c)=\{x\in E\mid f(x)>c\},\qquad E(f\leq c)=\{x\in E\mid f(x)\leq c\},\]
+\par\noindent 其他记法类推。证明：
+\par\noindent （1）$E(f>c)\cup E(f\leq c)=E$。
+\par\noindent （2）$E(f\geq c)=E(f>c)\cup E(f=c)$。
+\par\noindent （3）当 $c<d$ 时，$E(f>c)\cap E(f\leq d)=E(c<f\leq d)$。
+\par\noindent （4）当 $c\geq0$ 时，$E(f^2>c)=E(f>\sqrt c)\cup E(f<-\sqrt c)$。
+\par\noindent （5）当 $f\geq g$ 时，$E(f>c)\supset E(g>c)$。
+\par\noindent （6）$E(f\geq c)=\bigcup_{n=1}^\infty E(c\leq f<c+n)$。
+\par\noindent （7）$E(f<c)=\bigcup_{n=1}^\infty E\left(f\leq c-\frac1n\right)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $\{f_n\}\;(n=1,2,\cdots)$ 为 $E$ 上的实函数列，且单调增，即
+\[f_1(x)\leq f_2(x)\leq\cdots\leq f_n(x)\leq\cdots,\quad \forall x\in E,\]
+\par\noindent 并且 $\lim_{n\to+\infty}f_n(x)=f(x)$。证明：对任何实数 $c$，
+\par\noindent （1）$E(f>c)=\bigcup_{n=1}^\infty E(f_n>c)=\lim_{n\to+\infty}E(f_n>c)$。
+\par\noindent （2）$E(f\leq c)=\bigcap_{n=1}^\infty E(f_n\leq c)=\lim_{n\to+\infty}E(f_n\leq c)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{8.}\quad 设 $\{f_i(\boldsymbol{x})\}\;(i=1,2,\cdots)$ 为定义在 $\mathbb R^n$ 上的实函数列，试用点集
+\[\left\{\boldsymbol{x}\in\mathbb R^n\ \bigg|\ f_i(\boldsymbol{x})\geq\frac1j\right\},\quad i,j=1,2,\cdots\]
+\par\noindent 表示点集 $\left\{\boldsymbol{x}\in\mathbb R^n\mid\varlimsup_{i\to+\infty}f_i(\boldsymbol{x})>0\right\}$。
+\par\Needspace{3\baselineskip}\noindent\textbf{9.}\quad 设 $f:X\to Y,A\subset X,B\subset Y$。试问：下列等式成立吗？并说明理由。
+\par\noindent （1）$f^{-1}(Y-B)=f^{-1}(Y)-f^{-1}(B)$。
+\par\noindent （2）$f(X-A)=f(X)-f(A)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{10.}\quad 设 $X$ 为固定的集合，$A\subset X,\chi_A(x)$ 为集合 $A$ 的特征函数。证明：
+\par\noindent （1）$A=X\Leftrightarrow\chi_A(x)\equiv1$；$A=\varnothing\Leftrightarrow\chi_A(x)\equiv0$。
+\par\noindent （2）$A\subset B\Leftrightarrow\chi_A(x)\leq\chi_B(x),\ \forall x\in X$；$A=B\Leftrightarrow\chi_A(x)=\chi_B(x),\ \forall x\in X$。
+\par\noindent （3）$\chi_{\bigcup_{\alpha\in\Gamma}A_\alpha}(x)=\max_{\alpha\in\Gamma}\chi_{A_\alpha}(x)$；$\chi_{\bigcap_{\alpha\in\Gamma}A_\alpha}(x)=\min_{\alpha\in\Gamma}\chi_{A_\alpha}(x)$。
+\par\noindent （4）设 $\{A_n\}\;(n=1,2,\cdots)$ 为一集列，则 $\lim_{n\to+\infty}A_n$ 存在 $\Leftrightarrow\lim_{n\to+\infty}\chi_{A_n}(x)$ 存在。而且当极限存在时，有
+\[\chi_{\lim_{n\to+\infty}A_n}(x)=\lim_{n\to+\infty}\chi_{A_n}(x).\]
+\par\Needspace{3\baselineskip}\noindent\textbf{11.}\quad 设 $\{f_n\}\;(n=1,2,\cdots)$ 为定义在 $[a,b]$ 上的实函数列，$E\subset[a,b]$，且有
+\[\lim_{n\to+\infty} f_n(x)=\chi_{[a,b]-E}(x).\]
+\par\noindent 若令 $E_n=\left\{x\in[a,b]\mid f_n(x)\geq\frac12\right\}$，求集合 $\lim_{n\to+\infty}E_n$。
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.2}\subsection*{练习题 1.2}
+\noindent 教材第 41--42 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 设 $A,B,C$ 为集合。证明：
+\par\noindent （1）若 $A-B\sim B-A$，则 $A\sim B$。
+\par\noindent （2）若 $A\subset B$，且 $A\sim(A\cup C)$，则 $B\sim B\cup C$。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad （1）作 $\mathbb R-\mathbb Q$ 与 $\mathbb R$ 之间的一一映射。
+\par\noindent （2）作 $(0,1]\times(0,1]$ 与 $(0,1]$ 之间的一一映射。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 证明：
+\par\noindent （1）任一可数集的所有有限子集全体为可数集（对照例 1.2.9）。
+\par\noindent （2）$g$ 进制有限小数全体为可数集。无限循环小数全体也为可数集。
+\par\noindent （3）对于有理数，施行 $+,-,\times,\div,\sqrt{\phantom{x}},\sqrt[3]{\phantom{x}},\cdots,\sqrt[n]{\phantom{x}},\cdots$ 有限次运算所得到的一切数的全体为可数集。
+\par\noindent （4）$\mathbb R^n$ 中以有理点（即坐标都为有理数的点）为中心、以正有理数为半径的圆的全体为可数集。
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $a_0,a_1,\cdots,a_n\in\mathbb Z,a_n\ne0$。如果复数 $z\in\mathbb C$ 为整系数代数方程
+\[a_nz^n+a_{n-1}z^{n-1}+\cdots+a_1z+a_0=0\]
+\par\noindent 的根，则称 $z$ 为\textbf{代数数}。$\mathbb C$ 中非代数数称为\textbf{超越数}。证明：代数数全体为可数集；超越数全体的势为 $\aleph$。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $E\subset\mathbb R$，证明：集合
+\[A=\{x=(x_1,x_2,\cdots,x_n,\cdots)\in\mathbb R^\infty\mid x_n\in E,n=1,2,\cdots\}\]
+\par\noindent 的势 $\overline{\overline A}\leq\aleph$。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 证明：不存在集合 $A$，使得 $2^A$ 为可数集。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $A$ 为非独点集的集合，$A\times A\sim A$。如果 $\overline{\overline B}\leq\overline{\overline A}$，证明：$A\cup B\sim A$。如果 $A$ 为独点集时，讨论 $A\cup B\sim A$ 是否成立？
+\par\Needspace{3\baselineskip}\noindent\textbf{8.}\quad 设 $\mathcal L=\{l\mid l$ 为 $\mathbb R^2$ 中的直线，如果 $(x,y)\in l$，且 $x\in\mathbb Q$，则必有 $y\in\mathbb Q\}$。证明：$\overline{\overline{\mathcal L}}=\aleph$。
+\par\Needspace{3\baselineskip}\noindent\textbf{9.}\quad 证明：$[a,b]$ 区间上右连续的单调函数的全体的势为 $\aleph$。又 $[a,b]$ 区间上单调函数的势如何？
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.3}\subsection*{练习题 1.3}
+\noindent 教材第 49--50 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 设 $X$ 为集合，$\mathcal E$ 为 $X$ 上的非空集类。在下列各种情况下分别求出 $\mathcal R(\mathcal E),\mathcal A(\mathcal E)$：
+\par\noindent （1）$\mathcal E=\{E_1,E_2,\cdots,E_n\}$。
+\par\noindent （2）$X=\mathbb R^1$（实数直线），$\mathcal E=\{(a,b)\mid-\infty<a<b<+\infty\}$。
+\par\noindent （3）$X=\mathbb R^1,\mathcal E=\{(-\infty,a)\mid a\in\mathbb R\}$。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $\mathcal E=\{(a,b)\mid-\infty<a<b<+\infty\}$ 与 $\mathcal R_0=\left\{\bigcup_{i=1}^n(a_i,b_i]\mid-\infty<a_i\leq b_i<+\infty,n\in\mathbb N\right\}$ 为 $\mathbb R^1$ 上的两个集类。证明：分别由 $\mathcal E$ 与 $\mathcal R_0$ 张成的 $\sigma$ 环是一致的，
+\[\mathcal R_\sigma(\mathcal E)=\mathcal R_\sigma(\mathcal R_0)=\mathcal B\quad\text{(Borel 集类)}.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $\mathcal R$ 为集合 $X$ 上的一个非空集类。证明：
+\par\noindent （1）$\mathcal R$ 为环 $\Leftrightarrow$（2）$\mathcal R$ 对任意有限个互不相交集的“$\cup$”运算与“$-$”运算封闭 $\Leftrightarrow$（3）$\mathcal R$ 对“$\triangle$”、“$\cap$”、“$-$”运算封闭。
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $\mathcal R$ 为集合 $X$ 上的一个非空集类。证明：
+\par\noindent $\mathcal R$ 为代数 $\Leftrightarrow\mathcal R$ 对“$\cup$”、“$\cap$”、“余”运算封闭。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $X$ 为集合，$A\subset X$。$\mathcal R$ 为 $X$ 上某些子集所成的环。记
+\[\mathcal R\cap A=\{E\cap A\mid E\in\mathcal R\},\qquad \mathcal R_\sigma(\mathcal R)\cap A=\{E\cap A\mid E\in\mathcal R_\sigma(\mathcal R)\}.\]
+\par\noindent 证明：$\mathcal R_\sigma(\mathcal R)\cap A=\mathcal R_\sigma(\mathcal R\cap A)$。
+\par\noindent 当 $\mathcal R$ 为代数或 $A\in\mathcal R$ 时，$\mathcal R_\sigma(\mathcal R)\cap A$ 为 $A$ 上的 $\sigma$ 代数。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 设 $X$ 为集合，$\mathcal R$ 与 $\mathcal M$ 都为 $X$ 上的环，且有：
+\par\noindent （1）$\mathcal M\supset\mathcal R$；
+\par\noindent （2）当 $E_1,E_2,\cdots,E_n,\cdots$ 为 $\mathcal M$ 中一列互不相交的元素时，$\bigcup_{n=1}^\infty E_n\in\mathcal M$。
+\par\noindent 证明：$\mathcal M\supset\mathcal R_\sigma(\mathcal R)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $\mathcal R$ 为 $\mathbb R^1$ 上的一个环，$\mathbb R^2=\{(x,y)\mid x,y\in\mathbb R\}$。对 $\forall E\in\mathcal R$，令
+\[\widetilde E=\{(x,y)\mid x\in E,y\in\mathbb R\}\subset\mathbb R^2,\qquad \widetilde{\mathcal R}=\{\widetilde E\mid E\in\mathcal R\}.\]
+\par\noindent 试求出 $\mathcal R_\sigma(\widetilde{\mathcal R})$ 与 $\mathcal R_\sigma(\mathcal R)$ 的关系。
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.4}\subsection*{练习题 1.4}
+\noindent 教材第 65--67 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 设 $E\subset\mathbb R^n$，证明：$E^\circ$ 与 $(E^c)^\circ$ 都为开集，$E$ 的边界 $\partial E=E^{\mathrm b}$ 都为闭集。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad （1）设 $E_i\subset\mathbb R^n,i=1,2,\cdots,k$。证明：$\bigcup_{i=1}^k E_i'=\left(\bigcup_{i=1}^k E_i\right)'$；$\bigcup_{i=1}^k\overline{E_i}=\overline{\bigcup_{i=1}^k E_i}$。
+\par\noindent （2）设 $E_i\subset\mathbb R^n,i=1,2,\cdots,k$。证明：
+\[\bigcup_{i=1}^\infty E_i'\subset\left(\bigcup_{i=1}^\infty E_i\right)';\qquad \bigcup_{i=1}^\infty\overline{E_i}\subset\overline{\bigcup_{i=1}^\infty E_i}.\]
+\par\noindent 进而是否有
+\[\bigcup_{i=1}^\infty E_i'=\left(\bigcup_{i=1}^\infty E_i\right)',\qquad \bigcup_{i=1}^\infty\overline{E_i}=\overline{\bigcup_{i=1}^\infty E_i}.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 记 $A^1=A',A^2=(A^1)',\cdots,A^{n+1}=(A^n)'$。试作集合 $A$，使 $A^n\ (n=1,2,\cdots)$ 彼此相异。
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 设 $E\subset\mathbb R^n$ 为孤立点集，证明：$E$ 为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 证明：$\mathbb R^n$ 中每个闭集为 $G_\delta$ 集；每个开集为 $F_\sigma$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{6.}\quad 证明：
+\par\noindent （1）$\mathbb R^n$ 中完全集（即 $E=E'$）全体所成的集类的势为 $\aleph$。
+\par\noindent （2）$\mathbb R^n$ 中紧致集全体所成的集类的势为 $\aleph$。
+\par\noindent （3）$\mathbb R^n$ 中孤立点集全体所成的集类的势为 $\aleph$。
+\par\noindent （4）$\mathbb R^n$ 中至多可数子集全体所成的集类的势为 $\aleph$。
+\par\Needspace{3\baselineskip}\noindent\textbf{7.}\quad 设 $f:\mathbb R^1\to\mathbb R$ 为单调增的函数，证明：点集
+\[E=\{x\mid\text{对 }\forall\delta>0,\text{ 有 } f(x+\delta)-f(x-\delta)>0\}\]
+\par\noindent 为 $\mathbb R^1$ 中的闭集。
+\par\Needspace{3\baselineskip}\noindent\textbf{8.}\quad 证明：$F\subset\mathbb R^n$ 为有界闭集 $\Leftrightarrow$ 对 $F$ 的任何无限子集 $E$，必有 $E'\cap F\ne\varnothing$。
+\par\Needspace{3\baselineskip}\noindent\textbf{9.}\quad 设 $\{F_\alpha\}$ 为 $\mathbb R^n$ 中有界闭集族，若任取其中有限个 $F_{\alpha_1},F_{\alpha_2},\cdots,F_{\alpha_k}$，都有 $\bigcap_{i=1}^k F_{\alpha_i}\ne\varnothing$。证明：$\bigcap_\alpha F_\alpha\ne\varnothing$。
+\par\Needspace{3\baselineskip}\noindent\textbf{10.}\quad 设 $\{F_\alpha\}$ 为 $\mathbb R^n$ 中有界闭集族，$G\subset\mathbb R^n$ 为开集，且有 $\bigcap_\alpha F_\alpha\subset G$。
+\par\noindent 证明：$\{F_\alpha\}$ 中存在 $F_{\alpha_1},F_{\alpha_2},\cdots,F_{\alpha_k}$，使得 $\bigcap_{i=1}^k F_{\alpha_i}\subset G$。
+\par\Needspace{3\baselineskip}\noindent\textbf{11.}\quad 设 $f:\mathbb R^1\to\mathbb R$ 为实函数。证明：
+\par\noindent $f$ 为连续函数 $\Leftrightarrow$ 对 $\forall t\in\mathbb R$，点集 $\{x\mid f(x)\leq t\}$ 与 $\{x\mid f(x)\geq t\}$ 都为闭集。
+\par\Needspace{3\baselineskip}\noindent\textbf{12.}\quad 设 $f:\mathbb R^1\to\mathbb R$ 为可导函数。证明：
+\par\noindent $f'$ 为连续函数 $\Leftrightarrow$ 对 $\forall t\in\mathbb R$，点集 $\{x\in\mathbb R^1\mid f'(x)=t\}$ 为闭集。
+\par\Needspace{3\baselineskip}\noindent\textbf{13.}\quad 设 $f_n:\mathbb R^1\to\mathbb R\ (n\in\mathbb N)$ 为连续函数列。证明：
+\[\left\{x\ \bigg|\ \varliminf_{n\to+\infty} f_n(x)>0\right\}\]
+\par\noindent 为 $F_\sigma$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{14.}\quad 设 $f:\mathbb R^1\to\mathbb R$ 为实函数。证明：点集 $\left\{x\mid \lim_{y\to x} f(y)\text{ 存在有限}\right\}$ 为 $G_\delta$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{15.}\quad 证明：开区间 $(a,b)$ 不能表示为至多可数个两两不相交的闭集之并。
+\par\Needspace{3\baselineskip}\noindent\textbf{16.}\quad 设 $G_1,G_2\subset\mathbb R^n$ 为两个不相交的开集。证明：$G_1\cap\overline{G_2}=\varnothing$。
+\par\Needspace{3\baselineskip}\noindent\textbf{17.}\quad 设 $G\subset\mathbb R^n$。如果 $\forall E\subset\mathbb R^n$，有 $G\cap\overline E\subset\overline{G\cap E}$。证明：$G$ 为开集。
+\par\Needspace{3\baselineskip}\noindent\textbf{18.}\quad 设 $E\subset\mathbb R^n,E\ne\varnothing,\mathbb R^n$。证明：$E$ 的边界 $\partial E\ne\varnothing$。
+\par\Needspace{3\baselineskip}\noindent\textbf{19.}\quad 设 $F\subset\mathbb R^1$ 为闭集，$F^c$ 的构成区间（假定都是有限的）中心点的集合为 $E$。证明：$E'\subset F'$。
+\par\Needspace{3\baselineskip}\noindent\textbf{20.}\quad 设 $\{F_\alpha\mid\alpha\in\mu\}$ 为 $\mathbb R^n$ 中的闭集族，且对 $\forall\alpha,\beta\in\mu$，有 $F_\alpha\subset F_\beta$ 或 $F_\beta\subset F_\alpha$。证明：$F_0=\bigcup_{\alpha\in\mu}F_\alpha$ 为 $F_\sigma$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{21.}\quad 设 $G\subset\mathbb R^n$ 为开集。试构造 $\mathbb R^n$ 上的连续函数列 $g_k(\boldsymbol{x})\;(k=1,2,\cdots)$，s.t.
+\[\lim_{k\to+\infty}g_k(\boldsymbol{x})=\chi_G(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in\mathbb R^n.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{22.}\quad 设 $F\subset\mathbb R^n$ 为闭集。试构造 $\mathbb R^n$ 上的连续函数列 $f_k(\boldsymbol{x})\;(k=1,2,\cdots)$，s.t.
+\[\lim_{k\to+\infty}f_k(\boldsymbol{x})=\chi_F(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in\mathbb R^n.\]
+\par\Needspace{3\baselineskip}\noindent\textbf{23.}\quad 设 $E\subset\mathbb R^n$。证明：$\chi_E(\boldsymbol{x})$ 为 $\mathbb R^n$ 上连续函数列的极限 $\Leftrightarrow E$ 同时为 $G_\delta$ 集与 $F_\sigma$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{24.}\quad 设 $E\subset\mathbb R^1$ 非空，$f(x)$ 为 $E$ 上的实值函数，满足 Lipschitz 条件
+\[|f(x)-f(y)|\leq M|x-y|,\quad x,y\in E.\]
+\par\noindent 证明：可将 $f(x)$ 延拓到 $\mathbb R^1$，使它满足上述 Lipschitz 条件。
+\par\Needspace{3\baselineskip}\noindent\textbf{25.}\quad 设 $E\subset[0,1]$，且 $f$ 在 $E$ 上连续。试构造定义在 $[0,1]$ 上的函数 $g(x)$，以 $E$ 中的点为连续点，且 $g(x)|_{x\in E}=f(x)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{26.}\quad 设 $F\subset\mathbb R^1$ 为闭集。试构造 $\mathbb R^1$ 上单调增的函数 $f(x)$，使得 $f\in C^1(\mathbb R^1)$（即 $f$ 为 $\mathbb R^1$ 上的连续可导函数），且 $F=\{x\in\mathbb R^1\mid f'(x)=0\}$。
+\par\Needspace{3\baselineskip}\noindent\textbf{27.}\quad 设 $f:\mathbb R^1\to\mathbb R$ 在有理点上取值为无理数，在无理点上取值为有理数。证明：$f$ 不为连续函数。
+\par\Needspace{3\baselineskip}\noindent\textbf{28.}\quad 设 $f_i\ (i=1,2,\cdots)$ 为紧致集（即有界闭集）$F\subset\mathbb R^n$ 上的非负连续函数列，且
+\[f_i(\boldsymbol{x})\geq f_j(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in F,\quad i\leq j;\qquad \lim_{i\to+\infty}f_i(\boldsymbol{x})=0,\quad \forall\boldsymbol{x}\in F.\]
+\par\noindent 证明：$\{f_i\}$ 在 $F$ 上一致收敛于 $0$。
+\par\Needspace{3\baselineskip}\noindent\textbf{29.}\quad 设 $f$ 在 $[a,b]$ 上为连续函数，$D$ 为 $[a,b]$ 中的可数子集。如果对 $\forall x\in[a,b]-D$，都 $\exists\delta=\delta(x)>0$，s.t. $f(y)>f(x),\ \forall y\in(x,x+\delta(x))$。证明：$f(x)$ 在 $[a,b]$ 上严格增。
+\par\Needspace{3\baselineskip}\noindent\textbf{30.}\quad 设 $f:[a,b]\to\mathbb R$ 为实函数。证明：$f$ 在 $[a,b]$ 上的连续点集全体为 Borel 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{31.}\quad 设 $A,B$ 为 $\mathbb R^1$ 中的点集。试证明：$(A\times B)'=(\overline A\times B')\cup(A'\times\overline B)$。
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.5}\subsection*{练习题 1.5}
+\noindent 教材第 80 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 证明：不存在满足下列条件的函数 $f(x,y)$：
+\par\noindent （1）$f(x,y)$ 为 $\mathbb R^2$ 上的连续函数。
+\par\noindent （2）偏导数 $\frac{\partial}{\partial x}f(x,y),\frac{\partial}{\partial y}f(x,y)$ 在 $\mathbb R^2$ 上处处存在有限。
+\par\noindent （3）$f(x,y)$ 在 $\mathbb R^2$ 的任一点上都不可微。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $f(x)$ 为定义在 $[0,1]$ 上的连续函数。令
+\[f_1'(x)=f(x),\ f_2'(x)=f_1(x),\cdots,f_k'(x)=f_{k-1}(x),\cdots.\]
+\par\noindent 如果对 $\forall x\in[0,1],\exists k\in\mathbb N$，s.t. $f_k(x)=0$。证明：$f(x)=0,\ \forall x\in[0,1]$。
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{练习题 1.6}\subsection*{练习题 1.6}
+\noindent 教材第 95 页。
+\par\Needspace{3\baselineskip}\noindent\textbf{1.}\quad 证明：$\mathbb R^n$ 中可数稠密集不为 $G_\delta$ 集。
+\par\Needspace{3\baselineskip}\noindent\textbf{2.}\quad 设 $F\subset\mathbb R^n$ 为至多可数的非空闭集。证明：$F$ 必含孤立点。
+\par\Needspace{3\baselineskip}\noindent\textbf{3.}\quad 设 $E\subset\mathbb R^n$。证明：
+\par\noindent $E$ 为非空闭集 $\Leftrightarrow$ 对 $\forall\boldsymbol{x}\in\mathbb R^n,\ \exists\boldsymbol{y}\in E$，s.t. $\rho(\boldsymbol{x},\boldsymbol{y})=\rho(\boldsymbol{x},E)$。
+\par\Needspace{3\baselineskip}\noindent\textbf{4.}\quad 证明：点 $x=\frac14,\frac1{13}$ 属于 Cantor 疏朗集。
+\par\Needspace{3\baselineskip}\noindent\textbf{5.}\quad 设 $C$ 为 $[0,1]$ 中的 Cantor 疏朗集。证明：
+\[C+C=\{x+y\mid x\in C,y\in C\}=[0,2].\]
+
+\Needspace{6\baselineskip}\phantomsection\addcontentsline{toc}{subsection}{复习题 1}\subsection*{复习题 1}
+\noindent 教材第 95--97 页。
+\noindent 题号\quad \hyperlink{review-q1}{1}\enspace \hyperlink{review-q2}{2}\enspace \hyperlink{review-q3}{3}\enspace \hyperlink{review-q4}{4}\enspace \hyperlink{review-q5}{5}\enspace \hyperlink{review-q6}{6}\enspace \hyperlink{review-q7}{7}\enspace \hyperlink{review-q8}{8}\enspace \hyperlink{review-q9}{9}\enspace \hyperlink{review-q10}{10}\enspace \hyperlink{review-q11}{11}\enspace \hyperlink{review-q12}{12}\enspace \hyperlink{review-q13}{13}\enspace \\\hspace*{3em} \hyperlink{review-q14}{14}\enspace \hyperlink{review-q15}{15}\enspace \hyperlink{review-q16}{16}\enspace \hyperlink{review-q17}{17}\enspace \hyperlink{review-q18}{18}\enspace \hyperlink{review-q19}{19}\enspace \hyperlink{review-q20}{20}\enspace \hyperlink{review-q21}{21}\enspace \hyperlink{review-q22}{22}\enspace \hyperlink{review-q23}{23}\enspace \hyperlink{review-q24}{24}\enspace \hyperlink{review-q25}{25}\enspace
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q1}{}\textbf{1.}\quad 设 $X$ 为无限集，$f:X\to X$ 为映射。证明：存在 $X$ 中的非空真子集 $E$，使 $f(E)\subset E$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q2}{}\textbf{2.}\quad 设 $X$ 为集合，$f:2^X\to 2^X$ 为映射，且对 $\forall A,B\subset X,A\subset B$，必有 $f(A)\subset f(B)$。证明：$\exists E\subset X$，使得 $f(E)=E$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q3}{}\textbf{3.}\quad 设 $f(x)$ 为定义在 $[0,1]$ 上的实函数，且存在常数 $M$，使对 $\forall n\in\mathbb N$ 及 $\forall x_1,x_2,\cdots,x_n\in[0,1],x_i\ne x_j\ (i\ne j)$，均有
+\[|f(x_1)+f(x_2)+\cdots+f(x_n)|\leq M.\]
+\par\noindent 证明：$E=\{x\in[0,1]\mid f(x)\ne0\}$ 为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q4}{}\textbf{4.}\quad 设 $A\subset\mathbb R^n$，对 $\forall\boldsymbol{x}\in A$，总 $\exists\delta(\boldsymbol{x})>0$，s.t. $B(\boldsymbol{x};\delta(\boldsymbol{x}))\cap A$ 为至多可数集。证明：$A$ 必为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q5}{}\textbf{5.}\quad 试作自然数集 $\mathbb N$ 的 $\aleph$ 个非空子集，其中任意两个子集之间有严格的包含关系。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q6}{}\textbf{6.}\quad 证明：不存在集合族 $\Gamma$，使得对任一集合 $B$，有 $A\in\Gamma,A\sim B$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q7}{}\textbf{7.}\quad 设 $E\subset\mathbb R^3$，且对 $\forall\boldsymbol{x},\boldsymbol{y}\in E$，距离 $\rho_0^3(\boldsymbol{x},\boldsymbol{y})\in\mathbb Q$。证明：$E$ 为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q8}{}\textbf{8.}\quad 设 $E$ 为平面 $\mathbb R^2$ 中的可数集。证明：存在互不相交的集合 $A$ 与 $B$，使得 $E=A\cup B$，且任一平行于 $x$ 轴的直线交 $A$ 至多有限个点；任一平行于 $y$ 轴的直线交 $B$ 至多有限个点。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q9}{}\textbf{9.}\quad 设 $E\subset\mathbb R^1$ 为可数集。证明：$\exists x_0\in\mathbb R^1$，s.t. $E\cap(E+x_0)=\varnothing$，其中点集 $E+x_0=\{x+x_0\mid x\in E\}$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q10}{}\textbf{10.}\quad 设 $A=\{a_1,a_2,\cdots\},B=\{b_1,b_2,\cdots\}$ 为两个自然数子列，若 $\lim_{n\to+\infty}\frac{a_n}{b_n}=0$，则称 $B$ 是比 $A$ 增长更快的数列。
+\par\noindent 现设 $\mathcal N$ 为由某些自然数子列构成的数列族。且对任一自然数子列 $A$，均有 $B\in\mathcal N$，使得 $B$ 比 $A$ 增长更快。证明：$\mathcal N$ 为不可数集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q11}{}\textbf{11.}\quad 证明：平面 $\mathbb R^2$ 和开圆片都不能被其中至多可数个彼此无公共内点（可以相切）的闭圆片的集合 $\mathcal A$ 所覆盖。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q12}{}\textbf{12.}\quad 证明：$\mathbb R^n$ 中可数个超平面（$\mathbb R^1$ 中的“超平面”为点；$\mathbb R^2$ 中的“超平面”为一维直线；$\mathbb R^3$ 中的“超平面”为通常的二维平面；$\mathbb R^n$ 中的超平面就是 $n-1$ 维平面 $a_1x_1+a_2x_2+\cdots+a_nx_n=d$，其中 $a_1,a_2,\cdots,a_n,d$ 为实常数，且 $a_1,a_2,\cdots,a_n$ 不全为 $0$）不能覆盖住 $\mathbb R^n$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q13}{}\textbf{13.}\quad 设 $G$ 为 $\mathbb R^1$ 中的 $G_\delta$ 集。试构造 $\mathbb R^1$ 上的连续函数 $f$，它的连续点集就是 $G$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q14}{}\textbf{14.}\quad 设 $\sum_{n=0}^\infty a_nx^n$ 与 $\sum_{n=0}^\infty b_nx^n$ 在 $(-R,R)$ 上收敛。令
+\[E=\left\{x\in(-R,R)\ \bigg|\ \sum_{n=0}^\infty a_nx^n=\sum_{n=0}^\infty b_nx^n\right\},\]
+\par\noindent 若 $E'\cap(-R,R)\ne\varnothing$，证明：$a_n=b_n,n=0,1,2,\cdots$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q15}{}\textbf{15.}\quad 设 $f$ 为 $\mathbb R$ 上无限次可导的实值函数，且 $\exists M>0$，使在 $\mathbb R$ 上，对 $\forall n\geq0$，有 $|f^{(n)}(x)|\leq M$。如果 $f\equiv0$ 在一无限有界集 $L$ 上成立，则在 $\mathbb R$ 上，$f\equiv0$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q16}{}\textbf{16.}\quad 设 $F\subset\mathbb R^n$ 为有界闭集，$G_i\ (i=1,2,\cdots,k)$ 为 $\mathbb R^n$ 中的开集，且有 $F\subset\bigcup_{i=1}^k G_i$。试作闭集 $F_i\ (i=1,2,\cdots,k)$，使得
+\[F=\bigcup_{i=1}^k F_i,\quad F_i\subset G_i,\quad i=1,2,\cdots,k.\]
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q17}{}\textbf{17.}\quad 设 $f\in C^1([a,b])$（$[a,b]$ 上连续可导函数的全体）。令
+\[E=\{x\in[a,b]\mid f(x)=0\}\cap\{x\in[a,b]\mid f'(x)>0\}.\]
+\par\noindent 证明：$E$ 中任一点皆为 $E$ 的孤立点。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q18}{}\textbf{18.}\quad 设 $f:[a,b]\to\mathbb R$ 为实函数，作 $G_f=\{(x,f(x))\mid x\in[a,b]\}$，则
+\par\noindent $G_f$ 为 $\mathbb R^2$ 中的紧集 $\Leftrightarrow f\in C^0([a,b])=C([a,b])$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q19}{}\textbf{19.}\quad 将点集 $[0,1]$ 表示为 $\aleph$ 个互不相交的完全集的并集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q20}{}\textbf{20.}\quad 设 $X$ 为非空集合，$\mathcal T$ 为 $X$ 上的一个子集族，满足：
+\par\noindent （1）$\varnothing,X\in\mathcal T$；
+\par\noindent （2）若 $G_1,G_2\in\mathcal T$，则 $G_1\cap G_2\in\mathcal T$；
+\par\noindent （3）若 $G_\alpha\in\mathcal T,\alpha\in\Gamma$（指标集），则 $\bigcup_{\alpha\in\Gamma} G_\alpha\in\mathcal T$，则称 $\mathcal T$ 为 $X$ 上的一个\textbf{拓扑}，$(X,\mathcal T)$ 称为 $X$ 上的一个\textbf{拓扑空间}。$G\in\mathcal T$ 称为拓扑空间 $(X,\mathcal T)$ 上的\textbf{开集}。
+\par\noindent 如果 $F\subset X,F^c\in\mathcal T$，则称 $F$ 为 $(X,\mathcal T)$ 上的\textbf{闭集}。
+\par\noindent 如果存在 $\mathcal T^*\subset\mathcal T$，使得 $\mathcal T$ 中的任何 $G$ 必为 $\mathcal T^*$ 中若干元的并集，则称 $\mathcal T^*$ 为 $(X,\mathcal T)$ 的一个\textbf{拓扑基}。如果 $(X,\mathcal T)$ 具有至多可数的拓扑基 $\mathcal T^*$（称 $(X,\mathcal T)$ 具有第二可数性公理），则称 $(X,\mathcal T)$ 为 $A_2$ \textbf{空间}。
+\par\noindent 如果对 $\forall x,y\in X,x\ne y$，必有 $x$ 的开邻域（含 $x$ 的开集）$G_x\not\ni y$，也必有 $y$ 的开邻域 $G_y\not\ni x$，则称 $(X,\mathcal T)$ 为 $T_1$ \textbf{空间}。
+\par\noindent 设 $(X,\mathcal T)$ 为 $A_2$ 与 $T_1$ 空间。证明：$\overline{\overline X}\leq\aleph$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q21}{}\textbf{21.}\quad 设 $X$ 为不可数集。证明：
+\par\noindent （1）$X$ 的子集族 $\mathcal T=\{U\mid U=X-C,C\text{ 为 }X\text{ 的至多可数子集}\}\cup\{\varnothing\}$ 为 $X$ 上的一个拓扑。
+\par\noindent （2）$(X,\mathcal T)$ 不为 $T_2$ 空间（$T_2$ \textbf{空间}或 \textbf{Hausdorff 空间}指的是对 $\forall p,q\in X,p\ne q$，必有 $p$ 的开邻域 $U$ 和 $q$ 的开邻域 $V$，使得 $U\cap V=\varnothing$），但为 $T_1$ 空间。
+\par\noindent （3）$(X,\mathcal T)$ 为 Lindelöf 空间，即 $X$ 的任何开覆盖必有（至多）可数子覆盖。但 $(X,\mathcal T)$ 不为紧致空间。
+\par\noindent （4）$(X,\mathcal T)$ 为连通空间，即 $X$ 不能表示为两个非空不相交开集的并集。
+\par\noindent （5）$(X,\mathcal T)$ 不为道路连通空间，即 $\exists p,q\in X$，不存在连续映射 $\sigma:[0,1]\to X$，s.t. $\sigma(0)=p,\sigma(1)=q$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q22}{}\textbf{22.}\quad 设 $X$ 为无限集。证明：
+\par\noindent （1）$X$ 的子集族 $\mathcal T=\{U\mid U=X-C,C\text{ 为 }X\text{ 的有限子集}\}\cup\{\varnothing\}$ 为 $X$ 上的一个拓扑。
+\par\noindent （2）$(X,\mathcal T)$ 不为 $T_2$ 空间，但为 $T_1$ 空间。
+\par\noindent （3）$(X,\mathcal T)$ 为紧致空间。
+\par\noindent （4）$(X,\mathcal T)$ 为连通空间。
+\par\noindent （5）如果 $X$ 可数，则 $(X,\mathcal T)$ 不为道路连通空间；如果 $X$ 不可数，且 $\overline{\overline X}\geq\aleph$，则 $(X,\mathcal T)$ 为道路连通空间。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q23}{}\textbf{23.}\quad 设 $f_i\ (i=1,2,\cdots)$ 为紧致集（即有界闭集）$F\subset\mathbb R^n$ 上的连续函数，且
+\[f_i(\boldsymbol{x})\geq f_i(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in F\subset\mathbb R^n,\quad i\leq j;\]
+\par\noindent $\lim_{i\to+\infty}f_i(\boldsymbol{x})=f(\boldsymbol{x})$（连续函数），$\forall\boldsymbol{x}\in F$。
+\par\noindent 证明：$\{f_i\}$ 在 $F$ 上一致收敛于 $f(x)$。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q24}{}\textbf{24.}\quad 设 $f:\mathbb R^n\to\mathbb R$ 为实函数，令
+\[f_{\max}=\{f(x)\mid x\in\mathbb R^n\text{ 为 }f\text{ 的极大值点}\},\quad f_{\min}=\{f(x)\mid x\in\mathbb R^n\text{ 为 }f\text{ 的极小值点}\},\]
+\par\noindent 则 $f_{\max}$ 与 $f_{\min}$ 都为至多可数集。
+\par\Needspace{3\baselineskip}\noindent\hypertarget{review-q25}{}\textbf{25.}\quad 设 $f$ 为 $\mathbb R^n$ 上的连续函数，并且 $\mathbb R^n$ 中每一点都是 $f$ 的极值点。证明：$f$ 在 $\mathbb R^n$ 上为常值函数。
 \end{document}
