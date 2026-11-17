@@ -1,74 +1,575 @@
 ---
 title: "第一章习题与复习题"
-description: "六组节后练习与全部二十五道章末复习题，按原题号、页码与方法检索。"
+description: "徐森林、薛春华《实变函数论》第一章，收录 65 道节后练习与 25 道复习题原题。"
 subject: "实变函数"
 category: "real-functions/chapter-1"
-tags: ["实变函数", "复习题", "习题索引"]
+tags: ["实变函数", "复习题", "习题原题"]
 created_at: "2026-11-16"
-updated_at: "2026-11-16"
+updated_at: "2026-11-17"
 ---
 
-徐森林、薛春华《实变函数论》第一章共有六组练习，按大题号计 65 题，另有章末复习题 25 题。下列页码均为**书中印刷页码**，在带目录的 430 页教材 PDF 中，阅读器页码比印刷页码大 6。每条提示只指出可以检验的第一个想法，原题各小问以书中为准。序言所说的第三层次要求做一般练习，并努力完成各章复习题中的全部难题。
+徐森林、薛春华《实变函数论》第一章，收录 65 道节后练习与 25 道复习题原题。
 
-[节后练习](#节后练习) · [复习题 · 集合、势与可数化](#复习题-集合势与可数化) · [复习题 · 欧氏空间、函数与完全集](#复习题-欧氏空间函数与完全集) · [复习题 · 拓扑空间与实函数](#复习题-拓扑空间与实函数)
+[练习题 1.1](#练习题-11) · [练习题 1.2](#练习题-12) · [练习题 1.3](#练习题-13) · [练习题 1.4](#练习题-14) · [练习题 1.5](#练习题-15) · [练习题 1.6](#练习题-16) · [复习题 1](#复习题-1)
 
-## 节后练习
+## 练习题 1.1
 
-| 教材练习 | 印刷页 | 题号与训练内容 |
-| --- | --- | --- |
-| 1.1 集合运算 | 15–17 | **1–4** 补与并的量词、互不相交化、何时能合并两个指标、集合恒等式。**5–8** 集列上下限，函数不等式的水平集，单调极限与上极限的量词。**9–11** 像与原像对差集的作用，特征函数把集列极限化为点态收敛，由阈值恢复集合。 |
-| 1.2 集合的势 | 41–42 | **1–2** 由局部配对拼接双射，构造无理数集、区间及其平方之间的双射。**3–4** 用有限数据编码，比较代数数与超越数的势。**5–7** 序列空间的上界、幂集的势、并集中较小集合的吸收。**8–9** 直线族的势，单调函数的势；第 8 题须另查竖直线，第 9 题须另查间断点处的取值。 |
-| 1.3 集类 | 49–50 | **1–2** 从有限族、区间族、射线族出发生成环或代数，比较生成同一 Borel 集类的两族区间。**3–4** 从差、对称差、交、余等运算认出环与代数。**5–7** 限制到子集得到的迹、由不交并得到一般可数并、直线上的集类与平面柱集的生成。 |
-| 1.4 欧氏空间的拓扑 | 65–67 | **1–6** 内部与边界、有限并与可数并的导集和闭包、高阶导集、孤立点集及若干集类的势。**7–10** 单调函数局部变化的闭集、聚点判别紧致性、有限交性质。**11–15** 用水平集判连续，用 Darboux 性质判导函数连续，辨认下极限的水平集、极限存在集，研究区间的闭集分拆。**16–20** 开集与闭包、非平凡集合的边界、补区间中点的聚点、全序闭集族的并。**21–26** 连续函数列逼近特征函数、延拓 Lipschitz 函数与相对连续函数、构造导数具有指定零集的函数。**27–31** 有理点与无理点取值的互换、紧集上的单调收敛、从局部单侧性质得到严格单调性、连续点集与乘积的导集。 |
-| 1.5 Baire 定理 | 80 | **1** 用连续函数的差商构造两个偏导数，再找它们共同的连续点。**2** 连续函数及其逐次原函数的零集覆盖区间；若原函数在一个小区间恒为零，可以逐次求导回到原函数链的起点。 |
-| 1.6 延拓与 Cantor 集 | 95 | **1–2** 可数稠密集的 Borel 类型、可数非空闭集的孤立点。**3** 用最近点的存在刻画非空闭集，注意从有界极小化列取收敛子列。**4–5** 检验 $1/4,1/13$ 的三进位数字，研究 $C+C$ 如何填满区间。 |
+教材第 15–17 页
 
-## 复习题 · 集合、势与可数化
+**1.**　证明：de Morgan 公式中的第 1 式
 
-下表题号对应印刷第 95–96 页。第 10 题跨页。
+$$
+X-\bigcup_{\alpha\in\Gamma}A_\alpha=\bigcap_{\alpha\in\Gamma}(X-A_\alpha).
+$$
 
-| 原题号 | 要研究的问题 | 起手提示 |
-| --- | --- | --- |
-| 1 | 无限集自映射的非空真不变子集 | 固定一点，跟踪前向轨道。如果轨道恰好遍历全集，考察去掉首项后会发生什么，并区别轨道有无重复。 |
-| 2 | 幂集上保序映射的不动集 | 将所有满足 $A\subset f(A)$ 的集合取并，先证明这个并仍满足相同包含，再尝试把映射作用一次。 |
-| 3 | 所有有限异点和有统一界时的非零点集 | 分开正、负两侧，再按 $1/m$ 分层。若同一层有任意多个点，检查只取同号项的和。 |
-| 4 | 从局部至多可数推到整体至多可数 | 把每个允许的邻域缩成有理中心、有理半径的球。能出现多少个不同的球？ |
-| 5 | 自然数子集中的连续统长包含链 | 先在 $\mathbb Q$ 中用实数作截口，再借双射搬到 $\mathbb N$；截口之间为什么一定严格包含？ |
-| 6 | 能否以一个集合族代表所有集合的势 | 设这样的集合族存在。将其成员取并，再考察这个并的幂集能否仍由族中某个成员代表。 |
-| 7 | 三维空间中两两距离为有理数的点集 | 在点集的仿射包中选一组仿射无关的基准点。比较到各基准点的距离平方，其差给出线性方程；别遗漏共线和共面情形。 |
-| 8 | 将平面可数集分成横截面有限和纵截面有限的两部分 | 分别给两组坐标投影编号。用横纵坐标的编号比较来分点，检查固定一行或一列时允许出现哪些编号。 |
-| 9 | 可数集与其平移互不相交 | 反过来问哪一个平移量会让两集合相交。这样的量都由原集合中的一对点决定。 |
-| 10 | 对所有自然数子列都能给出更快子列的族，其大小如何 | 假设可以列举该族。在第 $n$ 位同时压过前 $n$ 个候选子列的第 $n$ 项，并保持新数列严格递增。 |
+**2.**　设 $\{A_\alpha\}\;(\alpha=1,2,\cdots)$ 为一集列。
 
-## 复习题 · 欧氏空间、函数与完全集
+（1）令 $B_1=A_1,\ B_n=A_n-\bigcup_{i=1}^{n-1}A_i\ (n\geq 2)$。证明：$\{B_n\}\;(n=1,2,\cdots)$ 为一个彼此不相交的集列，并且
 
-本组在印刷第 96 页。第 13 题须先辨明原书措辞。
+$$
+\bigcup_{i=1}^n A_i=\bigcup_{i=1}^n B_i,\quad n=1,2,\cdots;\qquad \bigcup_{i=1}^\infty A_i=\bigcup_{i=1}^\infty B_i.
+$$
 
-| 原题号 | 要研究的问题 | 起手提示 |
-| --- | --- | --- |
-| 11 | 用内部互不相交的闭圆片覆盖平面或开圆片 | 从目标区域中删去各圆片的内部，在剩余的相对闭集中考察各圆周。若某一小邻域里的剩余部分全在一条圆周上，圆周外侧那片连通区域如何可能由别的圆片内部覆盖？用 Baire 定理前先选准空间。 |
-| 12 | 可数个超平面能否覆盖 $\mathbb R^n$ | 将每个超平面看作一个闭集，检查任意小球能否完全落在其中。 |
-| 13 | 实现给定的 $G_\delta$ 集为连续点集 | **原书措辞有误。** 第 96 页写作构造实直线上的“连续函数”。取 $G=(0,1)$ 即知原句不能成立，全直线上连续的函数处处连续。去掉“连续”这一限定后命题成立。可将补集写成闭集 $F_n$ 的并，在各 $F_n$ 中取可数稠密子集，将其特征函数加上按 $2^{-n}$ 衰减的权重；这些可数子集的并仍可数，其外的零点稠密，可用来检验间断性。 |
-| 14 | 在有内聚点的集合上相等的两个幂级数 | 对差函数在收敛区间内的聚点作局部展开。若有首个非零系数，零点在该处会呈现什么局部结构？随后把局部恒等传回原点。 |
-| 15 | 各阶导数有共同界，函数在无限有界集上为零 | 取零点的聚点，对差商或 Rolle 定理反复使用，检查聚点处各阶导数。最后估计从此点展开的 Taylor 余项，留意界与阶数无关。 |
-| 16 | 有限开覆盖下构造从属于它的闭覆盖 | 紧集的每个点周围可取一个闭包仍在某一指定开集内的小球。选出有限个球后按原开集分组。 |
-| 17 | 导数为正的零点为何孤立 | 在零点附近保持导数正号，然后检验函数在这个邻域能有几个零点；端点用单侧邻域。 |
-| 18 | 闭区间上函数的图像紧致与函数连续 | 把图像投影到横轴。这个投影是一一连续映射；紧致性怎样保证逆映射连续？ |
-| 19 | 将闭区间分成连续统个不交完全集 | 尝试把一条线段折返细分：由低端出发，在下半段走三趟，再在上半段走三趟，到达高端；每一小段递归作同样的折返。若极限曲线在每个小区间都多次取遍相应的值域，考察每个水平集是否有孤立点，并检查端点。 |
+（2）如果 $\{A_n\}\;(n=1,2,\cdots)$ 为单调减（即 $A_1\supset A_2\supset\cdots\supset A_n\supset\cdots$）的集列，证明：
 
-## 复习题 · 拓扑空间与实函数
+$$
+A_1=(A_1-A_2)\cup(A_2-A_3)\cup\cdots\cup(A_n-A_{n+1})\cup\cdots\cup\left(\bigcap_{i=1}^\infty A_i\right),
+$$
 
-第 20 题跨印刷第 96–97 页，第 21–25 题在第 97 页。
+并且其中各项互不相交。
 
-| 原题号 | 要研究的问题 | 起手提示 |
-| --- | --- | --- |
-| 20 | 有可数拓扑基的 $T_1$ 空间的势 | 给每个点记录含它的全部基元素的编号。要证明这种编码不会撞在一起，只须找到含一个点而不含另一个点的基元素。 |
-| 21 | 不可数集上的余可数拓扑 | 逐一检查拓扑公理、分离性、Lindelöf 性、连通性和道路连通性。先从开覆盖中拿走一个非空开集，再数剩下的点。判道路时先研究这个空间的紧子集能有多大。 |
-| 22 | 无限集上的余有限拓扑 | 与第 21 题比较开集的补。对道路连通性分两种势：可数时考察区间被点原像分割的方式，可联系练习 1.4 第 15 题；势至少为连续统时考察一一曲线对有限集的原像。 |
-| 23 | 紧集上的单调连续函数列趋于连续极限 | 对误差 $f_i-f$ 设阈值，写出一列递减的坏点闭集。若始终不空，紧致性将在哪里产生矛盾？可与练习 1.4 第 28 题对读。 |
-| 24 | 多元实函数的局部极值所取的值有多少 | 给每个极大值点选一个含它且落在极值邻域内的有理球。某个固定球上的上确界有几个？极小值同理。注意数的是函数值。 |
-| 25 | 连续函数处处取局部极值时的刚性 | 先用第 24 题限制值域的势，再用定义域的连通性限制值域的形状。 |
+**3.**　设 $\{A_n\}$ 和 $\{B_n\}\;(n=1,2,\cdots)$ 为两个集列。
 
-完成复习时，可以用第 4、20、24 题互查同一种方法：第 4 题用可数基组成覆盖，第 20 题用整套基邻域区别不同点，第 24 题只需用一个基邻域决定一个极值。再用第 11、12 题互查 Baire 定理的使用条件：超平面在整个空间无内点，圆片却有内部，必须先找出真正要使用定理的子空间。
+（1）证明：$\bigcup_{n=1}^\infty(A_n\cap B_n)\subset\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right)$。
 
-[返回 §1.6](/notes/040f43c441a3b42f7d8bac1f/)
+（2）举例说明：$\bigcup_{n=1}^\infty(A_n\cap B_n)\not\supset\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right)$。
+
+（3）如果 $\{A_n\}$ 和 $\{B_n\}\;(n=1,2,\cdots)$ 都是单调增的集列，证明：
+
+$$
+\bigcup_{n=1}^\infty(A_n\cap B_n)=\left(\bigcup_{n=1}^\infty A_n\right)\cap\left(\bigcup_{n=1}^\infty B_n\right).
+$$
+
+**4.**　设 $A,B,E$ 为全集 $X$ 中的子集，证明：
+
+$$
+B=(E\cap A)^c\cap(E^c\cup A)\Leftrightarrow B^c=E.
+$$
+
+**5.**　设 $A_{2n-1}=\left(0,\frac1n\right),A_{2n}=(0,n),n=1,2,\cdots$，求 $\varlimsup_{n\to+\infty} A_n$ 和 $\varliminf_{n\to+\infty} A_n$。
+
+**6.**　设 $f(x)$ 为 $E$ 上的一个实函数，$c$ 为任何实数，
+
+$$
+E(f>c)=\{x\in E\mid f(x)>c\},\qquad E(f\leq c)=\{x\in E\mid f(x)\leq c\},
+$$
+
+其他记法类推。证明：
+
+（1）$E(f>c)\cup E(f\leq c)=E$。
+
+（2）$E(f\geq c)=E(f>c)\cup E(f=c)$。
+
+（3）当 $c<d$ 时，$E(f>c)\cap E(f\leq d)=E(c<f\leq d)$。
+
+（4）当 $c\geq0$ 时，$E(f^2>c)=E(f>\sqrt c)\cup E(f<-\sqrt c)$。
+
+（5）当 $f\geq g$ 时，$E(f>c)\supset E(g>c)$。
+
+（6）$E(f\geq c)=\bigcup_{n=1}^\infty E(c\leq f<c+n)$。
+
+（7）$E(f<c)=\bigcup_{n=1}^\infty E\left(f\leq c-\frac1n\right)$。
+
+**7.**　设 $\{f_n\}\;(n=1,2,\cdots)$ 为 $E$ 上的实函数列，且单调增，即
+
+$$
+f_1(x)\leq f_2(x)\leq\cdots\leq f_n(x)\leq\cdots,\quad \forall x\in E,
+$$
+
+并且 $\lim_{n\to+\infty}f_n(x)=f(x)$。证明：对任何实数 $c$，
+
+（1）$E(f>c)=\bigcup_{n=1}^\infty E(f_n>c)=\lim_{n\to+\infty}E(f_n>c)$。
+
+（2）$E(f\leq c)=\bigcap_{n=1}^\infty E(f_n\leq c)=\lim_{n\to+\infty}E(f_n\leq c)$。
+
+**8.**　设 $\{f_i(\boldsymbol{x})\}\;(i=1,2,\cdots)$ 为定义在 $\mathbb R^n$ 上的实函数列，试用点集
+
+$$
+\left\{\boldsymbol{x}\in\mathbb R^n\ \bigg|\ f_i(\boldsymbol{x})\geq\frac1j\right\},\quad i,j=1,2,\cdots
+$$
+
+表示点集 $\left\{\boldsymbol{x}\in\mathbb R^n\mid\varlimsup_{i\to+\infty}f_i(\boldsymbol{x})>0\right\}$。
+
+**9.**　设 $f:X\to Y,A\subset X,B\subset Y$。试问：下列等式成立吗？并说明理由。
+
+（1）$f^{-1}(Y-B)=f^{-1}(Y)-f^{-1}(B)$。
+
+（2）$f(X-A)=f(X)-f(A)$。
+
+**10.**　设 $X$ 为固定的集合，$A\subset X,\chi_A(x)$ 为集合 $A$ 的特征函数。证明：
+
+（1）$A=X\Leftrightarrow\chi_A(x)\equiv1$；$A=\varnothing\Leftrightarrow\chi_A(x)\equiv0$。
+
+（2）$A\subset B\Leftrightarrow\chi_A(x)\leq\chi_B(x),\ \forall x\in X$；$A=B\Leftrightarrow\chi_A(x)=\chi_B(x),\ \forall x\in X$。
+
+（3）$\chi_{\bigcup_{\alpha\in\Gamma}A_\alpha}(x)=\max_{\alpha\in\Gamma}\chi_{A_\alpha}(x)$；$\chi_{\bigcap_{\alpha\in\Gamma}A_\alpha}(x)=\min_{\alpha\in\Gamma}\chi_{A_\alpha}(x)$。
+
+（4）设 $\{A_n\}\;(n=1,2,\cdots)$ 为一集列，则 $\lim_{n\to+\infty}A_n$ 存在 $\Leftrightarrow\lim_{n\to+\infty}\chi_{A_n}(x)$ 存在。而且当极限存在时，有
+
+$$
+\chi_{\lim_{n\to+\infty}A_n}(x)=\lim_{n\to+\infty}\chi_{A_n}(x).
+$$
+
+**11.**　设 $\{f_n\}\;(n=1,2,\cdots)$ 为定义在 $[a,b]$ 上的实函数列，$E\subset[a,b]$，且有
+
+$$
+\lim_{n\to+\infty} f_n(x)=\chi_{[a,b]-E}(x).
+$$
+
+若令 $E_n=\left\{x\in[a,b]\mid f_n(x)\geq\frac12\right\}$，求集合 $\lim_{n\to+\infty}E_n$。
+
+## 练习题 1.2
+
+教材第 41–42 页
+
+**1.**　设 $A,B,C$ 为集合。证明：
+
+（1）若 $A-B\sim B-A$，则 $A\sim B$。
+
+（2）若 $A\subset B$，且 $A\sim(A\cup C)$，则 $B\sim B\cup C$。
+
+**2.**　（1）作 $\mathbb R-\mathbb Q$ 与 $\mathbb R$ 之间的一一映射。
+
+（2）作 $(0,1]\times(0,1]$ 与 $(0,1]$ 之间的一一映射。
+
+**3.**　证明：
+
+（1）任一可数集的所有有限子集全体为可数集（对照例 1.2.9）。
+
+（2）$g$ 进制有限小数全体为可数集。无限循环小数全体也为可数集。
+
+（3）对于有理数，施行 $+,-,\times,\div,\sqrt{\phantom{x}},\sqrt[3]{\phantom{x}},\cdots,\sqrt[n]{\phantom{x}},\cdots$ 有限次运算所得到的一切数的全体为可数集。
+
+（4）$\mathbb R^n$ 中以有理点（即坐标都为有理数的点）为中心、以正有理数为半径的圆的全体为可数集。
+
+**4.**　设 $a_0,a_1,\cdots,a_n\in\mathbb Z,a_n\ne0$。如果复数 $z\in\mathbb C$ 为整系数代数方程
+
+$$
+a_nz^n+a_{n-1}z^{n-1}+\cdots+a_1z+a_0=0
+$$
+
+的根，则称 $z$ 为**代数数**。$\mathbb C$ 中非代数数称为**超越数**。证明：代数数全体为可数集；超越数全体的势为 $\aleph$。
+
+**5.**　设 $E\subset\mathbb R$，证明：集合
+
+$$
+A=\{x=(x_1,x_2,\cdots,x_n,\cdots)\in\mathbb R^\infty\mid x_n\in E,n=1,2,\cdots\}
+$$
+
+的势 $\overline{\overline A}\leq\aleph$。
+
+**6.**　证明：不存在集合 $A$，使得 $2^A$ 为可数集。
+
+**7.**　设 $A$ 为非独点集的集合，$A\times A\sim A$。如果 $\overline{\overline B}\leq\overline{\overline A}$，证明：$A\cup B\sim A$。如果 $A$ 为独点集时，讨论 $A\cup B\sim A$ 是否成立？
+
+**8.**　设 $\mathcal L=\{l\mid l$ 为 $\mathbb R^2$ 中的直线，如果 $(x,y)\in l$，且 $x\in\mathbb Q$，则必有 $y\in\mathbb Q\}$。证明：$\overline{\overline{\mathcal L}}=\aleph$。
+
+**9.**　证明：$[a,b]$ 区间上右连续的单调函数的全体的势为 $\aleph$。又 $[a,b]$ 区间上单调函数的势如何？
+
+## 练习题 1.3
+
+教材第 49–50 页
+
+**1.**　设 $X$ 为集合，$\mathcal E$ 为 $X$ 上的非空集类。在下列各种情况下分别求出 $\mathcal R(\mathcal E),\mathcal A(\mathcal E)$：
+
+（1）$\mathcal E=\{E_1,E_2,\cdots,E_n\}$。
+
+（2）$X=\mathbb R^1$（实数直线），$\mathcal E=\{(a,b)\mid-\infty<a<b<+\infty\}$。
+
+（3）$X=\mathbb R^1,\mathcal E=\{(-\infty,a)\mid a\in\mathbb R\}$。
+
+**2.**　设 $\mathcal E=\{(a,b)\mid-\infty<a<b<+\infty\}$ 与 $\mathcal R_0=\left\{\bigcup_{i=1}^n(a_i,b_i]\mid-\infty<a_i\leq b_i<+\infty,n\in\mathbb N\right\}$ 为 $\mathbb R^1$ 上的两个集类。证明：分别由 $\mathcal E$ 与 $\mathcal R_0$ 张成的 $\sigma$ 环是一致的，
+
+$$
+\mathcal R_\sigma(\mathcal E)=\mathcal R_\sigma(\mathcal R_0)=\mathcal B\quad\text{(Borel 集类)}.
+$$
+
+**3.**　设 $\mathcal R$ 为集合 $X$ 上的一个非空集类。证明：
+
+（1）$\mathcal R$ 为环 $\Leftrightarrow$（2）$\mathcal R$ 对任意有限个互不相交集的“$\cup$”运算与“$-$”运算封闭 $\Leftrightarrow$（3）$\mathcal R$ 对“$\triangle$”、“$\cap$”、“$-$”运算封闭。
+
+**4.**　设 $\mathcal R$ 为集合 $X$ 上的一个非空集类。证明：
+
+$\mathcal R$ 为代数 $\Leftrightarrow\mathcal R$ 对“$\cup$”、“$\cap$”、“余”运算封闭。
+
+**5.**　设 $X$ 为集合，$A\subset X$。$\mathcal R$ 为 $X$ 上某些子集所成的环。记
+
+$$
+\mathcal R\cap A=\{E\cap A\mid E\in\mathcal R\},\qquad \mathcal R_\sigma(\mathcal R)\cap A=\{E\cap A\mid E\in\mathcal R_\sigma(\mathcal R)\}.
+$$
+
+证明：$\mathcal R_\sigma(\mathcal R)\cap A=\mathcal R_\sigma(\mathcal R\cap A)$。
+
+当 $\mathcal R$ 为代数或 $A\in\mathcal R$ 时，$\mathcal R_\sigma(\mathcal R)\cap A$ 为 $A$ 上的 $\sigma$ 代数。
+
+**6.**　设 $X$ 为集合，$\mathcal R$ 与 $\mathcal M$ 都为 $X$ 上的环，且有：
+
+（1）$\mathcal M\supset\mathcal R$；
+
+（2）当 $E_1,E_2,\cdots,E_n,\cdots$ 为 $\mathcal M$ 中一列互不相交的元素时，$\bigcup_{n=1}^\infty E_n\in\mathcal M$。
+
+证明：$\mathcal M\supset\mathcal R_\sigma(\mathcal R)$。
+
+**7.**　设 $\mathcal R$ 为 $\mathbb R^1$ 上的一个环，$\mathbb R^2=\{(x,y)\mid x,y\in\mathbb R\}$。对 $\forall E\in\mathcal R$，令
+
+$$
+\widetilde E=\{(x,y)\mid x\in E,y\in\mathbb R\}\subset\mathbb R^2,\qquad \widetilde{\mathcal R}=\{\widetilde E\mid E\in\mathcal R\}.
+$$
+
+试求出 $\mathcal R_\sigma(\widetilde{\mathcal R})$ 与 $\mathcal R_\sigma(\mathcal R)$ 的关系。
+
+## 练习题 1.4
+
+教材第 65–67 页
+
+**1.**　设 $E\subset\mathbb R^n$，证明：$E^\circ$ 与 $(E^c)^\circ$ 都为开集，$E$ 的边界 $\partial E=E^{\mathrm b}$ 都为闭集。
+
+**2.**　（1）设 $E_i\subset\mathbb R^n,i=1,2,\cdots,k$。证明：$\bigcup_{i=1}^k E_i'=\left(\bigcup_{i=1}^k E_i\right)'$；$\bigcup_{i=1}^k\overline{E_i}=\overline{\bigcup_{i=1}^k E_i}$。
+
+（2）设 $E_i\subset\mathbb R^n,i=1,2,\cdots,k$。证明：
+
+$$
+\bigcup_{i=1}^\infty E_i'\subset\left(\bigcup_{i=1}^\infty E_i\right)';\qquad \bigcup_{i=1}^\infty\overline{E_i}\subset\overline{\bigcup_{i=1}^\infty E_i}.
+$$
+
+进而是否有
+
+$$
+\bigcup_{i=1}^\infty E_i'=\left(\bigcup_{i=1}^\infty E_i\right)',\qquad \bigcup_{i=1}^\infty\overline{E_i}=\overline{\bigcup_{i=1}^\infty E_i}.
+$$
+
+**3.**　记 $A^1=A',A^2=(A^1)',\cdots,A^{n+1}=(A^n)'$。试作集合 $A$，使 $A^n\ (n=1,2,\cdots)$ 彼此相异。
+
+**4.**　设 $E\subset\mathbb R^n$ 为孤立点集，证明：$E$ 为至多可数集。
+
+**5.**　证明：$\mathbb R^n$ 中每个闭集为 $G_\delta$ 集；每个开集为 $F_\sigma$ 集。
+
+**6.**　证明：
+
+（1）$\mathbb R^n$ 中完全集（即 $E=E'$）全体所成的集类的势为 $\aleph$。
+
+（2）$\mathbb R^n$ 中紧致集全体所成的集类的势为 $\aleph$。
+
+（3）$\mathbb R^n$ 中孤立点集全体所成的集类的势为 $\aleph$。
+
+（4）$\mathbb R^n$ 中至多可数子集全体所成的集类的势为 $\aleph$。
+
+**7.**　设 $f:\mathbb R^1\to\mathbb R$ 为单调增的函数，证明：点集
+
+$$
+E=\{x\mid\text{对 }\forall\delta>0,\text{ 有 } f(x+\delta)-f(x-\delta)>0\}
+$$
+
+为 $\mathbb R^1$ 中的闭集。
+
+**8.**　证明：$F\subset\mathbb R^n$ 为有界闭集 $\Leftrightarrow$ 对 $F$ 的任何无限子集 $E$，必有 $E'\cap F\ne\varnothing$。
+
+**9.**　设 $\{F_\alpha\}$ 为 $\mathbb R^n$ 中有界闭集族，若任取其中有限个 $F_{\alpha_1},F_{\alpha_2},\cdots,F_{\alpha_k}$，都有 $\bigcap_{i=1}^k F_{\alpha_i}\ne\varnothing$。证明：$\bigcap_\alpha F_\alpha\ne\varnothing$。
+
+**10.**　设 $\{F_\alpha\}$ 为 $\mathbb R^n$ 中有界闭集族，$G\subset\mathbb R^n$ 为开集，且有 $\bigcap_\alpha F_\alpha\subset G$。
+
+证明：$\{F_\alpha\}$ 中存在 $F_{\alpha_1},F_{\alpha_2},\cdots,F_{\alpha_k}$，使得 $\bigcap_{i=1}^k F_{\alpha_i}\subset G$。
+
+**11.**　设 $f:\mathbb R^1\to\mathbb R$ 为实函数。证明：
+
+$f$ 为连续函数 $\Leftrightarrow$ 对 $\forall t\in\mathbb R$，点集 $\{x\mid f(x)\leq t\}$ 与 $\{x\mid f(x)\geq t\}$ 都为闭集。
+
+**12.**　设 $f:\mathbb R^1\to\mathbb R$ 为可导函数。证明：
+
+$f'$ 为连续函数 $\Leftrightarrow$ 对 $\forall t\in\mathbb R$，点集 $\{x\in\mathbb R^1\mid f'(x)=t\}$ 为闭集。
+
+**13.**　设 $f_n:\mathbb R^1\to\mathbb R\ (n\in\mathbb N)$ 为连续函数列。证明：
+
+$$
+\left\{x\ \bigg|\ \varliminf_{n\to+\infty} f_n(x)>0\right\}
+$$
+
+为 $F_\sigma$ 集。
+
+**14.**　设 $f:\mathbb R^1\to\mathbb R$ 为实函数。证明：点集 $\left\{x\mid \lim_{y\to x} f(y)\text{ 存在有限}\right\}$ 为 $G_\delta$ 集。
+
+**15.**　证明：开区间 $(a,b)$ 不能表示为至多可数个两两不相交的闭集之并。
+
+**16.**　设 $G_1,G_2\subset\mathbb R^n$ 为两个不相交的开集。证明：$G_1\cap\overline{G_2}=\varnothing$。
+
+**17.**　设 $G\subset\mathbb R^n$。如果 $\forall E\subset\mathbb R^n$，有 $G\cap\overline E\subset\overline{G\cap E}$。证明：$G$ 为开集。
+
+**18.**　设 $E\subset\mathbb R^n,E\ne\varnothing,\mathbb R^n$。证明：$E$ 的边界 $\partial E\ne\varnothing$。
+
+**19.**　设 $F\subset\mathbb R^1$ 为闭集，$F^c$ 的构成区间（假定都是有限的）中心点的集合为 $E$。证明：$E'\subset F'$。
+
+**20.**　设 $\{F_\alpha\mid\alpha\in\mu\}$ 为 $\mathbb R^n$ 中的闭集族，且对 $\forall\alpha,\beta\in\mu$，有 $F_\alpha\subset F_\beta$ 或 $F_\beta\subset F_\alpha$。证明：$F_0=\bigcup_{\alpha\in\mu}F_\alpha$ 为 $F_\sigma$ 集。
+
+**21.**　设 $G\subset\mathbb R^n$ 为开集。试构造 $\mathbb R^n$ 上的连续函数列 $g_k(\boldsymbol{x})\;(k=1,2,\cdots)$，s.t.
+
+$$
+\lim_{k\to+\infty}g_k(\boldsymbol{x})=\chi_G(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in\mathbb R^n.
+$$
+
+**22.**　设 $F\subset\mathbb R^n$ 为闭集。试构造 $\mathbb R^n$ 上的连续函数列 $f_k(\boldsymbol{x})\;(k=1,2,\cdots)$，s.t.
+
+$$
+\lim_{k\to+\infty}f_k(\boldsymbol{x})=\chi_F(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in\mathbb R^n.
+$$
+
+**23.**　设 $E\subset\mathbb R^n$。证明：$\chi_E(\boldsymbol{x})$ 为 $\mathbb R^n$ 上连续函数列的极限 $\Leftrightarrow E$ 同时为 $G_\delta$ 集与 $F_\sigma$ 集。
+
+**24.**　设 $E\subset\mathbb R^1$ 非空，$f(x)$ 为 $E$ 上的实值函数，满足 Lipschitz 条件
+
+$$
+|f(x)-f(y)|\leq M|x-y|,\quad x,y\in E.
+$$
+
+证明：可将 $f(x)$ 延拓到 $\mathbb R^1$，使它满足上述 Lipschitz 条件。
+
+**25.**　设 $E\subset[0,1]$，且 $f$ 在 $E$ 上连续。试构造定义在 $[0,1]$ 上的函数 $g(x)$，以 $E$ 中的点为连续点，且 $g(x)|_{x\in E}=f(x)$。
+
+**26.**　设 $F\subset\mathbb R^1$ 为闭集。试构造 $\mathbb R^1$ 上单调增的函数 $f(x)$，使得 $f\in C^1(\mathbb R^1)$（即 $f$ 为 $\mathbb R^1$ 上的连续可导函数），且 $F=\{x\in\mathbb R^1\mid f'(x)=0\}$。
+
+**27.**　设 $f:\mathbb R^1\to\mathbb R$ 在有理点上取值为无理数，在无理点上取值为有理数。证明：$f$ 不为连续函数。
+
+**28.**　设 $f_i\ (i=1,2,\cdots)$ 为紧致集（即有界闭集）$F\subset\mathbb R^n$ 上的非负连续函数列，且
+
+$$
+f_i(\boldsymbol{x})\geq f_j(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in F,\quad i\leq j;\qquad \lim_{i\to+\infty}f_i(\boldsymbol{x})=0,\quad \forall\boldsymbol{x}\in F.
+$$
+
+证明：$\{f_i\}$ 在 $F$ 上一致收敛于 $0$。
+
+**29.**　设 $f$ 在 $[a,b]$ 上为连续函数，$D$ 为 $[a,b]$ 中的可数子集。如果对 $\forall x\in[a,b]-D$，都 $\exists\delta=\delta(x)>0$，s.t. $f(y)>f(x),\ \forall y\in(x,x+\delta(x))$。证明：$f(x)$ 在 $[a,b]$ 上严格增。
+
+**30.**　设 $f:[a,b]\to\mathbb R$ 为实函数。证明：$f$ 在 $[a,b]$ 上的连续点集全体为 Borel 集。
+
+**31.**　设 $A,B$ 为 $\mathbb R^1$ 中的点集。试证明：$(A\times B)'=(\overline A\times B')\cup(A'\times\overline B)$。
+
+## 练习题 1.5
+
+教材第 80 页
+
+**1.**　证明：不存在满足下列条件的函数 $f(x,y)$：
+
+（1）$f(x,y)$ 为 $\mathbb R^2$ 上的连续函数。
+
+（2）偏导数 $\frac{\partial}{\partial x}f(x,y),\frac{\partial}{\partial y}f(x,y)$ 在 $\mathbb R^2$ 上处处存在有限。
+
+（3）$f(x,y)$ 在 $\mathbb R^2$ 的任一点上都不可微。
+
+**2.**　设 $f(x)$ 为定义在 $[0,1]$ 上的连续函数。令
+
+$$
+f_1'(x)=f(x),\ f_2'(x)=f_1(x),\cdots,f_k'(x)=f_{k-1}(x),\cdots.
+$$
+
+如果对 $\forall x\in[0,1],\exists k\in\mathbb N$，s.t. $f_k(x)=0$。证明：$f(x)=0,\ \forall x\in[0,1]$。
+
+## 练习题 1.6
+
+教材第 95 页
+
+**1.**　证明：$\mathbb R^n$ 中可数稠密集不为 $G_\delta$ 集。
+
+**2.**　设 $F\subset\mathbb R^n$ 为至多可数的非空闭集。证明：$F$ 必含孤立点。
+
+**3.**　设 $E\subset\mathbb R^n$。证明：
+
+$E$ 为非空闭集 $\Leftrightarrow$ 对 $\forall\boldsymbol{x}\in\mathbb R^n,\ \exists\boldsymbol{y}\in E$，s.t. $\rho(\boldsymbol{x},\boldsymbol{y})=\rho(\boldsymbol{x},E)$。
+
+**4.**　证明：点 $x=\frac14,\frac1{13}$ 属于 Cantor 疏朗集。
+
+**5.**　设 $C$ 为 $[0,1]$ 中的 Cantor 疏朗集。证明：
+
+$$
+C+C=\{x+y\mid x\in C,y\in C\}=[0,2].
+$$
+
+## 复习题 1
+
+教材第 95–97 页
+
+题号　[1](#第-1-题) · [2](#第-2-题) · [3](#第-3-题) · [4](#第-4-题) · [5](#第-5-题) · [6](#第-6-题) · [7](#第-7-题) · [8](#第-8-题) · [9](#第-9-题) · [10](#第-10-题) · [11](#第-11-题) · [12](#第-12-题) · [13](#第-13-题) · [14](#第-14-题) · [15](#第-15-题) · [16](#第-16-题) · [17](#第-17-题) · [18](#第-18-题) · [19](#第-19-题) · [20](#第-20-题) · [21](#第-21-题) · [22](#第-22-题) · [23](#第-23-题) · [24](#第-24-题) · [25](#第-25-题)
+
+### 第 1 题
+
+设 $X$ 为无限集，$f:X\to X$ 为映射。证明：存在 $X$ 中的非空真子集 $E$，使 $f(E)\subset E$。
+
+### 第 2 题
+
+设 $X$ 为集合，$f:2^X\to 2^X$ 为映射，且对 $\forall A,B\subset X,A\subset B$，必有 $f(A)\subset f(B)$。证明：$\exists E\subset X$，使得 $f(E)=E$。
+
+### 第 3 题
+
+设 $f(x)$ 为定义在 $[0,1]$ 上的实函数，且存在常数 $M$，使对 $\forall n\in\mathbb N$ 及 $\forall x_1,x_2,\cdots,x_n\in[0,1],x_i\ne x_j\ (i\ne j)$，均有
+
+$$
+|f(x_1)+f(x_2)+\cdots+f(x_n)|\leq M.
+$$
+
+证明：$E=\{x\in[0,1]\mid f(x)\ne0\}$ 为至多可数集。
+
+### 第 4 题
+
+设 $A\subset\mathbb R^n$，对 $\forall\boldsymbol{x}\in A$，总 $\exists\delta(\boldsymbol{x})>0$，s.t. $B(\boldsymbol{x};\delta(\boldsymbol{x}))\cap A$ 为至多可数集。证明：$A$ 必为至多可数集。
+
+### 第 5 题
+
+试作自然数集 $\mathbb N$ 的 $\aleph$ 个非空子集，其中任意两个子集之间有严格的包含关系。
+
+### 第 6 题
+
+证明：不存在集合族 $\Gamma$，使得对任一集合 $B$，有 $A\in\Gamma,A\sim B$。
+
+### 第 7 题
+
+设 $E\subset\mathbb R^3$，且对 $\forall\boldsymbol{x},\boldsymbol{y}\in E$，距离 $\rho_0^3(\boldsymbol{x},\boldsymbol{y})\in\mathbb Q$。证明：$E$ 为至多可数集。
+
+### 第 8 题
+
+设 $E$ 为平面 $\mathbb R^2$ 中的可数集。证明：存在互不相交的集合 $A$ 与 $B$，使得 $E=A\cup B$，且任一平行于 $x$ 轴的直线交 $A$ 至多有限个点；任一平行于 $y$ 轴的直线交 $B$ 至多有限个点。
+
+### 第 9 题
+
+设 $E\subset\mathbb R^1$ 为可数集。证明：$\exists x_0\in\mathbb R^1$，s.t. $E\cap(E+x_0)=\varnothing$，其中点集 $E+x_0=\{x+x_0\mid x\in E\}$。
+
+### 第 10 题
+
+设 $A=\{a_1,a_2,\cdots\},B=\{b_1,b_2,\cdots\}$ 为两个自然数子列，若 $\lim_{n\to+\infty}\frac{a_n}{b_n}=0$，则称 $B$ 是比 $A$ 增长更快的数列。
+
+现设 $\mathcal N$ 为由某些自然数子列构成的数列族。且对任一自然数子列 $A$，均有 $B\in\mathcal N$，使得 $B$ 比 $A$ 增长更快。证明：$\mathcal N$ 为不可数集。
+
+### 第 11 题
+
+证明：平面 $\mathbb R^2$ 和开圆片都不能被其中至多可数个彼此无公共内点（可以相切）的闭圆片的集合 $\mathcal A$ 所覆盖。
+
+### 第 12 题
+
+证明：$\mathbb R^n$ 中可数个超平面（$\mathbb R^1$ 中的“超平面”为点；$\mathbb R^2$ 中的“超平面”为一维直线；$\mathbb R^3$ 中的“超平面”为通常的二维平面；$\mathbb R^n$ 中的超平面就是 $n-1$ 维平面 $a_1x_1+a_2x_2+\cdots+a_nx_n=d$，其中 $a_1,a_2,\cdots,a_n,d$ 为实常数，且 $a_1,a_2,\cdots,a_n$ 不全为 $0$）不能覆盖住 $\mathbb R^n$。
+
+### 第 13 题
+
+设 $G$ 为 $\mathbb R^1$ 中的 $G_\delta$ 集。试构造 $\mathbb R^1$ 上的连续函数 $f$，它的连续点集就是 $G$。
+
+### 第 14 题
+
+设 $\sum_{n=0}^\infty a_nx^n$ 与 $\sum_{n=0}^\infty b_nx^n$ 在 $(-R,R)$ 上收敛。令
+
+$$
+E=\left\{x\in(-R,R)\ \bigg|\ \sum_{n=0}^\infty a_nx^n=\sum_{n=0}^\infty b_nx^n\right\},
+$$
+
+若 $E'\cap(-R,R)\ne\varnothing$，证明：$a_n=b_n,n=0,1,2,\cdots$。
+
+### 第 15 题
+
+设 $f$ 为 $\mathbb R$ 上无限次可导的实值函数，且 $\exists M>0$，使在 $\mathbb R$ 上，对 $\forall n\geq0$，有 $|f^{(n)}(x)|\leq M$。如果 $f\equiv0$ 在一无限有界集 $L$ 上成立，则在 $\mathbb R$ 上，$f\equiv0$。
+
+### 第 16 题
+
+设 $F\subset\mathbb R^n$ 为有界闭集，$G_i\ (i=1,2,\cdots,k)$ 为 $\mathbb R^n$ 中的开集，且有 $F\subset\bigcup_{i=1}^k G_i$。试作闭集 $F_i\ (i=1,2,\cdots,k)$，使得
+
+$$
+F=\bigcup_{i=1}^k F_i,\quad F_i\subset G_i,\quad i=1,2,\cdots,k.
+$$
+
+### 第 17 题
+
+设 $f\in C^1([a,b])$（$[a,b]$ 上连续可导函数的全体）。令
+
+$$
+E=\{x\in[a,b]\mid f(x)=0\}\cap\{x\in[a,b]\mid f'(x)>0\}.
+$$
+
+证明：$E$ 中任一点皆为 $E$ 的孤立点。
+
+### 第 18 题
+
+设 $f:[a,b]\to\mathbb R$ 为实函数，作 $G_f=\{(x,f(x))\mid x\in[a,b]\}$，则
+
+$G_f$ 为 $\mathbb R^2$ 中的紧集 $\Leftrightarrow f\in C^0([a,b])=C([a,b])$。
+
+### 第 19 题
+
+将点集 $[0,1]$ 表示为 $\aleph$ 个互不相交的完全集的并集。
+
+### 第 20 题
+
+设 $X$ 为非空集合，$\mathcal T$ 为 $X$ 上的一个子集族，满足：
+
+（1）$\varnothing,X\in\mathcal T$；
+
+（2）若 $G_1,G_2\in\mathcal T$，则 $G_1\cap G_2\in\mathcal T$；
+
+（3）若 $G_\alpha\in\mathcal T,\alpha\in\Gamma$（指标集），则 $\bigcup_{\alpha\in\Gamma} G_\alpha\in\mathcal T$，则称 $\mathcal T$ 为 $X$ 上的一个**拓扑**，$(X,\mathcal T)$ 称为 $X$ 上的一个**拓扑空间**。$G\in\mathcal T$ 称为拓扑空间 $(X,\mathcal T)$ 上的**开集**。
+
+如果 $F\subset X,F^c\in\mathcal T$，则称 $F$ 为 $(X,\mathcal T)$ 上的**闭集**。
+
+如果存在 $\mathcal T^*\subset\mathcal T$，使得 $\mathcal T$ 中的任何 $G$ 必为 $\mathcal T^*$ 中若干元的并集，则称 $\mathcal T^*$ 为 $(X,\mathcal T)$ 的一个**拓扑基**。如果 $(X,\mathcal T)$ 具有至多可数的拓扑基 $\mathcal T^*$（称 $(X,\mathcal T)$ 具有第二可数性公理），则称 $(X,\mathcal T)$ 为 $A_2$ **空间**。
+
+如果对 $\forall x,y\in X,x\ne y$，必有 $x$ 的开邻域（含 $x$ 的开集）$G_x\not\ni y$，也必有 $y$ 的开邻域 $G_y\not\ni x$，则称 $(X,\mathcal T)$ 为 $T_1$ **空间**。
+
+设 $(X,\mathcal T)$ 为 $A_2$ 与 $T_1$ 空间。证明：$\overline{\overline X}\leq\aleph$。
+
+### 第 21 题
+
+设 $X$ 为不可数集。证明：
+
+（1）$X$ 的子集族 $\mathcal T=\{U\mid U=X-C,C\text{ 为 }X\text{ 的至多可数子集}\}\cup\{\varnothing\}$ 为 $X$ 上的一个拓扑。
+
+（2）$(X,\mathcal T)$ 不为 $T_2$ 空间（$T_2$ **空间**或 **Hausdorff 空间**指的是对 $\forall p,q\in X,p\ne q$，必有 $p$ 的开邻域 $U$ 和 $q$ 的开邻域 $V$，使得 $U\cap V=\varnothing$），但为 $T_1$ 空间。
+
+（3）$(X,\mathcal T)$ 为 Lindelöf 空间，即 $X$ 的任何开覆盖必有（至多）可数子覆盖。但 $(X,\mathcal T)$ 不为紧致空间。
+
+（4）$(X,\mathcal T)$ 为连通空间，即 $X$ 不能表示为两个非空不相交开集的并集。
+
+（5）$(X,\mathcal T)$ 不为道路连通空间，即 $\exists p,q\in X$，不存在连续映射 $\sigma:[0,1]\to X$，s.t. $\sigma(0)=p,\sigma(1)=q$。
+
+### 第 22 题
+
+设 $X$ 为无限集。证明：
+
+（1）$X$ 的子集族 $\mathcal T=\{U\mid U=X-C,C\text{ 为 }X\text{ 的有限子集}\}\cup\{\varnothing\}$ 为 $X$ 上的一个拓扑。
+
+（2）$(X,\mathcal T)$ 不为 $T_2$ 空间，但为 $T_1$ 空间。
+
+（3）$(X,\mathcal T)$ 为紧致空间。
+
+（4）$(X,\mathcal T)$ 为连通空间。
+
+（5）如果 $X$ 可数，则 $(X,\mathcal T)$ 不为道路连通空间；如果 $X$ 不可数，且 $\overline{\overline X}\geq\aleph$，则 $(X,\mathcal T)$ 为道路连通空间。
+
+### 第 23 题
+
+设 $f_i\ (i=1,2,\cdots)$ 为紧致集（即有界闭集）$F\subset\mathbb R^n$ 上的连续函数，且
+
+$$
+f_i(\boldsymbol{x})\geq f_i(\boldsymbol{x}),\quad \forall\boldsymbol{x}\in F\subset\mathbb R^n,\quad i\leq j;
+$$
+
+$\lim_{i\to+\infty}f_i(\boldsymbol{x})=f(\boldsymbol{x})$（连续函数），$\forall\boldsymbol{x}\in F$。
+
+证明：$\{f_i\}$ 在 $F$ 上一致收敛于 $f(x)$。
+
+### 第 24 题
+
+设 $f:\mathbb R^n\to\mathbb R$ 为实函数，令
+
+$$
+f_{\max}=\{f(x)\mid x\in\mathbb R^n\text{ 为 }f\text{ 的极大值点}\},\quad f_{\min}=\{f(x)\mid x\in\mathbb R^n\text{ 为 }f\text{ 的极小值点}\},
+$$
+
+则 $f_{\max}$ 与 $f_{\min}$ 都为至多可数集。
+
+### 第 25 题
+
+设 $f$ 为 $\mathbb R^n$ 上的连续函数，并且 $\mathbb R^n$ 中每一点都是 $f$ 的极值点。证明：$f$ 在 $\mathbb R^n$ 上为常值函数。
+
+[下载第一章讲义 PDF](/files/notes/real-functions/real-functions-chapter-1.pdf)

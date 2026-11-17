@@ -90,24 +90,3 @@ export function RealFunctionsDirectory({items}: {items: PublicEntry[]}) {
     </div>
   </article>;
 }
-
-const exercisePages = {
-  1: [
-    ['练习 1.1', 15], ['练习 1.2', 41], ['练习 1.3', 49],
-    ['练习 1.4', 65], ['练习 1.5', 80], ['练习 1.6', 95], ['复习题 1', 95],
-  ],
-  2: [['练习 2.1', 112], ['练习 2.2', 121], ['练习 2.3', 144], ['复习题 2', 171]],
-} as const;
-
-export function RealFunctionsExerciseReader({chapter}: {chapter: keyof typeof exercisePages}) {
-  return <details hidden data-textbook-reader="" className="ustc-exercises">
-    <summary>用自己的教材 PDF 打开原题</summary>
-    <p>选择与本书相同的 430 页版本，即可按题组打开原页。文件仅在当前浏览器中读取。</p>
-    <label>选择教材 PDF　<input type="file" accept="application/pdf,.pdf"/></label>
-    <nav hidden aria-label="教材习题原页" className="lecture-toc-shortcuts">
-      {exercisePages[chapter].map(([label, printedPage]) => <a key={label} data-pdf-page={printedPage + 6}
-        target="_blank" rel="noopener noreferrer">{label}（第 {printedPage} 页）</a>)}
-    </nav>
-    <script defer src="/real-functions-reader.js"/>
-  </details>;
-}
