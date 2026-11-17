@@ -23,21 +23,35 @@ const components: Components = {
     ? <img {...props} {...(qiuLectureFigureSizes as Record<string,{width:number;height:number}>)[props.src]} alt={alt || ''} className="article-figure" loading="lazy" decoding="async"/>
     : <span className="muted">{alt ? `[图片：${alt}]` : '[图片]'}</span>,
 };
+// A standalone sequence of display-style math fragments wraps only at the
+// breaks chosen in the exercise text, without shrinking formula glyphs.
+const exerciseComponents: Components = {
+  ...components,
+  p: ({node, children}) => {
+    const equation = node?.children.every(part =>
+      part.type === 'text' ? !part.value.trim() :
+      part.type === 'element' && Array.isArray(part.properties.className) &&
+      part.properties.className.includes('katex')
+    ) && node.children.filter(part => part.type === 'element').length > 1;
+    return <p className={equation ? 'exercise-equation' : undefined}>{children}</p>;
+  },
+};
+
 const readingSections = [
   ['reading-passage', '01', '原文与直译'], ['reading-questions', '02', '逐题作答'],
   ['reading-summary', '03', '全篇总结'],
 ];
 
-export default function Markdown({body, readingAnswers = false}: {body: string; readingAnswers?: boolean}) {
+export default function Markdown({body, readingAnswers = false, exerciseSheet = false}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean}) {
   const structured = readingAnswers && /^## 一、原文/m.test(body);
-  return <div className={`prose${readingAnswers ? ' reading-answers' : ''}`}>
+  return <div className={`prose${readingAnswers ? ' reading-answers' : ''}${exerciseSheet ? ' exercise-sheet' : ''}`}>
     {structured && <nav className="reading-section-nav" aria-label="阅读解答章节">
       {readingSections.map(([id, number, label]) => <a key={id} href={`#${id}`}><span>{number}</span>{label}</a>)}
     </nav>}
     <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels,
       ...(structured ? [remarkReadingAnswerLayout] : [])]}
       rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], rehypeLatexMath, rehypeMathTypography]}
-      components={components}>{body}</ReactMarkdown>
+      components={exerciseSheet ? exerciseComponents : components}>{body}</ReactMarkdown>
   </div>;
 }
 

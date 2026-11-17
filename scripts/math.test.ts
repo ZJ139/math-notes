@@ -135,3 +135,15 @@ test('Lou analysis B08–B14 uses math delimiters recognized by the site rendere
     assert.doesNotMatch(tex,/[\u3000-\u303f\uff00-\uffef\u2018-\u201f]/,'CJK punctuation in math must use supported fonts.');
   }
 });
+
+test('exercise equations can wrap between fragments without centering a mixed prose paragraph',()=>{
+  const body='设 $x$ 与 $y$ 如下。\n\n$\\displaystyle x$ $\\displaystyle {}=y$';
+  const sheet=renderToStaticMarkup(createElement(Markdown,{body,exerciseSheet:true}));
+  assert.equal(sheet.match(/<p class="exercise-equation">/g)?.length,1);
+  assert.match(sheet,/<p>设 /);
+  const equation=sheet.split('<p class="exercise-equation">')[1].split('</p>')[0];
+  assert.equal(equation.match(/class="latex-svg"/g)?.length,2);
+  assert.equal(equation.match(/application\/x-tex/g)?.length,2);
+  const article=renderToStaticMarkup(createElement(Markdown,{body}));
+  assert.doesNotMatch(article,/exercise-(?:sheet|equation)/);
+});
