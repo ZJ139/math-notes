@@ -1,18 +1,19 @@
 """Build complex-functions chapters from published Markdown.
-Run from repository root; default: chapter 1. Use --chapter 2 for chapter 2.
+Run from repository root; default: chapter 1. Use --chapter 2 or 3 for later chapters.
 Typography is inherited unchanged from the established real-functions template.
 """
 from pathlib import Path
 import argparse, re, subprocess
 
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--chapter',type=int,choices=[1,2],default=1)
+parser.add_argument('--chapter',type=int,choices=[1,2,3],default=1)
 chapter=parser.parse_args().chapter
 R=Path(__file__).resolve().parents[1]
 source=R/'content/notes/complex-functions'
 settings={
  1:('第一章','复数与复变函数','1—26',7,63),
  2:('第二章','全纯函数','27—67',5,74),
+ 3:('第三章','全纯函数的积分表示','68—102',7,49),
 }
 name,topic,pages,sections,exercises=settings[chapter]
 pre=(R/'print/real-functions-chapter-1.tex').read_text().split(r'\begin{document}')[0]
@@ -20,6 +21,8 @@ pre=pre.replace('实变函数论 · 第一章',f'复变函数 · {name}').replac
 pre=pre.replace(r'\renewcommand{\thesection}{1.\arabic{section}}',rf'\renewcommand{{\thesection}}{{{chapter}.\arabic{{section}}}}')
 pre+=r'''
 \usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{calc}
 \usepackage{float}
 \floatplacement{figure}{H}
 \renewcommand{\figurename}{图}
@@ -40,8 +43,10 @@ pre+=r'\end{center}\vspace{8pt}'+'\n'
 pre+=f'本章含{sections}节讲义及全部 {exercises} 道习题原题。定义、定理和性质沿用教材的记号与编号；证明补足必要条件、退化情形与关键推导。'
 if chapter==1:
  pre+='教材未证的 Jordan 曲线定理给出拓扑证明，并明确列出其同调论前置工具。'
-else:
+elif chapter==2:
  pre+='从复线性微分与 Cauchy--Riemann 方程出发，依次建立保角性、初等函数及其分支、分式线性变换。全纯高阶正则性给出独立补证；各节设可点击定理索引，原题按节跳转。'
+else:
+ pre+='从复积分与 Cauchy--Goursat 定理建立原函数和积分表示，再证明高阶可导性、导数估计及非齐次方程求解。一般可求长边界与任意域整体求解另给完整补证，并标明实分析前置工具；定理 3.7.3 的全域积分补足收敛条件。各节设可点击定理索引，原题按节跳转。'
 pre+='习题不附解答，原题中的疑义另列校勘。\n'+r'\tableofcontents\clearpage'+'\n'
 pieces=[]
 for i in range(1,sections+2):
@@ -50,20 +55,26 @@ for i in range(1,sections+2):
  text=p.read_text();title=re.search(r'^title: "(.*)"',text,re.M)[1]
  body=text.split('---',2)[2].strip()
  # The PDF has its own linked contents, indices and exercise sections.
- body=re.sub(r'^\[.*?\]\(#[^\n]+\n','',body,flags=re.M)
- body=re.sub(r'^\[(?:上一节|下一节|第一章习题|第二章讲义|返回第一章目录).*$', '',body,flags=re.M)
+ if chapter<3:
+  body=re.sub(r'^\[.*?\]\(#[^\n]+\n','',body,flags=re.M)
+ body=re.sub(r'^\[(?:上一节|下一节|第一章习题|第二章讲义|第三章讲义|返回第一章目录).*$', '',body,flags=re.M)
  body=body.replace('/figures/complex-functions/','public/figures/complex-functions/')
  latex=subprocess.run(['pandoc','-f','markdown+tex_math_dollars+raw_tex','-t','latex','--no-highlight'],input=body,text=True,capture_output=True,check=True).stdout
  # Pandoc is run separately for each document: namespace local targets to avoid
  # duplicate destinations such as the five headings titled 定理索引.
- if chapter==2:
-  latex=re.sub(r'\\(hypertarget|hyperlink|label|ref)\{([^}]+)\}',lambda m:'\\'+m[1]+'{'+p.stem+'-'+m[2]+'}',latex)
-  latex=re.sub(r'\\hyperref\[([^]]+)\]',lambda m:r'\hyperref['+p.stem+'-'+m[1]+']',latex)
+ if chapter>=2:
+  # The site drops punctuation from heading IDs, while Pandoc retains dots
+  # in section numbers. Normalize both generated targets and incoming links.
+  def local_id(value):
+   return p.stem+'-'+(value.replace('.','') if chapter>=3 else value)
+  latex=re.sub(r'\\(hypertarget|hyperlink|label|ref)\{([^}]+)\}',lambda m:'\\'+m[1]+'{'+local_id(m[2])+'}',latex)
+  latex=re.sub(r'\\hyperref\[([^]]+)\]',lambda m:r'\hyperref['+local_id(m[1])+']',latex)
  if not practice:
   heading='\\section{'+title.split('　',1)[1]+'}\n'
  else:
   heading=rf'\clearpage\section*{{{name}习题}}\phantomsection\addcontentsline{{toc}}{{section}}{{{name}习题}}'+'\n'
- latex=latex.replace(r'\subsection{',r'\Needspace{5\baselineskip}'+'\n'+r'\subsection{')
+ needed=9 if chapter==3 and practice else 5
+ latex=latex.replace(r'\subsection{',rf'\Needspace{{{needed}\baselineskip}}'+'\n'+r'\subsection{')
  if practice:
   latex=re.sub(r'\\textbf\{(\d+)\.\}',lambda m:r'\par\Needspace{5\baselineskip}'+'\n'+r'\noindent\textbf{'+m[1]+'.}',latex)
  pieces.append(heading+latex)

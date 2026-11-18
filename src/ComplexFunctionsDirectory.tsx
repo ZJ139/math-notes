@@ -43,6 +43,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
               return '- '+(note?'['+label+']('+entryUrl(note)+'/)' : label)+'（第 '+page+' 页）';
             }).join('\n')}/>
             {practice&&<p><a href={entryUrl(practice)+'/'}>{practice.title}</a>{pdf&&<> · <a href={'/files/'+pdf} download>下载第 {n} 章讲义与习题 PDF</a></>}</p>}
+            {n===3&&count>0&&<p>第三章含七节讲义与 49 道教材原题，附可点击定理索引、逐节导航和 PDF。完整证明积分表示及其推论，补证一般可求长边界与非齐次方程的整体存在性；原书积分收敛条件和数值疑义另列校勘。</p>}
             {n===2&&count>0&&<p>第二章含五节讲义与 74 道教材原题，附定理索引、逐节导航及可下载 PDF。讲义补足 Cauchy–Riemann 判据的正则性、全纯高阶可导的证明、分支条件与广义圆的定向；习题保留原题，疑义另列校勘。</p>}
             {n===1&&count>0&&<p>第一章含七节讲义与 63 道习题。一般 Jordan 曲线定理的补充证明放在 §1.6，并明确列出奇异同调与 Mayer–Vietoris 正合列的前置依赖；其余本章结论在实分析基础上直接证明。</p>}
           </section>;

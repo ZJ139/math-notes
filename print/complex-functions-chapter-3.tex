@@ -1,0 +1,1922 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 复变函数 · 第三章}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={复变函数讲义：第三章},pdfauthor={Vincent Arqain},pdfsubject={全纯函数的积分表示}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+
+\usepackage{tabularx,booktabs,array}
+\renewcommand{\thesection}{3.\arabic{section}}
+\emergencystretch=2em
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{float}
+\floatplacement{figure}{H}
+\renewcommand{\figurename}{图}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.72\textheight0.72\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\providecommand{\pandocbounded}[1]{#1}
+\setcounter{tocdepth}{2}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 复变函数讲义\par}
+\vspace{8pt}{\large 第三章\quad 全纯函数的积分表示\par}
+\vspace{6pt}{\small 依史济怀、刘太顺《复变函数》\quad 教材第 68—102 页\par}
+\end{center}\vspace{8pt}
+本章含7节讲义及全部 49 道习题原题。定义、定理和性质沿用教材的记号与编号；证明补足必要条件、退化情形与关键推导。从复积分与 Cauchy--Goursat 定理建立原函数和积分表示，再证明高阶可导性、导数估计及非齐次方程求解。一般可求长边界与任意域整体求解另给完整补证，并标明实分析前置工具；定理 3.7.3 的全域积分补足收敛条件。各节设可点击定理索引，原题按节跳转。习题不附解答，原题中的疑义另列校勘。
+\tableofcontents\clearpage
+\section{复变函数的积分}
+对应教材 §3.1，第 68---73
+页。本章以``闭路积分为零---原函数---积分表示---正则性''为主线，最后用面积积分处理非齐次
+Cauchy--Riemann 方程。\(H(D)\) 表示域 \(D\)
+上的全纯函数，\(B(a,r)=\{z:|z-a|<r\}\)；闭包一律写横线，曲线的方向和重数均计入积分。
+
+\Needspace{5\baselineskip}
+\subsection{可求长曲线上的定义}\label{ch03-s1-ux53efux6c42ux957fux66f2ux7ebfux4e0aux7684ux5b9aux4e49}
+
+设 \(\gamma:[a,b]\to\mathbb C\) 连续且可求长，沿参数的正方向取分点
+\(z_k=\gamma(t_k)\)，在从 \(z_{k-1}\) 到 \(z_k\) 的子弧上取
+\(\zeta_k\)。记子弧长度为 \(s_k\)。若当 \(\lambda=\max_k s_k\to0\)
+时，和式
+
+\[
+\sum_{k=1}^{n}f(\zeta_k)(z_k-z_{k-1})
+\qquad\text{(3.1.1)}
+\]
+
+与分点、取样点无关地趋于同一极限，就把极限记为
+\(\int_\gamma f(z)\,dz\)。用子弧长度控制网格，能同时控制子弧上的所有点；仅控制弦长不能排除子弧绕行。
+
+\textbf{存在性。} 若 \(f\) 在 \(\gamma\) 上连续，积分存在。
+
+证明：曲线像是紧集，\(f\) 在其上一致连续。设 \(\omega(\delta)\)
+是其连续模。把一个分割加细时，同一原子弧内新旧取样值之差不超过
+\(\omega(\delta)\)；乘各小弦长后求和，积分和之差不超过
+\(L\omega(\delta)\)，其中 \(L\)
+为全曲线长度。任意两个足够细的分割都有共同加细，故相应积分和之差不超过
+\(2L\omega(\delta)\)。复数的完备性给出极限及取样无关性。
+
+\textbf{命题 3.1.1。} 若 \(f=u+iv\) 在可求长曲线 \(\gamma\) 上连续，则
+
+\[
+\int_\gamma f(z)\,dz
+=\int_\gamma u\,dx-v\,dy
++i\int_\gamma v\,dx+u\,dy.
+\qquad\text{(3.1.2)}
+\]
+
+证明：每一项都满足
+\((u+iv)(\Delta x+i\Delta y)=(u\Delta x-v\Delta y)+i(v\Delta x+u\Delta y)\)。
+对 Riemann
+和分别取实部、虚部再取极限即得。这里实曲线积分可理解为连续被积函数关于有界变差坐标的
+Riemann--Stieltjes 积分，不要求原参数可微。
+
+\Needspace{5\baselineskip}
+\subsection{参数计算与基本例子}\label{ch03-s1-ux53c2ux6570ux8ba1ux7b97ux4e0eux57faux672cux4f8bux5b50}
+
+\textbf{命题 3.1.2。} 若
+\(z=\gamma(t)\)，\(a\le t\le b\)，是光滑曲线，\(f\) 在其上连续，则
+
+\[
+\int_\gamma f(z)\,dz
+=\int_a^b f(\gamma(t))\gamma'(t)\,dt.
+\qquad\text{(3.1.3)}
+\]
+
+证明：写 \(\gamma=x+iy\)，在式（3.1.2）中代入
+\(dx=x'(t)dt\)、\(dy=y'(t)dt\)，合并实虚部即得。逐段光滑时逐段相加，分点处无需导数存在。
+
+补充：一般可求长曲线可用弧长作参数，所得参数化是 Lipschitz
+的，几乎处处可微，且同一公式作为 Lebesgue 积分成立。这来自 Lipschitz
+函数的绝对连续性和实变量换元公式；本章只在处理一般可求长边界时使用这一实分析工具。保向重参数化不改变积分，因为它不改变定义中的有序子弧及其积分和。
+
+\textbf{例 3.1.3。} 若曲线起点为 \(\alpha\)、终点为 \(\beta\)，则
+
+\[
+\int_\gamma dz=\beta-\alpha,
+\qquad
+\int_\gamma z\,dz=\frac{\beta^2-\alpha^2}{2}.
+\]
+
+证明：第一式的积分和直接望远镜相消。第二式分别取每段的右端点和左端点为取样点，把两组和相加，得到
+\(\sum_k(z_k^2-z_{k-1}^2)=\beta^2-\alpha^2\)；两组和的极限相同，故得结论。证明适用于所有可求长曲线。
+
+\textbf{例 3.1.4。} 对逆时针圆周 \(\gamma=\{z:|z-a|=r\}\) 和整数 \(n\)，
+
+\[
+\int_\gamma\frac{dz}{(z-a)^n}
+=\begin{cases}2\pi i,&n=1,\\0,&n\ne1.\end{cases}
+\]
+
+解：取 \(z=a+re^{it}\)，\(0\le t\le2\pi\)，积分成为
+\(ir^{1-n}\int_0^{2\pi}e^{i(1-n)t}\,dt\)。\(n=1\) 时被积函数为
+\(1\)；其余整数情形首尾指数值相同，积分为零。这个计算先于 Cauchy
+定理，是后面核函数归一化的依据。
+
+\Needspace{5\baselineskip}
+\subsection{运算性质与估计}\label{ch03-s1-ux8fd0ux7b97ux6027ux8d28ux4e0eux4f30ux8ba1}
+
+\textbf{命题 3.1.5。} 对连续函数 \(f,g\)、复常数
+\(\alpha,\beta\)，有反向变号、线性和拼接可加性：
+
+\[
+\begin{aligned}
+\int_{\gamma^-}f\,dz&=-\int_\gamma f\,dz,\\
+\int_\gamma(\alpha f+\beta g)\,dz
+&=\alpha\int_\gamma f\,dz+\beta\int_\gamma g\,dz,\\
+\int_{\gamma_1+\gamma_2}f\,dz
+&=\int_{\gamma_1}f\,dz+\int_{\gamma_2}f\,dz.
+\end{aligned}
+\]
+
+证明：反向时每一弦增量变号，取样点不变；线性在每个有限和中成立；拼接时把连接点加入分割，积分和恰好分为两部分。分别取极限即得三式。
+
+\textbf{命题 3.1.6：长大不等式。} 若 \(L\) 是 \(\gamma\)
+的长度，\(M=\sup_{z\in\gamma}|f(z)|\)，则
+
+\[
+\left|\int_\gamma f(z)\,dz\right|\le ML.
+\qquad\text{(3.1.4)}
+\]
+
+证明：有限和的模不超过
+\(\sum_k|f(\zeta_k)||z_k-z_{k-1}|\le M\sum_k s_k=ML\)，取极限即可。用弧长参数还得到更精确的估计
+
+\[
+\left|\int_\gamma f(z)\,dz\right|
+\le\int_\gamma|f(z)|\,|dz|.
+\]
+
+特别地，若 \(f_j\to f\) 在一条固定有限长曲线上一致，则积分之差不超过
+\(L\sup_\gamma|f_j-f|\to0\)。这里``固定长度''不可省略；曲线随 \(j\)
+改变时还须控制长度。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s1-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s1-ux53efux6c42ux957fux66f2ux7ebfux4e0aux7684ux5b9aux4e49]{命题
+3.1.1：复积分的实虚部分解} ·
+\hyperref[ch03-s1-ux53c2ux6570ux8ba1ux7b97ux4e0eux57faux672cux4f8bux5b50]{命题
+3.1.2、例 3.1.3---3.1.4：参数公式与基本积分} ·
+\hyperref[ch03-s1-ux8fd0ux7b97ux6027ux8d28ux4e0eux4f30ux8ba1]{命题
+3.1.5---3.1.6：运算与估计}。
+
+计算积分时先检查参数、方向和重数；证明积分趋零时，把``函数有多小''与``曲线有多长''同时写出。\(dz\)
+计入方向，\(|dz|\) 是弧长元素，两者不能互换。
+
+\section{Cauchy 积分定理}
+对应教材 §3.2，第 73---81
+页。闭曲线``位于域中''与``连同内部位于域中''是两个条件。单连通性把后者的障碍排除，但只对域内曲线起作用，并不自动给出边界上的全纯延拓。
+
+\Needspace{5\baselineskip}
+\subsection{定理的条件与 Cauchy
+原始版本}\label{ch03-s2-ux5b9aux7406ux7684ux6761ux4ef6ux4e0e-cauchy-ux539fux59cbux7248ux672c}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+结论
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对域、曲线的要求
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对函数的要求
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+定理 3.2.1 & \(D\) 单连通，\(\gamma\subset D\) 可求长闭曲线 &
+\(f\in H(D)\) 且 \(f'\) 连续 \\
+定理 3.2.3 & 同上，允许自交和重复绕行 & 只需 \(f\in H(D)\) \\
+定理 3.2.4 & \(D\) 是可求长 Jordan 曲线 \(\gamma\) 的内部 &
+\(f\in H(D)\cap C(\overline D)\) \\
+定理 3.2.5 & 有限条互不相交的可求长 Jordan 曲线组成 \(\partial D\) &
+\(f\in H(D)\cap C(\overline D)\)，沿全边界正向积分 \\
+\end{longtable}
+
+\textbf{定理 3.2.1（Cauchy）。}
+在表中条件下，\(\int_\gamma f(z)\,dz=0\)。
+
+证明：先设 \(\gamma\) 是简单多边形边界，内部为 \(G\)。平面单连通域的
+Jordan 内部判据给出 \(\overline G\subset D\)。写 \(f=u+iv\)。由 \(f'\)
+连续及 Cauchy--Riemann 方程，\(u,v\in C^1(D)\)，Green 公式给出
+
+\[
+\begin{aligned}
+\int_\gamma u\,dx-v\,dy
+&=\iint_G(-v_x-u_y)\,dA=0,\\
+\int_\gamma v\,dx+u\,dy
+&=\iint_G(u_x-v_y)\,dA=0.
+\end{aligned}
+\]
+
+自交的有限闭折线可在交点处分段，作为有向边链分解为有限个简单多边形边界及往返边；重合边先按有向重数合并。每个多边形内部仍在
+\(D\)，往返边积分抵消，所以闭折线结论成立。一般可求长闭曲线由下面的折线逼近引理得到结论。这一归约避免把自交曲线含混地称作``围成一个域''。
+
+这里用到第一章的平面拓扑事实：单连通域中任一 Jordan
+曲线的内部都在该域中。其反向也是平面域的单连通判据；本节不把此拓扑结论当作全纯函数积分理论的推论。
+
+\Needspace{5\baselineskip}
+\subsection{折线逼近与 Goursat
+构造}\label{ch03-s2-ux6298ux7ebfux903cux8fd1ux4e0e-goursat-ux6784ux9020}
+
+\textbf{引理 3.2.2。} 若 \(f\in C(D)\)，\(\gamma\subset D\)
+可求长，则对每个 \(\varepsilon>0\)，存在 \(D\) 中与 \(\gamma\)
+同起终点的折线 \(P\)，其顶点在 \(\gamma\) 上，且
+
+\[
+\left|\int_\gamma f(z)\,dz-\int_P f(z)\,dz\right|<\varepsilon.
+\]
+
+证明：取曲线的一个紧邻域 \(K\subset D\)，在 \(K\) 上使用 \(f\)
+的一致连续性。设曲线长为
+\(L>0\)，把每段子弧长度取得足够小，使子弧及其弦都在 \(K\) 中，且其上
+\(|f(z)-f(z_{k-1})|<\varepsilon/(2L)\)。子弧和弦上常数 \(f(z_{k-1})\)
+的积分相同。相减并用长大不等式，第 \(k\) 段误差小于
+\(\varepsilon s_k/L\)；求和即得。\(L=0\) 时取常曲线即可。
+
+\textbf{定理 3.2.3（Cauchy--Goursat）。} 若 \(D\)
+单连通、\(f\in H(D)\)，则对 \(D\) 中任意可求长闭曲线 \(\gamma\)，都有
+\(\int_\gamma f(z)\,dz=0\)。
+
+证明：先对连同内部位于 \(D\) 的闭三角形 \(\Delta\) 证明结论。令
+\(I=\int_{\partial\Delta}f\,dz\)，其周长、直径分别为
+\(L,d\)。连接三边中点，四个小三角形的有向边界相加等于原边界，因此其中一个的积分模至少为
+\(|I|/4\)。反复选择，得到嵌套三角形 \(\Delta_n\)，满足
+
+\[
+\left|\int_{\partial\Delta_n}f\,dz\right|\ge4^{-n}|I|,
+\quad |\partial\Delta_n|=2^{-n}L,
+\quad\operatorname{diam}\Delta_n=2^{-n}d.
+\]
+
+它们交于唯一一点 \(z_0\in D\)。在该点的复可微性给出
+
+\[
+f(z)=f(z_0)+f'(z_0)(z-z_0)+r(z),
+\qquad |r(z)|\le\varepsilon|z-z_0|
+\qquad\text{(3.2.1)}
+\]
+
+对充分小的邻域成立。常数及一次项沿闭曲线的积分为零；当 \(n\) 足够大时，
+
+\[
+4^{-n}|I|
+\le\left|\int_{\partial\Delta_n}r(z)\,dz\right|
+\le\varepsilon\,2^{-n}d\,2^{-n}L.
+\]
+
+约去 \(4^{-n}\) 后得 \(|I|\le\varepsilon dL\)，故
+\(I=0\)。关键是面积级别的衰减：余项小一个尺度，边长再小一个尺度，恰与四分之一的积分选择相匹配；全程没有假定
+\(f'\) 连续。
+
+简单多边形可以三角剖分，内部边按相反方向出现而抵消，故其边界积分为零；自交闭折线按前述有向边链分解处理。最后用引理
+3.2.2 逼近一般闭曲线。单连通性只用于保证这些多边形的内部不穿出 \(D\)。
+
+\textbf{局部原函数引理。} 在圆盘 \(B\subset D\) 中固定 \(a\)，令
+\(F(z)=\int_{[a,z]}f(\zeta)\,d\zeta\)。三角形积分为零给出
+\(F(z+h)-F(z)=\int_{[z,z+h]}f(\zeta)\,d\zeta\)，于是
+
+\[
+\left|\frac{F(z+h)-F(z)}h-f(z)\right|
+\le\sup_{\zeta\in[z,z+h]}|f(\zeta)-f(z)|\longrightarrow0.
+\]
+
+故 \(F'=f\)。而 \(F_x=f\)、\(F_y=if\) 连续，所以
+\(F\in C^1\)。这一局部事实不需要 \(D\)
+单连通，下面的边界补证也只依赖它。
+
+\textbf{为什么不能删除单连通性。} 在 \(D=\{0<|z|<1\}\) 中，\(1/z\)
+全纯，但沿逆时针小圆积分为
+\(2\pi i\)。反过来，域不单连通也不意味着每个全纯函数都没有原函数；例如
+\(z\) 在任意域都有原函数 \(z^2/2\)。
+
+\Needspace{5\baselineskip}
+\subsection{边界连续版本及完整补证}\label{ch03-s2-ux8fb9ux754cux8fdeux7eedux7248ux672cux53caux5b8cux6574ux8865ux8bc1}
+
+\textbf{定理 3.2.4。} 若 \(D\) 是可求长简单闭曲线 \(\gamma\)
+的内部，\(f\in H(D)\cap C(\overline D)\)，则
+\(\int_\gamma f(z)\,dz=0\)。
+
+教材对一般可求长 Jordan
+边界陈述定理，但证明只处理逐段光滑、可从一点径向收缩的情形。先给出这个初等证明，再补证完整陈述；不能用``向内缩一点''概括任意
+Jordan 域。
+
+\textbf{径向收缩情形。} 设 \(z_0\in D\)，每条从 \(z_0\) 发出的射线与
+\(\gamma\) 恰交一次。令
+\(\gamma_\rho=z_0+\rho(\gamma-z_0)\)，\(0<\rho<1\)，则
+\(\gamma_\rho\subset D\)。由定理 3.2.3，其积分为零。对逐段光滑参数化
+\(\gamma(t)\)，
+
+\[
+\int_\gamma f(z)\,dz
+=\int_a^b\bigl[f(\gamma(t))-f(z_0+\rho(\gamma(t)-z_0))\bigr]\gamma'(t)\,dt.
+\]
+
+右端的模不超过 \(L\) 乘括号内的一致上界。令
+\(\rho\uparrow1\)，由闭域上的一致连续性得零。
+
+\textbf{一般边界补证的实分析工具。}
+这里使用弧长参数的绝对连续性、一维面积公式（按投影计算交点重数）及
+Fubini 定理。它们给出以下 Green 公式：若 \(G\) 的边界由有限条可求长
+Jordan 曲线组成，\(P,Q\) 在 \(\overline G\) 的邻域为 \(C^1\)，则
+
+\[
+\int_{\partial G}P\,dx+Q\,dy
+=\iint_G(Q_x-P_y)\,dA.
+\qquad\text{(补3.2-A)}
+\]
+
+说明其证明：对几乎每条竖线
+\(x=t\)，边界上投影导数不为零的交点数有限；其重数积分不超过边界长度。Jordan
+内外侧性质使这些交点按进入、离开交替出现。沿正向边界，\(\int P\,dx\)
+在该竖线的有向贡献，正是各内部区间两端的``下端值减上端值''，即
+\(-\int P_y(t,y)\,dy\)。一维面积公式把沿边界积分化为这些有向贡献的积分，Fubini
+再给出 \(-\iint_G P_y\,dA\)。投影导数为零的部分不贡献
+\(dx\)；其余异常投影值为零测集。同理用横线得到
+\(\int Q\,dy=\iint_G Q_x\,dA\)。孔洞的方向使内部区间仍按同一规则计数，故也适用多边界情形。
+
+取 \(K=\overline D\)，把 \(f\) 连续延拓为平面上的紧支集连续函数
+\(\widetilde f\)。这里用的是实、虚部的 Tietze 连续延拓定理，再乘一个等于
+\(1\) 于 \(K\)
+邻域的连续截断函数；它仅处理连续函数，不涉及全纯延拓。取支于单位圆盘、积分为
+\(1\) 的非负光滑磨光核 \(\rho\)，令
+\(\rho_\delta(w)=\delta^{-2}\rho(w/\delta)\)、\(f_\delta=\widetilde f*\rho_\delta\)。光滑核可由
+\(e^{-1/(1-|w|^2)}\) 在 \(|w|<1\)
+内定义并归一化得到，其边界各阶导数为零。
+
+由一致连续性，\(f_\delta\to f\) 在 \(K\) 上一致。若
+\(\operatorname{dist}(z,\partial D)>\delta\)，卷积只涉及 \(D\) 内部，且
+\(\partial f_\delta/\partial\bar z=0\)。为免预用
+\(f\in C^1\)，可在任一小圆盘使用上面的局部原函数
+\(F\)：\(F\in C^1\)、\(F_x=f\)、\(F_{\bar z}=0\)，分部积分便给出
+\(f_{\bar z}=0\) 的弱形式；与光滑核卷积后就得到所需的经典等式。
+
+设 \(\omega\) 为 \(\widetilde f\) 的连续模。因为核导数的积分为零，处处有
+
+\[
+\left|\frac{\partial f_\delta}{\partial\bar z}(z)\right|
+\le C\,\frac{\omega(\delta)}{\delta}.
+\qquad\text{(补3.2-B)}
+\]
+
+长为 \(L\) 的可求长曲线按弧长分成不超过 \(L/\delta+1\) 段，其 \(\delta\)
+邻域被同样多个半径 \(2\delta\) 的圆盘覆盖，故面积不超过
+\(4\pi(L\delta+\delta^2)\)。由式（补3.2-A），
+
+\[
+\left|\int_{\partial D}f_\delta(z)\,dz\right|
+=\left|2i\iint_D\frac{\partial f_\delta}{\partial\bar z}\,dA\right|
+\le C'(L+\delta)\omega(\delta)\longrightarrow0.
+\]
+
+边界上的一致收敛及长大不等式使左端收敛到
+\(|\int_\gamma f\,dz|\)，故原积分为零。这个补证明确使用了实分析与连续延拓工具，没有假定
+Jordan 边界光滑、星形，或函数在边界外全纯。
+
+\Needspace{5\baselineskip}
+\subsection{多连通域、方向与基本应用}\label{ch03-s2-ux591aux8fdeux901aux57dfux65b9ux5411ux4e0eux57faux672cux5e94ux7528}
+
+\textbf{定理 3.2.5。} 设互不相交的可求长简单闭曲线
+\(\gamma_0,\gamma_1,\ldots,\gamma_n\) 中，\(\gamma_1,\ldots,\gamma_n\)
+均在 \(\gamma_0\) 内部，且各自在其余内曲线的外部。\(D\)
+为外曲线内部去掉各闭孔洞所得的域。若
+\(f\in H(D)\cap C(\overline D)\)，则
+
+\[
+\int_{\partial D}f(z)\,dz=0.
+\qquad\text{(3.2.4)}
+\]
+
+正向是行走时 \(D\) 位于左侧：外边界逆时针，内边界顺时针。如果所有
+\(\gamma_j\) 都另取逆时针方向，公式成为
+
+\[
+\int_{\gamma_0}f(z)\,dz
+=\sum_{j=1}^{n}\int_{\gamma_j}f(z)\,dz.
+\qquad\text{(3.2.5)}
+\]
+
+证明：上面的磨光证明逐字适用于有限条边界，只须把 \(L\)
+换成总长度，把边界邻域面积界中的 \(\delta^2\) 项乘以边界条数。Green
+公式已按孔洞方向证明，故总积分为零；移项得到第二式。若边界足够规则，也可用有限条割线把域切成
+Jordan 域，应用定理 3.2.4，再消去割线上来回各一次的积分。
+
+\textbf{推论 3.2.6。} 若只有一条内边界，且两条曲线均取逆时针方向，则
+\(\int_{\gamma_0}f\,dz=\int_{\gamma_1}f\,dz\)。
+
+证明：在式（3.2.5）中取
+\(n=1\)。路径可以变形，是因为两条路径之间的整个闭区域满足全纯与边界连续条件；不能越过奇点。
+
+\textbf{例 3.2.7。} 对逆时针可求长 Jordan 曲线
+\(\gamma\)、\(a\notin\gamma\)，
+
+\[
+\int_\gamma\frac{dz}{z-a}
+=\begin{cases}2\pi i,&a\text{ 在内部},\\0,&a\text{ 在外部}.\end{cases}
+\]
+
+解：在外部时，核函数在闭内部的邻域全纯，用定理 3.2.4。位于内部时，挖去以
+\(a\) 为中心的小圆盘，用推论 3.2.6 把积分移至小圆，再用例 3.1.4。
+
+\textbf{例 3.2.8。} 若 \(a\ne b\) 且两者均不在 \(\gamma\) 上，记
+\(\chi(a)\) 在内部取 \(1\)、外部取 \(0\)，则
+
+\[
+\int_\gamma\frac{dz}{(z-a)(z-b)}
+=\frac{2\pi i}{a-b}\bigl(\chi(a)-\chi(b)\bigr).
+\]
+
+解：用 \(1/((z-a)(z-b))=(1/(z-a)-1/(z-b))/(a-b)\)，分别应用例
+3.2.7。这统一了两点同在内部、同在外部及分居两侧的四种情况。教材未写出的
+\(a\ne b\) 是此分式分解的必要条件；若 \(a=b\)，积分为零，因为
+\(-1/(z-a)\)
+是被积函数在曲线邻域的原函数，直接用弧长参数的链式法则即可。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s2-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s2-ux5b9aux7406ux7684ux6761ux4ef6ux4e0e-cauchy-ux539fux59cbux7248ux672c]{定理
+3.2.1：有连续导数的 Cauchy 定理} ·
+\hyperref[ch03-s2-ux6298ux7ebfux903cux8fd1ux4e0e-goursat-ux6784ux9020]{引理
+3.2.2、定理 3.2.3：折线逼近与 Goursat 证明} ·
+\hyperref[ch03-s2-ux8fb9ux754cux8fdeux7eedux7248ux672cux53caux5b8cux6574ux8865ux8bc1]{定理
+3.2.4：边界连续版本} ·
+\hyperref[ch03-s2-ux591aux8fdeux901aux57dfux65b9ux5411ux4e0eux57faux672cux5e94ux7528]{定理
+3.2.5、推论 3.2.6、例 3.2.7---3.2.8}。
+
+本节最应重建的是嵌套三角形的尺度估计。一般可求长边界的补证是独立的技术部分：它扩大边界允许的范围，不改变局部全纯性与全局孔洞之间的区别。
+
+\section{全纯函数的原函数}
+对应教材 §3.3，第 82---85
+页。原函数存在的直接条件是所有闭路周期为零；``域单连通且函数全纯''是保证该条件成立的一组充分条件。
+
+\Needspace{5\baselineskip}
+\subsection{原函数与闭路周期}\label{ch03-s3-ux539fux51fdux6570ux4e0eux95edux8defux5468ux671f}
+
+\textbf{定义 3.3.1。} 设 \(f:D\to\mathbb C\)。若存在 \(F\in H(D)\)，使
+\(F'=f\) 在 \(D\) 上成立，就称 \(F\) 是 \(f\) 在 \(D\)
+上的一个原函数。原函数必须在整个 \(D\) 上单值。
+
+若 \(f\) 连续且存在原函数 \(F\)，则 \(F_x=f\)、\(F_y=if\) 连续，即
+\(F\in C^1\)。沿任意从 \(a\) 到 \(b\)
+的可求长路径，用弧长参数的绝对连续链式法则得
+
+\[
+\int_\gamma f(z)\,dz=F(b)-F(a).
+\qquad\text{(补3.3-A)}
+\]
+
+因而每条闭路的积分为零。这一推导不要求域单连通；一旦已有全局原函数，结论只取决于端点。
+
+\textbf{闭路零积分与路径无关等价。} 若同起终点的 \(\gamma_1,\gamma_2\)
+积分相同，就对闭路与常路径比较，得到闭路积分为零。反之，\(\gamma_1+\gamma_2^-\)
+是闭路，由拼接、反向性质得两条路径积分相等。域是折线连通的，故任意两点之间确有可求长路径可选。
+
+\Needspace{5\baselineskip}
+\subsection{从积分构造原函数}\label{ch03-s3-ux4eceux79efux5206ux6784ux9020ux539fux51fdux6570}
+
+\textbf{定理 3.3.2。} 若 \(f\in C(D)\)，且沿 \(D\)
+中任意可求长闭曲线的积分为零，固定 \(z_0\in D\)，则
+
+\[
+F(z)=\int_{z_0}^{z}f(\zeta)\,d\zeta
+\]
+
+定义一个单值全纯函数，且 \(F'(z)=f(z)\)。
+
+证明：路径无关性保证定义单值。固定 \(a\in D\)，取
+\(\overline{B(a,\delta)}\subset D\)。当 \(|z-a|<\delta\)
+时，可以选择先走到 \(a\) 再沿直线段到 \(z\)，所以
+
+\[
+\begin{aligned}
+\frac{F(z)-F(a)}{z-a}-f(a)
+&=\frac1{z-a}\int_{[a,z]}(f(\zeta)-f(a))\,d\zeta,\\
+\left|\frac{F(z)-F(a)}{z-a}-f(a)\right|
+&\le\sup_{\zeta\in[a,z]}|f(\zeta)-f(a)|\longrightarrow0.
+\end{aligned}
+\]
+
+故 \(F'(a)=f(a)\)。关键是允许在很小的邻域中改走直线，线段长度恰等于
+\(|z-a|\)，使差商中的分母被估计消去。
+
+结合式（补3.3-A），对连续
+\(f\)，以下三条等价：全局原函数存在；积分与路径无关；所有闭路积分为零。这是针对给定函数的精确判据。
+
+\textbf{定理 3.3.3。} 若 \(D\) 单连通、\(f\in H(D)\)，则上述 \(F\) 是
+\(f\) 在 \(D\) 上的原函数。
+
+证明：定理 3.2.3 给出每条闭路的积分为零，定理 3.3.2
+随即适用。这里没有再假定 \(f'\) 连续。
+
+\textbf{定理 3.3.4（Newton--Leibniz 公式）。} 在定理 3.3.3 的条件下，若
+\(\Phi\) 是 \(f\) 的任一原函数，则
+
+\[
+\int_{z_0}^{z}f(\zeta)\,d\zeta=\Phi(z)-\Phi(z_0).
+\]
+
+证明：由 \((\Phi-F)'=0\) 可知 \(\Phi-F\)
+为常数。具体说，其实、虚部在每条位于 \(D\)
+的线段上导数为零，由实变量中值定理为常数；再沿连接任意两点的有限折线传播这一等式。代入
+\(F(z_0)=0\) 即得。此论证同时证明：连通域上两个原函数只差一个常数。
+
+\Needspace{5\baselineskip}
+\subsection{对数、多值积分与局部结论}\label{ch03-s3-ux5bf9ux6570ux591aux503cux79efux5206ux4e0eux5c40ux90e8ux7ed3ux8bba}
+
+在 \(D=\mathbb C\setminus\{0\}\) 中，\(f(z)=1/z\)
+全纯，却没有全局原函数，因为沿单位圆的积分为
+\(2\pi i\)。在不穿过原点的圆盘内，定理 3.3.3 仍给出局部原函数。
+
+从 \(1\) 到 \(z\) 先沿正实轴走到 \(|z|\)，再沿圆周转到某个辐角
+\(\theta\)，直接参数计算得
+
+\[
+\int_1^{z}\frac{d\zeta}{\zeta}
+=\int_1^{|z|}\frac{dx}{x}+\int_0^\theta i\,dt
+=\log|z|+i\theta.
+\]
+
+任何不经过零的连续路径都可分成有限段，每段落在一个有连续辐角的圆盘内；相邻段调节
+\(2\pi\)
+的整数倍，就能把辐角连续地拼接。对可求长路径，在这些圆盘中用局部对数的原函数公式，得到积分等于终点与起点的连续辐角增量及模的对数之差。不同路径的终点辐角相差
+\(2k\pi\)，因此所有可能值为
+
+\[
+\log z+2k\pi i,\qquad k\in\mathbb Z,
+\]
+
+即教材的多值对数 \(\operatorname{Log}z\)。对闭路，连续辐角首尾差除以
+\(2\pi\)
+是整数，称绕原点的次数。由此也看出，一般路径不是只按``几何像''决定积分，重复绕行会改变值。
+
+若在给定域上所有闭路的 \(\int dz/z\)
+均为零，则变上限积分给出单值全纯对数的一个分支；单连通且不含零是一个方便的充分条件。局部分支总能选取，能否拼成整个域上的单值分支才是整体问题。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s3-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s3-ux539fux51fdux6570ux4e0eux95edux8defux5468ux671f]{定义
+3.3.1、原函数的闭路判据} ·
+\hyperref[ch03-s3-ux4eceux79efux5206ux6784ux9020ux539fux51fdux6570]{定理
+3.3.2---3.3.4} ·
+\hyperref[ch03-s3-ux5bf9ux6570ux591aux503cux79efux5206ux4e0eux5c40ux90e8ux7ed3ux8bba]{对数的积分构造}。
+
+判断路径独立时，先寻找全局原函数或核对闭路周期。只有局部原函数，不能直接对跨越整个域的路径套用端点公式。
+
+\section{Cauchy 积分公式}
+对应教材 §3.4，第 85---92
+页。本节从一次复可微推出任意阶可微，必须先证明核函数的差商可在积分下取极限，不能以``全纯函数本来可以反复求导''作为理由。
+
+\Needspace{5\baselineskip}
+\subsection{从小圆到边界积分}\label{ch03-s4-ux4eceux5c0fux5706ux5230ux8fb9ux754cux79efux5206}
+
+\textbf{定理 3.4.1。} 设 \(D\) 是可求长简单闭曲线 \(\gamma\)
+的内部，\(\gamma\) 逆时针定向。若 \(f\in H(D)\cap C(\overline D)\)，则对
+\(z\in D\)，
+
+\[
+f(z)=\frac1{2\pi i}\int_\gamma\frac{f(\zeta)}{\zeta-z}\,d\zeta.
+\qquad\text{(3.4.1)}
+\]
+
+证明：固定 \(z\)，取 \(\overline{B(z,\rho)}\subset D\)，令
+\(\gamma_\rho\) 为该圆周的逆时针方向。核函数 \(f(\zeta)/(\zeta-z)\)
+在挖去小圆盘后的闭域上连续、内部全纯，由推论 3.2.6，
+
+\[
+\int_\gamma\frac{f(\zeta)}{\zeta-z}\,d\zeta
+=\int_{\gamma_\rho}\frac{f(\zeta)}{\zeta-z}\,d\zeta.
+\]
+
+减去 \(2\pi i f(z)\) 后，右端为
+\(\int_{\gamma_\rho}(f(\zeta)-f(z))/(\zeta-z)\,d\zeta\)，其模不超过
+\(2\pi\sup_{|\zeta-z|=\rho}|f(\zeta)-f(z)|\to0\)。左端不依赖
+\(\rho\)，故等式成立。
+
+分母中有一点奇性，小圆周长度与核的 \(1/\rho\)
+正好抵消，最后只留下连续模。这是积分公式的核心估计。
+
+\textbf{边界唯一性。} 若两个满足本定理条件的函数在 \(\gamma\)
+上相等，则在 \(D\) 内相等。
+
+证明：将积分公式用于两函数之差，边界积分为零。边界值确定内部值的结论只针对全纯函数；任意连续边界数据的
+Cauchy 型积分未必以该数据为边界值。
+
+\Needspace{5\baselineskip}
+\subsection{Cauchy
+型积分及求导的合法性}\label{ch03-s4-cauchy-ux578bux79efux5206ux53caux6c42ux5bfcux7684ux5408ux6cd5ux6027}
+
+设 \(\gamma\) 是任意可求长曲线，不必闭合，\(g\in C(\gamma)\)。对
+\(z\in\mathbb C\setminus\gamma\) 定义
+
+\[
+G(z)=\frac1{2\pi i}\int_\gamma\frac{g(\zeta)}{\zeta-z}\,d\zeta.
+\]
+
+\textbf{定理 3.4.2。} \(G\) 在 \(\mathbb C\setminus\gamma\)
+上有任意阶导数，且
+
+\[
+G^{(n)}(z)=\frac{n!}{2\pi i}\int_\gamma
+\frac{g(\zeta)}{(\zeta-z)^{n+1}}\,d\zeta,
+\qquad n=1,2,\ldots.
+\qquad\text{(3.4.4)}
+\]
+
+证明：固定 \(z_0\notin\gamma\)，令
+\(d=\operatorname{dist}(z_0,\gamma)>0\)。对 \(|h|<d/2\)，有精确恒等式
+
+\[
+\frac1{\zeta-z_0-h}
+=\frac1{\zeta-z_0}+\frac{h}{(\zeta-z_0)^2}
++\frac{h^2}{(\zeta-z_0)^2(\zeta-z_0-h)}.
+\]
+
+最后一项的模一致不超过 \(2|h|^2/d^3\)。积分、除以 \(h\)
+后，余项的模不超过
+\(\|g\|_\infty|\gamma||h|/(\pi d^3)\)，趋于零，因此得到 \(n=1\) 的公式。
+
+对一般正整数 \(m\)，把上式的因子形式取 \(m\) 次幂，用有限二项式展开可得
+
+\[
+\frac1{(\zeta-z_0-h)^m}
+=\frac1{(\zeta-z_0)^m}
++\frac{mh}{(\zeta-z_0)^{m+1}}+R_m(\zeta,h),
+\qquad |R_m(\zeta,h)|\le C_{m,d}|h|^2.
+\qquad\text{(补3.4-A)}
+\]
+
+常数与 \(\zeta\in\gamma\) 无关；这是因为
+\(|h/(\zeta-z_0)|\le1/2\)，所有含至少两个 \(h\)
+的有限项有共同界。若已建立 \(n=k\) 的积分表示，就对核
+\((\zeta-z)^{-k-1}\) 应用式（补3.4-A），除以 \(h\)
+后用长大不等式控制余项，得到 \(n=k+1\)。数学归纳法完成证明。
+
+同样的距离下界使每个导数积分随 \(z\) 连续。因而 \(G\)
+不只是各阶复导数存在，且在曲线补集的每个紧子集上具有全部连续实偏导。证明依次建立导数，没有预用幂级数展开或全纯高阶可导性。
+
+\Needspace{5\baselineskip}
+\subsection{全纯函数的高阶正则性}\label{ch03-s4-ux5168ux7eafux51fdux6570ux7684ux9ad8ux9636ux6b63ux5219ux6027}
+
+\textbf{定理 3.4.3。} 在定理 3.4.1 的条件下，\(f\) 在 \(D\)
+有任意阶导数，且
+
+\[
+f^{(n)}(z)=\frac{n!}{2\pi i}\int_\gamma
+\frac{f(\zeta)}{(\zeta-z)^{n+1}}\,d\zeta.
+\]
+
+证明：定理 3.4.1 把 \(f\) 表为 Cauchy 型积分，边界密度连续，故定理 3.4.2
+直接适用。
+
+\textbf{定理 3.4.4。} 任意域 \(D\) 上的全纯函数有任意阶导数。
+
+证明：对每个 \(z_0\in D\)，取
+\(\overline{B(z_0,r)}\subset D\)，在该小圆盘应用定理
+3.4.3。由于结论是局部的，这里不需要 \(D\) 单连通，也不要求函数在
+\(\partial D\) 上连续。每个 \(f^{(n)}\) 仍全纯；由
+\(f_x=f'\)、\(f_y=if'\) 逐次求导，也得 \(f\in C^\infty(D)\)。
+
+第二章中关于导数连续、调和性和局部逆函数的正则性，此处获得统一的积分理论证明。上述证明只用
+§3.2 的 Goursat 定理，未反过来把第二章补证当作前提。
+
+\textbf{例 3.4.5。}
+
+\[
+\int_{|z|=2}\frac{dz}{z^2(z^2+16)}=0.
+\]
+
+解：\(g(z)=1/(z^2+16)\) 在闭圆盘的邻域全纯，积分为
+\(2\pi i g'(0)=0\)。也可用
+\(1/(z^2(z^2+16))=(1/z^2-1/(z^2+16))/16\)，分别由基本圆周积分及 Cauchy
+定理得零。
+
+\Needspace{5\baselineskip}
+\subsection{多连通积分表示与例题校勘}\label{ch03-s4-ux591aux8fdeux901aux79efux5206ux8868ux793aux4e0eux4f8bux9898ux6821ux52d8}
+
+\textbf{定理 3.4.6。} 设 \(D\)
+由一条外边界及有限条互不相交、互不包含的内边界围成，各边界均为可求长
+Jordan 曲线。若 \(f\in H(D)\cap C(\overline D)\)，沿 \(\partial D\)
+正向积分，则对 \(z\in D\)，
+
+\[
+\begin{aligned}
+f(z)&=\frac1{2\pi i}\int_{\partial D}\frac{f(\zeta)}{\zeta-z}\,d\zeta,\\
+f^{(n)}(z)&=\frac{n!}{2\pi i}\int_{\partial D}
+\frac{f(\zeta)}{(\zeta-z)^{n+1}}\,d\zeta.
+\end{aligned}
+\]
+
+证明：挖去以 \(z\)
+为中心的小闭圆盘后，核函数在剩余多连通域内全纯且在闭域上连续。定理 3.2.5
+给出原全边界的积分等于小圆的逆时针积分。小圆极限与定理 3.4.1
+完全相同，得到第一式。对有限条边界分别应用定理
+3.4.2，再相加，得到第二式。这补全教材略去的证明，并说明孔洞边界必须纳入积分。
+
+\textbf{例 3.4.7。} 计算逆时针积分
+
+\[
+I=\int_{|z|=2}\frac{dz}{(z^3-1)(z+4)^2}.
+\]
+
+解：取 \(R>4\)，在圆环 \(2<|z|<R\) 上把 \(g(z)=1/(z^3-1)\)
+视为全纯函数。定理 3.4.6 在 \(z=-4\) 处给出
+
+\[
+\int_{|z|=R}\frac{dz}{(z^3-1)(z+4)^2}-I
+=2\pi i g'(-4)
+=-\frac{96\pi i}{4225},
+\]
+
+因为 \(g'(z)=-3z^2/(z^3-1)^2\)，所以 \(g'(-4)=-48/4225\)。又
+
+\[
+\left|\int_{|z|=R}\frac{dz}{(z^3-1)(z+4)^2}\right|
+\le\frac{2\pi R}{(R^3-1)(R-4)^2}\longrightarrow0.
+\]
+
+令 \(R\to\infty\)，得到 \(I=96\pi i/4225\)。
+
+\textbf{校勘。} 上传教材第 89---90 页将该题结果写为
+\(32\pi i/1323\)，与题面及 \(g'(-4)\)
+的直接计算不符。此处保留题面，明确改正算术结果。计算时只用多连通 Cauchy
+公式，没有提前使用第五章的残数定理。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s4-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s4-ux4eceux5c0fux5706ux5230ux8fb9ux754cux79efux5206]{定理
+3.4.1：Cauchy 积分公式} ·
+\hyperref[ch03-s4-cauchy-ux578bux79efux5206ux53caux6c42ux5bfcux7684ux5408ux6cd5ux6027]{定理
+3.4.2：Cauchy 型积分求导} ·
+\hyperref[ch03-s4-ux5168ux7eafux51fdux6570ux7684ux9ad8ux9636ux6b63ux5219ux6027]{定理
+3.4.3---3.4.4、例 3.4.5} ·
+\hyperref[ch03-s4-ux591aux8fdeux901aux79efux5206ux8868ux793aux4e0eux4f8bux9898ux6821ux52d8]{定理
+3.4.6、例 3.4.7}。
+
+固定一条远离求导点的曲线，以距离下界控制全部核函数，是把函数值、导数和后续幂级数统一起来的基本方法。
+
+\section{Cauchy 积分公式的一些重要推论}
+对应教材 §3.5，第 92---94 页。Cauchy
+积分公式给出精确等式，长大不等式把它变成导数估计；让允许的半径趋于无穷，就把局部估计转化为整函数的整体刚性。
+
+\Needspace{5\baselineskip}
+\subsection{Cauchy 不等式}\label{ch03-s5-cauchy-ux4e0dux7b49ux5f0f}
+
+\textbf{定理 3.5.1。} 若 \(f\in H(B(a,R))\)，且盘内 \(|f|\le M\)，则
+
+\[
+|f^{(n)}(a)|\le\frac{n!M}{R^n},
+\qquad n=1,2,\ldots.
+\qquad\text{(3.5.1)}
+\]
+
+证明：先取
+\(0<r<R\)，保证闭圆盘在全纯域内部。导数积分公式和长大不等式给出
+
+\[
+\begin{aligned}
+f^{(n)}(a)&=\frac{n!}{2\pi i}\int_{|\zeta-a|=r}
+\frac{f(\zeta)}{(\zeta-a)^{n+1}}\,d\zeta,\\
+|f^{(n)}(a)|&\le\frac{n!}{2\pi}\frac{M}{r^{n+1}}\,2\pi r
+=\frac{n!M}{r^n}.
+\end{aligned}
+\]
+
+令 \(r\uparrow R\) 即得。原假设不包含边界连续，故不能一开始就在半径
+\(R\) 的圆周上积分。
+
+若 \(K\) 是 \(D\) 的紧子集，取 \(r>0\) 使
+\(\{z:\operatorname{dist}(z,K)\le r\}\subset D\)，再用 \(f\)
+在这个紧邻域上的上界 \(M\)，逐点应用定理便得
+\(\sup_K|f^{(n)}|\le n!M/r^n\)。因此导数控制同时取决于函数大小和到边界的距离。
+
+\Needspace{5\baselineskip}
+\subsection{Liouville
+定理与代数学基本定理}\label{ch03-s5-liouville-ux5b9aux7406ux4e0eux4ee3ux6570ux5b66ux57faux672cux5b9aux7406}
+
+\textbf{定理 3.5.2（Liouville）。} 有界整函数必为常数。
+
+证明：设 \(|f(z)|\le M\) 在全平面成立。对任意 \(a\in\mathbb C\) 和任意
+\(R>0\)，Cauchy 不等式给出 \(|f'(a)|\le M/R\)。令 \(R\to\infty\)，得
+\(f'(a)=0\)。任意两点可用线段连接，沿线段应用实变量微积分，得两点函数值相同。此处同一个
+\(M\) 必须控制所有半径，不能让 \(M\) 随 \(R\) 任意增长。
+
+\textbf{定理 3.5.3（代数学基本定理）。} 每个非常数复系数多项式
+
+\[
+P(z)=a_0z^n+a_1z^{n-1}+\cdots+a_n,
+\qquad n\ge1,\quad a_0\ne0,
+\]
+
+在 \(\mathbb C\) 中至少有一个零点。
+
+证明：假定 \(P\) 没有零点，则 \(1/P\) 是整函数。由最高次项支配，存在
+\(R\)，使 \(|z|\ge R\) 时
+
+\[
+|P(z)|\ge |a_0||z|^n-\sum_{j=1}^n|a_j||z|^{n-j}
+\ge\frac{|a_0|}{2}|z|^n.
+\]
+
+故 \(1/P\) 在盘外有界，且趋于零；在闭盘内又因连续而有界。Liouville
+定理说明 \(1/P\) 为常数，与 \(P\) 非常数矛盾。
+
+得到一个零点后，用多项式除法提出一次因子，再对次数减一的因子重复，便得按重数计算共有
+\(n\) 个复根的分解。此推论只用次数归纳，不预设根的存在。
+
+校勘说明：教材``\(P(z)\to\infty\)''应理解为
+\(|P(z)|\to\infty\)，而非复数按某一实方向趋向无穷；``多项式有零点''必须排除非零常数。
+
+\Needspace{5\baselineskip}
+\subsection{Morera 定理}\label{ch03-s5-morera-ux5b9aux7406}
+
+\textbf{定理 3.5.4（Morera）。} 若 \(f\in C(D)\)，且沿 \(D\)
+中任意可求长闭曲线的积分为零，则 \(f\in H(D)\)。
+
+证明：定理 3.3.2 构造出 \(F\in H(D)\)，使 \(F'=f\)。定理 3.4.4
+已证明全纯函数有二阶导数，故 \(f=F'\) 也复可微，即
+\(f\in H(D)\)。这里必须在高阶可导性建立以后才能从``原函数全纯''推出``其导数全纯''。
+
+Morera
+的假设还可局部化：在每个足够小的圆盘内，只要求所有三角形边界积分为零，就能按
+§3.2 的直线积分构造局部原函数，再应用同一证明。因此 Morera 定理不要求
+\(D\) 单连通。连续性负责让变上限积分的差商收敛，不能从假设中悄悄删去。
+
+``全纯 \(\Rightarrow\)
+每条闭路积分为零''一般需要单连通性，而``每条闭路积分为零且连续
+\(\Rightarrow\)
+全纯''在任意域成立。它们不是在所有域上完全对称的一对命题。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s5-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s5-cauchy-ux4e0dux7b49ux5f0f]{定理 3.5.1：Cauchy 不等式} ·
+\hyperref[ch03-s5-liouville-ux5b9aux7406ux4e0eux4ee3ux6570ux5b66ux57faux672cux5b9aux7406]{定理
+3.5.2---3.5.3：Liouville 与代数学基本定理} ·
+\hyperref[ch03-s5-morera-ux5b9aux7406]{定理 3.5.4：Morera 定理}。
+
+四个定理分别完成``函数值控制导数''``全局有界迫使常值''``无零点假设转成有界整函数''``积分条件反推全纯性''。每次应用都应先检查半径能否任意扩大，以及上界是否独立于半径。
+
+\section{非齐次 Cauchy 积分公式}
+对应教材 §3.6，第 94---99 页。全纯函数的 \(\partial f/\partial\bar z\)
+为零；对一般 \(C^1\)
+函数，这个量描述偏离全纯性的程度。非齐次积分公式把函数分成边界贡献与这一偏差的面积贡献。
+
+本节沿用教材 \(C^1(\overline D)\) 记号，按``在闭域的某个邻域为 \(C^1\)
+的函数的限制''理解，足以保证所有边界迹与面积积分有意义。若只假设
+\(C^1(D)\)，则需额外控制边界行为，不能直接套用本节公式。
+
+\Needspace{5\baselineskip}
+\subsection{复微分形式与外积}\label{ch03-s6-ux590dux5faeux5206ux5f62ux5f0fux4e0eux5916ux79ef}
+
+设 \(z=x+iy\)，记
+
+\[
+\frac{\partial}{\partial z}=\frac12\left(\frac{\partial}{\partial x}-i\frac{\partial}{\partial y}\right),
+\qquad
+\frac{\partial}{\partial\bar z}=\frac12\left(\frac{\partial}{\partial x}+i\frac{\partial}{\partial y}\right).
+\]
+
+这里把 \(z,\bar z\) 作为微分记号使用，不是把实际共轭关系取消。令
+\(dz=dx+i\,dy\)、\(d\bar z=dx-i\,dy\)，外积满足双线性和反交换律。于是
+
+\[
+\begin{aligned}
+dz\wedge dz&=d\bar z\wedge d\bar z=0,\\
+dz\wedge d\bar z&=-d\bar z\wedge dz=-2i\,dx\wedge dy=-2i\,dA.
+\end{aligned}
+\]
+
+证明：展开 \((dx+i\,dy)\wedge(dx-i\,dy)\)，利用
+\(dx\wedge dx=dy\wedge dy=0\) 和 \(dy\wedge dx=-dx\wedge dy\)，只剩
+\(-2i\,dx\wedge dy\)。外积顺序改变时必须同时改变符号。
+
+零次形式是函数 \(f\)，一次形式是 \(f_1dz+f_2d\bar z\)，二次形式是
+\(f\,dz\wedge d\bar z\)。定义
+
+\[
+\partial f=f_z\,dz,
+\qquad\bar\partial f=f_{\bar z}\,d\bar z,
+\qquad df=\partial f+\bar\partial f.
+\qquad\text{(3.6.1)}
+\]
+
+对一次形式
+\(\omega=f_1dz+f_2d\bar z\)，逐项先微分系数，再与原基形式作外积，得到
+
+\[
+\begin{aligned}
+\partial\omega&=(f_2)_z\,dz\wedge d\bar z,\\
+\bar\partial\omega&=-(f_1)_{\bar z}\,dz\wedge d\bar z,\\
+d\omega&=\bigl((f_2)_z-(f_1)_{\bar z}\bigr)\,dz\wedge d\bar z.
+\end{aligned}
+\qquad\text{(3.6.2)}
+\]
+
+二次形式再微分得到三个一形式的外积，其中必有重复的 \(dz\) 或
+\(d\bar z\)，故结果为零，即教材式（3.6.3）。
+
+\textbf{微分算子的性质。} 对足够光滑的形式，
+
+\[
+d^2=0,\qquad\partial^2=\bar\partial^2=0,
+\qquad\partial\bar\partial+\bar\partial\partial=0.
+\qquad\text{(3.6.4)—(3.6.5)}
+\]
+
+证明：对 \(C^2\)
+函数，\(d^2f=(f_{\bar z z}-f_{z\bar z})dz\wedge d\bar z=0\)，由连续二阶偏导交换成立。\(\partial^2f\)、\(\bar\partial^2f\)
+因重复外积为零；混合两项因外积反交换而抵消。对一次或二次形式，两次作用后次数至少为三，在实二维平面上为零。这样覆盖所有次数，并明确了使用混合偏导交换的正则性。
+
+\Needspace{5\baselineskip}
+\subsection{复形式的 Green
+公式}\label{ch03-s6-ux590dux5f62ux5f0fux7684-green-ux516cux5f0f}
+
+\textbf{定理 3.6.1。} 设 \(D\) 是 §3.2
+所述有限连通有界域，边界为有限条可求长 Jordan
+曲线，按``域在左侧''的正方向定向。若
+\(f_1,f_2\in C^1(\overline D)\)，\(\omega=f_1dz+f_2d\bar z\)，则
+
+\[
+\int_{\partial D}\omega=\int_Dd\omega.
+\qquad\text{(3.6.6)}
+\]
+
+证明：写 \(P=f_1+f_2\)、\(Q=i(f_1-f_2)\)，则
+\(\omega=Pdx+Qdy\)。对复系数的实部、虚部分别用 Green 公式，
+
+\[
+\int_{\partial D}\omega
+=\iint_D(Q_x-P_y)\,dA.
+\]
+
+直接计算
+
+\[
+Q_x-P_y=i(f_{1,x}-f_{2,x})-f_{1,y}-f_{2,y}
+=-2i\bigl((f_2)_z-(f_1)_{\bar z}\bigr).
+\]
+
+再用 \(dz\wedge d\bar z=-2i\,dA\)，就等于
+\(\int_Dd\omega\)。逐段光滑边界用经典 Green 公式；一般可求长边界用 §3.2
+已给出的按投影切片证明，不把边界正则性隐去。
+
+尤其对 \(\omega=f\,dz\)，有
+
+\[
+\int_{\partial D}f\,dz
+=-\int_D f_{\bar z}\,dz\wedge d\bar z
+=2i\iint_D f_{\bar z}\,dA.
+\qquad\text{(补3.6-A)}
+\]
+
+取 \(f(z)=\bar z\) 即得
+\(\int_{\partial D}\bar z\,dz=2i\,\operatorname{Area}(D)\)，也可用来检查方向与符号。
+
+\Needspace{5\baselineskip}
+\subsection{非齐次 Cauchy
+公式}\label{ch03-s6-ux975eux9f50ux6b21-cauchy-ux516cux5f0f}
+
+\textbf{定理 3.6.2（Cauchy--Pompeiu）。} 在上述 \(D\) 上，若
+\(f\in C^1(\overline D)\)，则对 \(z\in D\)，
+
+\[
+f(z)=\frac1{2\pi i}\int_{\partial D}\frac{f(\zeta)}{\zeta-z}\,d\zeta
++\frac1{2\pi i}\int_D\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta.
+\qquad\text{(3.6.11)}
+\]
+
+等价地，以正面积元素表示为
+
+\[
+f(z)=\frac1{2\pi i}\int_{\partial D}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+-\frac1\pi\iint_D\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,dA(\zeta).
+\qquad\text{(补3.6-B)}
+\]
+
+证明：固定 \(z\)，取 \(\overline{B(z,\eta)}\subset D\)，记
+\(G_\eta=D\setminus\overline{B(z,\eta)}\)。在 \(G_\eta\) 上令
+\(\omega=f(\zeta)(\zeta-z)^{-1}d\zeta\)。核在此全纯，所以
+
+\[
+d\omega=-\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta.
+\]
+
+Green 公式与内圆的顺时针边界方向给出
+
+\[
+\int_{\partial D}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+-\int_{|\zeta-z|=\eta}^{+}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+=-\int_{G_\eta}\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta.
+\]
+
+圆周上的 \(+\) 表示逆时针。由连续性和 §3.4 的小圆估计，第二项趋于
+\(2\pi i f(z)\)。设小圆盘上
+\(|f_{\bar\zeta}|\le M\)，则被挖去的面积积分满足
+
+\[
+\left|\int_{B(z,\eta)}\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta\right|
+\le2M\iint_{B(z,\eta)}\frac{dA(\zeta)}{|\zeta-z|}
+=4\pi M\eta\longrightarrow0.
+\]
+
+这里
+\(\iint_{|w|<\eta}|w|^{-1}dA(w)=2\pi\eta\)，说明奇核在二维面积下局部绝对可积，无需主值解释。令
+\(\eta\downarrow0\)，移项并除以 \(2\pi i\)，得到公式。
+
+\Needspace{5\baselineskip}
+\subsection{全纯特例与方程的准备}\label{ch03-s6-ux5168ux7eafux7279ux4f8bux4e0eux65b9ux7a0bux7684ux51c6ux5907}
+
+若 \(f\in H(D)\cap C^1(\overline D)\)，则
+\(f_{\bar\zeta}=0\)，面积项消失，恢复 Cauchy 积分公式。证明仅是代入
+Cauchy--Riemann 方程；§3.4
+对边界的要求更弱，仅需闭域连续，因此不能把两节的假设混为一谈。
+
+若 \(f\) 紧支于 \(D\) 内部，则边界项为零，从而
+
+\[
+f(z)=\frac1{2\pi i}\int_D\frac{f_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta.
+\qquad\text{(补3.6-C)}
+\]
+
+证明：紧支集与边界之间有正距离，\(f\)
+在边界邻域恒为零，直接代入定理即可。下一节将把这个恒等式转化为
+\(\partial u/\partial\bar z=f\) 的求解算子。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s6-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s6-ux590dux5faeux5206ux5f62ux5f0fux4e0eux5916ux79ef]{式（3.6.1）---（3.6.5）：微分形式及算子性质}
+· \hyperref[ch03-s6-ux590dux5f62ux5f0fux7684-green-ux516cux5f0f]{定理
+3.6.1：Green 公式} ·
+\hyperref[ch03-s6-ux975eux9f50ux6b21-cauchy-ux516cux5f0f]{定理 3.6.2：非齐次
+Cauchy 公式} ·
+\hyperref[ch03-s6-ux5168ux7eafux7279ux4f8bux4e0eux65b9ux7a0bux7684ux51c6ux5907]{紧支集形式}。
+
+固定外积顺序
+\(d\zeta\wedge d\bar\zeta=-2i\,dA\)，再按内边界顺时针写出挖孔公式，可以避免非齐次公式中最常见的符号错误。
+
+\section{一维非齐次 Cauchy–Riemann 问题的解}
+对应教材 §3.7，第 99---102 页，原节名为``一维 \(\bar\partial\)
+问题的解''。给定 \(f\)，要求 \(u\) 满足
+
+\[
+\frac{\partial u(z)}{\partial\bar z}=f(z),\qquad z\in D.
+\]
+
+以下将教材的积分构造、积分所需的条件、任意域上的整体存在性分开说明。局部奇核可积不等于整个无界域上的积分收敛，也不控制有界域边界附近的增长。
+
+\Needspace{5\baselineskip}
+\subsection{支集与光滑截断}\label{ch03-s7-ux652fux96c6ux4e0eux5149ux6ed1ux622aux65ad}
+
+\textbf{定义 3.7.1。} 函数 \(\varphi\) 的支集为
+
+\[
+\operatorname{supp}\varphi
+=\overline{\{z\in\mathbb C:\varphi(z)\ne0\}}.
+\]
+
+``支集包含在开集内''比``函数在开集外为零''更强，后者仍可能使支集碰到边界。\(C_c^k(D)\)
+表示 \(C^k\) 函数且支集是 \(D\) 内的紧集。
+
+\textbf{引理 3.7.2。} 对 \(a\in\mathbb C\)、\(0<r<R\)，存在
+\(\varphi\in C^\infty(\mathbb C)\)，使
+
+\[
+0\le\varphi\le1,\qquad
+\varphi=1\ \text{于 }\overline{B(a,r)},\qquad
+\operatorname{supp}\varphi\subset B(a,R).
+\]
+
+证明：取 \(r<R_1<R\)，令
+\(E(t)=e^{-1/t}\)（\(t>0\)），\(E(t)=0\)（\(t\le0\)）。对 \(t>0\)，\(E\)
+的任意阶导数均是 \(e^{-1/t}\) 乘 \(1/t\) 的多项式；由
+\(s^Ne^{-s}\to0\)，这些导数在 \(t\downarrow0\) 时全趋零，故
+\(E\in C^\infty(\mathbb R)\)。令
+
+\[
+h_1(z)=E(R_1^2-|z-a|^2),\qquad
+h_2(z)=E(|z-a|^2-r^2),\qquad
+\varphi(z)=\frac{h_1(z)}{h_1(z)+h_2(z)}.
+\]
+
+分母处处为正：\(|z-a|\le r\) 时 \(h_1>0\)，\(|z-a|\ge R_1\) 时
+\(h_2>0\)，中间两者均正。于是 \(\varphi\) 光滑，内圆盘上等于 \(1\)，外圆
+\(|z-a|\ge R_1\) 上为零，其支集包含于
+\(\overline{B(a,R_1)}\subset B(a,R)\)，且值在 \([0,1]\)。这就是教材的
+\(h_1/(h_1+h_2)\) 构造，并补足了拼接处的无穷可微性。
+
+有限个这种圆盘截断可组合为
+\(1-\prod_j(1-\varphi_j)\)，在所需紧集的邻域等于
+\(1\)，仍光滑且紧支于指定开邻域。此有限覆盖构造用于后面的局部化与穷竭。
+
+\Needspace{5\baselineskip}
+\subsection{定理 3.7.3
+的条件校勘}\label{ch03-s7-ux5b9aux7406-373-ux7684ux6761ux4ef6ux6821ux52d8}
+
+教材原述为：对任意域 \(D\) 和任意 \(f\in C^1(D)\)，令
+
+\[
+u(z)=\frac1{2\pi i}\int_D\frac{f(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta,
+\qquad z\in D.
+\qquad\text{(3.7.1)}
+\]
+
+则 \(u\in C^1(D)\) 且
+\(u_{\bar z}=f\)。按通常面积积分理解，原述缺少收敛条件。例如取
+\(D=\mathbb C\)、\(f(\zeta)=\zeta\)、\(z=0\)，对半径 \(R\)
+的圆盘截断后，右端为 \(-R^2\)，不收敛。有界域也不能仅凭 \(C^1(D)\)
+保证收敛：单位圆盘上的 \(f(\zeta)=\zeta/(1-|\zeta|^2)^2\)
+在中心产生发散的面积积分。
+
+\textbf{定理 3.7.3（可直接积分的准确形式）。} 设 \(D\)
+是任意平面域，\(f\in C^1(D)\)，并且
+
+\[
+\iint_D\frac{|f(\zeta)|}{1+|\zeta|}\,dA(\zeta)<\infty.
+\qquad\text{(补3.7-A)}
+\]
+
+则式（3.7.1）绝对收敛，定义 \(u\in C^1(D)\)，且
+\(u_{\bar z}=f\)。特别地，\(f\in C_c^1(D)\) 时成立；若 \(D\)
+有界、\(f\in C^1(D)\cap L^1(D)\)，也成立，因而包括有界域上的
+\(C^1(\overline D)\) 数据。条件（补3.7-A）是方便的充分条件，不声称必要。
+
+\Needspace{5\baselineskip}
+\subsection{局部化与求导的完整证明}\label{ch03-s7-ux5c40ux90e8ux5316ux4e0eux6c42ux5bfcux7684ux5b8cux6574ux8bc1ux660e}
+
+记式（3.7.1）的算子为 \(Tf\)。在任意给定 \(z\in D\) 附近，\(f\) 有界，而
+\(1/|\zeta-z|\)
+局部可积；离开该邻域后，\(|\zeta-z|^{-1}\le C_z/(1+|\zeta|)\)，故由式（补3.7-A）绝对收敛。
+
+固定 \(a\in D\)，取 \(\overline{B(a,r)}\subset D\)，再选
+\(0<\varepsilon<r\) 和引理中的 \(\varphi\)，使 \(\varphi=1\) 于
+\(\overline{B(a,\varepsilon)}\)、紧支于 \(B(a,r)\)。分解
+
+\[
+u=u_1+u_2,
+\qquad u_1=T(\varphi f),\qquad u_2=T((1-\varphi)f).
+\]
+
+令 \(g=\varphi f\)，把 \(g\) 在 \(D\) 外补零，所得函数是
+\(C_c^1(\mathbb C)\)，因为它在 \(\partial D\) 的邻域已经恒为零。换元
+\(\zeta=z+\eta\)，得
+
+\[
+u_1(z)=\frac1{2\pi i}\int_{\mathbb C}\frac{g(z+\eta)}{\eta}\,d\eta\wedge d\bar\eta.
+\]
+
+在 \(z\) 的一个固定紧邻域内，\(g(z+\eta)\)
+及其一阶偏导的支集落在同一有界集合，绝对值被常数控制；除以 \(|\eta|\)
+后仍可积。因此用实变量支配收敛定理对差商取极限，得到连续一阶偏导，并且
+
+\[
+\frac{\partial u_1}{\partial\bar z}(z)
+=\frac1{2\pi i}\int_{\mathbb C}\frac{g_{\bar\zeta}(\zeta)}{\zeta-z}\,d\zeta\wedge d\bar\zeta
+=g(z).
+\]
+
+最后一式把非齐次 Cauchy 公式用于包含 \(\operatorname{supp}g\) 与 \(z\)
+的大圆盘，边界项为零。这种换元把求导转移到光滑密度，避免直接求导奇核产生不可绝对积的二阶奇性。
+
+在较小圆盘 \(B(a,\varepsilon/2)\) 内，\(u_2\)
+的密度远离求值点。核的任意阶 \(z\) 导数都被 \(C_m/(1+|\zeta|)\)
+控制，故式（补3.7-A）允许在积分下求导；核关于 \(\bar z\)
+的导数为零，于是 \(u_2\) 在该小盘全纯。综上 \(u\in C^1\)，且
+\(u_{\bar z}=g=f\) 于此。\(a\) 任意，定理得证。
+
+\textbf{正则性补充。} 若
+\(f\in C^k(D)\)，\(1\le k\le\infty\)，并满足式（补3.7-A），则
+\(Tf\in C^k(D)\)。
+
+证明：在上面换元后的 \(u_1\) 积分中，任意不超过 \(k\)
+阶的实偏导都落在紧支集密度 \(g\) 上，仍由 \(C/|\eta|\) 控制。\(u_2\)
+已是全纯函数，故光滑。这里证明的是至少保留 \(k\)
+阶连续可微性，不额外声称多增一阶经典导数。
+
+教材把整个 \(f\)
+补零后直接断言补零函数可微，这在边界上一般不成立。上述证明只对紧支于内部的
+\(\varphi f\) 补零，远处项另用全纯核处理，消除了这个问题。
+
+\Needspace{5\baselineskip}
+\subsection{任意域上的整体存在性补证}\label{ch03-s7-ux4efbux610fux57dfux4e0aux7684ux6574ux4f53ux5b58ux5728ux6027ux8865ux8bc1}
+
+\textbf{整体存在性。} 对任意平面域
+\(D\)、\(f\in C^k(D)\)，\(1\le k\le\infty\)，总存在 \(u\in C^k(D)\) 满足
+\(u_{\bar z}=f\)；不要求 \(D\) 单连通，也不要求 \(f\)
+满足式（补3.7-A）。但是该解一般不能由未经修正的全域积分直接给出。
+
+这一完整结论需要一个逼近工具。为避免把困难藏在``取局部解并拼接''中，下面给出所需的平面有理逼近引理及其构造。它是
+Runge
+方法的一个版本，属于本节的进阶补充；只读紧支集求解时可先保留到第五章应用前再读。
+
+\textbf{有理逼近引理。} 设 \(K\subset D\)
+紧，\(\widehat{\mathbb C}\setminus K\) 的每个连通分支都与
+\(\widehat{\mathbb C}\setminus D\) 相交。若 \(h\) 在 \(K\)
+的邻域全纯，则可用极点全在 \(\widehat{\mathbb C}\setminus D\)
+的有理函数在 \(K\) 上一致逼近 \(h\)。无穷远处的极点对应多项式部分。
+
+证明：取足够细的方格，使覆盖 \(K\) 的有限方格并连同邻近一层方格都在
+\(h\) 的全纯邻域内，记该多边形集合为 \(V\)。消去内部公共边后，由 Cauchy
+公式在各连通部分上的形式，对 \(z\in K\) 有
+
+\[
+h(z)=\frac1{2\pi i}\int_{\partial V}\frac{h(\zeta)}{\zeta-z}\,d\zeta.
+\]
+
+边界与 \(K\) 有正距离，故积分的 Riemann 和一致逼近右端。它们是有限和
+\(\sum_\nu c_\nu/(b_\nu-z)\)，其中 \(b_\nu\notin K\)。
+
+现在把每个极点 \(b\) 移到同一补集分支中预选的 \(a\notin D\)。若 \(b,c\)
+很近且 \(|b-c|<\operatorname{dist}(c,K)\)，则几何级数
+
+\[
+\frac1{z-b}=\sum_{m=0}^{\infty}\frac{(b-c)^m}{(z-c)^{m+1}}
+\]
+
+在 \(K\) 上一致收敛；有限截断把位于 \(b\) 的极点移到
+\(c\)。高阶极点通过有限乘积及截断也可同样逼近。开连通集是折线连通的，连接
+\(b\) 与 \(a\) 的路径像与 \(K\)
+有正距离，故可分为有限个满足此不等式的小段。逐段分配足够小的误差，就把极点移到
+\(a\)。对于无界分支，先移到模充分大的点，再用
+\(1/(z-a)=-\sum_{m\ge0}z^m/a^{m+1}\) 在 \(K\)
+上一致逼近为多项式。有限个极点分别处理，结论成立。
+
+\textbf{穷竭与修正。} 可以取紧集穷竭
+\(K_1\subset\operatorname{int}K_2\subset\cdots\)、\(\bigcup_jK_j=D\)，使每个
+\(K_j\)
+都满足上述补集条件。构造方法是用有限方格并覆盖逐渐扩大的紧集，然后填入补集里相对紧于
+\(D\) 的所有孔洞。每次只有有限个孔洞；未填的分支都接触 \(D\)
+的补集。通过逐次加细方格并包含前一个集合的紧邻域，保证嵌套与穷竭。对
+\(D=\mathbb C\)，取闭圆盘即可。
+
+取 \(\chi_j\in C_c^\infty(D)\)，使 \(\chi_j=1\) 于 \(K_j\)
+的邻域，支集在 \(\operatorname{int}K_{j+1}\)，令 \(\chi_0=0\)，并设
+
+\[
+f_j=(\chi_j-\chi_{j-1})f,
+\qquad v_j=T f_j.
+\]
+
+每个 \(f_j\) 紧支于 \(D\)，故前面已证明
+\(v_j\in C^k(\mathbb C)\)、\((v_j)_{\bar z}=f_j\)。在任一紧集附近，\(\sum_j f_j=f\)
+且只有有限项非零。\(j\ge3\) 时，\(f_j\) 在 \(K_{j-1}\) 的邻域为零，所以
+\(v_j\) 在该邻域全纯。
+
+对 \(v_j\) 在 \(K_{j-1}\) 上使用有理逼近引理，选取 \(r_j\in H(D)\)，使
+\(v_j-r_j\) 在 \(K_{j-2}\) 上的各阶实偏导（阶数不超过
+\(j\)）的模均不超过
+\(2^{-j}\)。为什么一致逼近能加强到这些导数估计：取正距离 \(d_j\)，使以
+\(K_{j-2}\) 中点为中心、半径 \(d_j\) 的闭圆盘全在
+\(\operatorname{int}K_{j-1}\)；将一致逼近误差取得小于
+\(2^{-j}\min_{0\le m\le j}d_j^m/m!\)，Cauchy
+不等式就给出所需的全部有限阶控制。对全纯函数，实偏导等于复导数乘 \(i\)
+的整数次幂，故同一界适用。
+
+于是
+
+\[
+u=v_1+v_2+\sum_{j=3}^{\infty}(v_j-r_j)
+\qquad\text{(补3.7-B)}
+\]
+
+在每个紧子集上连同不超过 \(k\) 阶的偏导收敛；\(k=\infty\)
+时逐个固定阶数检验。有限个初始项为 \(C^k\)，尾项由几何级数控制，故
+\(u\in C^k(D)\)。逐项取 \(\bar z\) 导数合法，且 \(r_j\) 全纯，所以
+
+\[
+u_{\bar z}=\sum_{j=1}^{\infty}f_j=f.
+\]
+
+这完成任意域整体存在性的证明。关键构造是给每个远处紧支集解减去一个全纯逼近项：它改善收敛而不改变方程。此证明不使用尚待借助本结论建立的
+Mittag--Leffler 定理或 Weierstrass
+因子分解定理，避免第五章与本节循环引用。
+
+\Needspace{5\baselineskip}
+\subsection{解的不唯一性与本章连接}\label{ch03-s7-ux89e3ux7684ux4e0dux552fux4e00ux6027ux4e0eux672cux7ae0ux8fdeux63a5}
+
+若 \(u_0\) 是一个 \(C^1\) 解，则所有 \(C^1\) 解恰为
+\(u_0+H(D)\)。证明：两解之差满足
+\(\partial(u-u_0)/\partial\bar z=0\)，由 \(C^1\) 版 Cauchy--Riemann
+判据全纯；反之，加任何全纯函数都不改变右端。求解方程并不自动规定边界值、增长速度或紧支集，这些是额外问题。
+
+本章得到的链条是：局部复可微性给出三角形零积分；域的拓扑把它提升为闭路结论；小圆核产生积分表示；统一核估计给出高阶正则性；Green
+公式加入非全纯的面积项；截断、局部化与全纯修正把该面积项转成求解算子。第四章再从固定圆周上的核展开进入
+Taylor 理论。
+
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch03-s7-ux5b9aux7406ux7d22ux5f15}
+
+\hyperref[ch03-s7-ux652fux96c6ux4e0eux5149ux6ed1ux622aux65ad]{定义 3.7.1、引理
+3.7.2：支集与截断} ·
+\hyperref[ch03-s7-ux5b9aux7406-373-ux7684ux6761ux4ef6ux6821ux52d8]{定理
+3.7.3：准确条件} ·
+\hyperref[ch03-s7-ux5c40ux90e8ux5316ux4e0eux6c42ux5bfcux7684ux5b8cux6574ux8bc1ux660e]{积分求解与正则性证明}
+·
+\hyperref[ch03-s7-ux4efbux610fux57dfux4e0aux7684ux6574ux4f53ux5b58ux5728ux6027ux8865ux8bc1]{一般域整体存在性与有理逼近补证}
+·
+\hyperref[ch03-s7-ux89e3ux7684ux4e0dux552fux4e00ux6027ux4e0eux672cux7ae0ux8fdeux63a5]{解的全体}。
+
+\clearpage\section*{第三章习题}\phantomsection\addcontentsline{toc}{section}{第三章习题}
+依据上传的史济怀、刘太顺《复变函数》（向禹重排本），逐页核对印刷第
+71---102 页的七组习题。各组题数为 13、6、5、9、8、4、4，共 49
+题；保留小问及教材提示，不附解答。本章习题没有另行指定的附图。闭曲线积分依教材默认取正向；特殊方向以题面为准。原题中的明显笔误与必要约定另列``校勘''，不混入题面。
+
+\hyperref[ch03-practice-ux4e60ux9898-31]{习题 3.1} · \hyperref[ch03-practice-ux4e60ux9898-32]{习题
+3.2} · \hyperref[ch03-practice-ux4e60ux9898-33]{习题 3.3} ·
+\hyperref[ch03-practice-ux4e60ux9898-34]{习题 3.4} · \hyperref[ch03-practice-ux4e60ux9898-35]{习题
+3.5} · \hyperref[ch03-practice-ux4e60ux9898-36]{习题 3.6} ·
+\hyperref[ch03-practice-ux4e60ux9898-37]{习题 3.7}
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.1}\label{ch03-practice-ux4e60ux9898-31}
+
+教材第 71---73 页，共 13 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 计算积分 \(\int_\gamma\frac{2z-3}{z}\,dz\)，其中，\(\gamma\)
+为
+
+（1）沿圆周 \(\{z:|z|=2\}\) 的上半圆，从 \(-2\) 到 \(2\)；
+
+（2）沿圆周 \(\{z:|z|=2\}\) 的下半圆，从 \(-2\) 到 \(2\)；
+
+（3）沿圆周 \(\{z:|z|=2\}\) 的正向。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 计算积分 \(\int_{|z|=1}\frac{dz}{z+2}\)，并证明：
+
+\[
+\int_0^\pi\frac{1+2\cos\theta}{5+4\cos\theta}\,d\theta=0.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 计算积分
+
+\[
+\int_{|z|=3}\frac{2z-1}{z(z-1)}\,dz.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 如果多项式 \(Q(z)\) 比多项式 \(P(z)\) 高两次，试证：
+
+\[
+\lim_{R\to\infty}\int_{|z|=R}\frac{P(z)}{Q(z)}\,dz=0.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 计算积分 \(\int_{|z|=r}z^n\bar z^k\,dz\)，其中，\(n,k\)
+为整数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(f\in C^1(D)\)，\(\gamma\) 是域 \(D\) 中分别以 \(a\) 和
+\(b\) 为起点和终点的可求长曲线。证明：
+
+\[
+\int_\gamma\left\{\frac{\partial f(z)}{\partial z}\,dz
++\frac{\partial f(z)}{\partial\bar z}\,d\bar z\right\}=f(b)-f(a).
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(\gamma\) 是可求长曲线，\(\varphi\) 在 \(\gamma\)
+上全纯，\(\Gamma=\varphi(\gamma)\)。证明：
+
+（1）\(\Gamma\) 也是可求长曲线；
+
+（2）如果 \(f\) 在 \(\Gamma\) 上连续，那么
+
+\[
+\int_\Gamma f(w)\,dw
+=\int_\gamma f(\varphi(z))\varphi'(z)\,dz.
+\]
+
+校勘：在曲线上全纯指在包含曲线的某个开邻域全纯；像曲线按
+\(\varphi\circ\gamma\) 的参数、方向及重数理解。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设 \(\gamma\) 是域 \(D\) 中以 \(a\) 为起点、以 \(b\)
+为终点的可求长曲线，\(f,g\in H(D)\cap C^1(D)\)。证明分部积分公式：
+
+\[
+\int_\gamma f(z)g'(z)\,dz
+=\left.f(z)g(z)\right|_a^b-\int_\gamma f'(z)g(z)\,dz.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{9.} 设 \(\gamma\) 是正向可求长简单闭曲线，证明：\(\gamma\)
+内部的面积为
+
+\[
+\frac1{2i}\int_\gamma\bar z\,dz.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 设单叶全纯映射 \(f\) 将可求长简单闭曲线 \(\gamma\)
+映为正向简单闭曲线 \(\Gamma\)，证明：\(\Gamma\) 内部的面积为
+
+\[
+\frac1{2i}\int_\gamma\overline{f(z)}f'(z)\,dz.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 设 \(f\) 在 \(z_0\) 处连续，证明：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&\lim_{r\to0}\frac1{2\pi}\int_0^{2\pi}f(z_0+re^{i\theta})\,d\theta=f(z_0);\\
+\text{(2)}\quad&\lim_{r\to0}\frac1{2\pi i}\int_{|z-z_0|=r}\frac{f(z)}{z-z_0}\,dz=f(z_0).
+\end{aligned}
+\]
+
+校勘：为使题中的通常曲线积分存在，还应假定 \(f\) 在 \(z_0\)
+的邻域连续，或至少在每个足够小的圆周上可积；仅在一点连续不自动给出该可积性。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{12.} 设
+\(D=\{z\in\mathbb C:\theta_0<\arg(z-a)<\theta_0+\alpha\}\)（\(0<\alpha\le2\pi\)），\(f\)
+在 \(\overline D\setminus\{a\}\) 上连续。证明：
+
+（1）如果
+\(\displaystyle\lim_{\substack{z\to a\\z\in\overline D\setminus\{a\}}}(z-a)f(z)=A\)，那么
+
+\[
+\lim_{r\to0}\int_{\substack{|z-a|=r\\z\in\overline D}}f(z)\,dz=i\alpha A;
+\]
+
+（2）如果
+\(\displaystyle\lim_{\substack{z\to\infty\\z\in\overline D\setminus\{a\}}}(z-a)f(z)=B\)，那么
+
+\[
+\lim_{R\to\infty}\int_{\substack{|z-a|=R\\z\in\overline D}}f(z)\,dz=i\alpha B.
+\]
+
+校勘：圆弧按辐角从 \(\theta_0\) 增至 \(\theta_0+\alpha\)
+的方向走；角状域中的辐角应取这一连续确定的范围。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{13.} 设 \(D\) 是域，\(f\in C^1(D)\)。证明：\(f\) 在 \(D\)
+上全纯的充分必要条件是对任意 \(a\in D\)，均有
+
+\[
+\lim_{r\to0}\frac1{\pi r^2}\int_{|z-a|=r}f(z)\,dz=0.
+\]
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.2}\label{ch03-practice-ux4e60ux9898-32}
+
+教材第 81 页，共 6 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 计算积分：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&\int_{|z|=r}\frac{|dz|}{|z-a|^2},\qquad |a|\ne r;\\
+\text{(2)}\quad&\int_{|z|=2}\frac{2z-1}{z(z-1)}\,dz;\\
+\text{(3)}\quad&\int_{|z|=5}\frac{z\,dz}{z^4-1};\\
+\text{(4)}\quad&\int_{|z|=2a}\frac{e^z}{z^2+a^2}\,dz,\qquad a>0.
+\end{aligned}
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(f\) 在 \(\{z:r<|z|<\infty\}\) 中全纯，且
+\(\lim_{z\to\infty}zf(z)=A\)。证明：
+
+\[
+\int_{|z|=R}f(z)\,dz=2\pi iA,
+\]
+
+这里，\(R>r\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(n\) 为正整数，试通过计算积分
+
+\[
+\int_{|z|=1}\left(z+\frac1z\right)^n\frac{dz}{z}
+\]
+
+证明
+
+\[
+\int_0^{2\pi}\cos^{2n}\theta\,d\theta
+=2\pi\frac{(2n-1)!!}{(2n)!!}.
+\]
+
+校勘：原题积分的指数印为 \(n\)，目标式使用
+\(2n\)；对应目标式计算时应将前式指数取为
+\(2n\)，或先对一般指数计算后再代入偶数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(0<r<R\)，\(f\) 在 \(B(0,R)\) 中全纯。证明：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&f(0)=\frac1{2\pi}\int_0^{2\pi}f(re^{i\theta})\,d\theta;\\
+\text{(2)}\quad&f(0)=\frac1{\pi r^2}\iint_{|z|<r}f(z)\,dx\,dy.
+\end{aligned}
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设 \(u\) 是 \(B(0,R)\) 中的调和函数，\(0<r<R\)。证明：
+
+\[
+u(0)=\frac1{2\pi}\int_0^{2\pi}u(re^{i\theta})\,d\theta.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(0<r<1\)。证明：
+
+\[
+\int_0^\pi\log(1-2r\cos\theta+r^2)\,d\theta=0.
+\]
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.3}\label{ch03-practice-ux4e60ux9898-33}
+
+教材第 84---85 页，共 5 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\) 是域，\(f,g\in H(D)\)。如果 \(fg'\) 在 \(D\)
+上有原函数 \(\varphi\)。证明：\(f'g\) 在 \(D\) 上有原函数
+\(fg-\varphi\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(D\) 是域，\(f\) 是 \(D\) 上的连续函数。如果 \(f\) 在
+\(D\) 上有原函数，则对 \(D\) 中任意可求长简单闭曲线 \(\gamma\)，均有
+\(\int_\gamma f(z)\,dz=0\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(f\in C^n(\mathbb C)\cap H(\mathbb C)\)，并且
+\(f^{(n)}(z)\equiv0\)。证明：\(f\) 必为次数不大于 \(n\) 的多项式。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(\gamma\) 是从 \(0\) 到 \(1\) 且不经过 \(\pm i\)
+的可求长曲线。证明：
+
+\[
+\int_\gamma\frac{dz}{1+z^2}=\frac\pi4+k\pi,
+\qquad k=0,\pm1,\pm2,\ldots.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设 \(f\) 是凸域 \(D\) 上的全纯函数，如果对每点
+\(z\in D\)，有 \(\operatorname{Re}f'(z)>0\)，那么 \(f\) 是 \(D\)
+上的单叶函数。
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.4}\label{ch03-practice-ux4e60ux9898-34}
+
+教材第 90---92 页，共 9 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 计算下列积分：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&\int_{|z-1|=1}\frac{\sin z}{z^2-1}\,dz;\\
+\text{(2)}\quad&\int_{|z|=2}\frac{dz}{1+z^2};\\
+\text{(3)}\quad&\int_{4x^2+y^2=2y}\frac{e^{\pi z}}{(1+z^2)^2}\,dz;\\
+\text{(4)}\quad&\int_{|z|=3/2}\frac{dz}{(z^2+1)(z^2+4)};\\
+\text{(5)}\quad&\int_{|z|=2}\frac{dz}{z^3(z-1)^3(z-3)^5};\\
+\text{(6)}\quad&\int_{|z|=R}\frac{dz}{(z-a)^n(z-b)},
+\end{aligned}
+\]
+
+第（6）问中，\(n\) 为正整数，\(a,b\) 不在圆周 \(|z|=R\) 上。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(\gamma\) 是可求长简单闭曲线，其内部为域
+\(G_1\)，外部为域 \(G_2\)。如果
+\(f\in H(G_2)\cap C(\overline{G_2})\)，而且
+\(\lim_{z\to\infty}f(z)=A\)，那么
+
+\[
+\frac1{2\pi i}\int_\gamma\frac{f(\zeta)}{\zeta-z}\,d\zeta
+=\begin{cases}-f(z)+A,&z\in G_2,\\A,&z\in G_1.\end{cases}
+\]
+
+这里，\(\gamma\) 关于 \(G_1\) 取正向。通常，称它为无界域的 Cauchy
+积分公式。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(D\)
+是由有限条可求长简单闭曲线围成的域，\(z_1,\ldots,z_n\) 是 \(D\) 中 \(n\)
+个彼此不同的点。如果 \(f\in H(D)\cap C(\overline D)\)，证明：
+
+\[
+P(z)=\frac1{2\pi i}\int_{\partial D}
+\frac{f(\zeta)}{\omega_n(\zeta)}\frac{\omega_n(\zeta)-\omega_n(z)}{\zeta-z}\,d\zeta
+\]
+
+是次数不超过 \(n-1\) 的多项式，并且
+
+\[
+P(z_k)=f(z_k),\qquad k=1,2,\ldots,n.
+\]
+
+其中，\(\omega_n(z)=(z-z_1)\cdots(z-z_n)\)。
+
+（提示：\(\frac{\omega_n(\zeta)-\omega_n(z)}{\zeta-z}\) 是 \(z\)
+的次数不超过 \(n-1\) 的多项式。）
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 称
+
+\[
+P_n(z)=\frac1{2^n n!}\frac{d^n}{dz^n}(z^2-1)^n
+\]
+
+是 Legendre 多项式。证明：
+
+（1）Legendre 多项式有如下的积分表示：
+
+\[
+P_n(z)=\frac1{2\pi i}\int_\gamma\frac{(\zeta^2-1)^n}{2^n(\zeta-z)^{n+1}}\,d\zeta,
+\]
+
+其中，\(\gamma\) 是任意内部包含 \(z\) 的可求长简单闭曲线；
+
+（2）如果取
+\(\gamma=\{\zeta\in\mathbb C:|\zeta-x|=\sqrt{x^2-1}\}\)（\(1<x<\infty\)），那么有如下的
+Laplace 公式：
+
+\[
+P_n(x)=\frac1\pi\int_0^\pi\left(x+\sqrt{x^2-1}\cos\theta\right)^n\,d\theta.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设 \(f\in H(B(0,1))\cap C(\overline{B(0,1)})\)。证明：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&\frac2\pi\int_0^{2\pi}f(e^{i\theta})\cos^2\left(\frac\theta2\right)\,d\theta=2f(0)+f'(0);\\
+\text{(2)}\quad&\frac2\pi\int_0^{2\pi}f(e^{i\theta})\sin^2\left(\frac\theta2\right)\,d\theta=2f(0)-f'(0).
+\end{aligned}
+\]
+
+（提示：分别计算积分
+
+\[
+\frac1{2\pi i}\int_{|\zeta|=1}\left(2+\zeta+\frac1\zeta\right)f(\zeta)\frac{d\zeta}{\zeta}
+\]
+
+和
+
+\[
+\frac1{2\pi i}\int_{|\zeta|=1}\left(2-\zeta-\frac1\zeta\right)f(\zeta)\frac{d\zeta}{\zeta}
+\]
+
+即可。）
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 利用上题结果证明：设
+\(f\in H(B(0,1))\cap C(\overline{B(0,1)})\)，且
+\(f(0)=1\)，\(\operatorname{Re}f(z)\ge0\)，那么
+
+\[
+-1\le\operatorname{Re}f'(0)\le2.
+\]
+
+校勘：原题左端印为 \(-1\)；由上一题应得到的通用下界是
+\(-2\)。原下界一般不成立，此处保留原印式并标明，不把有误结论作为待证定理。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(f\) 在角状域 \(G=\{z\in\mathbb C:0<\arg z<\pi/4\}\)
+中全纯，在 \(\overline G\) 上连续。如果 \(f\) 在正实轴的区间 \([a,b]\)
+上等于零，证明：\(f\) 在 \(G\) 中恒等于零。
+
+校勘：区间应满足 \(0<a<b\)；若允许退化为单点，结论不成立。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} （Schwarz 积分公式）设
+\(f\in H(B(0,R))\cap C(\overline{B(0,R)})\)，\(f=u+iv\)。证明：\(f\)
+可用实部表示为
+
+\[
+f(z)=\frac1{2\pi}\int_0^{2\pi}\frac{Re^{i\theta}+z}{Re^{i\theta}-z}\,u(Re^{i\theta})\,d\theta+iv(0).
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{9.} 设
+\(f\in H(B(0,R))\cap C(\overline{B(0,R)})\)，\(f=u+iv\)，则对任意
+\(0<r\le R\)，有
+
+\[
+f'(0)=\frac1{\pi r}\int_0^{2\pi}u(re^{i\theta})e^{-i\theta}\,d\theta.
+\]
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.5}\label{ch03-practice-ux4e60ux9898-35}
+
+教材第 94 页，共 8 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(f\) 是有界整函数，\(z_1,z_2\) 是 \(B(0,r)\)
+中任意两点。证明：
+
+\[
+\int_{|z|=r}\frac{f(z)}{(z-z_1)(z-z_2)}\,dz=0.
+\]
+
+并由此得出 Liouville 定理。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(f\) 是整函数，如果当 \(z\to\infty\)
+时，\(f(z)=O(|z|^\alpha)\)，\(\alpha\ge0\)，证明 \(f\) 是次数不超过
+\([\alpha]\) 的多项式。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(f\) 是域 \(D\)
+上的连续函数，如果对于任意边界和内部都位于 \(D\) 中的三角形域
+\(\Delta\)，总有 \(\int_{\partial D}f(z)\,dz=0\)，那么 \(f\) 是 \(D\)
+上的全纯函数。
+
+校勘：原题积分下标印为 \(\partial D\)，按前文``三角形域 \(\Delta\)''应为
+\(\partial\Delta\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(f\) 是整函数，如果
+\(f(\mathbb C)\subset\{z\in\mathbb C:\operatorname{Im}z>0\}\)，证明
+\(f\) 是一个常值函数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设 \(f\) 是整函数，如果
+\(f(\mathbb C)\subset\mathbb C\setminus[0,1]\)，证明 \(f\)
+是一个常值函数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(f\) 在域 \(D\) 上全纯，\(z_0\in D\)，定义
+
+\[
+F(z)=\begin{cases}\dfrac{f(z)-f(z_0)}{z-z_0},&z\in D\setminus\{z_0\},\\[5pt]f'(z_0),&z=z_0.\end{cases}
+\]
+
+证明：\(F\in H(D)\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(\gamma\) 是可求长曲线，\(f\) 在域 \(D\) 上连续，在
+\(D\setminus\gamma\) 上全纯。证明：\(f\) 在 \(D\) 上全纯。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设 \(f\) 是域 \(D\)
+上的连续函数，如果对于任意边界和内部都位于 \(D\) 中的弓形域 \(G\)，总有
+\(\int_{\partial G}f(z)\,dz=0\)，那么 \(f\) 是 \(D\)
+上的全纯函数。如果把弓形域换成圆盘，结论是否仍然成立？
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.6}\label{ch03-practice-ux4e60ux9898-36}
+
+教材第 99 页，共 4 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\)
+是由有限条可求长简单闭曲线围成的域，\(f\in C^1(\overline D)\)。证明：
+
+\[
+\begin{aligned}
+\text{(1)}\quad&\iint_D\frac{\partial f(\zeta)}{\partial\bar\zeta}\,d\bar\zeta\wedge d\zeta
+=\int_{\partial D}f(\zeta)\,d\zeta;\\
+\text{(2)}\quad&\iint_D\frac{\partial f(\zeta)}{\partial\zeta}\,d\zeta\wedge d\bar\zeta
+=\int_{\partial D}f(\zeta)\,d\bar\zeta.
+\end{aligned}
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(D\)
+是由有限条可求长简单闭曲线围成的域，\(f,g\in C^1(\overline D)\)。证明（Green
+公式）：
+
+\[
+\iint_D\left(\frac{\partial g(\zeta)}{\partial\zeta}-\frac{\partial f(\zeta)}{\partial\bar\zeta}\right)d\zeta\wedge d\bar\zeta
+=\int_{\partial D}\bigl(f(\zeta)\,d\zeta+g(\zeta)\,d\bar\zeta\bigr).
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(D\) 是由有限条光滑简单闭曲线围成的域，\(\boldsymbol n\)
+是 \(\partial D\) 的单位法向量场，指向 \(D\)
+的外部，\(u,v\in C^2(\overline D)\)。证明：
+
+（1）
+
+\[
+\begin{aligned}
+&\iint_Du(z)\Delta v(z)\,dx\,dy\\
+&\quad+\iint_D\left(\frac{\partial u(z)}{\partial x}\frac{\partial v(z)}{\partial x}
++\frac{\partial u(z)}{\partial y}\frac{\partial v(z)}{\partial y}\right)dx\,dy
+=\int_{\partial D}u(z)\frac{\partial v(z)}{\partial\boldsymbol n}\,|dz|;
+\end{aligned}
+\]
+
+（2）
+
+\[
+\iint_D\bigl(u(z)\Delta v(z)-v(z)\Delta u(z)\bigr)\,dx\,dy
+=\iint_{\partial D}\left(u(z)\frac{\partial v(z)}{\partial\boldsymbol n}
+-v(z)\frac{\partial u(z)}{\partial\boldsymbol n}\right)|dz|.
+\]
+
+校勘：第（2）问右端原印为双重积分号，边界弧长积分应使用单积分号
+\(\int_{\partial D}\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(D\) 是由有限条可求长简单闭曲线围成的域，\(f\) 在
+\(\overline D\) 上全纯，\(z\in D\)。证明：
+
+\[
+\iint_D\frac{f'(\zeta)}{\bar\zeta-\bar z}\,d\zeta\wedge d\bar\zeta
+=\int_{\partial D}\left(\frac{f(\zeta)}{\zeta-z}\,d\zeta
++\frac{f(\zeta)}{\bar\zeta-\bar z}\,d\bar\zeta\right).
+\]
+
+\Needspace{9\baselineskip}
+\subsection{习题 3.7}\label{ch03-practice-ux4e60ux9898-37}
+
+教材第 102 页，共 4 题。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\) 是域，\(K\subset D\) 是紧集。证明：存在开集 \(G\)
+和函数 \(\varphi\in C^\infty(D)\)，满足：
+
+（1）\(K\subset G\subset\overline G\subset D\)；
+
+（2）\(0\le\varphi(z)\le1\)，\(\forall z\in D\)；
+
+（3）\(\varphi(z)=1\)，\(\forall z\in G\)；
+
+（4）\(\operatorname{supp}\varphi\subset D\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(D\) 是域，\(f\in C^\infty(D)\)。证明：若
+\(u_0\in C^\infty(D)\) 是非齐次 \(\bar\partial\) 方程的解，即
+\(\frac{\partial u_0}{\partial\bar z}=f\)，则该方程的解的全体为
+\(u_0+H(D)\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(D\) 是域，\(a\in D\)，\(B(a,R)\subset D\)，\(f\) 在
+\(B(a,R)\setminus\{a\}\) 上全纯。证明：存在 \(D\setminus\{a\}\)
+上的全纯函数 \(F\)，使得
+
+\[
+\lim_{z\to a}[F(z)-f(z)]=0,
+\]
+
+因此 \(F-f\in H(B(a,R))\)。
+
+校勘：末句指差函数在 \(a\) 处以零值延拓后属于 \(H(B(a,R))\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 举例说明，存在
+\(f\in C^\infty(\mathbb C)\)，\(\operatorname{supp}f\) 是紧集，但非齐次
+\(\bar\partial\) 方程 \(\frac{\partial u}{\partial\bar z}=f\)
+的任意解没有紧支集。
+
+\end{document}
