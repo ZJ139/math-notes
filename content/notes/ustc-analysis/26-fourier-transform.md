@@ -5,7 +5,7 @@ subject: "数学分析"
 category: "ustc-analysis/series"
 tags: ["科大数分", "Fourier 积分", "Fourier 变换", "反演", "卷积"]
 created_at: "2026-11-17"
-updated_at: "2026-11-17"
+updated_at: "2026-11-18"
 ---
 
 下册 §17.5（教材第 272—281 页）。周期为 $2l$ 时频率间距为 $\pi/l$。在整条实轴上，离散频率被连续参数 $u$ 取代。可以直接从截断积分证明反演，避免在周期趋于无穷时未经估计地交换极限。
@@ -77,4 +77,4 @@ $$
 $$
 结果是纯虚奇函数，与原积分的奇偶性相符。[练习 17.5 第 4 题（原题）](/files/problems/科大数分习题-v2%282%29.pdf#page=44)
 
-[上一讲　平方平均逼近、Bessel 不等式与 Parseval 等式](/notes/f774857d9c30a625c19c6cd3/) · [专题Ⅳ目录](/math/ustc-analysis/#series) · [回到本专题首讲](/notes/87807d3579b876affe2d54a0/)
+[上一讲　平方平均逼近、Bessel 不等式与 Parseval 等式](/notes/f774857d9c30a625c19c6cd3/) · [专题Ⅳ目录](/math/ustc-analysis/#series) · [回到本专题首讲](/notes/87807d3579b876affe2d54a0/) · [继续专题Ⅴ　几何积分与向量场](/notes/ffe9853c61f5c4c136c5bba9/)
