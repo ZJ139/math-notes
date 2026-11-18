@@ -46,7 +46,7 @@ const chapters: Chapter[] = [
   },
   {
     title: '函数空间', pages: '380–423',
-    description: '把积分用来度量函数之间的距离，再借助内积研究正交展开。',
+    description: '由 Hölder、Minkowski 不等式和可求和增量建立范数与完备性，再从最佳逼近、Bessel 不等式和 Riesz–Fischer 定理走向 Parseval 等式与 Fourier 完全性。两节讲义附 24 道节后练习和 33 道复习题。',
     sections: [[String.raw`$\mathcal L^p$ 空间`, 380], [String.raw`$\mathcal L^2$ 空间`, 403]],
   },
 ];
@@ -82,6 +82,7 @@ export function RealFunctionsDirectory({items}: {items: PublicEntry[]}) {
             {n === 1 && <Markdown body={String.raw`**贯穿本章的问题**　给定一个函数，它的例外点集能有多大？§1.2 用有理数给单调函数的跳跃点编号，得到至多可数；§1.4 用振幅的水平集描述不连续点，得到 $F_\sigma$ 集；§1.5 加上连续函数列逐点收敛的条件，又得到第一纲。§1.6 的 Cantor 集则有连续势，同时疏朗且长度为零。这些结论分别控制点的数目、拓扑结构和长度。`}/>}
             {n === 2 && <p><strong>贯穿本章的问题</strong>　区间上的长度能决定哪些集合的测度？先检验覆盖费用与分割判据，再追踪延拓所需的有限性。章末用这些结论研究差集的内点、临界值的零测性与导函数的间断点。</p>}
             {n === 3 && <p><strong>贯穿本章的问题</strong>　什么时候能把极限移进积分号？先比较单调性、非负性与可积控制，再把收敛定理用于截面和区间平均。最后用 Cantor 函数检验，为什么几乎处处可导仍不足以由导数还原原函数。</p>}
+            {n === 4 && <p><strong>贯穿本章的问题</strong>　怎样用积分定义距离，又怎样用正交系恢复一个函数？先区分函数与等价类、范数收敛与逐点收敛，再说明正交系完全性如何消去投影残差。</p>}
             {practice && <p><a href={entryUrl(practice) + '/'}>{practice.title}</a>
               {' · '}<a href={'/files/notes/real-functions/real-functions-chapter-' + n + '.pdf'} download>下载第{['一','二','三','四'][i]}章讲义 PDF</a></p>}
           </section>;
