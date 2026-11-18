@@ -10,7 +10,7 @@ updated_at: "2026-11-15"
 
 第三十六批从矩阵指数能否反解开始，接入微分方程的构造、紧性与解对数据的依赖。题册实际第 23—25 页对应印刷第 21—23 页。七题均无星号。B247 的存在性在原条件下为假，保留题面并单列待核。B248—B253 六题计入已作答。
 
-[上一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [上一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
@@ -229,4 +229,4 @@ B247—B249 可以连起来看。正定自伴矩阵先作谱分解，值域和�
 
 本批七个原题位置均已核对，B248—B253 六题计入已作答。两册累计 **249 道已作答、4 道暂跳过**（上册 175 道、下册 74 道），第九章 33 道已作答、1 道暂跳过。**B116、B148、B180、B247** 待核。下一题为 **B254＝9.5.B 第 5 题**，见[原题 PDF 第 25 页](/files/problems/楼分析习题-v2.pdf#page=25)。
 
-[上一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [上一批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
