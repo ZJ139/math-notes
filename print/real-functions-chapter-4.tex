@@ -1,0 +1,1304 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[no-math]{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 实变函数论 · 第四章}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={实变函数讲义：第四章},pdfauthor={Vincent Arqain},pdfsubject={函数空间}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+
+\usepackage{tabularx,booktabs,array}
+\usepackage{longtable,calc}
+\def\LTcaptype{table}
+\renewcommand{\thesection}{4.\arabic{section}}
+\emergencystretch=2em
+
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 实变函数讲义\par}
+\vspace{8pt}{\large 第四章\quad 函数空间\par}
+\vspace{6pt}{\small 依徐森林、薛春华《实变函数论》\quad 教材第 380—423 页\par}
+\end{center}
+\vspace{8pt}
+\noindent\textbf{本章的问题}\quad 从积分定义的距离出发，怎样建立完备空间，怎样用正交展开恢复函数？本章保留教材全部主要定理的编号，补足关键证明与适用条件；后附 24 道节后练习及 33 道复习题原题，不附解答。
+\tableofcontents\clearpage
+\clearpage\section{\texorpdfstring{$\mathcal L^p$ 空间：范数、完备性与逼近}{Lp 空间：范数、完备性与逼近}}
+\label{ch04-s1}
+对应教材第 380---403 页。全章沿用教材的
+\(\mathcal L^p(E)\)、\(\|f\|_p\)、\(m\)、\(\chi_A\)
+及实函数约定；积分均为 Lebesgue 积分，省略
+\((L)\)。除特别说明外，\(E\subset\mathbb R^n\) 是 Lebesgue
+可测集，\(1\le p\le+\infty\)。证明所需的极限工具见\href{https://zj139.github.io/math-notes/notes/40e0912ec76652ea96838917/}{§3.4
+积分收敛定理}，可测函数与依测度收敛见\href{https://zj139.github.io/math-notes/notes/1f3a19ea67c736860ad6ef85/}{§3.2}。
+
+\textbf{目录与定理索引}
+
+\begin{itemize}
+\tightlist
+\item
+  \hyperref[ch04-s1-ux51fdux6570ux7c7bux4e0eux7b49ux4ef7ux7c7b]{函数类与等价类}：定义
+  4.1.1---4.1.5，定理 4.1.1、4.1.2、4.1.6、4.1.7。
+\item
+  \hyperref[ch04-s1-huxf6lder-ux4e0dux7b49ux5f0fux4e0eux63d2ux503c]{Hölder
+  不等式与插值}：定理 4.1.3，例 4.1.2---4.1.3。
+\item
+  \hyperref[ch04-s1-minkowski-ux4e0eux53efux6c42ux548cux589eux91cf]{Minkowski
+  与可求和增量}：定理 4.1.4---4.1.5。
+\item
+  \hyperref[ch04-s1-ux5b8cux5907ux6027]{完备性}：定理 4.1.8。
+\item
+  \hyperref[ch04-s1-ux6536ux655bux5173ux7cfbux4e0eux53cdux4f8b]{收敛关系与反例}：定理
+  4.1.9---4.1.10，例 4.1.4---4.1.7。
+\item
+  \hyperref[ch04-s1-ux7a20ux5bc6ux6027ux4e0eux53efux5206ux6027]{稠密性与可分性}：定义
+  4.1.6，引理 4.1.1，定理 4.1.11。
+\item
+  \hyperref[ch04-s1-ux9002ux7528ux8303ux56f4ux4e0eux590dux4e60ux8981ux70b9]{适用范围与复习要点}：一般测度空间与
+  Lebesgue 空间的区别。
+\end{itemize}
+
+\Needspace{6\baselineskip}
+\subsection{函数类与等价类}\label{ch04-s1-ux51fdux6570ux7c7bux4e0eux7b49ux4ef7ux7c7b}
+
+\textbf{定义 4.1.1}　先把 \(\mathcal L^p(E)\) 看作函数的集合。对
+\(1\le p<\infty\)，令 \[
+\|f\|_p=\left(\int_E|f|^p\,dx\right)^{1/p},\qquad
+\mathcal L^p(E)=\{f:f\text{ 可测},\ \|f\|_p<\infty\}.
+\] 对 \(p=\infty\)，令 \[
+\|f\|_\infty=\mathop{\mathrm{ess\,sup}}_{x\in E}|f(x)|
+=\inf\{M\ge0:|f|\le M\text{ 几乎处处}\},
+\] 并以 \(\mathcal L^\infty(E)\) 表示本性有界的可测函数全体。教材在
+\(m(E)>0\) 时取实数上界的下确界，在 \(m(E)=0\) 时另规定范数为零；这里用
+\(M\ge0\) 统一两种情形。由可数个零测集的并仍为零测集，取上界
+\(\|f\|_\infty+1/j\) 后令 \(j\to\infty\)，可得 \(|f|\le\|f\|_\infty\)
+几乎处处。
+
+\textbf{定理 4.1.1}　若 \(m(E)<\infty\) 且
+\(f\in\mathcal L^\infty(E)\)，则 \[
+\lim_{p\to\infty}\|f\|_p=\|f\|_\infty.
+\] \textbf{证明：}零测集或零函数的情形直接成立。记
+\(A=\|f\|_\infty>0\)。对 \(0<t<A\)，集合 \(E_t=\{|f|>t\}\) 有正测度，且
+\[
+t\,m(E_t)^{1/p}\le\|f\|_p\le A\,m(E)^{1/p}.
+\] 先令 \(p\to\infty\)，再令 \(t\uparrow A\) 即得。证毕。
+
+有限测度不能删去：在 \(\mathbb R\) 上，\(f=1\) 的本性上界为
+\(1\)，但每个有限 \(p\) 的积分都无穷。另一方面，\((0,1)\) 上
+\(\log(1/x)\) 属于每个有限指数的 \(\mathcal L^p\)，却不本性有界：代换
+\(x=e^{-t}\) 后积分为
+\(\int_0^\infty t^pe^{-t}\,dt<\infty\)，而任意高度之上的集合都有正测度。
+
+\textbf{定理 4.1.2}　\(\mathcal L^p(E)\) 对通常加法与数乘封闭。有限
+\(p\) 时，由 \[
+|\alpha f+\beta g|^p\le 2^{p-1}(|\alpha|^p|f|^p+|\beta|^p|g|^p)
+\] 即得；\(p=\infty\) 时直接估计本性上界。这里尚未用 Minkowski
+不等式，因而稍后证明三角不等式时不会循环。
+
+\textbf{定义 4.1.3 与定理 4.1.6}　\(\|f\|_p=0\) 只推出 \(f=0\)
+几乎处处，不能推出处处为零。因此先作商： \[
+f\sim g\ \Longleftrightarrow\ f=g\text{ 几乎处处},\qquad
+[f]=\{g:g\sim f\}.
+\] 定义
+\([f]+[g]=[f+g]\)、\(\lambda[f]=[\lambda f]\)、\(\|[f]\|_p=\|f\|_p\)。改变代表元仅改变一个零测集上的值，故这些定义与代表元无关。正定性、齐次性及下文的
+Minkowski 不等式使商空间成为赋范空间，距离是
+\(d(f,g)=\|f-g\|_p\)。\textbf{从这里起，按照教材约定，商空间仍记作
+\(\mathcal L^p(E)\)，\([f]\) 简记为 \(f\)。}提及
+\(f(x)\)、逐点极限时，必须回到选定的可测代表元。
+
+\textbf{定义 4.1.4---4.1.5}　\(\|f_k-f\|_p\to0\) 称为依 \(\mathcal L^p\)
+收敛；有限 \(p\) 时也称 \(p\) 次幂平均收敛，记
+\((\mathcal L^p)\lim f_k=f\)。若
+\(\|f_k-f_j\|_p\to0\)（\(k,j\to\infty\)），称为基本列或 Cauchy 列。
+
+\textbf{定理 4.1.7}　范数极限作为等价类惟一，且范数连续。事实上， \[
+\|f-g\|_p\le\|f-f_k\|_p+\|f_k-g\|_p,\qquad
+\bigl|\|f_k\|_p-\|f\|_p\bigr|\le\|f_k-f\|_p.
+\] 第一式趋零时只得 \(f=g\)
+几乎处处；第二式说明强收敛必使范数收敛，逆命题通常不成立。
+
+\Needspace{6\baselineskip}
+\subsection{Hölder
+不等式与插值}\label{ch04-s1-huxf6lder-ux4e0dux7b49ux5f0fux4e0eux63d2ux503c}
+
+\textbf{定义 4.1.2}　\(1/p+1/q=1\) 时称 \(p,q\) 为共轭指标，约定
+\(1/\infty=0\)。有限且大于 \(1\) 时，\(q=p/(p-1)\)。
+
+\textbf{定理 4.1.3（Hölder 不等式）}　若
+\(f\in\mathcal L^p(E)\)、\(g\in\mathcal L^q(E)\)，则
+\(fg\in\mathcal L^1(E)\)，且 \[
+\|fg\|_1\le\|f\|_p\|g\|_q.
+\] \textbf{证明：}端点 \((p,q)=(1,\infty)\) 或 \((\infty,1)\)
+由本性上界直接得到。设
+\(1<p,q<\infty\)，两范数非零；零范数的情形已是零函数。对
+\(u,v\ge0\)，Young 不等式 \[
+uv\le\frac{u^p}{p}+\frac{v^q}{q}
+\] 可由固定 \(v\) 后最小化 \(u^p/p-uv\) 得出：导数 \(u^{p-1}-v\) 在
+\(u=v^{1/(p-1)}\) 处变号，最小值为 \(-v^q/q\)。代入
+\(u=|f|/\|f\|_p\)、\(v=|g|/\|g\|_q\) 并积分，右端为
+\(1/p+1/q=1\)。证毕。
+
+当两个范数非零、\(1<p,q<\infty\) 时，取等当且仅当 \[
+\frac{|f|^p}{\|f\|_p^p}=\frac{|g|^q}{\|g\|_q^q}\quad\text{几乎处处}.
+\] 理由是 Young 不等式的非负差积分为零，故差几乎处处为零。对于
+\(|\int fg|\) 的取等，还须 \(fg\) 几乎处处同号。特别地，\(p=q=2\) 给出
+Cauchy--Schwarz 不等式。
+
+\textbf{有限测度上的包含关系（例 4.1.2）}　若
+\(0<m(E)<\infty\)、\(1\le p_1<p_2\le\infty\)，则 \[
+\mathcal L^{p_2}(E)\subset\mathcal L^{p_1}(E),\qquad
+\|f\|_{p_1}\le m(E)^{1/p_1-1/p_2}\|f\|_{p_2}.
+\] 有限 \(p_2\) 时对 \(|f|^{p_1}\cdot1\) 用共轭指标 \(p_2/p_1\) 及
+\(p_2/(p_2-p_1)\) 的 Hölder 不等式，再取 \(p_1\) 次根；\(p_2=\infty\)
+直接积分。本质上，小于 \(1\) 的函数值要由 \(m(E)\) 来控制。若
+\(m(E)=0\)，各空间都是零空间，无须解释上式的零测度幂。
+
+\textbf{插值（例 4.1.3）}　若
+\(1\le r<s\le\infty\)、\(0<\lambda<1\)、\(1/p=\lambda/r+(1-\lambda)/s\)，则
+\[
+f\in\mathcal L^r\cap\mathcal L^s
+\quad\Longrightarrow\quad
+\|f\|_p\le\|f\|_r^\lambda\|f\|_s^{1-\lambda}.
+\] 当 \(s<\infty\)，对 \(|f|^p=|f|^{\lambda p}|f|^{(1-\lambda)p}\)
+用指数 \(r/(\lambda p)\)、\(s/((1-\lambda)p)\) 的 Hölder 不等式。若
+\(s=\infty\)，则 \(\lambda=r/p\)，从 \(|f|^p\le\|f\|_\infty^{p-r}|f|^r\)
+积分得出。此结论不要求 \(m(E)<\infty\)。
+
+\textbf{条件反例}　在 \((0,1)\)
+上，\(x^{-1/p_2}\in\mathcal L^{p_1}\setminus\mathcal L^{p_2}\)。在
+\(\mathbb R\) 上，\(x^{-1/p_2}\chi_{(0,1)}\) 与
+\(x^{-1/p_1}\chi_{(1,\infty)}\) 分别说明有限指数 \(p_1<p_2\)
+的两个空间互不包含。端点 \(p_2=\infty\) 可用 \(\log(1/x)\chi_{(0,1)}\)
+和常函数 \(1\)。不能把有限测度结论直接搬到整条实轴。
+
+\Needspace{6\baselineskip}
+\subsection{Minkowski
+与可求和增量}\label{ch04-s1-minkowski-ux4e0eux53efux6c42ux548cux589eux91cf}
+
+\textbf{定理 4.1.4（Minkowski
+不等式）}　\(\|f+g\|_p\le\|f\|_p+\|g\|_p\)。
+
+\textbf{证明：}\(p=1\) 来自积分的单调性，\(p=\infty\)
+来自共同零测集外的逐点三角不等式。设 \(1<p<\infty\)，由定理 4.1.2 已知
+\(f+g\in\mathcal L^p\)。对 \(|f+g|^{p-1}\) 分别与 \(|f|,|g|\) 用 Hölder
+不等式，得到 \[
+\begin{aligned}
+\|f+g\|_p^p
+&\le\int_E(|f|+|g|)|f+g|^{p-1}\,dx\\
+&\le(\|f\|_p+\|g\|_p)\|f+g\|_p^{p-1}.
+\end{aligned}
+\] 范数非零时约去其 \(p-1\) 次幂，等于零时结论直接成立。证毕。
+
+\textbf{定理 4.1.5（无穷和估计）}　若 \(f_k\in\mathcal L^p\)，且
+\(\sum_k f_k\) 几乎处处收敛，则 \[
+\left\|\sum_{k=1}^\infty f_k\right\|_p\le\sum_{k=1}^\infty\|f_k\|_p.
+\] 有限 \(p\) 时，先对有限和用 Minkowski，再对 \(|\sum_{k=1}^Nf_k|^p\)
+用 Fatou 引理；不能把可能变号的部分和当成递增列。\(p=\infty\)
+时在共同零测集外逐点估计即可。若右端无穷，不据此断言和属于
+\(\mathcal L^p\)。
+
+\textbf{可求和增量原则}　若 \(\sum_k\|u_k\|_p<\infty\)，则
+\(\sum_k u_k\) 几乎处处绝对收敛，而且依 \(\mathcal L^p\) 收敛。有限
+\(p\) 时，令 \(G_N=\sum_{k=1}^N|u_k|\)，有 \[
+\|G_N\|_p\le\sum_k\|u_k\|_p=:C.
+\] 由 Levi 定理，\(G=\sum_k|u_k|\) 满足
+\(\int_EG^p\le C^p\)，因而几乎处处有限。对尾项再用上述估计，得 \[
+\left\|\sum_{k>N}u_k\right\|_p\le\sum_{k>N}\|u_k\|_p\longrightarrow0.
+\] \(p=\infty\) 时，除去可数个零测集后有
+\(|u_k(x)|\le\|u_k\|_\infty\)，用数项级数控制所有尾项即可。这一原则同时连接逐点构造、积分估计与空间完备性。
+
+\Needspace{6\baselineskip}
+\subsection{完备性}\label{ch04-s1-ux5b8cux5907ux6027}
+
+\textbf{定理 4.1.8}　\(\mathcal L^p(E)\) 中函数列收敛当且仅当它是 Cauchy
+列。因此 \(\mathcal L^p(E)\) 是 Banach 空间。
+
+\textbf{证明：}收敛列是 Cauchy 列由三角不等式立即得到。反过来，给定
+Cauchy 列 \(\{f_n\}\)，依次选 \(n_k\uparrow\infty\)，使 \[
+\|f_{n_{k+1}}-f_{n_k}\|_p\le2^{-k}.
+\] 由可求和增量原则， \[
+f=f_{n_1}+\sum_{k=1}^\infty(f_{n_{k+1}}-f_{n_k})
+\] 在一个共同零测集外绝对收敛。在例外集上定义为零，得到可测函数，且
+\(f\in\mathcal L^p\)、\(\|f-f_{n_k}\|_p\le\sum_{j\ge k}2^{-j}\to0\)。最后，对任意
+\(\varepsilon>0\)，取 \(N\) 使 \(n,j\ge N\) 时
+\(\|f_n-f_j\|_p<\varepsilon/2\)，再取 \(n_k\ge N\) 且
+\(\|f_{n_k}-f\|_p<\varepsilon/2\)。于是对所有 \(n\ge N\)， \[
+\|f_n-f\|_p\le\|f_n-f_{n_k}\|_p+\|f_{n_k}-f\|_p<\varepsilon.
+\] 证毕。
+
+这个证明没有先假设极限存在，也没有假设 \(m(E)<\infty\)。关键构造是把
+Cauchy 列抽成``相邻增量可求和''的子列，再用 Cauchy
+条件把子列结论传回全列。教材用依测度 Cauchy 列、Riesz 子列定理与 Fatou
+引理完成同一任务；两种证明都依赖第三章建立的积分极限工具。
+
+\Needspace{6\baselineskip}
+\subsection{收敛关系与反例}\label{ch04-s1-ux6536ux655bux5173ux7cfbux4e0eux53cdux4f8b}
+
+\textbf{定理 4.1.9---4.1.10}　对有限
+\(p\)，范数收敛蕴含依测度收敛，并可抽出几乎处处收敛的子列；一般不能推出全列几乎处处收敛。若范数极限为
+\(f\)，同时全列几乎处处趋于 \(g\)，则 \(f=g\)
+几乎处处。\(\mathcal L^\infty\)
+收敛更强：存在一个零测集，列在其补集上一致收敛。
+
+\textbf{证明：}有限 \(p\) 时，Chebyshev 估计为 \[
+m\{|f_k-f|\ge\varepsilon\}\le\varepsilon^{-p}\|f_k-f\|_p^p\longrightarrow0.
+\] 选择子列满足 \(\|f_{n_k}-f\|_p^p\le2^{-k(p+1)}\)，则
+\(m\{|f_{n_k}-f|>2^{-k}\}\le2^{-k}\)。这些异常集的上极限测度为零，因为其测度不超过任意尾和
+\(\sum_{k\ge N}2^{-k}\)。因此子列几乎处处趋于
+\(f\)，也就证明两种极限相同时的惟一性。对 \(p=\infty\)，把全部不等式
+\(|f_k-f|\le\|f_k-f\|_\infty\) 的例外集取并，结论即得。证毕。
+
+以下反例把容易混淆的箭头逐一分开。
+
+\textbf{尖峰（例 4.1.4）}　在 \([0,1]\) 上令
+\(f_k=k^2\chi_{(0,1/k)}\)。它处处趋于零，也依测度趋于零，但 \[
+\|f_k\|_p=k^{2-1/p}\longrightarrow\infty\quad(1\le p<\infty),\qquad
+\|f_k\|_\infty=k^2.
+\] 小支集只控制异常集合的大小，不能控制其上的积分质量。
+
+\textbf{移动小区间（例 4.1.5 的同型构造）}　把每层函数
+\(\chi_{[j/2^r,(j+1)/2^r)}\)（\(j=0,\ldots,2^r-1\)，\(r\ge1\)）按层排成一列，端点
+\(1\) 另赋值零。每层中每个 \(x\in[0,1)\) 都恰有一次取值 \(1\)，也有取值
+\(0\)，故全列不逐点收敛；但 \(\|f_k\|_p=2^{-r/p}\to0\)。其
+\(\mathcal L^\infty\) 范数恒为 \(1\)。
+
+\textbf{无穷测度上的质量逃逸}　在 \(\mathbb R\) 上令
+\(f_k=\chi_{[k,k+1]}\)，则处处趋于零，却不依测度趋于零。因此``几乎处处收敛蕴含依测度收敛''需要有限测度等附加条件。反过来，即使在有限测度集上，依测度收敛也仅保证子列几乎处处收敛。
+
+\textbf{从逐点到范数的正面条件}　若 \(1\le p<\infty\)、\(f_k\to f\)
+几乎处处，且 \(|f_k|\le g\in\mathcal L^p\)，则 \(|f|\le g\)
+几乎处处，\(|f_k-f|^p\le2^pg^p\)，由控制收敛定理得
+\(\|f_k-f\|_p\to0\)。\(p=\infty\) 时不能照搬：\(f_k=\chi_{(0,1/k)}\)
+受常函数 \(1\) 控制，仍不依本性上界范数趋于零。
+
+\textbf{为何要求 \(p\ge1\)（例 4.1.6）}　取两个不交、测度均为 \(1\)
+的集合，令 \(f,g\) 为其示性函数。若 \(0<p<1\)，则
+\(\|f+g\|_p=2^{1/p}>2=\|f\|_p+\|g\|_p\)。不过 \(d(f,g)=\int|f-g|^p\)
+在等价类上仍是距离，因为
+\((a+b)^p\le a^p+b^p\)；它不由这个表达式作为范数诱导。
+
+\textbf{Riemann 可积函数为何不完备（例 4.1.7）}　在 \([0,1]\)
+内取含全部有理数的开集 \(U=\bigcup_{j\ge1}I_j\)，且
+\(\sum_j|I_j|<1/2\)。令 \(f_N=\chi_{\cup_{j\le N}I_j}\)。每个 \(f_N\)
+Riemann 可积，且在 \(\mathcal L^2\) 中趋于 \(\chi_U\)。若某 Riemann 可积
+\(g\) 与 \(\chi_U\) 几乎处处相等，记例外零测集为 \(Z\)。在 \(U\)
+的稠密性下，每个开邻域与 \(U\setminus Z\) 相交；而
+\([0,1]\setminus(U\cup Z)\) 有正测度，\(g\)
+在其中每点取值零，同时可被取值 \(1\) 的点逼近。因此 \(g\)
+的不连续点集有正测度，与 Lebesgue 判别准则矛盾。这里也须先把 Riemann
+函数按几乎处处相等作商，否则所谓积分``距离''本身不正定。
+
+\Needspace{6\baselineskip}
+\subsection{稠密性与可分性}\label{ch04-s1-ux7a20ux5bc6ux6027ux4e0eux53efux5206ux6027}
+
+\textbf{定义 4.1.6}　子集 \(\mathcal A\subset\mathcal L^p(E)\)
+稠密，是指对每个 \(f\) 与每个 \(\varepsilon>0\)，存在 \(g\in\mathcal A\)
+使 \(\|f-g\|_p<\varepsilon\)。存在可数稠密子集的空间称为可分空间。
+
+\textbf{引理 4.1.1}　设 \(1\le p<\infty\)。\(\mathbb R^n\)
+上有紧支集的连续函数限制到 \(E\) 后，在 \(\mathcal L^p(E)\)
+中稠密；有紧支集的方体阶梯函数也稠密。
+
+\textbf{证明：}把 \(f\) 在 \(E\) 外延拓为零。先作
+\(f_N=f\chi_{\{|x|\le N,\ |f|\le N\}}\)，由控制收敛知
+\(\|f-f_N\|_p\to0\)。在有界支集上把有界函数的值域分成足够细的有限小段，得到简单函数
+\(\sum_{j=1}^Nc_j\chi_{A_j}\)，其 \(\mathcal L^p\) 误差任意小。每个
+\(A_j\) 有有限测度。由 Lebesgue 测度的内外正则性，取紧集
+\(K_j\subset A_j\)、有界开集 \(U_j\supset A_j\)，使
+\(m(U_j\setminus K_j)\) 足够小；若 \(K_j\) 非空，令 \[
+h_j(x)=\frac{d(x,U_j^c)}{d(x,U_j^c)+d(x,K_j)}.
+\] 则 \(h_j\in C_c(\mathbb R^n)\)，\(0\le h_j\le1\)，在 \(K_j\) 上等于
+\(1\)，在 \(U_j^c\) 上等于零，且
+\(\|h_j-\chi_{A_j}\|_p^p\le m(U_j\setminus K_j)\)。空集的情形取零函数。Minkowski
+不等式使 \(\sum_jc_jh_j\) 逼近原简单函数。
+
+再把包含连续函数支集的大方体划成足够细的小方体，逐块取函数值。由一致连续性，阶梯函数与连续函数的差在整个方体上一致小，其
+\(p\) 次积分也小。边界只构成零测集，不影响结论。证毕。
+
+严格说，稠密的连续函数族是
+\(C_c(\mathbb R^n)|_E\)；教材所谓``连续函数全体稠密''应理解为属于
+\(\mathcal L^p(E)\) 的那一部分，而不能假定每个连续函数都 \(p\) 次可积。
+
+\textbf{定理 4.1.11}　有限 \(p\) 时 \(\mathcal L^p(E)\) 可分；\(m(E)=0\)
+时 \(\mathcal L^\infty(E)\) 是零空间，当然可分；\(m(E)>0\) 时
+\(\mathcal L^\infty(E)\) 不可分。
+
+\textbf{证明：}在上述阶梯逼近中，方体端点可取有理数，再把有限多个函数值改为有理数。所有有理端点方体的示性函数的有限有理线性组合构成一个可数集合。由
+\[
+\left\|\sum_j(c_j-r_j)\chi_{I_j}\right\|_p
+\le\sum_j|c_j-r_j|\,m(I_j)^{1/p}
+\] 可使系数误差任意小，故限制到 \(E\) 后给出可数稠密集。
+
+设 \(m(E)>0\)。函数 \(F(t)=m(E\cap B(0,t))\) 在有限 \(t\)
+处连续：球壳的体积随厚度趋零，且球面为零测集。它从 \(0\)
+增到正值（或无穷）。可选不可数多个 \(t\)，使 \(F(t)\) 两两不同。相应的
+\(\chi_{E\cap B(0,t)}\) 在 \(\mathcal L^\infty\) 中两两距离为
+\(1\)，所以半径小于 \(1/2\)
+的两两不交开球不可数。任何稠密集都须逐球取点，因而不可能可数。证毕。
+
+\Needspace{6\baselineskip}
+\subsection{适用范围与复习要点}\label{ch04-s1-ux9002ux7528ux8303ux56f4ux4e0eux590dux4e60ux8981ux70b9}
+
+Hölder、Minkowski、等价类构造、完备性及范数收敛蕴含依测度收敛，都适用于一般测度空间；只须函数可测并按零测相等取商，不必假设总测度有限或
+\(\sigma\) 有限。有限测度的包含关系与 \(p\to\infty\)
+极限则须保留相应条件。
+
+连续函数、方体阶梯函数的稠密性，以及 \(\mathcal L^p(E)\)
+的上述可分性结论，用到了 Euclid 空间中的 Lebesgue
+测度结构。一般测度空间不能原样照用：不可数集合的计数测度给出不可分的
+\(\ell^2\)；有限个原子的空间中 \(\mathcal L^\infty\) 反而有限维且可分。
+
+复习时应能独立重建三个构造：用归一化把 Young 不等式变成
+Hölder；用可求和子列增量证明完备性；用``截断---简单函数---连续函数---有理阶梯函数''证明稠密性与可分性。它们分别把数值不等式、极限存在性和可数逼近连接起来。
+
+\clearpage\section{\texorpdfstring{$\mathcal L^2$ 空间：正交投影与 Fourier 展开}{L2 空间：正交投影与 Fourier 展开}}
+\label{ch04-s2}
+对应教材第 403---418 页。本节的函数是实值函数，\(E\subset\mathbb R^n\)
+为 Lebesgue
+可测集，所有空间都已按几乎处处相等取商。教材称``规范正交系''``完全系''和``封闭的正交系''；下文保留这些术语。``完全系''也常称``完备正交系''，但要与空间本身的完备性区别。
+
+\textbf{目录与定理索引}
+
+\begin{itemize}
+\tightlist
+\item
+  \hyperref[ch04-s2-ux5185ux79efux4e0e-hilbert-ux7a7aux95f4]{内积与 Hilbert
+  空间}：定义 4.2.1---4.2.2，定理 4.2.1---4.2.2。
+\item
+  \hyperref[ch04-s2-ux6b63ux4ea4ux7cfbux4e0eux6700ux4f73ux903cux8fd1]{正交系与最佳逼近}：定理
+  4.2.3---4.2.5，定义 4.2.3。
+\item
+  \hyperref[ch04-s2-rieszfischer-ux4e0eux6295ux5f71]{Riesz--Fischer
+  与投影}：定理 4.2.6，闭子空间投影的补充证明。
+\item
+  \hyperref[ch04-s2-ux5b8cux5168ux6027ux4e0e-parseval]{完全性与 Parseval}：定义
+  4.2.4---4.2.5，定理 4.2.7---4.2.10、4.2.14。
+\item
+  \hyperref[ch04-s2-ux4e09ux89d2ux7cfbux7684ux5b8cux5168ux6027]{三角系的完全性}：定理
+  4.2.11。
+\item
+  \hyperref[ch04-s2-ux6b63ux4ea4ux5316ux4e0eux5b8cux5168ux7cfbux7684ux5b58ux5728]{正交化与完全系的存在}：定义
+  4.2.6，定理 4.2.12---4.2.15。
+\item
+  \hyperref[ch04-s2-ux5f31ux6536ux655bux4e0eux77e5ux8bc6ux8054ux7cfb]{弱收敛与知识联系}：例
+  4.2.3，四章知识链与条件核查。
+\end{itemize}
+
+\Needspace{6\baselineskip}
+\subsection{内积与 Hilbert
+空间}\label{ch04-s2-ux5185ux79efux4e0e-hilbert-ux7a7aux95f4}
+
+\textbf{定义 4.2.1}　对 \(f,g\in\mathcal L^2(E)\)，定义 \[
+\langle f,g\rangle=\int_Ef(x)g(x)\,dx,\qquad
+\|f\|_2=\langle f,f\rangle^{1/2}.
+\] 由
+\(2|fg|\le f^2+g^2\)，乘积可积；所以内积是有限实数，且不依赖代表元。它对称、双线性，\(\langle f,f\rangle\ge0\)，且等于零当且仅当
+\(f\)
+是零等价类。结合\href{https://zj139.github.io/math-notes/notes/c15167148a7e99cbefa5d46f/\#完备性}{§4.1
+的完备性}，\(\mathcal L^2(E)\) 成为 Hilbert
+空间，即完备的内积空间。Banach 空间只要求范数完备。
+
+由内积直接展开可得平行四边形恒等式与极化恒等式： \[
+\begin{aligned}
+\|f+g\|_2^2+\|f-g\|_2^2&=2\|f\|_2^2+2\|g\|_2^2,\\
+\langle f,g\rangle&=\tfrac14(\|f+g\|_2^2-\|f-g\|_2^2).
+\end{aligned}
+\] 这两式揭示范数中的内积结构。以 \([0,1]\)、\((1,2]\)
+的示性函数为例，在 \(\mathcal L^1([0,2])\) 中平行四边形等式两边分别是
+\(8\) 与 \(4\)；因此这个完备范数不是任何内积诱导的。
+
+\textbf{定理
+4.2.1（Cauchy--Schwarz）}　\(|\langle f,g\rangle|\le\|f\|_2\|g\|_2\)，取等当且仅当
+\(f,g\) 线性相关，即 \(f=\lambda g\) 或 \(g=\lambda f\) 几乎处处。
+
+\textbf{证明：}若 \(g=0\)，结论直接成立。否则将二次式配方： \[
+0\le\left\|f-\frac{\langle f,g\rangle}{\|g\|_2^2}g\right\|_2^2
+=\|f\|_2^2-\frac{\langle f,g\rangle^2}{\|g\|_2^2}.
+\] 取等恰好意味着左边的等价类为零。证毕。
+
+\textbf{定义 4.2.2}　非零元素的夹角由
+\(\cos\theta=\langle f,g\rangle/(\|f\|_2\|g\|_2)\) 定义。若
+\(\langle f,g\rangle=0\)，称为正交，记
+\(f\perp g\)。两两正交的非零函数族为正交系；若每个元素范数为
+\(1\)，称为规范正交系。
+
+\textbf{定理 4.2.2（内积的连续性）}　若 \(\|f_k-f\|_2\to0\)，则对每个
+\(g\in\mathcal L^2\)，有
+\(\langle f_k,g\rangle\to\langle f,g\rangle\)，因为 \[
+|\langle f_k,g\rangle-\langle f,g\rangle|\le\|f_k-f\|_2\|g\|_2.
+\] 若还 \(g_k\to g\) 强收敛，则
+\(\langle f_k,g_k\rangle\to\langle f,g\rangle\)：将差写成
+\(\langle f_k-f,g_k\rangle+\langle f,g_k-g\rangle\)，再用
+\(\{\|g_k\|_2\}\) 有界。这是后面交换``取内积''与极限的依据。
+
+\Needspace{6\baselineskip}
+\subsection{正交系与最佳逼近}\label{ch04-s2-ux6b63ux4ea4ux7cfbux4e0eux6700ux4f73ux903cux8fd1}
+
+\textbf{定理 4.2.3}　\(\mathcal L^2(E)\)
+中任一规范正交系至多可数。事实上，不同元素之间距离为
+\(\sqrt2\)，以其为心、半径 \(1/2\) 的球两两不交；§4.1
+的可数稠密集必须与每个球相交，故球至多可数。这里使用了 Lebesgue
+空间的可分性；一般不可分 Hilbert 空间可以有不可数规范正交系。
+
+\textbf{定义 4.2.3}　设 \(\{\varphi_i\}_{i\ge1}\) 为规范正交系。称 \[
+c_i=\langle f,\varphi_i\rangle,\qquad f\sim\sum_{i=1}^\infty c_i\varphi_i
+\] 中的 \(c_i\) 为广义 Fourier 系数，右边为广义 Fourier 级数。符号
+\(\sim\) 只记录系数对应关系，尚未宣称逐点收敛或范数收敛到 \(f\)。
+
+\textbf{定理 4.2.4（最佳平方逼近）}　记
+\(S_k=\sum_{i=1}^kc_i\varphi_i\)。在
+\(M_k=\operatorname{span}\{\varphi_1,\ldots,\varphi_k\}\) 中，\(S_k\)
+是离 \(f\) 最近的惟一元素，且对任意实数 \(a_i\)， \[
+\begin{aligned}
+\left\|f-\sum_{i=1}^ka_i\varphi_i\right\|_2^2
+&=\|f-S_k\|_2^2+\sum_{i=1}^k(a_i-c_i)^2,\\
+\|f-S_k\|_2^2&=\|f\|_2^2-\sum_{i=1}^kc_i^2.
+\end{aligned}
+\] \textbf{证明：}逐项计算
+\(\langle f-S_k,\varphi_j\rangle=c_j-c_j=0\)，故误差正交于 \(M_k\)。把
+\(f-\sum a_i\varphi_i\) 分成 \(f-S_k\) 与 \(\sum(c_i-a_i)\varphi_i\)
+两个正交部分，展开平方范数即得第一式；对 \(f=(f-S_k)+S_k\)
+同样展开得到第二式。第一式的附加项只有在全部 \(a_i=c_i\) 时为零。证毕。
+
+\textbf{定理 4.2.5（Bessel 不等式）}　每个 \(f\in\mathcal L^2\)
+的系数满足 \[
+\sum_{i=1}^\infty c_i^2\le\|f\|_2^2.
+\] 因为上一式的误差非负，有限系数平方和有共同上界，令 \(k\to\infty\)
+即得。特别地，\(c_i\to0\)。Bessel 只使用正交性，不需要正交系完全。
+
+\Needspace{6\baselineskip}
+\subsection{Riesz--Fischer
+与投影}\label{ch04-s2-rieszfischer-ux4e0eux6295ux5f71}
+
+\textbf{定理 4.2.6（Riesz--Fischer）}　给定规范正交系与任意实数列
+\(\{c_i\}\in\ell^2\)，存在 \(g\in\mathcal L^2(E)\)，使 \[
+S_k=\sum_{i=1}^kc_i\varphi_i\longrightarrow g\quad\text{依 }\mathcal L^2,
+\qquad\langle g,\varphi_i\rangle=c_i,
+\qquad\|g\|_2^2=\sum_i c_i^2.
+\] \textbf{证明：}正交性给出
+\(\|S_l-S_k\|_2^2=\sum_{i=k+1}^lc_i^2\to0\)，故由 \(\mathcal L^2\)
+完备性存在范数极限 \(g\)。对固定 \(i\)，当 \(k\ge i\) 时
+\(\langle S_k,\varphi_i\rangle=c_i\)，内积连续性给出系数结论；范数连续性给出平方和等式。证毕。
+
+这里不能把``存在一个具有这些系数的函数''误写成``这些系数惟一确定整个空间中的函数''。记
+\[
+M=\overline{\operatorname{span}\{\varphi_i:i\ge1\}}.
+\] 上述 \(g\) 属于 \(M\)，且在 \(M\)
+中惟一；整个空间中具有相同系数的元素恰为 \(g+M^\perp\)。若 \(c_i\)
+原本来自给定 \(f\)，则 \(f-g\perp\varphi_i\)，进而由连续性
+\(f-g\perp M\)。所以 Fourier 部分和总是范数收敛到 \(f\) 在 \(M\)
+上的正交投影；只有 \(f\in M\) 时投影才等于 \(f\)。
+
+\textbf{闭子空间投影（补充）}　对 Hilbert 空间 \(H\) 的任意闭线性子空间
+\(M\) 与 \(f\in H\)，存在惟一 \(g\in M\) 满足
+\(f-g\perp M\)。它也是距离的惟一极小元。
+
+\textbf{证明：}令 \(d=\inf_{u\in M}\|f-u\|\)，取 \(u_j\in M\) 使
+\(\|f-u_j\|\to d\)。平行四边形恒等式及 \((u_j+u_k)/2\in M\) 给出 \[
+\|u_j-u_k\|^2
+\le2\|f-u_j\|^2+2\|f-u_k\|^2-4d^2\longrightarrow0.
+\] \(H\) 完备且 \(M\) 闭，故 \(u_j\to g\in M\)，且 \(\|f-g\|=d\)。对任意
+\(v\in M\)，实变量二次函数 \(\|f-g-tv\|^2\) 在 \(t=0\)
+处最小，其一次项必须为零，即 \(\langle f-g,v\rangle=0\)。最后， \[
+\|f-u\|^2=\|f-g\|^2+\|g-u\|^2\quad(u\in M)
+\] 给出极小性与惟一性。证毕。
+
+闭性不能删去：有限线性组合所成的子空间未必闭，具有无穷多个非零系数的元素可以被它任意逼近，却没有其中的最近点。投影记为
+\(P_Mf\)，分解 \(H=M\oplus M^\perp\) 惟一，并有 \(\|P_Mf\|\le\|f\|\)。
+
+\Needspace{6\baselineskip}
+\subsection{完全性与 Parseval}\label{ch04-s2-ux5b8cux5168ux6027ux4e0e-parseval}
+
+\textbf{定义 4.2.4---4.2.5}　若对每个 \(f\) 都有 \[
+\|f\|_2^2=\sum_i\langle f,\varphi_i\rangle^2,
+\] 称规范正交系是\textbf{封闭的}，此式称封闭公式或 Parseval
+等式。若唯一正交于所有 \(\varphi_i\)
+的元素是零元素，称它是\textbf{完全系}。教材的``封闭''是正交系的一种性质，并非把这个离散函数族当作一个闭子集。
+
+\textbf{定理
+4.2.7、4.2.14（四种等价刻画）}　对规范正交系，下列条件等价：它是完全系；有限线性组合在
+\(\mathcal L^2(E)\) 中稠密；对每个 \(f\)，其 Fourier 部分和依
+\(\mathcal L^2\) 收敛到 \(f\)；对每个 \(f\) 成立 Parseval 等式。
+
+\textbf{证明：}完全性使上节的残差 \(f-g\in M^\perp\) 必为零，因此
+\(S_k\to f\)。这立即给出线性组合稠密。反过来，若线性组合稠密，则任意正交于所有基函数的
+\(h\) 也正交于它们的闭线性包，特别地 \(\langle h,h\rangle=0\)。最后，由
+\[
+\|f-S_k\|_2^2=\|f\|_2^2-\sum_{i=1}^kc_i^2
+\] 可见范数收敛到 \(f\) 与对 \(f\) 的 Parseval 等式等价。证毕。
+
+\textbf{定理 4.2.8（推广 Parseval
+等式）}　若规范正交系完全，\(a_i=\langle f,\varphi_i\rangle\)、\(b_i=\langle g,\varphi_i\rangle\)，则
+\[
+\langle f,g\rangle=\sum_{i=1}^\infty a_ib_i.
+\] 令 \(S_kf\to f\)，取与 \(g\) 的内积即得。级数绝对收敛，因为
+\(\sum_i|a_ib_i|\le(\sum_ia_i^2)^{1/2}(\sum_ib_i^2)^{1/2}\)。这比仅形式地相乘两个无穷级数更直接。
+
+\textbf{定理 4.2.9（逐项积分，补全条件）}　若 \(\{\varphi_i\}\)
+为规范正交完全系，\(f\in\mathcal L^2(E)\)，\(A\subset E\) 可测且
+\(m(A)<\infty\)，则 \[
+\int_Af\,dx=\sum_{i=1}^\infty c_i\int_A\varphi_i\,dx.
+\] \textbf{证明：}\(\chi_A\in\mathcal L^2\)，因此 \[
+\left|\int_A(f-S_k)\,dx\right|\le m(A)^{1/2}\|f-S_k\|_2\longrightarrow0.
+\] 或者在推广 Parseval 等式中令
+\(g=\chi_A\)。后者还说明右边数项级数绝对收敛。证毕。
+
+\textbf{教材校注}　第 413 页定理 4.2.9
+的表述只写``规范正交系''，但其证明调用的定理 4.2.8
+要求完全性。正确结论是：要求该系完全，或只对满足 \(f\in M\)
+的函数使用；否则左端应改成投影 \(P_Mf\) 的积分。例如在 \([-\pi,\pi]\)
+只取 \(\sin(kx)/\sqrt\pi\)，令
+\(f=1\)、\(A=E\)，全部系数为零，右边为零，左边却为
+\(2\pi\)。不需要逐点收敛是真的，不需要完全性则不对。
+
+\textbf{定理
+4.2.10（惟一性）}　相对于规范正交完全系，具有相同系数的两个函数几乎处处相等。证明只须对
+\(f-g\) 应用完全性。删除完全性后，上述常函数与零函数就是反例。
+
+\Needspace{6\baselineskip}
+\subsection{三角系的完全性}\label{ch04-s2-ux4e09ux89d2ux7cfbux7684ux5b8cux5168ux6027}
+
+\textbf{定理 4.2.11}　在 \([-\pi,\pi]\) 上， \[
+\frac1{\sqrt{2\pi}},\quad
+\frac{\cos x}{\sqrt\pi},\ \frac{\sin x}{\sqrt\pi},\quad
+\frac{\cos2x}{\sqrt\pi},\ \frac{\sin2x}{\sqrt\pi},\ldots
+\] 构成 \(\mathcal L^2([-\pi,\pi])\) 的规范正交完全系。
+
+\textbf{证明：}利用积化和差及整周期积分，各不同元素内积为零；常函数、正弦、余弦的平方积分分别为
+\(2\pi,\pi,\pi\)，所以给定归一化正确。完全性分为``连续函数可被三角多项式逼近''和``由积分还原原函数''两部分。
+
+先设 \(h\) 为连续的 \(2\pi\) 周期函数。令 \[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2
+=\sum_{|k|<N}\left(1-\frac{|k|}{N}\right)e^{ikt}.
+\] 这是实非负三角多项式，\(\int_{-\pi}^{\pi}K_N=2\pi\)。对
+\(0<\delta\le|t|\le\pi\)，几何级数公式给出
+\(K_N(t)\le1/[N\sin^2(\delta/2)]\)。令 \[
+\sigma_Nh(x)=\frac1{2\pi}\int_{-\pi}^{\pi}h(x-t)K_N(t)\,dt.
+\] 这是关于 \(x\) 的三角多项式。由一致连续性，在 \(|t|<\delta\) 上
+\(|h(x-t)-h(x)|\) 对所有 \(x\) 都小；在其余部分上用 \(2\|h\|_\infty\)
+与刚才的核估计控制，得到 \(\|\sigma_Nh-h\|_\infty\to0\)。因此若 \(h\)
+的全部三角 Fourier 系数为零，则每个 \(\sigma_Nh=0\)，从而
+\(h=0\)。复指数只是有限和的简写，结论与证明仍适用于实函数。
+
+现在设 \(f\in\mathcal L^2([-\pi,\pi])\) 正交于全部三角函数。有限测度保证
+\(f\in\mathcal L^1\)。令 \[
+g(x)=\int_{-\pi}^{x}f(t)\,dt.
+\]
+由\href{https://zj139.github.io/math-notes/notes/c9fc8c834fef752831e9683d/}{§3.8}，\(g\)
+绝对连续且 \(g'=f\) 几乎处处。常数系数为零给出
+\(g(-\pi)=g(\pi)=0\)。绝对连续函数的分部积分进一步给出（\(k\ge1\)） \[
+\int_{-\pi}^{\pi}g(x)\cos kx\,dx=-\frac1k\int_{-\pi}^{\pi}f(x)\sin kx\,dx=0,
+\] \[
+\int_{-\pi}^{\pi}g(x)\sin kx\,dx=\frac1k\int_{-\pi}^{\pi}f(x)\cos kx\,dx=0.
+\] 再减去均值 \(B=(2\pi)^{-1}\int g\)，得到连续且端点匹配的周期函数
+\(G=g-B\)，其全部三角系数为零。由前半段 \(G=0\)，所以 \(g\)
+为常数，\(f=g'=0\) 几乎处处。证毕。
+
+这个证明保留教材``先处理连续函数，再对一般函数取原函数''的核心思想，用非负核的集中性补足连续情形，并避免预先使用待证的
+Fourier 完全性。
+
+教材的规范化系数为 \[
+a_0=\frac1{\sqrt{2\pi}}\int_{-\pi}^{\pi}f,\qquad
+a_k=\frac1{\sqrt\pi}\int_{-\pi}^{\pi}f(x)\cos kx\,dx,\qquad
+b_k=\frac1{\sqrt\pi}\int_{-\pi}^{\pi}f(x)\sin kx\,dx.
+\] 于是 \(\|f\|_2^2=a_0^2+\sum_{k\ge1}(a_k^2+b_k^2)\)。若改用通常系数
+\(A_0=\pi^{-1}\int f\)、\(A_k=\pi^{-1}\int f\cos kx\)、\(B_k=\pi^{-1}\int f\sin kx\)，则
+\[
+\int_{-\pi}^{\pi}|f|^2\,dx
+=\frac\pi2A_0^2+\pi\sum_{k\ge1}(A_k^2+B_k^2).
+\]
+两套系数相差归一化因子，不可混用。这里得出的展开是平方平均收敛；不能由此直接宣称
+Fourier 部分和处处收敛。
+
+\Needspace{6\baselineskip}
+\subsection{正交化与完全系的存在}\label{ch04-s2-ux6b63ux4ea4ux5316ux4e0eux5b8cux5168ux7cfbux7684ux5b58ux5728}
+
+\textbf{定义 4.2.6}　\(\psi_1,\ldots,\psi_k\) 线性无关，是指
+\(\sum_ia_i\psi_i=0\) 几乎处处蕴含全部
+\(a_i=0\)。这是等价类空间中的线性无关，而不是某些点值的线性无关。
+
+\textbf{定理 4.2.12}　规范正交系线性无关。对有限关系
+\(\sum_ia_i\varphi_i=0\) 分别与 \(\varphi_j\) 取内积，就得到 \(a_j=0\)。
+
+\textbf{定理 4.2.13（Gram--Schmidt）}　给定线性无关序列
+\(\{\psi_i\}\subset\mathcal L^2\)，递归定义 \[
+\varphi_1=\psi_1,\qquad
+\varphi_k=\psi_k-\sum_{j=1}^{k-1}
+\frac{\langle\psi_k,\varphi_j\rangle}{\|\varphi_j\|_2^2}\varphi_j.
+\] 则 \(\varphi_k\) 两两正交且非零，规范化后得到规范正交系；每一步的前
+\(k\) 项张成相同线性空间。
+
+\textbf{证明：}归纳假设前 \(k-1\) 项已正交。与任意
+\(\varphi_l\)（\(l<k\)）取内积，和中只有第 \(l\) 项保留，正好抵消
+\(\langle\psi_k,\varphi_l\rangle\)。若 \(\varphi_k=0\)，则 \(\psi_k\)
+在前面元素的线性包中，与无关性矛盾。两组前 \(k\)
+项的过渡矩阵是对角元全为 \(1\) 的下三角矩阵，故可逆，线性包相同。证毕。
+
+\textbf{定理 4.2.15}　\(m(E)=0\) 时
+\(\mathcal L^2(E)=\{0\}\)；\(m(E)>0\) 时它存在规范正交完全系。
+
+\textbf{证明：}由可分性取可数稠密集
+\(\{f_n\}\)，按顺序删去已在此前保留元素线性包内的项，并删去零元素；对保留下来的无关列作
+Gram--Schmidt。每个被删去的 \(f_n\)
+都在已保留的有限线性包内，故新正交系的闭线性包包含原稠密集，等于整个空间，再用定理
+4.2.14 即知完全。
+
+正 Lebesgue 测度还保证空间无限维：可在 \(E\)
+内取任意多个互不相交、正且有限测度的子集，它们的归一化示性函数正交。这样的划分可由有界正测度部分上的坐标截面测度连续性逐次获得。因此上述过程在本章情境中产生无穷序列。证毕。
+
+\Needspace{6\baselineskip}
+\subsection{弱收敛与知识联系}\label{ch04-s2-ux5f31ux6536ux655bux4e0eux77e5ux8bc6ux8054ux7cfb}
+
+称 \(f_k\) 弱收敛于 \(f\)，是指对每个固定
+\(g\in\mathcal L^2\)，\(\langle f_k,g\rangle\to\langle f,g\rangle\)。强收敛蕴含弱收敛，逆命题不成立：任意无穷规范正交序列
+\(\varphi_k\) 都弱趋于零，因为 Bessel 不等式使
+\(\langle g,\varphi_k\rangle\to0\)；它的范数却恒为 \(1\)。
+
+教材例 4.2.3 中的 \(\sin(kx)/\sqrt\pi\) 在 \([-\pi,\pi]\)
+上弱趋于零，却不依测度趋于零：集合 \(\{|\sin(kx)|>1/2\}\) 的测度恒为
+\(4\pi/3\)。因定义域有限，这也排除了几乎处处趋于零。弱收敛是在每个固定测试函数下积分收敛，不是在每个点收敛。
+
+在 Hilbert 空间中，若还知道
+\(\|f_k\|_2\to\|f\|_2\)，则弱收敛升级为强收敛，因为 \[
+\|f_k-f\|_2^2=\|f_k\|_2^2+\|f\|_2^2-2\langle f_k,f\rangle\longrightarrow0.
+\] 复习题 27 提示推广到 \(\mathcal L^p\)，须注意端点 \(p=1\)
+的失败，见\href{https://zj139.github.io/math-notes/notes/e1dec84d3fc9dd592c25bd52/\#原题校注}{习题页校注}。例如在
+\([0,2\pi]\) 上取 \(f_k=1+\sin kx\)、\(f=1\)。对每个
+\(g\in\mathcal L^\infty\)，由有限测度有 \(g\in\mathcal L^2\)，Bessel
+不等式给出 \(\int g\sin kx\to0\)，所以 \(f_k\) 在 \(\mathcal L^1\)
+中弱趋于 \(f\)；二者的 \(1\) 范数都等于 \(2\pi\)，但 \(\|f_k-f\|_1=4\)。
+
+\textbf{卷积条件的反例}　复习题 33 也不能从范数收敛直接跳到逐点收敛。令
+\(g(y)=y^{-3/4}\chi_{(0,1)}(y)\in\mathcal L^1(\mathbb R)\)，\(f_k(t)=k^{1/4}\chi_{(-1/k,0)}(t)\)，\(f=0\)。则
+\(\|f_k\|_2=k^{-1/4}\to0\)，但 \[
+(f_k*g)(0)=k^{1/4}\int_0^{1/k}y^{-3/4}\,dy=4.
+\] 若改为 \(g\in\mathcal L^2\)，Cauchy--Schwarz 才给出对所有 \(x\)
+一致的估计 \(|((f_k-f)*g)(x)|\le\|f_k-f\|_2\|g\|_2\)。若仍只有
+\(g\in\mathcal L^1\)，正确结论是 Young 不等式给出的
+\(\|(f_k-f)*g\|_2\le\|f_k-f\|_2\|g\|_1\to0\)。
+
+本章把全书的四层结构连在一起：集合与可数运算用于统一例外零测集；测度与简单函数逼近提供空间元素；积分收敛定理保证完备性；内积再把最佳逼近转化为正交分解。证明链的关键是：先用有限维正交分解得到误差恒等式，再用
+Bessel
+控制系数尾和，再用空间完备性取得投影极限，最后用正交系完全性消去残差。不能把其中任何一种``完全''当成另一种的替代。
+
+\clearpage\section*{第四章习题与复习题}\phantomsection\addcontentsline{toc}{section}{第四章习题与复习题}
+\label{ch04-practice}
+\noindent\textbf{练习题 4.1}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.1]{1}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.2]{2}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.3]{3}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.4]{4}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.5]{5}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.6]{6}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.7]{7}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.8]{8}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.9]{9}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.10]{10}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.11]{11}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.12]{12}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.13]{13}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.14]{14}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.15]{15}\quad \hyperref[ch04-practice-ux95eeux9898-4.1.16]{16}
+\par\medskip
+\noindent\textbf{练习题 4.2}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.1]{1}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.2]{2}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.3]{3}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.4]{4}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.5]{5}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.6]{6}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.7]{7}\quad \hyperref[ch04-practice-ux95eeux9898-4.2.8]{8}
+\par\medskip
+\noindent\textbf{复习题 4}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.1]{1}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.2]{2}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.3]{3}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.4]{4}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.5]{5}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.6]{6}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.7]{7}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.8]{8}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.9]{9}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.10]{10}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.11]{11}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.12]{12}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.13]{13}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.14]{14}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.15]{15}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.16]{16}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.17]{17}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.18]{18}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.19]{19}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.20]{20}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.21]{21}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.22]{22}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.23]{23}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.24]{24}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.25]{25}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.26]{26}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.27]{27}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.28]{28}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.29]{29}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.30]{30}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.31]{31}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.32]{32}\quad \hyperref[ch04-practice-ux95eeux9898-ux590dux4e60-4.33]{33}
+\par\medskip
+
+本页按教材第 401---403、418---423 页录入。共 16 道练习题 4.1、8 道练习题
+4.2、33 道复习题
+4，保留原编号及全部小问，不附解答。原书用带点等号、带点不等号表示关于
+\(m\) 几乎处处成立，下文统一写为``几乎处处''；积分记号中无 \((L)\)
+者也按本章约定为 Lebesgue 积分。
+
+\Needspace{6\baselineskip}
+\subsection{练习题 4.1}\label{ch04-practice-ux7ec3ux4e60ux9898-4.1}
+
+教材第 401---403 页
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.1}\label{ch04-practice-ux95eeux9898-4.1.1}
+
+设 \(R_1,R_2,\ldots,R_n,\ldots\)
+为一列模空间，\(x=(x_1,x_2,\ldots,x_n,\ldots)\)，其中
+\(x_n\in R_n\)，\(n=1,2,\ldots\)，而
+\(\sum_{n=1}^\infty\|x_n\|^p<+\infty\)。这种元素的全体记作
+\(R\)。定义加法与数乘： \[
+\begin{aligned}
+x+y&=(x_1+y_1,x_2+y_2,\ldots,x_n+y_n,\ldots),\\
+\lambda x&=(\lambda x_1,\lambda x_2,\ldots,\lambda x_n,\ldots),\qquad\lambda\in\mathbb R.
+\end{aligned}
+\] 证明：\((R,+,\text{数乘})\) 为一个线性空间。如果定义模 \[
+\|x\|=\left(\sum_{n=1}^\infty\|x_n\|^p\right)^{1/p},\qquad1\le p<+\infty,
+\] 则 \((R,\|\cdot\|)\) 为一个模空间。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.2}\label{ch04-practice-ux95eeux9898-4.1.2}
+
+设
+\(\ell^p=\{x=(x_1,x_2,\ldots,x_n,\ldots):x_n\in\mathbb R,\ n=1,2,\ldots,\ \sum_{n=1}^\infty|x_n|^p<+\infty,\ 1\le p<+\infty\}\)。定义加法、数乘为逐坐标加法、逐坐标数乘，即
+\[
+x+y=(x_1+y_1,x_2+y_2,\ldots),\qquad\lambda x=(\lambda x_1,\lambda x_2,\ldots),\quad\lambda\in\mathbb R.
+\] 证明：
+
+（1）\((\ell^p,+,\text{数乘})\) 为一个线性空间。
+
+（2）设
+\(\|\cdot\|_p:\ell^p\to\mathbb R\)，\(x\mapsto\|x\|_p=(\sum_{n=1}^\infty|x_n|^p)^{1/p}\)，则
+\((\ell^p,\|\cdot\|_p)\) 为模空间。
+
+（3）设 \(d:\ell^p\times\ell^p\to\mathbb R\)， \[
+d(x,y)=\|x-y\|_p=\left(\sum_{n=1}^\infty|x_n-y_n|^p\right)^{1/p},
+\] 则 \((\ell^p,d)\) 为完备度量空间。因此 \((\ell^p,\|\cdot\|_p)\) 为
+Banach 空间。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.3}\label{ch04-practice-ux95eeux9898-4.1.3}
+
+证明：当 \(m(E)<+\infty\)，\(p'>p\)
+时，\(\mathcal L^{p'}(E)\subset\mathcal L^p(E)\)。并就 \(E=(0,1)\)
+举例说明 \(\mathcal L^{p'}(E)\ne\mathcal L^p(E)\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.4}\label{ch04-practice-ux95eeux9898-4.1.4}
+
+就 \(E=\mathbb R^1\) 举例说明：当 \(m(E)=+\infty\)
+时，\(\mathcal L^p(E)\) 与 \(\mathcal L^{p'}(E)\) 互不包含，此处
+\(p'>p\ge1\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.5}\label{ch04-practice-ux95eeux9898-4.1.5}
+
+设
+\(1\le p<r<p'\)，\(f\in\mathcal L^p(E)\cap\mathcal L^{p'}(E)\)。证明：\(f\in\mathcal L^r(E)\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.6}\label{ch04-practice-ux95eeux9898-4.1.6}
+
+设
+\(1\le p<+\infty\)，\(g\in\mathcal L^p(E)\)，\(f_n\in\mathcal L^p(E)\)，\(|f_n(x)|\le g(x)\)，\(n=1,2,3,\ldots\)。在
+\(E\) 上，\(\lim_{n\to\infty}f_n(x)=f(x)\)
+几乎处处成立。证明：\((\mathcal L^p)\lim_{n\to\infty}f_n=f\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.7}\label{ch04-practice-ux95eeux9898-4.1.7}
+
+设 \(f\in\mathcal L^2([0,1])\)。令 \[
+g(x)=\int_0^1\frac{f(t)}{|x-t|^{1/2}}\,dt,\qquad0<x<1.
+\] 证明： \[
+\left[\int_0^1g^2(x)\,dx\right]^{1/2}\le2\sqrt2\left[\int_0^1f^2(x)\,dx\right]^{1/2}.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.8}\label{ch04-practice-ux95eeux9898-4.1.8}
+
+设 \(f(x)\) 为 \([a,b]\) 上正值 Lebesgue 可测函数。证明： \[
+\left(\frac1{b-a}\int_a^bf(x)\,dx\right)
+\left(\frac1{b-a}\int_a^b\frac{dx}{f(x)}\right)\ge1.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.9}\label{ch04-practice-ux95eeux9898-4.1.9}
+
+设 \(f\in\mathcal L^\infty(E)\)，\(w(x)>0\) 且
+\(\int_Ew(x)\,dx=1\)。证明： \[
+\lim_{p\to+\infty}\left[\int_E|f(x)|^pw(x)\,dx\right]^{1/p}=\|f\|_\infty.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.10}\label{ch04-practice-ux95eeux9898-4.1.10}
+
+设 \(f\in\mathcal L^\infty(E)\)，\(m(E)<+\infty\)，且
+\(\|f\|_\infty>0\)。证明： \[
+\lim_{n\to+\infty}\frac{\|f\|_{n+1}^{n+1}}{\|f\|_n^n}=\|f\|_\infty.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.11}\label{ch04-practice-ux95eeux9898-4.1.11}
+
+设 \(f\in\mathcal L^2((0,\pi))\)。证明： \[
+\text{(1)}\ \int_0^\pi[f(x)-\sin x]^2\,dx\le\frac49;\qquad
+\text{(2)}\ \int_0^\pi[f(x)-\cos x]^2\,dx\le\frac19
+\] 两式不相容。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.12}\label{ch04-practice-ux95eeux9898-4.1.12}
+
+设 \(0<p,q<+\infty\)。证明： \[
+\mathcal L^p(E)\cdot\mathcal L^q(E)=\mathcal L^{pq/(p+q)}(E),
+\] 其中
+\(\mathcal L^p(E)\cdot\mathcal L^q(E)=\{f\cdot g:f\in\mathcal L^p(E),\ g\in\mathcal L^q(E)\}\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.13}\label{ch04-practice-ux95eeux9898-4.1.13}
+
+设 \(f(x),g(x)\) 为 \(E\)
+上非负可测函数，\(1\le p<+\infty\)，\(1\le q<+\infty\)，\(1\le r<+\infty\)，\(1/r=1/p+1/q-1\)。证明：
+\[
+\int_Ef(x)g(x)\,dx\le
+\|f\|_p^{1-p/r}\|g\|_q^{1-q/r}
+\left(\int_Ef^p(x)g^q(x)\,dx\right)^{1/r}.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.14}\label{ch04-practice-ux95eeux9898-4.1.14}
+
+设
+\(f\in\mathcal L^p(\mathbb R^n)\)，\(g\in\mathcal L^q(\mathbb R^n)\)，\(1\le p,q<+\infty\)，\(1/p+1/q>1\)。令
+\(h(x)=\int_{\mathbb R^n}f(t)g(x-t)\,dt\)。证明： \[
+\|h\|_r\le\|f\|_p\|g\|_q,\qquad\frac1r=\frac1p+\frac1q-1.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.15}\label{ch04-practice-ux95eeux9898-4.1.15}
+
+设 \(0<p_0<q_0<+\infty\)。若
+\(\mathcal L^{p_0}(E)\subset\mathcal L^{q_0}(E)\)，证明：对
+\(0<p<q\)，有 \(\mathcal L^p(E)\subset\mathcal L^q(E)\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.1.16}\label{ch04-practice-ux95eeux9898-4.1.16}
+
+设 \(0<m(E)<+\infty\)。令 \[
+N_p(f)=\left[\frac1{m(E)}\int_E|f(x)|^p\,dx\right]^{1/p},\qquad1\le p<+\infty.
+\] 证明：当 \(p_1<p_2\) 时，有 \(N_{p_1}(f)\le N_{p_2}(f)\)。
+
+\Needspace{6\baselineskip}
+\subsection{练习题 4.2}\label{ch04-practice-ux7ec3ux4e60ux9898-4.2}
+
+教材第 418 页
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.1}\label{ch04-practice-ux95eeux9898-4.2.1}
+
+在 \(\mathcal L^2([-\pi,\pi])\) 中，证明： \[
+\left\{\frac{\cos x}{\sqrt\pi},\frac{\sin x}{\sqrt\pi},\ldots,
+\frac{\cos kx}{\sqrt\pi},\frac{\sin kx}{\sqrt\pi},\ldots\right\}
+\] 不是完全系。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.2}\label{ch04-practice-ux95eeux9898-4.2.2}
+
+证明：如果 \(\{\varphi_i\}_{i=1}^n\) 为 \(\mathcal L^2(E)\)
+中的规范正交系，则由 \(\{\varphi_i\}_{i=1}^n\) 张成的线性子空间
+\(\mathcal L(\{\varphi_i\}_{i=1}^n)\) 为 \(\mathcal L^2(E)\) 中的一个
+\(n\) 维闭线性子空间。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.3}\label{ch04-practice-ux95eeux9898-4.2.3}
+
+设 \(\{\psi_i\}_{i=1}^m\subset\mathcal L^2(E)\)，则由
+\(\{\psi_i\}_{i=1}^m\) 张成的线性子空间
+\(\mathcal L(\{\psi_i\}_{i=1}^m)\) 为 \(\mathcal L^2(E)\) 中的一个
+\(n\)（\(n\le m\)）维闭线性子空间。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.4}\label{ch04-practice-ux95eeux9898-4.2.4}
+
+证明：在 \(\mathcal L^2(E)\) 中，规范正交完全系就是最大的规范正交系。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.5}\label{ch04-practice-ux95eeux9898-4.2.5}
+
+在练习题 4.1 题 2 中，令 \[
+\langle\cdot,\cdot\rangle:\ell^2\times\ell^2\to\mathbb R,\qquad
+(x,y)\mapsto\langle x,y\rangle=\sum_{i=1}^\infty x_iy_i.
+\] 证明：\((\ell^2,\langle\cdot,\cdot\rangle)\) 为 Hilbert
+空间。并写出诱导的 \(x\) 的模 \(\|x\|\)、诱导的 \(x\) 与 \(y\) 间的距离
+\(d(x,y)\)、相应的 Cauchy--Schwarz 不等式。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.6}\label{ch04-practice-ux95eeux9898-4.2.6}
+
+\(\ell^2\) 中任何线性基（它的任何有限个元素都线性无关，且 \(\ell^2\)
+中任一元素可惟一表示为该线性基中有限个元素的线性组合）是不可数的。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.7}\label{ch04-practice-ux95eeux9898-4.2.7}
+
+证明：Chebyshev--Hermite 函数列 \[
+\varphi_k(x)=(-1)^k e^{x^2/2}\frac{d^k}{dx^k}e^{-x^2},\qquad k=1,2,3,\ldots,
+\] 为 \(\mathcal L^2(\mathbb R^1)\) 中的正交系，但不是规范的。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 4.2.8}\label{ch04-practice-ux95eeux9898-4.2.8}
+
+证明：Legendre 多项式函数列 \[
+P_n(x)=\frac1{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n,\qquad n=0,1,2,\ldots,
+\] 为 \(\mathcal L^2([-1,1])\) 中的正交系，但不是规范的。
+
+\Needspace{6\baselineskip}
+\subsection{复习题 4}\label{ch04-practice-ux590dux4e60ux9898-4}
+
+教材第 418---423 页
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.1}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.1}
+
+设 \(\{f_n(x)\}\) 为 \((0,+\infty)\) 上可导函数列，且有 \[
+\int_0^{+\infty}|f_n'(x)|^2\,dx\le M,\qquad
+|f_n(x)|\le\frac1x,\quad x\in(0,+\infty),\ n=1,2,\ldots.
+\] 证明：\(\{f_n(x)\}\) 是一致有界的，且对
+\(\forall\varepsilon>0\)，\(\exists\delta>0\)，当 \(|x-y|<\delta\)
+时，有 \[
+|f_n(x)-f_n(y)|<\varepsilon,\qquad x,y\in(0,+\infty),\ n=1,2,\ldots.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.2}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.2}
+
+设 \(1\le q<p\)，\(m(E)<+\infty\)，\(f\in\mathcal L^p(E)\) 且
+\(f_k\in\mathcal L^p(E)\)（\(k=1,2,\ldots\)）。如果
+\(\lim_{k\to+\infty}\|f_k-f\|_p=0\)，证明：\(\lim_{k\to+\infty}\|f_k-f\|_q=0\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.3}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.3}
+
+设
+\(f\in\mathcal L^p([a,b])\)，\(f_k\in\mathcal L^p([a,b])\)（\(k=1,2,\ldots\)），\(1\le p<+\infty\)，且有
+\(\|f_k-f\|_p\to0\)（\(k\to+\infty\)）。证明： \[
+\lim_{k\to+\infty}\int_a^t f_k(x)\,dx=\int_a^t f(x)\,dx,\qquad a\le t\le b.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.4}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.4}
+
+设 \(f_k(x)\to f(x)\)（\(k\to+\infty\)），\(x\in[a,b]\)，且有 \[
+(L)\int_a^b|f_k(x)|^r\,dx\le M,\qquad k=1,2,\ldots,\quad0<r<+\infty.
+\] 证明： \[
+\lim_{k\to+\infty}(L)\int_a^b|f_k(x)-f(x)|^p\,dx=0,\qquad0<p<r.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.5}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.5}
+
+设
+\(1\le p<+\infty\)，\(f\in\mathcal L^p(E)\)，\(f_k\in\mathcal L^p(E)\)（\(k=1,2,\ldots\)），且有
+\(\lim_{k\to+\infty}f_k(x)=f(x)\) 在 \(E\)
+上几乎处处成立，\(\lim_{k\to+\infty}\|f_k\|_p=\|f\|_p\)。证明：\(\lim_{k\to+\infty}\|f_k-f\|_p=0\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.6}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.6}
+
+设 \(1<p<+\infty\)，\(f_k\in\mathcal L^p(E)\)（\(k=1,2,\ldots\)），且有
+\[
+\lim_{k\to+\infty}f_k(x)=f(x),\qquad\sup_{1\le k<+\infty}\|f_k\|_p\le M.
+\] 证明：\(\{f_k\}\) 弱收敛于 \(f\)，即对
+\(\forall g\in\mathcal L^{p'}(E)\)（\(p'\) 为 \(p\) 的共轭指标），有 \[
+\lim_{k\to+\infty}\int_Ef_k(x)g(x)\,dx=\int_Ef(x)g(x)\,dx.
+\] 此时，简记为 \(f_k\overset{\mathrm{weakly}}{\longrightarrow}f\) 或
+\(f_k\overset w\longrightarrow f\)（\(k\to+\infty\)）。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.7}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.7}
+
+设 \(g\) 为 \(E\) 上的可测函数，若对 \(\forall f\in\mathcal L^2(E)\)，有
+\(\|g\cdot f\|_2\le M\|f\|_2\)。证明：\(|g(x)|\le M\) 在 \(E\)
+上几乎处处成立。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.8}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.8}
+
+设 \(f\in\mathcal L^p(\mathbb R^n)\)，\(p>1\)，而且对任意有紧支集的
+\(\varphi\in C^0(\mathbb R^n)\)，有
+\(\int_{\mathbb R^n}f(x)\varphi(x)\,dx=0\)。证明：\(f(x)=0\) 在
+\(\mathbb R^n\) 上几乎处处成立。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.9}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.9}
+
+试说明在 Riemann 积分意义下平方可积的函数类不是完备空间。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.10}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.10}
+
+设 \(m(E)=1\)，且 \(\exists r>0\)，使 \(f\in\mathcal L^r(E)\)。证明： \[
+\lim_{p\to0^+}\|f\|_p
+=\exp\left(\int_E\ln|f|\,dm\right)
+=e^{\int_E\ln|f|\,dm}.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.11}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.11}
+
+设 \(m(E)>0\)。
+
+（1）若 \(f\in\mathcal L^p(E)\)，\(1\le p<+\infty\)，则
+\(\exists g\in\mathcal L^{p'}(E)\)（\(p'\) 为 \(p\) 的共轭指标），且
+\(\|g\|_{p'}=1\)，使 \[
+\|f\|_p=\int_Ef(x)g(x)\,dx.
+\]
+
+（2）若 \(f\in\mathcal L^\infty(E)\)，则有 \[
+\|f\|_\infty=\sup_{\|g\|_1=1}\left\{\left|\int_Ef(x)g(x)\,dx\right|\right\}.
+\]
+
+（3）举例说明，对 \(f\in C^\infty(E)\)，不一定存在
+\(g\in\mathcal L^1(E)\)，且 \(\|g\|_1=1\)，使 \[
+\|f\|_\infty=\int_Ef(x)g(x)\,dx,\qquad
+\|f\|_\infty=\left|\int_Ef(x)g(x)\,dx\right|.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.12}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.12}
+
+设 \(f(x)\) 为 \(E\) 上的可测函数。若对
+\(\forall g\in\mathcal L^p(E)\)（\(1\le p\le+\infty\)），必有
+\(f\cdot g\in\mathcal L(E)\)。证明：\(f\in\mathcal L^{p'}(E)\)（\(p'\)
+为 \(p\) 的共轭指标）。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.13}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.13}
+
+设 \(f\in\mathcal L^p(\mathbb R^n)\)（\(1\le p<+\infty\)）。令
+\(f_*(\lambda)=m(\{x:|f(x)|>\lambda\})\)，\(\lambda>0\)。证明： \[
+\lim_{\lambda\to+\infty}\lambda^pf_*(\lambda)=0,\qquad
+\lim_{\lambda\to0^+}\lambda^pf_*(\lambda)=0.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.14}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.14}
+
+设 \(\{\varphi_k\}\) 为 \(\mathcal L^2(\mathbb R^n)\) 中的规范正交系。令
+\[
+E=\{x:\lim_{k\to+\infty}\varphi_k(x)\text{ 存在}\},\qquad
+f(x)=\begin{cases}\lim_{k\to+\infty}\varphi_k(x),&x\in E,\\0,&x\notin E.\end{cases}
+\] 证明：\(f(x)=0\) 在 \(\mathbb R^n\) 上几乎处处成立。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.15}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.15}
+
+设 \(f_k\in\mathcal L^p(E)\)，\(k=1,2,\ldots\)，\(1\le p<+\infty\)，且有
+\(\sum_{k=1}^\infty\|f_k\|_p<+\infty\)。证明：\(\sum_{k=1}^\infty|f_k(x)|<+\infty\)
+在 \(E\) 上几乎处处成立。若记 \(f(x)=\sum_{k=1}^\infty f_k(x)\)，则有 \[
+\|f\|_p\le\sum_{k=1}^\infty\|f_k\|_p,\qquad
+\lim_{N\to+\infty}\left\|\sum_{k=1}^Nf_k-f\right\|_p=0.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.16}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.16}
+
+设
+\(f_k\in\mathcal L^1(E)\cap\mathcal L^\infty(E)\)，\(f\in\mathcal L^1(E)\)。若有
+\(\lim_{k\to+\infty}\|f_k-f\|_1=0\)，\(\sup_k\|f_k\|_\infty<+\infty\)。证明：对
+\(1<p<+\infty\)，有 \[
+f\in\mathcal L^p(E)\cap\mathcal L^\infty(E),\qquad
+\lim_{k\to+\infty}\|f_k-f\|_p=0.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.17}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.17}
+
+设 \(\{f_n(x)\}\) 为 \(\mathcal L^2([0,1])\) 中的绝对连续函数列，且
+\(f_n'\in\mathcal L^2([0,1])\)。又 \(f,g\in\mathcal L^2([0,1])\)，满足
+\[
+\lim_{n\to+\infty}\|f_n-f\|_2=0,\qquad
+\lim_{n\to+\infty}\|f_n'-g\|_2=0.
+\] 证明：\(f(x)\) 在 \([0,1]\) 上关于 Lebesgue
+测度几乎处处等于一个绝对连续函数。如果 \(f\) 在 \([0,1]\)
+上几乎处处可导，则 \(f'(x)=g(x)\) 在 \([0,1]\) 上几乎处处成立。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.18}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.18}
+
+设 \(\{\varphi_i(x)\}\) 为 \(\mathcal L^2(A)\) 上规范正交的完全系，而
+\(\{\psi_k(y)\}\) 为 \(\mathcal L^2(B)\)
+上规范正交的完全系。证明：\(f_{i,k}(x,y)=\{\varphi_i(x)\cdot\psi_k(y)\}\)
+为空间 \(\mathcal L^2(A\times B)\) 上的规范正交完全系。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.19}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.19}
+
+设 \(\{\varphi_n\}\) 为 \(\mathcal L^2([a,b])\)
+上的规范正交完全系。证明：对于 \([a,b]\) 中任一正测子集 \(E\)，有 \[
+\sum_{n=1}^\infty\int_E\varphi_n^2(x)\,dx\ge1.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.20}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.20}
+
+设 \(\{\varphi_n\}\) 为 \(\mathcal L^2([a,b])\) 中的规范正交完全系。若
+\(\{\psi_n\}\) 为 \(\mathcal L^2([a,b])\) 中满足 \[
+\sum_{n=1}^\infty\int_a^b[\varphi_n(x)-\psi_n(x)]^2\,dx<1
+\] 的正交系。证明：\(\{\psi_n\}\) 为 \(\mathcal L^2([a,b])\)
+中的完全系。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.21}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.21}
+
+证明：\(\{\sin kx\}\) 为 \(\mathcal L^2([0,\pi])\) 中的正交完全系。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.22}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.22}
+
+设 \(\{\varphi_k\}\) 为 \(\mathcal L^2([a,b])\)
+中的规范正交完全系，\(|\varphi_k(x)|\le M\)，\(k=1,2,\ldots\)。若有数列
+\(\{a_k\}\)，使级数 \(\sum_{k=1}^\infty a_k\varphi_k(x)\) 在 \([a,b]\)
+上关于 Lebesgue 测度几乎处处收敛。证明：\(\lim_{k\to+\infty}a_k=0\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.23}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.23}
+
+设 \(\{\varphi_k\}\) 为 \(\mathcal L^2([a,b])\) 中的规范正交完全系。令
+\[
+f\in\mathcal L^2([a,b]),\qquad c_k=\langle f,\varphi_k\rangle,\qquad
+f(x)\sim\sum_{k=1}^\infty c_k\varphi_k(x).
+\] 根据定理 4.2.7 和内积的连续性定理 4.2.2（则为定理 4.2.9 的证法
+2），对 \([a,b]\) 中的任何可测子集 \(E\)，证明： \[
+\int_Ef(x)\,dx=\sum_{k=1}^\infty c_k\int_E\varphi_k(x)\,dx,
+\] 即 \(f(x)\) 的广义 Fourier 级数可以逐项积分。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.24}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.24}
+
+设
+\(X=\{f\in C^\infty([0,1]):f(0)=0,\ \int_0^1f(x)/x\,dx=0\}\)。证明：\(X\)
+在 \(\mathcal L^2([0,1])\) 中稠密。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.25}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.25}
+
+设 \(K(x,y)\) 为 \(\mathbb R^n\times\mathbb R^n\) 上的可测函数，且存在
+\(M\)，使 \[
+\int_{\mathbb R^n}|K(x,y)|\,dy\le M\quad\text{对几乎处处的 }x\in\mathbb R^n,
+\] \[
+\int_{\mathbb R^n}|K(x,y)|\,dx\le M\quad\text{对几乎处处的 }y\in\mathbb R^n.
+\] \(f\in\mathcal L^p(\mathbb R^n)\)，\(1<p<+\infty\)。令
+\(Tf(x)=\int_{\mathbb R^n}K(x,y)f(y)\,dy\)。证明：\(\|Tf\|_p\le M\|f\|_p\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.26}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.26}
+
+在 \(\mathcal L^2(E)\) 中弱收敛于 \(f(x)\) 的函数列 \(\{f_n(x)\}\)
+未必是度量收敛的。考察 \(\mathcal L^2([-\pi,\pi])\)
+中的规范正交系组成的函数列： \[
+\left\{\frac1{\sqrt{2\pi}},\frac{\cos x}{\sqrt\pi},\frac{\sin x}{\sqrt\pi},\ldots,
+\frac{\cos nx}{\sqrt\pi},\frac{\sin nx}{\sqrt\pi},\ldots\right\}.
+\]
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.27}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.27}
+
+设 \(\{f_n(x)\}\) 在 \(\mathcal L^2([a,b])\) 中弱收敛于 \(f(x)\)，且
+\(\|f_n\|\to\|f\|\)（\(n\to\infty\)）。证明：\(\{f_n(x)\}\) 平均收敛于
+\(f(x)\)。
+
+将此结论推广到 \(\mathcal L^p([a,b])\)（\(p\ge1\)）空间上。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.28}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.28}
+
+证明：有限函数系在 \(\mathcal L^2\) 中不可能是完全的。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.29}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.29}
+
+（B. 奥尔里奇）设 \(\{w_k(x)\}\) 为 \([a,b]\) 上封闭的规范正交系。证明：
+
+（1）在 \([a,b]\) 上，\(\sum_{k=1}^\infty w_k^2(x)=+\infty\)
+几乎处处成立。
+
+（2）对于任何 Lebesgue 可测集 \(e\)，其测度 \(m(e)>0\)，有
+\(\sum_{k=1}^\infty\int_e w_k^2(x)\,dx=+\infty\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.30}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.30}
+
+（I. P. 那汤松）设
+\(f(x)\in\mathcal L^2([-\pi,\pi])\)，\(f(x+2\pi)=f(x)\)。令 \[
+g_n(x)=\int_{1/n}^\pi\frac{f(x+t)-f(x-t)}{t}\,dt.
+\] 则函数列 \(\{g_n(x)\}\) 在 \(\mathcal L^2([-\pi,\pi])\) 中平均收敛于
+\(g\in\mathcal L^2([-\pi,\pi])\)，且 \[
+\|g\|_2\le\|f\|_2\int_{-\pi}^{\pi}\frac{\sin t}{t}\,dt,
+\] 其中乘数 \(\int_{-\pi}^{\pi}(\sin t)/t\,dt\) 不能再减小。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.31}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.31}
+
+（A. N. 柯尔莫戈洛夫）设 \(f\in\mathcal L^2([a,b])\)，在 \([a,b]\) 外
+\(f(x)=0\)。令 \[
+f_h(x)=\frac1{2h}\int_{x-h}^{x+h}f(t)\,dt.
+\] 证明：（1）\(\|f_h\|_2\le\|f\|_2\)。
+
+（2）\(\lim_{h\to0^+}\|f_h-f\|_2=0\)，即当 \(h\to0^+\) 时，\(f_h\) 在
+\(\mathcal L^2([a,b])\) 中平均收敛于 \(f\)。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.32}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.32}
+
+设 \(-\infty\le a\le b\le+\infty\)，\(f(x)\) 为 \((a,b)\) 上关于
+Lebesgue 测度几乎处处不为零的可测函数，且满足 \[
+|f(x)|\le ce^{-\delta|x|},\qquad\delta>0,\quad x\in(a,b).
+\] 证明：若有 \(g\in\mathcal L^2((a,b))\)，使得 \[
+\int_a^bx^nf(x)g(x)\,dx=0,\qquad n=0,1,\ldots,
+\] 则 \(g(x)=0\) 在 \((a,b)\) 上几乎处处成立。
+
+\Needspace{5\baselineskip}
+\subsubsection{问题 复习 4.33}\label{ch04-practice-ux95eeux9898-ux590dux4e60-4.33}
+
+设 \(g\in\mathcal L(\mathbb R^1)\)，且
+\(\lim_{k\to+\infty}\|f_k-f\|_2=0\)。证明： \[
+\lim_{k\to+\infty}\int_{-\infty}^{+\infty}f_k(x-y)g(y)\,dy
+=\int_{-\infty}^{+\infty}f(x-y)g(y)\,dy.
+\]
+
+\Needspace{6\baselineskip}
+\subsection{原题校注}\label{ch04-practice-ux539fux9898ux6821ux6ce8}
+
+以下是原题适用条件的说明，不是习题解答。凡需调整处，上方仍保留原题表述。
+
+\begin{itemize}
+\tightlist
+\item
+  练习 4.1.7、4.1.14 与复习 4.25
+  中的积分定义通常先在几乎处处有意义，再作为等价类使用；不应要求任意代表元在每个点都绝对可积。
+\item
+  练习 4.1.15 在本章 Lebesgue 测度下，正测度的 \(E\)
+  不满足其包含假设；作为条件命题理解，或在更一般的测度空间讨论其含义。\(p,q\)
+  在该题仍指有限正指数。
+\item
+  复习 4.10 按扩充积分解释 \(\int\ln|f|\)，允许值为 \(-\infty\)，并约定
+  \(e^{-\infty}=0\)；正部可积由 \(f\in\mathcal L^r\) 保证。
+\item
+  复习 4.11（3）的 \(C^\infty(E)\)
+  按原书录入；举例时可取有界开区间上的光滑有界函数。两条等式分别表达达到积分与绝对积分的上确界。
+\item
+  复习 4.23 明确要求完全系，与本章讲义对定理 4.2.9
+  的条件校注一致。原书第 413 页``证法 2''指向``复习题
+  25''，实际对应这里的复习题 23。
+\item
+  复习 4.27 的推广须改为 \(1<p<\infty\)；\(p=1\)
+  时弱收敛加范数收敛不足以推出强收敛。
+\item
+  复习 4.28 隐含 \(m(E)>0\) 的 Lebesgue
+  空间情形。零测度空间是零空间，一般有限原子测度空间也可以有有限完全系。
+\item
+  复习 4.29（2）的可测集 \(e\) 应为 \([a,b]\) 的子集。
+\item
+  复习 4.33 的原书条件仅为 \(g\in\mathcal L^1(\mathbb R)\)。这保证卷积在
+  \(\mathcal L^2\) 范数下收敛，不能保证题面逐点极限。若把条件改成
+  \(g\in\mathcal L^2(\mathbb R)\)，则该极限对每个 \(x\) 成立，且关于
+  \(x\) 一致。两个条件不可混为一谈。
+\end{itemize}
+
+\end{document}
