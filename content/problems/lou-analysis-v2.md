@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "下册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v2.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-15"
+updated_at: "2026-11-18"
 ---
 
 收录《数学分析》下册第 8—12 章：积分、函数列与函数项级数、反常积分与含参变量积分、曲线积分与曲面积分、Fourier 级数。
@@ -40,6 +40,8 @@ updated_at: "2026-11-15"
 
 - [第三十六批 B247—B253：9.4.B 第 11—13 题与 9.5.B 第 1—4 题](/problems/618570a832067bb616fcf965/)。收录矩阵函数定义域、有限端点振荡解、等度连续函数列与两类变分方程。[B247 正定对数反例与判别](/problems/618570a832067bb616fcf965/#问题-b247)单列待核，其余六题完成。
 
-下册当前 **74 道已作答、2 道暂跳过**，两册合计 **249 道已作答、4 道暂跳过**。上册 B116、B148 及下册 B180、B247 待核。第八章 41 道已作答。第九章 33 道已作答、1 道暂跳过，已收录 9.1.B 第 1—8 题、9.2.B 第 1—2 题、9.3.B 第 1—7 题、9.4.B 第 1—13 题及 9.5.B 第 1—4 题。下一题为 **B254＝9.5.B 第 5 题**，见[原题 PDF 第 25 页（印刷第 23 页）](/files/problems/楼分析习题-v2.pdf#page=25)。
+- [第三十七批 B254—B260：9.5.B 第 5 题与 10.1.B 第 1—6 题](/problems/5ff5a4cc0558cb29daadc77e/)。七题完整解答；包括全实轴解的临界初值、等距和的奇点控制、反常重积分的截断无关性、平方指数级数的渐近阶、光滑尖峰与两类振荡积分。
 
-[第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
+下册当前 **81 道已作答、2 道暂跳过**，两册合计 **256 道已作答、4 道暂跳过**。上册 B116、B148 及下册 B180、B247 待核。第八章 41 道已作答。第九章已收录完毕，34 道已作答、1 道暂跳过。第十章已完成 10.1.B 第 1—6 题，共 6 题。下一题为 **B261＝10.1.B 第 7 题**，见[原题 PDF 第 27 页（印刷第 25 页）](/files/problems/楼分析习题-v2.pdf#page=27)。
+
+[第十章题解索引](/problems/collections/lou-analysis/chapters/10/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
