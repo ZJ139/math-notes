@@ -44,6 +44,8 @@
 \raggedbottom
 
 \usepackage{tabularx,booktabs,array}
+\usepackage{longtable,calc}
+\def\LTcaptype{table}
 \renewcommand{\thesection}{3.\arabic{section}}
 \emergencystretch=2em
 \begin{document}
@@ -54,76 +56,640 @@
 \end{center}
 \vspace{8pt}
 \noindent\textbf{本章的问题}\quad 从可测集的测度如何得到函数的积分？先用简单函数逼近建立积分，再辨认可以交换的极限、求和与积分。最后考察变上限积分的导数，以及哪一类函数能由导数还原。章后收录 110 道节后练习和 63 道复习题。
-\tableofcontents
+\tableofcontents\clearpage
 
+\Needspace{22\baselineskip}
 \section{可测空间、可测函数}
-对应教材 §3.1，第 174---184 页。设温度由实函数 \(f\) 描述。要谈温度超过某个阈值的区域有多大，先得知道这个区域属于测度的定义域。教材用集合 \(E(c<f)=\{x\in E\mid c<f(x)\}\) 表达这个要求；本节只用集类的封闭性。
+对应教材 §3.1，第 174---184
+页。可测函数的任务是把函数问题转成可测集问题：先研究水平集，再研究运算与极限，最后用简单函数把集合的测度连接到函数的积分。本节尚不需要指定测度；``几乎处处''仅在最后的
+Lebesgue 代表元结论中出现。
 
-\subsection*{用有理水平集判别可测性}\label{ux7528ux6709ux7406ux6c34ux5e73ux96c6ux5224ux522bux53efux6d4bux6027}
+\textbf{目录与定理索引}
 
-设 \(\mathcal R\) 是 \(X\) 上的 \(\sigma\) 环，\(X=\bigcup_{A\in\mathcal R}A\)，称 \((X,\mathcal R)\) 为可测空间。\(X\) 本身可能不在 \(\mathcal R\) 中。有限实函数 \(f:E\to\mathbb R\) 称为可测函数，如果每个 \(E(c<f)\) 都在 \(\mathcal R\) 中。于是 \(E=\bigcup_{n\ge1}E(-n<f)\in\mathcal R\)。以下的补集均相对于 \(E\) 取。
+\begin{itemize}
+\tightlist
+\item
+  \hyperref[ux53efux6d4bux7a7aux95f4ux4e0eux6c34ux5e73ux96c6ux5224ux522b]{可测空间与水平集判别}：定义
+  3.1.1---3.1.2，定理 3.1.1。
+\item
+  \hyperref[ux9650ux5236ux62fcux63a5ux4e0eux590dux5408]{限制、拼接与复合}：定理
+  3.1.2，Borel 原像判别。
+\item
+  \hyperref[ux4ee3ux6570ux8fd0ux7b97ux4e0eux53efux6570ux6781ux9650]{代数运算与可数极限}：定理
+  3.1.3---3.1.4。
+\item
+  \hyperref[ux5e7fux4e49ux53efux6d4bux51fdux6570ux4e0eux65e0ux7a77ux503c]{广义可测函数与无穷值}：定义
+  3.1.3及定理 3.1.1\ensuremath{'}---3.1.4\ensuremath{'}。
+\item
+  \hyperref[ux7b80ux5355ux51fdux6570ux903cux8fd1]{简单函数逼近}：定理
+  3.1.5---3.1.6及 3.1.5\ensuremath{'}。
+\item
+  \hyperref[borel-ux4ee3ux8868ux5143]{Borel 代表元}：定理 3.1.7。
+\end{itemize}
 
-\textbf{判别定理（3.1.1）}　只需检验有理阈值。因为
+\Needspace{6\baselineskip}\subsection*{可测空间与水平集判别}\phantomsection\addcontentsline{toc}{subsection}{可测空间与水平集判别}\label{ux53efux6d4bux7a7aux95f4ux4e0eux6c34ux5e73ux96c6ux5224ux522b}
 
+\textbf{定义 3.1.1---3.1.2}　设 \(\mathcal R\) 是 \(X\) 上的 \(\sigma\)
+环，且 \(X=\bigcup_{A\in\mathcal R}A\)，称 \((X,\mathcal R)\)
+为可测空间。\(\mathcal R\) 中的集合称为可测集。教材不要求
+\(X\in\mathcal R\)；例如不可数集 \(X\) 的所有至多可数子集构成这样的
+\(\sigma\) 环。
+
+有限实函数 \(f:E\to\mathbb R\) 称为可测函数，如果对每个
+\(c\in\mathbb R\)， \[
+E(c\le f)=\{x\in E:c\le f(x)\}\in\mathcal R.
+\] 这里 \(E\) 的可测性不是额外假定：由 \(E=\bigcup_{n\ge1}E(-n\le f)\)
+即得。以下补集一律相对于可测定义域 \(E\) 取，不能随意换成相对于 \(X\)
+的补集。
+
+\textbf{定理
+3.1.1（等价判别）}　对有限实函数，定义中的条件分别等价于：所有
+\(E(c<f)\) 可测；所有 \(E(f\le c)\) 可测；所有 \(E(f<c)\) 可测；所有
+\(E(c\le f<d)\) 可测。检验阈值时，只取有理数也足够。
+
+\textbf{证明：}先用可数并、可数交得到 \[
+\begin{aligned}
+E(c<f)&=\bigcup_{n=1}^{\infty}E(c+1/n\le f),\\
+E(c\le f)&=\bigcap_{n=1}^{\infty}E(c-1/n<f).
+\end{aligned}
+\] 由 \(E(f\le c)=E-E(c<f)\)、\(E(f<c)=E-E(c\le f)\)
+得到两个反向不等式。上述任一种水平集假设都能先推出
+\(E\in\mathcal R\)，如
+\(E=\bigcup_n E(f<n)\)，故取相对补合法。区间条件由交集得到；反过来，\(E(c\le f)=\bigcup_n E(c\le f<c+n)\)。最后，
 \[
-E(c<f)=\bigcup_{\substack{r\in\mathbb Q\\r>c}}E(r<f),\qquad
-E(c\le f)=\bigcap_{k\ge1}E(c-1/k<f).
+E(c<f)=\bigcup_{\substack{r\in\mathbb Q\\c<r}}E(r\le f)
+       =\bigcup_{\substack{r\in\mathbb Q\\c<r}}E(r<f),
+\] 所以有理阈值已包含全部信息。证毕。
+
+这个证明的核心是将任意实阈值还原成可数运算。不可数并不是 \(\sigma\)
+环的封闭运算。
+
+\Needspace{6\baselineskip}\subsection*{限制、拼接与复合}\phantomsection\addcontentsline{toc}{subsection}{限制、拼接与复合}\label{ux9650ux5236ux62fcux63a5ux4e0eux590dux5408}
+
+\textbf{定理 3.1.2（局部判别）}　可测函数在可测子集上的限制仍可测。若
+\(E=\bigcup_{j\ge1}E_j\)，每个 \(E_j\) 可测，则 \(f\) 在 \(E\)
+上可测，当且仅当 \(f|_{E_j}\) 都可测。
+
+\textbf{证明：}限制的水平集是 \(E_j\cap E(c\le f)\)；逆向用 \[
+E(c\le f)=\bigcup_{j\ge1}E_j(c\le f).
 \]
+这些块不必互不相交，因为它们都是同一个函数的限制。若从各块上的函数拼接，则须先保证交叠处的取值一致。证毕。
 
-取相对补即得另外两个方向的不等号。令 \(\mathcal D=\{B\subset\mathbb R\mid f^{-1}(B)\in\mathcal R\}\)。它包含全直线，对补与可数并封闭，故包含由开射线生成的全部 Borel 集。于是可测性也等价于每个 Borel 集的原像可测。
+在可测域 \(E\) 上，\(\chi_A:E\to\mathbb R\) 可测等价于 \(A\subset E\)
+可测。但若把 \(\chi_A\) 定义在整个 \(X\) 上，还需要
+\(X\in\mathcal R\)：当 \(c\le0\) 时，\(X(c\le\chi_A)=X\)。这正是教材定理
+3.1.2(4) 要求 \(\mathcal R\) 为 \(\sigma\) 代数的原因。
 
-这给出两条常用推论。可测函数限制在可测子集上仍可测，可数个可测块上的可测函数也可拼接。在任意可测空间上，可测 \(f\) 与 Borel 可测的外函数 \(h\) 的复合 \(h\circ f\) 可测，理由是对任一开集 \(G\)，其原像为 \(f^{-1}(h^{-1}(G))\)。
+\textbf{Borel 原像判别与复合}　\(f:E\to\mathbb R\)
+可测，当且仅当每个开集的原像可测，也当且仅当每个 Borel 集的原像可测。
 
-\subsection*{运算与可数极限}\label{ux8fd0ux7b97ux4e0eux53efux6570ux6781ux9650}
+\textbf{证明：}可测时 \(E\in\mathcal R\)。令 \[
+\mathcal D=\{B\subset\mathbb R:f^{-1}(B)\in\mathcal R\}.
+\] 原像保持补与可数并，故 \(\mathcal D\) 是 \(\mathbb R\) 上的
+\(\sigma\) 代数，且包含全部开射线，因而包含 Borel \(\sigma\)
+代数。反向只取开射线 \((c,\infty)\) 即可。证毕。
 
-比较两个函数时，用有理数把两个实数隔开：
+因此，若 \(h:\mathbb R\to\mathbb R\) 为 Borel 可测函数，则 \(h\circ f\)
+可测，因为
+\((h\circ f)^{-1}(G)=f^{-1}(h^{-1}(G))\)。特别地，连续外函数总可复合。连续函数、单调函数和阶梯函数在区间上均为
+Borel
+可测函数：连续性控制开集原像，单调性使水平集成为区间，阶梯函数则只有有限或可数个可测块。仅把外函数假定为
+Lebesgue 可测不够，见
+\href{https://zj139.github.io/math-notes/notes/1f3a19ea67c736860ad6ef85/\#复合的方向不能颠倒}{§3.2
+的复合反例}。
 
+\Needspace{6\baselineskip}\subsection*{代数运算与可数极限}\phantomsection\addcontentsline{toc}{subsection}{代数运算与可数极限}\label{ux4ee3ux6570ux8fd0ux7b97ux4e0eux53efux6570ux6781ux9650}
+
+\textbf{定理
+3.1.3（代数运算）}　有限可测函数的线性组合、积、绝对值、最大值和最小值均可测；商在分母非零的可测集上可测。
+
+\textbf{证明：}数乘直接由水平集判别得到，负系数只改变不等号方向。和的关键恒等式是
 \[
-E(f<g)=\bigcup_{r\in\mathbb Q}\bigl(E(f<r)\cap E(r<g)\bigr).
+E(c<f+g)=\bigcup_{r\in\mathbb Q}
+\bigl(E(r<f)\cap E(c-r<g)\bigr).
+\] 若 \(f(x)+g(x)>c\)，在 \(c-g(x)\) 与 \(f(x)\)
+之间取有理数，便得右侧包含该点；逆向显然。连续外函数 \(t\mapsto t^2\)
+给出平方的可测性，再用 \[
+4fg=(f+g)^2-(f-g)^2
+\] 得乘积可测。分母的非零集可测，且 \(1/t\) 在 \(\mathbb R-\{0\}\)
+上连续，故商可测。最大值的上水平集是两个上水平集的并；最小值可用交；\(|f|=\max(f,-f)\)。证毕。
+
+\textbf{定理
+3.1.4（可数极限）}　可测函数列的上确界、下确界、上极限和下极限，在取有限值时仍为可测函数；允许无穷值时则为下一段定义的广义可测函数。
+
+\textbf{证明：}有 \[
+\begin{aligned}
+E(c<\sup_n f_n)&=\bigcup_n E(c<f_n),\\
+\inf_n f_n&=-\sup_n(-f_n),\\
+\varlimsup_{n\to\infty}f_n&=\inf_{k\ge1}\sup_{n\ge k}f_n,\\
+\varliminf_{n\to\infty}f_n&=\sup_{k\ge1}\inf_{n\ge k}f_n.
+\end{aligned}
 \]
+所以只须反复使用可数并与可数交。特别地，处处存在的有限极限可测。对有限函数列，有限收敛点集还可直接写成
+\[
+\bigcap_{j\ge1}\ \bigcup_{N\ge1}\ \bigcap_{p,q\ge N}
+E(|f_p-f_q|\le1/j),
+\] 这是逐点 Cauchy 条件，因而是可测集。证毕。
 
-将 \(g\) 换为 \(c-g\) 可处理和；平方是连续函数，利用 \(4fg=(f+g)^2-(f-g)^2\) 可处理积。在分母非零的可测集上可作商。对广义实函数，先划出取 \(\pm\infty\) 的水平集，再在运算有定义的范围内使用这些结论。
+\textbf{反例：不可数上确界。}　取 \([0,1]\) 的一个 Lebesgue 不可测子集
+\(A\)。每个 \(\chi_{\{a\}}\) 都可测，但
+\(\sup_{a\in A}\chi_{\{a\}}=\chi_A\)
+不可测。问题出在不可数并，而非各个函数本身。
 
-若 \(f_n\) 可测，则 \(E(c<\sup_n f_n)=\bigcup_n E(c<f_n)\)。取负号得下确界也可测；再用 \(\varlimsup f_n=\inf_k\sup_{n\ge k}f_n\) 得上极限可测，同理得下极限。因而有限函数列的收敛点集可由两个极限相等且有限来刻画。这里每个运算都是可数的。任取不可测集 \(A\subset[0,1]\)，其单点特征函数族的上确界恰为 \(\chi_A\)，说明指标集的大小不能随意放宽。
+\Needspace{6\baselineskip}\subsection*{广义可测函数与无穷值}\phantomsection\addcontentsline{toc}{subsection}{广义可测函数与无穷值}\label{ux5e7fux4e49ux53efux6d4bux51fdux6570ux4e0eux65e0ux7a77ux503c}
 
-\subsection*{把函数值分层}\label{ux628aux51fdux6570ux503cux5206ux5c42}
+教材记 \(\mathbb R_*=\mathbb R\cup\{-\infty,+\infty\}\)。\textbf{定义
+3.1.3} 要求对每个 \(c\in\mathbb R_*\)，\(E(c\le f)\) 可测。特别取
+\(c=-\infty\)，即保证 \(E\) 可测；若只检验有限阈值而不另设
+\(E\in\mathcal R\)，恒为 \(-\infty\) 的函数会掩盖一个不可测定义域。
 
-\textbf{简单函数逼近（3.1.5、3.1.6）}　对非负广义可测 \(f\)，在 \(f<n\) 处令 \(s_n=2^{-n}\lfloor 2^nf\rfloor\)，在 \(f\ge n\) 处令 \(s_n=n\)。每个 \(s_n\) 只取有限多个值，原像都是可测层，故为可测集特征函数的有限线性组合。二进网格逐次加细，截断高度逐次增加，故 \(s_n\uparrow f\)。若 \(f\) 有界，取 \(n>\sup f\)，全域误差小于 \(2^{-n}\)。对有正负号的函数分别逼近 \(f^+=\max(f,0)\) 与 \(f^-=\max(-f,0)\) 即可。
+等价地，要求 \(E\in\mathcal R\)，以及全部有限阈值的上水平集可测。此时 \[
+\begin{aligned}
+E(f=+\infty)&=\bigcap_{n\ge1}E(n\le f),\\
+E(f=-\infty)&=E-\bigcup_{n\ge1}E(-n\le f).
+\end{aligned}
+\] 因此，\(f\) 广义可测等价于两个无穷水平集可测，且 \(f\)
+在余下可测集上为有限可测函数。这给出定理
+3.1.1\ensuremath{'}---3.1.4\ensuremath{'}：限制、可数拼接、上确界与上下极限仍可测；代数运算须先有定义。
 
-\textbf{Borel 代表元（3.1.7）}　直线上每个 Lebesgue 可测的有限实函数在其定义域上几乎处处等于一个全直线的 Borel 函数。把上述简单函数的每个可测层换成相差零集的 Borel 集，得到 Borel 简单函数列；在可数个例外零集的并以外，所有近似逐项相等。取极限，在未收敛到有限值之处置零，便得到所需代表元。此处只保证几乎处处相等：取 Lebesgue 零测 Cantor 集的非 Borel 子集，其特征函数就是两类可测性不同的实例。
+不能在未作约定时写 \(+\infty-\infty\)、\(0\cdot\infty\)、\(0/0\) 或
+\(\infty/\infty\)。严格的处理是先按无穷水平集与零点集分块，在合法运算域上使用有限值结论；以后定义非负积分时采用的
+\(0\cdot\infty=0\)，是特定语境的约定。
 
+\Needspace{6\baselineskip}\subsection*{简单函数逼近}\phantomsection\addcontentsline{toc}{subsection}{简单函数逼近}\label{ux7b80ux5355ux51fdux6570ux903cux8fd1}
+
+简单函数是只取有限多个实值的可测函数，可以表示为
+\(s=\sum_{j=1}^N a_j\chi_{E_j}\)，其中 \(E_j\)
+为互不相交的可测集；在其余定义域上取零。有限值域和水平集可测这两个条件缺一不可。
+
+\textbf{定理
+3.1.5---3.1.6（教材的分层逼近）}　有限可测函数是简单函数列的逐点极限；若函数有界，可使逼近一致。
+
+\textbf{证明：}对每个 \(n\) 令 \[
+\begin{aligned}
+E_j^n&=E(j/n\le f<(j+1)/n),\\
+s_n&=\sum_{j=-n^2}^{n^2-1}\frac jn\chi_{E_j^n}.
+\end{aligned}
+\] 对固定 \(x\)，当 \(n>|f(x)|\) 时，\(x\) 落在恰好一个层内，且
+\(0\le f(x)-s_n(x)<1/n\)，故 \(s_n(x)\to f(x)\)。若
+\(|f|\le M\)，可对全部 \(x\) 同时取 \(n>M\)，误差上界便与 \(x\)
+无关，得到一致收敛。证毕。
+
+\textbf{非负单调逼近（定理 3.1.5\ensuremath{'} 的常用加强）}　非负广义可测 \(f\)
+可由非负简单函数 \(u_n\uparrow f\) 逼近。
+
+\textbf{证明：}定义 \[
+u_n(x)=
+\begin{cases}
+2^{-n}\lfloor2^nf(x)\rfloor,&0\le f(x)<n,\\
+n,&f(x)\ge n.
+\end{cases}
+\] 每一层均可测，且 \(u_n\) 只有有限多个值。若
+\(f<n\)，二进网格加细使下端近似不减；若 \(f\ge n\)，下一次近似仍至少为
+\(n\)。故 \(u_n\le u_{n+1}\le f\)。有限点处最终误差小于
+\(2^{-n}\)，无穷点处 \(u_n=n\to\infty\)。证毕。
+
+一般广义函数令
+\(f^+=\max(f,0)\)、\(f^-=\max(-f,0)\)，分别作上述逼近。每点至多有一个正负部非零，故两个逼近之差是简单函数，逐点趋于
+\(f\)，不会出现
+\(\infty-\infty\)。注意：一般有符号函数的逼近不必单调；无界函数也不可能被有限值域的简单函数一致逼近到任意小误差。
+
+\Needspace{6\baselineskip}\subsection*{Borel 代表元}\phantomsection\addcontentsline{toc}{subsection}{Borel 代表元}\label{borel-ux4ee3ux8868ux5143}
+
+\textbf{定理 3.1.7}　Borel 可测函数必为 Lebesgue
+可测函数。反过来，直线上 Lebesgue 可测集 \(E\) 上的有限可测函数
+\(f\)，存在全直线上的有限 Borel 可测函数 \(h\)，使
+\(m^*(E(f\ne h))=0\)。
+
+\textbf{证明：}第一项由 Borel 集均 Lebesgue 可测立即得到。对第二项，把
+\(f\) 在 \(E\) 外补零，得到全直线 Lebesgue 可测函数
+\(\widetilde f\)。取简单函数 \(s_n\to\widetilde f\)。由 Lebesgue 测度的
+Borel 正则性，每个 \(s_n\) 的每一可测层都与某个 Borel
+集相差零集。将各层替换后得到全直线 Borel 简单函数
+\(t_n\)；层替换后即使发生重叠，有限和仍为 Borel
+函数。所有层的差集只有可数个，故在一个零集以外，\(t_n=s_n\) 对全部 \(n\)
+同时成立。
+
+令 \(D\) 为 \(t_n\) 收敛到有限值的点集。前面的 Cauchy 表达式说明 \(D\)
+是 Borel 集。置 \[
+h(x)=\begin{cases}\lim_n t_n(x),&x\in D,\\0,&x\notin D.\end{cases}
+\] 则 \(h\) 是有限 Borel 函数，在上述零集外与 \(\widetilde f\)
+相等，因而在 \(E\) 上满足要求。证毕。
+
+\textbf{为什么只能要求几乎处处相等？}　零测 Cantor 集 \(C\)
+有连续势，所以其子集有 \(2^{\mathfrak c}\) 个，而 Borel 集只有
+\(\mathfrak c\) 个。取一个非 Borel 子集 \(A\subset C\)，则 \(A\) 由
+Lebesgue 测度的完全性可测，\(\chi_A\) 却不是 Borel
+可测函数。两类函数相差的自由度集中在零测集的任意子集上。
+
+本节应掌握三种构造：用有理数把点态不等式变成可数集合运算；把值域分层得到简单函数；把可数个例外集并在一起，保证全部近似在同一个大集上同时有效。下一节将在这三种构造上加入测度估计。
+
+\noindent\hyperlink{ex1}{本节习题原题：练习题 3.1}
+
+\Needspace{22\baselineskip}
 \section{测度空间、可测函数的收敛性、Lebesgue 可测函数的结构}
-对应教材 §3.2，第 185---208 页。在 \((X,\mathcal R)\) 上指定测度 \(\mu\)，即得测度空间 \((X,\mathcal R,\mu)\)。以下讨论 \(E\in\mathcal R\)，函数取有限值，或在可测零集上重定义后取有限值。说一个命题在 \(E\) 上几乎处处成立，意为所有例外点包含在某个 \(\mu\) 零测集内。若测度完全，在零测集的任意子集上改值仍保可测性；对未完全的空间，须检验改值后的代表元是否可测。
+对应教材 §3.2，第 185---208
+页。几乎处处收敛控制固定点上的尾项，依测度收敛控制每一项的误差集。两者的联系来自两种操作：用可求和的测度控制抽取子列；把可数个精度要求合并到同一个大集。Lebesgue
+测度的正则性进一步把大集选成闭集，从而得到连续函数逼近。
 
-\subsection*{两种收敛看的是不同的集合}\label{ux4e24ux79cdux6536ux655bux770bux7684ux662fux4e0dux540cux7684ux96c6ux5408}
+\textbf{目录与定理索引}
 
-\(f_n\to f\) 几乎处处，指存在一个零集，删去后每个点上的数列都收敛。依测度收敛记为 \(f_n\underset{\mu}{\Rightarrow}f\)，指每个 \(\varepsilon>0\) 都满足 \(\mu(E(|f_n-f|>\varepsilon))\to0\)。前者要在同一点控制所有足够靠后的项，后者逐项测量误差集。
+\begin{itemize}
+\tightlist
+\item
+  \hyperref[ux6d4bux5ea6ux7a7aux95f4ux4e0eux53efux6d4bux4ee3ux8868ux5143]{测度空间与可测代表元}：定义
+  3.2.1---3.2.2，定理 3.2.2、3.2.9。
+\item
+  \hyperref[ux4f9dux6d4bux5ea6ux6536ux655bux4e0eux57faux672cux5217]{依测度收敛与基本列}：定义
+  3.2.3---3.2.4，定理 3.2.1。
+\item
+  \hyperref[riesz-ux5b50ux5217ux5b9aux7406]{Riesz 子列定理}：定理
+  3.2.3。
+\item
+  \hyperref[ux6709ux9650ux6d4bux5ea6ux4e0bux7684ux6536ux655bux5173ux7cfb]{有限测度下的收敛关系}：定理
+  3.2.4---3.2.5。
+\item
+  \hyperref[ux4f9dux6d4bux5ea6ux6536ux655bux7684ux8fd0ux7b97]{依测度收敛的运算}：定理
+  3.2.6。
+\item
+  \hyperref[egorov-ux5b9aux7406ux4e0eux8fd1ux4e00ux81f4ux6536ux655b]{Egorov
+  定理与近一致收敛}：定理 3.2.7---3.2.8。
+\item
+  \hyperref[lusin-ux5b9aux7406ux4e0eux8fdeux7eedux903cux8fd1]{Lusin
+  定理与连续逼近}：定理 3.2.10---3.2.11，推论 3.2.2---3.2.3。
+\item
+  \hyperref[ux53efux6d4bux6027ux6392ux9664ux75c5ux6001ux89e3]{可测性排除病态解}：教材例
+  3.2.5---3.2.6。
+\item
+  \hyperref[ux590dux5408ux7684ux65b9ux5411ux4e0dux80fdux98a0ux5012]{复合的方向不能颠倒}：教材例
+  3.2.7---3.2.10。
+\item
+  \hyperref[ux4f7fux7528ux6761ux4ef6ux901fux67e5]{使用条件速查}。
+\end{itemize}
 
-若 \(\mu(E)<\infty\)，几乎处处收敛蕴含依测度收敛。事实上，令 \(A_N=\bigcup_{n\ge N}E(|f_n-f|>\varepsilon)\)，则 \(A_N\) 递减，交集是零集，故 \(\mu(A_N)\downarrow0\)。在 \(\mathbb R\) 上，\(f_n=\chi_{[n,n+1)}\) 逐点趋零，每项的误差集却长为 \(1\)。反过来，在 \([0,1)\) 上依次枚举每一层二等分半开小区间，取其特征函数，单项支集的长度趋零，但每点在每一层都取到一次 \(1\)，也取到 \(0\)。
+\Needspace{6\baselineskip}\subsection*{测度空间与可测代表元}\phantomsection\addcontentsline{toc}{subsection}{测度空间与可测代表元}\label{ux6d4bux5ea6ux7a7aux95f4ux4e0eux53efux6d4bux4ee3ux8868ux5143}
 
-\subsection*{从依测度基本列抽出几乎处处收敛子列}\label{ux4eceux4f9dux6d4bux5ea6ux57faux672cux5217ux62bdux51faux51e0ux4e4eux5904ux5904ux6536ux655bux5b50ux5217}
+\textbf{定义 3.2.1---3.2.2}　在可测空间 \((X,\mathcal R)\) 上指定测度
+\(\mu\)，得到测度空间 \((X,\mathcal R,\mu)\)。有限性、\(\sigma\)
+有限性及完全性沿用第二章的定义；当 \(\mathcal R\) 是 \(\sigma\) 代数且
+\(\mu(X)=1\) 时，称为概率测度空间。
 
-\textbf{Riesz 构造（3.2.1、3.2.3）}　称 \(\{f_n\}\) 为依测度基本列，如果对任意 \(\eta,\delta>0\)，当 \(p,q\) 充分大时，\(\mu(E(|f_p-f_q|>\eta))<\delta\)。依测度收敛显然蕴含此条件。反过来，递选 \(n_j\)，使
+一个命题在 \(E\) 上几乎处处成立，指其例外点包含在某个可测零集内。教材记
+\(f\underset{\mu}{\overset{\cdot}{=}}g\) 或 \(f=g\)
+a.e.。例外点集本身未必可测，定义中的``包含''不能删掉。以下除特别说明外，\(E\in\mathcal R\)，参与误差估计的函数选取有限可测代表元；几乎处处有限的函数可在可测零集上补零。
 
-\[
+\textbf{定理 3.2.2（极限的可测代表元）}　若可测函数列 \(f_n\)
+几乎处处收敛于有限函数 \(h\)，则存在可测 \(f\)，使 \(f=h\) a.e. 且
+\(f_n\to f\) a.e.。
+
+\textbf{证明：}取可测零集 \(N\)，使收敛在 \(E-N\) 上处处成立。在 \(E-N\)
+上取极限，在 \(E\cap N\) 上取零。前者由 §3.1
+的可数极限定理可测，后者为常数，再由可测拼接得到 \(f\)。证毕。
+
+\textbf{定理
+3.2.9（完全性）}　在完全测度空间中，零测集上的任意有限实函数都可测；与可测函数几乎处处相等的有限函数仍可测。因为任一水平集只比原水平集增加或删去零集的子集，而这些子集均可测。
+
+\textbf{反例：非完全空间。}　在 \(([0,1],\mathcal B,m|_{\mathcal B})\)
+上，取零测 Cantor 集的非 Borel 子集 \(A\)。\(\chi_A=0\)
+a.e.，却不可测。因而 \(f_n\equiv0\) 几乎处处收敛于
+\(\chi_A\)，并不能保证这个指定极限本身可测；可测代表元可以取零。
+
+\Needspace{6\baselineskip}\subsection*{依测度收敛与基本列}\phantomsection\addcontentsline{toc}{subsection}{依测度收敛与基本列}\label{ux4f9dux6d4bux5ea6ux6536ux655bux4e0eux57faux672cux5217}
+
+\textbf{定义 3.2.3---3.2.4}　记
+\(f_n\underset{\mu}{\Rightarrow}f\)，若对每个 \(\varepsilon>0\)， \[
+\mu(E(|f_n-f|>\varepsilon))\longrightarrow0.
+\] 记 \(\{f_n\}\) 为依测度基本列，若对每个
+\(\varepsilon,\delta>0\)，存在 \(N\)，使 \(p,q\ge N\)
+时上述两项之差的误差集测度小于 \(\delta\)。教材也允许定义中的指定极限
+\(f\) 尚不可测，但要求 \(|f_n-f|\) 可测；这种情形最后应改取可测代表元。
+
+\textbf{定理
+3.2.1}　可测函数列依测度收敛到某个有限可测函数，当且仅当它是依测度基本列。这里不要求
+\(\mu(E)<\infty\)，也不要求 \(\sigma\) 有限或完全。
+
+\textbf{证明：}必要性来自 \[
+E(|f_p-f_q|>\varepsilon)
+\subset E(|f_p-f|>\varepsilon/2)\cup E(|f_q-f|>\varepsilon/2).
+\] 反向递选 \(n_j\)，使 \[
 B_j=E(|f_{n_{j+1}}-f_{n_j}|>2^{-j}),\qquad \mu(B_j)<2^{-j}.
-\]
+\] 具体地，先取对应精度 \(2^{-j}\) 和测度界 \(2^{-j}\)
+的基本列指标，再使 \(n_j\) 递增并超过该指标。令
+\(H_k=\bigcup_{j\ge k}B_j\)，则 \[
+\mu(H_k)\le\sum_{j\ge k}2^{-j}=2^{1-k}.
+\] 对 \(x\in E-H_k\) 和 \(p>q\ge k\)， \[
+|f_{n_p}(x)-f_{n_q}(x)|
+\le\sum_{j=q}^{p-1}2^{-j}\le2^{1-q}.
+\] 所以子列在每个 \(E-H_k\) 上一致 Cauchy。集合 \(N=\bigcap_k H_k\)
+可测且 \(\mu(N)=0\)。在 \(E-N\) 上取有限极限 \(f\)，在 \(N\)
+上补零，得到可测函数。再令 \(p\to\infty\)，有 \[
+|f-f_{n_k}|\le2^{1-k}\quad\text{于 }E-H_k.
+\] 故子列也依测度收敛于 \(f\)。给定
+\(\varepsilon,\delta>0\)，先固定足够大的子列项 \(n_k\)，使它到 \(f\) 的
+\(\varepsilon/2\) 误差集测度小于 \(\delta/2\)，且 \(n_k\)
+超过基本列所需指标。再对所有足够大的 \(n\)
+用三角不等式，将两个误差集相加，得到整列依测度收敛。证毕。
 
-尾并 \(H_k=\bigcup_{j\ge k}B_j\) 的测度至多为 \(\sum_{j\ge k}2^{-j}\)。在 \(E-H_k\) 上，从第 \(k\) 项起的相邻差由可求和级数控制，故子列一致 Cauchy。在 \(\bigcap_k H_k\) 外取逐点极限，在这个可测零集上置零，就得可测极限 \(f\)。在 \(E-H_k\) 上 \(|f-f_{n_k}|\le\sum_{j\ge k}2^{-j}\)，故子列还依测度收敛于 \(f\)。三角不等式把子列结论传给整列。这个证明对 \(\mu(E)=\infty\) 也有效。
+关键是同时使相邻误差的大小和例外集的测度可求和。这个证明用的是尾并的直接估计，并未在无限测度空间上使用可能失效的``递减集测度连续性''。
 
-依测度极限在几乎处处意义下唯一：\(E(|f-g|>2\eta)\) 包含于相对于 \(f,g\) 的两个误差集的并。让 \(n\) 趋于无穷，再取 \(\eta=1/j\) 即得。特别地，一列依测度收敛的函数的每个子列，都有更深的子列几乎处处收敛于同一极限。在有限测度集上这还是充要条件：若整列不依测度收敛，有一个子列的某个误差集测度始终大于固定正数，与其子子列几乎处处收敛矛盾。
+\textbf{极限唯一性。}　若同时依测度收敛于有限可测 \(f,g\)，则 \[
+\mu(E(|f-g|>2\varepsilon))
+\le\mu(E(|f-f_n|>\varepsilon))
+ +\mu(E(|f_n-g|>\varepsilon))\longrightarrow0.
+\] 取 \(\varepsilon=1/j\) 后作可数并，得 \(f=g\)
+a.e.。对教材允许的非可测指定极限，同样的包含关系使其与构造出的可测极限仅在某个可测零集内不同。
 
-\subsection*{Egorov 定理与 Lusin 定理}\label{egorov-ux5b9aux7406ux4e0e-lusin-ux5b9aux7406}
+\Needspace{6\baselineskip}\subsection*{Riesz 子列定理}\phantomsection\addcontentsline{toc}{subsection}{Riesz 子列定理}\label{riesz-ux5b50ux5217ux5b9aux7406}
 
-\textbf{Egorov 定理（3.2.7）}　若 \(\mu(E)<\infty\) 且 \(f_n\to f\) 几乎处处，则给定 \(\delta>0\)，存在可测 \(F\subset E\)，使 \(\mu(E-F)<\delta\) 且 \(f_n\) 在 \(F\) 上一致收敛于 \(f\)。
+\textbf{定理 3.2.3（F. Riesz）}　若
+\(f_n\underset{\mu}{\Rightarrow}f\)，则存在子列 \(f_{n_j}\to f\)
+a.e.。此结论适用于任意测度空间。
 
-\textbf{证明}　对每个 \(j\)，用上一段的尾并估计，选 \(N_j\) 使 \(\mu(\bigcup_{n\ge N_j}E(|f_n-f|>1/j))<\delta 2^{-j}\)。把这些尾并全部删掉。在余集上，只要 \(n\ge N_j\)，误差就对所有点同时不超过 \(1/j\)。这个选择使同一个 \(F\) 适用于全部精度。
+\textbf{证明：}递选 \(n_j\)，使 \[
+A_j=E(|f_{n_j}-f|>2^{-j}),\qquad\mu(A_j)<2^{-j}.
+\] 令 \(H_k=\bigcup_{j\ge k}A_j\)。则 \(\mu(H_k)\le2^{1-k}\)，故
+\(\mu(\bigcap_k H_k)=0\)。每个不在交集内的点最终不再属于任何
+\(A_j\)，从而误差最终不超过 \(2^{-j}\)，得到几乎处处收敛。事实上，在
+\(E-H_k\) 上，所有 \(j\ge k\) 都有统一误差界
+\(2^{-j}\)，所以这个子列还在这些大集上一致收敛。证毕。
 
-\textbf{Lusin 定理（3.2.10、3.2.11）}　若 \(E\subset\mathbb R^d\) 为 Lebesgue 可测集，\(f\) 可测且几乎处处有限，则给定 \(\delta>0\) 可取闭集 \(F\subset E\)，使 \(m(E-F)<\delta\)，且限制 \(f|_F\) 连续。
+抽取不能省略。教材的``打字机序列''把 \((0,1]\) 在第 \(k\) 层分成 \(2^k\)
+个半开区间，再逐层枚举其特征函数： \[
+f_{2^k-2+j}=\chi_{((j-1)2^{-k},\,j2^{-k}]},
+\qquad 1\le j\le2^k,\quad k\ge1.
+\] 每项支集的测度随层数趋零，故依测度趋零；但每个点在每一层恰取一次
+\(1\)，又取到 \(0\)，所以处处不收敛。
 
-\textbf{证明}　在一个有界可测块内，先用内正则性取得紧子集，再删去函数无限的例外集与一个很小的高值尾集。对余下有界函数用 §3.1 的一致简单逼近。每个简单函数的有限个水平集都可从内部用紧集逼近，使第 \(j\) 次总共损失小于 \(\delta 2^{-j-2}\)。在这些有限个不交紧集之并上，第 \(j\) 个简单函数连续；取所有这些并的交，全部简单函数都连续，其一致极限也连续。一般的 \(E\) 按半开单位立方体分块，把误差可求和地分配给各块。每块留下紧集，这族紧集局部有限且两两不交，故其并闭，在其并上的限制连续。
+\Needspace{6\baselineskip}\subsection*{有限测度下的收敛关系}\phantomsection\addcontentsline{toc}{subsection}{有限测度下的收敛关系}\label{ux6709ux9650ux6d4bux5ea6ux4e0bux7684ux6536ux655bux5173ux7cfb}
 
-有限实值时，由闭集上的连续延拓还可得到全空间连续函数，在 \(F\) 上与 \(f\) 相等。若 \(E\) 有界，可再乘以在 \(E\) 上等于 \(1\) 的紧支连续截断函数。注意 \(f|_F\) 连续只比较 \(F\) 中的点；Dirichlet 函数在所有无理点上限制为常数，却在整个区间上处处不连续。
+\textbf{定理 3.2.4}　若 \(\mu(E)<\infty\) 且 \(f_n\to f\) a.e.，则
+\(f_n\underset{\mu}{\Rightarrow}f\)。
+
+\textbf{证明：}固定 \(\varepsilon>0\)，令 \[
+A_N=\bigcup_{n\ge N}E(|f_n-f|>\varepsilon).
+\] \(A_N\) 递减，交集包含于不收敛的零集。由于
+\(\mu(A_1)\le\mu(E)<\infty\)，测度的上连续性给出
+\(\mu(A_N)\downarrow0\)。对 \(n\ge N\)，第 \(n\) 项的误差集包含在
+\(A_N\) 中，即得结论。若指定极限未必可测，先用定理 3.2.2
+换成可测代表元。证毕。
+
+\textbf{无限测度反例。}　在 \((0,\infty)\) 上取 \(f_n=\chi_{(0,n]}\)，则
+\(f_n\to1\) 处处成立，而当 \(0<\varepsilon<1\) 时，误差集为
+\((n,\infty)\)，测度始终无穷。即使每项误差集测度有限也未必够：\(\chi_{[n,n+1)}\to0\)
+处处成立，误差集测度却恒为 \(1\)。缺少的是对整个尾并的有限控制。
+
+\textbf{定理 3.2.5（子列判别）}　当 \(\mu(E)<\infty\)
+时，\(f_n\Rightarrow f\) 等价于：每个子列都有一个子子列几乎处处收敛于
+\(f\)。
+
+\textbf{证明：}必要性对任意子列应用 Riesz 定理。反向若不依测度收敛，则有
+\(\varepsilon_0,\delta_0>0\) 及子列，使每项的 \(\varepsilon_0\)
+误差集测度至少为 \(\delta_0\)。由假设抽出几乎处处收敛的子子列，再用定理
+3.2.4，得到这些测度趋零，矛盾。证毕。
+
+这里``每个子列''不可弱化为``存在一个子列''：在 \([0,1]\)
+上令偶数项为零、奇数项为一即可反驳。有限测度条件也不能从反向删去，上一段的逃逸区间序列本身已经处处趋零，其任意子列仍处处趋零，却不依测度收敛。在
+\(\sigma\)
+有限空间上，几乎处处收敛只自动给出每个有限测度子集上的依测度收敛，未必给出全域结论。
+
+\Needspace{6\baselineskip}\subsection*{依测度收敛的运算}\phantomsection\addcontentsline{toc}{subsection}{依测度收敛的运算}\label{ux4f9dux6d4bux5ea6ux6536ux655bux7684ux8fd0ux7b97}
+
+\textbf{定理 3.2.6}　设
+\(f_n\Rightarrow f\)、\(g_n\Rightarrow g\)。在任意测度空间上，有限线性组合及绝对值保持依测度收敛。若再有
+\(\mu(E)<\infty\)，则积也保持；商还要求 \(g_n,g\)
+几乎处处非零，并在它们的零集上补定义。
+
+\textbf{证明：}和用三角不等式，数乘只改变误差阈值；绝对值用
+\(\bigl||f_n|-|f|\bigr|\le|f_n-f|\)。对于积，从任意子列先抽出
+\(f_n\to f\) a.e. 的子子列，再从中抽出 \(g_n\to g\) a.e.
+的更深子列。两者在同一个满测集上收敛，故乘积在那里收敛。由有限测度下的子列判别，整列乘积依测度收敛。商同理：删去所有分母的零集后，逐点商极限定理适用。证毕。
+
+这个方法同时证明：在有限测度集上，若 \(\Phi:\mathbb R^r\to\mathbb R\)
+连续，且每个坐标依测度收敛，则代入 \(\Phi\)
+后仍依测度收敛。只须对有限个坐标依次抽取即可。
+
+\textbf{有限性具体用在哪里？}　有限可测 \(h\) 在有限测度集上满足
+\(\mu(E(|h|>K))\to0\)。于是 \[
+E(|(f_n-f)h|>\varepsilon)
+\subset E(|h|>K)\cup E(|f_n-f|>\varepsilon/K).
+\] 先选 \(K\) 控制高值尾集，再选
+\(n\)，就能控制乘法。无限测度时这一尾集未必变小。
+
+\textbf{反例：平方不保持全域依测度收敛。}　沿用教材例 3.2.4，在
+\(E=(1,\infty)\) 上，令 \(f(x)=k\) 于 \((k,k+1]\)，\(k\ge1\)；令 \(f_n\)
+仅在 \((n,n+1]\) 上比 \(f\) 增加 \(1/n\)。则
+\(\sup_E|f_n-f|=1/n\to0\)，从而依测度收敛；但 \[
+|f_n^2-f^2|=2+1/n^2\quad\text{于 }(n,n+1],
+\] 故平方差大于 \(2\) 的集合测度恒为
+\(1\)。即使原函数列一致收敛，连续外函数在无界值域上的放大仍可能破坏全域依测度收敛。
+
+\subsection{Egorov
+定理与近一致收敛}\label{egorov-ux5b9aux7406ux4e0eux8fd1ux4e00ux81f4ux6536ux655b}
+
+\textbf{定理 3.2.7（Egorov）}　若 \(\mu(E)<\infty\) 且有限可测函数列
+\(f_n\to f\) a.e.，则对每个 \(\delta>0\)，存在可测 \(F\subset E\)，使
+\(\mu(E-F)<\delta\)，且 \(f_n|_F\) 一致收敛于 \(f|_F\)。
+
+\textbf{证明：}取共同例外零集 \(N\)。对每个 \(j\ge1\)，令 \[
+A_{j,k}=\bigcup_{n\ge k}E(|f_n-f|>1/j).
+\] 固定 \(j\)
+时，\(A_{j,k}\downarrow\bigcap_k A_{j,k}\subset N\)。有限测度保证
+\(\mu(A_{j,k})\to0\)，故可选 \(k_j\)，使
+\(\mu(A_{j,k_j})<\delta 2^{-j-1}\)。置 \[
+F=E-\left(N\cup\bigcup_{j\ge1}A_{j,k_j}\right).
+\] 损失的测度小于 \(\delta/2<\delta\)。给定 \(\varepsilon>0\)，取 \(j\)
+使 \(1/j<\varepsilon\)；当 \(n\ge k_j\) 时，对所有 \(x\in F\) 同时有
+\(|f_n(x)-f(x)|\le1/j<\varepsilon\)。这正是一致收敛。证毕。
+
+常把这种性质称为近一致收敛：允许先删去任意小测度的集合，再在余集上一致收敛。精度
+\(\varepsilon\) 改变时一致收敛指标可以改变；但对于已固定的
+\(\delta\)，大集 \(F\)
+必须适用于全部精度。只对每项分别选一个大集还不够。
+
+\textbf{定理
+3.2.8}　任意测度空间上，近一致收敛蕴含几乎处处收敛，也蕴含依测度收敛；在有限测度集上，几乎处处收敛与近一致收敛等价。
+
+\textbf{证明：}对每个 \(j\) 取损失小于 \(1/j\) 的一致收敛集 \(F_j\)。在
+\(\bigcup_jF_j\) 上处处收敛，且其补集测度不超过任意
+\(1/j\)，所以为零。另一方面，给定误差阈值及测度界 \(\delta\)，在损失小于
+\(\delta\)
+的固定大集上一致收敛后，所有足够靠后的误差集都包含于被删集合中，因此依测度收敛。有限测度下的反向即
+Egorov 定理。证毕。
+
+\textbf{两个边界。}　无限测度空间上的 \(\chi_{(0,n]}\to1\)
+不能在删去任何有限测度集合后变成一致收敛，因为余集仍有任意大的点。有限测度时也不能把``任意小''升级成``零''：\(f_n(x)=x^n\)
+在 \((0,1)\) 上处处趋零，但删去任一零集后，每项的上确界仍为 \(1\)。Riesz
+所抽子列则在任意测度空间上近一致收敛，这是其可求和误差构造额外提供的性质。
+
+\subsection{Lusin
+定理与连续逼近}\label{lusin-ux5b9aux7406ux4e0eux8fdeux7eedux903cux8fd1}
+
+\textbf{定理 3.2.10（Lusin）}　设 \(E\subset\mathbb R^d\) Lebesgue
+可测，\(f\) 在 \(E\) 上可测且几乎处处有限。对每个
+\(\delta>0\)，存在全空间中的闭集 \(F\subset E\)，使
+\(m(E-F)<\delta\)，且 \(f|_F\) 为有限连续函数。不要求 \(m(E)<\infty\)。
+
+\textbf{证明：}先设 \(E\) 有界，删去无穷值零集。由于
+\(m(E)<\infty\)，可取 \(M\) 使 \(m(E(|f|>M))<\delta/4\)；由内正则性，在
+\(E(|f|\le M)\) 内取紧集 \(K\)，使 \(m(E-K)<\delta/2\)。在 \(K\)
+上取简单函数 \(s_j\to f\) 一致。把 \(s_j\)
+的有限个不交可测水平集分别从内部用紧集逼近，使总损失小于
+\(\delta2^{-j-2}\)；这些紧集的有限并记为 \(K_j\subset K\)。
+
+\(s_j|_{K_j}\) 连续，因为有限个互不相交紧集之间有正距离，而 \(s_j\)
+在每块上为常数。令 \(F=\bigcap_jK_j\)，则 \(F\) 紧，且 \[
+m(E-F)\le m(E-K)+\sum_{j\ge1}m(K-K_j)<\delta.
+\] 所有 \(s_j|_F\) 连续，其一致极限 \(f|_F\) 连续。
+
+一般 \(E\) 用整数网格的半开单位立方体 \(Q_k\) 分块。在每个有界块
+\(E\cap Q_k\) 上应用刚证的结论，留下紧集 \(F_k\)，损失小于
+\(\delta2^{-k}\)。令
+\(F=\bigcup_kF_k\)。单位网格局部有限，每个有界邻域只遇到有限多个
+\(F_k\)；因此这个并是闭集。各 \(F_k\) 不交且局部只有有限块，故分块连续的
+\(f|_F\) 连续。总损失小于 \(\delta\)。证毕。
+
+这里不能把一般无限测度 \(E\) 上的闭集改成紧集，例如 \(E=\mathbb R\)
+的任何紧子集都有无限测度的补集。Lusin
+定理中的连续是相对拓扑意义的连续；\(\chi_{\mathbb Q}\)
+在无理点集上的限制恒为零，却作为实直线上的函数处处不连续。因此``删去小集后连续''不等于``原函数几乎处处为连续点''。
+
+\textbf{定理 3.2.11（全空间连续函数形式）}　上述 \(f\) 对每个
+\(\delta>0\) 都有全空间连续函数 \(h\)，使 \[
+m(E(f\ne h))<\delta.
+\] \textbf{证明：}把闭集 \(F\) 上的连续函数 \(f|_F\) 用 §1.6
+的连续延拓定理延到 \(\mathbb R^d\)。所得 \(h\) 在 \(F\) 上与 \(f\)
+完全相等，故差异集包含在 \(E-F\) 中。若 \(|f|\le M\)，延拓可保持此界；若
+\(|f|<M\)，也可用教材相应的严格界延拓结论。证毕。
+
+当 \(E\) 有界时，还可乘以一个在包含 \(E\) 的大球上等于
+\(1\)、在更大球外为 \(0\) 的连续截断函数，使 \(h\)
+具有紧支集，这就是推论 3.2.2。
+
+\textbf{推论 3.2.3（连续函数列的几乎处处逼近）}　存在全空间连续函数列
+\(h_j\)，在 \(E\) 上几乎处处收敛于 \(f\)。
+
+\textbf{证明：}由上一结论取
+\(m(E(h_j\ne f))<2^{-j}\)。这些差异集的尾并测度不超过
+\(2^{1-k}\)，故几乎每点只属于有限多个差异集。于是对几乎每点，\(h_j(x)\)
+最终甚至等于 \(f(x)\)，特别地趋于 \(f(x)\)。证毕。
+
+这不是处处逼近定理。Dirichlet 函数 \(\chi_{\mathbb Q}\)
+几乎处处等于零，常零连续函数列可以几乎处处逼近它；它却不能成为连续函数列的处处极限，因为第一类
+Baire 函数的间断点集为第一纲，而它处处不连续。
+
+\Needspace{6\baselineskip}\subsection*{可测性排除病态解}\phantomsection\addcontentsline{toc}{subsection}{可测性排除病态解}\label{ux53efux6d4bux6027ux6392ux9664ux75c5ux6001ux89e3}
+
+\textbf{教材例 3.2.5（可测的可加函数）}　若 Lebesgue 可测
+\(f:\mathbb R\to\mathbb R\) 满足 \(f(x+y)=f(x)+f(y)\)，则
+\(f(x)=xf(1)\)。
+
+\textbf{证明：}Lusin 定理给出一个正测度紧集 \(K\)，使 \(f|_K\)
+连续，因而一致连续。第二章差集定理给出 \((-\eta,\eta)\subset K-K\)。给定
+\(\varepsilon>0\)，取一致连续性对应的 \(\rho>0\)。若
+\(|t|<\min(\eta,\rho)\)，写 \(t=x-y\)，\(x,y\in K\)，则 \[
+|f(t)|=|f(x)-f(y)|<\varepsilon.
+\] 故 \(f\) 在零点连续，可加性使它处处连续。在有理数上
+\(f(q)=qf(1)\)，再由有理逼近得所有实数上的结论。证毕。
+
+\textbf{教材例 3.2.6（可测的中点凸函数）}　若有限 Lebesgue 可测
+\(f:(a,b)\to\mathbb R\) 满足 \[
+f((x+y)/2)\le\tfrac12(f(x)+f(y)),
+\] 则 \(f\) 连续且凸。下面补齐由局部有上界推出连续的环节。
+
+\textbf{证明：}固定 \(x_0\)，取 \(I=(x_0-r,x_0+r)\subset(a,b)\)。Lusin
+定理给出紧集 \(K\subset I\)，使 \(m(I-K)<r/4\)，且 \(f\le M\) 于
+\(K\)。若 \(|t-x_0|<r/4\)，则 \(I\cap(2t-I)\) 的长度大于
+\(3r/2\)；从中删除 \(I-K\) 及其反射的损失小于 \(r/2\)，故
+\(K\cap(2t-K)\) 非空。取其中一点 \(x\)，则 \(2t-x\in K\)，中点凸性给出
+\(f(t)\le M\)。因此 \(f\) 在 \(x_0\) 附近有上界。
+
+取 \(\rho>0\)，使 \(f\le M\) 于
+\([x_0-\rho,x_0+\rho]\)。反复使用中点不等式，可得到任意二进有理系数的凸性不等式。给定小的
+\(0<|h|<\rho/2\)，选 \(k\) 使 \(\rho/2\le2^k|h|<\rho\)。于是 \[
+\begin{aligned}
+f(x_0+h)-f(x_0)
+&\le2^{-k}\bigl(f(x_0+2^kh)-f(x_0)\bigr)\\
+&\le2^{-k}(M-f(x_0)).
+\end{aligned}
+\] 对 \(-h\) 作同样估计，再用
+\(2f(x_0)\le f(x_0+h)+f(x_0-h)\)，得到同样大小的下界。随
+\(h\to0\)，\(2^{-k}\to0\)，故 \(f\) 在 \(x_0\)
+连续。最后用二进有理系数逼近任意
+\(t\in[0,1]\)，得到完整凸性不等式。证毕。
+
+两例的可测性均不能删除：在含 \(1\) 和某个无理数的 Hamel
+基上指定不成比例的函数值，再作 \(\mathbb Q\)
+线性延拓，得到不连续的可加函数。它还满足中点等式，却不可能是连续凸函数。可测性通过``大集上的连续性''，把代数条件提升成了全域正则性。
+
+\Needspace{6\baselineskip}\subsection*{复合的方向不能颠倒}\phantomsection\addcontentsline{toc}{subsection}{复合的方向不能颠倒}\label{ux590dux5408ux7684ux65b9ux5411ux4e0dux80fdux98a0ux5012}
+
+连续外函数与 Lebesgue
+可测内函数的复合可测，因为连续外函数的开集原像为开集，再由可测内函数取原像。Lebesgue
+可测外函数与连续内函数的复合则未必可测。
+
+\textbf{教材例 3.2.9 的反例。}　设 \(C\) 为 \([0,1]\) 中的零测 Cantor
+集，\(\Phi\) 为 Cantor 函数，令 \[
+\theta(x)=\tfrac12(x+\Phi(x)).
+\] \(\theta\) 是 \([0,1]\) 上严格递增的同胚。每个被删去的 Cantor
+开区间上 \(\Phi\)
+为常数，故其像长为原长的一半；这些像区间互不相交，总长度为 \(1/2\)。因此
+\(m(\theta(C))=1/2\)。取不可测子集 \(W\subset\theta(C)\)，令
+\(A=\theta^{-1}(W)\subset C\)。由完全性，\(A\) Lebesgue 可测，故
+\(h=\chi_A\) 可测；而 \(g=\theta^{-1}\) 连续，却有 \[
+h\circ g=\chi_W,
+\] 它不可测。甚至 \(g\) 是 Lipschitz 的：由
+\(\theta(y)-\theta(x)\ge(y-x)/2\) 可得其 Lipschitz 常数不超过
+\(2\)。连续性或 Lipschitz 性控制正向像，不能保证零集的原像仍是零集。
+
+\textbf{教材例 3.2.10（一个充分条件）}　若连续
+\(T:\mathbb R^d\to\mathbb R^d\) 满足：每个 Lebesgue 零集 \(Z\) 都有
+\(m(T^{-1}(Z))=0\)，则对任意 Lebesgue 可测 \(f\)，\(f\circ T\) 可测。
+
+\textbf{证明：}任一 Lebesgue 可测集 \(A\) 可写为 \(B-N\)，其中 \(B\) 为
+Borel 集，\(N\) 为零集。\(T^{-1}(B)\) 为 Borel 集，而 \(T^{-1}(N)\)
+是零集，故 \(T^{-1}(A)\) 可测。再对 \(A=f^{-1}(G)\)
+使用开集原像判别即得。非奇异线性变换满足此条件；但不能据此把任意连续变换都列入其中。证毕。
+
+\Needspace{6\baselineskip}\subsection*{使用条件速查}\phantomsection\addcontentsline{toc}{subsection}{使用条件速查}\label{ux4f7fux7528ux6761ux4ef6ux901fux67e5}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+结论
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+所需条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+去掉条件的后果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+依测度基本列等价于依测度收敛 & 任意测度空间，有限可测代表元 &
+不需要全域有限性 \\
+依测度收敛可抽几乎处处收敛子列 & 任意测度空间 &
+整列可处处不收敛，见打字机序列 \\
+几乎处处收敛推出依测度收敛 & 有限测度集上成立 & 误差集可逃向无穷远 \\
+每子列有几乎处处收敛子子列，推出依测度收敛 & 有限测度集上成立 &
+逃逸区间给出反例 \\
+近一致收敛推出几乎处处、依测度收敛 & 任意测度空间 & 反向需分别检验 \\
+Egorov：几乎处处收敛推出近一致收敛 & 有限测度集，有限极限 &
+无限测度时小测度删集未必有效 \\
+依测度收敛保持乘积、商与连续代入 & 有限测度集；商的分母几乎处处非零 &
+无穷远处的放大可能破坏收敛 \\
+几乎处处改值保持可测性 & 完全测度空间 & 非 Borel 零集子集可破坏可测性 \\
+Lusin：大闭集上的限制连续 & Lebesgue 可测、几乎处处有限 &
+不要求全域有限测度；一般不能取紧集 \\
+\end{longtable}
+
+面对收敛问题，应先写出误差集，再判断要控制单项、尾并还是可求和的子列。面对
+Lebesgue 可测函数的结构，则先取 Borel
+代表元或大闭集，再用连续性；所有例外集都要在最后合并并核对测度。
+
+\noindent\hyperlink{ex2}{本节习题原题：练习题 3.2}
 
 \section{积分理论}
 对应教材 §3.3，第 208---228 页。测度给每个可测集指定大小。若一个函数在若干可测块上各取常值，积分应是各块的``高度乘测度''之和。下面逐次放开对高度、取值个数和符号的限制。记 \(\mathcal L(E)\) 为在 \(E\) 上可积的函数类，\(\chi_A\) 为 \(A\) 的特征函数。
