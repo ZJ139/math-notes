@@ -2,15 +2,15 @@
    print stylesheet, content routes and browser storage are unchanged. */
 @media screen {
   :root {
-    --paper: #FAF9F7;
-    --ink: #292724;
+    --paper: #F9F9F6;
+    --ink: #131313;
     --muted: #6F6B65;
     --line: #E5E1DA;
-    --soft: #F0EEEA;
-    --card: #FDFCF9;
+    --soft: #EFEEEC;
+    --card: #F9F9F6;
     --accent: #B66A4A;
     --accent-ink: #87492F;
-    --on-strong: #FFFFFF;
+    --on-strong: #F9F9F6;
     --error: #963A32;
     --success: #41634D;
     --control-line: #8D877E;
