@@ -5,12 +5,12 @@ subject: "数学分析"
 category: "lou-analysis"
 tags: ["楼红卫", "数学分析", "B组", "下册", "常微分方程", "反常积分", "振荡积分", "B254-B260"]
 created_at: "2026-11-18"
-updated_at: "2026-11-18"
+updated_at: "2026-11-20"
 ---
 
 第三十七批完成第九章最后一题，接入第十章反常积分。七题均无星号，对应题册 PDF 第 25、27 页（印刷第 23、25 页）；B255 引用的 A 组第 1 题另见 PDF 第 26 页。每题保留原题、思路来源、完整解答与方法总结。
 
-[上一批 B247—B253](/problems/618570a832067bb616fcf965/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [上一批 B247—B253](/problems/618570a832067bb616fcf965/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
@@ -386,4 +386,6 @@ B254 用临界解与保序性完成初值分类，关键在于同时证明临界
 
 本批 **B254—B260 七题全部完成**。两册累计 **256 道已作答、4 道暂跳过**（上册 175 道、下册 81 道）。第九章收录完毕，共 **34 道已作答、1 道暂跳过**；第十章已完成 **6 题**。**B116、B148、B180、B247** 仍待核。下一题为 **B261＝10.1.B 第 7 题**，见[原题 PDF 第 27 页](/files/problems/楼分析习题-v2.pdf#page=27)。
 
-[上一批 B247—B253](/problems/618570a832067bb616fcf965/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [上一批 B247—B253](/problems/618570a832067bb616fcf965/) · [第九章索引](/problems/collections/lou-analysis/chapters/9/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+
+后续：[第三十八批 B261—B267](/problems/828b0451ccb21ab4009c6025/) 已接续收录 10.1.B 第 7—13 题；B261 因原题条件缺口保留待核。以上本批累计数字为发布时历史记录，当前进度见总目录。
