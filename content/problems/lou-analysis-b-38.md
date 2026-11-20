@@ -10,7 +10,7 @@ updated_at: "2026-11-20"
 
 第三十八批接续 B260，按下册题册 PDF 第 27—28 页（印刷第 25—26 页）收录 10.1.B 第 7—13 题。七题均无星号，无附加小问或原书提示。B261 的原命题存在定义域与条件缺口，保留原题、反例及修订后的完整证明，暂不计入完成数。B266、B267 原题要求“能够说些什么”，以下给出有证明的讨论，并明确未覆盖的参数范围，不宣称得到全部分类。
 
-[上一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) · [上一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
@@ -481,4 +481,4 @@ B261 说明必须先审查命题的积分约定、定义域与两端行为；其
 
 下一题为 **B268＝10.1.B 第 14 题**，见[原题 PDF 第 28 页（印刷第 26 页）](/files/problems/楼分析习题-v2.pdf#page=28)，包括端点为零的积分不等式及向开区间内连续可导函数类的推广。
 
-[上一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) · [上一批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
