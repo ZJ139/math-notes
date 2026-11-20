@@ -6,7 +6,7 @@
 
 ## 复变函数讲义
 
-数学板块的 [复变函数](https://zj139.github.io/math-notes/math/complex-functions/) 栏目依史济怀、刘太顺教材建立九章四十八节目录。已完成第一章七节讲义与 63 道原题、第二章五节讲义与 74 道原题，定理、性质附证明；后续章节明确标记待编。讲义 PDF 由 `python scripts/build-complex-functions-pdf.py` 从同一份 Markdown 生成；加 `--chapter 2` 生成第二章，需要 Pandoc、XeLaTeX 与 xeCJK；排版参数继承已确定的实变函数讲义模板。
+数学板块的 [复变函数](https://zj139.github.io/math-notes/math/complex-functions/) 栏目依史济怀、刘太顺教材建立九章四十八节目录。已完成第一至第四章共 24 节讲义，各章分别收录 63、74、49、91 道教材原题，定理、性质附证明；第五至第九章明确标记待编。前三章讲义 PDF 由 `python scripts/build-complex-functions-pdf.py --chapter N` 从 Markdown 生成；第四章使用 `print/complex-functions-chapter-4.tex`，运行 XeLaTeX 三次可生成含目录与内部跳转的 29 页讲义。需要 XeLaTeX 与 xeCJK（前三章生成脚本另需 Pandoc）；排版参数继承已确定的讲义模板。
 
 ## 上传资料
 
