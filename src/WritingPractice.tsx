@@ -21,7 +21,7 @@ export function WritingPracticeIndex(){
 function AnswerPanel({part,version}:{part:'a'|'b';version:'original'|'revision'}){
   const id=`${part}-${version}`,label=version==='original'?'第一作答区':'第二作答区',kind=part==='a'?'小作文':'大作文';
   return <section className="practice-answer" data-answer={id} aria-labelledby={`${id}-heading`}>
-    <header className="answer-heading"><h3 className="sr-only" id={`${id}-heading`}>{kind}{label}</h3><span data-word-count="" aria-label={`${kind}${label}词数`}>0 词</span></header>
+    <header className="answer-heading"><h3 id={`${id}-heading`}><span className="sr-only">{kind}</span>{label}</h3><span data-word-count="" aria-label={`${kind}${label}词数`}>0 词</span></header>
     <label className="sr-only" htmlFor={id}>{kind}{label}</label>
     <textarea id={id} className={`answer-paper answer-paper-${part}`} lang="en" spellCheck maxLength={30000} aria-describedby={`${id}-status`} disabled/>
     <div className="answer-controls"><button type="button" className="button" data-save="" aria-label={`保存${kind}${label}`} disabled>保存</button><label className="button upload-handwriting" htmlFor={`${id}-upload`}>上传图片<input id={`${id}-upload`} type="file" aria-label={`上传${kind}${label}手写图片`} accept="image/jpeg,image/png,image/webp,image/gif" multiple disabled/></label></div>

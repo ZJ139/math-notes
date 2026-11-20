@@ -1,0 +1,236 @@
+/* Screen presentation only. The existing LaTeX renderer, font metrics,
+   print stylesheet, content routes and browser storage are unchanged. */
+@media screen {
+  :root {
+    --paper: #FCFCFC;
+    --ink: #131313;
+    --muted: #6F6B65;
+    --line: #E5E5E5;
+    --soft: #F3F3F3;
+    --card: #FFFFFF;
+    --accent: #B66A4A;
+    --accent-ink: #87492F;
+    --on-strong: #FFFFFF;
+    --error: #963A32;
+    --success: #41634D;
+    --control-line: #8D877E;
+    --selected: var(--accent-ink);
+    --selected-soft: var(--soft);
+    --selected-line: var(--line);
+    --focus: var(--accent-ink);
+    /* Font families remain defined by the original reading.css and fonts.css. */
+    --reading-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem);
+    --motion-quick: 160ms ease-out;
+    --content-width: 72rem;
+    --reading-width: 46rem;
+  }
+  html, body { background: var(--paper); color: var(--ink); }
+  html { scroll-behavior: auto; scroll-padding-top: 24px; }
+  body { font: 400 1rem/1.75 var(--serif); -webkit-text-stroke: 0; font-synthesis: none; }
+  a, button, input, textarea, select, summary {
+    transition: color var(--motion-quick), background-color var(--motion-quick), border-color var(--motion-quick), outline-color var(--motion-quick);
+  }
+  a { text-underline-offset: .22em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--ink); text-decoration: underline; }
+  :is(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus); outline-offset: 4px;
+  }
+  button:disabled { cursor: not-allowed; }
+  .wrap { width: calc(100% - 64px); max-width: var(--content-width); }
+  :is(main, .reading-page, .study-room, .practice-answer) { min-width: 0; }
+  .site-header { min-height: 88px; gap: 32px; }
+  .brand { font-size: 1.25rem; letter-spacing: .06em; gap: 10px; }
+  .brand-mark { width: 28px; height: 28px; }
+  .site-header nav { gap: 28px; font-size: .9375rem; }
+  .site-header nav a { min-height: 44px; display: inline-flex; align-items: center; }
+  .site-header nav a[aria-current=page] { color: var(--ink); font-weight: 600; }
+  .site-header nav a[aria-current=page]::after { height: 2px; background: var(--accent); bottom: 4px; }
+  .search-link { font-size: .9375rem; }
+  .site-footer { padding-block: 28px; }
+  .footer-title { font-size: 1rem; }
+  .footer-meta { font-size: .875rem; }
+  .skip-link { background: var(--ink); color: var(--on-strong); }
+  .text-link, .source-line a, .article-end a, .year-return a,
+  .breadcrumb a, .section-heading>a, .directory-heading>a { text-decoration: underline; }
+
+  /* The home is a directory, with whitespace instead of individual cards. */
+  .study-directory { padding-block: 56px 52px; }
+  .directory-heading { margin-bottom: 36px; }
+  .directory-heading h1 { font-size: 2rem; letter-spacing: -.025em; line-height: 1.35; }
+  .directory-heading>a { font-size: .875rem; }
+  .study-grid { grid-template-columns: .9fr 1.2fr 1fr; gap: 44px; }
+  .study-room { border-top: 1px solid var(--line); padding-top: 24px; }
+  .room-number { display: none; }
+  .room-heading { margin-bottom: 16px; }
+  .room-heading h2 { font-size: 1.25rem; letter-spacing: .02em; }
+  .directory-links>a { font-size: 1rem; line-height: 1.7; min-height: 44px; padding: 9px 0; border: 0; }
+  .directory-links>a:hover { background: var(--soft); text-decoration: underline; }
+  .english-directory { column-gap: 20px; }
+  .home-recent { padding-block: 30px 56px; }
+  .home-recent .section-heading h2 { font-size: 1.125rem; }
+  .recent-list { column-gap: 48px; margin-top: 12px; }
+  .recent-list li { padding: 18px 0; }
+  .recent-list li>a { font-size: 1rem; line-height: 1.75; }
+  .entry-meta { font-size: .875rem; line-height: 1.7; gap: 6px 14px; }
+  .entry-meta>span:first-child { color: var(--muted); }
+  .entry-tags { font-size: .875rem; }
+
+  /* Shared collection controls and year directories. */
+  .collection-page { max-width: 64rem; }
+  .page-heading { padding-block: 36px 24px; }
+  .page-heading h1 { font-size: 2rem; line-height: 1.45; margin: 18px 0 22px; letter-spacing: -.025em; }
+  .page-heading p { font-size: 1rem; }
+  .breadcrumb, .page-heading .breadcrumb { font-size: .875rem; line-height: 1.7; gap: 8px; overflow-wrap: anywhere; }
+  .button, .practice-toolbar .button, .answer-controls .button {
+    background: var(--card); border: 1px solid var(--control-line); color: var(--ink);
+    border-radius: 5px; min-height: 44px; font: 500 .9375rem/1.5 var(--serif); padding: 9px 16px;
+  }
+  .button:hover, .practice-toolbar .button:hover, .answer-controls .button:hover {
+    color: var(--ink); background: var(--soft); border-color: var(--muted); text-decoration: none;
+  }
+  .button.primary { background: var(--ink); border-color: var(--ink); color: var(--on-strong); }
+  .search-form input, .manage-search, .field :is(input,textarea,select), .markdown-input, .release-body {
+    background: var(--soft); border: 1px solid var(--control-line); border-radius: 5px; color: var(--ink); font-size: 1rem;
+  }
+  :is(input,textarea)::placeholder { color: var(--muted); opacity: 1; }
+  .result-count { min-height: 1.75em; font-size: .875rem; }
+  .entry-row h2 { font-size: 1.25rem; line-height: 1.6; }
+  .entry-row { padding-block: 24px; }
+  .section-tabs { font-size: 1rem; gap: 8px 24px; }
+  .english-primary>a, .category-group a, .category-group button,
+  .exam-year, .sentence-year-grid>a, .reading-year-grid>a,
+  .problem-year-grid>a, .problem-collection-card, .lou-chapter-grid>a {
+    background: transparent; border-radius: 0; border-width: 0 0 1px; box-shadow: none;
+  }
+  .english-primary>a { font-size: 1rem; padding: 12px 4px; }
+  .exam-year { padding: 20px 0; }
+  .exam-years { gap: 0 24px; }
+  :is(.english-primary,.category-group) a[aria-current=page], .category-group button[aria-pressed=true] {
+    color: var(--ink); background: var(--soft); border-color: var(--accent); box-shadow: inset 3px 0 var(--accent);
+  }
+  .english-primary>a[aria-current=page] .category-number { color: var(--muted); }
+  .writing-directory { margin-top: 16px; }
+  .writing-directory>p { margin-bottom: 32px; }
+  .writing-featured { background: transparent; border: 0; border-block: 1px solid var(--line); padding: 28px 0; }
+  .writing-featured-label { font-size: .875rem; color: var(--muted); letter-spacing: .04em; }
+  .writing-featured h2 { font-size: 1.5rem; margin-block: 8px 12px; }
+  .writing-featured-actions { font-size: .9375rem; color: var(--muted); }
+  .writing-featured-years { gap: 10px; margin-top: 24px; }
+  .writing-featured-years>a { font-size: 1.125rem; background: var(--card); border-radius: 4px; padding: 10px 6px; }
+  .writing-section-heading h2, .writing-resources h2 { font-size: 1.25rem; line-height: 1.65; }
+  .writing-resources ul { gap: 4px 32px; margin-top: 12px; }
+  .writing-resources li a { font-size: 1rem; }
+  .writing-year-nav { gap: 4px 12px; }
+  .writing-year-nav>a { font-size: .9375rem; border: 0; border-bottom: 1px solid var(--line); }
+  .writing-year-row { grid-template-columns: 80px minmax(0,1fr); gap: 24px; }
+  .writing-year-row h3 { font-size: 1.25rem; }
+  .writing-year-row li a { font-size: 1rem; }
+  .writing-kind, .writing-section-heading>span { color: var(--muted); font-size: .875rem; }
+  .practice-years { border-color: var(--line); gap: 0 32px; }
+  .practice-years>a { padding: 24px 0; }
+  .practice-years strong { font-size: 1.5rem; margin-bottom: 6px; font-weight: 600; }
+  .practice-years span { font-size: .9375rem; line-height: 1.75; }
+  .practice-years>a:hover { color: var(--ink); background: var(--soft); }
+  .practice-years>a:hover strong { color: var(--ink); }
+
+  /* Quiet reading column. TeX's intrinsic sizes and baseline stay untouched. */
+  .article-shell { max-width: var(--reading-width); color: var(--ink); padding-bottom: 64px; }
+  .article-shell>.breadcrumb { border: 0; padding-block: 32px 12px; font-size: .875rem; }
+  .reading-page { max-width: 100%; }
+  .article-header { padding-block: 18px 28px; border-bottom: 1px solid var(--line); }
+  .article-header .eyebrow { font-size: .875rem; }
+  .article-shell .article-header h1 { font-size: clamp(1.6rem, 1.25rem + 1vw, 2rem); text-align: left; line-height: 1.5; margin: 12px 0 18px; }
+  .article-header .entry-meta { font-size: .875rem; line-height: 1.7; }
+  .prose { color: var(--ink); line-height: 1.85; padding-top: 24px; -webkit-text-stroke: 0; }
+  .prose p { margin-bottom: .9em; }
+  .prose>p, .prose>p+p { text-align: start; text-indent: 0; }
+  .prose h1, .prose h2 { font-size: 1.3em; text-align: left; line-height: 1.6; margin: 2em 0 .85em; }
+  .prose h3 { font-size: 1.12em; line-height: 1.7; margin: 1.6em 0 .65em; }
+  .prose :is(ul,ol) { padding-left: 1.5em; margin-block: .8em; }
+  .prose li { margin-bottom: .5em; }
+  .prose a { color: var(--ink); text-decoration: underline; text-underline-offset: .22em; }
+  .prose blockquote { padding: 12px 20px; margin: 24px 0; background: var(--soft); border-left: 2px solid var(--line); }
+  .prose blockquote p:last-child { margin-bottom: 0; }
+  .prose code, .prose pre { background: var(--soft); font-size: .875em; }
+  .prose :not(pre)>code { padding: .12em .3em; border-radius: 3px; }
+  .prose pre { border-radius: 5px; }
+  .prose .katex-display { padding-block: 8px; scrollbar-width: thin; scrollbar-color: var(--control-line) var(--soft); }
+  .prose .katex { font-synthesis: none; }
+  .article-shell:not([data-section=english]) .prose .latex-svg { filter: none; }
+  .prose .article-figure { background: var(--card); }
+  .lecture-toc, .lou-batch-toc { background: var(--card); border: 1px solid var(--line); border-radius: 5px; padding: 24px; }
+  .lecture-toc h2, .lou-batch-toc>h2 { font-size: 1.25rem; }
+  .article-end { font-size: .9375rem; }
+
+  /* Preserve all four answer slots, upload controls and actual status text. */
+  .practice-title nav { font-size: .9375rem; gap: 20px; }
+  .practice-page .page-heading { margin-bottom: 8px; }
+  .practice-toolbar { padding-block: 16px; border-color: var(--line); }
+  .practice-help { font-size: .875rem; margin-bottom: 8px; }
+  .practice-feedback, .practice-feedback:empty { display: block; min-height: 1.75em; margin: 0 0 8px; color: var(--muted); font-size: .875rem; }
+  .practice-feedback.save-error, .answer-status.save-error { color: var(--error); }
+  .practice-part { border-top: 1px solid var(--line); margin: 0 0 48px; padding-top: 28px; }
+  .practice-part-heading { gap: 16px; }
+  .practice-part-heading span { font-size: .875rem; color: var(--muted); }
+  .practice-part-heading h2 { font-size: 1.375rem; line-height: 1.6; margin: 6px 0 20px; }
+  .prompt-copy { font: 400 1.0625rem/1.85 var(--serif); -webkit-text-stroke: 0; max-width: 48rem; }
+  .prompt-scan { font-size: .875rem; }
+  .answer-comparison { gap: 24px; }
+  .practice-answer { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+  .answer-heading { justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+  .answer-heading h3 { font-size: .9375rem; font-weight: 600; margin: 0; }
+  .answer-heading span { font-size: .875rem; }
+  .answer-paper {
+    background: var(--card); border: 1px solid var(--control-line); border-radius: 4px;
+    font: 400 1rem/1.9 var(--serif); color: var(--ink); padding: 12px;
+    height: 352px; min-height: 224px; -webkit-text-stroke: 0;
+  }
+  .answer-paper-b { height: 480px; }
+  .answer-controls { gap: 8px; }
+  .answer-status { color: var(--muted); font-size: .875rem; line-height: 1.7; min-height: 2.8em; }
+  .answer-images img { background: var(--soft); }
+  .text-button { font: 400 .875rem/1.6 var(--serif); min-height: 44px; }
+  .practice-toolbar label:focus-within, .upload-handwriting:focus-within { outline-color: var(--focus); }
+
+  @media (max-width: 900px) {
+    .wrap { width: calc(100% - 48px); }
+    .site-header { min-height: 0; padding-top: 20px; gap: 0; }
+    .site-header nav { font-size: .9375rem; gap: 16px; }
+    .study-grid { grid-template-columns: 1fr; gap: 36px; }
+    .study-directory { padding-block: 36px 40px; }
+    .directory-heading { margin-bottom: 28px; }
+    .directory-links { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 32px; }
+    .study-room { padding-top: 20px; }
+    .recent-list { grid-template-columns: 1fr; }
+    .practice-title { gap: 4px; }
+    .answer-comparison { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { width: calc(100% - 32px); }
+    .site-header nav { gap: 8px; font-size: .875rem; }
+    .directory-heading h1, .page-heading h1 { font-size: 1.625rem; }
+    .directory-heading { gap: 12px; }
+    .directory-links { gap: 0 20px; }
+    .study-room[aria-labelledby=problems-heading] .directory-links { grid-template-columns: 1fr; }
+    .room-heading h2 { font-size: 1.1875rem; }
+    .page-heading { padding-top: 28px; }
+    .writing-featured h2 { font-size: 1.25rem; }
+    .writing-year-row { grid-template-columns: 1fr; gap: 12px; }
+    .writing-resources ul { grid-template-columns: 1fr; }
+    .writing-featured-years { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .practice-years { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 20px; }
+    .practice-title h1 { font-size: 1.625rem; }
+    .practice-answer { padding: 16px; }
+    .practice-feedback, .practice-feedback:empty { min-height: 3.5em; }
+    .practice-part-heading h2 { font-size: 1.25rem; }
+    .practice-part-heading { margin-bottom: 12px; }
+    .lecture-toc, .lou-batch-toc { padding: 20px 16px; }
+    .article-shell>.breadcrumb { padding-top: 24px; }
+    .article-header { padding-top: 12px; }
+    .prose blockquote { padding: 12px 16px; }
+    .site-footer { align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+}

@@ -62,7 +62,7 @@ const fonts=await readFile(path.join(output,'fonts.css'),'utf8');
 await writeFile(path.join(output,'fonts.css'),fonts.replaceAll('/fonts/',`${base}/fonts/`));
 // New pages must not reuse cached typography or a different renderer's CSS.
 // Keep each stylesheet in its directory so relative font URLs still resolve.
-for(const file of ['fonts.css','reading.css','writing-practice.css','reading-practice.css']){
+for(const file of ['fonts.css','reading.css','writing-practice.css','reading-practice.css','quiet-reading.css']){
   const digest=createHash('sha256').update(await readFile(path.join(output,file))).digest('hex').slice(0,16);
   const fingerprinted=file.replace(/\.css$/,`.${digest}.css`);
   await rename(path.join(output,file),path.join(output,fingerprinted));
