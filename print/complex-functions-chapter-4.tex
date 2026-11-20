@@ -4,8 +4,8 @@
 \usepackage[no-math]{fontspec}
 \usepackage{xeCJK}
 \setmainfont{Latin Modern Roman}
-\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
-\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,BoldFont=FandolSong-Bold.otf]
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}
 \setstretch{1.12}
@@ -60,24 +60,14 @@
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \providecommand{\pandocbounded}[1]{#1}
 \setcounter{tocdepth}{2}
-
 \begin{document}
 \begin{center}
 {\LARGE\bfseries 复变函数讲义\par}
 \vspace{8pt}{\large 第四章\quad 全纯函数的 Taylor 展开及其应用\par}
 \vspace{6pt}{\small 依史济怀、刘太顺《复变函数》\quad 教材第 103—140 页\par}
 \end{center}\vspace{8pt}
-本章含五节系统讲义与独立的 91 道教材习题。沿教材编号给出定义、定理、性质与例题，补足证明及必要条件；习题不附常规解答，原书疑义单列校勘。正文承接第三章的 Cauchy 积分理论，从紧集上的一致控制进入 Taylor 展开、零点计数与模估计。校审记录附后；习题原文与校勘分列。
-\tableofcontents
-\clearpage
-\section*{定理与例题索引}
-\phantomsection\addcontentsline{toc}{section}{定理与例题索引}
-\noindent\textbf{§4.1}\quad \hyperlink{theorem-4.1.1}{定义 4.1.1}\quad \hyperlink{theorem-4.1.2}{定理 4.1.2}\quad \hyperlink{theorem-4.1.3}{定理 4.1.3}\quad \hyperlink{theorem-4.1.4}{定理 4.1.4}\quad \hyperlink{theorem-4.1.5}{定理 4.1.5}\quad \hyperlink{theorem-4.1.6}{定义 4.1.6}\quad \hyperlink{theorem-4.1.7}{定义 4.1.7}\quad \hyperlink{theorem-4.1.8}{引理 4.1.8}\quad \hyperlink{theorem-4.1.9}{定理 4.1.9}\quad \hyperlink{theorem-4.1.10}{例 4.1.10}\par\medskip
-\noindent\textbf{§4.2}\quad \hyperlink{theorem-4.2.1}{定义 4.2.1}\quad \hyperlink{theorem-4.2.2}{定理 4.2.2}\quad \hyperlink{theorem-4.2.3}{定理 4.2.3}\quad \hyperlink{theorem-4.2.4}{定理 4.2.4}\quad \hyperlink{theorem-4.2.5}{例 4.2.5}\quad \hyperlink{theorem-4.2.6}{例 4.2.6}\quad \hyperlink{theorem-4.2.7}{例 4.2.7}\quad \hyperlink{theorem-4.2.8}{定义 4.2.8}\quad \hyperlink{theorem-4.2.9}{定理 4.2.9}\quad \hyperlink{theorem-4.2.10}{例 4.2.10}\par\medskip
-\noindent\textbf{§4.3}\quad \hyperlink{theorem-4.3.1}{定理 4.3.1}\quad \hyperlink{theorem-4.3.2}{定理 4.3.2}\quad \hyperlink{theorem-4.3.3}{定义 4.3.3}\quad \hyperlink{theorem-4.3.4}{命题 4.3.4}\quad \hyperlink{theorem-4.3.5}{命题 4.3.5}\quad \hyperlink{theorem-4.3.6}{命题 4.3.6}\quad \hyperlink{theorem-4.3.7}{定理 4.3.7}\par\medskip
-\noindent\textbf{§4.4}\quad \hyperlink{theorem-4.4.1}{定理 4.4.1}\quad \hyperlink{theorem-4.4.2}{定理 4.4.2}\quad \hyperlink{theorem-4.4.3}{定理 4.4.3}\quad \hyperlink{theorem-4.4.4}{定理 4.4.4}\quad \hyperlink{theorem-4.4.5}{推论 4.4.5}\quad \hyperlink{theorem-4.4.6}{定理 4.4.6}\quad \hyperlink{theorem-4.4.7}{定理 4.4.7}\quad \hyperlink{theorem-4.4.8}{定理 4.4.8}\quad \hyperlink{theorem-4.4.9}{定理 4.4.9}\quad \hyperlink{theorem-4.4.10}{定理 4.4.10}\quad \hyperlink{theorem-4.4.11}{定理 4.4.11}\quad \hyperlink{theorem-4.4.12}{例 4.4.12}\quad \hyperlink{theorem-4.4.13}{例 4.4.13}\quad \hyperlink{theorem-4.4.14}{例 4.4.14}\par\medskip
-\noindent\textbf{§4.5}\quad \hyperlink{theorem-4.5.1}{定理 4.5.1}\quad \hyperlink{theorem-4.5.2}{定理 4.5.2}\quad \hyperlink{theorem-4.5.3}{定理 4.5.3}\quad \hyperlink{theorem-4.5.4}{定义 4.5.4}\quad \hyperlink{theorem-4.5.5}{定理 4.5.5}\quad \hyperlink{theorem-4.5.6}{定理 4.5.6}\par\medskip
-\clearpage
+本章含5节讲义及全部 91 道习题原题。定义、定理和性质沿用教材的记号与编号；证明补足必要条件、退化情形与关键推导。由紧集上的一致控制建立 Taylor 理论、零点计数与模估计。此次修订补全原函数级数的半径论证、修正 Abel 扇形闭集，并核正习题 4.2.10 的求和起点。习题不附解答，原题中的疑义另列校勘。
+\tableofcontents\clearpage
 \section{Weierstrass 定理}
 对应教材第 103---110 页。本章的结构是：Cauchy
 积分公式给出紧集上的导数控制；由此建立级数极限的全纯性，再将积分核展开为几何级数，得到
@@ -92,8 +82,8 @@ Schwarz 引理。
 不等式（定理 3.5.1）与 Morera 定理（定理
 3.5.4）作为前置结果引用。本章不使用第五章的 Laurent 展开或残数定理。
 
-\Needspace{6\baselineskip}
-\subsection{一致收敛及其判别}\label{ch04-s1-ux4e00ux81f4ux6536ux655bux53caux5176ux5224ux522b}
+\Needspace{5\baselineskip}
+\subsection{一致收敛及其判别}\label{ch04-s1-heading-1}
 
 复数项级数 \(\sum_{n=1}^{\infty}z_n\) 收敛，是指部分和
 \(S_n=\sum_{j=1}^n z_j\) 收敛。由 \(\mathbb C\)
@@ -103,7 +93,6 @@ Schwarz 引理。
 \(\sum|z_n|<\infty\)，三角不等式使复级数也满足 Cauchy
 准则，故绝对收敛蕴含收敛。反向不成立，例如 \(\sum(-1)^{n-1}/n\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.1}{}
 \textbf{定义 4.1.1。} 设
 \(f_n:E\to\mathbb C\)，\(S_n=\sum_{j=1}^n f_j\)。若对每个
 \(\varepsilon>0\)，存在与 \(z\in E\) 无关的 \(N\)，使 \(n>N\) 时
@@ -111,14 +100,13 @@ Schwarz 引理。
 上一致收敛于 \(f\)，记作
 \(S_n\rightrightarrows f\)。等价地，\(\sup_E|S_n-f|\to0\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.2}{}
 \textbf{定理 4.1.2（一致 Cauchy 准则）。} 级数在 \(E\)
 上一致收敛，当且仅当对每个 \(\varepsilon>0\)，存在 \(N\)，使
 
 \[
 \left|\sum_{j=n+1}^{n+p}f_j(z)\right|<\varepsilon
 \quad(n>N,\ p\ge1,\ z\in E).
-\tag{4.1.3}
+\qquad\text{(4.1.3)}
 \]
 
 证明：一致收敛时，以 \(\varepsilon/2\) 控制 \(S_{n+p}-f\) 和 \(S_n-f\)
@@ -127,19 +115,19 @@ Schwarz 引理。
 \(|f(z)-S_n(z)|\le\varepsilon/2<\varepsilon\)，且 \(N\) 与 \(z\)
 无关。这里取极限后只能先得到非严格不等号。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.3}{}
 \textbf{定理 4.1.3（Weierstrass 判别法）。} 若 \(|f_n(z)|\le a_n\)
 对所有 \(z\in E\) 成立，且 \(\sum a_n<\infty\)，则 \(\sum f_n\) 在 \(E\)
 上绝对且一致收敛。
 
 证明：尾和的模不超过 \(\sum_{j=n+1}^{n+p}a_j\)，应用定理 4.1.2。对
 \(\sum|f_n|\) 用同一估计即可。这一判别法是充分条件；不能从一致收敛反推
-\(\sum\sup_E|f_n|<\infty\)。
+\(\sum\sup_E|f_n|<\infty\)。例如在非空集合 \(E\) 上取与 \(z\) 无关的
+\(f_n(z)=(-1)^{n-1}/n\)：部分和一致收敛于 \(\log2\)，而
+\(\sum\sup_E|f_n|=\sum1/n\) 发散。
 
-\Needspace{6\baselineskip}
-\subsection{连续性与逐项积分}\label{ch04-s1-ux8fdeux7eedux6027ux4e0eux9010ux9879ux79efux5206}
+\Needspace{5\baselineskip}
+\subsection{连续性与逐项积分}\label{ch04-s1-heading-2}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.4}{}
 \textbf{定理 4.1.4。} 连续函数项级数在 \(E\) 上一致收敛，其和函数在
 \(E\) 上连续（按相对拓扑理解）。
 
@@ -151,13 +139,12 @@ Schwarz 引理。
 |f(z)-f(a)|\le |f(z)-S_N(z)|+|S_N(z)-S_N(a)|+|S_N(a)-f(a)|<\varepsilon.
 \]
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.5}{}
 \textbf{定理 4.1.5。} 若 \(f_n\) 在可求长曲线 \(\gamma\) 上连续，且
 \(\sum f_n\rightrightarrows f\) 于 \(\gamma\)，则可逐项积分：
 
 \[
 \int_\gamma f(z)\,dz=\sum_{n=1}^{\infty}\int_\gamma f_n(z)\,dz.
-\tag{4.1.4}
+\qquad\text{(4.1.4)}
 \]
 
 证明：定理 4.1.4 保证 \(f\) 连续；若 \(L\) 是曲线长度，长大不等式给出
@@ -165,14 +152,12 @@ Schwarz 引理。
 \(\gamma\) 的参数化；不要求曲线闭合，也不要求被积函数全纯。若曲线随
 \(N\) 变动，则还需控制其长度。
 
-\Needspace{6\baselineskip}
-\subsection{紧集上的导数控制}\label{ch04-s1-ux7d27ux96c6ux4e0aux7684ux5bfcux6570ux63a7ux5236}
+\Needspace{5\baselineskip}
+\subsection{紧集上的导数控制}\label{ch04-s1-heading-3}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.6}{}
 \textbf{定义 4.1.6。} 在域 \(D\) 的每个紧子集上一致收敛，称为在 \(D\)
 中内闭一致收敛，也称局部一致收敛。两种说法等价：每点有一个邻域上一致收敛时，任意紧集可用有限个这样的邻域覆盖；反之，在每点取闭小圆盘即可。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.7}{}
 \textbf{定义 4.1.7。} \(G\Subset D\) 表示 \(\overline G\) 是包含于 \(D\)
 的紧集。注意紧的是 \(\overline G\)，开集 \(G\) 本身通常不紧。
 
@@ -181,14 +166,13 @@ Schwarz 引理。
 \(1+\sum_{k=1}^{\infty}(z^k-z^{k-1})\) 的部分和正是
 \(z^n\)。因此``内闭一致''允许靠近边界时失去统一控制。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.8}{}
 \textbf{引理 4.1.8。} 设 \(K\subset G\Subset D\)，其中 \(K\) 紧、\(G\)
 开。对 \(f\in H(D)\) 和 \(k\ge1\)，有
 
 \[
 \sup_K|f^{(k)}|\le C\sup_G|f|,
 \qquad C=\frac{k!}{\rho^k},\quad \rho=d(K,\partial G)>0.
-\tag{4.1.5}
+\qquad\text{(4.1.5)}
 \]
 
 证明：紧集 \(K\) 到闭集 \(\partial G\) 的距离为正。对
@@ -197,7 +181,6 @@ Schwarz 引理。
 取上确界。若使用圆周积分，先取 \(r<\rho\)，最后令
 \(r\uparrow\rho\)，不把可能碰到 \(\partial G\) 的圆周误当成内部曲线。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.1.9}{}
 \textbf{定理 4.1.9（Weierstrass）。} 设 \(f_n\in H(D)\)，级数
 \(\sum f_n\) 在 \(D\) 中内闭一致收敛于 \(f\)。则
 \(f\in H(D)\)，且对每个固定的 \(k\ge1\)，
@@ -240,9 +223,8 @@ f^{(k)}(z)=\sum_{n=1}^{\infty}f_n^{(k)}(z),
 积分表示。实函数 \(\sin(nx)/n\to0\) 一致，而其导数 \(\cos(nx)\)
 不收敛，说明这里的全纯性不可删除。
 
-\hypertarget{theorem-4.1.10}{}\Needspace{6\baselineskip}
-\subsection{例
-4.1.10：半平面上的级数}\label{ch04-s1-ux4f8b-4110ux534aux5e73ux9762ux4e0aux7684ux7ea7ux6570}
+\Needspace{5\baselineskip}
+\subsection{例 4.1.10：半平面上的级数}\label{ch04-s1-heading-4}
 
 设
 
@@ -264,33 +246,26 @@ f^{(k)}(z)=\sum_{n=1}^{\infty}f_n^{(k)}(z),
 \(p\) 级数核对导数级数在 \(K\) 上的一致收敛。这里没有断言级数在边界
 \(\operatorname{Re}z=1\) 收敛，也没有使用其全纯开拓。
 
-\Needspace{6\baselineskip}
-\subsection{定理索引}\label{ch04-s1-ux5b9aux7406ux7d22ux5f15}
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch04-s1-heading-5}
 
-\hyperref[ch04-s1-ux4e00ux81f4ux6536ux655bux53caux5176ux5224ux522b]{定义
-4.1.1、定理 4.1.2---4.1.3} ·
-\hyperref[ch04-s1-ux8fdeux7eedux6027ux4e0eux9010ux9879ux79efux5206]{定理
-4.1.4---4.1.5} ·
-\hyperref[ch04-s1-ux7d27ux96c6ux4e0aux7684ux5bfcux6570ux63a7ux5236]{定义
-4.1.6---4.1.7、引理 4.1.8、定理 4.1.9} ·
-\hyperref[ch04-s1-ux4f8b-4110ux534aux5e73ux9762ux4e0aux7684ux7ea7ux6570]{例
-4.1.10}
+\hyperref[ch04-s1-heading-1]{定义 4.1.1、定理 4.1.2---4.1.3} ·
+\hyperref[ch04-s1-heading-2]{定理 4.1.4---4.1.5} · \hyperref[ch04-s1-heading-3]{定义
+4.1.6---4.1.7、引理 4.1.8、定理 4.1.9} · \hyperref[ch04-s1-heading-4]{例 4.1.10}
 
 \section{幂级数}
 对应教材第 110---118 页。幂级数形如
 \(\sum_{n=0}^{\infty}a_n(z-z_0)^n\)；平移 \(w=z-z_0\)
 后只需讨论中心为零的情形。
 
-\Needspace{6\baselineskip}
-\subsection{收敛半径}\label{ch04-s2-ux6536ux655bux534aux5f84}
+\Needspace{5\baselineskip}
+\subsection{收敛半径}\label{ch04-s2-heading-1}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.1}{}
 \textbf{定义 4.2.1。} 若级数在 \(|z|<R\) 收敛、在 \(|z|>R\) 发散，则称
 \(R\in[0,+\infty]\) 为收敛半径；\(B(0,R)\) 为收敛圆。\(R=0\)
 时只在中心收敛；\(R=+\infty\) 时处处收敛。这个定义不决定 \(|z|=R\)
 上的敛散性。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.2}{}
 \textbf{定理 4.2.2（Cauchy--Hadamard 公式）。} 每个幂级数都有收敛半径
 
 \[
@@ -309,11 +284,9 @@ R=\frac1L,\qquad L=\limsup_{n\to\infty}\sqrt[n]{|a_n|},
 \(n\)）、\(a_n=1\)（奇数 \(n\)），则 \(\sqrt[n]{|a_n|}\)
 不收敛，而收敛半径仍为 \(1/3\)。
 
-\Needspace{6\baselineskip}
-\subsection{Abel
-定理与圆内全纯性}\label{ch04-s2-abel-ux5b9aux7406ux4e0eux5706ux5185ux5168ux7eafux6027}
+\Needspace{5\baselineskip}
+\subsection{Abel 定理与圆内全纯性}\label{ch04-s2-heading-2}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.3}{}
 \textbf{定理 4.2.3（Abel）。} 若 \(\sum a_nz^n\) 在某个 \(z_0\ne0\)
 处收敛，则在 \(|z|<|z_0|\) 内闭绝对一致收敛。
 
@@ -326,7 +299,6 @@ R=\frac1L,\qquad L=\limsup_{n\to\infty}\sqrt[n]{|a_n|},
 
 右端可求和，应用定理 4.1.3 即得。实际上只需 \(\{a_nz_0^n\}\) 有界。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.4}{}
 \textbf{定理 4.2.4。} 收敛半径 \(R>0\)
 的幂级数在收敛圆内表示一个全纯函数。
 
@@ -348,21 +320,21 @@ f^{(k)}(z)=\sum_{n=k}^{\infty}\frac{n!}{(n-k)!}a_n(z-z_0)^{n-k},\qquad k\ge1,
 \(r<R'\)，\(\sum_{n\ge1}|na_n|r^{n-1}<\infty\)，从而
 \(\sum_{n\ge1}|a_n|r^n<\infty\)，与 \(R\)
 的定义矛盾。逐次应用得所有固定阶的结论。\(R=+\infty\)
-时结论直接成立。原函数级数 \(C+\sum a_n(z-z_0)^{n+1}/(n+1)\)
-同理也有半径 \(R\)，并可逐项积分。
+时结论直接成立。原函数级数 \(C+\sum a_n(z-z_0)^{n+1}/(n+1)\) 在每个
+\(|z-z_0|=r<R\) 上绝对收敛，因为其绝对值级数不超过
+\(|C|+r\sum|a_n|r^n\)。若其半径大于
+\(R\)，对它应用已证的求导半径不变结论，就得到原级数也有更大半径，矛盾。因此原函数级数的半径恰为
+\(R\)，圆内逐项求导等于 \(f\)，从而可逐项积分。
 
-\Needspace{6\baselineskip}
-\subsection{圆周上的三种情形}\label{ch04-s2-ux5706ux5468ux4e0aux7684ux4e09ux79cdux60c5ux5f62}
+\Needspace{5\baselineskip}
+\subsection{圆周上的三种情形}\label{ch04-s2-heading-3}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.5}{}
 \textbf{例 4.2.5。} \(\sum_{n=0}^{\infty}z^n\) 的半径为
 \(1\)，单位圆周上处处发散，因为通项的模恒为 \(1\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.6}{}
 \textbf{例 4.2.6。} \(\sum_{n=1}^{\infty}z^n/n^2\) 的半径为
 \(1\)，在闭单位圆盘上绝对一致收敛，因为 \(|z^n/n^2|\le1/n^2\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.7}{}
 \textbf{例 4.2.7。} \(\sum_{n=1}^{\infty}z^n/n\) 的半径为 \(1\)，在
 \(z=1\) 发散，在其他单位圆周点收敛。
 
@@ -382,11 +354,9 @@ f^{(k)}(z)=\sum_{n=k}^{\infty}\frac{n!}{(n-k)!}a_n(z-z_0)^{n-k},\qquad k\ge1,
 4.2.6---4.2.7 将求和起点印成 \(n=0\)，分母此时无意义；此处明确改为
 \(n=1\)。
 
-\Needspace{6\baselineskip}
-\subsection{非切向极限与 Abel
-第二定理}\label{ch04-s2-ux975eux5207ux5411ux6781ux9650ux4e0e-abel-ux7b2cux4e8cux5b9aux7406}
+\Needspace{5\baselineskip}
+\subsection{非切向极限与 Abel 第二定理}\label{ch04-s2-heading-4}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.8}{}
 \textbf{定义 4.2.8。} 对单位圆周点
 \(e^{i\theta_0}\)，在盘内沿以指向圆心的半径为轴、半顶角 \(\alpha<\pi/2\)
 的固定角域 \(S_\alpha(e^{i\theta_0})\)
@@ -399,7 +369,6 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 每个固定 \(\alpha<\pi/2\) 分别要求同一极限；不允许一边趋近边界，一边令
 \(\alpha\uparrow\pi/2\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.2.9}{}
 \textbf{定理 4.2.9（Abel 第二定理）。} 若
 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径为 \(1\)，且
 \(\sum a_n=S\)，则
@@ -407,7 +376,7 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 \[
 \lim_{\substack{z\to1\\z\in S_\alpha(1)}}f(z)=S
 \qquad(0\le\alpha<\pi/2).
-\tag{4.2.3}
+\qquad\text{(4.2.3)}
 \]
 
 证明：记 \(\sigma_{n,p}=\sum_{j=1}^p a_{n+j}\)。给定
@@ -421,7 +390,7 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 \left|\sum_{j=1}^p a_{n+j}z^{n+j}\right|
 &\le\varepsilon\left(\frac{|1-z|}{1-|z|}+1\right),\qquad |z|<1.
 \end{aligned}
-\tag{4.2.4}
+\qquad\text{(4.2.4)}
 \]
 
 要让上界与 \(z\) 无关，正需要非切向条件。写
@@ -433,8 +402,11 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 \le\frac{2}{\cos\alpha}.
 \]
 
-因此尾和在 \(S_\alpha(1)\cap\overline{B(1,\cos\alpha)}\)
-上有统一小界；在端点 \(z=1\)，尾和就是
+令
+\(E_\alpha=\{1-\rho e^{i\theta}:0\le\rho\le\cos\alpha,\ |\theta|\le\alpha\}\)。这是显式包含端点
+\(1\) 的紧集；当 \(\rho>0\)
+时，\(|z|^2=1-2\rho\cos\theta+\rho^2<1\)。因此尾和在
+\(E_\alpha\setminus\{1\}\) 上有统一小界；在端点 \(z=1\)，尾和就是
 \(\sigma_{n,p}\)，同样成立。该闭角形只在 \(1\) 碰到单位圆周：若
 \(|z|=1\) 且 \(z\ne1\)，则 \(\rho=2\cos\theta\ge2\cos\alpha\)，与
 \(\rho\le\cos\alpha\) 矛盾。由一致 Cauchy
@@ -446,9 +418,8 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 的特例；任意切向趋近没有上述距离比的统一上界，不能由本定理直接处理。一般边界点通过旋转平移归结到
 \(1\)。
 
-\hypertarget{theorem-4.2.10}{}\Needspace{6\baselineskip}
-\subsection{例 4.2.10：对数与 Fourier
-和式}\label{ch04-s2-ux4f8b-4210ux5bf9ux6570ux4e0e-fourier-ux548cux5f0f}
+\Needspace{5\baselineskip}
+\subsection{例 4.2.10：对数与 Fourier 和式}\label{ch04-s2-heading-5}
 
 令 \(f(z)=\sum_{n=1}^{\infty}z^n/n\)。在 \(|z|<1\) 内逐项求导，得
 \(f'(z)=1/(1-z)\)。由于 \(1-z\) 位于右半平面，取在 \(z=0\)
@@ -481,33 +452,27 @@ S_\alpha(1)=\{z\in B(0,1):|\arg(1-z)|\le\alpha\}.
 Abel
 定理认定其和，不能把``径向极限存在''当作``边界级数收敛''的充分条件。
 
-\Needspace{6\baselineskip}
-\subsection{定理索引}\label{ch04-s2-ux5b9aux7406ux7d22ux5f15}
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch04-s2-heading-6}
 
-\hyperref[ch04-s2-ux6536ux655bux534aux5f84]{定义 4.2.1、定理 4.2.2} ·
-\hyperref[ch04-s2-abel-ux5b9aux7406ux4e0eux5706ux5185ux5168ux7eafux6027]{定理
-4.2.3---4.2.4及逐项求导} ·
-\hyperref[ch04-s2-ux5706ux5468ux4e0aux7684ux4e09ux79cdux60c5ux5f62]{例
-4.2.5---4.2.7} ·
-\hyperref[ch04-s2-ux975eux5207ux5411ux6781ux9650ux4e0e-abel-ux7b2cux4e8cux5b9aux7406]{定义
-4.2.8、定理 4.2.9} ·
-\hyperref[ch04-s2-ux4f8b-4210ux5bf9ux6570ux4e0e-fourier-ux548cux5f0f]{例 4.2.10}
+\hyperref[ch04-s2-heading-1]{定义 4.2.1、定理 4.2.2} · \hyperref[ch04-s2-heading-2]{定理
+4.2.3---4.2.4及逐项求导} · \hyperref[ch04-s2-heading-3]{例 4.2.5---4.2.7} ·
+\hyperref[ch04-s2-heading-4]{定义 4.2.8、定理 4.2.9} · \hyperref[ch04-s2-heading-5]{例
+4.2.10}
 
 \section{全纯函数的 Taylor 展开}
 对应教材第 118---124 页。上一节证明了``收敛幂级数给出全纯函数''；本节用
 Cauchy 积分公式证明反向，从而把全纯性与局部幂级数表示等同起来。
 
-\Needspace{6\baselineskip}
-\subsection{Taylor
-定理与余项估计}\label{ch04-s3-taylor-ux5b9aux7406ux4e0eux4f59ux9879ux4f30ux8ba1}
+\Needspace{5\baselineskip}
+\subsection{Taylor 定理与余项估计}\label{ch04-s3-heading-1}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.1}{}
 \textbf{定理 4.3.1。} 若 \(f\in H(B(z_0,R))\)，则
 
 \[
 f(z)=\sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n,
 \qquad |z-z_0|<R.
-\tag{4.3.1}
+\qquad\text{(4.3.1)}
 \]
 
 级数在该圆盘内闭绝对一致收敛，且展开唯一。
@@ -560,7 +525,6 @@ Taylor 级数的收敛半径至少为已知的
 \(R\)，可能更大，例如整函数被限制在一个小圆盘时，仍可有无穷收敛半径。由本定理不能断言在
 \(|z-z_0|=R\) 上收敛。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.2}{}
 \textbf{定理 4.3.2。} \(f\) 在 \(z_0\) 的某邻域全纯，当且仅当它在
 \(z_0\) 的某邻域可表示为收敛幂级数。
 
@@ -568,10 +532,9 @@ Taylor 级数的收敛半径至少为已知的
 4.2.4。这里``在点处全纯''指在该点的邻域全纯，不能替换成仅在该点复可微。比如
 \(|z|^2\) 在零点复可微，却不在任何零点邻域全纯。
 
-\Needspace{6\baselineskip}
-\subsection{零点阶数与因子分解}\label{ch04-s3-ux96f6ux70b9ux9636ux6570ux4e0eux56e0ux5b50ux5206ux89e3}
+\Needspace{5\baselineskip}
+\subsection{零点阶数与因子分解}\label{ch04-s3-heading-2}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.3}{}
 \textbf{定义 4.3.3。} 若 \(f\) 在 \(z_0\) 邻域全纯，且
 
 \[
@@ -581,12 +544,11 @@ f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,
 
 则称 \(z_0\) 为 \(f\) 的 \(m\) 阶零点。\(m=1\) 时称简单零点。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.4}{}
 \textbf{命题 4.3.4。} \(z_0\) 为 \(m\) 阶零点，当且仅当在其邻域内
 
 \[
 f(z)=(z-z_0)^m g(z),\qquad g\in H(B(z_0,\varepsilon)),\quad g(z_0)\ne0.
-\tag{4.3.3}
+\qquad\text{(4.3.3)}
 \]
 
 证明：Taylor 级数从第 \(m\) 项开始，提出 \((z-z_0)^m\)
@@ -597,10 +559,9 @@ f(z)=(z-z_0)^m g(z),\qquad g\in H(B(z_0,\varepsilon)),\quad g(z_0)\ne0.
 因此零点重数来自局部首项；``零点个数''一旦按重数计算，\(m\) 阶零点就贡献
 \(m\)。
 
-\Needspace{6\baselineskip}
-\subsection{从局部消失到整体唯一性}\label{ch04-s3-ux4eceux5c40ux90e8ux6d88ux5931ux5230ux6574ux4f53ux552fux4e00ux6027}
+\Needspace{5\baselineskip}
+\subsection{从局部消失到整体唯一性}\label{ch04-s3-heading-3}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.5}{}
 \textbf{命题 4.3.5。} 若 \(f\in H(D)\)，并在某个小圆盘上恒为零，则
 \(f\equiv0\) 于域 \(D\)。
 
@@ -611,7 +572,6 @@ f(z)=(z-z_0)^m g(z),\qquad g\in H(B(z_0,\varepsilon)),\quad g(z_0)\ne0.
 在 \(D\) 中又闭，由连通性 \(A=D\)。这一证明只使用 Taylor
 定理与连通性，没有循环引用唯一性定理。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.6}{}
 \textbf{命题 4.3.6。} 若 \(f\in H(D)\) 且 \(f\not\equiv0\)，则 \(D\)
 中每个零点都是有限阶且孤立的。
 
@@ -620,7 +580,6 @@ f(z)=(z-z_0)^m g(z),\qquad g\in H(B(z_0,\varepsilon)),\quad g(z_0)\ne0.
 使 \(f^{(m)}(z_0)\ne0\)。由命题 4.3.4，\(f=(z-z_0)^mg\)，而连续性使
 \(g\) 在足够小邻域内不为零，故其中只有零点 \(z_0\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.3.7}{}
 \textbf{定理 4.3.7（唯一性定理）。} 若
 \(f_1,f_2\in H(D)\)，存在两两互异的点 \(z_n\in D\) 满足
 \(f_1(z_n)=f_2(z_n)\)，且 \(z_n\to a\in D\)，则 \(f_1\equiv f_2\) 于
@@ -641,9 +600,8 @@ f(z)=(z-z_0)^m g(z),\qquad g\in H(B(z_0,\varepsilon)),\quad g(z_0)\ne0.
 的聚点，与命题 4.3.6
 矛盾。下一节应用到曲线及其内部时，必须确保整个闭域紧含于全纯域。
 
-\Needspace{6\baselineskip}
-\subsection{常用 Taylor
-展开与分支}\label{ch04-s3-ux5e38ux7528-taylor-ux5c55ux5f00ux4e0eux5206ux652f}
+\Needspace{5\baselineskip}
+\subsection{常用 Taylor 展开与分支}\label{ch04-s3-heading-4}
 
 指数、正弦、余弦为整函数。将它们在零点的导数代入定理 4.3.1，得到
 
@@ -678,16 +636,12 @@ e^z&=\sum_{n=0}^{\infty}\frac{z^n}{n!},\\
 \(\alpha\) 是非负整数，级数终止为多项式，半径为无穷。展开式在 \(|z|<1\)
 恒成立，但边界敛散性仍须另查。对数及非整数幂的分支必须固定，不能在求导过程中变换。
 
-\Needspace{6\baselineskip}
-\subsection{定理索引}\label{ch04-s3-ux5b9aux7406ux7d22ux5f15}
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch04-s3-heading-5}
 
-\hyperref[ch04-s3-taylor-ux5b9aux7406ux4e0eux4f59ux9879ux4f30ux8ba1]{定理
-4.3.1---4.3.2、Taylor 余项} ·
-\hyperref[ch04-s3-ux96f6ux70b9ux9636ux6570ux4e0eux56e0ux5b50ux5206ux89e3]{定义
-4.3.3、命题 4.3.4} ·
-\hyperref[ch04-s3-ux4eceux5c40ux90e8ux6d88ux5931ux5230ux6574ux4f53ux552fux4e00ux6027]{命题
-4.3.5---4.3.6、定理 4.3.7} ·
-\hyperref[ch04-s3-ux5e38ux7528-taylor-ux5c55ux5f00ux4e0eux5206ux652f]{初等函数展开}
+\hyperref[ch04-s3-heading-1]{定理 4.3.1---4.3.2、Taylor 余项} ·
+\hyperref[ch04-s3-heading-2]{定义 4.3.3、命题 4.3.4} · \hyperref[ch04-s3-heading-3]{命题
+4.3.5---4.3.6、定理 4.3.7} · \hyperref[ch04-s3-heading-4]{初等函数展开}
 
 \section{辐角原理和 Rouché 定理}
 对应教材第 124---134 页。本节的曲线 \(\gamma\)
@@ -696,10 +650,9 @@ e^z&=\sum_{n=0}^{\infty}\frac{z^n}{n!},\\
 \(\gamma\subset D\) 强；例如环域中的圆周，其内部可能含有不属于 \(D\)
 的孔洞。
 
-\Needspace{6\baselineskip}
-\subsection{对数导数与零点计数}\label{ch04-s4-ux5bf9ux6570ux5bfcux6570ux4e0eux96f6ux70b9ux8ba1ux6570}
+\Needspace{5\baselineskip}
+\subsection{对数导数与零点计数}\label{ch04-s4-heading-1}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.1}{}
 \textbf{定理 4.4.1。} 设 \(f\in H(D)\)，\(\gamma\)
 为逆时针的可求长简单闭曲线，且 \(\gamma\) 及其内部位于 \(D\)。若 \(f\)
 在 \(\gamma\) 上无零点，内部的互异零点为 \(a_1,\ldots,a_n\)，阶数为
@@ -708,7 +661,7 @@ e^z&=\sum_{n=0}^{\infty}\frac{z^n}{n!},\\
 \[
 \frac1{2\pi i}\int_\gamma\frac{f'(z)}{f(z)}\,dz
 =\sum_{j=1}^n\alpha_j.
-\tag{4.4.1}
+\qquad\text{(4.4.1)}
 \]
 
 证明：边界非零排除
@@ -734,8 +687,8 @@ e^z&=\sum_{n=0}^{\infty}\frac{z^n}{n!},\\
 定理得零。整个证明只用局部分解与 Cauchy 定理，不需要残数理论，也不要求
 \(f\) 在整个域上有单值对数。
 
-\Needspace{6\baselineskip}
-\subsection{辐角增量的准确含义}\label{ch04-s4-ux8f90ux89d2ux589eux91cfux7684ux51c6ux786eux542bux4e49}
+\Needspace{5\baselineskip}
+\subsection{辐角增量的准确含义}\label{ch04-s4-heading-2}
 
 设连续曲线
 \(\lambda:[a,b]\to\mathbb C\setminus\{0\}\)。可沿参数选取连续辐角
@@ -761,19 +714,18 @@ e^z&=\sum_{n=0}^{\infty}\frac{z^n}{n!},\\
 \operatorname{Ind}(\lambda,0)
 =\frac1{2\pi i}\int_\lambda\frac{dw}{w}
 =\frac1{2\pi}\Delta\operatorname{Arg}\lambda\in\mathbb Z.
-\tag{4.4.4}
+\qquad\text{(4.4.4)}
 \]
 
 像曲线可能自交，必须保留参数与重数，不能只看图像所围区域。对\textbf{开放}曲线，即使整个像落在一个有单值辐角的圆盘内，辐角增量也只是末端辐角减去初端辐角，通常不等于零。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.2}{}
 \textbf{定理 4.4.2（辐角原理）。} 在定理 4.4.1 的条件下，若 \(N\) 是
 \(f\) 在 \(\gamma\) 内部的零点数（计重数），则
 
 \[
 N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 =\operatorname{Ind}(f\circ\gamma,0).
-\tag{4.4.6}
+\qquad\text{(4.4.6)}
 \]
 
 证明：\(f\) 在紧曲线邻域导数有界，故 \(f\circ\gamma\) 可求长；换元得
@@ -781,17 +733,15 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 4.4.1。例如 \((z^2+1)(z-1)^5\) 在 \(|z|<3\) 有 \(7\)
 个零点，故正向圆周的像绕原点 \(7\) 圈。
 
-\Needspace{6\baselineskip}
-\subsection{Rouché
-定理与扰动稳定性}\label{ch04-s4-rouchuxe9-ux5b9aux7406ux4e0eux6270ux52a8ux7a33ux5b9aux6027}
+\Needspace{5\baselineskip}
+\subsection{Rouché 定理与扰动稳定性}\label{ch04-s4-heading-3}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.3}{}
 \textbf{定理 4.4.3（Rouché）。} 设 \(f,g\in H(D)\)，\(\gamma\)
 及其内部紧含于 \(D\)，\(\gamma\) 是可求长简单闭曲线。若
 
 \[
 |f(z)-g(z)|<|f(z)|\qquad(z\in\gamma),
-\tag{4.4.7}
+\qquad\text{(4.4.7)}
 \]
 
 则 \(f,g\) 在 \(\gamma\) 内部的零点数相同（计重数）。
@@ -806,7 +756,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 同数。严格小于不可直接改为小于等于，例如 \(f(z)=z\)、\(h(z)=1\)
 在单位圆周等模，而 \(f+h\) 的零点恰落在边界。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.4}{}
 \textbf{定理 4.4.4。} 设 \(f\in H(D)\)，\(w_0=f(z_0)\)，且 \(z_0\) 是
 \(f-w_0\) 的 \(m\) 阶零点。对每个充分小的 \(\rho>0\)，存在
 \(\delta>0\)，使任意 \(a\in B(w_0,\delta)\) 的方程 \(f(z)=a\) 在
@@ -818,10 +767,9 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 \(|(f-a)-(f-w_0)|<\delta\le|f-w_0|\)；Rouché
 定理给出结论。最小值处使用的是``\(\le\)''，不把定义最小值后的非严格不等号写成严格大于。
 
-\Needspace{6\baselineskip}
-\subsection{开映射、单叶性与全纯逆}\label{ch04-s4-ux5f00ux6620ux5c04ux5355ux53f6ux6027ux4e0eux5168ux7eafux9006}
+\Needspace{5\baselineskip}
+\subsection{开映射、单叶性与全纯逆}\label{ch04-s4-heading-4}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.5}{}
 \textbf{推论 4.4.5（补明非常值条件）。} 若 \(f\in H(D)\)
 且非常数，\(w_0=f(z_0)\)，则对充分小的 \(\rho>0\)，存在 \(\delta>0\)，使
 \(f(B(z_0,\rho))\supset B(w_0,\delta)\)。
@@ -830,7 +778,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 4.4.4，每个 \(a\in B(w_0,\delta)\)
 至少有一个原像。常函数显然不能满足此结论。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.6}{}
 \textbf{定理 4.4.6（开映射定理）。}
 非常数全纯函数把域映为域，并把其内开集映为开集。
 
@@ -840,7 +787,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 在小圆盘上不可能为常数，否则由唯一性定理在 \(D\)
 恒为常数，所以同样得到局部开映射。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.7}{}
 \textbf{定理 4.4.7。} 若 \(f\in H(D)\) 单叶，则 \(f'(z)\ne0\) 于 \(D\)。
 
 证明：若 \(f'(z_0)=0\)，则 \(f-f(z_0)\) 在 \(z_0\) 有 \(m\ge2\)
@@ -850,7 +796,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 \(z_0\)，故各处导数非零，均为简单根。因此至少有两个互异原像，矛盾。必须选
 \(a\ne f(z_0)\)，否则计重数的 \(m\) 个根可能只是同一点。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.8}{}
 \textbf{定理 4.4.8。} 若 \(f'(z_0)\ne0\)，则 \(f\) 在 \(z_0\)
 的某邻域单叶。
 
@@ -860,7 +805,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 \(B(f(z_0),\delta)\)；其中若两点同像，就与原像唯一性矛盾。导数处处非零并不蕴含全域单叶，例如
 \(e^z\)。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.9}{}
 \textbf{定理 4.4.9。} 单叶全纯函数 \(f:D\to G=f(D)\) 的反函数全纯，且
 
 \[
@@ -878,11 +822,9 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 
 分母极限非零来自定理 4.4.7。这样的映射称为双全纯映射。
 
-\Needspace{6\baselineskip}
-\subsection{Hurwitz
-定理及其推论}\label{ch04-s4-hurwitz-ux5b9aux7406ux53caux5176ux63a8ux8bba}
+\Needspace{5\baselineskip}
+\subsection{Hurwitz 定理及其推论}\label{ch04-s4-heading-5}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.10}{}
 \textbf{定理 4.4.10（Hurwitz）。} 若 \(f_n\in H(D)\) 内闭一致收敛于
 \(f\not\equiv0\)，且可求长简单闭曲线 \(\gamma\) 及其内部位于
 \(D\)，\(f\) 在 \(\gamma\) 上非零，则充分大的 \(n\) 使 \(f_n\) 和 \(f\)
@@ -900,7 +842,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 有零点，取小圆盘隔离该零点并使边界无零点；Hurwitz 定理迫使最终的 \(f_n\)
 在盘内有零点，矛盾。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.11}{}
 \textbf{定理 4.4.11。} 单叶全纯函数列 \(f_n\) 的内闭一致极限
 \(f\)，若非常数，则仍单叶全纯。
 
@@ -911,17 +852,15 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 的两个互异同值点，矛盾。原证明中的``各有一个''只需且应写成``各有至少一个''，不能预设极限零点为简单根。常数极限确有可能，例如
 \(f_n(z)=z/n\)。
 
-\Needspace{6\baselineskip}
-\subsection{例题与边界检查}\label{ch04-s4-ux4f8bux9898ux4e0eux8fb9ux754cux68c0ux67e5}
+\Needspace{5\baselineskip}
+\subsection{例题与边界检查}\label{ch04-s4-heading-6}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.12}{}
 \textbf{例 4.4.12。} \(P(z)=z^8-4z^5+z^2-1\) 在单位圆盘内有 \(5\)
 个零点。
 
 解：在 \(|z|=1\)，\(|z^8+z^2-1|\le3<4=|-4z^5|\)，故 \(P\) 与 \(-4z^5\)
 同数。严格不等式同时排除边界零点。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.13}{}
 \textbf{例 4.4.13。} \(P(z)=z^4-6z+3\) 在 \(1<|z|<2\) 内有 \(3\)
 个零点。
 
@@ -929,7 +868,6 @@ N=\frac1{2\pi}\Delta_\gamma\operatorname{Arg}f(z)
 \(|z|=2\)，\(|-6z+3|\le15<16=|z^4|\)，盘内四根且圆周无根。相减得三根。教材中此处一行把
 \(z^4\) 误印为 \(z^2\)，本式按原方程更正。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.4.14}{}
 \textbf{例 4.4.14。} \(P(z)=z^4+2z^3-2z+10\) 在每个象限各有一个根。
 
 证明：先核查坐标轴。对实数 \(x\)，
@@ -962,31 +900,22 @@ Q(z)=\frac{P(z)}{z^4}=1+\frac2z-\frac2{z^3}+\frac{10}{z^4}.
 教材把圆弧上的 \(\Delta\operatorname{Arg}Q\)
 与虚轴段的增量分别写成零；它们实际为相反的非零数，只有相加才抵消。上面保留端点辐角，修正了这一缺口。
 
-\Needspace{6\baselineskip}
-\subsection{定理索引}\label{ch04-s4-ux5b9aux7406ux7d22ux5f15}
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch04-s4-heading-7}
 
-\hyperref[ch04-s4-ux5bf9ux6570ux5bfcux6570ux4e0eux96f6ux70b9ux8ba1ux6570]{定理
-4.4.1} ·
-\hyperref[ch04-s4-ux8f90ux89d2ux589eux91cfux7684ux51c6ux786eux542bux4e49]{定理
-4.4.2} ·
-\hyperref[ch04-s4-rouchuxe9-ux5b9aux7406ux4e0eux6270ux52a8ux7a33ux5b9aux6027]{定理
-4.4.3---4.4.4} ·
-\hyperref[ch04-s4-ux5f00ux6620ux5c04ux5355ux53f6ux6027ux4e0eux5168ux7eafux9006]{推论
-4.4.5、定理 4.4.6---4.4.9} ·
-\hyperref[ch04-s4-hurwitz-ux5b9aux7406ux53caux5176ux63a8ux8bba]{定理
-4.4.10---4.4.11} ·
-\hyperref[ch04-s4-ux4f8bux9898ux4e0eux8fb9ux754cux68c0ux67e5]{例
-4.4.12---4.4.14}
+\hyperref[ch04-s4-heading-1]{定理 4.4.1} · \hyperref[ch04-s4-heading-2]{定理 4.4.2} ·
+\hyperref[ch04-s4-heading-3]{定理 4.4.3---4.4.4} · \hyperref[ch04-s4-heading-4]{推论
+4.4.5、定理 4.4.6---4.4.9} · \hyperref[ch04-s4-heading-5]{定理 4.4.10---4.4.11}
+· \hyperref[ch04-s4-heading-6]{例 4.4.12---4.4.14}
 
 \section{最大模原理和 Schwarz 引理}
 对应教材第 134---140
 页。前一节把局部非退化性转化为开映射；这一几何性质禁止全纯函数的模在内点出现局部最大值。再把零点因子除去，就得到
 Schwarz 引理以及圆盘映射的刚性。
 
-\Needspace{6\baselineskip}
-\subsection{最大模原理}\label{ch04-s5-ux6700ux5927ux6a21ux539fux7406}
+\Needspace{5\baselineskip}
+\subsection{最大模原理}\label{ch04-s5-heading-1}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.1}{}
 \textbf{定理 4.5.1。} 若 \(f\in H(D)\) 非常数，则 \(|f|\) 不能在 \(D\)
 中取得最大值；更强地，它不能在任何内点取得局部最大值。
 
@@ -996,7 +925,6 @@ Schwarz 引理以及圆盘映射的刚性。
 的小圆盘。这个圆盘一定含模大于 \(|w_0|\) 的点：\(w_0\ne0\)
 时沿其径向外移，\(w_0=0\) 时取任一非零点。由原像存在性得到矛盾。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.2}{}
 \textbf{定理 4.5.2。} 若 \(D\)
 为有界域，\(f\in H(D)\cap C(\overline D)\) 且非常数，则
 \(\max_{\overline D}|f|\) 存在，且仅能在边界上达到。因此
@@ -1020,11 +948,9 @@ Schwarz 引理以及圆盘映射的刚性。
 证明：\(1/f\) 全纯且非常数；\(|f|\) 的局部正最小值对应 \(|1/f|\)
 的局部最大值，与定理 4.5.1 矛盾。允许零点时，最小模零当然可在内部取得。
 
-\Needspace{6\baselineskip}
-\subsection{Schwarz
-引理与等号刚性}\label{ch04-s5-schwarz-ux5f15ux7406ux4e0eux7b49ux53f7ux521aux6027}
+\Needspace{5\baselineskip}
+\subsection{Schwarz 引理与等号刚性}\label{ch04-s5-heading-2}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.3}{}
 \textbf{定理 4.5.3（Schwarz）。} 设
 \(f\in H(B(0,1))\)，\(|f(z)|\le1\)，且 \(f(0)=0\)，则
 
@@ -1057,10 +983,9 @@ g(z)=\begin{cases}f(z)/z,&z\ne0,\\f'(0),&z=0\end{cases}
 \(F(\zeta)=f(R\zeta)/M\)；非零点或导数的等号成立当且仅当
 \(f(z)=(M/R)e^{i\theta}z\)。这个缩放把估计中每个长度因子的来源明确写出。
 
-\Needspace{6\baselineskip}
-\subsection{单位圆盘的全纯自同构}\label{ch04-s5-ux5355ux4f4dux5706ux76d8ux7684ux5168ux7eafux81eaux540cux6784}
+\Needspace{5\baselineskip}
+\subsection{单位圆盘的全纯自同构}\label{ch04-s5-heading-3}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.4}{}
 \textbf{定义 4.5.4。} 若 \(f:D\to D\) 是双全纯映射，称 \(f\) 为 \(D\)
 的全纯自同构，其全体记为 \(\operatorname{Aut}(D)\)。
 
@@ -1087,7 +1012,6 @@ g(z)=\begin{cases}f(z)/z,&z\ne0,\\f'(0),&z=0\end{cases}
 \(a\)。同样显然 \(\rho_\theta\) 为自同构。这是第二章例 2.5.16
 的公式，本节重列计算以便检查共轭位置。
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.5}{}
 \textbf{定理 4.5.5。} 若 \(f\in\operatorname{Aut}(B(0,1))\) 且
 \(f(a)=0\)，则存在实数 \(\theta\) 使
 
@@ -1107,10 +1031,9 @@ f(z)=e^{i\theta}\frac{a-z}{1-\overline a z}.
 \(\varphi_a=\varphi_a^{-1}\)
 得结论。反之，上述公式是两个已知自同构的复合，故全体自同构已被穷尽。
 
-\Needspace{6\baselineskip}
-\subsection{Schwarz--Pick 引理}\label{ch04-s5-schwarzpick-ux5f15ux7406}
+\Needspace{5\baselineskip}
+\subsection{Schwarz--Pick 引理}\label{ch04-s5-heading-4}
 
-\Needspace{4\baselineskip}\hypertarget{theorem-4.5.6}{}
 \textbf{定理 4.5.6（Schwarz--Pick）。} 设 \(f:B(0,1)\to B(0,1)\)
 全纯，\(a\in B(0,1)\)，\(b=f(a)\)。则
 
@@ -1149,8 +1072,8 @@ f(z)=e^{i\theta}\frac{a-z}{1-\overline a z}.
 若记
 \(d_*(a,z)=|(a-z)/(1-\overline a z)|\)，第一式表示全纯圆盘自映射不增加这一量，第二式是其局部导数版本。只在一个非平凡位置取等号，就迫使全映射为自同构；这说明最大模原理不只给出上界，还给出达到上界的严格结构。
 
-\Needspace{6\baselineskip}
-\subsection{本章的证明方法与使用顺序}\label{ch04-s5-ux672cux7ae0ux7684ux8bc1ux660eux65b9ux6cd5ux4e0eux4f7fux7528ux987aux5e8f}
+\Needspace{5\baselineskip}
+\subsection{本章的证明方法与使用顺序}\label{ch04-s5-heading-5}
 
 处理极限，先把所需曲线或圆盘放进一个紧邻域，再取一致界；处理展开，先选
 \(r<\rho<R\)，使几何比严格小于 \(1\)；处理零点，先用 Taylor
@@ -1160,14 +1083,12 @@ f(z)=e^{i\theta}\frac{a-z}{1-\overline a z}.
 定理保持边界扰动下的零点总重数，Schwarz
 引理则在归一化后保持模估计并刻画等号。第五章将允许孤立奇点与负次幂，当前的全纯版本无需提前引入那些工具。
 
-\Needspace{6\baselineskip}
-\subsection{定理索引}\label{ch04-s5-ux5b9aux7406ux7d22ux5f15}
+\Needspace{5\baselineskip}
+\subsection{定理索引}\label{ch04-s5-heading-6}
 
-\hyperref[ch04-s5-ux6700ux5927ux6a21ux539fux7406]{定理 4.5.1---4.5.2} ·
-\hyperref[ch04-s5-schwarz-ux5f15ux7406ux4e0eux7b49ux53f7ux521aux6027]{定理
-4.5.3} ·
-\hyperref[ch04-s5-ux5355ux4f4dux5706ux76d8ux7684ux5168ux7eafux81eaux540cux6784]{定义
-4.5.4、定理 4.5.5} · \hyperref[ch04-s5-schwarzpick-ux5f15ux7406]{定理 4.5.6}
+\hyperref[ch04-s5-heading-1]{定理 4.5.1---4.5.2} · \hyperref[ch04-s5-heading-2]{定理
+4.5.3} · \hyperref[ch04-s5-heading-3]{定义 4.5.4、定理 4.5.5} ·
+\hyperref[ch04-s5-heading-4]{定理 4.5.6}
 
 \clearpage\section*{第四章习题}\phantomsection\addcontentsline{toc}{section}{第四章习题}
 以用户上传的史济怀、刘太顺《复变函数》（向禹重排本）为底本，逐页核对印刷第
@@ -1178,21 +1099,22 @@ f(z)=e^{i\theta}\frac{a-z}{1-\overline a z}.
 的某个开邻域全纯；不等同于 \(H(D)\cap C(\overline D)\)。\(B(\infty,R)\)
 沿用教材外圆域记号。闭曲线取正向，多连通域的外边界逆时针、内边界顺时针；特殊约定以题面为准。
 
-\hyperref[ch04-practice-ux4e60ux9898-41]{习题 4.1} · \hyperref[ch04-practice-ux4e60ux9898-42]{习题
-4.2} · \hyperref[ch04-practice-ux4e60ux9898-43]{习题 4.3} ·
-\hyperref[ch04-practice-ux4e60ux9898-44]{习题 4.4} · \hyperref[ch04-practice-ux4e60ux9898-45]{习题
-4.5}
+\hyperref[ch04-practice-heading-1]{习题 4.1} · \hyperref[ch04-practice-heading-2]{习题 4.2} ·
+\hyperref[ch04-practice-heading-3]{习题 4.3} · \hyperref[ch04-practice-heading-4]{习题 4.4} ·
+\hyperref[ch04-practice-heading-5]{习题 4.5}
 
-\Needspace{6\baselineskip}
-\subsection{习题 4.1}\label{ch04-practice-ux4e60ux9898-41}
+\Needspace{5\baselineskip}
+\subsection{习题 4.1}\label{ch04-practice-heading-1}
 
 教材第 108---110 页，共 14 题。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{1.} 证明：复数项级数 \(\sum_{n=1}^{\infty}z_n\) 收敛，当且仅当
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 证明：复数项级数 \(\sum_{n=1}^{\infty}z_n\) 收敛，当且仅当
 \(\sum_{n=1}^{\infty}\operatorname{Re}z_n\) 和
 \(\sum_{n=1}^{\infty}\operatorname{Im}z_n\) 同时收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{2.} 证明：若 \(\{a_n\}\) 和 \(\{b_n\}\) 满足条件
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 证明：若 \(\{a_n\}\) 和 \(\{b_n\}\) 满足条件
 
 （1）\(\{\sum_{k=1}^n a_k\}\) 有界；
 
@@ -1203,29 +1125,34 @@ f(z)=e^{i\theta}\frac{a-z}{1-\overline a z}.
 则级数 \(\sum_{n=1}^{\infty}a_nb_n\) 收敛，并验证这是 Dirichlet 判别法和
 Abel 判别法的推广。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{3.} 设 \(\sum_{n=1}^{\infty}f_n(z)\) 是非空点集 \(E\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(\sum_{n=1}^{\infty}f_n(z)\) 是非空点集 \(E\)
 上的函数项级数。证明：\(\sum_{n=1}^{\infty}f_n(z)\) 在 \(E\)
 上一致收敛，当且仅当 \(\sum_{n=1}^{\infty}\operatorname{Re}f_n(z)\) 和
 \(\sum_{n=1}^{\infty}\operatorname{Im}f_n(z)\) 都在 \(E\) 上一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{4.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设
 \(0<\alpha<\pi/2\)，\(-\alpha\le\arg z_n\le\alpha\)，\(\forall n\in\mathbb N\)。证明：级数
 \(\sum z_n\)、\(\sum\operatorname{Re}z_n\) 和 \(\sum|z_n|\)
 具有相同的敛散性。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{5.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设
 \(\operatorname{Re}z_n\ge0\)，\(\forall n\in\mathbb N\)。证明：若
 \(\sum_{n=1}^{\infty}z_n\) 和 \(\sum_{n=1}^{\infty}z_n^2\) 都收敛，则
 \(\sum_{n=1}^{\infty}|z_n|^2\) 也收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{6.} 设 \(\sum_{n=1}^{\infty}z_n\) 是复数项级数，且
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(\sum_{n=1}^{\infty}z_n\) 是复数项级数，且
 \(\limsup_{n\to\infty}\sqrt[n]{|z_n|}=q\)。证明：
 
 （1）若 \(q<1\)，则 \(\sum z_n\) 绝对收敛；
 
 （2）若 \(q>1\)，则 \(\sum z_n\) 发散。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{7.} 求下列函数项级数的收敛点集：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 求下列函数项级数的收敛点集：
 
 \[
 \text{(1)}\quad\sum_{n=1}^{\infty}\frac{\cos nz}{n^2};
@@ -1233,7 +1160,8 @@ Abel 判别法的推广。
 \text{(2)}\quad\sum_{n=1}^{\infty}\frac{z^n}{1-z^n}.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{8.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设
 \(z_n\in\mathbb C\setminus\{0\}\)，\(\forall n\in\mathbb N\)，且
 \(\limsup_{n\to\infty}|z_{n+1}/z_n|=q\)。证明：
 
@@ -1241,7 +1169,7 @@ Abel 判别法的推广。
 
 （2）若 \(q>1\)，则 \(\sum z_n\) 可能收敛也可能发散。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{9.（Raabe 判别法）} 设
+\textbf{9.（Raabe 判别法）} 设
 \(z_n\in\mathbb C\setminus\{0\}\)，\(\forall n\in\mathbb N\)，且
 \(\lim_{n\to\infty}|z_{n+1}/z_n|=1\)。证明：若
 
@@ -1251,7 +1179,8 @@ Abel 判别法的推广。
 
 则 \(\sum_{n=1}^{\infty}z_n\) 绝对收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{10.} 判别下列级数的敛散性：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 判别下列级数的敛散性：
 
 （1）\(\displaystyle\sum_{n=1}^{\infty}\frac{e^{inz}}n\)，\(\operatorname{Im}z>0\)；
 
@@ -1265,20 +1194,24 @@ Abel 判别法的推广。
 
 \(\operatorname{Re}(\alpha+\beta-\gamma)<0\)，\(\gamma\ne0,-1,-2,\ldots\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{11.} 证明：\(\sum_{n=1}^{\infty}(-1)^{n-1}/(n-z)\) 在
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 证明：\(\sum_{n=1}^{\infty}(-1)^{n-1}/(n-z)\) 在
 \(\mathbb C\setminus\mathbb N\) 上内闭一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{12.} 设 \(\sum_{n=1}^{\infty}f_n(z)\) 是域 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{12.} 设 \(\sum_{n=1}^{\infty}f_n(z)\) 是域 \(D\)
 上的全纯函数项级数。证明：若 \(\sum\operatorname{Re}f_n(z)\) 在 \(D\)
 上内闭一致收敛，则 \(\sum\operatorname{Im}f_n(z)\) 或者在 \(D\)
 上内闭一致收敛，或者在 \(D\) 上处处发散。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{13.} 证明：若域 \(D\) 上的全纯函数列 \(\{f_n(z)\}\) 在 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{13.} 证明：若域 \(D\) 上的全纯函数列 \(\{f_n(z)\}\) 在 \(D\)
 上内闭一致收敛于 \(f(z)\)，则 \(f(z)\) 在 \(D\) 上全纯，并且
 \(\{f_n^{(k)}(z)\}\) 在 \(D\) 上内闭一致收敛于
 \(f^{(k)}(z)\)，\(\forall k\in\mathbb N\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{14.} 若 \(\{\lambda_n\}\) 是严格单调增加，并且以 \(\infty\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{14.} 若 \(\{\lambda_n\}\) 是严格单调增加，并且以 \(\infty\)
 为极限的正数列，则称 \(\sum_{n=1}^{\infty}a_ne^{-\lambda_nz}\) 为
 Dirichlet 级数。证明：
 
@@ -1296,12 +1229,13 @@ Dirichlet 级数。证明：
 7（2）题的收敛点必须先在所有项都有定义的点中讨论，不能包含使某个
 \(1-z^n=0\) 的点。第 10（2）题若参数使级数终止，按有限和理解。
 
-\Needspace{6\baselineskip}
-\subsection{习题 4.2}\label{ch04-practice-ux4e60ux9898-42}
+\Needspace{5\baselineskip}
+\subsection{习题 4.2}\label{ch04-practice-heading-2}
 
 教材第 116---117 页，共 12 题。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{1.} 设 \(\sum_{n=0}^{\infty}a_nz^n\) 和
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(\sum_{n=0}^{\infty}a_nz^n\) 和
 \(\sum_{n=0}^{\infty}b_nz^n\) 的收敛半径分别为 \(R_1\) 和
 \(R_2\)。证明：
 
@@ -1313,7 +1247,8 @@ Dirichlet 级数。证明：
 （3）\(\sum_{n=0}^{\infty}(\sum_{k=0}^na_kb_{n-k})z^n\) 的收敛半径
 \(R\ge\min\{R_1,R_2\}\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{2.} 求下列幂级数的收敛半径：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 求下列幂级数的收敛半径：
 
 \[
 \begin{aligned}
@@ -1324,28 +1259,34 @@ Dirichlet 级数。证明：
 \end{aligned}
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{3.} 证明：若 \(\sum_{n=0}^{\infty}a_nz^n\) 在 \(z_0\ne0\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 证明：若 \(\sum_{n=0}^{\infty}a_nz^n\) 在 \(z_0\ne0\)
 处绝对收敛，则它在 \(\overline{B(0,|z_0|)}\) 上绝对一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{4.} 设正数列 \(\{a_n\}\) 单调收敛于零。证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设正数列 \(\{a_n\}\) 单调收敛于零。证明：
 
 （1）\(\sum_{n=1}^{\infty}a_nz^n\) 的收敛半径 \(R\ge1\)；
 
 （2）\(\sum_{n=1}^{\infty}a_nz^n\) 在 \(\partial B(0,R)\setminus\{R\}\)
 上处处收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{5.} 证明（Abel 第二定理的又一说法）：若幂级数
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 证明（Abel 第二定理的又一说法）：若幂级数
 \(f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n\) 在多角形域 \(G\)
 的每个顶点处都收敛，则它必在 \(\overline G\) 上一致收敛。特别地，\(f\)
 在 \(\overline G\) 上连续。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{6.} 证明：\(\sum_{n=1}^{\infty}(-1)^{[\sqrt n]}z^n/n\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 证明：\(\sum_{n=1}^{\infty}(-1)^{[\sqrt n]}z^n/n\)
 在其收敛圆周 \(\partial B(0,1)\) 上处处收敛，但不绝对收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{7.} 证明：若 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 是 \(B(0,1)\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 证明：若 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 是 \(B(0,1)\)
 上的有界全纯函数，则 \(\sum_{n=0}^{\infty}|a_n|^2<\infty\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{8.} 设 \(\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径 \(R>0\)。证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设 \(\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径 \(R>0\)。证明：
 
 （1）\(\varphi(z)=\sum_{n=0}^{\infty}(a_n/n!)z^n\) 是整函数；
 
@@ -1355,16 +1296,20 @@ Dirichlet 级数。证明：
 |\varphi^{(n)}(z)|\le\frac{Me^{|z|/R}}{R^n},\qquad z\in\mathbb C,\ n\in\mathbb N.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{9.} 举例说明 Abel 第二定理的逆不成立。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{9.} 举例说明 Abel 第二定理的逆不成立。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{10.} 设 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 将 \(B(0,R)\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 设 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 将 \(B(0,R)\)
 一一地映为域 \(G\)。证明：\(G\) 的面积为
-\(\pi\sum_{n=0}^{\infty}n|a_n^2|R^{2n}\)。
+\(\pi\sum_{n=1}^{\infty}n|a_n^2|R^{2n}\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{11.} 证明：幂级数 \(\sum_{n=0}^{\infty}a_n(z-z_0)^n\) 在域 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 证明：幂级数 \(\sum_{n=0}^{\infty}a_n(z-z_0)^n\) 在域 \(D\)
 上一致收敛，当且仅当它在 \(\overline D\) 上一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{12.} 设幂级数 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径为
+\par\Needspace{5\baselineskip}
+\noindent\textbf{12.} 设幂级数 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径为
 \(1\)，\(z_0\in\partial B(0,1)\)。证明：若
 \(\lim_{n\to\infty}na_n=0\)，并且 \(\lim_{r\to1^-}f(rz_0)\) 存在，则
 \(\sum_{n=0}^{\infty}a_nz_0^n\) 收敛于 \(\lim_{r\to1^-}f(rz_0)\)。
@@ -1387,28 +1332,32 @@ Dirichlet 级数。证明：
 \(0<r<R\) 写为 \(|\varphi^{(n)}(z)|\le M_r e^{|z|/r}/r^n\)；若另知
 \(|a_n|R^n\) 有界，才可用 \(R\)。
 
-第 10 题 \(|a_n^2|=|a_n|^2\)，原式可等价写为从 \(n=1\)
-开始求和；面积允许为无穷。第 12 题按圆内趋近理解
+第 10 题按教材从 \(n=1\)
+开始求和，\(|a_n^2|=|a_n|^2\)；面积允许为无穷。第 12 题按圆内趋近理解
 \(r\uparrow1\)，原书简写为 \(r\to1\)。
 
-\Needspace{6\baselineskip}
-\subsection{习题 4.3}\label{ch04-practice-ux4e60ux9898-43}
+\Needspace{5\baselineskip}
+\subsection{习题 4.3}\label{ch04-practice-heading-3}
 
 教材第 122---124 页，共 15 题。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{1.} 设 \(D\) 是域，\(a\in D\)，函数 \(f\) 在 \(D\setminus\{a\}\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\) 是域，\(a\in D\)，函数 \(f\) 在 \(D\setminus\{a\}\)
 上全纯。证明：若 \(\lim_{z\to a}(z-a)f(z)=0\)，则 \(f\) 在 \(D\)
 上全纯。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{2.} 将 \(e^{z/(1-z)}\) 在 \(z=0\) 处展开为幂级数。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 将 \(e^{z/(1-z)}\) 在 \(z=0\) 处展开为幂级数。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{3.} 证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 证明：
 
 （1）\(|e^z-1|\le e^{|z|}-1\le |z|e^{|z|}\)，\(\forall z\in\mathbb C\)；
 
 （2）\((3-e)|z|<|e^z-1|<(e-1)|z|\)，\(0<|z|<1\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{4.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设
 \(f\in H(B(0,R))\cap C(\overline{B(0,R)})\)，\(S_n(z)=\sum_{k=0}^nf^{(k)}(0)z^k/k!\)。证明：
 
 \[
@@ -1421,7 +1370,8 @@ Dirichlet 级数。证明：
 \end{aligned}
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{5.} 是否存在 \(f\in H(B(0,1))\)，使得下述条件之一成立：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 是否存在 \(f\in H(B(0,1))\)，使得下述条件之一成立：
 
 （1）\(f(1/n)=n/(n+1)\)，\(n=2,3,4,\ldots\)；
 
@@ -1431,14 +1381,16 @@ Dirichlet 级数。证明：
 
 （4）\(f(1/n)=f(-1/n)=1/n^3\)，\(n=2,3,4,\ldots\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{6.} 设 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(f(z)=\sum_{n=0}^{\infty}a_nz^n\) 的收敛半径
 \(R>0\)，\(0<r<R\)，\(A(r)=\max_{|z|=r}\operatorname{Re}f(z)\)。证明：
 
 （1）\(\displaystyle a_nr^n=\frac1\pi\int_0^{2\pi}[\operatorname{Re}f(re^{i\theta})]e^{-in\theta}\,d\theta\)，\(\forall n\in\mathbb N\)；
 
 （2）\(|a_n|r^n\le2A(r)-2\operatorname{Re}f(0)\)，\(\forall n\in\mathbb N\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{7.} 设 \(f(z)=1+\sum_{n=1}^{\infty}a_nz^n\) 在 \(B(0,1)\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(f(z)=1+\sum_{n=1}^{\infty}a_nz^n\) 在 \(B(0,1)\)
 上全纯，并且
 \(\operatorname{Re}f(z)\ge0\)，\(\forall z\in B(0,1)\)。证明：
 
@@ -1448,11 +1400,14 @@ Dirichlet 级数。证明：
 
 （3）\(|a_1^2-a_2|\le2\)，\(|2a_1a_2-a_1^3-a_3|\le2\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{8.} 证明：所有实变量的三角恒等式在复变量时也成立。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 证明：所有实变量的三角恒等式在复变量时也成立。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{9.} 证明：所有实变量的初等函数的幂级数展开式在复变量时也成立。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{9.} 证明：所有实变量的初等函数的幂级数展开式在复变量时也成立。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{10.} 证明：若函数 \(1/\cos z\) 在 \(z=0\) 处的 Taylor 级数为
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 证明：若函数 \(1/\cos z\) 在 \(z=0\) 处的 Taylor 级数为
 \(\sum_{n=0}^{\infty}(-1)^nE_{2n}z^{2n}/(2n)!\)，则 Euler 数 \(E_{2n}\)
 满足关系式
 
@@ -1460,7 +1415,8 @@ Dirichlet 级数。证明：
 E_0=1,\qquad\sum_{k=0}^n\binom{2n}{2k}E_{2k}=0.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{11.} 证明：若 \(z/(e^z-1)\) 在 \(z=0\) 处的 Taylor 级数为
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 证明：若 \(z/(e^z-1)\) 在 \(z=0\) 处的 Taylor 级数为
 \(\sum_{n=0}^{\infty}B_nz^n/n!\)，则 Bernoulli 数 \(B_n\) 满足关系式
 
 \[
@@ -1469,25 +1425,29 @@ B_0=1,\qquad\sum_{k=0}^n\binom{n+1}kB_k=0.
 
 特别地，\(B_1=-1/2\)，\(B_{2n+1}=0\)，\(\forall n\in\mathbb N\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{12.} 证明：若 \(1/(1-z-z^2)\) 在 \(z=0\) 处的 Taylor 级数为
+\par\Needspace{5\baselineskip}
+\noindent\textbf{12.} 证明：若 \(1/(1-z-z^2)\) 在 \(z=0\) 处的 Taylor 级数为
 \(\sum_{n=0}^{\infty}a_nz^n\)，则 Fibonacci 数 \(a_n\) 满足关系式
 
 \[
 a_0=a_1=1,\qquad a_n=a_{n-1}+a_{n-2},\quad n\ge2.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{13.} 设 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{13.} 设 \(D\)
 是有界域，\(f\in H(D)\cap C(\overline D)\)。证明：若 \(f\) 在
 \(\partial D\) 上不取零值，则 \(f\) 在 \(D\) 中只有有限个零点。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{14.} 设 \(D\) 是域，\(a\in D\)，\(f\in H(D)\)，并且
+\par\Needspace{5\baselineskip}
+\noindent\textbf{14.} 设 \(D\) 是域，\(a\in D\)，\(f\in H(D)\)，并且
 \(\sum_{n=0}^{\infty}f^{(n)}(a)\) 收敛。证明：
 
 （1）\(f\) 是整函数；
 
 （2）\(\sum_{n=0}^{\infty}f^{(n)}(z)\) 在 \(\mathbb C\) 上内闭一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{15.} 设 \(f(x)\) 是 \((-R,R)\) 上的 \(C^\infty\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{15.} 设 \(f(x)\) 是 \((-R,R)\) 上的 \(C^\infty\)
 实函数。证明：\(f(x)\) 能在 \((-R,R)\) 上展开为它在 \(x=0\) 处的 Taylor
 级数，当且仅当存在 \([0,R)\) 上的正值函数 \(M(r)\)，使得当
 \(n\ge0\)、\(|x|<r<R\) 时，成立不等式
@@ -1511,12 +1471,13 @@ a_0=a_1=1,\qquad a_n=a_{n-1}+a_{n-2},\quad n\ge2.
 题``\(f\) 是整函数''应准确理解为``\(f\)
 存在唯一的整函数延拓''，第二问指该延拓的导数。
 
-\Needspace{6\baselineskip}
-\subsection{习题 4.4}\label{ch04-practice-ux4e60ux9898-44}
+\Needspace{5\baselineskip}
+\subsection{习题 4.4}\label{ch04-practice-heading-4}
 
 教材第 132---134 页，共 18 题。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{1.} 设 \(D\) 是由有限条可求长简单闭曲线围成的域。证明：若
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\) 是由有限条可求长简单闭曲线围成的域。证明：若
 \(f,g\in H(\overline D)\)，\(f\) 在 \(\partial D\) 上没有零点，\(f\) 在
 \(D\) 中的全部彼此不同的零点为
 \(z_1,z_2,\ldots,z_n\)，其相应的阶数分别为 \(k_1,k_2,\ldots,k_n\)，则
@@ -1528,12 +1489,15 @@ a_0=a_1=1,\qquad a_n=a_{n-1}+a_{n-2},\quad n\ge2.
 
 （说明：这是 Cauchy 积分公式和辐角原理的推广。）
 
-\par\Needspace{5\baselineskip}\noindent\textbf{2.} 利用辐角原理证明代数学的基本定理。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 利用辐角原理证明代数学的基本定理。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{3.} 设 \(\lambda>1\)。证明：方程 \(z=\lambda-e^{-z}\) 在右半平面
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(\lambda>1\)。证明：方程 \(z=\lambda-e^{-z}\) 在右半平面
 \(\{z\in\mathbb C:\operatorname{Re}z>0\}\) 中恰有一个根，并且是正实根。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{4.} 设 \(0<a_0<a_1<\cdots<a_n\)。证明：三角多项式
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(0<a_0<a_1<\cdots<a_n\)。证明：三角多项式
 
 \[
 a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
@@ -1544,29 +1508,36 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 （提示：首先证明 \(P_n(z)=\sum_{k=0}^na_kz^k\) 在 \(B(0,1)\) 中有 \(n\)
 个根。）
 
-\par\Needspace{5\baselineskip}\noindent\textbf{5.} 利用 Rouché 定理证明代数学的基本定理。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 利用 Rouché 定理证明代数学的基本定理。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{6.} 设 \(0<r<1\)。证明：当 \(n\) 充分大时，多项式
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(0<r<1\)。证明：当 \(n\) 充分大时，多项式
 \(1+2z+3z^2+\cdots+nz^{n-1}\) 在 \(B(0,r)\) 中没有根。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{7.} 设 \(r>0\)。证明：当 \(n\) 充分大时，多项式
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(r>0\)。证明：当 \(n\) 充分大时，多项式
 \(1+z+z^2/2!+\cdots+z^n/n!\) 在 \(B(0,r)\) 中没有根。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{8.} 设 \(f(z)\) 在 \(\overline{B(0,1)}\) 上全纯，并且 \(f'(z)\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设 \(f(z)\) 在 \(\overline{B(0,1)}\) 上全纯，并且 \(f'(z)\)
 在 \(\partial B(0,1)\) 上无零点。证明：当 \(n\)
 充分大时，\(F_n(z)=n[f(z+1/n)-f(z)]\) 与 \(f'(z)\) 在 \(B(0,1)\)
 中的零点个数相等。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{9.} 设 \(D\) 是域，\(f_n:D\to\mathbb C\setminus\{0\}\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{9.} 设 \(D\) 是域，\(f_n:D\to\mathbb C\setminus\{0\}\)
 是全纯映射，\(\forall n\in\mathbb N\)。证明：若 \(\{f_n\}\) 在 \(D\)
 上内闭一致收敛于 \(f\)，则或者 \(f(D)=\{0\}\)，或者
 \(f(D)\subset\mathbb C\setminus\{0\}\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{10.} 利用上题的结论证明：若域 \(D\) 上的单叶全纯函数列
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 利用上题的结论证明：若域 \(D\) 上的单叶全纯函数列
 \(\{f_n\}\) 在 \(D\) 上内闭一致收敛于 \(f\)，则或者 \(f\) 是常数，或者
 \(f\) 也是 \(D\) 上的单叶全纯函数。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{11.} 求下列全纯函数在 \(B(0,1)\) 中的零点个数：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 求下列全纯函数在 \(B(0,1)\) 中的零点个数：
 
 （1）\(z^9-2z^6+z^2-8z-2\)；
 
@@ -1576,11 +1547,13 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 
 （4）\(e^z-4z^n+1\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{12.} 证明：若
+\par\Needspace{5\baselineskip}
+\noindent\textbf{12.} 证明：若
 \(f\in H(B(0,1))\cap C(\overline{B(0,1)})\)，\(f(\overline{B(0,1)})\subset B(0,1)\)，则
 \(f(z)\) 在 \(B(0,1)\) 中有唯一的不动点。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{13.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{13.} 设
 \(a_1,a_2,\ldots,a_n\in B(0,1)\)，\(f(z)=\prod_{k=1}^n(a_k-z)/(1-\overline{a_k}z)\)。证明：
 
 （1）若 \(b\in B(0,1)\)，则 \(f(z)=b\) 在 \(B(0,1)\) 中恰有 \(n\) 个根；
@@ -1588,7 +1561,8 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 （2）若 \(b\in B(\infty,1)\)，则 \(f(z)=b\) 在 \(B(\infty,1)\) 中恰有
 \(n\) 个根。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{14.} 设 \(f\in H(\overline{B(0,R)})\)；\(f\) 在
+\par\Needspace{5\baselineskip}
+\noindent\textbf{14.} 设 \(f\in H(\overline{B(0,R)})\)；\(f\) 在
 \(\partial B(0,R)\) 上没有零点，在 \(B(0,R)\) 中的零点个数为
 \(N\)。证明：
 
@@ -1596,21 +1570,23 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 \max_{|z|=R}\operatorname{Re}\left(z\frac{f'(z)}{f(z)}\right)\ge N.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{15.} 设 \(f\) 是域 \(D\) 上非常数的全纯函数。证明：存在在 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{15.} 设 \(f\) 是域 \(D\) 上非常数的全纯函数。证明：存在在 \(D\)
 中无极限点的点列 \(\{z_n\}\)，使得对每个 \(z\in D\setminus\{z_n\}\)，有
 \(f'(z)\ne0\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{16.} 设 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{16.} 设 \(D\)
 是由可求长简单闭曲线围成的单连通域，\(f\in H(D)\cap C(\overline D)\)。证明：若
 \(f\) 在 \(\partial D\) 上取实值，则 \(f\)
 为常值函数。举例说明，对于一般的单连通域 \(D\)，结论不再成立。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{17.（边界对应原理的特例）} 设 \(D\) 是由可求长简单闭曲线
+\textbf{17.（边界对应原理的特例）} 设 \(D\) 是由可求长简单闭曲线
 \(\gamma\) 围成的单连通域，\(f\in H(D)\cap C(\overline D)\)。证明：若
 \(f\) 将 \(\gamma\) 一一地映为简单闭曲线 \(\Gamma\)，则 \(f\) 将 \(D\)
 双全纯地映为由 \(\Gamma\) 围成的单连通域 \(G\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{18.（辐角原理）} 设 \(D\)
+\textbf{18.（辐角原理）} 设 \(D\)
 是由有限条可求长简单闭曲线围成的域，\(f\in H(D)\cap C(\overline D)\)。证明：若
 \(f\) 在 \(\partial D\) 上不取零值，则 \(f\) 在 \(D\) 中的零点个数为
 
@@ -1631,17 +1607,19 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 第 17---18 题只有边界连续，不能直接在边界使用 \(f'/f\)
 积分公式；应通过内部逼近或连续曲线绕数处理，特别是像曲线不一定可求长。这是习题比正文邻域全纯版本多出的证明要求。这里的``围成的域''按教材指有界内部域；若允许外部无界域，应另处理无穷远点。
 
-\Needspace{6\baselineskip}
-\subsection{习题 4.5}\label{ch04-practice-ux4e60ux9898-45}
+\Needspace{5\baselineskip}
+\subsection{习题 4.5}\label{ch04-practice-heading-5}
 
 教材第 137---140 页，共 32 题。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{1.} 设 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(D\)
 是域，\(f_n\in H(D)\cap C(\overline D)\)，\(\forall n\in\mathbb N\)。证明：若
 \(\sum_{n=1}^{\infty}f_n(z)\) 在 \(\partial D\) 上一致收敛，则必在 \(D\)
 上一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{2.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设
 \(f\in H(B(0,R))\cap C(\overline{B(0,R)})\)，\(M=\max_{|z|=R}|f(z)|\)。证明：若
 \(z_0\in B(0,R)\setminus\{0\}\) 是 \(f(z)\) 的零点，则
 
@@ -1649,27 +1627,33 @@ a_0+a_1\cos\theta+a_2\cos2\theta+\cdots+a_n\cos n\theta
 R|f(0)|\le(M+|f(0)|)|z_0|.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{3.} 设 \(z_1,z_2,\ldots,z_n\in B(\infty,1)\)。证明：存在
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(z_1,z_2,\ldots,z_n\in B(\infty,1)\)。证明：存在
 \(z_0\in\partial B(0,1)\)，使得 \(\prod_{k=1}^n|z_0-z_k|>1\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{4.} 设 \(f\in H(B(0,1))\)。证明：\(M(r)=\max_{|z|=r}|f(z)|\) 是
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(f\in H(B(0,1))\)。证明：\(M(r)=\max_{|z|=r}|f(z)|\) 是
 \([0,R)\) 上的增函数。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{5.} 利用最大模原理证明代数学的基本定理。
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 利用最大模原理证明代数学的基本定理。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{6.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设
 \(f\in H(B(\infty,R))\cap C(\overline{B(\infty,R)})\)，并且
 \(\lim_{z\to\infty}f(z)\) 存在。证明：若 \(f\) 非常数，则
 \(M(r)=\max_{|z|=r}|f(z)|\) 是 \([R,\infty)\) 上的严格减函数。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{7.} 设 \(f\) 是域 \(D\) 上非常数的全纯函数。证明：若 \(f\) 在
+\par\Needspace{5\baselineskip}
+\noindent\textbf{7.} 设 \(f\) 是域 \(D\) 上非常数的全纯函数。证明：若 \(f\) 在
 \(D\) 中没有零点，则 \(|f(z)|\) 在 \(D\) 内不能取得最小值。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{8.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{8.} 设
 \(f\in H(B(0,1))\)，\(f(0)=0\)。证明：\(\sum_{n=1}^{\infty}f(z^n)\) 在
 \(B(0,1)\) 上绝对且内闭一致收敛。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{9.（全纯函数的 Hadamard 三圆定理）} 设
+\textbf{9.（全纯函数的 Hadamard 三圆定理）} 设
 \(0<r_1<r_2<\infty\)，\(D=\{z\in\mathbb C:r_1<|z|<r_2\}\)，\(f\in H(D)\cap C(\overline D)\)，\(M(r)=\max_{|z|=r}|f(z)|\)（\(r_1\le r\le r_2\)）。证明：\(\log M(r)\)
 在 \([r_1,r_2]\) 上是 \(\log r\) 的凸函数，即
 
@@ -1679,7 +1663,8 @@ R|f(0)|\le(M+|f(0)|)|z_0|.
 +\frac{\log r-\log r_1}{\log r_2-\log r_1}\log M(r_2).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{10.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{10.} 设
 \(f\in H(B(0,R))\)，\(f(B(0,R))\subset B(0,M)\)，\(f(0)=0\)。证明：
 
 （1）\(|f(z)\le(M/R)|z|\)；\(|f'(0)|\le M/R\)，\(\forall z\in B(0,R)\setminus\{0\}\)；
@@ -1687,21 +1672,23 @@ R|f(0)|\le(M+|f(0)|)|z_0|.
 （2）等号成立当且仅当
 \(f(z)=(M/R)e^{i\theta}z\)（\(\theta\in\mathbb R\)）。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{11.} 设 \(f\in H(B(0,1))\)，\(f(0)=0\)，并且存在 \(A>0\)，使得
+\par\Needspace{5\baselineskip}
+\noindent\textbf{11.} 设 \(f\in H(B(0,1))\)，\(f(0)=0\)，并且存在 \(A>0\)，使得
 \(\operatorname{Re}f(z)\le A\)，\(\forall z\in B(0,1)\)。证明：
 
 \[
 |f(z)|\le\frac{2A|z|}{1-|z|},\qquad z\in B(0,1).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{12.（Carathéodory 不等式）} 设
+\textbf{12.（Carathéodory 不等式）} 设
 \(f\in H(B(0,R))\cap C(\overline{B(0,R)})\)，\(M(r)=\max_{|z|=r}|f(z)|\)，\(A(r)=\max_{|z|=r}\operatorname{Re}f(z)\)（\(0\le r\le R\)）。证明：
 
 \[
 M(r)\le\frac{2r}{R-r}A(R)+\frac{R+r}{R-r}|f(0)|,\qquad r\in[0,R).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{13.} 设 \(f\in H(B(0,1))\)，\(f(0)=1\)，并且
+\par\Needspace{5\baselineskip}
+\noindent\textbf{13.} 设 \(f\in H(B(0,1))\)，\(f(0)=1\)，并且
 \(\operatorname{Re}f(z)\ge0\)，\(\forall z\in B(0,1)\)。利用 Schwarz
 引理证明：
 
@@ -1713,20 +1700,24 @@ M(r)\le\frac{2r}{R-r}A(R)+\frac{R+r}{R-r}|f(0)|,\qquad r\in[0,R).
 f(z)=\frac{1+e^{i\theta}z}{1-e^{i\theta}z}\qquad(\theta\in\mathbb R).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{14.} 设 \(f\in H(B(0,1))\)。证明：存在 \(z_0\in\partial B(0,1)\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{14.} 设 \(f\in H(B(0,1))\)。证明：存在 \(z_0\in\partial B(0,1)\)
 和收敛于 \(z_0\) 的点列 \(\{z_n\}\)，使得 \(\lim_{n\to\infty}f(z_n)\)
 存在。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{15.}
+\par\Needspace{5\baselineskip}
+\noindent\textbf{15.}
 求出所有满足条件``\(|f(z)=1|\)，\(\forall z\in\partial B(0,1)\)''的整函数。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{16.} 设 \(P_n(z)\) 是 \(n\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{16.} 设 \(P_n(z)\) 是 \(n\)
 次多项式，\(P_n^*(z)=z^nP_n(1/\overline z)\)。证明：若 \(P_n(z)\)
 的所有零点都在 \(B(\infty,1)\) 中，则
 \(P_n(z)+e^{i\theta}P_n^*(z)\)（\(\theta\in\mathbb R\)）的零点都在
 \(\partial B(0,1)\) 上。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{17.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{17.} 设
 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：若
 \(z_1,z_2,\ldots,z_n\) 是 \(f\) 在 \(B(0,1)\)
 中的所有彼此不同的零点，其阶数分别为 \(k_1,k_2,\ldots,k_n\)，则
@@ -1738,17 +1729,20 @@ f(z)=\frac{1+e^{i\theta}z}{1-e^{i\theta}z}\qquad(\theta\in\mathbb R).
 
 特别地，有 \(|f(0)|\le\prod_{j=1}^n|z_j|^{k_j}\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{18.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{18.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
 
 \[
 \frac{\bigl||f(0)|-|z|\bigr|}{1-|f(0)||z|}
 \le|f(z)|\le\frac{|f(0)|+|z|}{1+|f(0)||z|}.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{19.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{19.} 设
 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,M)\)。证明：\(M|f'(0)|\le M^2-|f(0)|^2\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{20.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{20.} 设
 \(f\in H(B(0,1))\)，\(f(0)=0\)，\(f(B(0,1))\subset B(0,1)\)。证明：若存在
 \(z_1,z_2\in B(0,1)\)，使得
 \(z_1\ne z_2\)，\(|z_1|=|z_2|\)，\(f(z_1)=f(z_2)\)，则
@@ -1762,7 +1756,8 @@ f(z)=\frac{1+e^{i\theta}z}{1-e^{i\theta}z}\qquad(\theta\in\mathbb R).
 \left(\frac{1-\overline{z_1}z}{z_1-z}\right)
 \left(\frac{1-\overline{z_2}z}{z_2-z}\right)\)。）
 
-\par\Needspace{5\baselineskip}\noindent\textbf{21.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{21.} 设
 \(f\in H(B(0,1))\)，\(f(0)=0\)，\(f(B(0,1))\subset B(0,1)\)。证明：
 
 \[
@@ -1770,23 +1765,27 @@ f(z)=\frac{1+e^{i\theta}z}{1-e^{i\theta}z}\qquad(\theta\in\mathbb R).
 \le|f(z)|\le|z|\frac{|f'(0)|+|z|}{1+|f'(0)||z|}.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{22.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{22.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
 
 \[
 \left|f(z)-\frac{f(0)(1-|z|^2)}{1-|f(0)|^2|z|^2}\right|
 \le\frac{|z|(1-|f(0)|^2)}{1-|f(0)|^2|z|^2}.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{23.} 设
+\par\Needspace{5\baselineskip}
+\noindent\textbf{23.} 设
 \(\varphi\in\operatorname{Aut}(\mathbb C_\infty)\)，并且将
 \(\mathbb C_\infty\) 中的圆周 \(\gamma\) 仍映为圆周。证明：\(\varphi\)
 是分式线性变换。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{24.} 求出上半平面
+\par\Needspace{5\baselineskip}
+\noindent\textbf{24.} 求出上半平面
 \(\mathbb C^+=\{z\in\mathbb C:\operatorname{Im}z>0\}\) 的全纯自同构群
 \(\operatorname{Aut}(\mathbb C^+)\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{25.} 设 \(\varphi\) 将 \(B(0,1)\) 双全纯地映为域 \(D\)，\(\psi\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{25.} 设 \(\varphi\) 将 \(B(0,1)\) 双全纯地映为域 \(D\)，\(\psi\)
 将 \(B(0,1)\) 双全纯地映为域 \(G\)。证明：若 \(f:D\to G\)
 是全纯映射，\(f(\varphi(0))=\psi(0)\)，则
 
@@ -1794,13 +1793,15 @@ f(z)=\frac{1+e^{i\theta}z}{1-e^{i\theta}z}\qquad(\theta\in\mathbb R).
 f[\varphi(B(0,r))]\subset\psi(B(0,r))\qquad(0<r<1).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{26.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
+\par\Needspace{5\baselineskip}
+\noindent\textbf{26.} 设 \(f\in H(B(0,1))\)，\(f(B(0,1))\subset B(0,1)\)。证明：
 
 \[
 |f(z)-f(0)|\le|z|\frac{1-|f(0)|^2}{1-|f(0)||z|}.
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{27.} 设 \(D\) 是以原点 \(O\) 为中心、以 \(z_1,z_2,z_3,z_4\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{27.} 设 \(D\) 是以原点 \(O\) 为中心、以 \(z_1,z_2,z_3,z_4\)
 为顶点的正方形域，\(f\in H(D)\cap C(\overline D)\)，\(M\) 是 \(|f(z)|\)
 在 \(\overline D\) 上的最大值，\(m\) 是 \(|f(z)|\) 在线段 \([z_1,z_2]\)
 上的最大值。证明：
@@ -1810,7 +1811,8 @@ f[\varphi(B(0,r))]\subset\psi(B(0,r))\qquad(0<r<1).
 （2）在闭三角形 \(\triangle Oz_1z_2\) 上也有
 \(|f(z)|\le m^{1/4}M^{3/4}\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{28.} 设 \(D\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{28.} 设 \(D\)
 是下面所述的域，\(f\in H(D)\cap C(\overline D)\)，并且在 \(\overline D\)
 上有界。证明：
 
@@ -1837,20 +1839,24 @@ f[\varphi(B(0,r))]\subset\psi(B(0,r))\qquad(0<r<1).
 \qquad(\theta_1<\theta<\theta_2).
 \]
 
-\par\Needspace{5\baselineskip}\noindent\textbf{29.} 设 \(D\) 是有界域，\(f\in H(D)\)，\(z_0\in D\)。证明：若
+\par\Needspace{5\baselineskip}
+\noindent\textbf{29.} 设 \(D\) 是有界域，\(f\in H(D)\)，\(z_0\in D\)。证明：若
 \(f(z_0)=z_0\)，\(f(D)\subset D\)，\(f'(z_0)=1\)，则 \(f(z)\equiv z\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{30.} 设 \(f\in H(B(0,1))\)，\(f(0)=0\)，并且
+\par\Needspace{5\baselineskip}
+\noindent\textbf{30.} 设 \(f\in H(B(0,1))\)，\(f(0)=0\)，并且
 \(|\operatorname{Re}f(z)|<1\)，\(\forall z\in B(0,1)\)。证明：
 
 （1）\(\displaystyle|\operatorname{Re}f(z)|\le\frac4\pi\arctan|z|\)，\(\forall z\in B(0,1)\)；
 
 （2）\(\displaystyle|\operatorname{Im}f(z)|\le\frac2\pi\log\frac{1+|z|}{1-|z|}\)，\(\forall z\in B(0,1)\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{31.} 设 \(f\) 在 \(B(0,1)\cup\{1\}\)
+\par\Needspace{5\baselineskip}
+\noindent\textbf{31.} 设 \(f\) 在 \(B(0,1)\cup\{1\}\)
 上全纯，\(f(0)=0\)，\(f(1)=1\)，\(f(B(0,1))\subset B(0,1)\)。证明：\(f'(1)\ge1\)。
 
-\par\Needspace{5\baselineskip}\noindent\textbf{32.} 设 \(P\) 是一个 \(k\) 次多项式，在单位圆周上满足
+\par\Needspace{5\baselineskip}
+\noindent\textbf{32.} 设 \(P\) 是一个 \(k\) 次多项式，在单位圆周上满足
 \(|P(e^{i\theta})|\le1\)。证明：对任意单位圆盘外的 \(z\)，有
 \(|P(z)|\le|z|^k\)。
 
@@ -1972,5 +1978,11 @@ LaTeX 模板：A4、11pt、23mm 页边距、1.12 行距；中文 Fandol
 正文按现有网站结构整理为五节 Markdown
 与独立习题页，附件路径及相邻节导航齐全。最终发布时仍须在实际仓库中运行既定检查、测试、构建、链接验收与部署核验；本次没有把本地
 PDF 校审代替网站发布验收。
+
+
+
+\subsection{2026 年 11 月 20 日后续修订}
+推进第五章时补全原函数级数收敛半径的反证，Abel 定理改用显式包含端点的紧扇形，习题 4.2.10 的面积求和按教材从 \(n=1\) 开始；另补 Weierstrass 判别法逆命题的反例。上述改动已同步至网站稿；本段保留原有校审记录的历史含义，不把本次局部修订视为全章重新逐项验收。
+
 
 \end{document}
