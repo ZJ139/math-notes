@@ -1,0 +1,34 @@
+{
+  "/figures/quadrics/conic-degeneracies.svg": {
+    "width": 1200,
+    "height": 1896
+  },
+  "/figures/quadrics/cylinder-vs-paraboloid.svg": {
+    "width": 1200,
+    "height": 722
+  },
+  "/figures/quadrics/cylinders-original.png": {
+    "width": 1640,
+    "height": 1500
+  },
+  "/figures/quadrics/ellipse.svg": {
+    "width": 1200,
+    "height": 1505
+  },
+  "/figures/quadrics/hyperbola.svg": {
+    "width": 1200,
+    "height": 1500
+  },
+  "/figures/quadrics/parabola.svg": {
+    "width": 1200,
+    "height": 1500
+  },
+  "/figures/quadrics/rotated-ellipse.svg": {
+    "width": 1200,
+    "height": 1486
+  },
+  "/figures/quadrics/surfaces-original.png": {
+    "width": 2080,
+    "height": 1400
+  }
+}
