@@ -18,11 +18,7 @@
     --selected-soft: var(--soft);
     --selected-line: var(--line);
     --focus: var(--accent-ink);
-    --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    --serif: var(--ui-font);
-    --heading-serif: var(--ui-font);
-    --sans: var(--ui-font);
+    /* Font families remain defined by the original reading.css and fonts.css. */
     --reading-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem);
     --motion-quick: 160ms ease-out;
     --content-width: 72rem;
@@ -30,7 +26,7 @@
   }
   html, body { background: var(--paper); color: var(--ink); }
   html { scroll-behavior: auto; scroll-padding-top: 24px; }
-  body { font: 400 1rem/1.75 var(--ui-font); -webkit-text-stroke: 0; font-synthesis: weight; }
+  body { font: 400 1rem/1.75 var(--serif); -webkit-text-stroke: 0; font-synthesis: none; }
   a, button, input, textarea, select, summary {
     transition: color var(--motion-quick), background-color var(--motion-quick), border-color var(--motion-quick), outline-color var(--motion-quick);
   }
@@ -87,7 +83,7 @@
   .breadcrumb, .page-heading .breadcrumb { font-size: .875rem; line-height: 1.7; gap: 8px; overflow-wrap: anywhere; }
   .button, .practice-toolbar .button, .answer-controls .button {
     background: var(--card); border: 1px solid var(--control-line); color: var(--ink);
-    border-radius: 5px; min-height: 44px; font: 500 .9375rem/1.5 var(--ui-font); padding: 9px 16px;
+    border-radius: 5px; min-height: 44px; font: 500 .9375rem/1.5 var(--serif); padding: 9px 16px;
   }
   .button:hover, .practice-toolbar .button:hover, .answer-controls .button:hover {
     color: var(--ink); background: var(--soft); border-color: var(--muted); text-decoration: none;
@@ -155,7 +151,7 @@
   .prose a { color: var(--ink); text-decoration: underline; text-underline-offset: .22em; }
   .prose blockquote { padding: 12px 20px; margin: 24px 0; background: var(--soft); border-left: 2px solid var(--line); }
   .prose blockquote p:last-child { margin-bottom: 0; }
-  .prose code, .prose pre { font-family: var(--mono-font); background: var(--soft); font-size: .875em; }
+  .prose code, .prose pre { background: var(--soft); font-size: .875em; }
   .prose :not(pre)>code { padding: .12em .3em; border-radius: 3px; }
   .prose pre { border-radius: 5px; }
   .prose .katex-display { padding-block: 8px; scrollbar-width: thin; scrollbar-color: var(--control-line) var(--soft); }
@@ -177,7 +173,7 @@
   .practice-part-heading { gap: 16px; }
   .practice-part-heading span { font-size: .875rem; color: var(--muted); }
   .practice-part-heading h2 { font-size: 1.375rem; line-height: 1.6; margin: 6px 0 20px; }
-  .prompt-copy { font: 400 1.0625rem/1.85 var(--ui-font); -webkit-text-stroke: 0; max-width: 48rem; }
+  .prompt-copy { font: 400 1.0625rem/1.85 var(--serif); -webkit-text-stroke: 0; max-width: 48rem; }
   .prompt-scan { font-size: .875rem; }
   .answer-comparison { gap: 24px; }
   .practice-answer { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
@@ -186,14 +182,14 @@
   .answer-heading span { font-size: .875rem; }
   .answer-paper {
     background: var(--card); border: 1px solid var(--control-line); border-radius: 4px;
-    font: 400 1rem/1.9 var(--ui-font); color: var(--ink); padding: 12px;
+    font: 400 1rem/1.9 var(--serif); color: var(--ink); padding: 12px;
     height: 352px; min-height: 224px; -webkit-text-stroke: 0;
   }
   .answer-paper-b { height: 480px; }
   .answer-controls { gap: 8px; }
   .answer-status { color: var(--muted); font-size: .875rem; line-height: 1.7; min-height: 2.8em; }
   .answer-images img { background: var(--soft); }
-  .text-button { font: 400 .875rem/1.6 var(--ui-font); min-height: 44px; }
+  .text-button { font: 400 .875rem/1.6 var(--serif); min-height: 44px; }
   .practice-toolbar label:focus-within, .upload-handwriting:focus-within { outline-color: var(--focus); }
 
   @media (max-width: 900px) {

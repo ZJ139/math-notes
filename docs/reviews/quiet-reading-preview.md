@@ -33,13 +33,16 @@
 | `--error` | `#963A32` 原有真实失败状态 |
 | `--on-strong` | `#FFFFFF` 深底按钮文字 |
 | `--success` | `#41634D` 预留状态色，目前未用于提示 |
-| `--ui-font` | `-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif` |
-| `--mono-font` | `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace` |
+| 原有 `--serif` / `--sans` | `"Study Latin Modern", "Fandol Song", serif`，沿用原站 |
+| 原有 `--heading-serif` | `"Study Latin Modern Heading", "Fandol Song", serif`，沿用原站 |
+| 原有代码字体 | `Consolas, monospace`，沿用原站 |
 | `--reading-size` | `clamp(1.0625rem, 1rem + .25vw, 1.1875rem)` |
 | `--content-width` / `--reading-width` | `72rem` / `46rem`（默认 1152px / 736px） |
 | `--motion-quick` | `160ms ease-out` |
 
 正文链接有下划线；焦点环为 2px、外偏移 4px。普通文字在所用页面、次级和面板背景上的最低计算对比度为 4.57:1；交互边框最低为 3.07:1。装饰强调色不直接用作小字号正文。`prefers-reduced-motion: reduce` 下关闭过渡、动画及平滑滚动。
+
+按用户本轮反馈恢复原站全部字体族：中文 Fandol 宋体，西文 Study Latin Modern，标题使用原有标题字体；代码使用原有 Consolas / monospace。其余配色、字号、留白、布局和交互保持本次改版方案。
 
 现站未发现深色模式或主题切换。新样式限定为 `screen`，不改变 Fandol 宋体与 Computer Modern 的打印排版。
 
@@ -57,7 +60,7 @@
 | 作文练习年份索引 | 1425 / 1425 | 753 / 753 | 375 / 375 | 305 / 305 |
 | 2026 作文练习 | 1425 / 1425 | 753 / 753 | 375 / 375 | 305 / 305 |
 
-全部 20 项无整页横向溢出。320px 文章内宽 273px，超过该宽度的公式在自身容器 `overflow-x: auto` 滚动；实际用右方向键使公式滚动容器获得焦点并从 0 滚到 26px。
+恢复原站字体后重新执行全部 20 项，均无整页横向溢出；实际检查正文、标题及作答区计算字体与原站一致，311 个公式仍全部加载。全部 20 项无整页横向溢出。320px 文章内宽 273px，超过该宽度的公式在自身容器 `overflow-x: auto` 滚动；实际用右方向键使公式滚动容器获得焦点并从 0 滚到 26px。
 
 ### 功能与数据
 
