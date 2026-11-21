@@ -13,6 +13,9 @@ function page(saved?: string) {
     attributes = new Map<string, string>();
     style: Record<string, string> = {};
     className = '';
+    nodeType = 1;
+    childNodes: any[] = [];
+    parentElement: Element | null = null;
     hidden = false;
     isConnected = true;
     offsetWidth = 100;
@@ -24,10 +27,26 @@ function page(saved?: string) {
     setAttribute(name: string, value: string) { this.attributes.set(name, value); }
     removeAttribute(name: string) { this.attributes.delete(name); }
     hasAttribute(name: string) { return this.attributes.has(name); }
-    getBoundingClientRect() { return this.rect; }
+    getBoundingClientRect(): any {
+      const parent = this.parentElement?.getBoundingClientRect();
+      const left = parent ? parent.left + parseFloat(this.style.left || '0') : this.rect.left;
+      const top = parent ? parent.top + parseFloat(this.style.top || '0') : this.rect.top;
+      const width = parent ? parseFloat(this.style.width || '0') : this.rect.width;
+      const height = parent ? parseFloat(this.style.height || '0') : this.rect.height;
+      return {left, top, width, height, right: left + width, bottom: top + height};
+    }
+    matches() { return false; }
+    append(element: Element) { this.childNodes.push(element); element.parentElement = this; }
+    remove() {
+      if (this.parentElement) this.parentElement.childNodes = this.parentElement.childNodes.filter(node => node !== this);
+      this.parentElement = null;
+    }
   }
   const first = Object.assign(new Element(), {href: location.href, textContent: '数学'});
   const second = Object.assign(new Element(), {href: location.href + '#proof', textContent: '证明'});
+  for (const link of [first, second]) link.childNodes.push({
+    nodeType: 3, textContent: link.textContent, parentElement: link,
+  });
   const blank = new Element();
   const children: Element[] = [];
   const on = (name: string, callback: (event: any) => void) => {
@@ -35,8 +54,19 @@ function page(saved?: string) {
   };
   const document = {
     activeElement: blank,
-    createElement: () => new Element(),
-    body: {append: (element: Element) => children.push(element)},
+    createElement: () => { const element = new Element(); children.push(element); return element; },
+    createRange: () => {
+      let node: any;
+      return {
+        setStart(value: any) { node = value; }, setEnd() {},
+        getClientRects() {
+          const box = node.parentElement.getBoundingClientRect();
+          return [{left: box.left + 8, top: box.top + 12, right: box.left + 40,
+            bottom: box.top + 32, width: 32, height: 20}];
+        },
+      };
+    },
+
     documentElement: {classList: new Set()},
     querySelectorAll: () => [first, second],
     addEventListener: on,
@@ -44,6 +74,7 @@ function page(saved?: string) {
   let scheduled: (() => void) | undefined;
   vm.runInNewContext(source, {
     document, location, URL, window: {},
+    getComputedStyle: () => ({position: 'static', display: 'inline', visibility: 'visible'}),
     ResizeObserver: class {observe() {} disconnect() {}},
     addEventListener: on,
     requestAnimationFrame: (callback: () => void) => { scheduled = callback; return 1; },
@@ -74,6 +105,7 @@ test('mouse and touch select one link, preserve native actions, and clear on bla
     assert.ok(p.first.hasAttribute('data-link-selected'));
     p.fire('pointerdown', p.second, {pointerType});
     assert.ok(!p.first.hasAttribute('data-link-selected'));
+    assert.equal(p.first.childNodes.length, 1, 'old link contains only its original content');
     assert.ok(p.second.hasAttribute('data-link-selected'));
     p.fire('click');
     assert.ok(p.ring.hidden);
@@ -84,7 +116,7 @@ test('mouse and touch select one link, preserve native actions, and clear on bla
   assert.ok(p.ring.hidden);
 });
 
-test('Tab follows focus, pointer fragment jumps retain selection, and scroll updates only the overlay', () => {
+test('Tab follows focus and the content-sized frame scrolls with its own link without a scroll handler', () => {
   const p = page();
   p.fire('keydown', p.blank, {key: 'Tab'});
   p.fire('focusin', p.first);
@@ -102,11 +134,15 @@ test('Tab follows focus, pointer fragment jumps retain selection, and scroll upd
   p.fire('pointerdown', p.first);
   p.fire('focusin'); // Existing fragment navigation can focus a heading.
   assert.ok(p.first.hasAttribute('data-link-selected'));
-  assert.equal(p.ring.style.left, '14px');
-  assert.equal(p.ring.style.width, '92px');
+  assert.equal(p.ring.parentElement, p.first);
+  assert.equal(p.ring.style.left, '4px');
+  assert.equal(p.ring.style.width, '40px', 'frame fits the 32px text, not the 80px hit area');
+  assert.equal(p.ring.style.height, '28px');
+  const originalTop = p.ring.getBoundingClientRect().top;
   p.first.rect.top = -10;
   p.fire('scroll'); p.flush();
-  assert.equal(p.ring.style.top, '-16px');
+  assert.equal(p.ring.style.top, '8px', 'link-relative position stays fixed');
+  assert.equal(p.ring.getBoundingClientRect().top, originalTop - 40, 'scrolling the parent carries the frame');
   assert.deepEqual(p.first.rect, {left: 20, top: -10, width: 80, height: 44});
   p.first.isConnected = false;
   p.fire('resize'); p.flush();
