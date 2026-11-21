@@ -1,4 +1,4 @@
-.practice-years{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 30px;border-top:1px solid var(--ink)}
+.practice-years{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 30px;border-top:1px solid var(--rule-ink)}
 .practice-years>a{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--line);padding:25px 0;min-width:0}
 .practice-years strong{font:700 32px/1.2 var(--heading-serif);margin-bottom:8px}
 .practice-years span{font-size:17px;line-height:1.65}
@@ -21,7 +21,7 @@
 .practice-feedback{font-size:16px;line-height:1.6;margin:0 0 18px;color:var(--selected)}
 .practice-feedback:empty{display:none}
 .practice-feedback.save-error,.answer-status.save-error{color:#a32121}
-.practice-part{margin:20px 0 58px;border-top:2px solid var(--ink);padding-top:24px}
+.practice-part{margin:20px 0 58px;border-top:2px solid var(--rule-ink);padding-top:24px}
 .practice-part-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
 .practice-part-heading span{font-size:17px;white-space:nowrap}
 .practice-part-heading h2{font-size:27px;margin:5px 0 22px}

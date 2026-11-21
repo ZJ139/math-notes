@@ -18,6 +18,7 @@ import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirect
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
 import {copyLatexMathAssets} from '../src/latexMath';
+import {mathTextColor,colorMathSvg} from '../src/mathColor';
 import {availableProblemYears,ProblemYearPage} from '../src/ProblemYears';
 import {populatedCollections,collectionRoute,collectionDestination} from '../src/ProblemCollections';
 import {finalExamEntries,cohortRoute,cohortDestination} from '../src/FinalExamDirectory';
@@ -34,6 +35,9 @@ const items=[...await loadEntries(path.join(root,'content')),...releaseEntries(r
 const site=new URL(config.siteUrl);
 if(site.protocol!=='https:'||!site.pathname.endsWith('/'))throw new Error('siteUrl 必须是 HTTPS 且以 / 结尾');
 const base=site.pathname.replace(/\/$/,'');
+const mathInk=mathTextColor(await readFile(path.join(root,'public/reading.css'),'utf8'));
+// Color-versioned asset URLs prevent browsers retaining the old black SVGs.
+const mathDirectory=`math/${mathInk.slice(1)}`;
 // New HTML must never run an older cached search/filter script after deployment.
 // The shared module has no imports; prepend its declarations to keep one classic,
 // fingerprinted browser script and preserve the existing progressive enhancement.
@@ -47,6 +51,7 @@ const practiceScript=`writing-practice.${createHash('sha256').update(practiceCod
 const readingScript='reading-practice.'+createHash('sha256').update(await readFile(path.join(root,'public/reading-practice.js'))).digest('hex').slice(0,16)+'.js';
 const stylesheets=new Map<string,string>();
 const prefix=(html:string)=>{
+  html=html.replace(/((?:src|href)=")\/math\/([a-f0-9]{64}\.svg)"/g,`$1/${mathDirectory}/$2"`);
   for(const [source,target]of stylesheets)html=html.replace(`href="/${source}"`,`href="/${target}"`);
   return html.replace('src="/reading-practice.js"',`src="/${readingScript}"`).replace('src="/writing-practice.js"',`src="/${practiceScript}"`).replace('src="/site.js"',`src="/${siteScript}"`).replace(/((?:href|src|action)=")\/(?!\/)/g,`$1${base}/`);
 };
@@ -131,7 +136,12 @@ for(const e of items){
     await cp(path.join(root,'content',e.attachmentPath),target);
   }
 }
-copyLatexMathAssets(path.join(output,'math'));
+const mathOutput=path.join(output,mathDirectory);
+copyLatexMathAssets(mathOutput);
+for(const file of await readdir(mathOutput)){
+  const target=path.join(mathOutput,file);
+  await writeFile(target,colorMathSvg(await readFile(target,'utf8'),mathInk));
+}
 const xml=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 await writeFile(path.join(output,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(url=>`<url><loc>${xml(url)}</loc></url>`).join('\n')+'\n</urlset>\n');
 await writeFile(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${new URL('sitemap.xml',site).href}\n`);
