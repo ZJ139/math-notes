@@ -51,15 +51,18 @@
       select(null);
       return;
     }
-    const bounds = contentBounds(selected);
+    const replacesBorder = selected.hasAttribute('data-link-replaces-border');
+    const bounds = replacesBorder ? rect : contentBounds(selected);
     // Measure the actual containing-block origin: inline, flex, grid and
     // bordered links have different padding boxes. No viewport overlay.
     Object.assign(ring.style, {left: '0px', top: '0px', width: '0px', height: '0px'});
     const origin = ring.getBoundingClientRect();
-    // Two pixels of space around visible content, plus the two-pixel border.
+    // Bordered controls reuse their existing outer edge. Plain text links
+    // retain two pixels of space plus the two-pixel frame.
+    const gap = replacesBorder ? 0 : 4;
     Object.assign(ring.style, {
-      left: `${bounds.left - origin.left - 4}px`, top: `${bounds.top - origin.top - 4}px`,
-      width: `${bounds.right - bounds.left + 8}px`, height: `${bounds.bottom - bounds.top + 8}px`,
+      left: `${bounds.left - origin.left - gap}px`, top: `${bounds.top - origin.top - gap}px`,
+      width: `${bounds.right - bounds.left + gap * 2}px`, height: `${bounds.bottom - bounds.top + gap * 2}px`,
     });
   }
 
@@ -71,13 +74,19 @@
     if (selected === link) { schedule(); return; }
     selected?.removeAttribute('data-link-selected');
     selected?.removeAttribute('data-link-positioned');
+    selected?.removeAttribute('data-link-replaces-border');
     observer.disconnect();
     ring.remove();
     selected = link;
     ring.hidden = !link;
     if (!link) return;
+    const style = getComputedStyle(link);
+    if (['Top', 'Right', 'Bottom', 'Left'].every(side =>
+      parseFloat(style[`border${side}Width`]) > 0 && style[`border${side}Style`] !== 'none')) {
+      link.setAttribute('data-link-replaces-border', '');
+    }
     link.setAttribute('data-link-selected', '');
-    if (getComputedStyle(link).position === 'static') link.setAttribute('data-link-positioned', '');
+    if (style.position === 'static') link.setAttribute('data-link-positioned', '');
     link.append(ring);
     observer.observe(link);
     position();
