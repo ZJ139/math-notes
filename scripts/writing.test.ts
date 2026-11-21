@@ -1,4 +1,3 @@
-import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -83,10 +82,9 @@ test('existing collection script filters the real writing entries by year, funct
   const handlers=new Map<string,(event?:any)=>void>();
   const query={value:''},category={value:''},count={textContent:''},empty={hidden:true};
   const location=new URL('english/?category=writing',config.siteUrl);
-  prepareSearchRows(rows);
-  const collection={dataset:{},querySelector:()=>({addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn)}),querySelectorAll:(selector:string)=>selector==='[data-entry]'?rows:[]};
-  vm.runInNewContext(searchScript+await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
-    document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+  const collection={querySelector:()=>({addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn)}),querySelectorAll:(selector:string)=>selector==='[data-entry]'?rows:[]};
+  vm.runInNewContext(await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
+    document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
     location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;}},
     FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
     addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn),

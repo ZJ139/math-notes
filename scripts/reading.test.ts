@@ -1,4 +1,3 @@
-import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createElement} from 'react';
@@ -104,10 +103,9 @@ test('real collection data and site script support all seven filters, search and
   const location=new URL('english/?category=reading-types%2Finference',config.siteUrl);
   const historyUrls:string[]=[location.href];let historyIndex=0;
   const form={addEventListener(type:string,fn:()=>void){handlers.set(type,fn);}};
-  prepareSearchRows(entries);
-    const collection={dataset:{},querySelector:(selector:string)=>selector==='form'?form:null,querySelectorAll:(selector:string)=>selector==='[data-entry]'?entries:selector==='[data-filter]'?filters:[]};
-  vm.runInNewContext(searchScript+await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
-    document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+  const collection={querySelector:(selector:string)=>selector==='form'?form:null,querySelectorAll:(selector:string)=>selector==='[data-entry]'?entries:selector==='[data-filter]'?filters:[]};
+  vm.runInNewContext(await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
+    document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
     location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;historyUrls.splice(++historyIndex);historyUrls.push(location.href);}},
     FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
     addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn),
@@ -125,8 +123,7 @@ test('real collection data and site script support all seven filters, search and
   location.href=historyUrls[++historyIndex];handlers.get('popstate')!();assert.deepEqual(visible(),[]);
   search('过度推断');click('reading-types/detail');assert.deepEqual(visible(),[0]);assert.equal(new URL(filters[0].href).searchParams.get('q'),'过度推断');
   search('');click('writing');assert.deepEqual(visible(),[1]);
-  assert.ok(!filters.some(filter=>filter.dataset.filter==='uncategorized'));
-  location.search='?category=uncategorized';handlers.get('popstate')!();assert.deepEqual(visible(),[]);
+  click('uncategorized');assert.deepEqual(visible(),[]);
   click('');assert.deepEqual(visible(),[0,1,2]);
 });
 

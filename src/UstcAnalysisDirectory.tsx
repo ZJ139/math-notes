@@ -45,7 +45,7 @@ export function UstcAnalysisDirectory({items}: {items: PublicEntry[]}) {
     <div className="breadcrumb"><a href="/">首页</a><span>/</span><a href="/math/">数学</a></div>
     <div className="reading-page">
       <header className="article-header"><h1>{ustcAnalysisTitle}</h1>
-        <p>常庚哲、史济怀《数学分析教程》第四版</p><p className="count-note">{notes.length} 篇科大专题讲义，已计入讲义栏目总数；配套习题链接不重复计为讲义。</p></header>
+        <p>常庚哲、史济怀《数学分析教程》第四版</p></header>
       <nav className="prose" aria-label="科大数学分析专题">
         {ustcLevels.map(level => <section key={level.title}><h2>{level.title}</h2>
           {level.topics.map(topic => {

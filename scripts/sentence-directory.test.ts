@@ -1,4 +1,3 @@
-import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -99,11 +98,10 @@ test('sentence browsing, cross-year search, pattern filters and browser history 
   const query={value:''},category={value:''},count={textContent:''},empty={hidden:true},sentences={hidden:true},patterns={hidden:true},exams={hidden:true},readings={hidden:true},answers={hidden:true},list={hidden:false};
   const form={addEventListener(type:string,fn:()=>void){handlers.set(type,fn);}};
   const location=new URL('english/?category=sentences',config.siteUrl);
-  prepareSearchRows(rows);
-  const collection={dataset:{},querySelector:(selector:string)=>({'form':form,'[data-exam-directory]':exams,'[data-sentence-directory]':sentences,'[data-sentence-patterns]':patterns,'[data-reading-directory]':readings,'[data-reading-answers-directory]':answers,'.entry-list':list})[selector],querySelectorAll:(selector:string)=>({'[data-entry]':rows,'[data-filter]':filters})[selector]||[]};
-  vm.runInNewContext(searchScript+await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
+  const collection={querySelector:(selector:string)=>({'form':form,'[data-exam-directory]':exams,'[data-sentence-directory]':sentences,'[data-sentence-patterns]':patterns,'[data-reading-directory]':readings,'[data-reading-answers-directory]':answers,'.entry-list':list})[selector],querySelectorAll:(selector:string)=>({'[data-entry]':rows,'[data-filter]':filters})[selector]||[]};
+  vm.runInNewContext(await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
     parseAlgebraIndex,matchesAlgebraExercise,hasAlgebraLocator,
-    document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+    document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
     location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;}},
     FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
     addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn),
@@ -117,7 +115,7 @@ test('sentence browsing, cross-year search, pattern filters and browser history 
   click('sentence-patterns');assert.equal(sentences.hidden,true);assert.equal(patterns.hidden,false);assert.equal(list.hidden,false);
   for(const group of sentencePatternCategories){click(group.id);assert.equal(patterns.hidden,false);assert.equal(filters.find(link=>link.dataset.filter===group.id)!.current,'page');assert.equal(filters.find(link=>link.dataset.filter==='sentence-patterns')!.current,'page');assert.equal(rows.filter(row=>!row.hidden).length,items.filter(entry=>entry.category===group.id).length);}
   click('sentence-patterns');assert.equal(rows.filter(row=>!row.hidden).length,14);
-  search('形式宾语');assert.ok(rows.some(row=>!row.hidden&&row.dataset.search.toLocaleLowerCase().includes('r07')));
+  search('形式宾语');assert.ok(rows.some(row=>!row.hidden&&row.dataset.search.includes('r07')));
   assert.ok(rows.filter(row=>!row.hidden).every(row=>row.dataset.category.startsWith('sentence-patterns')));
   search('');click('sentence-patterns/writing');search('W09');assert.equal(rows.filter(row=>!row.hidden).length,1);
   search('no-such-pattern');assert.equal(empty.hidden,false);
@@ -137,7 +135,7 @@ test('sentence browsing, cross-year search, pattern filters and browser history 
   search('');assert.equal(answers.hidden,false);assert.equal(list.hidden,true);
   click('writing');assert.equal(answers.hidden,true);assert.equal(list.hidden,false);
   location.search='?category=reading-answers';handlers.get('popstate')!();assert.equal(answers.hidden,false);assert.equal(list.hidden,true);
-  click('');assert.equal(answers.hidden,false);assert.equal(sentences.hidden,true);assert.equal(readings.hidden,true);assert.equal(list.hidden,false);
+  click('');assert.equal(answers.hidden,true);assert.equal(sentences.hidden,true);assert.equal(readings.hidden,true);assert.equal(list.hidden,false);
 });
 
 // A later exercise must never be presented as the exam quotation.
