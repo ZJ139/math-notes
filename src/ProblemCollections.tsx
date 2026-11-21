@@ -27,5 +27,5 @@ export function collectionDestination(items:PublicEntry[],id:string){
   return entries.length===1&&!directory?entryUrl(entries[0])+'/':collectionRoute(id);
 }
 export function ProblemCollectionCards({items}:{items:PublicEntry[]}){
-  return <nav className="problem-collection-grid" aria-label="习题集">{populatedCollections(items).map(c=><a key={c.id} id={c.id==='fudan-weekly'?'problem-years':c.id} href={collectionDestination(items,c.id)}><h2 id={c.id==='fudan-weekly'?'problem-index':undefined}>{c.title}</h2><span>{collectionEntries(items,c.category).length} 份资料</span></a>)}</nav>;
+  return <><p className="count-note">各习题集按资料条目计数；跨年合辑只计一份，资料份数不代表题目数量。</p><nav className="problem-collection-grid" aria-label="习题集">{populatedCollections(items).map(c=><a key={c.id} id={c.id==='fudan-weekly'?'problem-years':c.id} href={collectionDestination(items,c.id)}><h2 id={c.id==='fudan-weekly'?'problem-index':undefined}>{c.title}</h2><span>{collectionEntries(items,c.category).length} 份资料</span></a>)}</nav></>;
 }

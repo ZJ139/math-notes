@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadEntries} from '../src/content';
+import {articleRoute,articleRedirects,rewriteArticleLinks} from '../src/articleRoutes';
 import {sections,examTranslation,compareRecentEntries,type Section} from '../src/model';
 import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,ExamTranslationIndex,MathOverview,WritingLibrary} from '../src/components';
 import {examTranslationUrl} from '../src/StudyDirectory';
@@ -31,6 +32,7 @@ const output=path.resolve(root,'dist');
 if(output!==path.join(path.resolve(root),'dist'))throw new Error('Invalid output directory');
 const {summary:storage,releases}=await loadStorage(path.join(root,'content'),config.repository);
 const items=[...await loadEntries(path.join(root,'content')),...releaseEntries(releases,config.repository)].sort(compareRecentEntries);
+const redirects=articleRedirects(items);
 const site=new URL(config.siteUrl);
 if(site.protocol!=='https:'||!site.pathname.endsWith('/'))throw new Error('siteUrl 必须是 HTTPS 且以 / 结尾');
 const base=site.pathname.replace(/\/$/,'');
@@ -40,13 +42,16 @@ const base=site.pathname.replace(/\/$/,'');
 const algebraCode=(await readFile(path.join(root,'public/algebra-index.js'),'utf8')).replace(/^export /gm,'');
 const fragmentCode=await readFile(path.join(root,'public/fragment-navigation.js'),'utf8');
 const linkSelectionCode=await readFile(path.join(root,'public/link-selection.js'),'utf8');
-const siteCode=linkSelectionCode+'\n'+algebraCode+'\n'+fragmentCode+'\n'+await readFile(path.join(root,'public/site.js'),'utf8');
+const searchCode=(await readFile(path.join(root,'public/search-results.js'),'utf8')).replace(/^export /gm,'');
+const readingCode=await readFile(path.join(root,'public/reading-tools.js'),'utf8');
+const siteCode=linkSelectionCode+'\n'+algebraCode+'\n'+searchCode+'\n'+readingCode+'\n'+fragmentCode+'\n'+await readFile(path.join(root,'public/site.js'),'utf8');
 const siteScript=`site.${createHash('sha256').update(siteCode).digest('hex').slice(0,16)}.js`;
 const practiceCode=await readFile(path.join(root,'public/writing-practice.js'),'utf8');
 const practiceScript=`writing-practice.${createHash('sha256').update(practiceCode).digest('hex').slice(0,16)}.js`;
 const readingScript='reading-practice.'+createHash('sha256').update(await readFile(path.join(root,'public/reading-practice.js'))).digest('hex').slice(0,16)+'.js';
 const stylesheets=new Map<string,string>();
 const prefix=(html:string)=>{
+  html=rewriteArticleLinks(html,redirects,config.siteUrl);
   for(const [source,target]of stylesheets)html=html.replace(`href="/${source}"`,`href="/${target}"`);
   return html.replace('src="/reading-practice.js"',`src="/${readingScript}"`).replace('src="/writing-practice.js"',`src="/${practiceScript}"`).replace('src="/site.js"',`src="/${siteScript}"`).replace(/((?:href|src|action)=")\/(?!\/)/g,`$1${base}/`);
 };
@@ -59,6 +64,7 @@ await rename(path.join(output,'reading-practice.js'),path.join(output,readingScr
 await rename(path.join(output,'writing-practice.js'),path.join(output,practiceScript));
 await rm(path.join(output,'algebra-index.js'));
 await rm(path.join(output,'fragment-navigation.js'));
+for(const file of ['search-results.js','reading-tools.js'])await rm(path.join(output,file));
 await rm(path.join(output,'link-selection.js'));
 const fonts=await readFile(path.join(output,'fonts.css'),'utf8');
 await writeFile(path.join(output,'fonts.css'),fonts.replaceAll('/fonts/',`${base}/fonts/`));
@@ -71,8 +77,14 @@ for(const file of ['fonts.css','reading.css','writing-practice.css','reading-pra
   stylesheets.set(file,fingerprinted);
 }
 const urls:string[]=[];
+const writtenPages=new Set<string>();
+function claimPage(filename:string){
+  if(writtenPages.has(filename))throw new Error(`页面地址重复：${filename}`);
+  writtenPages.add(filename);
+}
 async function page(route:string,title:string,body:React.ReactNode,noindex=false,description?:string){
   const filename=route==='404.html'?route:path.posix.join(route,'index.html');
+  claimPage(filename);
   const target=path.join(output,filename);
   await mkdir(path.dirname(target),{recursive:true});
   const html='<!doctype html>'+renderToStaticMarkup(<Layout path={route==='404.html'?'/404.html':'/'+route} title={title} noindex={noindex} description={description}>{body}</Layout>);
@@ -82,7 +94,9 @@ async function page(route:string,title:string,body:React.ReactNode,noindex=false
 // Preserve old bookmarks while removing redundant directories from navigation
 // and search indexes. The shared script keeps their queries and fragments.
 async function redirect(route:string,target:string){
-  const filename=path.join(output,route,'index.html');
+  const relative=path.posix.join(route,'index.html');
+  claimPage(relative);
+  const filename=path.join(output,relative);
   await mkdir(path.dirname(filename),{recursive:true});
   const html='<!doctype html>'+renderToStaticMarkup(<Layout path={target} title="打开资料" noindex redirectTo={base+target}><section className="wrap collection-page"><header className="page-heading"><h1>打开资料</h1><a href={target} data-redirect="">继续阅读</a></header></section></Layout>);
   await writeFile(filename,prefix(html));
@@ -124,7 +138,9 @@ await page('manage/','管理资料',<Manage items={items} storage={storage}/>,tr
 await page('about/','关于这间书房',<About/>);
 await page('404.html','没有找到这页',<section className="wrap collection-page"><header className="page-heading"><h1>这页暂时不在书架上。</h1><p>它可能已被移动，或还没有公开。</p><a className="button" href="/">返回书房</a></header></section>,true);
 for(const e of items){
-  await page(`${e.section}/${e.id}/`,e.title,<Article entry={e} items={items}/>,false,e.description||e.title);
+  const route=articleRoute(e);
+  await page(route.slice(1),e.title,<Article entry={e} items={items}/>,false,e.description||e.title);
+  if(route!==`/${e.section}/${e.id}/`)await redirect(`${e.section}/${e.id}/`,route);
   if(e.attachmentPath){
     const target=path.join(output,'files',e.attachmentPath);
     await mkdir(path.dirname(target),{recursive:true});
@@ -141,5 +157,5 @@ async function outputBytes(dir:string):Promise<number>{let total=0;for(const ite
 const size=await outputBytes(output);
 if(size>900_000_000)throw new Error('网站发布包超过 900 MB 安全阈值，请将 content 内的大附件迁至 Releases 后再发布。');
 console.log(`Storage: ${storage.usedBytes} / ${storage.totalBytes} bytes; maximum file: ${storage.maxFileBytes} bytes; site output: ${size} bytes.`);
-console.log(`Built ${urls.length+3} pages, ${items.length} published entries → ${config.siteUrl}`);
+console.log(`Built ${writtenPages.size} pages, ${items.length} published entries → ${config.siteUrl}`);
 

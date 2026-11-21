@@ -1,3 +1,4 @@
+import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -54,9 +55,10 @@ test('exam category deep links, search, category switches and browser history sh
   const query={value:''},category={value:''},count={textContent:''},empty={hidden:true},directory={hidden:true},list={hidden:false};
   const form={addEventListener(type:string,fn:()=>void){handlers.set(type,fn);}};
   const location=new URL('english/?category=exams',config.siteUrl);
-  const collection={querySelector:(selector:string)=>({'form':form,'[data-exam-directory]':directory,'.entry-list':list})[selector],querySelectorAll:(selector:string)=>({'[data-entry]':rows,'[data-filter]':filters,'[data-exam-id]':cards})[selector]||[]};
-  vm.runInNewContext(await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
-    document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+  prepareSearchRows(rows);
+  const collection={dataset:{},querySelector:(selector:string)=>({'form':form,'[data-exam-directory]':directory,'.entry-list':list})[selector],querySelectorAll:(selector:string)=>({'[data-entry]':rows,'[data-filter]':filters,'[data-exam-id]':cards})[selector]||[]};
+  vm.runInNewContext(searchScript+await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
+    document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
     location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;}},
     FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
     addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn),
@@ -66,13 +68,13 @@ test('exam category deep links, search, category switches and browser history sh
   const click=(filter:string,event={button:0,preventDefault(){}})=>handlers.get(filter+':click')!(event);
   assert.equal(directory.hidden,false);assert.equal(list.hidden,true);assert.equal(visible().length,29);
   assert.match(count.textContent,/^29 份/);
-  search('2024');assert.equal(visible().length,1);
+  search('2024');assert.equal(visible().length,1);assert.equal(directory.hidden,true);assert.equal(list.hidden,false);
   assert.equal(visible()[0].dataset.examId,items.find(entry=>entry.category==='exams'&&examYear(entry)===2024)!.id);
   const yearSearch=location.href;
   search('没有这份试卷');assert.equal(visible().length,0);assert.equal(empty.hidden,false);
   location.href=yearSearch;handlers.get('popstate')!();assert.equal(visible().length,1);assert.equal(empty.hidden,true);
   click('writing');assert.equal(directory.hidden,true);assert.equal(list.hidden,false);
-  click('exams');assert.equal(directory.hidden,false);assert.equal(visible().length,1);
+  click('exams');assert.equal(directory.hidden,true);assert.equal(list.hidden,false);assert.equal(visible().length,1);
   search('');click('');assert.equal(directory.hidden,true);assert.equal(list.hidden,false);
   assert.equal(rows.filter(row=>!row.hidden).length,items.length);
   click('exams');assert.equal(visible().length,29);assert.equal(list.hidden,true);

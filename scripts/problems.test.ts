@@ -1,3 +1,4 @@
+import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createElement} from 'react';
@@ -48,9 +49,10 @@ test('seven exercises render with valid search links and one consistently typese
     const row={dataset:{category:'',readingTopics:'[]',search},hidden:false};
     const query={value:''},category={value:''},count={textContent:''},empty={hidden:true};
     const form={addEventListener(){}};
-    const collection={querySelector:()=>form,querySelectorAll:(s:string)=>s==='[data-entry]'?[row]:[]};
-    vm.runInNewContext(script,{
-      document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+    prepareSearchRows([row]);
+    const collection={dataset:{},querySelector:()=>form,querySelectorAll:(s:string)=>s==='[data-entry]'?[row]:[]};
+    vm.runInNewContext(searchScript+script,{
+      document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
       location:{search:'?q='+encodeURIComponent(queryText)},URLSearchParams,addEventListener(){},
     });
     assert.equal(row.hidden,queryText==='不存在的题号',queryText);

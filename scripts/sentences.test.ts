@@ -1,3 +1,4 @@
+import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -96,9 +97,10 @@ test('real collection search finds sentence-level grammar, difficulty, source ye
   const handlers=new Map<string,(event?:any)=>void>();
   const query={value:''},category={value:''},count={textContent:''},empty={hidden:true};
   const location=new URL('english/?category=sentences',config.siteUrl);
-  const collection={querySelector:()=>({addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn)}),querySelectorAll:(selector:string)=>selector==='[data-entry]'?rows:[]};
-  vm.runInNewContext(await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
-    document:{querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
+  prepareSearchRows(rows);
+    const collection={dataset:{},querySelector:()=>({addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn)}),querySelectorAll:(selector:string)=>selector==='[data-entry]'?rows:[]};
+  vm.runInNewContext(searchScript+await readFile(new URL('../public/site.js',import.meta.url),'utf8'),{
+    document:{...searchDocument,querySelector:()=>collection,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]},
     location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;}},
     FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
     addEventListener:(type:string,fn:()=>void)=>handlers.set(type,fn),
@@ -109,17 +111,17 @@ test('real collection search finds sentence-level grammar, difficulty, source ye
   assert.equal(search('句库目录').length,1,'home entry must select the hub rather than a random sentence');
   const home=renderToStaticMarkup(createElement(Home,{items:all}));
   assert.ok(home.includes('href="/english/?category=sentences"'),'home opens the full long-sentence category');
-  assert.ok(search('经典长难句 2014年 Text 1').some(r=>r.dataset.search.includes(get('L17').title.toLowerCase())));
-  assert.ok(search('词熟句难 2009年 Text 1').some(r=>r.dataset.search.includes(get('F13').title.toLowerCase())));
+  assert.ok(search('经典长难句 2014年 Text 1').some(r=>r.dataset.search.toLocaleLowerCase().includes(get('L17').title.toLowerCase())));
+  assert.ok(search('词熟句难 2009年 Text 1').some(r=>r.dataset.search.toLocaleLowerCase().includes(get('F13').title.toLowerCase())));
   for(const q of ['倒装','嵌套从句','否定范围','条件范围','熟词僻义'])assert.ok(search(q).length>1,q);
   assert.ok(search('L17').some(r=>r.dataset.search.includes('will they be eligible')));
   assert.ok(search('F19').some(r=>r.dataset.search.includes('诺贝尔奖')));
-  assert.ok(search('spare driver').some(r=>r.dataset.search.includes(get('L07').title.toLowerCase())));
-  assert.ok(search('turbulent past').some(r=>r.dataset.search.includes(get('L01').title.toLowerCase())), 'search must reach the restored original');
+  assert.ok(search('spare driver').some(r=>r.dataset.search.toLocaleLowerCase().includes(get('L07').title.toLowerCase())));
+  assert.ok(search('turbulent past').some(r=>r.dataset.search.toLocaleLowerCase().includes(get('L01').title.toLowerCase())), 'search must reach the restored original');
   assert.equal(search('not-a-real-sentence-query').length,0);
   assert.equal(empty.hidden,false);
   location.search='?category=sentences&q='+encodeURIComponent('经典长难句 2014年 Text 1');handlers.get('popstate')!();
-  assert.ok(visible().some(r=>r.dataset.search.includes(get('L17').title.toLowerCase())));
+  assert.ok(visible().some(r=>r.dataset.search.toLocaleLowerCase().includes(get('L17').title.toLowerCase())));
   location.search='?category=writing&q='+encodeURIComponent('L17');handlers.get('popstate')!();
   assert.ok(visible().length>0,'writing lessons may cite a sentence source such as L17');
   assert.ok(visible().every(row=>row.dataset.category==='writing'),'sentence tags must not move sentence entries into writing');

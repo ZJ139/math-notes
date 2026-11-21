@@ -54,11 +54,11 @@ export function StudyDirectory({items}:{items:PublicEntry[]}) {
 export function MathOverview({items}:{items:PublicEntry[]}) {
   return <section className="wrap math-page">
     <header className="page-heading"><div className="breadcrumb"><a href="/">首页</a><span>/</span><span>数学</span></div><h1>数学</h1></header>
-    <MathNavigation/>
+    <MathNavigation/><p className="count-note">按公开资料条目计数；同一条目中的正文与附件只计一份，跨年合辑只计一份。专题讲义已计入讲义总数；习题集属于题库，不与栏目总数相加。</p>
     <div className="math-grid">{mathSections.map(section=>{
       const entries=items.filter(e=>e.section===section);
       return <section className="math-shelf" key={section} aria-labelledby={'shelf-'+section}>
-        <div className="section-heading"><h2 id={'shelf-'+section}><a href={`/${section}/`}>{section==='problems'?'题库':sections[section]}</a></h2><span className="muted">{entries.length} 份</span></div>
+        <div className="section-heading"><h2 id={'shelf-'+section}><a href={`/${section}/`}>{section==='problems'?'题库':sections[section]}</a></h2><span className="muted">{entries.length} 份资料</span></div>
         {section==='problems'?<ProblemCollectionCards items={entries}/>:entries.length?<ul>{entries.slice(0,3).map(e=><li key={e.id}><a href={entryUrl(e)+'/'}>{e.title}</a></li>)}</ul>:<p className="shelf-empty">暂无资料</p>}
         {section!=='problems'&&entries.length>3&&<a className="room-more" href={`/${section}/`}>查看全部</a>}
       </section>;

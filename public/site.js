@@ -13,6 +13,13 @@ if (collection) {
   const query = document.getElementById('query');
   const categoryInput = document.getElementById('category');
   const entries = [...collection.querySelectorAll('[data-entry]')];
+  const searchRecords = new Map(entries.map(entry => [entry, {
+    lower: entry.dataset.search.toLocaleLowerCase(),
+    title: entry.querySelector('h2 a').textContent,
+    body: entry.dataset.search.slice(Number(entry.dataset.searchBodyStart)),
+  }]));
+  const pageSize = Number(collection.dataset.pageSize) || 0;
+  const paginations = [...collection.querySelectorAll('[data-pagination]')];
   const filters = [...collection.querySelectorAll('[data-filter]')];
   const count = document.getElementById('result-count');
   const empty = document.getElementById('no-results');
@@ -36,12 +43,13 @@ if (collection) {
     const words = query.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
     let visible = 0;
     const visibleIds = new Set();
+    const matchedEntries = [];
     for (const entry of entries) {
       const values = [entry.dataset.category, ...JSON.parse(entry.dataset.readingTopics || '[]')];
       const matches = !category || (category === 'uncategorized' ? !entry.dataset.category : values.some(value => value === category || value.startsWith(category + '/')));
       const index = algebraIndexes.get(entry);
       const exercises = index?.filter(e=>matchesAlgebraExercise(e, query.value, entry.dataset.algebraContext));
-      entry.hidden = !(matches && (index && hasAlgebraLocator(query.value) ? exercises.length > 0 : words.every(word => entry.dataset.search.includes(word))));
+      entry.hidden = !(matches && (index && hasAlgebraLocator(query.value) ? exercises.length > 0 : words.every(word => searchRecords.get(entry).lower.includes(word))));
       if (index) {
         const nav = entry.querySelector('[data-algebra-matches]');
         nav.replaceChildren();
@@ -63,24 +71,25 @@ if (collection) {
       }
       if (!entry.hidden) {
         visible++;
+        matchedEntries.push(entry);
         visibleIds.add(entry.dataset.entryId);
       }
     }
+    const showExams = category === 'exams' && words.length === 0;
     if (examDirectory) {
-      const showYears = category === 'exams';
-      examDirectory.hidden = !showYears;
+      examDirectory.hidden = !showExams;
       for (const card of examCards) card.hidden = !visibleIds.has(card.dataset.examId);
     }
     const showSentences = category === 'sentences' && words.length === 0;
     if (sentenceDirectory) sentenceDirectory.hidden = !showSentences;
-    const showReadingAnswers = category === 'reading-answers' && words.length === 0;
+    const showReadingAnswers = (!category || category === 'reading-answers') && words.length === 0;
     if (readingAnswersDirectory) readingAnswersDirectory.hidden = !showReadingAnswers;
     const showReadings = category === 'translation' && words.length === 0;
     if (readingDirectory) readingDirectory.hidden = !showReadings;
     const showWriting = category === 'writing' && words.length === 0;
     if (writingDirectory) writingDirectory.hidden = !showWriting;
     if (writingResults) writingResults.hidden = showWriting;
-    if (entryList) entryList.hidden = (Boolean(readingAnswersDirectory) && showReadingAnswers) || (Boolean(writingDirectory) && showWriting) || (Boolean(readingDirectory) && showReadings) || (Boolean(examDirectory) && category === 'exams') || (Boolean(sentenceDirectory) && showSentences);
+    if (entryList) entryList.hidden = (Boolean(readingAnswersDirectory) && showReadingAnswers && category === 'reading-answers') || (Boolean(writingDirectory) && showWriting) || (Boolean(readingDirectory) && showReadings) || (Boolean(examDirectory) && showExams) || (Boolean(sentenceDirectory) && showSentences);
     const showPatterns = category === 'sentence-patterns' || category.startsWith('sentence-patterns/');
     if (sentencePatterns) sentencePatterns.hidden = !showPatterns;
     for (const link of filters) {
@@ -89,6 +98,7 @@ if (collection) {
       const url = new URL(link.href);
       if (query.value) url.searchParams.set('q', query.value);
       else url.searchParams.delete('q');
+      url.searchParams.delete('page');
       link.href = url.href;
     }
     const problemDirectory = collection.querySelector('[data-problem-directory]');
@@ -96,8 +106,66 @@ if (collection) {
       problemDirectory.hidden = words.length > 0;
       collection.querySelector('[data-problem-results]').hidden = words.length === 0;
     }
-    count.hidden = Boolean((readingAnswersDirectory && showReadingAnswers) || (sentenceDirectory && showSentences) || (readingDirectory && showReadings) || (writingDirectory && showWriting));
-    count.textContent = `${visible} 份公开资料${query.value ? ' · 搜索：' + query.value : ''}`;
+    count.hidden = Boolean((readingAnswersDirectory && showReadingAnswers && category === 'reading-answers') || (sentenceDirectory && showSentences) || (readingDirectory && showReadings) || (writingDirectory && showWriting));
+    const totalPages = Math.max(1, Math.ceil(visible / (pageSize || visible || 1)));
+    const requested = Number(params.get('page'));
+    const page = Number.isSafeInteger(requested) && requested > 0 ? Math.min(requested, totalPages) : 1;
+    const paged = pageSize > 0 && !entryList?.hidden && !writingResults?.hidden && !collection.querySelector('[data-problem-directory]:not([hidden])');
+    const start = paged ? (page - 1) * pageSize : 0;
+    const displayed = paged ? matchedEntries.slice(start, start + pageSize) : matchedEntries;
+    if (paged) for (let index = 0; index < matchedEntries.length; index++) {
+      matchedEntries[index].hidden = index < start || index >= start + pageSize;
+    }
+    // Correct invalid/oversized page URLs without adding browser history.
+    if (params.has('page') && (!paged || page === 1 || String(page) !== params.get('page'))) {
+      if (paged && page > 1) params.set('page', String(page));
+      else params.delete('page');
+      history.replaceState(history.state, '', location.pathname + (params.size ? '?' + params : '') + location.hash);
+    }
+    for (const entry of displayed) {
+      const record = searchRecords.get(entry);
+      highlightSearchText(entry.querySelector('h2 a'), record.title, words);
+      const summary = entry.querySelector('[data-search-summary]');
+      summary.hidden = words.length === 0;
+      if (words.length) {
+        const source = words.some(word => record.body.toLocaleLowerCase().includes(word)) ? record.body : entry.dataset.search;
+        highlightSearchText(summary, searchExcerpt(source, words), words);
+      }
+    }
+    for (const nav of paginations) {
+      nav.hidden = !paged || totalPages < 2;
+      if (nav.hidden) continue;
+      const oldLinks = new Map([...nav.querySelectorAll('a')].map(link => [link.dataset.pageKey, link]));
+      const parts = [];
+      function pageLink(number, label, key = String(number)) {
+        const link = oldLinks.get(key) || document.createElement('a');
+        const url = new URL(location.href);
+        url.hash = '';
+        if (number > 1) url.searchParams.set('page', String(number));
+        else url.searchParams.delete('page');
+        link.href = url.href;
+        link.dataset.pageKey = key;
+        link.dataset.page = String(number);
+        link.textContent = label;
+        link.setAttribute('aria-label', /^\d+$/.test(label) ? `第 ${number} 页` : label);
+        if (number === page && key === String(number)) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+        parts.push(link);
+      }
+      if (page > 1) pageLink(page - 1, '上一页', 'previous');
+      const numbers = [...new Set([1, ...Array.from({length: 5}, (_,i) => page - 2 + i), totalPages])]
+        .filter(number => number >= 1 && number <= totalPages).sort((a,b) => a - b);
+      let previous = 0;
+      for (const number of numbers) {
+        if (previous && number > previous + 1) {
+          const gap = document.createElement('span'); gap.textContent = '…'; gap.setAttribute('aria-hidden', 'true'); parts.push(gap);
+        }
+        pageLink(number, String(number)); previous = number;
+      }
+      if (page < totalPages) pageLink(page + 1, '下一页', 'next');
+      nav.replaceChildren(...parts);
+    }
+    count.textContent = `${visible} 份公开资料${paged && visible ? ` · 第 ${page} / ${totalPages} 页 · 本页 ${start + 1}–${Math.min(start + pageSize, visible)} 条` : ''}${query.value ? ' · 搜索：' + query.value : ''}`;
     empty.hidden = !entries.length || visible !== 0;
   }
   form.addEventListener('submit', event => {
@@ -112,6 +180,16 @@ if (collection) {
     event.preventDefault();
     history.pushState(null, '', link.href);
     update();
+  });
+  for (const nav of paginations) nav.addEventListener('click', event => {
+    const link = event.target.closest('a[data-page]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    history.pushState(null, '', link.href);
+    update();
+    count.scrollIntoView({block: 'start', behavior: 'instant'});
+    // Bottom pagination may move out of view; keep keyboard reading at the results.
+    if (event.detail === 0) { count.tabIndex = -1; count.focus({preventScroll: true}); }
   });
   addEventListener('popstate', update);
   update();

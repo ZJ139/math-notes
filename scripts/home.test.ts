@@ -64,7 +64,8 @@ test('home exposes three fixed study areas and the English study destinations wi
   const nav=html.match(/<nav aria-label="主导航">([\s\S]*?)<\/nav>/)![1];
   assert.equal((nav.match(/<a /g)||[]).length,4);
   assert.match(nav,/<a href="\/math\/" aria-current="page">数学/);
-  for(const href of ['/books/','/links/','/about/','/manage/'])assert.ok(html.includes(`href="${href}"`));
+  for(const href of ['/books/','/links/','/about/'])assert.ok(html.includes(`href="${href}"`));
+  assert.doesNotMatch(html, /href="\/manage\/"/);
 });
 
 test('math overview preserves real articles and home retains the true recent entries',async()=>{

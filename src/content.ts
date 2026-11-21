@@ -74,9 +74,13 @@ export async function loadEntries(root:string):Promise<PublicEntry[]> {
     if(section==='links'&&!source_url)throw new Error(`链接栏目需要 source_url：${sourcePath}`);
     const tags=meta.tags??[];
     if(!Array.isArray(tags)||tags.some(t=>typeof t!=='string'))throw new Error('tags 必须是文字数组');
-    const gitDate=spawnSync('git',['log','-1','--format=%cI','--',`content/${sourcePath}`],{cwd:path.dirname(root),encoding:'utf8',windowsHide:true}).stdout?.trim();
-    const updated_at=date(meta.updated_at,gitDate||info.mtime.toISOString());
     const attachmentPath=str('attachment')||(!['.md','.txt'].includes(ext)?sourcePath:null);
+    const trackedPaths=[...new Set([sourcePath,...(attachmentPath?[attachmentPath]:[])])].map(file=>`content/${file}`);
+    const gitDate=spawnSync('git',['log','-1','--format=%cI','--',...trackedPaths],{cwd:path.dirname(root),encoding:'utf8',windowsHide:true}).stdout?.trim();
+    // A committed content change is the actual update; front matter is retained
+    // unchanged and remains the fallback for files without Git history.
+    const declaredDate=date(meta.updated_at,info.mtime.toISOString());
+    const updated_at=gitDate?date(gitDate,declaredDate):declaredDate;
     const attachmentInfo=attachmentPath?await stat(path.join(root,attachmentPath)):null;
     if(attachmentInfo&&attachmentInfo.size>MAX_FILE_BYTES)throw new Error(`单个文件不能超过 500 MB：${attachmentPath}`);
     entries.push({id:createHash('sha256').update(sourcePath).digest('hex').slice(0,24),owner_id:'',section:section as Section,category,readingTopics,problemIds,title:str('title',path.basename(sourcePath,path.extname(sourcePath))),description:str('description'),subject:str('subject'),tags:JSON.stringify(tags),body,source_url,status:'published',file_key:attachmentPath,file_name:attachmentPath?path.basename(attachmentPath):null,file_type:null,file_size:attachmentInfo?.size??null,version:1,created_at:date(meta.created_at,updated_at),updated_at,deleted_at:null,sourcePath,attachmentPath});

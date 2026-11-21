@@ -31,6 +31,8 @@ export interface Entry {
   file_key: string | null; file_name: string | null; file_type: string | null; file_size: number | null;
   version: number; created_at: string; updated_at: string; deleted_at: string | null;
 }
+// Stable legacy keys are kept for stored links. The static build replaces these
+// hrefs with articleRoute() addresses and emits compatibility redirects.
 export const entryUrl = (e: Pick<Entry, 'section' | 'id'>) => `/${e.section}/${e.id}`;
 export const compareRecentEntries = (a:Pick<Entry,'updated_at'|'id'>,b:Pick<Entry,'updated_at'|'id'>) => b.updated_at.localeCompare(a.updated_at)||a.id.localeCompare(b.id);
 export const tagsOf = (e: Pick<Entry, 'tags'>): string[] => { try { return JSON.parse(e.tags); } catch { return []; } };

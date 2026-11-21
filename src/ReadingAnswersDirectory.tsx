@@ -21,11 +21,11 @@ export function readingAnswerGroups(items:readonly PublicEntry[]) {
   }));
 }
 
-export function ReadingAnswersDirectory({items,standalone=false}:{items:PublicEntry[];standalone?:boolean}) {
+export function ReadingAnswersDirectory({items,standalone=false,visible=false}:{items:PublicEntry[];standalone?:boolean;visible?:boolean}) {
   const groups=readingAnswerGroups(items);
   const other=items.filter(entry=>entry.section==='english'&&entry.category==='reading-answers'&&!readingAnswerSource(entry));
-  return <section className="sentence-directory" data-reading-answers-directory="" aria-label="真题阅读解答年份" hidden={!standalone}>
-    <header className="sentence-directory-heading">{!standalone&&<h2>真题阅读解答</h2>}<span className="muted">{groups.length} 个年份 · {groups.reduce((sum,group)=>sum+group.texts.filter(text=>text.entries.length).length,0)} 篇阅读</span></header>
+  return <section className="sentence-directory" data-reading-answers-directory="" aria-label="真题阅读解答年份" hidden={!standalone&&!visible}>
+    <header className="sentence-directory-heading">{!standalone&&<h2>真题阅读解答年份</h2>}<span className="muted">{groups.length} 个年份 · {groups.reduce((sum,group)=>sum+group.texts.filter(text=>text.entries.length).length,0)} 篇阅读</span></header>
     <nav className="sentence-year-grid" aria-label="真题阅读解答年份">{groups.map(group=><a key={group.year} href={readingAnswersYearUrl(group.year)}><strong>{group.year}<small> 年</small></strong><span>{group.texts.filter(text=>text.entries.length).length} 篇阅读解答</span></a>)}</nav>
     {!groups.length&&!other.length&&<p>暂无真题阅读解答。</p>}
     {other.length>0&&<div className="sentence-other"><h3>其他阅读解答</h3>{other.map(entry=><a key={entry.id} href={entryUrl(entry)+'/'}>{entry.title}</a>)}</div>}

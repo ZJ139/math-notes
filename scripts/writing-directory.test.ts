@@ -1,3 +1,4 @@
+import {searchScript,searchDocument,prepareSearchRows} from './search-fixture';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -65,13 +66,14 @@ test('standalone and legacy writing directories support full-text search, empty 
     const directory={hidden:false},results={hidden:true},list={hidden:false};
     const rows=data.entries.map(entry=>({hidden:false,dataset:{category:'writing',entryId:entry.id,search:[entry.title,entry.tags,entry.body].join(' ').toLocaleLowerCase()}}));
     const form={addEventListener:(event:string,fn:(event?:any)=>void)=>handlers.set(event,fn)};
+    prepareSearchRows(rows);
     const collection={dataset:standalone?{defaultCategory:'writing'}:{},
       querySelector:(selector:string)=>({'form':form,'.entry-list':list,'[data-writing-directory]':directory,'[data-writing-results]':standalone?results:null})[selector]||null,
       querySelectorAll:(selector:string)=>selector==='[data-entry]'?rows:[],
     };
     const location=new URL(standalone?'https://local.test/english/writing/':'https://local.test/english/?category=writing');
-    vm.runInNewContext(script,{
-      document:{querySelector:(selector:string)=>selector==='[data-collection]'?collection:null,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]||null},
+    vm.runInNewContext(searchScript+script,{
+      document:{...searchDocument,querySelector:(selector:string)=>selector==='[data-collection]'?collection:null,getElementById:(id:string)=>({query,category,'result-count':count,'no-results':empty})[id]||null},
       location,URL,URLSearchParams,history:{pushState(_state:unknown,_title:string,url:string){location.href=new URL(url,location).href;}},
       FormData:class{*[Symbol.iterator](){yield ['q',query.value];yield ['category',category.value];}},
       addEventListener:(event:string,fn:()=>void)=>handlers.set(event,fn),

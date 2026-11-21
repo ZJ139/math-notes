@@ -49,3 +49,25 @@ test('preserve body, titles, categories and attach original files only once',asy
     assert.doesNotMatch(unsafe,/<script|href="javascript:/);
   }finally{await rm(temp,{recursive:true,force:true});}
 });
+
+test('actual updates use the latest Git change to the document or its attachment without rewriting front matter',async()=>{
+  const {execFileSync}=await import('node:child_process');
+  const temp=await mkdtemp(path.join(os.tmpdir(),'math-updated-date-'));
+  const root=path.join(temp,'content');
+  const source='---\ntitle: 更新日期验证\nupdated_at: "2020-01-01"\nattachment: notes/original.pdf\n---\n原始正文\n';
+  const git=(args:string[],date?:string)=>execFileSync('git',args,{cwd:temp,encoding:'utf8',env:{...process.env,...(date?{GIT_AUTHOR_DATE:date,GIT_COMMITTER_DATE:date}:{})}});
+  try {
+    await mkdir(path.join(root,'notes'),{recursive:true});
+    await writeFile(path.join(root,'notes','entry.md'),source);
+    await writeFile(path.join(root,'notes','original.pdf'),'%PDF-1.4\noriginal bytes');
+    git(['init','-q']);git(['add','content']);
+    git(['-c','user.name=Test','-c','user.email=test@example.org','commit','-qm','Initial content'],'2026-10-20T09:00:00+08:00');
+    assert.equal((await loadEntries(root))[0].updated_at,'2026-10-20T01:00:00.000Z');
+    await writeFile(path.join(root,'notes','original.pdf'),'%PDF-1.4\nnew original bytes');
+    git(['add','content']);
+    git(['-c','user.name=Test','-c','user.email=test@example.org','commit','-qm','Update attachment'],'2026-10-22T09:00:00+08:00');
+    assert.equal((await loadEntries(root))[0].updated_at,'2026-10-22T01:00:00.000Z');
+    const {readFile}=await import('node:fs/promises');
+    assert.equal(await readFile(path.join(root,'notes','entry.md'),'utf8'),source);
+  }finally{await rm(temp,{recursive:true,force:true});}
+});
