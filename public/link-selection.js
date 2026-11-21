@@ -64,8 +64,7 @@
         event.shiftKey || event.altKey || link.hasAttribute('download') ||
         (link.target && link.target.toLowerCase() !== '_self')) return;
     const url = new URL(link.href, location.href);
-    if (url.origin !== location.origin ||
-        (url.pathname === location.pathname && url.search === location.search)) return;
+    if (url.origin !== location.origin || url.pathname === location.pathname) return;
     // Keep a clicked navigation link selected after the next document loads.
     // Storage may be disabled; feedback on the current page still works.
     try {

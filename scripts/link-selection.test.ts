@@ -122,4 +122,12 @@ test('navigation continuity restores only the exact clicked link and tolerates i
   const malformed = page('invalid JSON');
   malformed.fire('click', malformed.first, {ctrlKey: true});
   assert.ok(malformed.first.hasAttribute('data-link-selected'));
+  const filtered = page();
+  filtered.second.href = 'https://example.org/math-notes/math/?category=notes';
+  filtered.fire('click', filtered.second);
+  filtered.fire('click');
+  assert.equal(filtered.storage.size, 0, 'in-page filters must not restore cancelled selections on reload');
+  filtered.second.href = 'https://example.org/math-notes/english/';
+  filtered.fire('click', filtered.second);
+  assert.equal(JSON.parse(filtered.storage.get('math-notes:pending-link')!).destination, filtered.second.href);
 });
