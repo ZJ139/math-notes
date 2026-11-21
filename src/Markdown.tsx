@@ -1,5 +1,6 @@
 import qiuLectureFigureSizes from './qiuLectureFigureSizes.json';
 import quadricsFigureSizes from './quadricsFigureSizes.json';
+import complexFunctionsFigureSizes from './complexFunctionsFigureSizes.json';
 import ReactMarkdown, {type Components} from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -9,7 +10,7 @@ import remarkDocumentLabels from './documentLabels';
 import remarkReadingAnswerLayout from './readingAnswerLayout';
 import rehypeLatexMath from './latexMath';
 import rehypeMathTypography from './mathTypography';
-const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes};
+const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes,...complexFunctionsFigureSizes};
 const components: Components = {
   a: ({node, title, children, className, ...props}) => {
     const evidence = title === 'pink-evidence';
@@ -22,7 +23,7 @@ const components: Components = {
   img: ({alt, node, ...props}) => Array.isArray(node?.properties.className) && node.properties.className.includes('latex-svg')
     ? <img {...props} alt="" aria-hidden="true"/>
     : typeof props.src === 'string' && /^\/figures\/[A-Za-z0-9/_-]+\.(?:svg|png|webp)$/.test(props.src)
-    ? <img {...props} {...articleFigureSizes[props.src]} alt={alt || ''} className="article-figure" loading="lazy" decoding="async"/>
+    ? <img {...props} {...articleFigureSizes[props.src]} alt={alt || ''} style={props.src in complexFunctionsFigureSizes ? {maxWidth:articleFigureSizes[props.src].width} : undefined} className="article-figure" loading="lazy" decoding="async"/>
     : <span className="muted">{alt ? `[图片：${alt}]` : '[图片]'}</span>,
 };
 // A standalone sequence of display-style math fragments wraps only at the
