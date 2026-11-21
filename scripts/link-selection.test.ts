@@ -95,7 +95,7 @@ function page(saved?: string) {
     flush() { const callback = scheduled; scheduled = undefined; callback?.(); }};
 }
 
-test('mouse and touch select one link, preserve native actions, and clear on blank clicks or cancelled gestures', () => {
+test('mouse and touch select one link, clear on blank clicks, and preserve selection while touch scrolling', () => {
   const p = page();
   assert.equal(p.children.length, 1);
   assert.ok(p.ring.hidden);
@@ -104,6 +104,7 @@ test('mouse and touch select one link, preserve native actions, and clear on bla
     p.fire('click', p.first);
     assert.ok(p.first.hasAttribute('data-link-selected'));
     p.fire('pointerdown', p.second, {pointerType});
+    p.fire('click', p.second);
     assert.ok(!p.first.hasAttribute('data-link-selected'));
     assert.equal(p.first.childNodes.length, 1, 'old link contains only its original content');
     assert.ok(p.second.hasAttribute('data-link-selected'));
@@ -112,7 +113,13 @@ test('mouse and touch select one link, preserve native actions, and clear on bla
     assert.ok(!p.second.hasAttribute('data-link-selected'));
   }
   p.fire('pointerdown', p.first);
-  p.fire('pointercancel', p.first);
+  for (const target of [p.blank, p.second]) {
+    p.fire('pointerdown', target, {pointerType: 'touch'});
+    p.fire('pointercancel', target, {pointerType: 'touch'});
+    assert.ok(p.first.hasAttribute('data-link-selected'), 'a scroll gesture must not select or deselect links');
+    assert.equal(p.ring.parentElement, p.first);
+  }
+  p.fire('click');
   assert.ok(p.ring.hidden);
 });
 

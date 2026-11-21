@@ -90,9 +90,11 @@
   document.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;
     keyboard = false;
+    // A touch/pen contact may become a scroll. Wait for its actual click so
+    // panning over blank space or another link preserves the current frame.
+    if (event.pointerType === 'touch' || event.pointerType === 'pen') return;
     select(linkFrom(event.target));
   }, true);
-  document.addEventListener('pointercancel', () => select(null), true);
   document.addEventListener('click', event => {
     keyboard = false;
     const link = linkFrom(event.target);
