@@ -10,8 +10,9 @@ import remarkMath from 'remark-math';
 import katex from 'katex';
 import {loadEntries} from '../src/content';
 import {latexMath} from '../src/latexMath';
+import {cmBeaMath} from '../src/cmBeaMath';
 
-type Formula = [tex:string, display:boolean];
+type Formula = [tex:string, display:boolean, font?:'cm-bea'];
 const root=fileURLToPath(new URL('..',import.meta.url));
 if(process.argv[2]==='--worker'){
   const [file,indexText,totalText]=process.argv.slice(3);
@@ -22,16 +23,17 @@ if(process.argv[2]==='--worker'){
   for(let i=index;i<formulas.length;i+=total){
     // Keep the site's KaTeX validation before handing any source to TeX.
     katex.renderToString(formulas[i][0],{displayMode:formulas[i][1],throwOnError:true,strict:'ignore',trust:false});
-    latexMath(...formulas[i]);
+    const [tex,display,font]=formulas[i];
+    (font==='cm-bea'?cmBeaMath:latexMath)(tex,display);
     if(++count%100===0)console.log(`Math worker ${index+1}/${total}: ${count} formulas prepared`);
   }
 }else{
   const formulas=new Map<string,Formula>();
-  function collectMath(){
+  function collectMath(font?:'cm-bea'){
     return(tree:any)=>{
       function visit(node:any){
         if(node.type==='math'||node.type==='inlineMath'){
-          const formula:Formula=[node.value,node.type==='math'];
+          const formula:Formula=[node.value,node.type==='math',font];
           formulas.set(JSON.stringify(formula),formula);
         }
         for(const child of node.children||[])visit(child);
@@ -41,7 +43,7 @@ if(process.argv[2]==='--worker'){
   }
   // Use the same Markdown math parser as the site; fenced code is not math.
   for(const entry of await loadEntries(path.join(root,'content'))){
-    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,collectMath],children:entry.body}));
+    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,[collectMath,entry.mathFont]],children:entry.body}));
   }
   await mkdir(path.join(root,'.latex-cache'),{recursive:true});
   const work=await mkdtemp(path.join(root,'.latex-cache/precompile-'));

@@ -3,6 +3,8 @@ title: "楼红卫《数学分析》B 组习题解答（四十）：稠密图像�
 description: "B275—B281：稠密图像函数，Hardy 最佳常数与等号，加权推广及对偶算子，指数与余弦的抵消积分、Euler 常数和 Fresnel 积分。七题完整证明。"
 subject: "数学分析"
 category: "lou-analysis"
+math_font: "cm-bea"
+attachment: "problems/lou-analysis-b-40-cm-bea.pdf"
 tags: ["楼红卫", "数学分析", "B组", "下册", "Hardy不等式", "稠密图像", "反常积分", "B275-B281"]
 created_at: "2026-11-21"
 updated_at: "2026-11-21"
