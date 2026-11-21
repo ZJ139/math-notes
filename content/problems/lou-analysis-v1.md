@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "上册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v1.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-20"
+updated_at: "2026-11-21"
 ---
 
 依据楼红卫编著《数学分析》上册（2022）整理，按原书章节及 A、B 组编排，保留原题号与星号。收录实数、序列极限、函数极限与连续、导数与微分、不定积分、微分中值定理与 Taylor 展开式、微分问题。
@@ -71,4 +71,4 @@ updated_at: "2026-11-20"
 
 上册累计完成 **175 道 B 组习题**：第一章 21 题、第二章 44 题、第三章 23 题、第四章 19 题、第五章 9 题、第六章 48 题、第七章 11 题。上册全部 177 个原题位置均已编入目录，B116（5.5.B 第 1 题）与 B148（6.4.B 第 1 题）继续暂跳过，未计入完成数。
 
-两册合计 **269 道已作答、5 道暂跳过**；下册现完成 94 题，B180 待核文献，B247 待核原书勘误或题意，B261 待核复合可积性的原题条件。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/)、[第二十八批 B191—B197](/problems/3394284a188dfc847fd02679/)、[第二十九批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/)、[第三十批 B205—B211](/problems/aeb90646cd67124999a7cba3/)、[第三十一批 B212—B218](/problems/276de8e86ac38b40563aa582/)、[第三十二批 B219—B225](/problems/f22fb7377267be47a9e8df4f/)、[第三十三批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/)、[第三十四批 B233—B239](/problems/ec0113af0ec041be81b6f081/)、[第三十五批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/)、[第三十六批 B247—B253](/problems/618570a832067bb616fcf965/)、[第三十七批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/)、[第三十八批 B261—B267](/problems/828b0451ccb21ab4009c6025/)、[第三十九批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) 已收录至下册 10.3.B 第 4 题。[第九章题解索引](/problems/collections/lou-analysis/chapters/9/)保留 B247 的反例、充要条件及待核标记。第九章共 34 道已作答、1 道待核；[第十章题解索引](/problems/collections/lou-analysis/chapters/10/)已有 19 道解答、1 道待核；B266、B267 为有明确边界的开放讨论。下一题为 **B275＝10.3.B 第 5 题**，见[下册原题 PDF 第 31 页](/files/problems/楼分析习题-v2.pdf#page=31)。
+两册合计 **276 道已作答、5 道暂跳过**；下册现完成 101 题，B180 待核文献，B247 待核原书勘误或题意，B261 待核复合可积性的原题条件。[第二十七批 B184—B190](/problems/a75cad9ae49e9fdb13396620/)、[第二十八批 B191—B197](/problems/3394284a188dfc847fd02679/)、[第二十九批 B198—B204](/problems/7eefe730d0abc9edb8bf7c08/)、[第三十批 B205—B211](/problems/aeb90646cd67124999a7cba3/)、[第三十一批 B212—B218](/problems/276de8e86ac38b40563aa582/)、[第三十二批 B219—B225](/problems/f22fb7377267be47a9e8df4f/)、[第三十三批 B226—B232](/problems/41a8fc025daa4bef6a32b3d1/)、[第三十四批 B233—B239](/problems/ec0113af0ec041be81b6f081/)、[第三十五批 B240—B246](/problems/f9511a07a0549fd8dfe204f6/)、[第三十六批 B247—B253](/problems/618570a832067bb616fcf965/)、[第三十七批 B254—B260](/problems/5ff5a4cc0558cb29daadc77e/)、[第三十八批 B261—B267](/problems/828b0451ccb21ab4009c6025/)、[第三十九批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/)、[第四十批 B275—B281](/problems/e6503f7c7939cbf34595fdd1/) 已收录至下册 10.4.B 第 3 题。[第九章题解索引](/problems/collections/lou-analysis/chapters/9/)保留 B247 的反例、充要条件及待核标记。第九章共 34 道已作答、1 道待核；[第十章题解索引](/problems/collections/lou-analysis/chapters/10/)已有 26 道解答、1 道待核；B266、B267 为有明确边界的开放讨论。下一题为 **B282＝10.4.B 第 4 题**，见[下册原题 PDF 第 32 页](/files/problems/楼分析习题-v2.pdf#page=32)。

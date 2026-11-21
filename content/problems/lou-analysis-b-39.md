@@ -10,7 +10,7 @@ updated_at: "2026-11-20"
 
 第三十九批接续 B267，逐题核对下册题册 PDF 第 28、29、31 页（印刷第 26、27、29 页），收录 10.1.B 第 14 题、10.2.B 第 1—2 题与 10.3.B 第 1—4 题。七题均无星号，无另附提示；B268 含推广要求，B269 含两个积分，B270、B274 为开放讨论。B269 原题没有限定 $p,q$ 的符号，以下按全部实参数讨论。
 
-[上一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[上一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [下一批 B275—B281](/problems/e6503f7c7939cbf34595fdd1/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
@@ -650,4 +650,4 @@ B268 从零端点得到零平均值约束，通过权的中心化求最佳常数
 
 下一题为 **B275＝10.3.B 第 5 题**，见[原题 PDF 第 31 页（印刷第 29 页）](/files/problems/楼分析习题-v2.pdf#page=31)；原题要求构造图像在单位正方形中稠密的函数，题面等式左侧带闭包符号，后续须保留。
 
-[上一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[上一批 B261—B267](/problems/828b0451ccb21ab4009c6025/) · [下一批 B275—B281](/problems/e6503f7c7939cbf34595fdd1/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)

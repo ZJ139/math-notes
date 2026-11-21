@@ -1,0 +1,558 @@
+---
+title: "楼红卫《数学分析》B 组习题解答（四十）：稠密图像、Hardy 不等式与振荡积分"
+description: "B275—B281：稠密图像函数，Hardy 最佳常数与等号，加权推广及对偶算子，指数与余弦的抵消积分、Euler 常数和 Fresnel 积分。七题完整证明。"
+subject: "数学分析"
+category: "lou-analysis"
+tags: ["楼红卫", "数学分析", "B组", "下册", "Hardy不等式", "稠密图像", "反常积分", "B275-B281"]
+created_at: "2026-11-21"
+updated_at: "2026-11-21"
+---
+
+第四十批接续 B274，逐项核对下册题册 PDF 第 31—32 页（印刷第 29—30 页），收录 10.3.B 第 5—8 题与 10.4.B 第 1—3 题。七题均无星号、无另附提示。B275 原题等式左侧有闭包符号；B276 包含最佳常数与等号条件；B277 包含两种参数范围；B278 明确要求使用对偶关系。
+
+[上一批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+
+## 题号导航
+
+- [问题 B275：图像闭包为单位正方形（10.3.B-5）](#问题-b275)
+- [问题 B276：Hardy 最佳常数与等号（10.3.B-6）](#问题-b276)
+- [问题 B277：加权 Hardy 不等式（10.3.B-7）](#问题-b277)
+- [问题 B278：Hardy 算子的对偶（10.3.B-8）](#问题-b278)
+- [问题 B279：指数与余弦的抵消积分（10.4.B-1）](#问题-b279)
+- [问题 B280：不同振荡尺度与 Euler 常数（10.4.B-2）](#问题-b280)
+- [问题 B281：Fresnel 积分（10.4.B-3）](#问题-b281)
+
+## 问题 B275
+
+**原题号：** 习题 10.3.B 第 5 题。[原题，PDF 第 31 页（印刷第 29 页）](/files/problems/楼分析习题-v2.pdf#page=31)
+
+**题目**　构造 $[0,1]$ 上的函数 $f$，使得
+
+$$
+\overline{\{(x,f(x)):x\in[0,1]\}}=[0,1]\times[0,1].
+\qquad\text{(1)}
+$$
+
+**基础知识**　有理数的可数性与稠密性；可数拓扑基；集合稠密等价于与每个非空开集相交。
+
+**思路来源**　无需让图像经过正方形的每一点，只需让它进入每个小矩形。有理端点矩形只有可数多个，可以逐个满足要求；每次避开已经使用的有限多个横坐标，就不会破坏函数的单值性。
+
+**证明**　把所有满足 $0<a<b<1$、$0<c<d<1$ 且端点为有理数的开矩形列成
+
+$$
+R_n=(a_n,b_n)\times(c_n,d_n),\qquad n\ge1.
+\qquad\text{(2)}
+$$
+
+递归选取 $x_n\in(a_n,b_n)\cap\mathbb Q$，使 $x_n\notin\{x_1,\ldots,x_{n-1}\}$。这是可行的，因为非空开区间含无限多个有理数，每次只排除有限多个。取 $y_n=(c_n+d_n)/2$，定义
+
+$$
+f(x)=
+\begin{cases}
+y_n,&x=x_n\text{ for some }n,\\
+0,&x\notin\{x_n:n\ge1\}.
+\end{cases}
+\qquad\text{(3)}
+$$
+
+各 $x_n$ 互异，故定义无歧义，且 $0\le f\le1$。记图像为 $G_f$，则 $G_f\cap R_n\ne\varnothing$ 对每个 $n$ 成立。
+
+任取 $z\in[0,1]^2$ 及 $\varepsilon>0$，即使 $z$ 位于边界或顶点，$B(z,\varepsilon)\cap(0,1)^2$ 仍为非空开集，其中含一个有理端点矩形 $R_n$。于是 $(x_n,f(x_n))\in B(z,\varepsilon)$，从而 $z\in\overline{G_f}$。反过来，由 $G_f\subset[0,1]^2$ 及正方形的闭性，$\overline{G_f}\subset[0,1]^2$，所以（1）成立。
+
+**易错条件**　闭包符号不可省略：每条竖线与函数图像只有一个交点，而与正方形通常有整个线段。上述函数甚至可测、几乎处处为零；这与图像稠密并不矛盾，因为“几乎处处”和“稠密”分别是测度与拓扑概念。它处处不连续：连续点附近的函数值会限制在一个小区间，无法同时逼近该竖线上的高度 $0$ 与 $1$。
+
+**方法总结**　将不可数多个逼近要求压缩为可数基上的相交要求，再用递归选点保持单值约束。这一构造同时说明：函数在可数集上的修改，足以彻底改变图像的拓扑性质。
+
+## 问题 B276
+
+**原题号：** 习题 10.3.B 第 6 题。[原题，PDF 第 31 页（印刷第 29 页）](/files/problems/楼分析习题-v2.pdf#page=31)
+
+**题目**　设 $p>1$，$f\in L^p(0,+\infty)$ 且 $f\ge0$。证明 Hardy 不等式
+
+$$
+\int_0^\infty\left(\frac1x\int_0^x f(t)\,dt\right)^pdx
+\le\left(\frac p{p-1}\right)^p\int_0^\infty f(x)^p\,dx,
+\qquad\text{(4)}
+$$
+
+其中 $(p/(p-1))^p$ 为最佳常数，等号成立当且仅当 $\int_0^\infty f(x)\,dx=0$。
+
+**基础知识**　Hölder 不等式与等号条件；绝对连续函数的分部积分；单调收敛定理。非负 $L^p$ 函数的全区间 $L^1$ 积分允许为无穷，其积分为零等价于几乎处处为零。
+
+**思路来源**　记 $F(x)=\int_0^x f$。被积函数为 $x^{-p}F^p$，对权 $x^{-p}$ 求原函数，正好把 $F^p$ 降为 $F^{p-1}f$，随后 Hölder 闭合估计。最佳常数对应的形式等号函数是 $x^{-1/p}$；它恰处于 $L^p$ 的临界边缘，因而应截断来逼近等号。
+
+**证明**　记 $p'=p/(p-1)$。先设 $f$ 有界且支于某个 $[a,b]\subset(0,\infty)$。两端边界项 $x^{1-p}F(x)^p$ 均趋零，分部积分与 Hölder 给出
+
+$$
+\begin{aligned}
+I&:=\int_0^\infty x^{-p}F(x)^p\,dx
+=p'\int_0^\infty\left(\frac{F(x)}x\right)^{p-1}f(x)\,dx\\
+&\le p'I^{(p-1)/p}\|f\|_p.
+\end{aligned}
+\qquad\text{(5)}
+$$
+
+这里 $I<\infty$ 已由紧支及 $p>1$ 保证，故可以除去其幂，得到（4）。对一般 $f$，令 $f_n=\min(f,n)\mathbf1_{[1/n,n]}$，则 $f_n\uparrow f$ 几乎处处，相应原函数也递增。由单调收敛把（4）推广到一般情形，同时得到 $I<\infty$，没有预先假设待证积分有限。
+
+为审查等号，需要证明（5）对一般 $f$ 仍是精确恒等式。零端由 Hölder 有
+
+$$
+0\le\frac{F(x)^p}{x^{p-1}}\le\int_0^x f(t)^p\,dt\longrightarrow0.
+\qquad\text{(6)}
+$$
+
+无穷端固定 $A>0$，当 $x>A$ 时
+
+$$
+\frac{F(x)}{x^{1-1/p}}
+\le\frac{F(A)}{x^{1-1/p}}+
+\left(\int_A^\infty f(t)^p\,dt\right)^{1/p}.
+\qquad\text{(7)}
+$$
+
+先令 $x\to\infty$，再令 $A\to\infty$，便得无穷端边界项也趋零。在有限区间分部积分后取极限即可得到（5）；其中混合积分绝对收敛，由已经证明的 $I<\infty$ 与 Hölder 保证。
+
+若 $f\ne0$ 且（4）取等号，则（5）的 Hölder 必取等号，因而 $f=cF/x$ 几乎处处。结合 $\|F/x\|_p=p'\|f\|_p$ 得 $c=1/p'$，于是
+
+$$
+F'(x)=\frac{F(x)}{p'x}\quad\text{a.e.},
+\qquad F(x)=C x^{1/p'},\qquad
+f(x)=\frac C{p'}x^{-1/p}\quad\text{a.e.}
+\qquad\text{(8)}
+$$
+
+中间结论可在任意 $[a,b]\subset(0,\infty)$ 上对绝对连续函数 $x^{-1/p'}F(x)$ 求导得到，因此不要求 $f$ 连续。非零的（8）不属于 $L^p(0,\infty)$，矛盾。故等号当且仅当 $f=0$ 几乎处处，恰等价于原题所述非负积分为零。
+
+证明最佳性，取 $R>1$ 及 $f_R(x)=x^{-1/p}\mathbf1_{[1,R]}(x)$。则 $\|f_R\|_p^p=\log R$，且在 $1\le x\le R$ 上
+
+$$
+\frac1x\int_0^x f_R(t)\,dt
+=p'x^{-1/p}(1-x^{-1/p'}).
+\qquad\text{(9)}
+$$
+
+由 $0\le1-(1-u)^p\le pu$（$0\le u\le1$）得
+
+$$
+0\le\log R-\int_1^R\frac{(1-x^{-1/p'})^p}{x}\,dx
+\le p\int_1^\infty x^{-1-1/p'}dx=pp'.
+\qquad\text{(10)}
+$$
+
+因此（4）左端与 $\|f_R\|_p^p$ 的比值至少趋于 $(p')^p$；（4）又给出相同上界，最佳常数即为 $(p')^p$。
+
+**易错条件**　不能由非零极值函数不存在就断定常数不最佳；这里是截断函数列逼近最佳值。无穷端的边界消失不能只用 $F(x)\le x^{1-1/p}\|f\|_p$，因为该估计只能给有界性，必须使用（7）的尾部小量。
+
+**方法总结**　分部积分确定常数，Hölder 产生形式极值函数，临界幂的对数发散解释“不取到但可逼近”。先截断证明估计，再审查边界与等号，可以避免循环论证。
+
+## 问题 B277
+
+**原题号：** 习题 10.3.B 第 7 题。[原题，PDF 第 31 页（印刷第 29 页）](/files/problems/楼分析习题-v2.pdf#page=31)
+
+**题目**　设 $p>1$，$f\in L^p(0,+\infty)$ 且 $f\ge0$，又设 $r>0$、$r\ne1$。证明：当 $r>1$ 时，
+
+$$
+\int_0^\infty x^{-r}\left(\int_0^x f(t)\,dt\right)^pdx
+\le\left(\frac p{r-1}\right)^p
+\int_0^\infty x^{p-r}f(x)^p\,dx;
+\qquad\text{(11)}
+$$
+
+当 $0<r<1$ 时，
+
+$$
+\int_0^\infty x^{-r}\left(\int_x^\infty f(t)\,dt\right)^pdx
+\le\left(\frac p{1-r}\right)^p
+\int_0^\infty x^{p-r}f(x)^p\,dx.
+\qquad\text{(12)}
+$$
+
+**基础知识**　加权 Hölder 不等式；非负函数的单调收敛；原函数与尾积分的导数分别为 $f$、$-f$。以下记 $p'=p/(p-1)$。
+
+**思路来源**　$\int x^{-r}dx=x^{1-r}/(1-r)$ 的符号随 $r-1$ 改变。要让分部积分后得到正项且边界消失，$r>1$ 应取从零点累积的积分，$r<1$ 应取从无穷端累积的尾积分。这不是可任意交换的两种写法。
+
+**证明**　所有积分先按非负 Lebesgue 积分理解，允许无穷值；记
+
+$$
+J=\int_0^\infty x^{p-r}f(x)^p\,dx.
+\qquad\text{(13)}
+$$
+
+先对有界且支于 $[a,b]\subset(0,\infty)$ 的 $f$ 证明。若 $r>1$，令 $F(x)=\int_0^x f$、$I=\int_0^\infty x^{-r}F^p$。零端 $F=0$；无穷端 $F$ 为常数而 $x^{1-r}\to0$。因而
+
+$$
+\begin{aligned}
+I&=\frac p{r-1}\int_0^\infty x^{1-r}F^{p-1}f\,dx\\
+&=\frac p{r-1}\int_0^\infty
+\bigl(x^{-r}F^p\bigr)^{(p-1)/p}
+\bigl(x^{p-r}f^p\bigr)^{1/p}dx\\
+&\le\frac p{r-1}I^{(p-1)/p}J^{1/p}.
+\end{aligned}
+\qquad\text{(14)}
+$$
+
+此时 $I,J$ 有限，得（11）。若 $0<r<1$，令 $G(x)=\int_x^\infty f$。无穷端 $G=0$；零端 $G$ 为常数而 $x^{1-r}\to0$。利用 $G'=-f$ 得
+
+$$
+\begin{aligned}
+I&:=\int_0^\infty x^{-r}G^p\,dx
+=\frac p{1-r}\int_0^\infty x^{1-r}G^{p-1}f\,dx\\
+&\le\frac p{1-r}I^{(p-1)/p}J^{1/p},
+\end{aligned}
+\qquad\text{(15)}
+$$
+
+于是（12）成立。对一般 $f\ge0$，仍用 $f_n=\min(f,n)\mathbf1_{[1/n,n]}\uparrow f$；原函数、尾积分、加权积分均递增，单调收敛直接给出（11）、（12），包括扩充实数情形。
+
+若要求有限值不等式，应明确假设 $J<\infty$。这时两种内部积分确为有限：$r>1$ 时加权 Hölder 给出
+
+$$
+\int_0^x f(t)dt\le J^{1/p}
+\left(\int_0^x t^{(r-p)/(p-1)}dt\right)^{1/p'}<\infty;
+\qquad\text{(16)}
+$$
+
+$0<r<1$ 时把（16）的积分区间换为 $(x,\infty)$，右端也有限；指数条件分别恰是 $r>1$ 与 $r<1$。所以在加权范数有限的自然定义域上，甚至无需另加未加权的 $L^p$ 条件。
+
+**常数的进一步核查**　两常数也是最佳的。若 $r>1$，置 $a=(r-1)/p$、$f_R=x^{a-1}\mathbf1_{[1,R]}$；若 $0<r<1$，置 $a=(1-r)/p$、$f_R=x^{-a-1}\mathbf1_{[1,R]}$。这些函数均属于原题的 $L^p$ 类，且两种情形都有 $J=\log R$。只积分 $1\le x\le R$，左端分别不小于
+
+$$
+\begin{aligned}
+a^{-p}\int_1^R\frac{(1-x^{-a})^p}{x}\,dx
+&=a^{-p}\bigl(\log R+O(1)\bigr),\\
+a^{-p}\int_1^R\frac{(1-(x/R)^a)^p}{x}\,dx
+&=a^{-p}\bigl(\log R+O(1)\bigr).
+\end{aligned}
+\qquad\text{(17)}
+$$
+
+两个误差的绝对值均不超过 $p/a$，仍由（10）所用的初等估计得到。除以 $J$ 并令 $R\to\infty$，即得相应最佳常数 $a^{-p}$。
+
+**易错条件**　原题的 $f\in L^p$ 并不自动推出 $J<\infty$，也不自动保证尾积分有限。例如 $f(x)=(1+x)^{-\alpha}$、$1/p<\alpha\le1$，虽属于 $L^p$，却有 $\int_x^\infty f=\infty$；在 $0<r<1$ 时它的 $J$ 也为无穷。故若把原题理解为“所有积分必为有限实数”，这就是反例，合理修订是补充 $J<\infty$。按非负积分允许无穷的通常约定，原不等式成立，无需改动题面。$r=1$ 的边界权不衰减，不能代入上述公式。
+
+**方法总结**　由权的原函数决定积分方向，用单调截断处理端点，再以临界幂检验常数。必须区分“扩充实数不等式成立”和“算子在加权空间上有界”这两个层次。
+
+## 问题 B278
+
+**原题号：** 习题 10.3.B 第 8 题。[原题，PDF 第 31 页（印刷第 29 页）](/files/problems/楼分析习题-v2.pdf#page=31)
+
+**题目**　设 $p,q>1$ 为对偶数，$f\in L^q(0,+\infty)$ 且 $f\ge0$。令
+
+$$
+F(f)(x)=\int_x^\infty\frac{f(t)}t\,dt.
+\qquad\text{(18)}
+$$
+
+利用 Hardy 不等式与对偶关系证明
+
+$$
+\|F(f)\|_{L^q(0,\infty)}
+\le\frac p{p-1}\|f\|_{L^q(0,\infty)}.
+\qquad\text{(19)}
+$$
+
+**基础知识**　$1/p+1/q=1$；非负函数的 Tonelli 换序；$L^p$ 与 $L^q$ 范数对偶。此处 $p/(p-1)=q$。
+
+**思路来源**　把尾积分与一个检验函数配对，再交换三角形区域 $0<x<t$ 的积分次序，尾积分就变成 Hardy 平均算子。这正是“先算伴随，再读范数”的过程。
+
+**证明**　对每个 $x>0$，Hölder 保证定义（18）有限：
+
+$$
+F(f)(x)\le\|f\|_q
+\left(\int_x^\infty t^{-p}dt\right)^{1/p}<\infty.
+\qquad\text{(20)}
+$$
+
+对任意非负 $g\in L^p$，由 Tonelli 与 B276，
+
+$$
+\begin{aligned}
+\int_0^\infty F(f)(x)g(x)\,dx
+&=\int_0^\infty f(t)\left(\frac1t\int_0^t g(x)dx\right)dt\\
+&\le\|f\|_q\left\|\frac1t\int_0^t g(x)dx\right\|_p
+\le q\|f\|_q\|g\|_p.
+\end{aligned}
+\qquad\text{(21)}
+$$
+
+为避免预先假设 $F(f)\in L^q$，令 $u_n=\min(F(f),n)\mathbf1_{[1/n,n]}$。若 $u_n\ne0$，取
+
+$$
+g_n=\frac{u_n^{q-1}}{\|u_n\|_q^{q-1}},
+\qquad \|g_n\|_p=1,
+\qquad \int_0^\infty u_ng_n=\|u_n\|_q.
+\qquad\text{(22)}
+$$
+
+将 $g_n$ 代入（21），利用 $u_n\le F(f)$ 得 $\|u_n\|_q\le q\|f\|_q$；$u_n=0$ 时该式显然成立。单调收敛给出（19）。
+
+事实上常数 $q$ 最佳。取 $f_R(t)=t^{-1/q}\mathbf1_{[1,R]}$，则 $\|f_R\|_q^q=\log R$，并且
+
+$$
+F(f_R)(x)=q x^{-1/q}\bigl(1-(x/R)^{1/q}\bigr),
+\qquad1\le x\le R.
+\qquad\text{(23)}
+$$
+
+由（17）同样的估计，$\|F(f_R)\|_q^q\ge q^q(\log R-O(1))$，因此算子范数不能小于 $q$。
+
+**易错条件**　对偶后改变的是函数所在空间，常数仍是 Hardy 算子在 $L^p$ 上的范数 $q$，不能误写为 $p$。Tonelli 可以在尚不知道配对有限时使用；随后（21）证明它有限。不能直接把未证属于 $L^q$ 的 $F(f)$ 代入范数对偶公式而省略截断。
+
+**方法总结**　积分区域的转置把“向前平均”变为“向后加权尾积分”。先通过非负换序建立配对恒等式，再以截断范数检验函数完成有界性证明。
+
+## 问题 B279
+
+**原题号：** 习题 10.4.B 第 1 题。[原题，PDF 第 32 页（印刷第 30 页）](/files/problems/楼分析习题-v2.pdf#page=32)
+
+**题目**　证明
+
+$$
+\int_0^\infty\frac{e^{-x}-\cos x}{x}\,dx=0.
+\qquad\text{(24)}
+$$
+
+**基础知识**　Dirichlet 判别；含参积分求导；指数阻尼与一致尾估计。各项在零点单独积分都发散，必须保留相消结构。
+
+**思路来源**　余弦没有指数衰减，直接求导容易丢失收敛性。先加入 $e^{-ax}$，使参数计算在绝对收敛范围内进行，再用与 $a$ 无关的尾估计去掉阻尼。
+
+**证明**　零点处 $e^{-x}-\cos x=-x+O(x^2)$，故被积函数有有限极限；无穷端的 $e^{-x}/x$ 绝对可积，$\cos x/x$ 由 Dirichlet 判别收敛。因此（24）为普通反常积分。
+
+对 $a>0$、$b\ge0$ 定义
+
+$$
+J(a,b)=\int_0^\infty\frac{e^{-x}-e^{-ax}\cos(bx)}x\,dx.
+\qquad\text{(25)}
+$$
+
+该积分绝对收敛。由 $e^{-x}-e^{-ax}=\int_1^a x e^{-tx}dt$（$a<1$ 时取有向积分），在 $t$ 的紧区间内换序得
+
+$$
+J(a,0)=\int_1^a\frac{dt}{t}=\log a.
+\qquad\text{(26)}
+$$
+
+固定 $a>0$，求导后的被积函数受 $e^{-ax}$ 控制，故
+
+$$
+\frac{\partial J}{\partial b}(a,b)
+=\int_0^\infty e^{-ax}\sin(bx)dx
+=\frac b{a^2+b^2}.
+\qquad\text{(27)}
+$$
+
+最后一个等式由两次分部积分或直接求原函数得到。对 $b$ 积分，得
+
+$$
+J(a,b)=\log a+\frac12\log\frac{a^2+b^2}{a^2}
+=\frac12\log(a^2+b^2).
+\qquad\text{(28)}
+$$
+
+取 $b=1$。对 $a\ge0$，权 $w_a(x)=e^{-ax}/x$ 单调趋零；分部积分给出一致尾估计
+
+$$
+\left|\int_R^\infty\frac{e^{-ax}\cos x}{x}dx\right|
+\le2w_a(R)\le\frac2R.
+\qquad\text{(29)}
+$$
+
+在有限区间上，$0<a\le1$ 时
+$|e^{-x}-e^{-ax}\cos x|/x\le1+x/2$，因此可用控制收敛令 $a\downarrow0$。再由（29）及指数项的可积尾部去掉截断，得到原积分等于
+$\lim_{a\downarrow0}J(a,1)=0$。
+
+**易错条件**　式（24）不能写成两个从零开始的独立积分相减；正确操作是在同一截断区间上相减。阻尼积分的极限也不能仅凭点态收敛与原积分收敛而宣称相等，（29）给出了所需的统一控制。
+
+**方法总结**　相消解决零端奇点，指数阻尼解决无穷端求导，统一尾估计负责返回原积分。这三个环节各自承担不同的收敛任务。
+
+## 问题 B280
+
+**原题号：** 习题 10.4.B 第 2 题。[原题，PDF 第 32 页（印刷第 30 页）](/files/problems/楼分析习题-v2.pdf#page=32)
+
+**题目**　计算
+
+$$
+I=\int_0^\infty\frac{\cos x-\cos(x^2)}x\,dx.
+\qquad\text{(30)}
+$$
+
+**基础知识**　有限截断上的换元；Euler 常数
+$\gamma=\lim_{n\to\infty}(H_n-\log n)$，其中 $H_n=\sum_{k=1}^n1/k$；对数奇点的可积性。
+
+**思路来源**　换元 $t=x^2$ 会把下限 $\varepsilon$ 变成 $\varepsilon^2$。两个积分的对数发散由此抵消，剩下的有限常数才是答案。B279 可以把振荡积分的有限部分转移到指数积分，从而引出 Euler 常数。
+
+**解**　零点处分子为 $-x^2/2+O(x^4)$；无穷端的两个积分分别收敛，第二个通过 $t=x^2$ 化为 $\frac12\int\cos t/t\,dt$。故（30）作为普通反常积分存在。
+
+先证明所需常数公式
+
+$$
+\int_\varepsilon^\infty\frac{e^{-t}}t\,dt
+=-\log\varepsilon-\gamma+o(1)
+\quad(\varepsilon\downarrow0).
+\qquad\text{(31)}
+$$
+
+为使常数来源明确，考虑
+
+$$
+A_n=\int_0^n(1-t/n)^n\log t\,dt.
+\qquad\text{(32)}
+$$
+
+把被积函数在 $t>n$ 处补零，绝对值受 $e^{-t}|\log t|$ 控制，故 $A_n\to\int_0^\infty e^{-t}\log t\,dt$。换元 $t=nu$，并利用
+
+$$
+\begin{aligned}
+-\int_0^1(1-u)^n\log u\,du
+&=\frac1{n+1}\int_0^1\frac{1-(1-v)^{n+1}}v\,dv\\
+&=\frac{H_{n+1}}{n+1},
+\end{aligned}
+\qquad\text{(33)}
+$$
+
+得
+
+$$
+A_n=\frac n{n+1}(\log n-H_{n+1})\longrightarrow-\gamma.
+\qquad\text{(34)}
+$$
+
+式（33）先用 $-\log u=\int_u^1dv/v$ 非负换序，再用有限几何级数积分；因此没有引用未证的特殊函数恒等式。$\gamma$ 的存在由积分比较可知：$H_n-\log n$ 单调递减且有下界。
+
+在 $[\varepsilon,R]$ 上分部积分并令 $R\to\infty$，有
+
+$$
+\int_\varepsilon^\infty e^{-t}\log t\,dt
+=e^{-\varepsilon}\log\varepsilon+
+\int_\varepsilon^\infty\frac{e^{-t}}t\,dt.
+\qquad\text{(35)}
+$$
+
+由（34）、（35）及 $(e^{-\varepsilon}-1)\log\varepsilon\to0$ 得（31）。又由 B279 的总积分为零，
+
+$$
+\int_\varepsilon^\infty\frac{\cos t}t\,dt
+=\int_\varepsilon^\infty\frac{e^{-t}}t\,dt+o(1)
+=-\log\varepsilon-\gamma+o(1).
+\qquad\text{(36)}
+$$
+
+这里误差等于 $\int_0^\varepsilon(e^{-t}-\cos t)/t\,dt$，确实趋零。对固定 $\varepsilon>0$ 在第二项换元，再令 $\varepsilon\downarrow0$，便得
+
+$$
+\begin{aligned}
+I&=\lim_{\varepsilon\downarrow0}\left[
+\int_\varepsilon^\infty\frac{\cos t}t\,dt
+-\frac12\int_{\varepsilon^2}^\infty\frac{\cos t}t\,dt\right]\\
+&=\lim_{\varepsilon\downarrow0}
+\left[-\log\varepsilon-\gamma
+-\frac12(-2\log\varepsilon-\gamma)+o(1)\right]
+=-\frac\gamma2.
+\end{aligned}
+\qquad\text{(37)}
+$$
+
+**易错条件**　不能把换元后的两个下限都写成零，再形式上合并成 $\frac12\int_0^\infty\cos t/t\,dt$；这个积分在零点发散。有限部分的常数会随系数保留下来，并不会被对数项的抵消一同消去。
+
+**方法总结**　遇到同一函数的不同幂尺度，保留变换后的真实截断端点。先分离对数发散，再计算有限部分，往往比直接寻找原函数更有效。
+
+## 问题 B281
+
+**原题号：** 习题 10.4.B 第 3 题。[原题，PDF 第 32 页（印刷第 30 页）](/files/problems/楼分析习题-v2.pdf#page=32)
+
+**题目**　计算
+
+$$
+\int_{-\infty}^{+\infty}\sin(t^2)\,dt.
+\qquad\text{(38)}
+$$
+
+**基础知识**　Gauss 积分；振荡积分的 Dirichlet 判别；对参数求导及一阶线性微分方程。以下用复数记号合并正弦、余弦，但只使用实参数积分与分部积分。
+
+**思路来源**　相位 $t^2$ 与 Gauss 核有相同的二次结构。加入 $e^{-at^2}$ 后，把正弦和余弦合为一个积分，参数求导产生的 $t^2$ 正好能通过分部积分消去，从而得到可解的微分方程。
+
+**解**　换元 $u=t^2$ 得
+
+$$
+\int_R^S\sin(t^2)dt
+=\frac12\int_{R^2}^{S^2}\frac{\sin u}{\sqrt u}\,du.
+\qquad\text{(39)}
+$$
+
+由 Dirichlet 判别，正半轴积分收敛；负半轴由偶性同样收敛。所以（38）不是仅以主值意义存在。
+
+对 $a>0$、$b\ge0$，令
+
+$$
+K_a(b)=\int_0^\infty e^{-(a-ib)t^2}dt.
+\qquad\text{(40)}
+$$
+
+绝对收敛使参数求导合法；导数受 $t^2e^{-at^2}$ 控制。积分 $\frac{d}{dt}(t e^{-(a-ib)t^2})$，两端边界均为零，故
+
+$$
+\begin{aligned}
+K_a'(b)&=i\int_0^\infty t^2e^{-(a-ib)t^2}dt,\\
+K_a(b)&=2(a-ib)\int_0^\infty t^2e^{-(a-ib)t^2}dt,\\
+K_a'(b)&=\frac{i}{2(a-ib)}K_a(b).
+\end{aligned}
+\qquad\text{(41)}
+$$
+
+初值为 $K_a(0)=\sqrt\pi/(2\sqrt a)$：正的 Gauss 积分平方后，在第一象限使用极坐标，得到
+
+$$
+K_a(0)^2=\int_0^{\pi/2}\int_0^\infty e^{-ar^2}r\,dr\,d\theta
+=\frac\pi{4a}.
+\qquad\text{(42)}
+$$
+
+解（41）得到
+
+$$
+K_a(b)=\frac{\sqrt\pi}{2\sqrt{a-ib}}.
+\qquad\text{(43)}
+$$
+
+平方根取从 $b=0$ 的正根连续延伸的分支；由于 $a>0$，$a-ib$ 始终位于右半平面，分支无歧义。也可直接对 $\sqrt{a-ib}\,K_a(b)$ 求导，验证其恒等于 $\sqrt\pi/2$。
+
+取 $b=1$，令 $a\downarrow0$。为证明阻尼极限等于原积分，令 $w_a(u)=e^{-au}/(2\sqrt u)$。对 $a\ge0$，它单调趋零，分部积分给出
+
+$$
+\left|\int_R^\infty e^{-at^2}e^{it^2}dt\right|
+=\left|\int_{R^2}^\infty w_a(u)e^{iu}du\right|
+\le2w_a(R^2)\le\frac1R.
+\qquad\text{(44)}
+$$
+
+结合有限区间上的控制收敛，可以在（43）取极限并取虚部：
+
+$$
+\begin{aligned}
+\int_0^\infty\sin(t^2)dt
+&=\operatorname{Im}\left(\frac{\sqrt\pi}{2}e^{i\pi/4}\right)
+=\sqrt{\frac\pi8},\\
+\int_{-\infty}^{+\infty}\sin(t^2)dt
+&=2\sqrt{\frac\pi8}=\sqrt{\frac\pi2}.
+\end{aligned}
+\qquad\text{(45)}
+$$
+
+**易错条件**　偶函数的全实轴积分是半轴积分的两倍，不能漏掉这个因子。积分并非绝对收敛：由（39），在 $[k\pi+\pi/6,k\pi+5\pi/6]$ 上有 $|\sin u|\ge1/2$，各段绝对积分下界为常数乘 $k^{-1/2}$，其和发散。因此（43）的阻尼极限必须由（44）证明，不能用无可积控制函数的全区间控制收敛。
+
+**方法总结**　二次振荡与 Gauss 核相结合，可将积分转化为参数微分方程。复数记号只负责合并两类实积分；真正保证推导成立的是正阻尼下的绝对收敛，以及去阻尼时的一致尾估计。
+
+## 七题方法总结
+
+| 题号 | 核心结果 | 关键方法 |
+| --- | --- | --- |
+| B275 | 图像闭包为单位正方形 | 可数基、互异横坐标递归选点 |
+| B276 | Hardy 最佳常数及仅零函数取等号 | 分部积分、Hölder、临界幂截断 |
+| B277 | 两种加权 Hardy 不等式及最佳常数 | 权的原函数决定积分方向，单调截断 |
+| B278 | 对偶尾积分算子的范数为对偶指数 | Tonelli 换序、截断对偶检验函数 |
+| B279 | 指数与余弦抵消积分为零 | 参数求导、指数阻尼、一致尾估计 |
+| B280 | 不同幂尺度的积分为负半个 Euler 常数 | 保留截断端点、计算对数有限部分 |
+| B281 | 全实轴 Fresnel 积分为 $\sqrt{\pi/2}$ | Gauss 初值、参数微分方程、去阻尼 |
+
+本批七题全部完成。B277 已明确区分扩充实数结论与加权范数有限时的有限值结论，并给出误读条件的反例；没有把未加权的可积性冒充加权可积性。两册累计 **276 道已作答、5 道暂跳过**（上册 175 道、下册 101 道），待核题仍为 **B116、B148、B180、B247、B261**。
+
+第十章现收录 10.1.B 第 1—14 题、10.2.B 第 1—2 题、10.3.B 第 1—8 题与 10.4.B 第 1—3 题，共 **26 道已作答、1 道待核**。下一题为 **B282＝10.4.B 第 4 题**，见[原题 PDF 第 32 页（印刷第 30 页）](/files/problems/楼分析习题-v2.pdf#page=32)。
