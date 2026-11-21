@@ -49,11 +49,11 @@ test('CM bea keeps exact glyph scale and depth for short variables',async()=>{
   }finally{await rm(work,{recursive:true,force:true});}
 });
 
-test('only B275–B281 opts into CM bea and retains every equation and PDF',async()=>{
+test('CM bea remains opt-in for B275–B281 and real-functions-v1',async()=>{
   const entries=await loadEntries(new URL('../content',import.meta.url).pathname);
   const selected=entries.filter(e=>e.mathFont==='cm-bea');
-  assert.deepEqual(selected.map(e=>e.sourcePath),['problems/lou-analysis-b-40.md']);
-  const entry=selected[0];assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');
+  assert.deepEqual(selected.map(e=>e.sourcePath).sort(),['notes/real-functions-v1/ch01-s1.md','problems/lou-analysis-b-40.md']);
+  const entry=selected.find(e=>e.sourcePath==='problems/lou-analysis-b-40.md')!;assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');
   const html=renderToStaticMarkup(createElement(LouBatchArticle,{entry}));
   assert.equal((html.match(/class="latex-svg"/g)||[]).length,269);
   assert.equal((html.match(/class="katex-display"/g)||[]).length,45);
