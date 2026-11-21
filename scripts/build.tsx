@@ -18,6 +18,7 @@ import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirect
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
 import {copyLatexMathAssets} from '../src/latexMath';
+import {copyCMBeaMathAssets} from '../src/cmBeaMath';
 import {mathTextColor,colorMathSvg} from '../src/mathColor';
 import {availableProblemYears,ProblemYearPage} from '../src/ProblemYears';
 import {populatedCollections,collectionRoute,collectionDestination} from '../src/ProblemCollections';
@@ -138,6 +139,7 @@ for(const e of items){
 }
 const mathOutput=path.join(output,mathDirectory);
 copyLatexMathAssets(mathOutput);
+copyCMBeaMathAssets(mathOutput);
 for(const file of await readdir(mathOutput)){
   const target=path.join(mathOutput,file);
   await writeFile(target,colorMathSvg(await readFile(target,'utf8'),mathInk));
