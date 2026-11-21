@@ -625,6 +625,9 @@ html:not(.link-selection-ready) a[href]:focus-visible{border-radius:8px;box-shad
 .link-selection-ring{position:absolute;z-index:1;display:block;box-sizing:border-box;pointer-events:none;border:2px solid var(--link-focus);border-radius:8px;animation:link-selection-fade 150ms ease-out both}
 .link-selection-ring[hidden]{display:none}
 [data-link-positioned]{position:relative}
+/* Replace a control's original box at its outer edge, without a nested frame.
+   Keep its border widths so selecting it cannot change layout or hit area. */
+[data-link-replaces-border]{border-color:transparent!important;border-radius:8px!important;box-shadow:none!important}
 a[data-link-selected],a:focus-visible,a:active,[role="link"][data-link-selected]{color:var(--link-focus)!important}
 a[data-link-selected] :where(span,strong,small){color:inherit}
 .category-group a[aria-current=page],.english-primary>a[aria-current=page],.sentence-sidebar a[aria-current=page],a.button.primary:is([data-link-selected],:active,:focus-visible){background:var(--selected-soft);color:var(--selected)}

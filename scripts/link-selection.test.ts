@@ -12,6 +12,7 @@ function page(saved?: string) {
   class Element {
     attributes = new Map<string, string>();
     style: Record<string, string> = {};
+    computedStyle: Record<string, string> = {};
     className = '';
     nodeType = 1;
     childNodes: any[] = [];
@@ -74,7 +75,7 @@ function page(saved?: string) {
   let scheduled: (() => void) | undefined;
   vm.runInNewContext(source, {
     document, location, URL, window: {},
-    getComputedStyle: () => ({position: 'static', display: 'inline', visibility: 'visible'}),
+    getComputedStyle: (element: Element) => ({position: 'static', display: 'inline', visibility: 'visible', ...element.computedStyle}),
     ResizeObserver: class {observe() {} disconnect() {}},
     addEventListener: on,
     requestAnimationFrame: (callback: () => void) => { scheduled = callback; return 1; },
@@ -154,6 +155,25 @@ test('Tab follows focus and the content-sized frame scrolls with its own link wi
   p.first.isConnected = false;
   p.fire('resize'); p.flush();
   assert.ok(p.ring.hidden);
+});
+
+test('bordered controls replace the existing box instead of drawing a second frame inside it', () => {
+  const p = page();
+  for (const side of ['Top', 'Right', 'Bottom', 'Left']) {
+    p.first.computedStyle[`border${side}Width`] = '1px';
+    p.first.computedStyle[`border${side}Style`] = 'solid';
+  }
+  p.fire('click', p.first);
+  assert.ok(p.first.hasAttribute('data-link-replaces-border'));
+  assert.equal(p.ring.style.left, '0px');
+  assert.equal(p.ring.style.top, '0px');
+  assert.equal(p.ring.style.width, '80px', 'replacement follows the original control edge');
+  assert.equal(p.ring.style.height, '44px');
+  assert.deepEqual(p.first.rect, {left: 20, top: 30, width: 80, height: 44}, 'selection does not resize the control');
+  p.fire('click', p.second);
+  assert.ok(!p.first.hasAttribute('data-link-replaces-border'), 'deselecting restores the original border');
+  assert.ok(!p.second.hasAttribute('data-link-replaces-border'));
+  assert.equal(p.ring.style.width, '40px', 'plain links still use the compact content frame');
 });
 
 test('navigation continuity restores only the exact clicked link and tolerates invalid saved state', () => {
