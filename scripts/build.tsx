@@ -39,7 +39,8 @@ const base=site.pathname.replace(/\/$/,'');
 // fingerprinted browser script and preserve the existing progressive enhancement.
 const algebraCode=(await readFile(path.join(root,'public/algebra-index.js'),'utf8')).replace(/^export /gm,'');
 const fragmentCode=await readFile(path.join(root,'public/fragment-navigation.js'),'utf8');
-const siteCode=algebraCode+'\n'+fragmentCode+'\n'+await readFile(path.join(root,'public/site.js'),'utf8');
+const linkSelectionCode=await readFile(path.join(root,'public/link-selection.js'),'utf8');
+const siteCode=linkSelectionCode+'\n'+algebraCode+'\n'+fragmentCode+'\n'+await readFile(path.join(root,'public/site.js'),'utf8');
 const siteScript=`site.${createHash('sha256').update(siteCode).digest('hex').slice(0,16)}.js`;
 const practiceCode=await readFile(path.join(root,'public/writing-practice.js'),'utf8');
 const practiceScript=`writing-practice.${createHash('sha256').update(practiceCode).digest('hex').slice(0,16)}.js`;
@@ -58,6 +59,7 @@ await rename(path.join(output,'reading-practice.js'),path.join(output,readingScr
 await rename(path.join(output,'writing-practice.js'),path.join(output,practiceScript));
 await rm(path.join(output,'algebra-index.js'));
 await rm(path.join(output,'fragment-navigation.js'));
+await rm(path.join(output,'link-selection.js'));
 const fonts=await readFile(path.join(output,'fonts.css'),'utf8');
 await writeFile(path.join(output,'fonts.css'),fonts.replaceAll('/fonts/',`${base}/fonts/`));
 // New pages must not reuse cached typography or a different renderer's CSS.
