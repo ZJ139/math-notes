@@ -43,6 +43,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
               return '- '+(note?'['+label+']('+entryUrl(note)+'/)' : label)+'（第 '+page+' 页）';
             }).join('\n')}/>
             {practice&&<p><a href={entryUrl(practice)+'/'}>{practice.title}</a>{pdf&&<> · <a href={'/files/'+pdf} download>下载第 {n} 章讲义与习题 PDF</a></>}</p>}
+            {n===6&&count>0&&<p>第六章含三节讲义、19 个教材编号条目、28 道原题及九幅教材图，附逐节索引、导航和 PDF。补全可求长曲线拼接、单叶反射的同侧条件、圆环分类与单值性证明；Picard 小定理的两种证明在已发布前六章内闭合。</p>}
             {n===5&&count>0&&<p>第五章含七节讲义、54 个教材编号条目与 58 道原题，另含 31 个积分小题及教材围道图。补证 Picard 大定理，明确主值、分支、一般域与单连通域的区别，以及按围道分组的收敛顺序；附逐节索引和 PDF。</p>}
             {n===4&&count>0&&<p>第四章含五节讲义、47 个教材编号条目和 91 道原题，附定理索引、逐节导航及 PDF。由局部一致收敛建立 Taylor 理论、零点计数和 Schwarz–Pick 估计；全部定理与性质附证明，原题疑义独立校注。</p>}
             {n===3&&count>0&&<p>第三章含七节讲义与 49 道教材原题，附可点击定理索引、逐节导航和 PDF。完整证明积分表示及其推论，补证一般可求长边界与非齐次方程的整体存在性；原书积分收敛条件和数值疑义另列校勘。</p>}

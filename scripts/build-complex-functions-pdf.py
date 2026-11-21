@@ -6,7 +6,7 @@ from pathlib import Path
 import argparse, re, subprocess
 
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--chapter',type=int,choices=[1,2,3,4,5],default=1)
+parser.add_argument('--chapter',type=int,choices=[1,2,3,4,5,6],default=1)
 chapter=parser.parse_args().chapter
 R=Path(__file__).resolve().parents[1]
 source=R/'content/notes/complex-functions'
@@ -16,6 +16,7 @@ settings={
  3:('第三章','全纯函数的积分表示','68—102',7,49),
  4:('第四章','全纯函数的 Taylor 展开及其应用','103—140',5,91),
  5:('第五章','全纯函数的 Laurent 展开及其应用','141—193',7,58),
+ 6:('第六章','全纯开拓','194—209',3,28),
 }
 name,topic,pages,sections,exercises=settings[chapter]
 pre=(R/'print/real-functions-chapter-1.tex').read_text().split(r'\begin{document}')[0]
@@ -51,9 +52,12 @@ elif chapter==3:
  pre+='从复积分与 Cauchy--Goursat 定理建立原函数和积分表示，再证明高阶可导性、导数估计及非齐次方程求解。一般可求长边界与任意域整体求解另给完整补证，并标明实分析前置工具；定理 3.7.3 的全域积分补足收敛条件。各节设可点击定理索引，原题按节跳转。'
 elif chapter==4:
  pre+='由紧集上的一致控制建立 Taylor 理论、零点计数与模估计。此次修订补全原函数级数的半径论证、修正 Abel 扇形闭集，并核正习题 4.2.10 的求和起点。'
-else:
+elif chapter==5:
  pre+='覆盖 54 个教材编号条目，补证 Picard 大定理，逐项说明积分的主值、分支与收敛条件；给出 Mittag–Leffler、零点构造、插值及 Blaschke 乘积的证明。58 道主编号题中含 31 个积分小题，保留教材围道图及提示。'
-pre+='习题不附解答，原题中的疑义另列校勘。\n'+r'\tableofcontents\clearpage'+'\n'
+else:
+ pre+='覆盖 19 个教材编号条目，补足可求长曲线的连续拼接、单叶反射的同侧条件、圆环分类及路径同伦证明。Picard 小定理复用已证的导数估计，使证明依赖在前六章内闭合；保留九幅教材配图、逐节索引与原题校注。'
+pre+='习题不附解答，原题中的疑义另列校勘。\n'
+pre+=(r'\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup\clearpage' if chapter==6 else r'\tableofcontents\clearpage')+'\n'
 pieces=[]
 for i in range(1,sections+2):
  practice=i==sections+1
@@ -90,7 +94,7 @@ for i in range(1,sections+2):
   heading='\\section{'+title.split('　',1)[1]+'}\n'
  else:
   heading=rf'\clearpage\section*{{{name}习题}}\phantomsection\addcontentsline{{toc}}{{section}}{{{name}习题}}'+'\n'
- needed=9 if chapter==3 and practice else 5
+ needed=9 if chapter==3 and practice else (8 if chapter==6 else 5)
  latex=latex.replace(r'\subsection{',rf'\Needspace{{{needed}\baselineskip}}'+'\n'+r'\subsection{')
  if practice:
   latex=re.sub(r'\\textbf\{(\d+)\.\}',lambda m:r'\par\Needspace{5\baselineskip}'+'\n'+r'\noindent\textbf{'+m[1]+'.}',latex)
