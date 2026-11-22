@@ -8,6 +8,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import Markdown from '../src/Markdown';
 import {parseDocument} from '../src/content';
 import {latexMath,copyLatexMathAssets} from '../src/latexMath';
+import {cmBeaMath} from '../src/cmBeaMath';
 
 test('standard LaTeX renders Computer Modern SVG and preserves accessible MathML',async()=>{
   const output=await mkdtemp(path.join(tmpdir(),'math-assets-'));
@@ -90,7 +91,7 @@ test('LaTeX compilation rejects executable input instead of publishing it',()=>{
 
 test('HTML exposes the TeX depth on each formula box for baseline layout',()=>{
   for(const tex of ['x','p','x_{n_j}',String.raw`\frac{1}{n}`,String.raw`\int_0^1 f(x)\,dx`]){
-    const math=latexMath(tex,false);
+    const math=cmBeaMath(tex,false);
     const html=renderToStaticMarkup(createElement(Markdown,{body:`文字 $${tex}$ 正文。`}));
     const offset=html.match(/class="katex" style="--math-baseline:([^\"]+)"/);
     assert.ok(offset,`Missing outer baseline for ${tex}`);

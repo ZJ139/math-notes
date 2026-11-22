@@ -177,6 +177,10 @@ h1,h2{font-family:var(--heading-serif)}
 
 /* Leave a natural gap between a question number, its prompt and the first formula. */
 @media screen {
+  /* Atomic inline equations must not stretch the preceding Chinese line. */
+  .prose>p,.article-lede {text-align:start;word-spacing:normal;letter-spacing:normal}
+  .prose h1,.prose h2 {margin-block:1.15em .6em;overflow-wrap:normal;text-wrap:balance}
+  .prose h3 {margin-block:.95em .4em;overflow-wrap:normal;text-wrap:balance}
   .prose.exercise-sheet > p {text-align:start;text-indent:0}
   .prose.exercise-sheet > p:has(>strong:first-child) {margin-block-start:.85em}
   .prose.exercise-sheet > .exercise-equation {text-align:center;margin-block:.75em;line-height:1.9}

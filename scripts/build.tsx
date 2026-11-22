@@ -18,7 +18,6 @@ import {UstcAnalysisDirectory,ustcAnalysisUrl,ustcAnalysisTitle} from '../src/Us
 import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
-import {copyLatexMathAssets} from '../src/latexMath';
 import {copyCMBeaMathAssets} from '../src/cmBeaMath';
 import {mathTextColor,colorMathSvg} from '../src/mathColor';
 import {availableProblemYears,ProblemYearPage} from '../src/ProblemYears';
@@ -140,7 +139,6 @@ for(const e of items){
   }
 }
 const mathOutput=path.join(output,mathDirectory);
-copyLatexMathAssets(mathOutput);
 copyCMBeaMathAssets(mathOutput);
 for(const file of await readdir(mathOutput)){
   const target=path.join(mathOutput,file);

@@ -68,7 +68,7 @@ export async function loadEntries(root:string):Promise<PublicEntry[]> {
     if(problemIds.length&&section!=='problems')throw new Error('problem_ids 仅用于题库');
     if(!Array.isArray(readingTopics)||readingTopics.some(t=>typeof t!=='string'||!t.startsWith('reading-types/')||!validCategory(t))||new Set(readingTopics).size!==readingTopics.length)throw new Error('reading_topics 必须是不重复的阅读题型子分类数组');
     if(readingTopics.length&&(section!=='english'||category!=='reading-types'))throw new Error('reading_topics 仅用于英语 reading-types 总专题');
-    const mathFont=str('math_font');
+    const mathFont=str('math_font','cm-bea');
     if(mathFont && mathFont!=='cm-bea')throw new Error(`${sourcePath} 的 math_font 未知：${mathFont}`);
     const source_url=str('source_url');
     if(source_url && !/^https?:\/\//i.test(source_url))throw new Error('来源链接必须以 https:// 或 http:// 开头');

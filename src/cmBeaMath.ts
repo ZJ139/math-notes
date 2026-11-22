@@ -12,38 +12,70 @@ const rendererVersion=createHash('sha256').update(readFileSync(fileURLToPath(imp
 const used=new Set<string>();
 interface MathImage {id:string;width:number;height:number;depth:number;fonts:string[]}
 
-export function cmBeaMath(tex:string,display:boolean):MathImage {
+function formulaId(tex:string,display:boolean):string {
   // Only mathematical input reaches TeX. Disable file access, shell escape,
   // macro definitions and engine primitives in addition to KaTeX validation.
   if(/\\(?:input|include|includegraphics|openin|openout|read|write|special|immediate|def|gdef|edef|xdef|let|futurelet|newcommand|renewcommand|providecommand|csname|catcode|usepackage|documentclass|loop|repeat|shipout|every\w*|directlua|pdf\w*|XeTeX\w*)(?![A-Za-z])/.test(tex)||/(?<!\\)\$|\^\^/.test(tex))throw new Error('公式只允许标准数学 LaTeX 命令');
-  const id=createHash('sha256').update(rendererVersion+'\0'+display+'\0'+tex).digest('hex');
-  mkdirSync(cache,{recursive:true});
+  return createHash('sha256').update(rendererVersion+'\0'+display+'\0'+tex).digest('hex');
+}
+
+type Formula = readonly [tex:string,display:boolean];
+
+export function cmBeaMath(tex:string,display:boolean):MathImage {
+  const id=formulaId(tex,display);
   const metadata=path.join(cache,id+'.json');
-  const svg=path.join(cache,id+'.svg');
-  if(existsSync(metadata)&&existsSync(svg)){used.add(id);return JSON.parse(readFileSync(metadata,'utf8'));}
+  if(!existsSync(metadata)||!existsSync(path.join(cache,id+'.svg')))compileBatch([[tex,display]]);
+  used.add(id);
+  return JSON.parse(readFileSync(metadata,'utf8'));
+}
+
+// Amortize TeX startup across bounded batches, retaining one cropped page and
+// exact box metrics per formula. Only complete, validated results enter cache.
+export function precompileCMBeaMath(formulas:readonly Formula[]){
+  const missing=new Map<string,Formula>();
+  for(const formula of formulas){
+    const id=formulaId(...formula);
+    if(!existsSync(path.join(cache,id+'.json'))||!existsSync(path.join(cache,id+'.svg')))missing.set(id,formula);
+  }
+  const pending=[...missing.values()];
+  for(let i=0;i<pending.length;i+=64){
+    const batch=pending.slice(i,i+64);
+    try{compileBatch(batch);}catch{
+      // Report the precise offending equation using the single-formula path.
+      for(const [tex,display] of batch)cmBeaMath(tex,display);
+    }
+  }
+}
+
+function compileBatch(formulas:readonly Formula[]){
+  mkdirSync(cache,{recursive:true});
   const work=mkdtempSync(path.join(cache,'compile-'));
   try{
     // xdvipdfmx may resolve font paths to absolute names. Keep actual font
     // files inside its allowed temporary directory, rather than symlinking out.
     for(const name of ['FandolSong-Regular.otf','FandolSong-Bold.otf'])copyFileSync(path.join(fonts,name),path.join(work,name));
     // Match Beamer math through the shared font setup; CJK remains Fandol.
-    // The original renderer remains isolated for entries without this opt-in.
     writeFileSync(path.join(work,'cm-bea.sty'),beaStyle);
-    const source=tex.replace(/[\u3400-\u9fff]+/g,s=>`\\text{\\fontencoding{TU}\\Fandol ${s}}`);
-    // Suppress interword spaces around the box: otherwise standalone includes
-    // them in the SVG while our metrics do not, shrinking short formulas most.
-    const document=String.raw`\documentclass[10pt,border=0pt]{standalone}
+    const pages=formulas.map(([tex,display])=>{
+      const source=tex.replace(/[\u3400-\u9fff]+/g,s=>`\\text{\\fontencoding{TU}\\Fandol ${s}}`);
+      return String.raw`\begin{FormulaPage}%
+\sbox{\FormulaBox}{$${display?'\\displaystyle':'\\textstyle'} ${source}$}%
+\immediate\write\metrics{\the\wd\FormulaBox,\the\ht\FormulaBox,\the\dp\FormulaBox}%
+\usebox{\FormulaBox}%
+\end{FormulaPage}%`;
+    }).join('\n');
+    // Suppress interword spaces around each box, including page boundaries.
+    const document=String.raw`\documentclass[10pt,border=0pt,multi=FormulaPage]{standalone}
 \usepackage{amsmath,amssymb}
 \usepackage{cm-bea}
 \newfontfamily\Fandol{FandolSong-Regular.otf}[Path=./,BoldFont=FandolSong-Bold.otf]
 \newsavebox{\FormulaBox}
+\newenvironment{FormulaPage}{}{}
 \newwrite\metrics
 \begin{document}\sffamily%
-\sbox{\FormulaBox}{$${display?'\\displaystyle':'\\textstyle'} ${source}$}%
 \immediate\openout\metrics=metrics.txt\relax
-\immediate\write\metrics{\the\wd\FormulaBox,\the\ht\FormulaBox,\the\dp\FormulaBox}%
+${pages}
 \immediate\closeout\metrics
-\usebox{\FormulaBox}%
 \end{document}
 `;
     writeFileSync(path.join(work,'formula.tex'),document);
@@ -52,27 +84,30 @@ export function cmBeaMath(tex:string,display:boolean):MathImage {
     if(compiler.error||compiler.status!==0)throw new Error(compiler.stderr||compiler.stdout||String(compiler.error));
     const log=readFileSync(path.join(work,'formula.log'),'utf8');
     if(/Missing character:/.test(log))throw new Error('公式包含字体未覆盖的字符');
-    const [width,height,depth]=readFileSync(path.join(work,'metrics.txt'),'utf8').trim().split(',').map(parseFloat);
-    if(![width,height,depth].every(n=>Number.isFinite(n)&&n>=0)||width===0||height+depth===0)throw new Error('LaTeX 公式尺寸无效');
-    // Cairo rounds the crop size up to whole PDF points before fitting it to
-    // the fractional standalone page. Default shrink/centering therefore
-    // changes glyph size and baseline, especially for one-letter formulas.
-    // Preserve TeX's scale and origin; matching viewBox dimensions alone do
-    // not guarantee that the paths inside the SVG have the correct size.
-    execFileSync('pdftocairo',['-svg','-noshrink','-nocenter','formula.pdf','formula.svg'],{cwd:work,env,timeout:30_000,stdio:'pipe'});
-    const fontReport=execFileSync('pdffonts',['formula.pdf'],{cwd:work,env,timeout:10_000,encoding:'utf8'});
-    const fontNames=fontReport.trim().split('\n').slice(2).map(line=>line.split(/\s+/)[0].replace(/^[A-Z]{6}\+/,''));
-    if(!fontNames.length||(/[\u3400-\u9fff]/.test(tex)&&!fontNames.some(name=>name.startsWith('FandolSong'))))throw new Error(`公式字体未正确嵌入：${fontNames.join(', ')}\n${compiler.stderr}\n${log.split('\n').filter(line=>/Fandol|Font Warning|font encoding|Missing character|not found/.test(line)).slice(-30).join('\n')}`);
-    const result={id,width:width/10,height:height/10,depth:depth/10,fonts:fontNames};
-    renameSync(path.join(work,'formula.svg'),svg);
-    writeFileSync(path.join(work,'result.json'),JSON.stringify(result));
-    renameSync(path.join(work,'result.json'),metadata);
-    used.add(id);
-    return result;
+    const metrics=readFileSync(path.join(work,'metrics.txt'),'utf8').trim().split('\n');
+    if(metrics.length!==formulas.length)throw new Error('LaTeX 公式页数无效');
+    for(let index=0;index<formulas.length;index++){
+      const [tex,display]=formulas[index];
+      const id=formulaId(tex,display);
+      const [width,height,depth]=metrics[index].split(',').map(parseFloat);
+      if(![width,height,depth].every(n=>Number.isFinite(n)&&n>=0)||width===0||height+depth===0)throw new Error('LaTeX 公式尺寸无效');
+      // Keep TeX's scale and origin; Cairo's default crop rounding would
+      // otherwise shrink short variables and shift their baseline.
+      const page=String(index+1);
+      const svg=path.join(work,id+'.svg');
+      execFileSync('pdftocairo',['-svg','-noshrink','-nocenter','-f',page,'-l',page,'formula.pdf',id+'.svg'],{cwd:work,env,timeout:30_000,stdio:'pipe'});
+      const fontReport=execFileSync('pdffonts',['-f',page,'-l',page,'formula.pdf'],{cwd:work,env,timeout:10_000,encoding:'utf8'});
+      const fontNames=fontReport.trim().split('\n').slice(2).map(line=>line.split(/\s+/)[0].replace(/^[A-Z]{6}\+/,''));
+      if(!fontNames.length||(/[\u3400-\u9fff]/.test(tex)&&!fontNames.some(name=>name.startsWith('FandolSong'))))throw new Error(`公式字体未正确嵌入：${fontNames.join(', ')}`);
+      const result={id,width:width/10,height:height/10,depth:depth/10,fonts:fontNames};
+      renameSync(svg,path.join(cache,id+'.svg'));
+      writeFileSync(path.join(work,'result.json'),JSON.stringify(result));
+      renameSync(path.join(work,'result.json'),path.join(cache,id+'.json'));
+    }
   }catch(error){
     const log=existsSync(path.join(work,'formula.log'))?readFileSync(path.join(work,'formula.log'),'utf8'):'';
     const detail=log.match(/^!.*(?:\n.*){0,4}/m)?.[0]||String(error);
-    throw new Error(`LaTeX 公式编译失败：${tex.slice(0,120)}\n${detail}`);
+    throw new Error(`LaTeX 公式编译失败：${formulas[0][0].slice(0,120)}\n${detail}`);
   }finally{rmSync(work,{recursive:true,force:true});}
 }
 
