@@ -1,0 +1,772 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 1.5}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：1.5 点集上的连续函数与纲},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 1.5 点集上的连续函数与纲\par}
+\vspace{5pt}{第一章 集合与点集\par}
+\end{center}
+本节对应《实变函数知识框架》1.5，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 61—65 页）、\S1.5（第 67—80 页）与\S1.6（第 81—85 页），以相对连续性、距离函数延拓和闭球套为主线，附精选练习及完整解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.1
+相对连续性与原像]{1.5.1
+相对连续性与原像}\label{ux76f8ux5bf9ux8fdeux7eedux6027ux4e0eux539fux50cf}
+
+除特别说明外，\(X\)
+是度量空间，\(E\subseteq X\)，实函数均取有限值。主要情形为
+\(X=\mathbb R^n\)，距离取欧氏距离。写
+\(B_E(a,r)=E\cap B_X(a,r)\)；相对开集是 \(E\cap U\)，其中 \(U\) 在 \(X\)
+中开。相对闭集是 \(E\cap F\)，其中 \(F\) 在 \(X\)
+中闭。闭包、内部若取自子空间，用下标 \(E\) 区分。
+
+函数 \(f:E\to\mathbb R\) 在 \(a\in E\) 连续，指
+
+\begin{equation*}
+\forall\varepsilon>0\ \exists\delta>0\ \forall x\in E,\quad
+d(x,a)<\delta\ \Longrightarrow\ |f(x)-f(a)|<\varepsilon.
+\tag{1.5.1}
+\end{equation*}
+
+这里始终只比较 \(E\) 中的点。孤立点上每个函数都连续，因为可取
+\(B_E(a,\delta)=\{a\}\)。连续性定义使用包含中心的邻域，与去心极限在孤立点上的约定无关。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.1（连续性的等价刻画）}　以下条件等价：\(f\) 在 \(E\)
+上连续；对每个 \(a\in E\) 及趋于 \(a\) 的点列 \(x_k\in E\)，都有
+\(f(x_k)\to f(a)\)；每个实开集的原像在 \(E\)
+中相对开；每个实闭集的原像在 \(E\) 中相对闭。
+
+\Needspace{3\baselineskip}\textbf{证明：} 连续性定义直接给出点列结论。若在 \(a\) 不连续，则存在
+\(\varepsilon_0>0\)，对每个 \(k\) 可取 \(d(x_k,a)<1/k\) 而
+\(|f(x_k)-f(a)|\ge\varepsilon_0\)，与点列结论矛盾。
+
+若 \(V\subseteq\mathbb R\) 开，\(a\in f^{-1}(V)\)，取 \(\varepsilon>0\)
+使 \((f(a)-\varepsilon,f(a)+\varepsilon)\subseteq V\)，再由连续性找
+\(\delta\)，就有
+\(B_E(a,\delta)\subseteq f^{-1}(V)\)。反向对这个实开区间的原像使用相对开性，便得到（1.5.1）。最后，原像保持补集，且
+\(f^{-1}(\mathbb R\setminus V)=E\setminus f^{-1}(V)\)，所以开集与闭集两种刻画等价。
+
+特别地，\(\{x\in E:f(x)>t\}\) 相对开，\(\{x\in E:f(x)\ge t\}\)
+相对闭。这些集合未必在整个 \(X\) 中开或闭。
+
+\textbf{命题
+1.5.2（运算、复合与稠密集上的唯一性）}　连续函数的和、差、积、绝对值及最大、最小值连续；商在分母非零处连续。连续映射的复合连续。若连续实函数
+\(f,g\) 在 \(E\) 的稠密子集 \(D\) 上相等，则在 \(E\) 上处处相等。
+
+\Needspace{3\baselineskip}\textbf{证明：} 在任意收敛点列上使用实数极限的四则运算，结合定理
+1.5.1，即得和、差、积与商的结论。绝对值利用 \(||u|-|v||\le|u-v|\)；再由
+\(\max(u,v)=(u+v+|u-v|)/2\)
+和相应的最小值公式得证。复合的原像是两次原像，故保持开性。对最后一项，给定
+\(a\in E\)，由稠密性取 \(x_k\in D\cap B_E(a,1/k)\)；连续性给出
+\(f(a)=\lim f(x_k)=\lim g(x_k)=g(a)\)。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.1（相对连续不等于环境连续；补充例）}　在 \(E=\mathbb Q\)
+上，\(f(q)=\mathbf1_{\{q>\sqrt2\}}\) 连续：对每个有理数
+\(q\)，可在不跨过 \(\sqrt2\) 的邻域中保持函数值。但它不能连续延拓到
+\(\mathbb R\)，因为从两侧取有理数趋于 \(\sqrt2\)，函数值分别为
+\(0,1\)。这已经预示闭集条件的重要性。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.2
+紧集与一致控制]{1.5.2
+紧集与一致控制}\label{ux7d27ux96c6ux4e0eux4e00ux81f4ux63a7ux5236}
+
+以下前三个结论展开教材定理
+1.4.7。紧性指每个相对开覆盖有有限子覆盖；在欧氏空间中等价于有界闭性。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.3（连续像的紧性与最值）}　若 \(K\)
+紧、\(f:K\to\mathbb R\) 连续，则 \(f(K)\) 紧。若 \(K\ne\varnothing\)，则
+\(f\) 有界并取得最大、最小值。
+
+\Needspace{3\baselineskip}\textbf{证明：} 给 \(f(K)\) 一个开覆盖，将各覆盖集拉回
+\(K\)，得到相对开覆盖。有限子覆盖的像仍覆盖
+\(f(K)\)，故其紧。实直线上的紧集有界且闭；非空有界集合的上确界可由其元素列逼近，闭性保证该上确界仍属于
+\(f(K)\)。下确界同理。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.4（紧集上的一致连续性）}　连续实函数在紧度量空间 \(K\)
+上一致连续。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+每个点各有一个连续性半径，用有限覆盖把这些局部半径压缩为一个正数。
+
+\Needspace{3\baselineskip}\textbf{证明：} 给定 \(\varepsilon>0\)。对每个 \(a\in K\)，取
+\(r_a>0\)，使 \(d(x,a)<2r_a\) 时 \(|f(x)-f(a)|<\varepsilon/2\)。由
+\(B_K(a,r_a)\) 的覆盖选出有限个中心 \(a_1,\ldots,a_m\)，令
+\(\delta=\min_i r_{a_i}>0\)。若 \(x,y\in K\) 且 \(d(x,y)<\delta\)，选
+\(i\) 使 \(d(x,a_i)<r_{a_i}\)，则 \(d(y,a_i)<2r_{a_i}\)。两次与
+\(f(a_i)\) 比较，得到
+\(|f(x)-f(y)|<\varepsilon\)。空集情形结论自然成立。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.5（一致极限保持连续）}　若 \(f_k:E\to\mathbb R\)
+连续且一致收敛到 \(f\)，则 \(f\) 连续；这里不要求 \(E\) 紧或闭。
+
+\Needspace{3\baselineskip}\textbf{证明：} 固定 \(a\in E\) 和 \(\varepsilon>0\)，取同一个 \(N\) 使
+\(|f-f_N|<\varepsilon/3\) 在 \(E\) 上成立，再由 \(f_N\) 在 \(a\) 连续选
+\(\delta\)。当 \(d(x,a)<\delta\) 时，
+
+\begin{equation*}
+|f(x)-f(a)|\le |f(x)-f_N(x)|+|f_N(x)-f_N(a)|+|f_N(a)-f(a)|<\varepsilon.
+\tag{1.5.2}
+\end{equation*}
+
+\Needspace{6\baselineskip}\textbf{例 1.5.2（逐点极限可能失去连续性；补充例）}　\(f_k(x)=x^k\) 在
+\([0,1]\) 上连续，其逐点极限在 \([0,1)\) 为 \(0\)，在 \(1\) 为
+\(1\)。故收敛不是一致的。对每个 \(k\)，\(x\) 充分接近 \(1\) 时 \(x^k\)
+仍接近 \(1\)，具体说明了``先选 \(k\)、再对所有 \(x\) 控制''失败的位置。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.3
+振幅与连续点集]{1.5.3
+振幅与连续点集}\label{ux632fux5e45ux4e0eux8fdeux7eedux70b9ux96c6}
+
+对任意 \(f:E\to\mathbb R\) 和 \(a\in E\)，定义
+
+\begin{equation*}
+\begin{aligned}
+\omega_f(a;r)&=\sup\{|f(x)-f(y)|:x,y\in B_E(a,r)\},\\
+\omega_f(a)&=\inf_{r>0}\omega_f(a;r)=\lim_{r\downarrow0}\omega_f(a;r).
+\end{aligned}\tag{1.5.3}
+\end{equation*}
+
+上确界允许为 \(+\infty\)；小球含有
+\(a\)，集合不空。半径减小时振幅不增，所以后一极限存在于
+\([0,+\infty]\)。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.6（振幅与连续点集；教材例
+1.4.3、1.4.5---1.4.6）}　\(f\) 在 \(a\) 连续当且仅当
+\(\omega_f(a)=0\)。对每个 \(t>0\)，\(H_t=\{a\in E:\omega_f(a)<t\}\)
+相对开。因此连续点集 \(C(f)\) 是相对 \(G_\delta\)，间断点集 \(D(f)\)
+是相对 \(F_\sigma\)：
+
+\begin{equation*}
+C(f)=\bigcap_{m\ge1}H_{1/m},\qquad
+D(f)=\bigcup_{m\ge1}\{a\in E:\omega_f(a)\ge1/m\}.
+\tag{1.5.4}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 连续时，令小球内每个函数值与 \(f(a)\) 相差小于
+\(\varepsilon/3\)，则任意两值之差至多
+\(2\varepsilon/3\)，故点振幅为零。反向，若点振幅为零，可选 \(r\)
+使球上振幅小于 \(\varepsilon\)；将其中一个点取为 \(a\) 即得连续性。
+
+若 \(\omega_f(a)<t\)，选 \(r\) 使 \(\omega_f(a;r)<t\)。每个
+\(z\in B_E(a,r/2)\) 都满足 \(B_E(z,r/2)\subseteq B_E(a,r)\)，所以
+\(\omega_f(z)<t\)。故 \(H_t\) 开；（1.5.4）及补集关系给出结论。
+
+这里的 \(G_\delta\) 性不需要任何 Baire 假设，也不要求 \(f\) 可测。相对
+\(G_\delta\) 集不一定是环境空间中的 \(G_\delta\)
+集，必须保留定义域信息。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.4
+用距离函数分离闭集]{1.5.4
+用距离函数分离闭集}\label{ux7528ux8dddux79bbux51fdux6570ux5206ux79bbux95edux96c6}
+
+对非空 \(A\subseteq X\)，记
+\(d(x,A)=\inf_{a\in A}d(x,a)\)。三角不等式给出
+
+\begin{equation*}
+|d(x,A)-d(y,A)|\le d(x,y),\qquad
+d(x,A)=0\ \Longleftrightarrow\ x\in\overline A.
+\tag{1.5.5}
+\end{equation*}
+
+第一式由 \(d(x,A)\le d(x,y)+d(y,a)\) 对 \(a\) 取下确界并交换 \(x,y\)
+得到；第二式正是任意小球与 \(A\) 相交。因此距离函数连续。
+
+\Needspace{10\baselineskip}\textbf{引理 1.5.7（闭集分离；教材例 1.6.2、推论 1.6.1）}　若 \(A,B\)
+是不相交的非空闭集，则
+
+\begin{equation*}
+u(x)=\frac{d(x,A)}{d(x,A)+d(x,B)}
+\tag{1.5.6}
+\end{equation*}
+
+连续，取值于 \([0,1]\)，在 \(A\) 上为 \(0\)、在 \(B\) 上为 \(1\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 分母若为零，则
+\(x\in A\cap B\)，矛盾。分子、分母连续且分母处处为正，故商连续。其余结论由距离的非负性及零点刻画立即得到。如果某个闭集为空，可改取常函数；两者都空时任取常数即可。
+
+注意无须 \(d(A,B)>0\)。例如 \(\mathbb R^2\) 中
+\(A=\{(x,0):x\in\mathbb R\}\) 与 \(B=\{(x,1/x):x>0\}\)
+都闭且不交，点集间距离却为零；（1.5.6）的分母仍在每个固定点严格为正。
+
+取 \(U=\{u<1/3\}\)、\(V=\{u>2/3\}\)，得到包含 \(A,B\)
+的不交开集。这同时证明每个度量空间是正规空间：不交闭集可以用不交开邻域分离。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.5 Tietze
+延拓定理]{1.5.5 Tietze
+延拓定理}\label{tietze-ux5ef6ux62d3ux5b9aux7406}
+
+\Needspace{10\baselineskip}\textbf{引理 1.5.8（一次逼近减少三分之一误差）}　设 \(F\subseteq X\)
+闭，\(r:F\to\mathbb R\) 连续且 \(|r|\le M\)，\(M>0\)。则存在连续
+\(g:X\to\mathbb R\)，满足
+
+\begin{equation*}
+|g|\le M/3\quad\hbox{于 }X,\qquad |r-g|\le2M/3\quad\hbox{于 }F.
+\tag{1.5.7}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 令
+\(A=\{x\in F:r(x)\ge M/3\}\)、\(B=\{x\in F:r(x)\le-M/3\}\)。它们在 \(F\)
+中闭，又因 \(F\) 在 \(X\) 中闭，所以在 \(X\)
+中闭，且互不相交。两者都非空时，取
+
+\begin{equation*}
+g(x)=\frac M3\frac{d(x,B)-d(x,A)}{d(x,A)+d(x,B)}.
+\tag{1.5.8}
+\end{equation*}
+
+在 \(A\) 上 \(g=M/3\)，在 \(B\) 上 \(g=-M/3\)，所以这些点的误差至多
+\(2M/3\)。在剩余点上 \(|r|<M/3\)、\(|g|\le M/3\)，误差仍不超过
+\(2M/3\)。若 \(A\) 空而 \(B\) 非空，取 \(g=-M/3\)；若 \(B\) 空而 \(A\)
+非空，取 \(g=M/3\)；两者皆空取 \(g=0\)。直接使用 \(-M\le r\le M\)
+检查同样估计即可。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.9（有界 Tietze 延拓；教材定理 1.6.2）}　设 \(F\)
+是度量空间 \(X\) 的闭子集，\(f:F\to[-M,M]\) 连续，其中
+\(M\ge0\)。存在连续函数 \(\widetilde f:X\to[-M,M]\)，使
+\(\widetilde f|_F=f\)。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+不一次猜出精确延拓，而是延拓一串越来越小的修正项；使全空间上的级数一致收敛，同时使闭集上的剩余误差趋于零。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(F=\varnothing\) 或 \(M=0\) 时取零函数。其余情形从
+\(r_0=f\) 开始，反复用引理 1.5.8。令 \(M_k=M(2/3)^k\)，得到连续函数
+\(g_k:X\to\mathbb R\)，使
+
+\begin{equation*}
+\begin{aligned}
+|g_k(x)|&\le \frac M3\left(\frac23\right)^{k-1} &&(x\in X),\\
+\left|f(x)-\sum_{j=1}^kg_j(x)\right|&\le M\left(\frac23\right)^k &&(x\in F).
+\end{aligned}\tag{1.5.9}
+\end{equation*}
+
+具体说，第 \(k\) 次把 \(r_{k-1}=f-\sum_{j<k}g_j|_F\) 代入引理，其界为
+\(M_{k-1}\)，便得到两式。几何级数的尾和控制 \(\sum g_k\) 在整个 \(X\)
+上一致收敛。由定理 1.5.5，其和 \(\widetilde f\) 连续；第一式求和得
+\(|\widetilde f|\le M\)，第二式令 \(k\to\infty\) 得
+\(\widetilde f|_F=f\)。
+
+对任意闭区间 \([a,b]\)，先作仿射变换到
+\([-1,1]\)，延拓后变换回来，就得到保持 \([a,b]\) 值域限制的版本；\(a=b\)
+时取常函数。
+
+\textbf{定理
+1.5.10（严格界与无界函数的延拓；补充展开）}　在同样的闭集条件下，设
+\(M>0\)。若 \(|f|<M\)，可令延拓也满足
+\(|\widetilde f|<M\)。任意连续实函数
+\(f:F\to\mathbb R\)，即使无界，也存在全空间上的连续实值延拓。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对严格界，\(M>0\)。先把 \(f/M\) 延拓为
+\(H:X\to[-1,1]\)，再令
+
+\begin{equation*}
+h(x)=\frac{H(x)}{1+d(x,F)}.
+\tag{1.5.10}
+\end{equation*}
+
+这里先设 \(F\ne\varnothing\)。在 \(F\) 上 \(h=f/M\)，其绝对值严格小于
+\(1\)；在 \(F\) 外因 \(F\) 闭，\(d(x,F)>0\)，故也有 \(|h(x)|<1\)。取
+\(\widetilde f=Mh\) 即可。空集情况取零函数。
+
+对无界函数，使用互逆的连续变换 \(\phi(t)=t/(1+|t|)\) 与
+\(\phi^{-1}(s)=s/(1-|s|)\)，其中 \(t\in\mathbb R\)、\(-1<s<1\)。把
+\(\phi\circ f\) 按刚才的方法延拓为严格取值于 \((-1,1)\) 的 \(h\)，再取
+
+\begin{equation*}
+\widetilde f(x)=\frac{h(x)}{1-|h(x)|}.
+\tag{1.5.11}
+\end{equation*}
+
+分母处处为正，所以所得函数有限且连续，限制到 \(F\) 恰为
+\(f\)。这一步不能直接对可能等于 \(\pm1\) 的有界延拓套用逆变换。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.3（非闭集与向量值延拓；补充例）}　\(\sin(1/x)\) 在
+\((0,1]\) 连续有界，但不能连续延拓到 \([0,1]\)：取
+\(x_k=(2k\pi+\pi/2)^{-1}\)、\(y_k=(2k\pi+3\pi/2)^{-1}\)，两列都趋于零，函数值分别为
+\(1,-1\)。而闭集 \(F\) 上的连续映射 \(f:F\to\mathbb R^m\)
+可对各坐标分别延拓，得到 \(X\to\mathbb R^m\)
+的连续映射；这并不保证像仍落在原先任意指定的非凸子集内。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.6
+稠密、疏朗与纲]{1.5.6
+稠密、疏朗与纲}\label{ux7a20ux5bc6ux758fux6717ux4e0eux7eb2}
+
+子集 \(D\subseteq X\) 称为\textbf{稠密集}，若 \(\overline D=X\)。子集
+\(A\) 称为\textbf{疏朗集（无处稠密集）}，若
+\(\operatorname{int}_X\overline A=\varnothing\)。可数个疏朗集的并称为\textbf{第一纲集}；不是第一纲的集称为\textbf{第二纲集}。补集为第一纲的集合称为\textbf{余第一纲集}。这些词始终相对于环境空间
+\(X\) 使用。
+
+\Needspace{10\baselineskip}\textbf{命题 1.5.11（稠密与疏朗的局部判别）}　\(D\)
+稠密当且仅当每个非空开集都与 \(D\) 相交；\(A\) 疏朗当且仅当每个非空开集
+\(U\) 都包含一个非空开集 \(V\)，使 \(V\cap A=\varnothing\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 第一项直接来自闭包的邻域刻画。若 \(A\) 疏朗，则 \(U\)
+不能包含于 \(\overline A\)，故 \(V=U\setminus\overline A\)
+非空且开。反向，若有非空开集
+\(U\subseteq\overline A\)，假设所给的非空开集 \(V\subseteq U\) 与 \(A\)
+不交；但取 \(x\in V\subseteq\overline A\)，其开邻域 \(V\) 必与 \(A\)
+相交，矛盾。
+
+\textbf{命题
+1.5.12（纲的基本运算）}　疏朗集的子集、闭包仍疏朗，有限个疏朗集的并疏朗。第一纲集的子集、可数并仍第一纲。每个第一纲集包含在一个由疏朗闭集组成的可数并中。
+
+\Needspace{3\baselineskip}\textbf{证明：}
+包含关系及闭包幂等性给出前两项。对有限个疏朗集，在任一非空开集内依次应用命题
+1.5.11，得到避开它们全部的非空开集，故有限并疏朗。若
+\(A\subseteq\bigcup_jN_j\)，则
+\(A=\bigcup_j(A\cap N_j)\)，每项仍疏朗。可数个第一纲集的并可写成二重可数并，按
+\(\mathbb N^2\) 的可数编号重新排列即可。最后用 \(\overline{N_j}\) 代替
+\(N_j\)，得到所需疏朗闭集覆盖。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.4（空内部、疏朗、第一纲不同）}　在 \(\mathbb R\)
+中，\(\mathbb Q\) 内部为空，但闭包是
+\(\mathbb R\)，所以不是疏朗集。它是可数个单点闭集之并，因此是第一纲集。这说明第一纲集可以稠密，可数个疏朗集的并也未必疏朗。
+
+Cantor 三分集 \(C\) 在 \(\mathbb R\) 中闭且无内点，故疏朗；但在子空间
+\(C\)
+中，\(\operatorname{int}_C C=C\)。下文还将证明非空完备空间在自身中是第二纲。因此不能省掉``在何处谈纲''。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.7 Baire 纲定理]{1.5.7 Baire 纲定理}\label{baire-ux7eb2ux5b9aux7406}
+
+度量空间称为\textbf{完备}，若每个 Cauchy
+点列都在该空间内收敛。\(\mathbb R^n\) 完备：Cauchy 点列的各坐标分别是实
+Cauchy
+列，取各坐标极限再用欧氏距离估计即可。完备空间的闭子集也完备，因为子集中的
+Cauchy 列先在全空间收敛，闭性再保证极限仍在子集。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.13（Baire 纲定理；教材定理
+1.5.1---1.5.2）}　在非空完备度量空间 \(X\)
+中，可数个稠密开集的交仍稠密。等价地，第一纲集不包含任何非空开集；因而
+\(X\) 及其任一非空开集都在 \(X\) 中为第二纲。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+依次避开第一个、第二个、第三个障碍，同时把选择范围缩成闭球套。完备性把``每个有限阶段都能做到''变成一个点同时完成所有要求。
+
+\Needspace{3\baselineskip}\textbf{证明：} 设 \(G_k\) 开且稠密，任取非空开集 \(U\)。在
+\(U\cap G_1\) 中取球心 \(x_1\) 与半径 \(0<r_1<1/2\)，使闭球
+\(K_1=\overline B(x_1,r_1)\) 包含于其中。这里
+\(\overline B(x,r)=\{y:d(x,y)\le r\}\)
+表示闭球，不预设它一定等于开球的闭包。
+
+已有 \(K_k\) 后，\(B(x_k,r_k)\cap G_{k+1}\) 是非空开集。在其中取闭球
+\(K_{k+1}=\overline B(x_{k+1},r_{k+1})\)，使
+\(0<r_{k+1}<2^{-k-1}\)。于是
+
+\begin{equation*}
+K_{k+1}\subseteq B(x_k,r_k)\cap G_{k+1}\subseteq K_k,
+\qquad \operatorname{diam}K_k\le2r_k\longrightarrow0.
+\tag{1.5.12}
+\end{equation*}
+
+当 \(j,l\ge k\) 时，\(x_j,x_l\in K_k\)，所以
+\(d(x_j,x_l)\le2r_k\)，即球心列 Cauchy。由完备性有
+\(x_k\to x\in X\)。固定 \(k\)，后续球心均在闭集 \(K_k\)，故
+\(x\in K_k\)。因此 \(x\in U\cap\bigcap_kG_k\)。任意非空开集 \(U\)
+都遇到该交集，稠密性得证。
+
+若 \(N=\bigcup_kN_k\) 第一纲，则 \(X\setminus\overline{N_k}\)
+为稠密开集，其交稠密且与 \(N\) 不交，故 \(N\)
+不包含非空开集。反向，若第一纲集均不包含非空开集，对稠密开集
+\(G_k\)，其补是疏朗闭集；补集之并不包含非空开集，正好说明
+\(\bigcap_kG_k\) 稠密。
+
+\Needspace{10\baselineskip}\textbf{推论 1.5.14（闭覆盖与局部形式）}　若非空完备空间
+\(X=\bigcup_kF_k\)，其中各 \(F_k\) 闭，则至少一个 \(F_k\)
+有非空内部。更局部地，每个非空开集 \(U\) 都包含非空开集 \(V\)，使
+\(V\subseteq F_k\) 对某个 \(k\)
+成立。完备空间的开子空间也具有``可数个相对稠密开集之交稠密''的 Baire
+性质。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若所有 \(F_k\)
+无内部，它们都疏朗，与定理矛盾。对局部结论，若每个 \(U\cap F_k\) 在
+\(U\) 中无内点，它们是 \(U\) 中的疏朗闭集并覆盖
+\(U\)，同样矛盾。这里使用的开子空间 Baire
+性质，可独立由上述闭球套证明得到：先把第一个闭球放进
+\(U\)，后续球都留在其中，故在 \(X\) 中得到的极限仍属于 \(U\)。相对开集在
+\(U\) 开的条件下也在 \(X\) 开，后续构造逐字适用。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.5（完备性不能简单删去）}　列举
+\(\mathbb Q=\{q_1,q_2,\ldots\}\)，则 \(G_k=\mathbb Q\setminus\{q_k\}\)
+在 \(\mathbb Q\) 中开且稠密，却有
+\(\bigcap_kG_k=\varnothing\)。失效的是极限可能离开
+\(\mathbb Q\)。另一方面 \((0,1)\) 在通常距离下不完备，却是完备空间
+\(\mathbb R\) 的开子空间，仍有 Baire
+性质。因此完备性是定理的充分条件，不能反向当作 Baire 性质的必要条件。
+
+若 \(F\subseteq\mathbb R^n\) 非空闭，\(G_k\) 在全空间开且 \(G_k\cap F\)
+在 \(F\) 中稠密，则把定理用于完备空间 \(F\) 得到
+\(\bigcap_k(G_k\cap F)\) 在 \(F\) 中稠密。这是教材例 1.5.10。仅有
+\(G_k\) 在全空间稠密不够：\(G=\mathbb R\setminus\{0\}\) 与 \(F=\{0\}\)
+就说明这一点。
+
+\Needspace{14\baselineskip}
+\section[\S{}1.5.8
+连续点可以怎样分布]{1.5.8
+连续点可以怎样分布}\label{ux8fdeux7eedux70b9ux53efux4ee5ux600eux6837ux5206ux5e03}
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.15（有理点集不是 \texorpdfstring{$G_\delta$}{Gδ}；教材例 1.5.1---1.5.2）}　对
+\(n\ge1\)，\(\mathbb Q^n\) 是 \(F_\sigma\)，但不是
+\(G_\delta\)；\(\mathbb R^n\setminus\mathbb Q^n\) 是
+\(G_\delta\)，但不是 \(F_\sigma\)。不存在实函数，其在 \(\mathbb R^n\)
+上的连续点恰好组成 \(\mathbb Q^n\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(\mathbb Q^n\) 是可数个单点闭集之并，故为
+\(F_\sigma\)。若它还等于 \(\bigcap_kU_k\)、各 \(U_k\) 开，则由于
+\(\mathbb Q^n\) 稠密，每个 \(U_k\)
+都稠密，其补都是疏朗闭集。把这些补集与 \(\mathbb Q^n\) 的单点合并，就把
+\(\mathbb R^n\) 写成第一纲集，与 Baire
+定理矛盾。取补集得到第二项。最后由定理 1.5.6，任意实函数的连续点集都是
+\(G_\delta\)，故不可能等于 \(\mathbb Q^n\)。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.6（Riemann 函数；教材例 1.5.3）}　在 \(\mathbb R\) 上令
+
+\begin{equation*}
+R(x)=\begin{cases}
+1/q,&x=p/q\in\mathbb Q,\ q\ge1,\ (p,q)=1,\\
+0,&x\notin\mathbb Q.
+\end{cases}\tag{1.5.13}
+\end{equation*}
+
+它恰在所有无理点连续，在所有有理点不连续。
+
+\Needspace{3\baselineskip}\textbf{证明：} 固定 \(a\)，给定 \(\varepsilon>0\)，取 \(N\) 使
+\(1/N<\varepsilon\)。有界区间 \([a-1,a+1]\) 中，分母 \(q\le N\)
+的既约分数只有有限个：每个 \(q\) 只允许有限多个分子 \(p\)。在 \(a\)
+的充分小去心邻域中避开这些点，就有
+\(0\le R(x)<\varepsilon\)。故每点的去心极限都是 \(0\)。当 \(a\)
+无理时与函数值相同，连续；当 \(a\) 有理时 \(R(a)>0\)，不连续。
+
+这里连续点集稠密，间断点集也稠密；稠密性本身不能衡量二者的纲。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.9
+连续函数列的逐点极限]{1.5.9
+连续函数列的逐点极限}\label{ux8fdeux7eedux51fdux6570ux5217ux7684ux9010ux70b9ux6781ux9650}
+
+连续函数列的逐点极限称为 \textbf{Baire
+第一类函数}。这个函数分类名称与``第一纲集''不是同一个概念。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.16（开集原像的结构；教材例 1.5.4）}　设
+\(f_k:E\to\mathbb R\) 连续且逐点趋于 \(f\)。则每个实开集的原像是 \(E\)
+中的相对 \(F_\sigma\) 集。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对任意 \(a\in\mathbb R\)，有
+
+\begin{equation*}
+\{f>a\}=\bigcup_{m\ge1}\bigcup_{N\ge1}\bigcap_{k\ge N}\{f_k\ge a+1/m\}.
+\tag{1.5.14}
+\end{equation*}
+
+若 \(f(x)>a\)，先选 \(1/m<f(x)-a\)，再由收敛性使充分晚的
+\(f_k(x)\ge a+1/m\)；反向对尾部不等式取极限，得
+\(f(x)\ge a+1/m>a\)。内层为相对闭集的交，故右边为 \(F_\sigma\)。对
+\(-f\) 同理知 \(\{f<b\}\) 是 \(F_\sigma\)。有限个 \(F_\sigma\)
+集的交仍是 \(F_\sigma\)，因为
+\((\bigcup_iA_i)\cap(\bigcup_jB_j)=\bigcup_{i,j}(A_i\cap B_j)\)，且
+\(\mathbb N^2\) 可数。于是开区间的原像是
+\(F_\sigma\)；任意实开集是可数个开区间之并，再取可数并即得结论。
+
+\Needspace{10\baselineskip}\textbf{定理 1.5.17（连续点的稠密性）}　若 \(X\)
+为非空完备度量空间，连续实函数列 \(f_k\) 逐点趋于 \(f\)，则 \(C(f)\)
+是稠密 \(G_\delta\) 集，\(D(f)\) 是第一纲 \(F_\sigma\) 集。
+
+\Needspace{3\baselineskip}\textbf{想法：} 逐点 Cauchy 给每个点一个尾部下标。用 Baire
+定理在某个开集上统一该下标，再利用一个固定的 \(f_N\)
+的连续性控制极限的振幅。
+
+\Needspace{3\baselineskip}\textbf{证明：} 由定理 1.5.6，只需证明每个开集
+\(H_\varepsilon=\{\omega_f<\varepsilon\}\) 稠密。任取非空开集
+\(U\)。取非空开球 \(V\)，使其闭包
+\(K=\overline V\subseteq U\)；这是先取闭球包含于 \(U\)，再令 \(V\)
+为其同心较小开球即可。\(K\) 闭而完备，且 \(V\) 在 \(K\) 中稠密。令
+
+\begin{equation*}
+E_N=\bigcap_{i,j\ge N}\{x\in K:|f_i(x)-f_j(x)|\le\varepsilon/4\}.
+\tag{1.5.15}
+\end{equation*}
+
+各 \(E_N\) 在 \(K\) 中闭，逐点收敛给出 \(K=\bigcup_NE_N\)。Baire
+定理保证某个 \(E_N\) 包含 \(K\) 中非空的相对开集 \(W\cap K\)，其中 \(W\)
+在 \(X\) 开。因为 \(V\) 在 \(K\) 稠密，\(W\cap V\) 是 \(X\)
+中非空开集且包含于 \(E_N\)。
+
+在这块开集上令 \(j\to\infty\)，得 \(|f-f_N|\le\varepsilon/4\)。再由
+\(f_N\) 连续，选非空开集 \(O\subseteq W\cap V\)，使 \(f_N\) 在 \(O\)
+上的振幅不超过 \(\varepsilon/4\)。任意 \(x,y\in O\) 均满足
+
+\begin{equation*}
+|f(x)-f(y)|\le |f(x)-f_N(x)|+|f_N(x)-f_N(y)|+|f_N(y)-f(y)|\le3\varepsilon/4.
+\tag{1.5.16}
+\end{equation*}
+
+于是每个 \(a\in O\) 的充分小邻域都在 \(O\) 内，故
+\(\omega_f(a)\le3\varepsilon/4<\varepsilon\)。这证明
+\(U\cap H_\varepsilon\ne\varnothing\)。各 \(H_{1/m}\) 开且稠密，再用一次
+Baire 定理，它们的交 \(C(f)\) 稠密。各补集闭且无内点，故 \(D(f)\)
+为第一纲 \(F_\sigma\)。
+
+上述证明选 \(K=\overline V\)，用的是 \(V\)
+在自己的闭包中稠密。在一般度量空间里，不能无说明地把任意闭球当作相应开球的闭包。
+
+\Needspace{10\baselineskip}\textbf{推论 1.5.18（导函数的连续点；教材例 1.5.5）}　若
+\(g:\mathbb R\to\mathbb R\) 处处可导，则 \(g'\) 的连续点集是稠密
+\(G_\delta\)，间断点集是第一纲 \(F_\sigma\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(g\) 连续，故每个 \(h_k(x)=k[g(x+1/k)-g(x)]\)
+连续。由导数定义 \(h_k(x)\to g'(x)\)，应用定理 1.5.17
+即可。开区间上的版本可先限制到任一内部闭区间，并从足够大的 \(k\)
+开始取差商；这些闭区间的内部覆盖原区间，所以各振幅小于 \(\varepsilon\)
+的集合在原区间稠密，再用开子空间的 Baire 性质得到结论。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.7（Dirichlet 函数不能这样逼近；教材例
+1.5.7）}　\(\mathbf1_{\mathbb Q}\) 在每个实开区间都取到
+\(0,1\)，点振幅处处为
+\(1\)，没有连续点。因此它不是连续函数列的逐点极限。它的有理点集是可数的，并不能消除在全空间每一点附近的振荡。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.10
+从逐点条件得到共同估计]{1.5.10
+从逐点条件得到共同估计}\label{ux4eceux9010ux70b9ux6761ux4ef6ux5f97ux5230ux5171ux540cux4f30ux8ba1}
+
+\Needspace{6\baselineskip}\textbf{例 1.5.8（局部统一有界；补充例）}　设连续函数列
+\(f_k:X\to\mathbb R\) 在非空完备空间上逐点有界，即每个 \(x\) 都有
+\(\sup_k|f_k(x)|<\infty\)。则存在非空开集 \(U\) 和整数 \(M\)，使所有
+\(k\)、所有 \(x\in U\) 都有 \(|f_k(x)|\le M\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 令
+\(F_M=\bigcap_k\{|f_k|\le M\}\)，它们是闭集，逐点有界给出
+\(X=\bigcup_MF_M\)。推论 1.5.14 保证某个 \(F_M\)
+含非空开集。这里得到局部共同界，不宣称在整个 \(X\) 上共同有界。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.9（整数倍上的衰减；教材例 1.5.8）}　设
+\(f:[0,+\infty)\to\mathbb R\) 连续，且对每个 \(r>0\) 有
+\(f(kr)\to0\)。则 \(f(x)\to0\)，当 \(x\to+\infty\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 固定 \(\varepsilon>0\)，在完备区间 \([1,2]\) 中取闭集
+
+\begin{equation*}
+F_N=\bigcap_{k\ge N}\{r\in[1,2]:|f(kr)|\le\varepsilon\}.
+\tag{1.5.17}
+\end{equation*}
+
+逐点条件给出 \([1,2]=\bigcup_NF_N\)。由 Baire 定理，某个 \(F_N\)
+包含一段正长闭区间 \([a,b]\)，其中 \(1\le a<b\le2\)。对每个
+\(k\ge N\)，\(|f|\le\varepsilon\) 便在整个 \([ka,kb]\) 上成立。只要
+\(k(b-a)\ge a\)，就有
+\(kb\ge(k+1)a\)，相邻区间开始搭接。故这些区间从某项起覆盖一条尾射线，其上
+\(|f|\le\varepsilon\)。由于 \(\varepsilon\) 任意，所求极限成立。
+
+\Needspace{6\baselineskip}\textbf{例 1.5.10（Taylor 级数与局部解析；教材例 1.5.9）}　设
+\(f\in C^\infty((a,b))\)，它在每一点的 Taylor
+级数都有正收敛半径。则在某个非空开子区间上 \(f\) 为实解析函数。
+
+\Needspace{3\baselineskip}\textbf{证明：} 取正长闭区间 \(I\subset(a,b)\)。正收敛半径保证对每个
+\(x\in I\)，数列 \((|f^{(k)}(x)|/k!)^{1/k}\)
+有界；这是幂级数根值判别的直接结论，有限个首项不影响有界性。因此下面的闭集覆盖
+\(I\)：
+
+\begin{equation*}
+F_m=\bigcap_{k\ge1}\{x\in I:|f^{(k)}(x)|\le k!m^k\},\qquad I=\bigcup_{m\ge1}F_m.
+\tag{1.5.18}
+\end{equation*}
+
+Baire 定理给出某个 \(m\) 和非空开区间 \(J\subseteq I\)，使
+\(J\subseteq F_m\)。对任意 \(x_0,x\in J\)，Taylor 公式的 Lagrange
+余项满足
+
+\begin{equation*}
+\left|f(x)-\sum_{k=0}^N\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\right|
+\le (m|x-x_0|)^{N+1}.
+\tag{1.5.19}
+\end{equation*}
+
+当 \(|x-x_0|<1/m\) 时右边趋零，故 \(f\) 在 \(x_0\) 附近等于其 Taylor
+级数。\(x_0\) 任意，所以 \(f\) 在 \(J\)
+上解析。单点的级数收敛只控制该点的系数，Baire
+定理提供邻域中共同的导数界，才使余项真正趋零。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.5.11
+练习与方法回看]{1.5.11
+练习与方法回看}\label{ux7ec3ux4e60ux4e0eux65b9ux6cd5ux56deux770b}
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.1}\label{ux95eeux9898-1.5.1}
+
+教材练习 1.4 第 21、22 题（第 67 页）：分别把开集
+\(G\subseteq\mathbb R^n\) 与闭集 \(F\subseteq\mathbb R^n\)
+的特征函数表示为连续函数列的逐点极限。
+
+\Needspace{3\baselineskip}\textbf{解：} 若 \(G^c\ne\varnothing\)、\(F\ne\varnothing\)，取
+
+\begin{equation*}
+u_k(x)=\min\{1,k\,d(x,G^c)\},\qquad
+v_k(x)=\max\{0,1-k\,d(x,F)\}.
+\tag{1.5.20}
+\end{equation*}
+
+它们连续。\(x\in G\) 时到闭集 \(G^c\) 的距离为正，故 \(u_k(x)\) 最终为
+\(1\)；\(x\notin G\) 时始终为 \(0\)。同理，\(v_k\) 在 \(F\) 上始终为
+\(1\)，在 \(F\) 外最终为 \(0\)。所以
+\(u_k\to\mathbf1_G\)、\(v_k\to\mathbf1_F\)。若 \(G=X\) 或
+\(F=\varnothing\)，分别用常函数 \(1\) 或
+\(0\)，避免给空集距离作不必要约定。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.2}\label{ux95eeux9898-1.5.2}
+
+教材练习 1.4 第 23 题（第 67 页）：证明 \(\mathbf1_E\) 是
+\(\mathbb R^n\) 上连续函数列的逐点极限，当且仅当 \(E\) 同时是
+\(F_\sigma\) 与 \(G_\delta\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 必要性由定理
+1.5.16：\(E=\{\mathbf1_E>1/2\}\)、\(E^c=\{\mathbf1_E<1/2\}\) 都为
+\(F_\sigma\)。充分性，写
+\(E=\bigcup_kA_k\)、\(E^c=\bigcup_kB_k\)，其中各列均为递增闭集列；可把最初的闭集列改成前
+\(k\) 项之并做到这一点。\(A_k\cap B_k=\varnothing\)，用引理 1.5.7
+构造连续 \(u_k:X\to[0,1]\)，在 \(A_k\) 上为 \(1\)、在 \(B_k\) 上为
+\(0\)；空集情形用该引理的常函数约定。每个 \(x\in E\) 从某项起属于所有
+\(A_k\)，故 \(u_k(x)\) 最终为 \(1\)；补集上最终为 \(0\)。于是
+\(u_k\to\mathbf1_E\)。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.3}\label{ux95eeux9898-1.5.3}
+
+教材练习 1.4 第 24 题（第 67 页）的加强：设 \(E\) 是度量空间 \(X\)
+的非空子集，\(f:E\to\mathbb R\) 满足
+\(|f(a)-f(b)|\le Ld(a,b)\)。证明存在保持同一 Lipschitz
+常数的全空间延拓；这里不要求 \(E\) 闭。
+
+\Needspace{3\baselineskip}\textbf{解：} \(L=0\) 时 \(f\) 为常函数，直接延拓。\(L>0\) 时令
+
+\begin{equation*}
+F(x)=\inf_{a\in E}\bigl(f(a)+Ld(x,a)\bigr).
+\tag{1.5.21}
+\end{equation*}
+
+固定 \(a_0\in E\)。由 Lipschitz 条件及三角不等式，对每个 \(a\in E\) 有
+\(f(a)+Ld(x,a)\ge f(a_0)-Ld(x,a_0)\)；取 \(a=a_0\) 又给出有限上界，故
+\(F(x)\) 是有限实数。若 \(x\in E\)，所有项均不小于 \(f(x)\)，且 \(a=x\)
+时取到它，故 \(F(x)=f(x)\)。最后，\(d(x,a)\le d(x,y)+d(y,a)\) 给出
+\(F(x)\le Ld(x,y)+F(y)\)，交换 \(x,y\) 得 \(|F(x)-F(y)|\le Ld(x,y)\)。
+
+若原函数还满足 \(|f|\le M\)，将 \(F\) 截断为
+\(\max\{-M,\min\{M,F\}\}\)，仍保持同一 Lipschitz
+常数，因为实轴上的这种截断不扩大距离。这个加强依靠统一的 Lipschitz
+控制，与一般连续函数的 Tietze 定理并不冲突。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.4}\label{ux95eeux9898-1.5.4}
+
+补充练习：设非空 \(E\subseteq[0,1]\)。证明 \(f:E\to\mathbb R\)
+可以连续延拓到 \([0,1]\)，当且仅当 \(f\) 在 \(E\) 上一致连续。
+
+\Needspace{3\baselineskip}\textbf{证明：} 必要性来自紧集上的一致连续性。充分性，任给
+\(a\in\overline E\)，选 \(x_k\in E\) 趋于 \(a\)。一致连续性使 \(f(x_k)\)
+为 Cauchy 列，故有实极限。若换成另一列 \(y_k\to a\)，则
+\(d(x_k,y_k)\to0\)，一致连续性使
+\(f(x_k)-f(y_k)\to0\)，故极限与选择无关。定义 \(g(a)=\lim_kf(x_k)\)，在
+\(E\) 上恰为 \(f\)。
+
+给定 \(\varepsilon>0\)，取 \(\delta\) 使 \(E\) 中距离小于 \(\delta\)
+时函数值相差小于 \(\varepsilon/2\)。若 \(a,b\in\overline E\) 且
+\(|a-b|<\delta/2\)，分别取逼近点列，充分晚时
+\(|x_k-y_k|<\delta\)，取极限得
+\(|g(a)-g(b)|\le\varepsilon/2<\varepsilon\)。因此 \(g\) 连续，再由
+Tietze 定理从闭集 \(\overline E\) 延拓到 \([0,1]\)。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.5}\label{ux95eeux9898-1.5.5}
+
+教材练习 1.4 第 28 题（第 67 页，Dini 型结论）：设
+\(K\subseteq\mathbb R^n\) 紧，连续函数满足 \(f_k\ge f_{k+1}\) 且逐点趋于
+\(0\)。证明 \(f_k\to0\) 一致，并说明紧性为何不能直接删去。
+
+\Needspace{3\baselineskip}\textbf{证明：} 单调趋于零给出 \(f_k\ge0\)。固定 \(\varepsilon>0\)，令
+\(U_k=\{x\in K:f_k(x)<\varepsilon\}\)。这些集合相对开、递增，且覆盖
+\(K\)。取有限子覆盖，令 \(N\) 为其中最大下标，就有 \(U_N=K\)。所以
+\(k\ge N\) 时处处有
+\(0\le f_k\le f_N<\varepsilon\)，即一致收敛。在非紧集 \([0,1)\) 上取
+\(f_k(x)=x^k\)，满足其他条件，却有
+\(\sup_{0\le x<1}f_k(x)=1\)，说明不能删去紧性。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.6}\label{ux95eeux9898-1.5.6}
+
+补充练习：设 \(P\subseteq\mathbb R^n\) 为非空完全集。证明任何可数子集在
+\(P\) 中为第一纲，其补在 \(P\) 中稠密。解释为何 \(P\)
+在全空间中疏朗也不影响这个结论。
+
+\Needspace{3\baselineskip}\textbf{证明：} 完全集闭且无孤立点，所以 \(P\) 完备；每个单点在 \(P\)
+中闭且无相对内点，故疏朗。可数子集是这些单点的可数并，属于第一纲。Baire
+定理保证它不包含 \(P\) 中任何非空相对开集，所以其补在 \(P\)
+中稠密。所有判断均在 \(P\) 内进行；\(P\) 在 \(\mathbb R^n\)
+中是否疏朗是另一个环境空间里的判断。取 Cantor 集即同时展示两种性质。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.7}\label{ux95eeux9898-1.5.7}
+
+补充练习：构造一列在 \(\mathbb R\) 上连续、逐点趋于 \(0\)
+的函数，但它们在 \([0,1]\) 上的上确界趋于无穷。这与例 1.5.8 矛盾吗？
+
+\Needspace{3\baselineskip}\textbf{解：} 取 \(a_k=2^{-k}\)、\(r_k=2^{-k-2}\)，令
+
+\begin{equation*}
+f_k(x)=k\max\left\{0,1-\frac{|x-a_k|}{r_k}\right\}.
+\tag{1.5.22}
+\end{equation*}
+
+各函数连续，支集是
+\([3\cdot2^{-k-2},5\cdot2^{-k-2}]\)，这些区间两两不交并趋向零。因此每个非零点至多落在一个支集内，而零点不在任何支集内；所以对每个固定
+\(x\)，\(f_k(x)\) 最终为零。但 \(f_k(a_k)=k\)，故
+\(\sup_{[0,1]}f_k=k\to\infty\)。例 1.5.8
+只保证存在某个非空开集上的共同界；例如在 \((1,2)\)
+上全部函数为零，并不保证整个紧区间上的统一界。
+
+\Needspace{8\baselineskip}\subsection{问题 1.5.8}\label{ux95eeux9898-1.5.8}
+
+补充练习：若 \(f:\mathbb R\to\mathbb R\)
+在每个有理点连续，证明它至少在一个无理点连续。能否推出在所有无理点都连续？
+
+\Needspace{3\baselineskip}\textbf{证明：} 由定理 1.5.6，\(C(f)=\bigcap_mH_{1/m}\)。每个
+\(H_{1/m}\) 都包含稠密集 \(\mathbb Q\)，因此开且稠密。把 \(\mathbb Q\)
+列为 \(\{q_j\}\)，再加入稠密开集 \(\mathbb R\setminus\{q_j\}\)，Baire
+定理给出
+
+\begin{equation*}
+\bigcap_mH_{1/m}\ \cap\ \bigcap_j(\mathbb R\setminus\{q_j\})
+=C(f)\cap(\mathbb R\setminus\mathbb Q)
+\tag{1.5.23}
+\end{equation*}
+
+稠密，特别非空。不能推出所有无理点都连续：取固定无理数 \(\alpha\)，令
+\(f=\mathbf1_{\{\alpha\}}\)，则它只在 \(\alpha\) 不连续。
+
+本节解决问题时，应先写明空间与相对拓扑，再检查需要的是逐点控制还是一致控制。延拓问题先判断闭性或统一模量，能用距离函数时先做粗逼近；遇到可数个条件，则尝试把``存在一个下标''写成闭集的可数覆盖，用
+Baire
+定理找到一块具有共同下标的开集。最后核对结论的范围：局部共同界不等于全局界，第一纲不等于疏朗，稠密不等于处处，而
+\(G_\delta\) 结构本身也不保证稠密。
+
+\end{document}
