@@ -17,15 +17,22 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.deepEqual(realFunctionsV1Chapters.map(c=>c.sections.length),[5,5,3,5,4,5,4]);
   const html=renderToStaticMarkup(createElement(RealFunctionsV1Directory,{items}));
   assert.equal((html.match(/id="section-/g)||[]).length,31);
-  assert.equal((html.match(/待编写/g)||[]).length,29);
+  assert.equal((html.match(/待编写/g)||[]).length,28);
   assert.ok(html.includes(`href="${entryUrl(entry)}/"`));
   const nextEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s2.md')!;
   assert.ok(nextEntry);
   assert.equal(nextEntry.mathFont,'cm-bea');
   assert.equal(nextEntry.attachmentPath,'notes/real-functions-v1/real-functions-v1-1-2.pdf');
   assert.ok(html.includes(`href="${entryUrl(nextEntry)}/"`));
-  assert.ok(html.includes('href="#section-1-3"'));
+  assert.ok(html.includes('href="#section-1-4"'));
   assert.ok(html.includes('href="/math/real-functions/"'));
+  const thirdEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s3.md')!;
+  assert.ok(thirdEntry);
+  assert.ok(html.includes(`href="${entryUrl(thirdEntry)}/"`));
+  const thirdArticle=renderToStaticMarkup(createElement(Article,{entry:thirdEntry,items}));
+  assert.doesNotMatch(thirdArticle,/katex-error/);
+  const thirdIds=new Set([...thirdArticle.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));
+  for(const [,href]of thirdArticle.matchAll(/href="#([^"]+)"/g))assert.ok(thirdIds.has(decodeURIComponent(href)),`Missing local anchor: ${href}`);
   for(const component of [createElement(MathNavigation,{}),createElement(StudyDirectory,{items})])
     assert.ok(renderToStaticMarkup(component).includes(`href="${realFunctionsV1Url}"`));
   const article=renderToStaticMarkup(createElement(Article,{entry,items}));

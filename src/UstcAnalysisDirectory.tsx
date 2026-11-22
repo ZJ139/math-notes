@@ -28,9 +28,9 @@ function ExerciseLinks({chapters}: {chapters: number[]}) {
       const file = number < 10 ? '科大数分习题-v1.pdf' : '科大数分习题-v2(2).pdf';
       return <div key={number}>
         <h4>{volume} · 第 {number} 章　{title}</h4>
-        <ul>{sections.map(([label, page], i) => <li key={i}>
+        <ul className="toc-list" role="list">{sections.map(([label, page], i) => <li key={i}>
           <a href={'/files/problems/' + encodeURIComponent(file) + '#page=' + page}>
-            {number}.{i + 1}　{label}
+            §{number}.{i + 1}　{label}
           </a>
         </li>)}</ul>
       </div>;
@@ -51,7 +51,7 @@ export function UstcAnalysisDirectory({items}: {items: PublicEntry[]}) {
           {level.topics.map(topic => {
             const chapters = notes.filter(entry => entry.category === 'ustc-analysis/' + topic.id);
             return <section key={topic.id} id={topic.id}><h3>{topic.title}</h3>
-              {chapters.length ? <ol>{chapters.map(entry => <li key={entry.id}>
+              {chapters.length ? <ol className="toc-list" role="list">{chapters.map(entry => <li key={entry.id}>
                 <a href={entryUrl(entry) + '/'}>{entry.title}</a>
               </li>)}</ol> : <p className="muted">知识讲义待编入</p>}
               <ExerciseLinks chapters={topic.exercises}/>

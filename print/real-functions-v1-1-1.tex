@@ -33,7 +33,8 @@
 \begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
 
 \Needspace{7\baselineskip}
-\section{1.1.1
+\section[\S{}1.1.1
+集合、子集与幂集]{1.1.1
 集合、子集与幂集}\label{ux96c6ux5408ux5b50ux96c6ux4e0eux5e42ux96c6}
 
 集合由它的元素决定，元素没有排列顺序，同一元素写两次也不会产生新集合。列举法如
@@ -80,31 +81,32 @@
 \(2^0\)；加入一个新元素后，旧集合的每个子集分别产生``不含新元素''和``含新元素''的两个子集，二者不重复，且覆盖全部可能，因此数目每次加倍。
 
 \Needspace{7\baselineskip}
-\section{1.1.2 并、交、差、补与 De Morgan
+\section[\S{}1.1.2 并、交、差、补与 De Morgan
+公式]{1.1.2 并、交、差、补与 De Morgan
 公式}\label{ux5e76ux4ea4ux5deeux8865ux4e0e-de-morgan-ux516cux5f0f}
 
 对 \(A,B\subseteq X\)，定义
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A\cup B&=\{x\in X:x\in A\text{ 或 }x\in B\},\\
 A\cap B&=\{x\in X:x\in A\text{ 且 }x\in B\},\\
 A\setminus B&=\{x\in X:x\in A\text{ 且 }x\notin B\},\\
 A^c&=X\setminus A.
 \end{aligned}\tag{1.1.1}
-\end{equation}
+\end{equation*}
 
 这里的``或''允许两个条件同时成立。对指标集 \(I\) 及集合族
 \((A_\alpha)_{\alpha\in I}\)，并集对应``存在''，交集对应``任意''：
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 x\in\bigcup_{\alpha\in I}A_\alpha
 &\iff \exists\alpha\in I,\ x\in A_\alpha,\\
 x\in\bigcap_{\alpha\in I}A_\alpha
 &\iff \forall\alpha\in I,\ x\in A_\alpha.
 \end{aligned}\tag{1.1.2}
-\end{equation}
+\end{equation*}
 
 在固定全集内，约定空指标族的并为 \(\varnothing\)、交为
 \(X\)。前者没有任何成员可提供元素；后者没有任何条件排除 \(X\)
@@ -113,7 +115,7 @@ x\in\bigcap_{\alpha\in I}A_\alpha
 \Needspace{10\baselineskip}\textbf{命题 1.1.3（基本运算律；对应教材定理
 1.1.1）}　并、交满足交换律、结合律、幂等律和吸收律：
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A\cup B&=B\cup A,& A\cap B&=B\cap A,\\
 (A\cup B)\cup C&=A\cup(B\cup C),&
@@ -121,18 +123,18 @@ A\cup B&=B\cup A,& A\cap B&=B\cap A,\\
 A\cup A&=A,&A\cap A&=A,\\
 A\cup(A\cap B)&=A,&A\cap(A\cup B)&=A.
 \end{aligned}\tag{1.1.3}
-\end{equation}
+\end{equation*}
 
 对任意集合族还有分配律
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A\cap\Bigl(\bigcup_{\alpha\in I}B_\alpha\Bigr)
  &=\bigcup_{\alpha\in I}(A\cap B_\alpha),\\
 A\cup\Bigl(\bigcap_{\alpha\in I}B_\alpha\Bigr)
  &=\bigcap_{\alpha\in I}(A\cup B_\alpha).
 \end{aligned}\tag{1.1.4}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 固定 \(x\)。``在 \(A\) 或在
 \(B\)''与交换两条件后的陈述相同，故并可交换；``同时在两者中''也不依赖顺序，故交可交换。两个并的括号无论怎样放，条件都是至少在
@@ -149,12 +151,12 @@ A\cup\Bigl(\bigcap_{\alpha\in I}B_\alpha\Bigr)
 
 \Needspace{10\baselineskip}\textbf{命题 1.1.4（补集与包含）}　有
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A\cup A^c&=X,&A\cap A^c&=\varnothing,&(A^c)^c&=A,\\
 X^c&=\varnothing,&\varnothing^c&=X,&A\setminus B&=A\cap B^c.
 \end{aligned}\tag{1.1.5}
-\end{equation}
+\end{equation*}
 
 而且 \(A\subseteq B\iff B^c\subseteq A^c\)，以及
 \(A\cap B=\varnothing\iff A\subseteq B^c\)。
@@ -171,14 +173,14 @@ X^c&=\varnothing,&\varnothing^c&=X,&A\setminus B&=A\cap B^c.
 
 \Needspace{10\baselineskip}\textbf{定理 1.1.5（De Morgan 公式；教材定理 1.1.2）}
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \Bigl(\bigcup_{\alpha\in I}A_\alpha\Bigr)^c
  &=\bigcap_{\alpha\in I}A_\alpha^c,\\
 \Bigl(\bigcap_{\alpha\in I}A_\alpha\Bigr)^c
  &=\bigcup_{\alpha\in I}A_\alpha^c.
 \end{aligned}\tag{1.1.6}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 ``没有一次成功''就是``每次都失败''；``并非每次成功''就是``至少一次失败''。取补不只是给每项加一个补号，还会交换外面的量词。
@@ -196,18 +198,19 @@ X^c&=\varnothing,&\varnothing^c&=X,&A\setminus B&=A\cap B^c.
 \(\bigcup_n A_{m,n}=X\)；对每个固定的 \(n\)，取 \(m=n+1\) 即知
 \(\bigcap_m A_{m,n}=\varnothing\)。因此
 
-\begin{equation}
+\begin{equation*}
 \bigcap_{m\ge1}\bigcup_{n\ge1}A_{m,n}=X,
 \qquad
 \bigcup_{n\ge1}\bigcap_{m\ge1}A_{m,n}=\varnothing.
 \tag{1.1.7}
-\end{equation}
+\end{equation*}
 
 这里前者允许 \(n\) 随 \(m\) 变化，后者要求同一个 \(n\) 对全部 \(m\)
 都有效。以后逐点收敛与一致收敛的差别，也包含这种``同一个选择能否同时适用''的问题。
 
 \Needspace{7\baselineskip}
-\section{1.1.3
+\section[\S{}1.1.3
+对称差与不交化]{1.1.3
 对称差与不交化}\label{ux5bf9ux79f0ux5deeux4e0eux4e0dux4ea4ux5316}
 
 定义
@@ -215,7 +218,7 @@ X^c&=\varnothing,&\varnothing^c&=X,&A\setminus B&=A\cap B^c.
 
 \Needspace{10\baselineskip}\textbf{命题 1.1.6（对称差的运算；教材定理 1.1.3）}　有
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A\cup B&=(A\cap B)\cup(A\triangle B),\\
 A\triangle\varnothing&=A,&A\triangle A&=\varnothing,\\
@@ -225,7 +228,7 @@ A\triangle B&=B\triangle A,\\
 A\cap(B\triangle C)&=(A\cap B)\triangle(A\cap C),\\
 A^c\triangle B^c&=A\triangle B.
 \end{aligned}\tag{1.1.8}
-\end{equation}
+\end{equation*}
 
 第一行右边两项互不相交；方程 \(E\triangle A=B\) 有唯一解
 \(E=B\triangle A\)。
@@ -251,10 +254,10 @@ A^c\triangle B^c&=A\triangle B.
 
 \Needspace{10\baselineskip}\textbf{命题 1.1.7（任意可数并的不交化；教材练习 1.1 第 2(1) 题）}　设
 
-\begin{equation}
+\begin{equation*}
 B_1=A_1,\qquad B_n=A_n\setminus\bigcup_{j<n}A_j\quad(n\ge2).
 \tag{1.1.9}
-\end{equation}
+\end{equation*}
 
 则 \(B_n\) 两两不交，对每个 \(N\) 有
 \(\bigcup_{n\le N}B_n=\bigcup_{n\le N}A_n\)，并且
@@ -274,7 +277,7 @@ B_1=A_1,\qquad B_n=A_n\setminus\bigcup_{j<n}A_j\quad(n\ge2).
 这种构造以后可把``可数可加性只对不交集合成立''转用于一般覆盖。这里不涉及测度，本身是纯粹的集合分解。
 
 \Needspace{7\baselineskip}
-\section{1.1.4 集合的直积}\label{ux96c6ux5408ux7684ux76f4ux79ef}
+\section[\S{}1.1.4 集合的直积]{1.1.4 集合的直积}\label{ux96c6ux5408ux7684ux76f4ux79ef}
 
 定义
 \(A\times B=\{(a,b):a\in A,\ b\in B\}\)。有序对相等当且仅当对应坐标分别相等；一般
@@ -285,13 +288,13 @@ B_1=A_1,\qquad B_n=A_n\setminus\bigcup_{j<n}A_j\quad(n\ge2).
 \Needspace{10\baselineskip}\textbf{命题 1.1.8（直积的基本性质）}　\(A\times B=\varnothing\)
 当且仅当至少一个因子为空。对 \(A,B\subseteq X\) 与 \(C,D\subseteq Y\)，
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 (A\times C)\cap(B\times D)&=(A\cap B)\times(C\cap D),\\
 A\times(C\cup D)&=(A\times C)\cup(A\times D),\\
 A\times(C\setminus D)&=(A\times C)\setminus(A\times D).
 \end{aligned}\tag{1.1.10}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 因子之一为空时无法组成有序对。若两因子都非空，取
 \(a\in A,b\in B\)，则 \((a,b)\)
@@ -309,39 +312,40 @@ A\times(C\setminus D)&=(A\times C)\setminus(A\times D).
 两个混合项。因此不能把直积与并集误写成只保留两个``同指标''项的形式。
 
 \Needspace{7\baselineskip}
-\section{1.1.5
+\section[\S{}1.1.5
+集合列的上极限与下极限]{1.1.5
 集合列的上极限与下极限}\label{ux96c6ux5408ux5217ux7684ux4e0aux6781ux9650ux4e0eux4e0bux6781ux9650}
 
 给定 \(A_n\subseteq X\)，固定一个点
 \(x\)，观察它在各集合中出现的次数。定义
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \limsup_{n\to\infty}A_n
  &=\{x\in X:x\in A_n\text{ 对无穷多个 }n\text{ 成立}\},\\
 \liminf_{n\to\infty}A_n
  &=\{x\in X:\text{从某个指标起对每个 }n\text{ 都有 }x\in A_n\}.
 \end{aligned}\tag{1.1.11}
-\end{equation}
+\end{equation*}
 
 前者叫上极限集，后者叫下极限集。``无穷多个''不要求连续出现；``从某项起每项都在''允许开始时缺席有限次。
 
 \Needspace{10\baselineskip}\textbf{定理 1.1.9（尾并与尾交表示；教材定理 1.1.4）}
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \limsup_n A_n&=\bigcap_{N=1}^{\infty}\bigcup_{n\ge N}A_n,\\
 \liminf_n A_n&=\bigcup_{N=1}^{\infty}\bigcap_{n\ge N}A_n.
 \end{aligned}\tag{1.1.12}
-\end{equation}
+\end{equation*}
 
 并且
 
-\begin{equation}
+\begin{equation*}
 \bigcap_{n\ge1}A_n\subseteq\liminf_n A_n
 \subseteq\limsup_n A_n\subseteq\bigcup_{n\ge1}A_n.
 \tag{1.1.13}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 无穷多个自然数构成的集合必无上界，所以``出现无穷多次''可以改写为``无论删去多少前项，后面还会出现''。这把次数问题改成了尾列问题。
@@ -388,10 +392,10 @@ A\times(C\setminus D)&=(A\times C)\setminus(A\times D).
 \textbf{例 1.1.5（振荡区间与端点；教材例 1.1.6，第 11 页）}　设
 \(A_n=[1/n,3+(-1)^n]\)，则
 
-\begin{equation}
+\begin{equation*}
 \liminf_n A_n=(0,2],\qquad \limsup_n A_n=(0,4].
 \tag{1.1.14}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{解：} \(x\le0\) 或 \(x>4\) 从不出现。若 \(0<x\le2\)，取 \(N\) 使
 \(1/N\le x\)，则对所有 \(n\ge N\)，左右端点都容纳 \(x\)，所以 \(x\)
@@ -401,19 +405,20 @@ A\times(C\setminus D)&=(A\times C)\setminus(A\times D).
 的归属则受闭端点影响，不能只计算端点的数值上下极限。
 
 \Needspace{7\baselineskip}
-\section{1.1.6
+\section[\S{}1.1.6
+单调集列与极限运算]{1.1.6
 单调集列与极限运算}\label{ux5355ux8c03ux96c6ux5217ux4e0eux6781ux9650ux8fd0ux7b97}
 
 称 \(A_n\subseteq A_{n+1}\) 的集合列递增，反向包含的集合列递减。
 
 \Needspace{10\baselineskip}\textbf{定理 1.1.11（单调集合列；教材定理 1.1.5）}
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 A_n\uparrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcup_{n\ge1}A_n,\\
 A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 \end{aligned}\tag{1.1.15}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 递增情形，若 \(x\) 属于全并，就在某个 \(A_N\)
 中，此后由包含关系始终在内，所以在下极限中；若 \(x\)
@@ -430,16 +435,16 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 
 \Needspace{10\baselineskip}\textbf{定理 1.1.12（取补交换上、下极限；教材定理 1.1.6）}
 
-\begin{equation}
+\begin{equation*}
 (\limsup_n A_n)^c=\liminf_n A_n^c,
 \qquad
 (\liminf_n A_n)^c=\limsup_n A_n^c.
 \tag{1.1.16}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 由（1.1.12）及两次 De Morgan 公式，
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 (\limsup_n A_n)^c
  &=\left(\bigcap_N\bigcup_{n\ge N}A_n\right)^c
@@ -448,20 +453,20 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
  &=\left(\bigcup_N\bigcap_{n\ge N}A_n\right)^c
  =\bigcap_N\bigcup_{n\ge N}A_n^c=\limsup_n A_n^c.
 \end{aligned}\tag{1.1.17}
-\end{equation}
+\end{equation*}
 
 逻辑上，第一式说``只出现有限次''等价于``最终一直在补集中''；第二式说``不是最终一直出现''等价于``无穷多次在补集中''。因此上、下极限交换是量词否定的必然结果。
 
 \Needspace{10\baselineskip}\textbf{命题 1.1.13（有限并交与上下极限）}
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \limsup_n(A_n\cup B_n)&=(\limsup_n A_n)\cup(\limsup_n B_n),\\
 \liminf_n(A_n\cap B_n)&=(\liminf_n A_n)\cap(\liminf_n B_n),\\
 \limsup_n(A_n\cap B_n)&\subseteq(\limsup_n A_n)\cap(\limsup_n B_n),\\
 (\liminf_n A_n)\cup(\liminf_n B_n)&\subseteq\liminf_n(A_n\cup B_n).
 \end{aligned}\tag{1.1.18}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 若 \(x\) 在 \(A_n\) 或 \(B_n\)
 中出现无穷多次，就在它们的并中出现无穷多次；反过来，若两种出现都只有有限次，并中的出现指标也只能是两个有限集的并，仍有限，这证明第一式。若
@@ -486,26 +491,26 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 得到全部结论。这里一次只涉及有限多个稳定指标；对无穷多列不能直接取一个有限最大值。
 
 \Needspace{7\baselineskip}
-\section{1.1.7 特征函数}\label{ux7279ux5f81ux51fdux6570}
+\section[\S{}1.1.7 特征函数]{1.1.7 特征函数}\label{ux7279ux5f81ux51fdux6570}
 
 对 \(A\subseteq X\)，定义其特征函数
 
-\begin{equation}
+\begin{equation*}
 \chi_A(x)=\begin{cases}1,&x\in A,\\0,&x\notin A.\end{cases}
 \tag{1.1.19}
-\end{equation}
+\end{equation*}
 
 \Needspace{10\baselineskip}\textbf{命题 1.1.15（集合与特征函数；教材定理
 1.1.8）}　\(A=B\iff\chi_A=\chi_B\)，\(A\subseteq B\iff\chi_A\le\chi_B\)（逐点比较），并且
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \chi_{A^c}&=1-\chi_A,&\chi_{A\cap B}&=\chi_A\chi_B,\\
 \chi_{A\cup B}&=\chi_A+\chi_B-\chi_A\chi_B,\\
 \chi_{A\setminus B}&=\chi_A(1-\chi_B),&
 \chi_{A\triangle B}&=|\chi_A-\chi_B|.
 \end{aligned}\tag{1.1.20}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 特征函数把归属判断变成数值。集合中的重叠对应并集公式里的重复计数，所以要减去一次交集项；对称差则记录两个数值是否不同。
@@ -525,12 +530,12 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 
 \Needspace{10\baselineskip}\textbf{定理 1.1.16（特征函数与集合极限）}　逐点地有
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \chi_{\limsup A_n}(x)&=\limsup_n\chi_{A_n}(x),\\
 \chi_{\liminf A_n}(x)&=\liminf_n\chi_{A_n}(x).
 \end{aligned}\tag{1.1.21}
-\end{equation}
+\end{equation*}
 
 从而 \(A_n\to A\) 当且仅当 \(\chi_{A_n}(x)\to\chi_A(x)\) 对每个
 \(x\in X\) 成立。
@@ -556,20 +561,21 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 \(\sup_{k\in\mathbb N}|\chi_{A_n}(k)-1|=1\)。不存在对所有点同时有效的稳定指标。
 
 \Needspace{7\baselineskip}
-\section{1.1.8
+\section[\S{}1.1.8
+用集合语言描述函数与收敛]{1.1.8
 用集合语言描述函数与收敛}\label{ux7528ux96c6ux5408ux8bedux8a00ux63cfux8ff0ux51fdux6570ux4e0eux6536ux655b}
 
 \textbf{例 1.1.7（用可数尺度探测非零值；教材例 1.1.3，第 4 页）}　设
 \(f:E\to\mathbb R\)，则
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \{x\in E:a\le f(x)<b\}
  &=\{x\in E:f(x)\ge a\}\cap\{x\in E:f(x)<b\},\\
 \{x\in E:f(x)\ne0\}
  &=\bigcup_{m\ge1}\{x\in E:|f(x)|>1/m\}.
 \end{aligned}\tag{1.1.22}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：} 任意一个正量虽然可能很小，但总能被某个 \(1/m\)
 从下方探测到。因此连续变化的精度可以用可数多个固定尺度代替。
@@ -582,11 +588,11 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 \textbf{例 1.1.8（单调极限的水平集；教材例 1.1.7，第 11
 页）}　设实值函数 \(f_n\uparrow f\)，则对每个实数 \(c\)，
 
-\begin{equation}
+\begin{equation*}
 \{f>c\}=\bigcup_{n\ge1}\{f_n>c\},\qquad
 \{f\le c\}=\bigcap_{n\ge1}\{f_n\le c\}.
 \tag{1.1.23}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：} 严格不等式 \(f(x)>c\) 留下正余量，收敛可以保证某一项越过
 \(c\)；若恰好等于阈值，就未必有任何一项到达。
@@ -607,13 +613,13 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 \(f_n,f:E\to\mathbb R\)，记误差集
 \(D_{n,m}=\{x\in E:|f_n(x)-f(x)|\ge1/m\}\)。则
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \{x:f_n(x)\not\to f(x)\}
  &=\bigcup_{m\ge1}\limsup_{n\to\infty}D_{n,m}\\
  &=\bigcup_{m\ge1}\bigcap_{N\ge1}\bigcup_{n\ge N}D_{n,m}.
 \end{aligned}\tag{1.1.24}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 不收敛要求存在一个固定的正误差，它在任意晚的时刻仍会被触犯。先选尺度，再检查所有尾列；尺度不能跟着每个指标随意缩小。
@@ -628,18 +634,19 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 
 等价地，收敛点集可以写成
 
-\begin{equation}
+\begin{equation*}
 \{x:f_n(x)\to f(x)\}
 =\bigcap_{m\ge1}\bigcup_{N\ge1}\bigcap_{n\ge N}
 \{x:|f_n(x)-f(x)|<1/m\}.
 \tag{1.1.25}
-\end{equation}
+\end{equation*}
 
 这是对（1.1.24）在 \(E\) 内取补，逐层应用 De Morgan
 公式的结果。也可直接读成：对每个精度，都有一个起始指标，此后误差一直满足要求。只要误差集属于一个对可数并、交、补封闭的集合类，收敛点集也属于该类；这是这些公式在可测函数理论中的用途，其依据正是等式中出现的运算。
 
 \clearpage
-\section{1.1.9
+\section[\S{}1.1.9
+练习、解答与方法回看]{1.1.9
 练习、解答与方法回看}\label{ux7ec3ux4e60ux89e3ux7b54ux4e0eux65b9ux6cd5ux56deux770b}
 
 \Needspace{8\baselineskip}\subsection{问题
@@ -647,11 +654,11 @@ A_n\downarrow&\quad\Longrightarrow\quad\lim_n A_n=\bigcap_{n\ge1}A_n.
 
 教材练习 1.1 第 2(2) 题（第 16 页）。设 \(A_n\downarrow\)，证明
 
-\begin{equation}
+\begin{equation*}
 A_1=\left(\bigcup_{n\ge1}(A_n\setminus A_{n+1})\right)
 \cup\left(\bigcap_{n\ge1}A_n\right),
 \tag{1.1.26}
-\end{equation}
+\end{equation*}
 
 且右边各项两两不交。
 
@@ -671,11 +678,11 @@ A_1=\left(\bigcup_{n\ge1}(A_n\setminus A_{n+1})\right)
 
 教材练习 1.1 第 3 题（第 16 页）。对任意两列集合，总有
 
-\begin{equation}
+\begin{equation*}
 \bigcup_{n\ge1}(A_n\cap B_n)
 \subseteq\left(\bigcup_{n\ge1}A_n\right)\cap\left(\bigcup_{n\ge1}B_n\right).
 \tag{1.1.27}
-\end{equation}
+\end{equation*}
 
 举例说明反向包含不总成立，并证明两列均递增时等号成立。
 
