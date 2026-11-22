@@ -10,6 +10,9 @@ const beaStyle=readFileSync(path.join(root,'assets/tex/cm-bea.sty'));
 const fonts=path.join(root,'assets/fonts/fandol');
 const rendererVersion=createHash('sha256').update(readFileSync(fileURLToPath(import.meta.url))).update(beaStyle).update(readFileSync(path.join(fonts,'FandolSong-Regular.otf'))).update(readFileSync(path.join(fonts,'FandolSong-Bold.otf'))).digest('hex');
 const used=new Set<string>();
+// TeX reports advance widths, not ink bounds: an oblique f extends almost
+// 2pt past its 3pt advance. Keep that ink (and round-glyph overshoot) in the PDF.
+export const formulaSVGPaddingEm=0.3;
 interface MathImage {id:string;width:number;height:number;depth:number;fonts:string[]}
 
 function formulaId(tex:string,display:boolean):string {
@@ -65,7 +68,7 @@ function compileBatch(formulas:readonly Formula[]){
 \end{FormulaPage}%`;
     }).join('\n');
     // Suppress interword spaces around each box, including page boundaries.
-    const document=String.raw`\documentclass[10pt,border=0pt,multi=FormulaPage]{standalone}
+    const document=String.raw`\documentclass[10pt,border=${formulaSVGPaddingEm*10}pt,multi=FormulaPage]{standalone}
 \usepackage{amsmath,amssymb}
 \usepackage{cm-bea}
 \newfontfamily\Fandol{FandolSong-Regular.otf}[Path=./,BoldFont=FandolSong-Bold.otf]
@@ -131,10 +134,11 @@ export default function rehypeCMBeaMath(){
         // Keep the accessible MathML, but render the visible formula with TeX.
         node.children=node.children.filter((n:any)=>n.properties?.className?.includes('katex-mathml'));
         // A scrollable inline-block exposes its bottom edge as its baseline.
-        // Put TeX's depth on that outer box, not on an image inside a centered
-        // line box; otherwise p, subscripts and fractions all sit differently.
+        // Negative margins remove the SVG's transparent bleed from the layout
+        // and its bottom margin edge. TeX's original depth still aligns the
+        // baseline; its advance width, glyph scale and line height stay intact.
         node.properties.style=`--math-baseline:-${result.depth}em`;
-        node.children.push({type:'element',tagName:'img',properties:{className:['latex-svg'],src:`/math/${result.id}.svg`,alt:'',ariaHidden:'true',style:`width:${result.width}em;height:${result.height+result.depth}em`},children:[]});
+        node.children.push({type:'element',tagName:'img',properties:{className:['latex-svg'],src:`/math/${result.id}.svg`,alt:'',ariaHidden:'true',style:`width:${result.width+2*formulaSVGPaddingEm}em;height:${result.height+result.depth+2*formulaSVGPaddingEm}em`},children:[]});
         return;
       }
       for(const child of node.children||[])walk(child,display);
