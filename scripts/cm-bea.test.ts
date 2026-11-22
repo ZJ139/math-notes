@@ -12,12 +12,13 @@ import {loadEntries} from '../src/content';
 import {LouBatchArticle} from '../src/LouAnalysisDirectory';
 import Markdown from '../src/Markdown';
 
-test('CM bea matches actual Beamer math metrics and embedded fonts',async()=>{
+test('CM bea matches classic Beamer math metrics and embedded fonts',async()=>{
   const work=await mkdtemp(path.join(tmpdir(),'bea-reference-'));
-  const tex=String.raw`f(x)=x^2+\sin x+\alpha+\int_0^1 t\,dt`;
+  const tex=String.raw`f(x)+f'(x)+f''(x)+f'''(x)+f^2(x)+f_n(x)+\sin x+\alpha+\int_0^1 t\,dt`;
   try{
     await writeFile(path.join(work,'reference.tex'),String.raw`\documentclass[10pt]{beamer}
-\usepackage{amsmath,amssymb}\usepackage{fontspec}
+\usepackage[OT1]{fontenc}\renewcommand\sfdefault{cmss}
+\usepackage{amsmath,amssymb}
 \newsavebox{\sample}\begin{document}
 \sbox{\sample}{$\displaystyle ${tex}$}
 \typeout{METRICS: \the\wd\sample,\the\ht\sample,\the\dp\sample}
@@ -29,9 +30,52 @@ test('CM bea matches actual Beamer math metrics and embedded fonts',async()=>{
     [got.width,got.height,got.depth].forEach((v,i)=>assert.ok(Math.abs(v*10-expected[i])<0.001));
     const names=execFileSync('pdffonts',['reference.pdf'],{cwd:work,encoding:'utf8'}).trim().split('\n').slice(2).map(line=>line.split(/\s+/)[0].replace(/^[A-Z]{6}\+/,''));
     assert.deepEqual([...got.fonts].sort(),names.sort());
-    assert.ok(got.fonts.some(f=>f.startsWith('LMSans')));
+    assert.ok(got.fonts.some(f=>f.startsWith('CMSSI')));
     assert.ok(got.fonts.includes('CMEX10'));
     assert.notEqual(got.id,latexMath(tex,true).id,'Font variants must not share cache entries');
+  }finally{await rm(work,{recursive:true,force:true});}
+});
+
+test('CM bea retains italic correction and classic fonts with fontspec already loaded',async()=>{
+  const work=await mkdtemp(path.join(tmpdir(),'bea-text-fonts-'));
+  const tex=String.raw`f'(x)+f''(x)+f^2(x)+f_n(x)`;
+  try{
+    const style=path.resolve('assets/tex/cm-bea').split(path.sep).join('/');
+    await writeFile(path.join(work,'reference.tex'),String.raw`\documentclass[10pt]{article}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}\setsansfont{Latin Modern Sans}
+\usepackage{${style}}
+\pagestyle{empty}\newsavebox{\sample}\begin{document}
+\sbox{\sample}{$\displaystyle ${tex}$}
+\typeout{METRICS: \the\wd\sample,\the\ht\sample,\the\dp\sample}
+\typeout{FCORRECTION: \the\fontcharic\textfont\sympureletters102}
+\noindent\usebox{\sample}\end{document}`);
+    execFileSync('xelatex',['-no-shell-escape','-interaction=batchmode','-halt-on-error','reference.tex'],{cwd:work,stdio:'pipe',timeout:30000});
+    const log=await readFile(path.join(work,'reference.log'),'utf8');
+    const expected=log.match(/METRICS: ([^\n]+)/)![1].split(',').map(parseFloat);
+    const got=cmBeaMath(tex,true);
+    [got.width,got.height,got.depth].forEach((v,i)=>assert.ok(Math.abs(v*10-expected[i])<0.001));
+    assert.ok(parseFloat(log.match(/FCORRECTION: ([^\n]+)/)![1])>0,'Oblique f needs its native italic correction before primes and opening delimiters');
+    assert.ok(got.fonts.includes('CMSSI10'));
+    assert.ok(got.fonts.includes('CMSS10'));
+    assert.ok(got.fonts.every(font=>!font.startsWith('LMSans')&&!font.startsWith('CMR')));
+  }finally{await rm(work,{recursive:true,force:true});}
+});
+
+test('SVG places primes and opening parentheses after the oblique f overhang',async()=>{
+  const work=await mkdtemp(path.join(tmpdir(),'bea-f-spacing-'));
+  try{
+    const f=cmBeaMath('f',false);
+    for(const tex of ['f(x)',"f'(x)","f''(x)","f'''(x)"]){
+      const math=cmBeaMath(tex,false);
+      copyCMBeaMathAssets(work);
+      const svg=await readFile(path.join(work,math.id+'.svg'),'utf8');
+      const positions=[...svg.matchAll(/<use\b[^>]*\bx="([^"]+)"\s+y="([^"]+)"/g)].map(match=>Number(match[1]));
+      assert.ok(positions.length>=2);
+      // The previous TU font placed the prime/parenthesis directly at f's
+      // advance, on top of its hook. Check the rendered placement, not just
+      // the font's advertised italic-correction value.
+      assert.ok(positions[1]-positions[0]>=f.width*10*72/72.27-0.05,`Missing italic correction in ${tex}`);
+    }
   }finally{await rm(work,{recursive:true,force:true});}
 });
 
@@ -104,7 +148,7 @@ test('CM bea is the default for every course, article and problem',async()=>{
 test('Markdown without font metadata uses real CM bea glyphs and metrics',()=>{
   const tex=String.raw`x_{n_j}+\frac{1}{2}+\alpha`;
   const formula=cmBeaMath(tex,false);
-  assert.ok(formula.fonts.some(font=>font.startsWith('LMSans')));
+  assert.ok(formula.fonts.some(font=>font.startsWith('CMSSI')));
   const html=renderToStaticMarkup(createElement(Markdown,{body:`文字 $${tex}$，正文。`}));
   assert.match(html,/data-math-font="cm-bea"/);
   assert.ok(html.includes(`/math/${formula.id}.svg`));
