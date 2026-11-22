@@ -24,6 +24,13 @@ test('complex course keeps nine chapters and links only existing lectures and ch
   assert.equal(notes.filter(e=>e.sourcePath.match(/ch05-s[1-7]\.md$/)).length,7);
   assert.equal(notes.filter(e=>e.sourcePath.match(/ch06-s[1-3]\.md$/)).length,3);
   assert.equal(notes.filter(e=>e.sourcePath.match(/ch07-s[1-4]\.md$/)).length,4);
+  assert.equal(notes.filter(e=>e.sourcePath.match(/ch08-s[1-4]\.md$/)).length,4);
+  const chapter8=notes.find(e=>e.sourcePath.endsWith('ch08-practice.md'))!;
+  assert.deepEqual(chapter8.body.split(/^## 习题 /m).slice(1).map(section=>[...section.split(/^## /m)[0].matchAll(/^\*\*\d+\./gm)].length),[19,6,3,15]);
+  for(const note of notes.filter(e=>e.category==='complex-functions/chapter-8')) {
+    assert.equal(note.attachmentPath,'notes/complex-functions/complex-functions-chapter-8.pdf');
+    assert.ok(note.body.includes('/math/complex-functions/#chapter-8'));
+  }
   const chapter7=notes.find(e=>e.sourcePath.endsWith('ch07-practice.md'))!;
   assert.deepEqual(chapter7.body.split(/^## 习题 /m).slice(1).map(section=>[...section.matchAll(/^\*\*\d+\./gm)].length),[7,7,5,6]);
   for(const note of notes.filter(e=>e.category==='complex-functions/chapter-7')) {
