@@ -193,7 +193,7 @@ h1,h2{font-family:var(--heading-serif)}
   /* One centered shadow strengthens CM bea edges without changing glyphs
      or metrics; the SVG bleed prevents the strengthened ink from clipping.
      Keep this screen-only so printed formulas retain their original outlines. */
-  .prose .latex-svg{filter:drop-shadow(0 0 .32px rgb(0 0 0 / 85%))}
+  .prose .latex-svg{filter:drop-shadow(0 0 .45px rgb(0 0 0 / 100%))}
   .article-header .entry-meta{font-size:max(16px,.83em)}
 }
 
