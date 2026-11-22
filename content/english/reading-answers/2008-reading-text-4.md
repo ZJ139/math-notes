@@ -1,9 +1,9 @@
 ---
 title: "2008 年考研英语一｜Text 4｜开国者与奴隶制的矛盾关系｜第 36—40 题"
-description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、粉色证据、四项排除与总结。"
+description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、橙色证据、四项排除与总结。"
 subject: "考研英语一 · 阅读理解 Part A"
 category: reading-answers
-tags: ["2008年", "考研英语一", "Text 4", "阅读理解", "逐题解答", "粉色定位"]
+tags: ["2008年", "考研英语一", "Text 4", "阅读理解", "逐题解答", "橙色定位"]
 created_at: "2026-10-29"
 updated_at: "2026-10-29"
 ---
@@ -14,7 +14,7 @@ updated_at: "2026-10-29"
 
 **题号导航**：[1° · 36题](#evidence-q36) · [2° · 37题](#evidence-q37) · [3° · 38题](#evidence-q38) · [4° · 39题](#evidence-q39) · [5° · 40题](#evidence-q40)
 
-**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击粉色原句或其旁题号可返回对应题目。
+**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击橙色原句或其旁题号可返回对应题目。
 
 ## 一、原文定位与逐段直译
 
@@ -116,7 +116,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 2 段首句及其后文。
 
-**原文证据（粉色定位 1°）**：
+**原文证据（橙色定位 1°）**：
 
 > [That’s a far different image from the cherry-tree-chopping George most people remember from their history books. / …historians have begun to focus on the role slavery played in the lives of the founding generation.](#q36 "pink-evidence") **1°**
 
@@ -162,7 +162,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 2 段。
 
-**原文证据（粉色定位 2°）**：
+**原文证据（橙色定位 2°）**：
 
 > [Works of several historians reveal the moral compromises made by the nation’s early leaders and the fragile nature of the country’s infancy.](#q37 "pink-evidence") **2°**
 
@@ -210,7 +210,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 3、5、6 段。
 
-**原文证据（粉色定位 3°）**：
+**原文证据（橙色定位 3°）**：
 
 > [While Washington and Jefferson privately expressed distaste for slavery, they also understood that it was part of the political and economic bedrock…/ Once in office, Jefferson extended slavery…/ Still, Jefferson freed Hemings’s children…](#q38 "pink-evidence") **3°**
 
@@ -256,7 +256,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 5 段。
 
-**原文证据（粉色定位 4°）**：
+**原文证据（橙色定位 4°）**：
 
 > [The three-fifths formula handed Jefferson his narrow victory in the presidential election of 1800 by inflating the votes of the southern states in the Electoral College.](#q39 "pink-evidence") **4°**
 
@@ -302,7 +302,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 6 段。
 
-**原文证据（粉色定位 5°）**：
+**原文证据（橙色定位 5°）**：
 
 > [Washington, who had begun to believe that all men were created equal after observing the bravery of the black soldiers during the Revolutionary War, overcame the strong opposition of his relatives to grant his slaves their freedom in his will.](#q40 "pink-evidence") **5°**
 

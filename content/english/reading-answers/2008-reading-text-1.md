@@ -1,9 +1,9 @@
 ---
 title: "2008 年考研英语一｜Text 1｜女性承受的压力｜第 21—25 题"
-description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、粉色证据、四项排除与总结。"
+description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、橙色证据、四项排除与总结。"
 subject: "考研英语一 · 阅读理解 Part A"
 category: reading-answers
-tags: ["2008年", "考研英语一", "Text 1", "阅读理解", "逐题解答", "粉色定位"]
+tags: ["2008年", "考研英语一", "Text 1", "阅读理解", "逐题解答", "橙色定位"]
 created_at: "2026-10-29"
 updated_at: "2026-10-29"
 ---
@@ -14,7 +14,7 @@ updated_at: "2026-10-29"
 
 **题号导航**：[1° · 21题](#evidence-q21) · [2° · 22题](#evidence-q22) · [3° · 23题](#evidence-q23) · [4° · 24题](#evidence-q24) · [5° · 25题](#evidence-q25)
 
-**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击粉色原句或其旁题号可返回对应题目。
+**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击橙色原句或其旁题号可返回对应题目。
 
 ## 一、原文定位与逐段直译
 
@@ -116,7 +116,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 1、2 段。
 
-**原文证据（粉色定位 1°）**：
+**原文证据（橙色定位 1°）**：
 
 > [Women are particularly susceptible to developing depression and anxiety disorders in response to stress compared to men. / Studies of both animals and humans have shown that sex hormones somehow affect the stress response…](#q21 "pink-evidence") **1°**
 
@@ -162,7 +162,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 3 段。
 
-**原文证据（粉色定位 2°）**：
+**原文证据（橙色定位 2°）**：
 
 > [It’s not necessarily that women don’t cope as well. It’s just that they have so much more to cope with. / Their capacity for tolerating stress may even be greater than men’s.](#q22 "pink-evidence") **2°**
 
@@ -210,7 +210,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 4 段。
 
-**原文证据（粉色定位 3°）**：
+**原文证据（橙色定位 3°）**：
 
 > […the kinds of things that women are exposed to tend to be in more of a chronic or repeated nature. / …they tend not to be one-shot deals.](#q23 "pink-evidence") **3°**
 
@@ -256,7 +256,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 5 段。
 
-**原文证据（粉色定位 4°）**：
+**原文证据（橙色定位 4°）**：
 
 > [It’s the hardest thing to take care of a teenager, have a job, pay the rent, pay the car payment, and pay the debt. I lived from paycheck to paycheck.](#q24 "pink-evidence") **4°**
 
@@ -304,7 +304,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 1 段与第 6 段。
 
-**原文证据（粉色定位 5°）**：
+**原文证据（橙色定位 5°）**：
 
 > […women appear to be way ahead in at least one undesirable category. / But most women today are coping with a lot of obligations, with few breaks, and feeling the strain.](#q25 "pink-evidence") **5°**
 

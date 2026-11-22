@@ -1,9 +1,9 @@
 ---
 title: "2008 年考研英语一｜Text 2｜学术出版模式的变化｜第 26—30 题"
-description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、粉色证据、四项排除与总结。"
+description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、橙色证据、四项排除与总结。"
 subject: "考研英语一 · 阅读理解 Part A"
 category: reading-answers
-tags: ["2008年", "考研英语一", "Text 2", "阅读理解", "逐题解答", "粉色定位"]
+tags: ["2008年", "考研英语一", "Text 2", "阅读理解", "逐题解答", "橙色定位"]
 created_at: "2026-10-29"
 updated_at: "2026-10-29"
 ---
@@ -14,7 +14,7 @@ updated_at: "2026-10-29"
 
 **题号导航**：[1° · 26题](#evidence-q26) · [2° · 27题](#evidence-q27) · [3° · 28题](#evidence-q28) · [4° · 29题](#evidence-q29) · [5° · 30题](#evidence-q30)
 
-**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击粉色原句或其旁题号可返回对应题目。
+**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击橙色原句或其旁题号可返回对应题目。
 
 ## 一、原文定位与逐段直译
 
@@ -96,7 +96,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 1 段。
 
-**原文证据（粉色定位 1°）**：
+**原文证据（橙色定位 1°）**：
 
 > [A team of researchers…would submit the results of their research to a journal. / Depending on the comments received, the editor would accept the paper for publication or decline it. / …researchers…would have to subscribe to the journal.](#q26 "pink-evidence") **1°**
 
@@ -144,7 +144,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 2 段。
 
-**原文证据（粉色定位 2°）**：
+**原文证据（橙色定位 2°）**：
 
 > [The report…makes heavy reading for publishers who have, so far, made handsome profits. / …commercial publishers are making money from government-funded research by restricting access to it…](#q27 "pink-evidence") **2°**
 
@@ -192,7 +192,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 2、3 段。
 
-**原文证据（粉色定位 3°）**：
+**原文证据（橙色定位 3°）**：
 
 > […is making free access to scientific results a reality. / The value of knowledge and the return on the public investment in research depends, in part, upon wide distribution and ready access.](#q28 "pink-evidence") **3°**
 
@@ -240,7 +240,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 4 段。
 
-**原文证据（粉色定位 4°）**：
+**原文证据（橙色定位 4°）**：
 
 > [There is open-access publishing, typically supported by asking the author (or his employer) to pay for the paper to be published.](#q29 "pink-evidence") **4°**
 
@@ -288,7 +288,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 1、2、4 段的衔接。
 
-**原文证据（粉色定位 5°）**：
+**原文证据（橙色定位 5°）**：
 
 > [It used to be so straightforward. / No longer. / This is now changing. / Entirely new business models are emerging.](#q30 "pink-evidence") **5°**
 

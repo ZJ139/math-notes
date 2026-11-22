@@ -22,6 +22,10 @@ settings={
 }
 name,topic,pages,sections,exercises=settings[chapter]
 pre=(R/'print/real-functions-chapter-1.tex').read_text().split(r'\begin{document}')[0]
+# Use the shared, Beamer-verified mathematics without changing article layout.
+# Earlier chapter attachments retain their existing typography on regeneration.
+if chapter in (7,8):
+ pre=pre.replace(r'\usepackage[no-math]{fontspec}',r'\usepackage{assets/tex/cm-bea}')
 pre=pre.replace('实变函数论 · 第一章',f'复变函数 · {name}').replace('实变函数讲义：第一章',f'复变函数讲义：{name}').replace('集合运算、集合的势、集类',topic)
 pre=pre.replace(r'\renewcommand{\thesection}{1.\arabic{section}}',rf'\renewcommand{{\thesection}}{{{chapter}.\arabic{{section}}}}')
 pre+=r'''

@@ -1,9 +1,9 @@
 ---
 title: "2008 年考研英语一｜Text 3｜美国人的平均身高为何趋于稳定｜第 31—35 题"
-description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、粉色证据、四项排除与总结。"
+description: "2008 英语一：原文在前、选项后紧接直译与分析，逐段直译、橙色证据、四项排除与总结。"
 subject: "考研英语一 · 阅读理解 Part A"
 category: reading-answers
-tags: ["2008年", "考研英语一", "Text 3", "阅读理解", "逐题解答", "粉色定位"]
+tags: ["2008年", "考研英语一", "Text 3", "阅读理解", "逐题解答", "橙色定位"]
 created_at: "2026-10-29"
 updated_at: "2026-10-29"
 ---
@@ -14,7 +14,7 @@ updated_at: "2026-10-29"
 
 **题号导航**：[1° · 31题](#evidence-q31) · [2° · 32题](#evidence-q32) · [3° · 33题](#evidence-q33) · [4° · 34题](#evidence-q34) · [5° · 35题](#evidence-q35)
 
-**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击粉色原句或其旁题号可返回对应题目。
+**阅读方式**：先读原文与逐段直译，再逐题查看题干。每个选项后紧接直译、判断与分析；题末汇总证据和解题方法。点击 **1°—5°** 或段落编号可跳到原文证据，点击橙色原句或其旁题号可返回对应题目。
 
 ## 一、原文定位与逐段直译
 
@@ -106,7 +106,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 1 段。
 
-**原文证据（粉色定位 1°）**：
+**原文证据（橙色定位 1°）**：
 
 > […one of the only three players…listed at over seven feet. If he had played last season, however, he would have been one of 42.](#q31 "pink-evidence") **1°**
 
@@ -154,7 +154,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 3 段。
 
-**原文证据（粉色定位 2°）**：
+**原文证据（橙色定位 2°）**：
 
 > [Growth…demands calories and nutrients—notably, protein—to feed expanding tissues. / But as diet and health improved, children and adolescents have, on average, increased in height…](#q32 "pink-evidence") **2°**
 
@@ -202,7 +202,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 4 段。
 
-**原文证据（粉色定位 3°）**：
+**原文证据（橙色定位 3°）**：
 
 > […our feet and back continue to struggle with bipedal posture and cannot easily withstand repeated strain imposed by oversize limbs. / There are some real constraints that are set by the genetic architecture of the individual organism.](#q33 "pink-evidence") **3°**
 
@@ -248,7 +248,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 5 段。
 
-**原文证据（粉色定位 4°）**：
+**原文证据（橙色定位 4°）**：
 
 > [Genetic maximums can change, but don’t expect this to happen soon. / …if you need to predict human height in the near future…you could use today’s data and feel fairly confident.](#q34 "pink-evidence") **4°**
 
@@ -296,7 +296,7 @@ updated_at: "2026-10-29"
 
 **定位范围**：第 2 段中心句及第 5 段限制。
 
-**原文证据（粉色定位 5°）**：
+**原文证据（橙色定位 5°）**：
 
 > [Americans have generally stopped growing. / …at this genetic, environmental level, we’ve pretty much gone as far as we can go. / Genetic maximums can change, but don’t expect this to happen soon.](#q35 "pink-evidence") **5°**
 
