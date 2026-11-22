@@ -4,7 +4,7 @@ from pathlib import Path
 import re, subprocess, shutil, argparse
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3'])
+parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3','1.4'])
 section=parser.parse_args().section
 chapter,part=map(int,section.split('.'))
 source=(ROOT/f'content/notes/real-functions-v1/ch{chapter:02d}-s{part}.md').read_text()
@@ -63,8 +63,14 @@ if section=='1.3':
  intro=r'本节对应《实变函数知识框架》1.3，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 50—56 页及第 65—66 页相关练习），以邻域、极限和有限覆盖为主线，完整展开证明、反例及八道教材精选练习。'
  template=re.sub(r'本节对应[^\n]+',lambda _:intro,template)
  latex=re.sub(r'\\textbf\{(例 1\.3\.\d+[^}]*)\}',r'\\Needspace{6\\baselineskip}\\textbf{\1}',latex)
+if section=='1.4':
+ template=template.replace('1.1 集合及其运算',title).replace('实变函数-v1 · 1.1','实变函数-v1 · 1.4')
+ intro=r'本节对应《实变函数知识框架》1.4，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 56—60 页）与\S1.6（第 85—94 页），以开集分解、完全集和可数集合运算为主线，附教材精选练习及完整解答。'
+ template=re.sub(r'本节对应[^\n]+',lambda _:intro,template)
+ latex=re.sub(r'\\textbf\{(例 1\.4\.\d+[^}]*)\}',r'\\Needspace{6\\baselineskip}\\textbf{\1}',latex)
 # Keep body headings unchanged; TOC entries alone use the section sign.
 latex=re.sub(r'\\section\{('+re.escape(section)+r'\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
+latex=latex.replace('Fσ',r'\texorpdfstring{$F_\sigma$}{Fσ}').replace('Gδ',r'\texorpdfstring{$G_\delta$}{Gδ}')
 stem='real-functions-v1-'+section.replace('.','-')
 tex=ROOT/f'print/{stem}.tex'
 tex.write_text(template+'\n'+latex+'\n\\end{document}\n')
