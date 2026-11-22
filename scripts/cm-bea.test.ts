@@ -6,10 +6,11 @@ import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
-import {cmBeaMath,copyCMBeaMathAssets} from '../src/cmBeaMath';
+import {cmBeaMath,copyCMBeaMathAssets,precompileCMBeaMath} from '../src/cmBeaMath';
 import {latexMath} from '../src/latexMath';
 import {loadEntries} from '../src/content';
 import {LouBatchArticle} from '../src/LouAnalysisDirectory';
+import Markdown from '../src/Markdown';
 
 test('CM bea matches actual Beamer math metrics and embedded fonts',async()=>{
   const work=await mkdtemp(path.join(tmpdir(),'bea-reference-'));
@@ -49,10 +50,36 @@ test('CM bea keeps exact glyph scale and depth for short variables',async()=>{
   }finally{await rm(work,{recursive:true,force:true});}
 });
 
-test('CM bea remains opt-in for B275–B281 and real-functions-v1',async()=>{
+test('batched equations retain independent fonts, exact bounds and baselines',async()=>{
+  const formulas:[string,boolean][]=[
+    ['p+17',false],
+    [String.raw`\frac{1}{19}+x_{n_j}`,true],
+    [String.raw`\begin{aligned}A&=B\\&=C\end{aligned}\qquad(17)`,true],
+    [String.raw`x\quad\text{为奇数}`,false],
+  ];
+  precompileCMBeaMath(formulas);
+  const work=await mkdtemp(path.join(tmpdir(),'bea-batch-'));
+  try{
+    for(const [tex,display] of formulas){
+      const batched=cmBeaMath(tex,display);
+      const single=cmBeaMath(tex+'{}',display);
+      assert.deepEqual([batched.width,batched.height,batched.depth],[single.width,single.height,single.depth]);
+      assert.deepEqual(batched.fonts.sort(),single.fonts.sort());
+      copyCMBeaMathAssets(work);
+      const a=await readFile(path.join(work,batched.id+'.svg'),'utf8');
+      const b=await readFile(path.join(work,single.id+'.svg'),'utf8');
+      assert.equal(a.match(/viewBox="[^"]+"/)?.[0],b.match(/viewBox="[^"]+"/)?.[0]);
+      assert.deepEqual([...a.matchAll(/<path\s+d="([^"]+)"/g)].map(m=>m[1]),[...b.matchAll(/<path\s+d="([^"]+)"/g)].map(m=>m[1]));
+      assert.deepEqual([...a.matchAll(/<use\b[^>]*\bx="([^"]+)"\s+y="([^"]+)"/g)].map(m=>m.slice(1)),[...b.matchAll(/<use\b[^>]*\bx="([^"]+)"\s+y="([^"]+)"/g)].map(m=>m.slice(1)));
+    }
+    assert.throws(()=>precompileCMBeaMath([[String.raw`\input{/etc/passwd}`,false]]),/只允许标准数学/);
+  }finally{await rm(work,{recursive:true,force:true});}
+});
+
+test('CM bea is the default for every course, article and problem',async()=>{
   const entries=await loadEntries(new URL('../content',import.meta.url).pathname);
   const selected=entries.filter(e=>e.mathFont==='cm-bea');
-  assert.deepEqual(selected.map(e=>e.sourcePath).sort(),['notes/real-functions-v1/ch01-s1.md','notes/real-functions-v1/ch01-s2.md','problems/lou-analysis-b-40.md']);
+  assert.equal(selected.length,entries.length);
   const entry=selected.find(e=>e.sourcePath==='problems/lou-analysis-b-40.md')!;assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');
   const html=renderToStaticMarkup(createElement(LouBatchArticle,{entry}));
   assert.equal((html.match(/class="latex-svg"/g)||[]).length,269);
@@ -60,4 +87,16 @@ test('CM bea remains opt-in for B275–B281 and real-functions-v1',async()=>{
   assert.match(html,/data-math-font="cm-bea"/);
   for(let n=275;n<=281;n++)assert.match(html,new RegExp(`id="问题-b${n}"`));
   assert.doesNotMatch(html,/katex-error/);
+});
+
+test('Markdown without font metadata uses real CM bea glyphs and metrics',()=>{
+  const tex=String.raw`x_{n_j}+\frac{1}{2}+\alpha`;
+  const formula=cmBeaMath(tex,false);
+  assert.ok(formula.fonts.some(font=>font.startsWith('LMSans')));
+  const html=renderToStaticMarkup(createElement(Markdown,{body:`文字 $${tex}$，正文。`}));
+  assert.match(html,/data-math-font="cm-bea"/);
+  assert.ok(html.includes(`/math/${formula.id}.svg`));
+  assert.ok(html.includes(`--math-baseline:-${formula.depth}em`));
+  assert.match(html,/class="katex-mathml"/);
+  assert.match(html,/class="math-inline-group"/);
 });

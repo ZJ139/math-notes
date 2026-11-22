@@ -8,7 +8,6 @@ import rehypeKatex from 'rehype-katex';
 import remarkHeadingIds from './headingIds';
 import remarkDocumentLabels from './documentLabels';
 import remarkReadingAnswerLayout from './readingAnswerLayout';
-import rehypeLatexMath from './latexMath';
 import rehypeCMBeaMath from './cmBeaMath';
 import rehypeMathTypography from './mathTypography';
 const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes,...complexFunctionsFigureSizes};
@@ -46,7 +45,7 @@ const readingSections = [
   ['reading-summary', '03', '全篇总结'],
 ];
 
-export default function Markdown({body, readingAnswers = false, exerciseSheet = false, mathFont}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean; mathFont?: 'cm-bea'}) {
+export default function Markdown({body, readingAnswers = false, exerciseSheet = false, mathFont = 'cm-bea'}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean; mathFont?: 'cm-bea'}) {
   const structured = readingAnswers && /^## 一、原文/m.test(body);
   return <div data-math-font={mathFont} className={`prose${readingAnswers ? ' reading-answers' : ''}${exerciseSheet ? ' exercise-sheet' : ''}`}>
     {structured && <nav className="reading-section-nav" aria-label="阅读解答章节">
@@ -54,7 +53,7 @@ export default function Markdown({body, readingAnswers = false, exerciseSheet = 
     </nav>}
     <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels,
       ...(structured ? [remarkReadingAnswerLayout] : [])]}
-      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], mathFont==='cm-bea'?rehypeCMBeaMath:rehypeLatexMath, rehypeMathTypography]}
+      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], rehypeCMBeaMath, rehypeMathTypography]}
       components={exerciseSheet ? exerciseComponents : components}>{body}</ReactMarkdown>
   </div>;
 }

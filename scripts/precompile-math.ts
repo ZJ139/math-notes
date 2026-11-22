@@ -9,31 +9,32 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import katex from 'katex';
 import {loadEntries} from '../src/content';
-import {latexMath} from '../src/latexMath';
-import {cmBeaMath} from '../src/cmBeaMath';
+import {precompileCMBeaMath} from '../src/cmBeaMath';
 
-type Formula = [tex:string, display:boolean, font?:'cm-bea'];
+type Formula = [tex:string, display:boolean];
 const root=fileURLToPath(new URL('..',import.meta.url));
 if(process.argv[2]==='--worker'){
   const [file,indexText,totalText]=process.argv.slice(3);
   const index=Number(indexText),total=Number(totalText);
   if(!file||!Number.isInteger(index)||!Number.isInteger(total)||index<0||total<1||index>=total)throw new Error('Invalid math worker arguments');
   const formulas:Formula[]=JSON.parse(await readFile(file,'utf8'));
-  let count=0;
+  const assigned:Formula[]=[];
   for(let i=index;i<formulas.length;i+=total){
     // Keep the site's KaTeX validation before handing any source to TeX.
     katex.renderToString(formulas[i][0],{displayMode:formulas[i][1],throwOnError:true,strict:'ignore',trust:false});
-    const [tex,display,font]=formulas[i];
-    (font==='cm-bea'?cmBeaMath:latexMath)(tex,display);
-    if(++count%100===0)console.log(`Math worker ${index+1}/${total}: ${count} formulas prepared`);
+    assigned.push(formulas[i]);
+  }
+  for(let i=0;i<assigned.length;i+=128){
+    precompileCMBeaMath(assigned.slice(i,i+128));
+    console.log(`Math worker ${index+1}/${total}: ${Math.min(i+128,assigned.length)}/${assigned.length} formulas prepared`);
   }
 }else{
   const formulas=new Map<string,Formula>();
-  function collectMath(font?:'cm-bea'){
+  function collectMath(){
     return(tree:any)=>{
       function visit(node:any){
         if(node.type==='math'||node.type==='inlineMath'){
-          const formula:Formula=[node.value,node.type==='math',font];
+          const formula:Formula=[node.value,node.type==='math'];
           formulas.set(JSON.stringify(formula),formula);
         }
         for(const child of node.children||[])visit(child);
@@ -43,7 +44,7 @@ if(process.argv[2]==='--worker'){
   }
   // Use the same Markdown math parser as the site; fenced code is not math.
   for(const entry of await loadEntries(path.join(root,'content'))){
-    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,[collectMath,entry.mathFont]],children:entry.body}));
+    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,collectMath],children:entry.body}));
   }
   await mkdir(path.join(root,'.latex-cache'),{recursive:true});
   const work=await mkdtemp(path.join(root,'.latex-cache/precompile-'));
