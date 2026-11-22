@@ -4,7 +4,7 @@
 
 - 全站网页数学公式统一采用 CM bea（Beamer 默认数学字体），由标准 LaTeX 输出 SVG 并保留辅助 MathML。SVG 四边保留 3pt 透明出血，防止斜体 f、r 的伸出笔画及 0 等圆形字形的越界部分被截断；CSS 负边距抵消出血，保留 TeX 原有的推进宽度、行高及 depth 基线，横向滚动至两端仍完整显示。屏幕正文采用自然左对齐，避免长行内公式导致两端对齐拉大汉字间距；章节标题使用紧凑段距与均衡换行。
 
-- 保留偏白的暖白阅读页（#FFFEFC）；中文使用与数学 PDF 同源的 FandolSong-Regular（正文与普通导航 400，屏幕正文 19–21 px，保持深色文字）与 FandolSong-Bold（大标题 700），英文使用参考 PDF 同源的 Latin Modern Roman（正文 Roman 10，标题 Roman 12 Bold）；阅读页屏幕采用约 1.55 倍行高；屏幕文字使用 0.22 px 轻微加厚，真实粗体标题和强调文字不叠加描边，屏幕公式参照用户给出的 Beamer 图片适度加厚（SVG filter: drop-shadow(0 0 .45px rgb(0 0 0 / 100%))），保持原始字形、尺寸和间距；打印使用原始字形。公式沿用标准 LaTeX 的 Computer Modern / AMS 字体，KaTeX 提供辅助 MathML。保留全部栏目和英语七种阅读题型。
+- 保留偏白的暖白阅读页（#FFFEFC）；中文使用与数学 PDF 同源的 FandolSong-Regular（正文与普通导航 400，屏幕正文 19–21 px，保持深色文字）与 FandolSong-Bold（大标题 700），英文使用参考 PDF 同源的 Latin Modern Roman（正文 Roman 10，标题 Roman 12 Bold）；阅读页屏幕采用约 1.55 倍行高；屏幕文字使用 0.22 px 轻微加厚，真实粗体标题和强调文字不叠加描边，屏幕与打印公式采用参考图风格的原生 Computer Modern Beamer 字形（OT1/cmss、cmssi，保留 TeX 斜体校正），禁用 SVG 阴影加粗；fontspec 仅管理正文字体，不接管数学字体。公式沿用标准 LaTeX 的 Computer Modern / AMS 字体，KaTeX 提供辅助 MathML。保留全部栏目和英语七种阅读题型。
 - 用户已要求全部托管在 GitHub。内容位于 content/，GitHub 登录负责仓库写入权限，GitHub Actions 构建并发布到 Pages。访客无需登录。
 - 只提交用户准备公开的内容。公开仓库内的文件和历史均可读取，不能用 draft 字段隐藏私人资料。
 - 不添加示例文章，不迁移相邻目录的私有资料、草稿、数据库、环境变量或凭证。

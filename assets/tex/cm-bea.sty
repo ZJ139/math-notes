@@ -1,31 +1,34 @@
-% CM bea: Beamer's default XeLaTeX math font setup, without slide layout.
+% CM bea: classic Computer Modern Beamer math, without slide layout.
 % Font assignments adapted from beamerbasefont.sty (LPPL 1.3c or later).
 % Original: Till Tantau (2003–2007), Vedran Miletić (2010–2015),
 % Joseph Wright (2012–2018), samcarter (2020–2024).
 % This derived package may be distributed under the LaTeX Project Public License.
-% Keep Latin letters/digits sans; retain CM operators, symbols, Greek and AMS.
+% Pin OT1/cmss for real TeX italic corrections, independently of text fonts.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{cm-bea}[2026/11/21 Beamer default mathematics in article layout]
+\ProvidesPackage{cm-bea}[2026/11/22 Classic Beamer mathematics in article layout]
 \RequirePackage{amsmath,amssymb}
+\RequirePackage{fontspec}
+\SetKeys[fontspec]{no-math}
+% fontspec may already be loaded by ctex; disable its math substitutions too.
 \makeatletter
 \AtBeginDocument{%
   \SetSymbolFont{operators}{normal}{OT1}{cmss}{\mddefault}{n}%
   \SetSymbolFont{operators}{bold}{OT1}{cmss}{\bfdefault}{n}%
-  \DeclareSymbolFont{numbers}{\encodingdefault}{\sfdefault}{\mddefault}{n}%
-  \DeclareSymbolFont{pureletters}{\encodingdefault}{\sfdefault}{\mddefault}{it}%
-  \SetMathAlphabet{\mathrm}{normal}{\encodingdefault}{\rmdefault}{\mddefault}{n}%
-  \DeclareMathAlphabet{\mathbf}{\encodingdefault}{\sfdefault}{\bfdefault}{n}%
-  \DeclareMathAlphabet{\mathsf}{\encodingdefault}{\sfdefault}{\mddefault}{n}%
-  \DeclareMathAlphabet{\mathit}{\encodingdefault}{\sfdefault}{\mddefault}{it}%
-  \DeclareMathAlphabet{\mathtt}{\encodingdefault}{\ttdefault}{\mddefault}{n}%
+  \DeclareSymbolFont{numbers}{OT1}{cmss}{\mddefault}{n}%
+  \DeclareSymbolFont{pureletters}{OT1}{cmss}{\mddefault}{it}%
+  \SetMathAlphabet{\mathrm}{normal}{OT1}{cmr}{\mddefault}{n}%
+  \DeclareMathAlphabet{\mathbf}{OT1}{cmss}{\bfdefault}{n}%
+  \DeclareMathAlphabet{\mathsf}{OT1}{cmss}{\mddefault}{n}%
+  \DeclareMathAlphabet{\mathit}{OT1}{cmss}{\mddefault}{it}%
+  \DeclareMathAlphabet{\mathtt}{OT1}{cmtt}{\mddefault}{n}%
   \ifx\mv@bold\@undefined\else
-  \SetSymbolFont{numbers}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{n}%
-  \SetSymbolFont{pureletters}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{it}%
-  \SetMathAlphabet{\mathrm}{bold}{\encodingdefault}{\rmdefault}{\bfdefault}{n}%
-  \SetMathAlphabet{\mathbf}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{n}%
-  \SetMathAlphabet{\mathsf}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{n}%
-  \SetMathAlphabet{\mathit}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{it}%
-  \SetMathAlphabet{\mathtt}{bold}{\encodingdefault}{\ttdefault}{\bfdefault}{n}%
+  \SetSymbolFont{numbers}{bold}{OT1}{cmss}{\bfdefault}{n}%
+  \SetSymbolFont{pureletters}{bold}{OT1}{cmss}{\bfdefault}{it}%
+  \SetMathAlphabet{\mathrm}{bold}{OT1}{cmr}{\bfdefault}{n}%
+  \SetMathAlphabet{\mathbf}{bold}{OT1}{cmss}{\bfdefault}{n}%
+  \SetMathAlphabet{\mathsf}{bold}{OT1}{cmss}{\bfdefault}{n}%
+  \SetMathAlphabet{\mathit}{bold}{OT1}{cmss}{\bfdefault}{it}%
+  \SetMathAlphabet{\mathtt}{bold}{OT1}{cmtt}{\bfdefault}{n}%
   \fi
 %
   \DeclareMathSymbol{0}\mathalpha{numbers}{"30}%
@@ -95,6 +98,4 @@
 }
 \makeatother
 \IfFileExists{sansmathaccent.sty}{\RequirePackage{sansmathaccent}}{}
-% Load fontspec after the Beamer hook, matching the approved CM bea sample.
-\RequirePackage{fontspec}
 \endinput
