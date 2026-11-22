@@ -31,7 +31,7 @@ export default function QiuLectureNavigation({body}:{body:string}) {
       <summary>{ch.title}</summary>
       <a className="lecture-toc-start" href={'#'+ch.id}>从本章开头阅读</a>
       {ch.sections.map(section=><details key={section.id} className="lecture-toc-section">
-        <summary>{section.title}<span>{section.entries.length} 条</span></summary>
+        <summary>{section.title.replace(/^(\d+(?:\.\d+)+)(?=\s)/,'§$1')}<span>{section.entries.length} 条</span></summary>
         <a className="lecture-toc-start" href={'#'+section.id}>从本节开头阅读</a>
         <ul>{section.entries.map(entry=><li key={entry.id}><a href={'#'+entry.id}>{entry.title}</a></li>)}</ul>
       </details>)}

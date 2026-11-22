@@ -33,7 +33,8 @@
 \begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
 
 \Needspace{7\baselineskip}
-\section{1.2.1
+\section[\S{}1.2.1
+映射、像与原像]{1.2.1
 映射、像与原像}\label{ux6620ux5c04ux50cfux4e0eux539fux50cf}
 
 映射 \(f:X\to Y\) 给每个 \(x\in X\) 指定唯一的 \(f(x)\in Y\)。\(X\)
@@ -43,12 +44,12 @@
 
 对 \(A\subseteq X\)、\(B\subseteq Y\)，定义
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f(A)&=\{y\in Y:\exists x\in A,\ f(x)=y\},\\
 f^{-1}(B)&=\{x\in X:f(x)\in B\}.
 \end{aligned}\tag{1.2.1}
-\end{equation}
+\end{equation*}
 
 \(f^{-1}(B)\) 表示原像集合，\textbf{不要求 \(f\) 有逆映射}。固定 \(y\)
 后，\(f^{-1}(\{y\})\) 称为 \(y\) 上的纤维，即所有被 \(f\)
@@ -60,12 +61,12 @@ f^{-1}(B)&=\{x\in X:f(x)\in B\}.
 
 \Needspace{10\baselineskip}\textbf{命题 1.2.1（保序及往返运算）}　像与原像均保持包含关系，且
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f(\varnothing)&=\varnothing,& f^{-1}(\varnothing)&=\varnothing,& f^{-1}(Y)&=X,\\
 A&\subseteq f^{-1}(f(A)),&&f(f^{-1}(B))=B\cap f(X).
 \end{aligned}\tag{1.2.2}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：} 从 \(A\) 出发再取原像，会把与 \(A\)
 中某个点具有相同像的点全部补进来；从 \(B\) 出发再取像，只能找回 \(B\)
@@ -86,14 +87,15 @@ A&\subseteq f^{-1}(f(A)),&&f(f^{-1}(B))=B\cap f(X).
 \(f\) 与 \(f^{-1}\) 并不自动相消。
 
 \Needspace{7\baselineskip}
-\section{1.2.2
+\section[\S{}1.2.2
+集合运算在映射下的变化]{1.2.2
 集合运算在映射下的变化}\label{ux96c6ux5408ux8fd0ux7b97ux5728ux6620ux5c04ux4e0bux7684ux53d8ux5316}
 
 \Needspace{10\baselineskip}\textbf{定理 1.2.2（原像保持集合运算；教材定理 1.1.7
 的展开）}　对任意指标集 \(I\)、\(B_i\subseteq Y\) 及
 \(B,C\subseteq Y\)，
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f^{-1}\Bigl(\bigcup_{i\in I}B_i\Bigr)&=\bigcup_{i\in I}f^{-1}(B_i),\\
 f^{-1}\Bigl(\bigcap_{i\in I}B_i\Bigr)&=\bigcap_{i\in I}f^{-1}(B_i),\\
@@ -101,7 +103,7 @@ f^{-1}(Y\setminus B)&=X\setminus f^{-1}(B),\\
 f^{-1}(B\setminus C)&=f^{-1}(B)\setminus f^{-1}(C),\\
 f^{-1}(B\mathbin\triangle C)&=f^{-1}(B)\mathbin\triangle f^{-1}(C).
 \end{aligned}\tag{1.2.3}
-\end{equation}
+\end{equation*}
 
 空指标交分别解释为 \(Y\) 与 \(X\)，所以这些等式也包括
 \(I=\varnothing\)。
@@ -119,25 +121,25 @@ f^{-1}(B\mathbin\triangle C)&=f^{-1}(B)\mathbin\triangle f^{-1}(C).
 
 特别地，由上一节上下极限的尾并、尾交表达式，
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f^{-1}(\limsup B_n)&=\limsup f^{-1}(B_n),\\
 f^{-1}(\liminf B_n)&=\liminf f^{-1}(B_n).
 \end{aligned}\tag{1.2.4}
-\end{equation}
+\end{equation*}
 
 证明只需把原像依次移入尾交、尾并；不需要极限存在，也不需要连续性。这是以后可测函数定义选用原像的重要原因。
 
 \Needspace{10\baselineskip}\textbf{定理 1.2.3（像保持并；交与差须另看条件）}　对
 \(A_i,A,C\subseteq X\)，
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f\Bigl(\bigcup_{i\in I}A_i\Bigr)&=\bigcup_{i\in I}f(A_i),\\
 f\Bigl(\bigcap_{i\in I}A_i\Bigr)&\subseteq\bigcap_{i\in I}f(A_i),\\
 f(A)\setminus f(C)&\subseteq f(A\setminus C).
 \end{aligned}\tag{1.2.5}
-\end{equation}
+\end{equation*}
 
 第二式若 \(I\ne\varnothing\) 且 \(f\) 单射，则取等号；第三式在 \(f\)
 单射时取等号。若 \(I=\varnothing\)，第二式变为
@@ -161,12 +163,12 @@ f(A)\setminus f(C)&\subseteq f(A\setminus C).
 \(X=\{a,b\}\)，\(a\ne b\)，且 \(f(a)=f(b)=0\)。取
 \(A=\{a\}\)、\(C=\{b\}\)，则
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 f(A\cap C)&=\varnothing\ne\{0\}=f(A)\cap f(C),\\
 f(A)\setminus f(C)&=\varnothing\ne\{0\}=f(A\setminus C).
 \end{aligned}\tag{1.2.6}
-\end{equation}
+\end{equation*}
 
 ``每个集合中都有一个原像''不保证``有一个原像同时属于每个集合''；单射性正是把这些见证统一起来的条件。
 
@@ -183,7 +185,8 @@ f(A)\setminus f(C)&=\varnothing\ne\{0\}=f(A\setminus C).
 \(B\cap f(X)=B\)；反向只要令 \(B=Y\) 就得到 \(f(X)=Y\)。
 
 \Needspace{7\baselineskip}
-\section{1.2.3
+\section[\S{}1.2.3
+复合映射与逆映射]{1.2.3
 复合映射与逆映射}\label{ux590dux5408ux6620ux5c04ux4e0eux9006ux6620ux5c04}
 
 给定 \(f:X\to Y\)、\(g:Y\to Z\)，复合映射定义为
@@ -192,12 +195,12 @@ f(A)\setminus f(C)&=\varnothing\ne\{0\}=f(A\setminus C).
 
 \Needspace{10\baselineskip}\textbf{命题 1.2.5（复合的运算与单满射）}　复合满足结合律及恒等律，而且
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 (g\circ f)(A)&=g(f(A)),\\
 (g\circ f)^{-1}(C)&=f^{-1}(g^{-1}(C)).
 \end{aligned}\tag{1.2.7}
-\end{equation}
+\end{equation*}
 
 两个单射的复合仍单射，两个满射的复合仍满射。若 \(g\circ f\) 单射，则
 \(f\) 单射；若 \(g\circ f\) 满射，则 \(g\) 满射。
@@ -221,18 +224,18 @@ f(A)\setminus f(C)&=\varnothing\ne\{0\}=f(A\setminus C).
 \Needspace{10\baselineskip}\textbf{定理 1.2.6（逆映射的存在、唯一性与复合）}　\(f:X\to Y\)
 有同时满足
 
-\begin{equation}
+\begin{equation*}
 u\circ f=\operatorname{id}_X,\qquad f\circ u=\operatorname{id}_Y
 \tag{1.2.8}
-\end{equation}
+\end{equation*}
 
 的映射 \(u:Y\to X\)，当且仅当 \(f\) 是双射。此时 \(u\) 唯一，记为
 \(f^{-1}\)，且 \((f^{-1})^{-1}=f\)。对双射 \(f,g\)，
 
-\begin{equation}
+\begin{equation*}
 (g\circ f)^{-1}=f^{-1}\circ g^{-1}.
 \tag{1.2.9}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{证明：} 若（1.2.8）成立，由 \(f(x)=f(x')\) 作用 \(u\) 得
 \(x=x'\)；又每个 \(y=f(u(y))\)，所以 \(f\) 双射。反向若 \(f\) 双射，每个
@@ -249,7 +252,8 @@ u\circ f=\operatorname{id}_X,\qquad f\circ u=\operatorname{id}_Y
 \(y\mapsto\sqrt y\)。写下逆映射之前必须明确限制后的定义域与陪域。
 
 \Needspace{7\baselineskip}
-\section{1.2.4 对等与 Cantor--Bernstein
+\section[\S{}1.2.4 对等与 Cantor--Bernstein
+定理]{1.2.4 对等与 Cantor--Bernstein
 定理}\label{ux5bf9ux7b49ux4e0e-cantorbernstein-ux5b9aux7406}
 
 存在双射 \(A\to B\) 时，称 \(A,B\) \textbf{对等}，记为 \(A\sim B\)。用
@@ -279,22 +283,22 @@ Cantor--Bernstein 构造和 Cantor
 
 \Needspace{3\baselineskip}\textbf{证明：} 令
 
-\begin{equation}
+\begin{equation*}
 A_0=A\setminus g(B),\qquad A_{n+1}=g(f(A_n)),\qquad
 D=\bigcup_{n=0}^{\infty}A_n.
 \tag{1.2.10}
-\end{equation}
+\end{equation*}
 
 像保持并，故 \(D=A_0\cup g(f(D))\)。若 \(x\in A\setminus D\)，则
 \(x\notin A_0\)，于是 \(x\in g(B)\)，且由 \(g\) 单射，它有唯一的
 \(g\)-原像。定义
 
-\begin{equation}
+\begin{equation*}
 h(x)=\begin{cases}
 f(x),&x\in D,\\
 g^{-1}(x),&x\in A\setminus D.
 \end{cases}\tag{1.2.11}
-\end{equation}
+\end{equation*}
 
 这里 \(g^{-1}\) 只表示双射 \(g:B\to g(B)\) 的逆。现在证明
 \(g(B\setminus f(D))=A\setminus D\)。若 \(y\notin f(D)\) 而
@@ -311,10 +315,10 @@ g^{-1}(x),&x\in A\setminus D.
 \Needspace{10\baselineskip}\textbf{引理 1.2.9（Banach 分解引理；教材引理 1.2.1，第 20---21
 页）}　任意映射 \(f:A\to B\)、\(g:B\to A\) 都存在 \(D\subseteq A\)，使
 
-\begin{equation}
+\begin{equation*}
 A\setminus D=g(B\setminus f(D)).
 \tag{1.2.12}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 把希望成立的分解改写成不动点方程，并取所有``向前不会缩小''的集合的并。这给出定理
@@ -344,7 +348,8 @@ A\setminus D=g(B\setminus f(D)).
 \(B\sim C\)。同理，两个方向都能单射正是基数比较的反对称性。
 
 \Needspace{7\baselineskip}
-\section{1.2.5
+\section[\S{}1.2.5
+可数集与可数编码]{1.2.5
 可数集与可数编码}\label{ux53efux6570ux96c6ux4e0eux53efux6570ux7f16ux7801}
 
 约定 \(\mathbb N=\{1,2,\ldots\}\)。与 \(\mathbb N\)
@@ -372,11 +377,11 @@ A\setminus D=g(B\setminus f(D)).
 
 \Needspace{3\baselineskip}\textbf{证明：} 对二元组有显式双射
 
-\begin{equation}
+\begin{equation*}
 \pi:\mathbb N^2\longrightarrow\mathbb N,\qquad
 \pi(m,n)=2^{m-1}(2n-1).
 \tag{1.2.13}
-\end{equation}
+\end{equation*}
 
 每个正整数都能唯一地写成一个 \(2\)
 的非负整数次幂乘一个正奇数，所以此映射既单又满。重复使用 \(\pi\) 将
@@ -429,7 +434,8 @@ A\setminus D=g(B\setminus f(D)).
 的双射。两个像块不交，且恰好覆盖 \(A\setminus B\)。
 
 \Needspace{7\baselineskip}
-\section{1.2.6 Cantor
+\section[\S{}1.2.6 Cantor
+定理与连续统]{1.2.6 Cantor
 定理与连续统}\label{cantor-ux5b9aux7406ux4e0eux8fdeux7eedux7edf}
 
 \Needspace{10\baselineskip}\textbf{定理 1.2.15（Cantor；教材定理 1.2.4，第 20 页）}　对任何集合
@@ -441,10 +447,10 @@ A\setminus D=g(B\setminus f(D)).
 \Needspace{3\baselineskip}\textbf{证明：} 单点集映射 \(a\mapsto\{a\}\) 是 \(A\to\mathcal P(A)\)
 的单射。任给映射 \(F:A\to\mathcal P(A)\)，定义
 
-\begin{equation}
+\begin{equation*}
 D=\{a\in A:a\notin F(a)\}.
 \tag{1.2.14}
-\end{equation}
+\end{equation*}
 
 若 \(D=F(d)\)，则 \(d\in D\) 当且仅当 \(d\notin F(d)=D\)，矛盾。因此
 \(F\) 不可能满射，尤其不可能双射。\(A=\varnothing\)
@@ -458,10 +464,10 @@ D=\{a\in A:a\notin F(a)\}.
 \Needspace{10\baselineskip}\textbf{定理 1.2.16（连续统的两种编码；教材例 1.2.5、1.2.9 的重组）}　记
 \(\mathfrak c=|\mathbb R|\)，则
 
-\begin{equation}
+\begin{equation*}
 \mathfrak c=|\mathcal P(\mathbb N)|=|\{0,1\}^{\mathbb N}|=2^{\aleph_0}>\aleph_0.
 \tag{1.2.15}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 不必直接寻找一个复杂双射。实数可以用``哪些有理数小于它''编码；二进串则可嵌入只有
@@ -469,10 +475,10 @@ D=\{a\in A:a\notin F(a)\}.
 
 \Needspace{3\baselineskip}\textbf{证明：} 把 \(\mathbb Q\) 编号为 \(q_1,q_2,\ldots\)，令
 
-\begin{equation}
+\begin{equation*}
 L(x)=\{n\in\mathbb N:q_n<x\}.
 \tag{1.2.16}
-\end{equation}
+\end{equation*}
 
 若 \(x<y\)，存在有理数 \(q_n\) 满足 \(x<q_n<y\)，于是 \(n\notin L(x)\)
 而 \(n\in L(y)\)。故 \(L:\mathbb R\to\mathcal P(\mathbb N)\)
@@ -482,20 +488,20 @@ L(x)=\{n\in\mathbb N:q_n<x\}.
 
 反方向，将子集的特征序列 \(\varepsilon_n\in\{0,1\}\) 送到
 
-\begin{equation}
+\begin{equation*}
 T(\varepsilon)=\sum_{n=1}^{\infty}\frac{2\varepsilon_n}{3^n}\in[0,1].
 \tag{1.2.17}
-\end{equation}
+\end{equation*}
 
 若两序列首次在第 \(k\) 位不同，不妨
 \(\varepsilon_k=1\)、\(\eta_k=0\)，则
 
-\begin{equation}
+\begin{equation*}
 T(\varepsilon)-T(\eta)
 \ge\frac{2}{3^k}-\sum_{n>k}\frac{2}{3^n}
 =\frac{1}{3^k}>0.
 \tag{1.2.18}
-\end{equation}
+\end{equation*}
 
 故 \(T\) 单射。两个单射及定理 1.2.8 给出
 \(\mathbb R\sim\mathcal P(\mathbb N)\)；再用定理 1.2.15
@@ -512,7 +518,8 @@ T(\varepsilon)-T(\eta)
 \(\mathfrak c\)。本讲义不采用连续统假设；后面的等势判断均给出实际的单射、双射或夹逼证明。
 
 \Needspace{7\baselineskip}
-\section{1.2.7
+\section[\S{}1.2.7
+连续统基数的计算]{1.2.7
 连续统基数的计算}\label{ux8fdeux7eedux7edfux57faux6570ux7684ux8ba1ux7b97}
 
 \Needspace{6\baselineskip}\textbf{例 1.2.6（区间、无理数与超越数；教材例 1.2.6---1.2.7，第 28---29
@@ -529,10 +536,10 @@ T(\varepsilon)-T(\eta)
 \Needspace{10\baselineskip}\textbf{定理 1.2.17（可数实数列与有限维空间；教材例 1.2.7，第 29---30
 页）}　全体实数列及任意正有限维欧氏空间均有连续统基数：
 
-\begin{equation}
+\begin{equation*}
 |\mathbb R^{\mathbb N}|=|\mathbb R^d|=\mathfrak c\quad(d\ge1).
 \tag{1.2.19}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 一列实数可编码为一个自然数方阵上的二进记录，而自然数方阵仍可用自然数编号。
@@ -540,10 +547,10 @@ T(\varepsilon)-T(\eta)
 \Needspace{3\baselineskip}\textbf{证明：} 由定理 1.2.16，固定双射
 \(b:\mathbb R\to\mathcal P(\mathbb N)\)。对实数列 \((x_m)\)，用子集
 
-\begin{equation}
+\begin{equation*}
 S_x=\{(m,n)\in\mathbb N^2:n\in b(x_m)\}
 \tag{1.2.20}
-\end{equation}
+\end{equation*}
 
 记录全部坐标。任意 \(S\subseteq\mathbb N^2\) 的第 \(m\) 行确定子集
 \(S_m\subseteq\mathbb N\)，再由 \(b^{-1}(S_m)\) 恢复
@@ -561,11 +568,11 @@ S_x=\{(m,n)\in\mathbb N^2:n\in b(x_m)\}
 \(\mathbb N^{\mathbb N}\subseteq\mathbb R^{\mathbb N}\)；下界来自将二进串逐位加
 \(1\) 嵌入 \(\mathbb N^{\mathbb N}\)。因此
 
-\begin{equation}
+\begin{equation*}
 \left|\bigcup_{k\ge1}\mathbb N^k\right|=\aleph_0,
 \qquad |\mathbb N^{\mathbb N}|=\mathfrak c.
 \tag{1.2.21}
-\end{equation}
+\end{equation*}
 
 ``每个对象只有有限长编码''与``每个对象需要无限长编码''是两件不同的事。可数并定理不能拿来证明可数个可数集的无限直积可数。
 
@@ -580,7 +587,8 @@ S_x=\{(m,n)\in\mathbb N^2:n\in b(x_m)\}
 \(\mathfrak c\)，由夹逼得证。这些编号与选点使用本节已说明的选择约定。
 
 \Needspace{7\baselineskip}
-\section{1.2.8
+\section[\S{}1.2.8
+用基数研究实函数]{1.2.8
 用基数研究实函数}\label{ux7528ux57faux6570ux7814ux7a76ux5b9eux51fdux6570}
 
 \Needspace{6\baselineskip}\textbf{例 1.2.8（互不相交开集族至多可数；教材例 1.2.3，第 25
@@ -607,10 +615,10 @@ S_x=\{(m,n)\in\mathbb N^2:n\in b(x_m)\}
 \Needspace{3\baselineskip}\textbf{证明：} 只需考虑单调不减的 \(f\)；单调不增时取 \(-f\)。固定
 \(x\)，令
 
-\begin{equation}
+\begin{equation*}
 f(x-)=\sup_{t<x}f(t),\qquad f(x+)=\inf_{t>x}f(t).
 \tag{1.2.22}
-\end{equation}
+\end{equation*}
 
 前一个上确界不超过 \(f(x)\)，且至少为 \(f(x-1)\)；后一个下确界不小于
 \(f(x)\)，且不超过 \(f(x+1)\)，故均有限。若 \(L=f(x-)\)，对任意
@@ -627,11 +635,11 @@ f(x-)=\sup_{t<x}f(t),\qquad f(x+)=\inf_{t>x}f(t).
 \Needspace{6\baselineskip}\textbf{例 1.2.10（连续函数与任意函数的数量；教材例 1.2.15---1.2.16，第
 36---37 页）}　当 \(a<b\) 时，
 
-\begin{equation}
+\begin{equation*}
 |C[a,b]|=\mathfrak c,
 \qquad |\mathbb R^{[a,b]}|=2^{\mathfrak c}>\mathfrak c.
 \tag{1.2.23}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{想法：}
 连续性使可数稠密集上的记录决定整个函数；任意函数却至少能独立记录每个子集的归属信息。
@@ -671,7 +679,8 @@ ZFC 中的选择公理。
 \(\mathfrak c\)。这个证明没有把``不可数''当作``连续统''。
 
 \Needspace{7\baselineskip}
-\section{1.2.9
+\section[\S{}1.2.9
+练习、解答与方法回看]{1.2.9
 练习、解答与方法回看}\label{ux7ec3ux4e60ux89e3ux7b54ux4e0eux65b9ux6cd5ux56deux770b}
 
 \Needspace{8\baselineskip}\subsection{问题 1}\label{ux95eeux9898-1}
@@ -680,11 +689,11 @@ ZFC 中的选择公理。
 \(A\subseteq X\)、\(B\subseteq Y\)，下列两式是否成立，并给出第二式对所有
 \(A\) 成立的准确条件：
 
-\begin{equation}
+\begin{equation*}
 f^{-1}(Y\setminus B)=f^{-1}(Y)\setminus f^{-1}(B),\qquad
 f(X\setminus A)=f(X)\setminus f(A).
 \tag{1.2.24}
-\end{equation}
+\end{equation*}
 
 \Needspace{3\baselineskip}\textbf{解：} 第一式始终成立，因为
 \(f^{-1}(Y)=X\)，且原像保持补集。第二式若 \(f\) 单射，由定理 1.2.3
@@ -714,10 +723,10 @@ f(X\setminus A)=f(X)\setminus f(A).
 \Needspace{3\baselineskip}\textbf{证明：} 取双射 \(u:A\cup C\to A\)。由于
 \(A\subseteq B\)，有不交分解
 
-\begin{equation}
+\begin{equation*}
 B\cup C=(A\cup C)\mathbin{\dot\cup}(B\setminus(A\cup C)).
 \tag{1.2.25}
-\end{equation}
+\end{equation*}
 
 在第一块使用 \(u\)，在第二块固定不动，得到 \(B\cup C\to B\)
 的单射：第一块的像在 \(A\) 中，第二块的像在 \(B\setminus A\)
@@ -732,10 +741,10 @@ Cantor--Bernstein 得证。这里构造出的映射不一定满射；只需单�
 \Needspace{3\baselineskip}\textbf{证明：} 设 \(A=\{a_1,a_2,\ldots\}\)，编号无重复。将有限子集
 \(E\) 对应到非负整数
 
-\begin{equation}
+\begin{equation*}
 c(E)=\sum_{a_n\in E}2^{n-1}.
 \tag{1.2.26}
-\end{equation}
+\end{equation*}
 
 若两个有限子集不同，取其对称差中最大的指标 \(k\)；第 \(k\) 位贡献
 \(2^{k-1}\)，所有较小位的总和至多

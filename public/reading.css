@@ -643,3 +643,11 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
 }
 @media(prefers-reduced-motion:reduce){.link-selection-ring{animation:none}}
 @media print{html,body{background:#fff}.link-selection-ring{display:none!important}}
+
+/* Section directories use the printed section label as their only marker. */
+.prose .toc-list{list-style:none;padding-inline-start:0;margin-block:1em 1.25em}
+.prose .toc-list li{list-style:none;margin-block:.45em;padding-inline-start:0;text-indent:0}
+.prose .toc-list li::marker{content:''}
+.prose .toc-list .toc-list{margin-inline-start:1.25em}
+.prose .toc-list a{display:inline-block;max-width:100%;min-height:44px;padding-block:.2em;line-height:1.6;text-indent:0}
+@media print{.prose .toc-list a{min-height:0;padding-block:0}.prose .toc-list li{margin-block:.3em}}

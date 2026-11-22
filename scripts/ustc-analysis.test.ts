@@ -20,7 +20,7 @@ test('USTC topics expose their lectures and every exercise section in the correc
       assert.ok(body.includes('href="' + entryUrl(note) + '/"'));
     }
   }
-  const links = [...html.matchAll(/<a href="([^"]+#page=(\d+))">(\d+)\.(\d+)　/g)];
+  const links = [...html.matchAll(/<a href="([^"]+#page=(\d+))">§(\d+)\.(\d+)　/g)];
   const sectionIds = new Set(links.map(([, , ,chapter,section]) => chapter + '.' + section));
   assert.equal(sectionIds.size, links.length);
   assert.equal(links.length, Object.values(exerciseChapters).reduce((n, c) => n + c.sections.length, 0));

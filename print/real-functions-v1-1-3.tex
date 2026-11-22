@@ -1,0 +1,586 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 1.3}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：1.3 \texorpdfstring{$\mathbb R^n$}{Rn} 中的点集},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 1.3 \texorpdfstring{$\mathbb R^n$}{Rn} 中的点集\par}
+\vspace{5pt}{第一章 集合与点集\par}
+\end{center}
+本节对应《实变函数知识框架》1.3，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 50—56 页及第 65—66 页相关练习），以邻域、极限和有限覆盖为主线，完整展开证明、反例及八道教材精选练习。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.1
+距离、邻域、有界集与方体]{1.3.1
+距离、邻域、有界集与方体}\label{ux8dddux79bbux90bbux57dfux6709ux754cux96c6ux4e0eux65b9ux4f53}
+
+记 \(n\geq1\)，点 \(x=(x_1,\ldots,x_n)\)、\(y=(y_1,\ldots,y_n)\)
+的欧氏距离为
+
+\begin{equation*}
+\begin{aligned}
+\rho_0^n(x,y)&=\|x-y\|=\left(\sum_{i=1}^n(x_i-y_i)^2\right)^{1/2},\\
+B(x;r)&=\{y:\|y-x\|<r\},\qquad r>0.
+\end{aligned}\tag{1.3.1}
+\end{equation*}
+
+不等号换成 \(\leq\) 得闭球，换成 \(=\) 得球面。包含某个 \(B(x;r)\)
+的集合称为 \(x\) 的一个邻域；\(B(x;r)\setminus\{x\}\)
+是去心邻域。以后``任意充分小的邻域''都可以用开球表达。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.1（距离的基本性质）}　欧氏距离非负，且 \(\|x-y\|=0\)
+当且仅当 \(x=y\)；它对称并满足三角不等式。还有
+
+\begin{equation*}
+\begin{aligned}
+\bigl|\|x\|-\|y\|\bigr|&\leq\|x-y\|,\\
+\max_i|x_i-y_i|&\leq\|x-y\|\leq\sqrt n\max_i|x_i-y_i|.
+\end{aligned}\tag{1.3.2}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 除三角不等式外，前三项由平方和直接得到。有限维
+Cauchy--Schwarz 不等式 \(|\sum u_iv_i|\leq\|u\|\|v\|\) 可由
+\(\sum_i(tu_i-v_i)^2\geq0\) 的判别式证明；若 \(u=0\) 则直接成立。故
+\(\|u+v\|^2=\|u\|^2+2\sum u_iv_i+\|v\|^2\leq(\|u\|+\|v\|)^2\)。取平方根即得三角不等式。再由
+\(\|x\|\leq\|x-y\|+\|y\|\) 及交换 \(x,y\)
+得反三角不等式。平方和至少等于其中最大一项，至多等于最大一项的 \(n\)
+倍，得到第二行。
+
+因此 \(x^{(k)}\to x\) 等价于每个坐标 \(x_i^{(k)}\to x_i\)。这里维数
+\(n\) 固定且有限；证明只须在式（1.3.2）中取极限。
+
+\(E\subseteq\mathbb R^n\) 有界，是指存在 \(R<\infty\) 使
+\(E\subseteq B(0;R)\)，等价于所有坐标一致有界。有限端点的区间直积
+\(\prod_{i=1}^n[a_i,b_i]\)
+为闭方体；各边长相等时为闭正方体，其直径为边长乘 \(\sqrt n\)。直径定义为
+\(\operatorname{diam}E=\sup\{\|x-y\|:x,y\in E\}\)，约定空集直径为
+\(0\)。非空集有界当且仅当直径有限：一个方向用三角不等式，另一个方向固定
+\(x_0\in E\)，由 \(\|x\|\leq\|x-x_0\|+\|x_0\|\) 得到。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.2
+内点、外点、边界点与聚点]{1.3.2
+内点、外点、边界点与聚点}\label{ux5185ux70b9ux5916ux70b9ux8fb9ux754cux70b9ux4e0eux805aux70b9}
+
+以下补集均相对于 \(\mathbb R^n\)。若某个 \(B(x;r)\subseteq E\)，则 \(x\)
+是内点；若某个 \(B(x;r)\subseteq E^c\)，则是外点；若每个 \(B(x;r)\)
+同时与 \(E\)、\(E^c\) 相交，则是边界点。
+
+若对每个 \(r>0\) 都有 \((B(x;r)\setminus\{x\})\cap E\ne\varnothing\)，称
+\(x\) 为 \(E\) 的聚点。聚点不必属于 \(E\)。若 \(x\in E\)
+且某个去心邻域不含 \(E\) 的点，则 \(x\) 是孤立点。孤立点必须属于
+\(E\)；``不是聚点''还包括远离 \(E\) 的外点，不能直接叫孤立点。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.2（聚点的等价刻画；教材引理
+1.4.3）}　以下条件等价：\(x\) 是 \(E\) 的聚点；每个邻域含有无穷多个
+\(E\) 中的点；存在 \(E\setminus\{x\}\) 中互不相同的点列
+\(x^{(k)}\to x\)。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+去心邻域只保证``还有一个点''。不断缩小半径，并避开已经选过的有限多个点，就能把它变成``有无穷多个不同的点''。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若某个邻域只含有限多个不同于 \(x\)
+的点，取半径小于这些点到 \(x\) 的最小正距离，便得到一个不含 \(E\) 中异于
+\(x\)
+的点的去心邻域，矛盾；没有这些点时已直接矛盾。由此每个邻域含无穷多个点。递归在
+\(B(x;1/k)\cap E\) 中选取不同于 \(x\) 和此前各点的 \(x^{(k)}\)，便有
+\(x^{(k)}\to x\)。反之，若这样的点列存在，对任意 \(r>0\)，充分大的 \(k\)
+满足 \(0<\|x^{(k)}-x\|<r\)，所以 \(x\) 为聚点。
+
+边界点与聚点也不同。例如 \(E=\{0\}\) 的 \(0\)
+是边界点和孤立点，却不是聚点；\(E=(0,1)\)
+的两个端点既是边界点又是聚点，但不在 \(E\) 内。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.3
+内部、导集、闭包与边界]{1.3.3
+内部、导集、闭包与边界}\label{ux5185ux90e8ux5bfcux96c6ux95edux5305ux4e0eux8fb9ux754c}
+
+分别用 \(E^\circ\)、\(E'\)、\(\overline E\)、\(\partial E\)
+表示内点集、聚点集、闭包与边界，其中闭包定义为每个邻域都与 \(E\)
+相交的点的集合。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.3（四种点集运算）}　对任意 \(E\subseteq\mathbb R^n\)，
+
+\begin{equation*}
+\begin{aligned}
+\overline E&=E\cup E',&
+\partial E&=\overline E\cap\overline{E^c}=\overline E\setminus E^\circ,\\
+(E^\circ)^c&=\overline{E^c},&
+\mathbb R^n&=E^\circ\mathbin{\dot\cup}(E^c)^\circ\mathbin{\dot\cup}\partial E.
+\end{aligned}\tag{1.3.3}
+\end{equation*}
+
+最后一式中三部分两两不交。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(x\in\overline E\setminus E\)，每个与 \(E\)
+相交的邻域都在异于 \(x\) 处相交，所以 \(x\in E'\)。反向 \(E\) 中的点和
+\(E\) 的聚点显然都在闭包中。边界定义正是每个邻域同时碰到 \(E\) 与
+\(E^c\)，给出第一行的交式。一个点不在 \(E^\circ\)，等价于每个邻域都碰到
+\(E^c\)，所以
+\((E^\circ)^c=\overline{E^c}\)；这又给出边界的差式。一个点若既非内点也非外点，定义立即说明它是边界点；内点与外点互斥，且都不是边界点，从而得到分解。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.4（有限并与无限并的区别；教材引理 1.4.4）}　若
+\(A\subseteq B\)，则 \(A'\subseteq B'\) 且
+\(\overline A\subseteq\overline B\)。并且
+
+\begin{equation*}
+\begin{aligned}
+(A\cup B)'&=A'\cup B',&
+\overline{A\cup B}&=\overline A\cup\overline B,\\
+\bigcup_{k=1}^\infty E_k'&\subseteq\left(\bigcup_{k=1}^\infty E_k\right)',&
+\bigcup_{k=1}^\infty\overline{E_k}&\subseteq\overline{\bigcup_{k=1}^\infty E_k}.
+\end{aligned}\tag{1.3.4}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 包含关系来自邻域定义。有限并等式的非平凡方向可证逆否：若
+\(x\notin A'\cup B'\)，分别取不碰到
+\(A\setminus\{x\}\)、\(B\setminus\{x\}\)
+的邻域，再取两半径的最小值，便得到不碰到 \((A\cup B)\setminus\{x\}\)
+的邻域。闭包等式由 \(\overline E=E\cup E'\)
+推出。可数并中的每项都包含在总并里，所以单调性给出第二行。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.1（极限点在不同集合之间逃逸）}　取 \(E_k=\{1/k\}\)。各
+\(E_k'=\varnothing\)，但总并的导集为 \(\{0\}\)；各
+\(\overline{E_k}=E_k\)，总并的闭包却多出
+\(0\)。因此式（1.3.4）的两个可数并包含均可严格。有限并证明中``取最小半径''有效，对无穷多个正半径取下确界却可能得到
+\(0\)。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.4
+开集、闭集与序列判别]{1.3.4
+开集、闭集与序列判别}\label{ux5f00ux96c6ux95edux96c6ux4e0eux5e8fux5217ux5224ux522b}
+
+\(G\) 是开集，指每个 \(x\in G\) 都是内点；\(F\) 是闭集，指 \(F^c\)
+为开集。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.5（开闭集的运算；教材引理
+1.4.1---1.4.2）}　任意并及有限交保持开性；任意交及有限并保持闭性。空集与全空间既开又闭。
+
+\Needspace{3\baselineskip}\textbf{证明：}
+若一点属于某族开集的并，它属于其中一个开集，从而有邻域包含于该并。若一点属于有限多个开集的交，分别取邻域，再取有限个正半径的最小值。空集的条件空真，全空间包含每个球，故两者开。对开集的运算取补并用
+De Morgan 公式，即得闭集各结论及两种特殊集合的闭性。
+
+开球是开集：若 \(y\in B(x;r)\)，则
+\(B(y;r-\|y-x\|)\subseteq B(x;r)\)。闭球和球面为闭集，因为反三角不等式使不在其中的点有一个小邻域仍不在其中。闭方体也闭：若某坐标超出闭区间，该严格差值的一半给出位于补集的邻域。
+
+\Needspace{10\baselineskip}\textbf{定理 1.3.6（闭集的等价刻画；教材引理 1.4.5）}　对
+\(F\subseteq\mathbb R^n\)，以下等价：\(F\)
+闭；\(F'\subseteq F\)；\(\overline F=F\)；任何位于 \(F\)
+中的收敛点列，其极限仍在 \(F\) 中。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(F\) 闭而 \(x\notin F\)，补集中的小邻域不碰
+\(F\)，故 \(x\notin F'\)。反之，若 \(F'\subseteq F\)，对
+\(x\notin F\)，因 \(x\notin F'\) 且 \(x\notin F\)，某个去心邻域与 \(F\)
+不交，加回中心后仍不交。因此 \(F^c\) 开。等式 \(\overline F=F\) 与
+\(F'\subseteq F\) 由式（1.3.3）等价。
+
+若 \(F\) 闭，\(x^{(k)}\in F\) 且 \(x^{(k)}\to x\)，假如
+\(x\notin F\)，补集内的小邻域最终应包含
+\(x^{(k)}\)，矛盾。若序列条件成立而 \(F\) 不闭，则存在
+\(x\in\overline F\setminus F\)；在每个 \(B(x;1/k)\cap F\)
+中取点，得到极限不在 \(F\) 中的收敛点列，矛盾。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.7（内部和闭包的极值性质）}　\(E^\circ\) 是包含于 \(E\)
+的最大开集；\(\overline E\) 是包含 \(E\) 的最小闭集。\(E'\) 与
+\(\partial E\) 均闭。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(x\in E^\circ\)，取 \(B(x;r)\subseteq E\)；其中每个
+\(y\) 都有小球留在 \(B(x;r)\) 内，故
+\(B(x;r)\subseteq E^\circ\)，所以内部开。若 \(G\subseteq E\) 开，则
+\(G\) 的每点为 \(E\) 的内点，故 \(G\subseteq E^\circ\)。
+
+闭包的补集由完全避开 \(E\) 的小球组成，因此开。若 \(F\) 闭且
+\(E\subseteq F\)，则 \(E'\subseteq F'\subseteq F\)，从而
+\(\overline E\subseteq F\)。若 \(x\notin E'\)，某个
+\(B(x;r)\setminus\{x\}\) 不碰 \(E\)。对
+\(y\in B(x;r/2)\setminus\{x\}\)，可取以 \(y\) 为中心、既不含 \(x\)
+又留在 \(B(x;r)\) 内的小球，该球不碰 \(E\)，所以 \(y\notin E'\)；中心
+\(x\) 也不在 \(E'\)。故 \((E')^c\) 开。最后
+\(\partial E=\overline E\cap\overline{E^c}\) 是闭集之交。
+
+闭包不是简单地``加上边界以外的点''：精确等式为
+\(\overline E=E\cup\partial E\)，由式（1.3.3）的分解可得。相应地，\(E\)
+闭当且仅当 \(\partial E\subseteq E\)，\(E\) 开当且仅当
+\(E\cap\partial E=\varnothing\)。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.5
+完全集与典型点集]{1.3.5
+完全集与典型点集}\label{ux5b8cux5168ux96c6ux4e0eux5178ux578bux70b9ux96c6}
+
+一个集合若闭且没有孤立点，称为完全集；等价条件为
+\(E=E'\)。空集按此定义也是完全集。
+
+\Needspace{3\baselineskip}\textbf{证明：} 闭性给出 \(E'\subseteq E\)，没有孤立点给出每个 \(E\)
+中的点都是聚点，即 \(E\subseteq E'\)。反之，\(E=E'\)
+蕴含闭性，并使每点均非孤立点。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.2（用定义逐项计算）}　对
+\(A=(0,1]\cup\{2\}\subseteq\mathbb R\)，
+
+\begin{equation*}
+\begin{aligned}
+A^\circ&=(0,1),& A'&=[0,1],\\
+\overline A&=[0,1]\cup\{2\},& \partial A&=\{0,1,2\}.
+\end{aligned}\tag{1.3.5}
+\end{equation*}
+
+\((0,1)\) 的每点容得下一个区间；端点 \(0,1\) 任意邻域均碰到 \(A\)
+和补集；\(2\) 可用半径小于 \(1\) 的邻域隔离。\([0,1]\) 中的每点可由
+\((0,1)\) 中不同的点逼近；其外除 \(2\) 外各点均与 \(A\)
+有正的小邻域间隔，而 \(2\) 已是孤立点。这证明各等式。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.3（稠密集与完全集）}　\(\mathbb Q^n\)
+的内部为空，导集与闭包均为 \(\mathbb R^n\)，边界也为
+\(\mathbb R^n\)；它没有孤立点，却不是闭集，因而不完全集。证明利用每个非空开球都含有有理坐标点，也含有至少一个坐标无理的点；这些点可在任意小的球里选择，且可避开有限多个预先指定的点。闭区间
+\([a,b]\) 在 \(a<b\) 时是完全集；单点集闭但有孤立点，所以不是完全集。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.8（孤立点至多可数）}　任意 \(E\subseteq\mathbb R^n\)
+的孤立点集至多可数。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+给每个孤立点分配一个只含它的有理球，便可用可数个地址编码这些点。
+
+\Needspace{3\baselineskip}\textbf{证明：} 考察中心在 \(\mathbb Q^n\)、正半径在 \(\mathbb Q\)
+的所有开球，它们由可数集的有限直积编号，故可列为 \(U_1,U_2,\ldots\)。若
+\(x\) 孤立，取 \(B(x;r)\cap E=\{x\}\)。由有理数稠密性，可选有理坐标
+\(q\) 和有理数 \(s>0\) 使 \(\|q-x\|<s<r-\|q-x\|\)，于是
+\(x\in B(q;s)\subseteq B(x;r)\)。给 \(x\) 分配满足 \(x\in U_j\) 且
+\(U_j\cap E=\{x\}\) 的最小编号
+\(j\)。两个不同孤立点不能具有同一编号，故得到到 \(\mathbb N\) 的单射。
+
+这个结论不适用于边界点或聚点：\([0,1]\) 的聚点已有连续统多个。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.6 Bolzano--Weierstrass
+定理]{1.3.6 Bolzano--Weierstrass
+定理}\label{bolzanoweierstrass-ux5b9aux7406}
+
+\Needspace{10\baselineskip}\textbf{定理 1.3.9（教材定理 1.4.1）}　\(\mathbb R^n\)
+中每个无限有界集都有聚点。等价地，每个有界点列都有收敛子列。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+不必猜聚点在哪；反复保留仍含无穷多个点的一小块，把候选范围压缩到一个点。
+
+\Needspace{3\baselineskip}\textbf{证明：} 用闭正方体 \(Q_0\) 包含无限有界集 \(E\)。把 \(Q_0\)
+的每条边二等分，得到 \(2^n\) 个闭子正方体；至少一个与 \(E\)
+的交无限，记为 \(Q_1\)。继续得到
+\(Q_0\supseteq Q_1\supseteq\cdots\)，每个 \(Q_k\cap E\) 无限，且
+\(\operatorname{diam}Q_k=2^{-k}\operatorname{diam}Q_0\)。
+
+每个坐标方向的投影为递减闭区间
+\([a_{k,i},b_{k,i}]\)。由实数上确界性质，\(x_i=\sup_k a_{k,i}\)
+属于全部这些区间；区间长度趋于零，又说明交集只有 \(x_i\)。于是
+\(\bigcap_kQ_k=\{x\}\)，其中 \(x=(x_1,\ldots,x_n)\)。任何 \(B(x;r)\)
+最终包含 \(Q_k\)，因为 \(x\in Q_k\) 且其直径趋于零；它因而含有无穷多个
+\(E\) 中的点。由命题 1.3.2，\(x\) 为聚点。
+
+对有界点列，若某个值出现无穷多次，取常值子列。否则其值集无限；取该值集的聚点
+\(x\)。每个 \(B(x;1/j)\)
+含无穷多个不同的点列值，故可递归选取严格递增的下标 \(k_j\)，使
+\(\|x^{(k_j)}-x\|<1/j\)。这样得到收敛子列。反向若每个有界点列都有收敛子列，从无限有界集选取互不相同的点构成点列，子列极限便是原集聚点。
+
+\textbf{例
+1.3.4（有限维条件的作用；补充例）}　在平方可和序列空间中，单位坐标向量
+\(e_k\) 的范数均为 \(1\)，但
+\(\|e_j-e_k\|=\sqrt2\)（\(j\ne k\)），所以没有收敛子列。有限维定理不能直接搬到无限维空间。这里的计算只说明适用范围，函数空间的完备性与紧性留待后章。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.7 Cantor
+闭集套定理]{1.3.7 Cantor
+闭集套定理}\label{cantor-ux95edux96c6ux5957ux5b9aux7406}
+
+\Needspace{10\baselineskip}\textbf{定理 1.3.10（教材定理 1.4.2）}　设
+\(F_1\supseteq F_2\supseteq\cdots\) 是非空闭集列，且 \(F_1\) 有界。则
+\(\bigcap_{k=1}^\infty F_k\ne\varnothing\)。若另有
+\(\operatorname{diam}F_k\to0\)，则交集恰含一点。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对每个 \(k\) 选 \(x^{(k)}\in F_k\)。它们均在有界集
+\(F_1\) 中，由定理 1.3.9 可取收敛子列 \(x^{(k_j)}\to x\)。固定
+\(m\)，充分大的 \(j\) 满足 \(k_j\geq m\)，因而
+\(x^{(k_j)}\in F_m\)。\(F_m\) 闭，序列判别给出 \(x\in F_m\)；\(m\)
+任意，所以 \(x\) 属于交集。若 \(x,y\) 同属交集，则对所有 \(k\) 有
+\(\|x-y\|\leq\operatorname{diam}F_k\)，取极限得 \(x=y\)。
+
+若从某项起有界，删去前面有限项，交集不变，同样成立。
+
+\textbf{例
+1.3.5（三个条件分别控制什么）}　非空、闭、有界都承担实质作用。递减非空闭集
+\(F_k=[k,+\infty)\) 的交为空，说明不能无条件去掉有界性；递减有界非空集
+\(F_k=(0,1/k)\)
+的交为空，说明不能去掉闭性。若去掉直径趋零，\(F_k=[0,1]\)
+的交仍非空，但不唯一。前两个反例中，每次都能选点，却无法同时留住所有条件。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.8 Heine--Borel
+有限覆盖定理]{1.3.8 Heine--Borel
+有限覆盖定理}\label{heineborel-ux6709ux9650ux8986ux76d6ux5b9aux7406}
+
+一族开集 \(\{G_\alpha\}_{\alpha\in A}\) 若满足
+\(K\subseteq\bigcup_{\alpha\in A}G_\alpha\)，称为 \(K\)
+的开覆盖。若其中有限多个已能覆盖
+\(K\)，称为有限子覆盖。若每个开覆盖都有有限子覆盖，称 \(K\)
+为紧集。空集允许用空的有限子族覆盖，因此紧。
+
+\Needspace{10\baselineskip}\textbf{定理 1.3.11（教材定理 1.4.3）}　\(K\subseteq\mathbb R^n\)
+紧，当且仅当 \(K\) 闭且有界。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+``没有有限子覆盖''会遗传给某个更小的方体。不断二分，最后压到一点；覆盖这一点的一个开集却已经覆盖了足够小的整块，产生矛盾。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(K\) 紧，开球
+\(B(0;m)\)（\(m\in\mathbb N\)）构成其开覆盖。有限子覆盖中最大的半径即给出有界性。若
+\(x\notin K\)，对每个 \(y\in K\) 取 \(G_y=B(y;\|x-y\|/3)\)。它们覆盖
+\(K\)，故存在有限子覆盖 \(G_{y_1},\ldots,G_{y_l}\)。在 \(K\) 非空时令
+\(\delta=\min_i\|x-y_i\|/3>0\)。若 \(z\in B(x;\delta)\cap G_{y_i}\)，则
+
+\begin{equation*}
+\|x-y_i\|\leq\|x-z\|+\|z-y_i\|<\delta+\|x-y_i\|/3\leq2\|x-y_i\|/3,
+\end{equation*}
+
+矛盾。故 \(B(x;\delta)\) 不碰 \(K\)，说明 \(K^c\) 开；\(K=\varnothing\)
+时闭性直接成立。
+
+反之，设非空 \(K\) 闭有界，某开覆盖却没有有限子覆盖。取闭正方体
+\(Q_0\supseteq K\)，将其等分为 \(2^n\) 个闭子正方体。如果每个与 \(K\)
+的交都能被有限多个覆盖成员覆盖，合并这有限多组便覆盖
+\(K\)，矛盾。故至少有一个子正方体 \(Q_1\)，使 \(K\cap Q_1\)
+无有限子覆盖。递归得到 \(Q_k\)，每个 \(K\cap Q_k\)
+非空、闭，且递减有界。由定理 1.3.10 存在
+\(x\in\bigcap_k(K\cap Q_k)\)。取覆盖成员 \(G_\alpha\) 包含 \(x\)，再取
+\(B(x;r)\subseteq G_\alpha\)。充分大的 \(k\) 有
+\(\operatorname{diam}Q_k<r\)，于是
+\(Q_k\subseteq B(x;r)\subseteq G_\alpha\)。一个覆盖成员已覆盖
+\(K\cap Q_k\)，矛盾。因此任何开覆盖都有有限子覆盖。
+
+\Needspace{10\baselineskip}\textbf{推论 1.3.12（紧性与序列紧性等价）}　在 \(\mathbb R^n\) 中，\(K\)
+紧当且仅当 \(K\) 中每个点列都有极限属于 \(K\) 的收敛子列。
+
+\Needspace{3\baselineskip}\textbf{证明：} 紧集闭有界，Bolzano--Weierstrass
+给出收敛子列，闭性保证极限在 \(K\) 中。反之，若序列条件成立而 \(K\)
+无界，可取 \(x^{(k)}\in K\) 使
+\(\|x^{(k)}\|>k\)，其任意子列均不可能收敛。若 \(K\) 不闭，取
+\(x\in\overline K\setminus K\)，再取
+\(x^{(k)}\in K\cap B(x;1/k)\)；每个子列都收敛到 \(x\)，不可能另有属于
+\(K\) 的极限。故 \(K\)
+闭有界，进而紧。这里用到极限唯一性：若点列同时趋于
+\(x,y\)，三角不等式给出 \(\|x-y\|=0\)。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.6（有界不等于紧）}　\((0,1)\) 的开覆盖
+\(\{(1/k,1):k\geq2\}\) 没有有限子覆盖。任取有限多个，最大的 \(k\)
+对应的区间已经包含其余各项，仍漏掉靠近 \(0\) 的点。失去的是端点
+\(0\)，也就是闭性对极限的保留。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.9
+点到集合、集合到集合的距离]{1.3.9
+点到集合、集合到集合的距离}\label{ux70b9ux5230ux96c6ux5408ux96c6ux5408ux5230ux96c6ux5408ux7684ux8dddux79bb}
+
+对非空 \(E,F\subseteq\mathbb R^n\)，定义
+
+\begin{equation*}
+\begin{aligned}
+d(x,E)&=\inf_{y\in E}\|x-y\|,\\
+d(E,F)&=\inf\{\|x-y\|:x\in E,\ y\in F\}.
+\end{aligned}\tag{1.3.6}
+\end{equation*}
+
+空集若需纳入，可约定下确界为
+\(+\infty\)；下面关于有限距离、连续性和最近点的结论均假定集合非空。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.13（距离函数与闭包）}　对非空 \(E\)，
+
+\begin{equation*}
+\begin{aligned}
+|d(x,E)-d(z,E)|&\leq\|x-z\|,\\
+d(x,E)=0&\Longleftrightarrow x\in\overline E,\\
+d(x,E)&=d(x,\overline E).
+\end{aligned}\tag{1.3.7}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 对每个 \(y\in E\)，三角不等式给出
+\(d(x,E)\leq\|x-z\|+\|z-y\|\)。对 \(y\) 取下确界，再交换
+\(x,z\)，得第一式，因而距离函数是 \(1\)-Lipschitz
+的。下确界为零，等价于每个正半径的球都与 \(E\) 相交，恰为闭包定义。由
+\(E\subseteq\overline E\)，有 \(d(x,\overline E)\leq d(x,E)\)；若
+\(y\in\overline E\)，可取 \(y_k\in E\) 趋于 \(y\)，故
+\(d(x,E)\leq\|x-y_k\|\to\|x-y\|\)。再对 \(y\in\overline E\)
+取下确界，得到反向不等式。
+
+\Needspace{10\baselineskip}\textbf{命题 1.3.14（最近点的存在与正距离）}　若 \(F\) 非空闭，则对每个
+\(x\) 存在 \(y_0\in F\) 使 \(d(x,F)=\|x-y_0\|\)。若 \(K\) 非空紧、\(F\)
+非空闭且 \(K\cap F=\varnothing\)，则存在 \(x_0\in K,y_0\in F\) 使
+
+\begin{equation*}
+d(K,F)=\|x_0-y_0\|>0.\tag{1.3.8}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 记 \(a=d(x,F)<\infty\)，选 \(y_k\in F\) 使
+\(a\leq\|x-y_k\|<a+1/k\)。该点列有界，故有收敛子列；由闭性，其极限
+\(y_0\in F\)，反三角不等式给出 \(\|x-y_0\|=a\)。
+
+令 \(b=d(K,F)=\inf_{x\in K}d(x,F)\)。取 \(x_k\in K\) 使
+\(d(x_k,F)\to b\)；由紧性取子列 \(x_{k_j}\to x_0\in K\)，距离函数的
+Lipschitz 性给出 \(d(x_0,F)=b\)。再用刚证的最近点存在性选
+\(y_0\in F\)。若 \(b=0\)，由式（1.3.7）及 \(F\) 闭，有
+\(x_0\in F\)，与不交矛盾。因此 \(b>0\)。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.7（两个不交闭集的距离仍可为零）}　在 \(\mathbb R^2\) 中取
+\(E=\{(t,0):t\geq1\}\)，\(F=\{(t,1/t):t\geq1\}\)。两者均闭：收敛点列的第一坐标趋于某个有限
+\(t\geq1\)，第二坐标分别趋于 \(0\)、\(1/t\)。它们不交，却有
+\(d(E,F)\leq1/t\) 对所有 \(t\geq1\)
+成立，故距离为零。这里两组逼近点同时逃向无穷远，无法提取有界子列。
+
+\Needspace{6\baselineskip}\textbf{例 1.3.8（集合间距离不是集合空间上的度量）}　\(d(E,F)=0\) 不推出
+\(E=F\)，甚至不推出相交；它也不满足一般的三角不等式。在实轴上取
+\(A=\{0\}\)、\(B=\{0,2\}\)、\(C=\{2\}\)，有 \(d(A,C)=2\)，而
+\(d(A,B)=d(B,C)=0\)。原因是两次下确界可以分别使用 \(B\) 中不同的点。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.3.10
+练习、解答与方法回看]{1.3.10
+练习、解答与方法回看}\label{ux7ec3ux4e60ux89e3ux7b54ux4e0eux65b9ux6cd5ux56deux770b}
+
+以下八题选自教材练习题 1.4（印刷第 65---66 页），保留原题号；第 2
+题仅选导集部分，其余题意完整。解答以本节已经证明的结论为依据。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.1（教材练习 1.4 第 1
+题）}\label{ux95eeux9898-1.3.1ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-1-ux9898}
+
+设 \(E\subseteq\mathbb R^n\)。证明 \(E^\circ\) 与 \((E^c)^\circ\)
+均开，且 \(\partial E=\partial(E^c)\) 为闭集。
+
+\Needspace{3\baselineskip}\textbf{解：} 内点的某个球包含于 \(E\)，该球中每点又有更小球仍包含于
+\(E\)，故整个球包含于 \(E^\circ\)。这说明内部开，对 \(E^c\) 同理。由
+\(\partial E=\overline E\cap\overline{E^c}\)，交换 \(E,E^c\)
+不改变交式，得边界相同；两闭集之交仍闭。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.2（教材练习 1.4 第 2
+题，导集部分）}\label{ux95eeux9898-1.3.2ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-2-ux9898ux5bfcux96c6ux90e8ux5206}
+
+对有限个点集证明
+\((\bigcup_{i=1}^mE_i)'=\bigcup_{i=1}^mE_i'\)。可数并时等式是否仍成立？
+
+\Needspace{3\baselineskip}\textbf{解：}
+由两个集合的等式（1.3.4）归纳即可；也可直接对不属于右边的点取有限个去心邻域半径的最小值。可数并时只有包含
+\(\bigcup_iE_i'\subseteq(\bigcup_iE_i)'\) 总成立。取
+\(E_i=\{1/i\}\)，左边为空而右边为
+\(\{0\}\)，所以不能写等号。不同集合各贡献一个点，足以形成新的聚点。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.3（教材练习 1.4 第 4
+题）}\label{ux95eeux9898-1.3.3ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-4-ux9898}
+
+设 \(E\subseteq\mathbb R^n\) 是孤立点集。证明 \(E\) 至多可数。
+
+\Needspace{3\baselineskip}\textbf{解：} 对每个 \(x\in E\) 取隔离球，再在其中放入一个含 \(x\)
+的有理中心、有理半径的球。按固定枚举取第一个符合要求的球编号。每个这样的球只含一个
+\(E\)
+中的点，所以编号单射。可数性来自有理球族，而不是来自任意选取的隔离半径本身。命题
+1.3.8 实际证明了更强的结论：任意集合中的全部孤立点都至多可数。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.4（教材练习 1.4 第 8
+题）}\label{ux95eeux9898-1.3.4ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-8-ux9898}
+
+证明：\(F\subseteq\mathbb R^n\) 为有界闭集，当且仅当对 \(F\)
+的任何无限子集 \(E\)，都有 \(E'\cap F\ne\varnothing\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 若 \(F\) 有界闭，任意无限 \(E\subseteq F\) 由
+Bolzano--Weierstrass 有聚点，且
+\(E'\subseteq F'\subseteq F\)，所以交非空。
+
+反之，若 \(F\) 无界，递归选 \(x_k\in F\) 使
+\(\|x_k\|>k\)，并使范数严格递增。\(E=\{x_k:k\geq1\}\)
+无聚点：每个有界球只含有限多个这样的点，而聚点邻域应含无穷多个点。矛盾。若
+\(F\) 不闭，取 \(x\in\overline F\setminus F\)，从 \(F\) 中选互异点
+\(x_k\to x\)，令 \(E=\{x_k\}\)。则 \(E'=\{x\}\)：\(x\) 是聚点；对任意
+\(y\ne x\)，点列尾项落在远离 \(y\) 的小球里，剩下的有限多个点不能使
+\(y\) 成为聚点。因此 \(E'\cap F=\varnothing\)，矛盾。故 \(F\) 闭有界。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.5（教材练习 1.4 第 9
+题）}\label{ux95eeux9898-1.3.5ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-9-ux9898}
+
+设 \(\{F_\alpha\}_{\alpha\in A}\)
+为有界闭集族，任意有限多个成员的交均非空。证明
+\(\bigcap_{\alpha\in A}F_\alpha\ne\varnothing\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 若指标集为空，按约定交为全空间，结论成立。否则固定
+\(\alpha_0\)。若全族交为空，则 \(\{F_\alpha^c\}_{\alpha\in A}\) 是紧集
+\(F_{\alpha_0}\) 的开覆盖。由 Heine--Borel 有有限子覆盖，因而对某些
+\(\alpha_1,\ldots,\alpha_l\) 有
+\(F_{\alpha_0}\cap F_{\alpha_1}\cap\cdots\cap F_{\alpha_l}=\varnothing\)，与有限交性质矛盾。这里无需全族共同有界，只须其中一个成员有界、其余成员闭。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.6（教材练习 1.4 第 10
+题）}\label{ux95eeux9898-1.3.6ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-10-ux9898}
+
+设 \(\{F_\alpha\}_{\alpha\in A}\) 为有界闭集族，\(G\) 开，且
+\(\bigcap_\alpha F_\alpha\subseteq G\)。证明存在有限多个成员，使它们的交包含于
+\(G\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 若不存在这样的有限子族，则每个有限交
+\(F_{\alpha_1}\cap\cdots\cap F_{\alpha_l}\cap G^c\) 均非空。故有界闭集族
+\(\{F_\alpha\cap G^c\}_{\alpha\in A}\)
+满足有限交性质。上一题给出其总交非空，即
+\((\bigcap_\alpha F_\alpha)\cap G^c\ne\varnothing\)，与假设矛盾。空指标情形中假设迫使
+\(G=\mathbb R^n\)，选空子族即可。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.7（教材练习 1.4 第 18
+题）}\label{ux95eeux9898-1.3.7ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-18-ux9898}
+
+设 \(E\subseteq\mathbb R^n\)，\(E\ne\varnothing\) 且
+\(E^c\ne\varnothing\)。证明 \(\partial E\ne\varnothing\)。
+
+\Needspace{3\baselineskip}\textbf{想法：} 沿连接两点的线段，用上确界找到不能越过的边界。
+
+\Needspace{3\baselineskip}\textbf{解：} 反设 \(\partial E=\varnothing\)。式（1.3.3）说明
+\(E=E^\circ=\overline E\)，所以 \(E\) 既开又闭。取
+\(a\in E\)、\(b\in E^c\)，置
+\(\gamma(t)=(1-t)a+tb\)，\(0\leq t\leq1\)，令
+\(T=\{t:\gamma(t)\in E\}\)。\(0\in T\)，故 \(t_0=\sup T\) 存在。可选
+\(t_k\in T\) 使 \(t_k\to t_0\)，于是
+\(\|\gamma(t_k)-\gamma(t_0)\|=|t_k-t_0|\|b-a\|\to0\)。由 \(E\)
+闭，\(\gamma(t_0)\in E\)。因 \(b\notin E\)，有 \(t_0<1\)；由 \(E\)
+开，\(\gamma(t_0)\) 的一个小球包含于 \(E\)。取足够小的 \(h>0\) 使
+\(t_0+h\leq1\) 且 \(h\|b-a\|\) 小于该球半径，则
+\(t_0+h\in T\)，与上确界矛盾。
+
+\Needspace{8\baselineskip}\subsection{问题 1.3.8（教材练习 1.4 第 16
+题）}\label{ux95eeux9898-1.3.8ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-16-ux9898}
+
+设 \(G_1,G_2\subseteq\mathbb R^n\) 为两个不相交的开集。证明
+\(G_1\cap\overline{G_2}=\varnothing\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 若 \(x\in G_1\)，开性给出某个 \(B(x;r)\subseteq G_1\)。由
+\(G_1\cap G_2=\varnothing\)，该球不与 \(G_2\) 相交，所以
+\(x\notin\overline{G_2}\)。因此交为空。开性不能省去：\(A=\{0\}\)、\(B=(0,1)\)
+不交，却有
+\(0\in A\cap\overline B\)；也不能把结论加强为两个闭包不交，因为
+\((-1,0)\) 与 \((0,1)\) 的闭包共享端点 \(0\)。
+
+\textbf{方法回看：}
+邻域问题先分清完整球与去心球，并检查量词涉及有限还是可数。紧性问题先选近似满足条件的点，再用有界性提取子列、用闭性留住极限：闭集套使逐项满足变为同时满足，有限覆盖使局部信息缩减为有限多个条件；距离问题则在此基础上证明下确界能够达到。
+
+\end{document}
