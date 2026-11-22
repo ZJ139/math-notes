@@ -1,0 +1,749 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 1.4}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：1.4 点集的结构},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 1.4 点集的结构\par}
+\vspace{5pt}{第一章 集合与点集\par}
+\end{center}
+本节对应《实变函数知识框架》1.4，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 56—60 页）与\S1.6（第 85—94 页），以开集分解、完全集和可数集合运算为主线，附教材精选练习及完整解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.1
+有理球基与可数子覆盖]{1.4.1
+有理球基与可数子覆盖}\label{ux6709ux7406ux7403ux57faux4e0eux53efux6570ux5b50ux8986ux76d6}
+
+以下 \(n\geq1\) 固定且有限，补集均相对于
+\(\mathbb R^n\)；``至多可数''包括有限与空的情形。沿用上节的开球
+\(B(x;r)\)、导集 \(E'\)、内部 \(E^\circ\) 和闭包 \(\overline E\)。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.1（可数拓扑基）}　全体有理中心、正有理半径的开球
+
+\begin{equation*}
+\mathcal U=\{B(q;r):q\in\mathbb Q^n,\ r\in\mathbb Q, r>0\}
+\tag{1.4.1}
+\end{equation*}
+
+构成可数拓扑基：对任意开集 \(G\) 及 \(x\in G\)，存在 \(U\in\mathcal U\)
+使 \(x\in U\subseteq G\)。因而每个开集都是至多可数个有理球的并。
+
+\Needspace{3\baselineskip}\textbf{证明：} 有理数集的有限直积至多可数，故 \(\mathcal U\) 可列。取
+\(\delta>0\) 使 \(B(x;\delta)\subseteq G\)，再取 \(q\in\mathbb Q^n\) 使
+\(\|q-x\|<\delta/3\)。选择有理数 \(r\) 满足
+\(\|q-x\|<r<\delta-\|q-x\|\)，便有
+\(x\in B(q;r)\subseteq B(x;\delta)\)。于是 \(G\) 等于所有包含于 \(G\)
+的基元素之并；这是一族可数族的子族。
+
+有理端点开方体 \(\prod_{i=1}^n(a_i,b_i)\) 也构成可数基。事实上，给定
+\(B(x;\delta)\)，逐坐标取有理端点，使
+\(x_i\in(a_i,b_i)\subseteq(x_i-\delta/\sqrt n,x_i+\delta/\sqrt n)\)，该方体便包含
+\(x\) 且位于球内。
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.2（Lindelöf）}　任意 \(E\subseteq\mathbb R^n\)
+的任何开覆盖，都有至多可数的子覆盖。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+覆盖本身可能不可数，但每个点只需借助一个有理球，指出自己落在哪个覆盖成员中。
+
+\Needspace{3\baselineskip}\textbf{证明：} 设
+\(E\subseteq\bigcup_{\alpha\in A}G_\alpha\)。对每个包含于至少一个
+\(G_\alpha\) 的基元素 \(U_j\)，选定一个这样的覆盖成员
+\(G_{\alpha(j)}\)。若 \(x\in E\)，先取包含 \(x\) 的
+\(G_\alpha\)，再在其中选含 \(x\) 的 \(U_j\)，则
+\(x\in G_{\alpha(j)}\)。因此所选成员覆盖
+\(E\)，其数目至多可数。\(E=\varnothing\) 时选空子族即可。
+
+本定理对应教材定理 1.4.4。这里不要求 \(E\)
+闭或有界；要将``可数''加强成``有限''，才需要紧性。与 §1.2
+一样，本讲义在通常的含选择公理的集合论框架内讨论，可数次选取可直接使用。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.2
+直线开集的构成区间]{1.4.2
+直线开集的构成区间}\label{ux76f4ux7ebfux5f00ux96c6ux7684ux6784ux6210ux533aux95f4}
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.3（开集分解；教材定理 1.4.5 的一维部分）}　每个非空开集
+\(G\subseteq\mathbb R\)
+唯一地表示成至多可数个两两不交的非空极大开区间之并。区间允许为开射线或全实轴；这些极大区间称为
+\(G\) 的构成区间。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对 \(x\in G\)，将包含 \(x\) 且包含于 \(G\)
+的全部开区间取并，记为 \(I_x\)。此族非空，因为 \(G\)
+开。其并开，且仍是区间：若 \(u<v\) 属于此并，分别取含 \(x,u\) 和含
+\(x,v\) 的两个区间，它们有公共点 \(x\)，所以并包含 \([u,v]\)。因此
+\(I_x\) 是包含 \(x\) 的极大开区间。
+
+若 \(I_x\cap I_y\ne\varnothing\)，两者之并仍为包含于 \(G\)
+的开区间。由极大性，两者相等。又每个 \(x\in G\) 都属于
+\(I_x\)，所以所有不同的 \(I_x\) 两两不交且并为
+\(G\)。固定有理数的一次枚举，在每个构成区间中取编号最小的有理数。不同区间得到不同编号，故区间族至多可数。
+
+若另有一族两两不交开区间的并等于 \(G\)，取其中 \(J\) 与某个 \(I_x\)
+相交，则 \(J\subseteq I_x\)。倘若 \(J\) 真包含于
+\(I_x\)，它至少有一个有限端点落在 \(I_x\) 内。该端点属于
+\(G\)，故落在另一个开区间 \(J_1\) 内；\(J_1\) 的开放性使它与 \(J\)
+相交，矛盾。因此 \(J=I_x\)，证明唯一性。
+
+这里``极大''指不能在 \(G\)
+内继续扩张，不是长度最大。区间的可数性来自两两不交，而任意开区间族完全可以不可数。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.1（表示为区间并不等于分解）}　\((0,2)\cup(1,3)=(0,3)\)
+只有一个构成区间。相反，\((0,1)\cup(1,2)\) 有两个构成区间；端点 \(1\)
+不在集合中，不能将两段合并。对于
+\(G=\mathbb R\setminus\mathbb Z\)，构成区间恰为
+\((k,k+1)\)，\(k\in\mathbb Z\)。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.3
+闭集与完全集的余区间]{1.4.3
+闭集与完全集的余区间}\label{ux95edux96c6ux4e0eux5b8cux5168ux96c6ux7684ux4f59ux533aux95f4}
+
+若 \(F\subseteq\mathbb R\) 闭，其补集的构成区间称为 \(F\) 的余区间。于是
+
+\begin{equation*}
+F=\mathbb R\setminus\bigcup_{j\in J}I_j,
+\qquad I_j\cap I_k=\varnothing\quad(j\ne k).
+\tag{1.4.2}
+\end{equation*}
+
+这给出闭集的唯一余区间表示。反过来，任意开区间族之并的补集都是闭集；但要称该区间族为全部余区间，必须取极大的构成区间。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.4（余区间端点与边界）}　每个余区间的有限端点都属于
+\(F\)，且属于 \(\partial F\)。全体有限端点组成的集合 \(D\)
+至多可数，并在 \(\partial F\) 中稠密，即 \(\overline D=\partial F\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若有限端点 \(a\) 位于开集 \(F^c\)，则 \(a\)
+的一个小区间包含于
+\(F^c\)，会将原余区间扩张，矛盾。端点的一侧任意近处又有补集中的点，所以
+\(a\in\partial F\)。
+
+每个余区间至多贡献两个有限端点，因此 \(D\) 至多可数。给定
+\(x\in\partial F\) 和 \(\varepsilon>0\)，因 \(F\) 闭有 \(x\in F\)；选择
+\(y\in F^c\) 使 \(|y-x|<\varepsilon\)。含 \(y\) 的余区间不含 \(x\)，故在
+\(x\) 与 \(y\) 之间必有其一个有限端点 \(a\)（允许 \(a=x\)）。于是
+\(|a-x|<\varepsilon\)。这证明 \(\partial F\subseteq\overline D\)；反向由
+\(D\subseteq\partial F\) 和边界闭性成立。\(F=\varnothing\) 或
+\(F=\mathbb R\) 时两边均空。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.5（由余区间识别孤立点与完全集）}　\(x\in F\)
+是孤立点，当且仅当它同时是两个不同余区间的公共有限端点。因此，闭集 \(F\)
+为完全集，当且仅当不同余区间没有公共有限端点。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若
+\((x-\delta,x+\delta)\cap F=\{x\}\)，则左右两个去心半区间分别位于余区间
+\(I_-\)、\(I_+\) 中。由于
+\(x\in F\)，这两个余区间不同，其右端点、左端点都只能是
+\(x\)。反之，若两个余区间分别以 \(x\) 为右端点和左端点，取足够小的
+\(\delta>0\)，两侧的 \((x-\delta,x)\)、\((x,x+\delta)\) 都位于补集，故
+\(x\) 孤立。最后使用``完全集等价于闭且无孤立点''。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.2（两种完全不同的缺口）}　\(F=[0,1]\cup\{2\}\) 的余区间为
+\((-\infty,0)\)、\((1,2)\)、\((2,+\infty)\)，后两个在 \(2\) 处相接，所以
+\(2\) 孤立。\([0,1]\cup[2,3]\)
+的余区间没有公共端点，它是完全集。余区间``互不相交''不禁止端点重合，因为开区间不包含端点。
+
+命题 1.4.4 只说明端点在边界中稠密。若 \(F\) 有内点，它们不可能稠密于整个
+\(F\)；例如 \([0,1]\) 的余区间端点只有 \(0,1\)。若 \(F\) 闭且
+\(F^\circ=\varnothing\)，则 \(\partial F=F\)，端点才在整个 \(F\)
+中稠密。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.4
+高维开集的方体分解]{1.4.4
+高维开集的方体分解}\label{ux9ad8ux7ef4ux5f00ux96c6ux7684ux65b9ux4f53ux5206ux89e3}
+
+对整数 \(k\geq0\) 和 \(m=(m_1,\ldots,m_n)\in\mathbb Z^n\)，令
+
+\begin{equation*}
+Q_{k,m}=\prod_{i=1}^n[m_i2^{-k},(m_i+1)2^{-k}).
+\tag{1.4.3}
+\end{equation*}
+
+同层方体将全空间无遗漏、无重叠地分割；每个方体是下一层 \(2^n\)
+个子方体的不交并。不同层的两个方体或者不交，或者一个包含另一个。这些结论逐坐标化为二进区间的端点归属即可验证。
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.6（教材定理 1.4.5 的高维部分）}　任意开集
+\(G\subseteq\mathbb R^n\)
+是至多可数个两两不交的半开二进正方体的并；还能要求所选每个方体的闭包包含于
+\(G\)。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+球可以覆盖开集，但通常互相重叠。使用逐层细分的格子，并规定每一点只在第一次合适时被收取，就能保留覆盖而消除重叠。
+
+\Needspace{3\baselineskip}\textbf{证明：} 在第 \(0\) 层选出所有满足 \(\overline Q\subseteq G\)
+的方体。继续细分尚未选中的方体，在每一层选出闭包包含于 \(G\)
+的子方体；已经选中的方体不再细分。各层方体总共至多可数；同层不同方体不交，后选方体又不在先选方体内，所以全部所选方体两两不交。
+
+若 \(x\in G\)，取 \(B(x;r)\subseteq G\)。第 \(k\) 层唯一包含 \(x\)
+的方体 \(Q_k\) 满足
+
+\begin{equation*}
+\|y-x\|\leq\sqrt n\,2^{-k}\quad(y\in\overline Q_k).
+\tag{1.4.4}
+\end{equation*}
+
+充分大的 \(k\) 使右端小于 \(r\)，故
+\(\overline Q_k\subseteq G\)。若之前已有祖先方体被选中，\(x\)
+早已被覆盖；否则 \(Q_k\)
+此时会被选中。于是所有点最终均被覆盖。空开集对应空方体族。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.3（半开端点不可随意替换）}　\([0,1)\) 与 \([1,2)\)
+不交，恰好覆盖 \([0,2)\)；改成开区间会漏掉 \(1\)，改成闭区间则在 \(1\)
+重叠。二维时同样要对公共边、公共顶点指定唯一归属。这里的半开方体通常不是
+\(G\)
+的开子集，也不是开集的一维构成区间；分解还依赖格子的选择，不主张唯一性。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.5 Cantor
+三分集的构造与性质]{1.4.5 Cantor
+三分集的构造与性质}\label{cantor-ux4e09ux5206ux96c6ux7684ux6784ux9020ux4e0eux6027ux8d28}
+
+令 \(C_0=[0,1]\)。每次从上一层的每个闭区间中删去中间三分之一的开区间，得
+
+\begin{equation*}
+\begin{aligned}
+C_1&=[0,1/3]\cup[2/3,1],\\
+C_2&=[0,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1],\\
+C&=\bigcap_{k=0}^{\infty}C_k.
+\end{aligned}\tag{1.4.5}
+\end{equation*}
+
+集合 \(C\) 称为 Cantor 三分集。第 \(k\) 层恰有 \(2^k\)
+个两两分离的闭区间，每个长 \(3^{-k}\)；第 \(k\) 次删去 \(2^{k-1}\) 个长
+\(3^{-k}\)
+的开区间。以上数量和长度由每个保留区间分出左右两个子区间归纳得到。任何阶段保留区间的端点都不会在以后被删除。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.7（闭、完美而没有内点；教材 §1.6 的 Cantor
+集性质）}　\(C\) 是非空紧完全集，且 \(C^\circ=\varnothing\)，所以
+\(\partial C=C\)。它不包含任何非退化区间。
+
+\Needspace{3\baselineskip}\textbf{证明：} 每个 \(C_k\) 闭，故 \(C\) 闭；\(0,1\in C\)，所以非空；又
+\(C\subseteq[0,1]\)，故由 Heine--Borel 定理紧。若 \(x\in C\)，取第 \(k\)
+层含 \(x\) 的保留区间，其两个端点都在 \(C\)，至少一个异于 \(x\)，且与
+\(x\) 的距离不超过 \(3^{-k}\)。让 \(k\to\infty\)，得到 \(x\in C'\)，所以
+\(C=C'\)。
+
+若有非退化区间 \(J\subseteq C\)，取其内两点 \(a<b\)，再取
+\(3^{-k}<b-a\)。因
+\([a,b]\subseteq C_k\)，该区间不能横跨两个被间隙分隔的保留区间，故只能位于一个长
+\(3^{-k}\) 的保留区间中，矛盾。因此 \(C\) 无内点，且闭性给出
+\(\partial C=C\)。按``闭包无内点''的定义，\(C\)
+也是疏朗集；一般纲理论留待下一节。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.8（三进制编码与基数）}　映射
+
+\begin{equation*}
+\Phi:\{0,1\}^{\mathbb N}\longrightarrow C,
+\qquad \Phi(\varepsilon)=\sum_{j=1}^{\infty}\frac{2\varepsilon_j}{3^j}
+\tag{1.4.6}
+\end{equation*}
+
+为双射。因此 \(|C|=2^{\aleph_0}=\mathfrak c\)。等价地，\(x\in[0,1]\)
+属于 \(C\)，当且仅当它有一个只含 \(0,2\) 的三进制表示。
+
+\Needspace{3\baselineskip}\textbf{证明：} 给定前 \(k\)
+个二进数字，依次选择左或右保留区间，所得闭区间为
+
+\begin{equation*}
+\left[s_k,s_k+3^{-k}\right],
+\qquad s_k=\sum_{j=1}^{k}\frac{2\varepsilon_j}{3^j}.
+\tag{1.4.7}
+\end{equation*}
+
+无穷级数的尾和介于 \(0\) 与 \(3^{-k}\) 之间，所以 \(\Phi(\varepsilon)\)
+位于各层相应区间，因而在 \(C\) 中。反之，每个 \(x\in C\)
+在每层恰落入一个保留区间，这些区间逐层嵌套，给出唯一的左右选择。由
+\(|x-s_k|\leq3^{-k}\)，有 \(x=\Phi(\varepsilon)\)。
+
+也可直接验证单射性：若两序列首次在第 \(j\) 位不同，设
+\(\varepsilon_j=0,\eta_j=1\)，则
+
+\begin{equation*}
+\Phi(\eta)-\Phi(\varepsilon)
+\geq\frac{2}{3^j}-\sum_{l>j}\frac{2}{3^l}
+=\frac1{3^j}>0.
+\tag{1.4.8}
+\end{equation*}
+
+二进序列与 \(\mathbb N\) 的子集一一对应，其势由 §1.2 为
+\(\mathfrak c\)，故得结论。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.4（端点的双重表示）}　\(1/3=0.1_3=0.02222\ldots_3\) 属于
+\(C\)，所以不能用``某个表示中出现 \(1\)''来判定不属于
+\(C\)。正确说法是``存在一个只含 \(0,2\) 的表示''。在只允许 \(0,2\)
+的序列内部，式（1.4.8）又保证表示唯一。若将这些三进数字除以 \(2\)
+看成二进数字，所得到 \([0,1]\) 的映射虽然满射，却不是单射：\(1/3\) 与
+\(2/3\) 都映到 \(1/2\)。
+
+\textbf{命题
+1.4.9（端点稠密与任意小总长度覆盖）}　各层保留区间的端点构成可数集，在
+\(C\) 中稠密；但 \(C\) 并不只由这些端点组成。对每个
+\(\varepsilon>0\)，\(C\)
+可被有限多个开区间覆盖，且这些区间的长度之和小于 \(\varepsilon\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 各层端点有限，所有层共至多可数。对 \(x\in C\)，第 \(k\)
+层含 \(x\) 的区间端点与 \(x\) 相距至多 \(3^{-k}\)，所以端点稠密。\(C\)
+不可数而端点集可数，故仍有不可数多个非端点。
+
+第 \(k\) 层所有保留区间的总长度为 \((2/3)^k\)。取 \(k\) 使此数小于
+\(\varepsilon\)，再将每个区间向两端延长 \(\eta>0\)，其中
+\(2^{k+1}\eta<\varepsilon-(2/3)^k\)。所得有限开覆盖的长度和小于
+\(\varepsilon\)。这只是区间长度与覆盖的结论；在下一章定义外测度后，它立即给出
+\(C\) 的测度为零。
+
+另一方面，全部被删区间长度之和为
+
+\begin{equation*}
+\sum_{k=1}^{\infty}2^{k-1}3^{-k}=1.
+\tag{1.4.9}
+\end{equation*}
+
+``删去的总长度为
+\(1\)''不表示``删去所有点''；剩下的集合仍具有连续统基数。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.6
+完全集、凝聚点与闭集分解]{1.4.6
+完全集、凝聚点与闭集分解}\label{ux5b8cux5168ux96c6ux51ddux805aux70b9ux4e0eux95edux96c6ux5206ux89e3}
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.10（非空完全集的势；教材定理 1.6.4）}　每个非空完全集
+\(P\subseteq\mathbb R^n\) 都有势 \(\mathfrak c\)。
+
+\Needspace{3\baselineskip}\textbf{想法：} Cantor
+集的关键并非三等分，而是``每一步都能分出两条路，并使范围不断缩小''。无孤立点保证分叉，闭性保证每条无穷路径的极限留在集合内。
+
+\Needspace{3\baselineskip}\textbf{证明：} 先取一个中心在 \(P\) 的闭球
+\(B_\varnothing\)，半径为正。对任一已选闭球 \(B_s\)，其中心属于 \(P\)
+且在球的内部；因该中心不孤立，可在 \(P\cap\operatorname{int}B_s\)
+内取两个不同点。以这两点为中心取足够小的正半径闭球
+\(B_{s0},B_{s1}\)，使它们互不相交、均包含于
+\(\operatorname{int}B_s\)，且直径不超过 \(2^{-|s|-1}\)。这里 \(s\)
+是有限二进串，\(|s|\) 为串长。
+
+对每个无穷二进序列 \(\varepsilon\)，沿其前缀得到非空紧集套
+\(P\cap B_{\varepsilon|k}\)。由闭集套定理及直径趋零，其交恰为一点
+\(x_\varepsilon\in P\)。两序列若某位首次不同，此后的点分别位于两个不交子球中，所以映射
+\(\varepsilon\mapsto x_\varepsilon\) 为单射。于是
+\(\mathfrak c\leq|P|\)。另一方面
+\(P\subseteq\mathbb R^n\)，而有限维空间的势为 \(\mathfrak c\)（§1.2
+的有限直积编码），故 \(|P|=\mathfrak c\)。
+
+称 \(x\) 为 \(E\) 的凝聚点，若每个邻域与 \(E\)
+的交都是不可数集；记所有凝聚点组成
+\(P(E)\)。聚点只要求无穷多个点，凝聚点要求不可数多个点，两者不能混淆。
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.11（凝聚点与闭集结构；教材定理 1.6.5）}　对任意
+\(E\subseteq\mathbb R^n\)，\(E\setminus P(E)\) 至多可数，\(P(E)\)
+是完全集。若 \(E\) 不可数，则 \(P(E)\ne\varnothing\)，且 \(E\cap P(E)\)
+不可数。若 \(F\) 闭，则
+
+\begin{equation*}
+F=P(F)\mathbin{\dot\cup}D,
+\qquad D=F\setminus P(F)\text{ 至多可数}.
+\tag{1.4.10}
+\end{equation*}
+
+这里 \(P(F)\) 是 \(F\) 内最大的完全集；若 \(F\) 不可数，则 \(P(F)\)
+非空，进而 \(|F|=\mathfrak c\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(x\notin P(E)\)，存在一个邻域与 \(E\)
+只交于至多可数集，再在其中取含 \(x\) 的基元素 \(U_j\)。所以
+
+\begin{equation*}
+E\setminus P(E)
+\subseteq\bigcup_{j:\,E\cap U_j\text{ 至多可数}}(E\cap U_j),
+\tag{1.4.11}
+\end{equation*}
+
+右端为可数个至多可数集的并，故至多可数。若某个 \(B(x;r)\cap E\)
+至多可数，则其中每个点都有更小球仍在该球内，均非凝聚点；所以 \(P(E)^c\)
+开，\(P(E)\) 闭。
+
+若 \(x\in P(E)\)，每个 \(B(x;r)\cap E\) 不可数；删去至多可数的
+\(E\setminus P(E)\) 和单点 \(x\) 后，仍有属于 \(P(E)\) 的点。因此 \(x\)
+是 \(P(E)\) 的聚点，\(P(E)\) 无孤立点，故完全集。若 \(E\)
+不可数，删去可数集后 \(E\cap P(E)\) 仍不可数，特别地 \(P(E)\) 非空。
+
+现在设 \(F\) 闭。凝聚点必为聚点，故
+\(P(F)\subseteq F'\subseteq F\)，于是得到式（1.4.10）。若完全集
+\(Q\subseteq F\) 且 \(x\in Q\)，要证明 \(x\in P(F)\)，只须证明每个
+\(Q\cap B(x;r)\) 不可数。在定理 1.4.10 的构造中，把初始闭球选在
+\(B(x;r)\) 内且中心取 \(x\)，同一二叉球构造就在该邻域内产生连续统多个
+\(Q\) 中的点。因此 \(Q\subseteq P(F)\)，证明最大性。若 \(F\)
+不可数，使用定理 1.4.10 和 \(P(F)\subseteq F\subseteq\mathbb R^n\) 得
+\(|F|=\mathfrak c\)。
+
+式（1.4.10）称为闭集的 Cantor--Bendixson 分解。这一分解还是唯一的：若
+\(F=Q\mathbin{\dot\cup}A\)，其中 \(Q\) 完全、\(A\)
+至多可数，则最大性给出 \(Q\subseteq P(F)\)。若
+\(x\in P(F)\setminus Q\)，由 \(Q\) 闭可取一个避开 \(Q\) 的邻域，该邻域与
+\(F\) 的交只能包含于 \(A\)，与 \(x\) 为凝聚点矛盾。因此
+\(Q=P(F)\)，\(A=D\)。
+
+\textbf{例
+1.4.5（导集与完美核不同）}　\(F=\{0\}\cup\{1/k:k\in\mathbb N\}\)
+闭且可数，\(F'=\{0\}\)，但
+\(P(F)=\varnothing\)。因此不能把分解中的完美核直接写成导集。另一方面
+\([0,1]\cup\{2,3,4,\ldots\}\) 的完美核为
+\([0,1]\)，剩余部分为可数离散点集。式（1.4.10）中的可数余部一般不必在原集合中处处孤立，上述
+\(F\) 的 \(0\) 就不是孤立点。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.7 \texorpdfstring{$F_\sigma$}{Fσ} 集与 \texorpdfstring{$G_\delta$}{Gδ}
+集]{1.4.7 \texorpdfstring{$F_\sigma$}{Fσ} 集与 \texorpdfstring{$G_\delta$}{Gδ}
+集}\label{fux3c3-ux96c6ux4e0e-gux3b4-ux96c6}
+
+若 \(E\) 是至多可数个闭集之并，称为 \(F_\sigma\)
+集；若是至多可数个开集之交，称为 \(G_\delta\) 集（教材定义
+1.4.4）。有限表示可通过重复成员改成可列表示。全空间、空集都属于这两类。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.12（补类关系与封闭运算）}　\(E\) 为 \(F_\sigma\)
+集当且仅当 \(E^c\) 为 \(G_\delta\) 集。\(F_\sigma\)
+类对可数并和有限交封闭；\(G_\delta\) 类对可数交和有限并封闭。
+
+\Needspace{3\baselineskip}\textbf{证明：} 补类关系来自 De Morgan 公式。若 \(E_j=\bigcup_kF_{jk}\)
+且各 \(F_{jk}\) 闭，则 \(\bigcup_jE_j=\bigcup_{j,k}F_{jk}\)，而
+\(\mathbb N^2\) 可数，故仍为 \(F_\sigma\)。对于两个这样的集合，
+
+\begin{equation*}
+\left(\bigcup_jF_j\right)\cap\left(\bigcup_kH_k\right)
+=\bigcup_{j,k}(F_j\cap H_k),
+\tag{1.4.12}
+\end{equation*}
+
+其中每个交闭，故仍为 \(F_\sigma\)，有限多个用归纳。对上述结论取补，即得
+\(G_\delta\)
+的相应结论。不能将这里的``有限交''或``有限并''未经证明地改成``可数''。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.13（开闭集的交叉表示；教材练习 1.4 第 5
+题）}　每个闭集都是 \(G_\delta\)，每个开集都是
+\(F_\sigma\)。更强地，任意开集 \(G\subseteq\mathbb R^n\)
+都是递增紧集列的并。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对非空闭集 \(F\)，距离函数 \(d(x,F)\) 为
+\(1\)-Lipschitz，故 \(V_k=\{x:d(x,F)<1/k\}\) 开；又 \(d(x,F)=0\) 等价于
+\(x\in F\)，所以
+
+\begin{equation*}
+F=\bigcap_{k=1}^{\infty}V_k.
+\tag{1.4.13}
+\end{equation*}
+
+空闭集用全部 \(V_k=\varnothing\) 表示即可。取补立即得到开集是
+\(F_\sigma\)。若 \(G^c\ne\varnothing\)，还可显式取
+
+\begin{equation*}
+K_k=\{x:\|x\|\leq k,\ d(x,G^c)\geq1/k\}.
+\tag{1.4.14}
+\end{equation*}
+
+距离连续使 \(K_k\) 闭，有界性使它紧，且
+\(K_k\subseteq K_{k+1}\subseteq G\)。若 \(x\in G\)，有球
+\(B(x;r)\subseteq G\)，故 \(d(x,G^c)\geq r>0\)；取足够大的 \(k\) 即有
+\(x\in K_k\)。因此 \(G=\bigcup_kK_k\)。\(G=\mathbb R^n\) 时直接取闭球
+\(K_k=\overline{B(0;k)}\)；\(G=\varnothing\) 时取空集。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.6（典型集合与递增、递减表示）}　可数集
+\(A=\{a_1,a_2,\ldots\}\) 是 \(F_\sigma\)，因为单点集闭；其补集是
+\(G_\delta\)。故 \(\mathbb Q\) 为
+\(F_\sigma\)，\(\mathbb R\setminus\mathbb Q\) 为
+\(G_\delta\)。一个集合可以同时属于两类，例如所有开集、闭集，以及
+\([0,1)\)：它既等于 \(\bigcup_{k\geq1}[0,1-1/k]\)，又等于
+\(\bigcap_{k\geq1}(-1/k,1)\)。
+
+一般的 \(F_\sigma\) 表示可将闭集 \(F_k\) 换成
+\(F_1\cup\cdots\cup F_k\)，使其递增；\(G_\delta\) 表示可将开集 \(G_k\)
+换成
+\(G_1\cap\cdots\cap G_k\)，使其递减。这些修改不改变并集或交集。有理数集并非
+\(G_\delta\)、无理数集并非 \(F_\sigma\) 的严格证明将在 §1.5 的 Baire
+定理之后给出，本节不把它们作为未证前提使用。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.8 Borel
+集及其生成方式]{1.4.8 Borel
+集及其生成方式}\label{borel-ux96c6ux53caux5176ux751fux6210ux65b9ux5f0f}
+
+集合族 \(\mathcal A\subseteq\mathcal P(X)\) 称为 \(X\) 上的
+\(\sigma\)-代数，是指 \(X\in\mathcal A\)，且对取补与可数并封闭。De
+Morgan 公式随即给出对可数交封闭；还可推出
+\(\varnothing\)、有限并、有限交和差集均属于该族。
+
+给定集合族 \(\mathcal E\)，定义
+
+\begin{equation*}
+\sigma(\mathcal E)=\bigcap\{\mathcal A:\mathcal A\text{ 是包含 }\mathcal E\text{ 的 }\sigma\text{-代数} \}.
+\tag{1.4.15}
+\end{equation*}
+
+参与交的族非空，因为幂集 \(\mathcal P(X)\)
+是其中一个成员；交集仍满足三条公理，因此它确实是包含 \(\mathcal E\)
+的最小 \(\sigma\)-代数。在 \(X=\mathbb R^n\) 中，以全体开集
+\(\mathcal T\) 为生成元的
+
+\begin{equation*}
+\mathcal B(\mathbb R^n)=\sigma(\mathcal T)
+\tag{1.4.16}
+\end{equation*}
+
+称为 Borel \(\sigma\)-代数，其元素称 Borel 集（教材定义
+1.4.5）。这里``代数''是集合族的名称。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.14（可数生成元）}　\(\mathcal B(\mathbb R^n)\)
+也可由全体闭集、有理球基、有理端点开方体，或有理端点有界半开方体生成。在实轴上，还可仅用
+\((-\infty,q)\)，\(q\in\mathbb Q\)，作为生成元。
+
+\Needspace{3\baselineskip}\textbf{证明：} 开闭集互为补，故生成同一
+\(\sigma\)-代数。每个有理球、开方体都是开集，反之每个开集都是这些基元素的可数并，故两种包含关系同时成立。
+
+有理端点半开方体是 Borel 集：在每个坐标上用闭半空间 \(\{x_i\geq a_i\}\)
+与开半空间 \(\{x_i<b_i\}\)
+作有限交即可。反之，每个有理开方体都是包含于它的有理半开方体的并。这个并至多可数，且对其中任一点，可在每个坐标的左右各取一个内部有理端点，保证该点被某个半开方体覆盖。因此半开方体也生成所有开集。
+
+在一维，\((-\infty,q)\) 本身开，而对有理数 \(a\)，
+
+\begin{equation*}
+\begin{aligned}
+(-\infty,a]&=\bigcap_{k\geq1}(-\infty,a+1/k),\\
+(a,b)&=(-\infty,b)\setminus(-\infty,a].
+\end{aligned}\tag{1.4.17}
+\end{equation*}
+
+所以全部有理端点开区间均在该族中，再由可数基性质得到全部 Borel 集。
+
+\Needspace{10\baselineskip}\textbf{命题 1.4.15（常见 Borel 构造）}　\(F_\sigma\)、\(G_\delta\)
+集都是 Borel 集。若 \(E_k\) 均为 Borel
+集，则它们的差、对称差以及集合列的上下极限仍为 Borel 集。若
+\(X\subseteq\mathbb R^n\)，其相对拓扑生成的 Borel 族满足
+
+\begin{equation*}
+\mathcal B(X)=\{X\cap B:B\in\mathcal B(\mathbb R^n)\}.
+\tag{1.4.18}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 开闭集属于 Borel 族，按定义作可数并、交即可得到
+\(F_\sigma\)、\(G_\delta\)。差与对称差可由补、有限交和并表示；上下极限分别为
+
+\begin{equation*}
+\limsup_kE_k=\bigcap_m\bigcup_{k\geq m}E_k,
+\qquad
+\liminf_kE_k=\bigcup_m\bigcap_{k\geq m}E_k,
+\tag{1.4.19}
+\end{equation*}
+
+故也是 Borel 集。式（1.4.18）右端是 \(X\) 上的
+\(\sigma\)-代数，且包含所有相对开集，所以包含
+\(\mathcal B(X)\)。反向，令
+\(\mathcal H=\{B\subseteq\mathbb R^n:X\cap B\in\mathcal B(X)\}\)；它是包含全体开集的
+\(\sigma\)-代数，故含
+\(\mathcal B(\mathbb R^n)\)。这证明另一包含关系，无须假设 \(X\) 本身是
+Borel 集。
+
+\Needspace{6\baselineskip}\textbf{例 1.4.7（将量词翻译成可数集合运算）}　设 \(E_k\) 为 Borel
+集。``\(x\) 属于无穷多个 \(E_k\)''表示
+\(x\in\limsup E_k\)；``从某项起总属于 \(E_k\)''表示
+\(x\in\liminf E_k\)。前者是``每个 \(m\) 都存在
+\(k\geq m\)''，后者是``存在 \(m\) 使所有
+\(k\geq m\)''；交与并的次序来自量词，而不能交换。这里只处理可数个条件，任意不可数并不在
+\(\sigma\)-代数公理的保证范围内。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.9 Borel 集有多少]{1.4.9 Borel 集有多少}\label{borel-ux96c6ux6709ux591aux5c11}
+
+\Needspace{10\baselineskip}\textbf{定理 1.4.16（教材定理 1.4.6 的 Borel
+基数结论）}　\(\mathbb R^n\) 的开集族、闭集族以及 Borel 集族的势均为
+\(\mathfrak c\)。因此存在非 Borel 点集；甚至 Cantor 集 \(C\)
+中也存在不是实轴 Borel 集的子集。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+基元素只有可数多个，但可数运算可以反复嵌套。不能只统计做一次可数并得到多少集合；需要把整个构造记录成一份可数代码。
+
+\Needspace{3\baselineskip}\textbf{证明：} 每个开集由其包含的基元素完全确定，故开集族的势不超过
+\(2^{\aleph_0}=\mathfrak c\)。不同正半径的同心球给出连续统多个开集，所以下界相同。取补为双射，故闭集族同势。
+
+为处理 Borel
+集，用有根树记录集合运算。每个节点用有限自然数串定位；叶子标记一个基元素或空集，取补节点有一个子节点，可数并节点的子节点用自然数编号。只允许没有无限向下路径的树，但各条有限路径的长度可以没有统一上界。称一棵树为有效代码，若能给各节点赋予集合，使叶子取其标签，其他节点取子节点值的补或并。
+
+同一代码的根值唯一。否则两份赋值在某节点不同：若是补节点，其子节点仍不同；若是并节点，从两并的对称差中取一点，总能找到某个子节点的两份赋值不同，并取编号最小的这样的子节点。不断向下会产生无限路径，或到达标签确定的叶子而仍不同，均矛盾。
+
+所有有效代码的根值组成一族
+\(\mathcal S\)。它含全部基元素；在一个代码上添加取补的新根，可实现其补集；在可数个代码上添加取并的新根，可实现它们的并。新树仍无无限路径：任何向下路径在经过新根后，只会进入其中一棵原树。因此
+\(\mathcal S\) 对补和可数并封闭，并包含全空间，故是含基元素的
+\(\sigma\)-代数，必包含所有 Borel 集。
+
+有限自然数串的全体是可数集；树的节点集合可用其子集编码，各节点的类型、标签又来自可数集，可一并编码为一个可数集的子集。因此所有这种代码的数目至多为
+\(2^{\aleph_0}=\mathfrak c\)。每个有效代码至多给出一个根值，便有
+\(|\mathcal B(\mathbb R^n)|\leq\mathfrak c\)。结合开集族给出的下界即得等号。
+
+由 Cantor
+定理，\(|\mathcal P(\mathbb R^n)|=2^{\mathfrak c}>\mathfrak c\)，所以有非
+Borel 集。又 \(|C|=\mathfrak c\)，其子集有 \(2^{\mathfrak c}\)
+个，而整个实轴的 Borel 集只有 \(\mathfrak c\) 个，故其中一些子集必非
+Borel。
+
+此证明只用代码给出 Borel
+集数量的上界，不声称所有点集都有代码，也不假定``有限次可数运算''就能得到全部
+Borel 集。可数次并、交、补得到的集合仍是 Borel，而
+\(\sigma\)-代数一般不对任意子集运算封闭。
+
+\Needspace{7\baselineskip}
+\section[\S{}1.4.10
+教材精选练习与完整解答]{1.4.10
+教材精选练习与完整解答}\label{ux6559ux6750ux7cbeux9009ux7ec3ux4e60ux4e0eux5b8cux6574ux89e3ux7b54}
+
+下列第 1、2、4、6、7、8 题对应教材原题；第 3、5
+题为本讲义补充题。教材练习 1.4 位于印刷第 65---67 页，练习 1.6 位于第 95
+页。题号与选取范围均在标题中注明。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.1（教材练习 1.4 第 5
+题）}\label{ux95eeux9898-1.4.1ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-5-ux9898}
+
+证明每个闭集都是 \(G_\delta\)，每个开集都是
+\(F_\sigma\)，并给出递减、递增的显式表示。
+
+\Needspace{3\baselineskip}\textbf{解：} 若 \(F\) 非空闭，取 \(V_k=\{x:d(x,F)<1/k\}\)，则
+\(V_{k+1}\subseteq V_k\)，各 \(V_k\) 开，且 \(F=\bigcap_kV_k\)。对开集
+\(G\) 取补得到递增闭集表示；若还要各项紧，使用式（1.4.14）的
+\(K_k\)。全空间和空集用命题 1.4.13
+中的特殊约定处理。这种表示的核心是用``距补集至少
+\(1/k\)''保证留在内部，用``范数至多 \(k\)''保证有界。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.2（教材练习 1.4 第 6
+题）}\label{ux95eeux9898-1.4.2ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-6-ux9898}
+
+证明 \(\mathbb R^n\)
+中全体完全集、全体紧集、全体孤立点集及全体至多可数子集，这四个集合族的势都为
+\(\mathfrak c\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 完全集和紧集都闭，所以上界由定理 1.4.16 为
+\(\mathfrak c\)。完全集族的下界可取不同半径 \(r>0\)
+的闭球，它们无孤立点且互不相同；紧集族的下界可取全部单点集。
+
+孤立点集至多可数（§1.3）。每个非空至多可数子集都可用点列枚举，允许重复，故这种集合族的势至多为
+\(|(\mathbb R^n)^{\mathbb N}|=\mathfrak c^{\aleph_0}=\mathfrak c\)：将每个实数编码为二进序列，再用
+\(\mathbb N^2\)
+的枚举展平所有坐标即可。添上空集不改变此上界。最后单点集既是孤立点集又是至多可数集，提供两族共同的下界。这里不要求孤立点集闭，例如
+\(\{1/k:k\geq1\}\) 就不是闭集。
+
+\Needspace{8\baselineskip}\subsection{问题
+1.4.3（补充：边界可数不等于集合可数）}\label{ux95eeux9898-1.4.3ux8865ux5145ux8fb9ux754cux53efux6570ux4e0dux7b49ux4e8eux96c6ux5408ux53efux6570}
+
+开集的构成区间至多可数，能否推出开集的边界至多可数？闭集的余区间端点至多可数，能否推出闭集本身至多可数？
+
+\Needspace{3\baselineskip}\textbf{解：} 都不能。取
+\(G=\mathbb R\setminus C\)。它是开集，构成区间至多可数，但
+\(\partial G=\partial C=C\)，有连续统基数。闭集 \(C\)
+的余区间端点至多可数，却只构成 \(C\)
+的一个稠密子集。可数集的闭包可能不可数；遗漏的正是余区间不断积聚产生的边界点。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.4（教材练习 1.4 第 19
+题）}\label{ux95eeux9898-1.4.4ux6559ux6750ux7ec3ux4e60-1.4-ux7b2c-19-ux9898}
+
+设 \(F\subseteq\mathbb R\) 闭，\(F^c\) 的构成区间都是有限开区间。证明
+\(F\) 无界。
+
+\Needspace{3\baselineskip}\textbf{解：} 实际上 \(F\) 在上下两个方向都无界。若 \(F\) 有上界，取
+\(M\) 为其一个上界，则
+\((M,+\infty)\subseteq F^c\)，包含此射线的构成区间必向右无界，与假设矛盾。下有界时同理。\(F=\mathbb R\)
+的补集没有构成区间，条件空真，结论仍成立；\(F=\varnothing\)
+的补集有构成区间 \(\mathbb R\)，不满足假设。
+
+\Needspace{8\baselineskip}\subsection{问题
+1.4.5（补充：删除点对完全集的影响）}\label{ux95eeux9898-1.4.5ux8865ux5145ux5220ux9664ux70b9ux5bf9ux5b8cux5168ux96c6ux7684ux5f71ux54cd}
+
+设 \(P\subseteq\mathbb R^n\) 是非空完全集，\(p\in P\)。证明
+\(\overline{P\setminus\{p\}}=P\)，且 \(P\setminus\{p\}\) 不是完全集。
+
+\Needspace{3\baselineskip}\textbf{解：} 因 \(p\)
+不是孤立点，\(p\in\overline{P\setminus\{p\}}\)；其余 \(P\)
+中的点已属于原集，故 \(P\subseteq\overline{P\setminus\{p\}}\)。反向由
+\(P\) 闭成立。因此 \(P\setminus\{p\}\) 缺少闭包中的
+\(p\)，不闭，也就不是完全集。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.6（教材练习 1.6 第 2
+题）}\label{ux95eeux9898-1.4.6ux6559ux6750ux7ec3ux4e60-1.6-ux7b2c-2-ux9898}
+
+设 \(F\subseteq\mathbb R^n\) 为非空至多可数闭集。证明 \(F\) 必有孤立点。
+
+\Needspace{3\baselineskip}\textbf{解：} 若无孤立点，则 \(F\) 为非空完全集，定理 1.4.10 给出
+\(|F|=\mathfrak c\)，与至多可数矛盾。非空不可省，空集没有孤立点；闭性不可省，\(\mathbb Q^n\)
+可数且没有孤立点。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.7（教材练习 1.6 第 4
+题）}\label{ux95eeux9898-1.4.7ux6559ux6750ux7ec3ux4e60-1.6-ux7b2c-4-ux9898}
+
+证明 \(1/4\)、\(1/13\) 均属于 Cantor 三分集。
+
+\Needspace{3\baselineskip}\textbf{解：} 用几何级数直接构造只含 \(0,2\) 的三进制表示：
+
+\begin{equation*}
+\begin{aligned}
+\frac14&=\sum_{j=1}^{\infty}\frac2{3^{2j}} =0.020202\ldots_3,\\
+\frac1{13}&=\sum_{j=1}^{\infty}\frac2{3^{3j}} =0.002002002\ldots_3.
+\end{aligned}\tag{1.4.20}
+\end{equation*}
+
+两式分别是首项 \(2/9\)、公比 \(1/9\)，以及首项 \(2/27\)、公比 \(1/27\)
+的级数。因此由命题 1.4.8，两数都在 \(C\)
+中；它们也说明保留下来的点不只包含删除区间的端点。
+
+\Needspace{8\baselineskip}\subsection{问题 1.4.8（教材练习 1.6 第 5
+题）}\label{ux95eeux9898-1.4.8ux6559ux6750ux7ec3ux4e60-1.6-ux7b2c-5-ux9898}
+
+设 \(C\) 为 Cantor 三分集，证明 \(C+C=\{x+y:x,y\in C\}=[0,2]\)。
+
+\Needspace{3\baselineskip}\textbf{想法：} 两个加数分别用三进数字 \(0,2\) 编码，其和的数字可为
+\(0,2,4\)。允许数字 \(4\) 可以避免处理逐位进位，只需在每一步保留一个落在
+\([0,2]\) 的余数。
+
+\Needspace{3\baselineskip}\textbf{解：} 显然 \(C+C\subseteq[0,2]\)。给定 \(t\in[0,2]\)，令
+\(r_0=t\)。注意
+
+\begin{equation*}
+[0,2]=[0,2/3]\cup[2/3,4/3]\cup[4/3,2].
+\tag{1.4.21}
+\end{equation*}
+
+若 \(r_{j-1}\) 落在第一个、第二个或第三个区间，分别选
+\(d_j=0,2,4\)（公共端点任选一边），并令 \(r_j=3r_{j-1}-d_j\)，则总有
+\(0\leq r_j\leq2\)。递推得到
+
+\begin{equation*}
+t=\sum_{j=1}^{k}\frac{d_j}{3^j}+\frac{r_k}{3^k}
+\longrightarrow\sum_{j=1}^{\infty}\frac{d_j}{3^j}.
+\tag{1.4.22}
+\end{equation*}
+
+把 \(0,2,4\) 分别写成 \(0+0,0+2,2+2\)，即令 \(d_j=a_j+b_j\)，其中
+\(a_j,b_j\in\{0,2\}\)。则 \(x=\sum_ja_j3^{-j}\)、\(y=\sum_jb_j3^{-j}\)
+均属于 \(C\)，且 \(t=x+y\)。于是 \([0,2]\subseteq C+C\)，证明等号。
+
+\textbf{方法回看：}
+开集分解用有理数控制块的数目，用半开端点指定边界归属；完全集用二叉选择编码点、用闭集套保留极限；Borel
+分类将量词翻译为可数并、交、补。Cantor
+集说明，连续统基数、空内部和任意小总长度覆盖可以同时成立。
+
+\end{document}
