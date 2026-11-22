@@ -9,7 +9,7 @@ import remarkHeadingIds from './headingIds';
 import remarkDocumentLabels from './documentLabels';
 import remarkTableOfContents from './tableOfContents';
 import remarkReadingAnswerLayout from './readingAnswerLayout';
-import rehypeCMBeaMath from './cmBeaMath';
+import rehypeCMBeaMath, {formulaSVGPaddingEm} from './cmBeaMath';
 import rehypeMathTypography from './mathTypography';
 const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes,...complexFunctionsFigureSizes};
 const components: Components = {
@@ -48,7 +48,7 @@ const readingSections = [
 
 export default function Markdown({body, readingAnswers = false, exerciseSheet = false, mathFont = 'cm-bea'}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean; mathFont?: 'cm-bea'}) {
   const structured = readingAnswers && /^## 一、原文/m.test(body);
-  return <div data-math-font={mathFont} className={`prose${readingAnswers ? ' reading-answers' : ''}${exerciseSheet ? ' exercise-sheet' : ''}`}>
+  return <div data-math-font={mathFont} style={{'--math-bleed':`${formulaSVGPaddingEm}em`} as React.CSSProperties} className={`prose${readingAnswers ? ' reading-answers' : ''}${exerciseSheet ? ' exercise-sheet' : ''}`}>
     {structured && <nav className="reading-section-nav" aria-label="阅读解答章节">
       {readingSections.map(([id, number, label]) => <a key={id} href={`#${id}`}><span>{number}</span>{label}</a>)}
     </nav>}

@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
-import {cmBeaMath,copyCMBeaMathAssets,precompileCMBeaMath} from '../src/cmBeaMath';
+import {cmBeaMath,copyCMBeaMathAssets,precompileCMBeaMath,formulaSVGPaddingEm} from '../src/cmBeaMath';
 import {latexMath} from '../src/latexMath';
 import {loadEntries} from '../src/content';
 import {LouBatchArticle} from '../src/LouAnalysisDirectory';
@@ -35,17 +35,29 @@ test('CM bea matches actual Beamer math metrics and embedded fonts',async()=>{
   }finally{await rm(work,{recursive:true,force:true});}
 });
 
-test('CM bea keeps exact glyph scale and depth for short variables',async()=>{
+test('CM bea keeps full short glyphs, exact scale and depth inside padded viewports',async()=>{
   const work=await mkdtemp(path.join(tmpdir(),'bea-scale-'));
   try{
-    for(const tex of ['p','x','f','1']){
+    const emToPdfPoints=10*72/72.27;
+    const bleed=formulaSVGPaddingEm*emToPdfPoints;
+    for(const tex of ['p','x','f','r','0','1','j',String.raw`\hat f`]){
       const one=cmBeaMath(tex,false),two=cmBeaMath(`${tex}+${tex}`,false);
       copyCMBeaMathAssets(work);
       const a=await readFile(path.join(work,one.id+'.svg'),'utf8'),b=await readFile(path.join(work,two.id+'.svg'),'utf8');
       assert.equal(a.match(/<path\s+d="([^"]+)"/)?.[1],b.match(/<path\s+d="([^"]+)"/)?.[1]);
+      // Previously f lost its entire hook and 0 lost its curved overshoot:
+      // Cairo added a page clip through the glyph. No glyph should need one.
+      assert.doesNotMatch(a,/<clipPath\b/,`Clipped ink in ${tex}`);
+      const bounds=a.match(/viewBox="([^"]+)"/)![1].split(/\s+/).map(Number);
+      assert.ok(Math.abs(bounds[2]-(one.width+2*formulaSVGPaddingEm)*emToPdfPoints)<0.03);
+      assert.ok(Math.abs(bounds[3]-(one.height+one.depth+2*formulaSVGPaddingEm)*emToPdfPoints)<0.03);
       const use=a.match(/<use\b[^>]*\bx="([^"]+)"\s+y="([^"]+)"/)!;
-      assert.ok(Math.abs(Number(use[1]))<0.03);
-      assert.ok(Math.abs(Number(use[2])-one.height*10*72/72.27)<0.03);
+      // Accents reposition the first glyph within the box; the other cases
+      // retain their original x origin and baseline plus only the PDF bleed.
+      if(!tex.startsWith('\\')){
+        assert.ok(Math.abs(Number(use[1])-bleed)<0.03);
+        assert.ok(Math.abs(Number(use[2])-one.height*emToPdfPoints-bleed)<0.03);
+      }
     }
   }finally{await rm(work,{recursive:true,force:true});}
 });
