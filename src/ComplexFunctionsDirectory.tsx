@@ -43,6 +43,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
               return '- '+(note?'['+label+']('+entryUrl(note)+'/)' : label)+'（第 '+page+' 页）';
             }).join('\n')}/>
             {practice&&<p><a href={entryUrl(practice)+'/'}>{practice.title}</a>{pdf&&<> · <a href={'/files/'+pdf} download>下载第 {n} 章讲义与习题 PDF</a></>}</p>}
+            {n===8&&count>0&&<p>第八章含四节讲义、19 个教材编号条目与 43 道原题，附定理索引、相邻导航和 PDF。完整串联平均值、Poisson 积分、Dirichlet 唯一性与次调和函数；补齐一般上半连续情形的证明，独立列出原题反例和条件校注。</p>}
             {n===7&&count>0&&<p>第七章含四节讲义、19 个教材编号条目和 25 道原题，附可点击定理索引、章节导航及 PDF。完整串联正规族、Riemann 映射、Jordan 边界对应与 Schwarz–Christoffel 公式；逐项说明退化极限、无穷远端、积分分支及原题疑义。</p>}
             {n===6&&count>0&&<p>第六章含三节讲义、19 个教材编号条目、28 道原题及九幅教材图，附逐节索引、导航和 PDF。补全可求长曲线拼接、单叶反射的同侧条件、圆环分类与单值性证明；Picard 小定理的两种证明在已发布前六章内闭合。</p>}
             {n===5&&count>0&&<p>第五章含七节讲义、54 个教材编号条目与 58 道原题，另含 31 个积分小题及教材围道图。补证 Picard 大定理，明确主值、分支、一般域与单连通域的区别，以及按围道分组的收敛顺序；附逐节索引和 PDF。</p>}
