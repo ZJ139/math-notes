@@ -1,0 +1,679 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 2.1}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：2.1 Lebesgue 外测度},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 2.1 Lebesgue 外测度\par}
+\vspace{5pt}{第二章 Lebesgue 测度\par}
+\end{center}
+本节对应《实变函数知识框架》2.1，依据徐森林、薛春华《实变函数论》\S2.1（印刷第 102—103 页）与\S2.3（第 123—129 页），从区间覆盖直接构造外测度，展开多维体积、细覆盖与距离可加性的证明，附精选练习及完整解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.1
+从体积到覆盖费用]{2.1.1
+从体积到覆盖费用}\label{ux4eceux4f53ux79efux5230ux8986ux76d6ux8d39ux7528}
+
+固定正整数
+\(n\)。本讲的\textbf{区间}是坐标区间的直积；有时也称长方体。各边等长时称\textbf{方体}。全部边平行于坐标轴，不在本节预设旋转不变性。一维时区间就是通常的实区间。
+
+对有界非空开区间 \(Q=\prod_{i=1}^n(a_i,b_i)\)，其中
+\(a_i<b_i\)，定义几何体积
+
+\begin{equation*}
+v(Q)=\prod_{i=1}^n(b_i-a_i).
+\tag{2.1.1}
+\end{equation*}
+
+相同公式也赋予有界闭区间、半开区间及混合端点区间一个几何体积；空集体积约定为零。这里的
+\(v\) 只是边长的乘积，还没有使用任何测度理论。
+
+对任意 \(E\subseteq\mathbb R^n\)，令 \(\mathcal C(E)\) 为覆盖 \(E\)
+的至多可数个有界非空开区间组成的族。允许有限族，空集允许空覆盖，空和取零。每个集合都有这样的覆盖，因为
+\(\mathbb R^n=\bigcup_{k\ge1}(-k,k)^n\)。定义 \textbf{Lebesgue 外测度}
+
+\begin{equation*}
+m_n^*(E)=\inf_{(Q_j)\in\mathcal C(E)}\sum_jv(Q_j)\in[0,+\infty].
+\tag{2.1.2}
+\end{equation*}
+
+维数固定时简写
+\(m^*\)。每个费用是非负级数的和，允许为无穷；下确界取遍\textbf{覆盖族}，不是对
+\(E\)
+中的点取下确界。覆盖允许重叠，重叠部分的费用会重复计算；取下确界是在所有这些可能浪费的方案中优化。
+
+为什么允许可数覆盖？极限、稠密集和可数并都天然要求可数操作。为什么不用最小值？最优覆盖未必存在。例如非空单点可以被任意小的开方体覆盖，但任何开区间覆盖的总费用都严格大于零。因此零可以是下确界，却不是某个覆盖的费用。
+
+\Needspace{10\baselineskip}\textbf{命题 2.1.1（近最优覆盖）}　若 \(m^*(E)<\infty\)，则对每个
+\(\varepsilon>0\)，存在覆盖 \((Q_j)\)，使
+
+\begin{equation*}
+m^*(E)\le\sum_jv(Q_j)<m^*(E)+\varepsilon.
+\tag{2.1.3}
+\end{equation*}
+
+若 \(m^*(E)=\infty\)，则每个覆盖的费用均为无穷。
+
+\Needspace{3\baselineskip}\textbf{证明：} 下确界不大于每个费用。若所有费用都不小于有限数
+\(m^*(E)+\varepsilon\)，该数也会成为下界，与下确界的定义矛盾。若下确界为无穷却存在一个有限费用，同样矛盾。
+
+以后``任取 \(\varepsilon>0\)
+并选近最优覆盖''只在外测度有限时使用。无穷情形先单独判断，避免出现
+\(\infty-\infty\)。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.2
+非负性与单调性]{2.1.2
+非负性与单调性}\label{ux975eux8d1fux6027ux4e0eux5355ux8c03ux6027}
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.2（基本序性质）}　\(m^*(\varnothing)=0\)，任意 \(E\) 有
+\(m^*(E)\ge0\)；若 \(A\subseteq B\)，则
+
+\begin{equation*}
+m^*(A)\le m^*(B).
+\tag{2.1.4}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 费用全部非负，空覆盖的费用为零，得前两项。每个覆盖 \(B\)
+的族也覆盖 \(A\)，所以
+\(\mathcal C(B)\subseteq\mathcal C(A)\)。在更大的候选族上取下确界只会减小，故得（2.1.4）。
+
+尤其，若 \(E\subseteq Q\) 且 \(Q\) 是有界开区间，直接用 \(Q\) 覆盖得
+\(m^*(E)\le v(Q)\)。每个有界集外测度有限；这是用一个足够大的开方体覆盖的结果。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.1（单点与无界性；补充例）}　对 \(x\in\mathbb R^n\)，以
+\(x\) 为中心、边长为 \(h>0\) 的开方体给出 \(0\le m^*(\{x\})\le h^n\)。令
+\(h\downarrow0\)，得单点外测度为零。无界不意味着外测度无穷；下文将证明无界的
+\(\mathbb Z^n\) 仍然外测度为零。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.3
+可数次可加性与误差分配]{2.1.3
+可数次可加性与误差分配}\label{ux53efux6570ux6b21ux53efux52a0ux6027ux4e0eux8befux5deeux5206ux914d}
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.3（可数次可加性）}　对任意
+\(E_k\subseteq\mathbb R^n\)，
+
+\begin{equation*}
+m^*\left(\bigcup_{k=1}^{\infty}E_k\right)\le\sum_{k=1}^{\infty}m^*(E_k).
+\tag{2.1.5}
+\end{equation*}
+
+``可数次可加性''也称``次可数可加性''，指此不等式；它不同于可数可加性。这里既不要求集合两两不交，也不预设可测性。
+
+\Needspace{3\baselineskip}\textbf{想法：} 分别覆盖每个 \(E_k\)，再合并覆盖。若每组都浪费同一个
+\(\varepsilon\)，总浪费可能无穷；应把总预算拆成可求和的小误差。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若右端为无穷，不等式自动成立。否则每个 \(m^*(E_k)\)
+有限。给定 \(\varepsilon>0\)，用命题 2.1.1 为每个 \(k\) 选开区间覆盖
+\((Q_{k,j})_j\)，使
+
+\begin{equation*}
+\sum_jv(Q_{k,j})<m^*(E_k)+\varepsilon 2^{-k}.
+\tag{2.1.6}
+\end{equation*}
+
+所有 \(Q_{k,j}\) 合起来仍至多可数，覆盖
+\(\bigcup_kE_k\)。非负项的二重和可以按任意可数次序排列，因为它等于所有有限部分和的上确界。因此
+
+\begin{equation*}
+\begin{aligned}
+m^*\left(\bigcup_kE_k\right)
+&\le\sum_{k,j}v(Q_{k,j})\\
+&\le\sum_km^*(E_k)+\varepsilon\sum_{k=1}^{\infty}2^{-k}
+=\sum_km^*(E_k)+\varepsilon.
+\end{aligned}\tag{2.1.7}
+\end{equation*}
+
+令 \(\varepsilon\downarrow0\)
+即得结论。二重求和的解释也说明，本论证没有借用尚未建立的积分换序定理。
+
+取尾部各集为空，得到有限次可加性。若
+\(E\subseteq\bigcup_kE_k\)，再用单调性可得
+\(m^*(E)\le\sum_km^*(E_k)\)。误差权重并非只能取 \(2^{-k}\)；任何正数列
+\(c_k\) 满足 \(\sum_kc_k\le1\) 都可代替它。
+
+\Needspace{10\baselineskip}\textbf{推论 2.1.4（零外测度集合）}　称 \(m^*(N)=0\)
+的集合为零外测度集，简称零集。零集的任意子集、可数个零集的并仍为零集。因此每个至多可数集的外测度为零。
+
+\Needspace{3\baselineskip}\textbf{证明：}
+前两项分别由单调性与（2.1.5）得到。至多可数集是单点的至多可数并，再用例
+2.1.1 即可。这里的``零集''只描述外测度数值；其可测性和测度的完备性留待
+§2.2 证明。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.4
+有限网格与闭区间的体积]{2.1.4
+有限网格与闭区间的体积}\label{ux6709ux9650ux7f51ux683cux4e0eux95edux533aux95f4ux7684ux4f53ux79ef}
+
+从定义得到 \(m^*(Q)\le v(Q)\)
+容易，困难是排除更便宜的可数覆盖。证明反向不等式需要一个纯有限的几何事实。
+
+\Needspace{10\baselineskip}\textbf{引理 2.1.5（有限覆盖的体积下界）}　设有界闭区间
+\(K=\prod_{i=1}^n[a_i,b_i]\)，\(a_i\le b_i\)。若有界开区间
+\(Q_1,\ldots,Q_N\) 覆盖 \(K\)，则
+
+\begin{equation*}
+v(K)\le\sum_{j=1}^Nv(Q_j).
+\tag{2.1.8}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 若某个 \(a_i=b_i\)，左端为零，结论成立。否则取一个包含
+\(K\) 和所有 \(\overline{Q_j}\) 的大闭区间。对第 \(i\)
+个坐标，把大区间端点、\(a_i,b_i\) 及各 \(Q_j\)
+的该坐标端点按大小排列，去掉重复值。相邻分点之间的开段作直积，得到有限个开小格。
+
+每个开小格相对于任一 \(Q_j\) 的归属是恒定的：它或完全包含于
+\(Q_j\)，或与 \(Q_j\) 不交，因为 \(Q_j\) 的边界坐标均已成为分点。对位于
+\(\operatorname{int}K\) 内的小格取一点，该点被某个 \(Q_j\)
+覆盖，故整个小格包含于该 \(Q_j\)。把这个小格指定给其中一个这样的下标。
+
+\(K\) 内所有小格的体积之和等于 \(v(K)\)：沿每个坐标，细分段长度之和等于
+\(b_i-a_i\)，把这些和相乘并展开就是所述恒等式。同理，固定 \(j\)，指定给
+\(Q_j\) 的小格只是其内部全部网格的一部分，所以体积之和不超过
+\(v(Q_j)\)。对 \(j\) 求和即得（2.1.8）。
+
+网格边界没有作为开小格计入，但上面的等式只是边长的有限加法与乘法分配律，\textbf{没有预先使用``边界测度为零''}，因此不存在循环论证。
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.6（闭区间的外测度）}　任意有界闭区间
+\(K=\prod_i[a_i,b_i]\) 满足
+
+\begin{equation*}
+m_n^*(K)=\prod_{i=1}^n(b_i-a_i).
+\tag{2.1.9}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 对 \(t>0\)，\(K\) 包含在 \(Q_t=\prod_i(a_i-t,b_i+t)\)
+中，故
+
+\begin{equation*}
+m^*(K)\le\prod_i(b_i-a_i+2t)\longrightarrow v(K)
+\quad(t\downarrow0).
+\tag{2.1.10}
+\end{equation*}
+
+得到上界，包括退化情形。反向，任给 \(K\) 的可数开区间覆盖
+\((Q_j)\)。\(K\) 有界闭，因而紧；由有限覆盖定理选出有限子覆盖
+\(Q_{j_1},\ldots,Q_{j_N}\)。引理 2.1.5 给出
+
+\begin{equation*}
+v(K)\le\sum_{r=1}^Nv(Q_{j_r})\le\sum_jv(Q_j).
+\tag{2.1.11}
+\end{equation*}
+
+最后在所有可数覆盖上取下确界，得 \(v(K)\le m^*(K)\)。若 \(K\)
+为空，则两端均为零。
+
+有限网格只处理有限个端点；紧性把任意可数开覆盖缩减到它能处理的情形。不能对非紧开区间直接宣称每个开覆盖都有有限子覆盖，也不能先把任意可数个端点排序后照搬有限网格论证。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.5
+端点、退化区间与无界区间]{2.1.5
+端点、退化区间与无界区间}\label{ux7aefux70b9ux9000ux5316ux533aux95f4ux4e0eux65e0ux754cux533aux95f4}
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.7（各种端点的有界区间）}　设 \(I=\prod_iJ_i\)，其中每个
+\(J_i\) 取 \((a_i,b_i)\)、\([a_i,b_i]\)、\([a_i,b_i)\) 或 \((a_i,b_i]\)
+之一，\(a_i\le b_i\)。则
+
+\begin{equation*}
+m_n^*(I)=\prod_i(b_i-a_i).
+\tag{2.1.12}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 若有退化边 \(a_i=b_i\)，则 \(I\)
+为空集或包含于体积为零的闭区间，定理 2.1.6 与单调性给出结论。否则记
+\(\ell=\min_i(b_i-a_i)>0\)。对 \(0<t<\ell/2\)，有
+
+\begin{equation*}
+\prod_i[a_i+t,b_i-t]\subseteq I\subseteq\prod_i[a_i,b_i].
+\tag{2.1.13}
+\end{equation*}
+
+两端闭区间的外测度已经知道，故
+\(\prod_i(b_i-a_i-2t)\le m^*(I)\le\prod_i(b_i-a_i)\)。令
+\(t\downarrow0\)
+即得（2.1.12）。这里取极限的是显式的实数乘积，没有调用测度的连续性。
+
+于是边长为 \(\ell\) 的有界方体，无论端点怎样选取，其 \(n\) 维外测度都是
+\(\ell^n\)。一维中四种端点的非退化区间均长为
+\(b-a\)；但高维中改一个端面会改变不可数多个点，不能只用``有限点不影响长度''解释高维结论。
+
+\Needspace{10\baselineskip}\textbf{命题 2.1.8（坐标超平面及区间边界）}　\(n\ge2\) 时每个坐标超平面
+\(H=\{x:x_i=c\}\) 的 \(n\) 维外测度为零。有界区间的边界外测度为零。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(H\cap[-k,k]^n\)
+为空集或为某一边长为零的闭区间，故外测度为零。\(H=\bigcup_{k\ge1}(H\cap[-k,k]^n)\)，由可数次可加性得结论。有界区间的边界包含在有限个坐标超平面中；一维边界至多为两个点。分别用推论
+2.1.4 即可。
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.9（无界坐标区间）}　设 \(I=\prod_iJ_i\)，每个 \(J_i\)
+是允许无穷端点的实区间。若 \(I=\varnothing\)，则 \(m^*(I)=0\)；若某个
+\(J_i\) 为单点，仍有
+\(m^*(I)=0\)。若各因子均有正长度，且至少一个无界，则 \(m^*(I)=\infty\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 空集情形已知。有单点因子时，\(n=1\) 用例
+2.1.1；\(n\ge2\) 时 \(I\) 包含于坐标超平面，应用命题 2.1.8。最后设第
+\(i\) 个因子无界。它包含任意指定长度 \(L>0\)
+的闭线段；其他每个因子内固定一条正长闭线段，长度分别为
+\(c_j>0\)。所得闭区间 \(K_L\subseteq I\) 满足
+
+\begin{equation*}
+m^*(I)\ge m^*(K_L)=L\prod_{j\ne i}c_j\longrightarrow\infty.
+\tag{2.1.14}
+\end{equation*}
+
+当 \(n=1\) 时空乘积取 \(1\)。这覆盖所有情形，无须写含混的
+\(0\cdot\infty\)。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.2（维数必须注明；补充例）}　在 \(\mathbb R\) 中
+\(m_1^*([0,1])=1\)，在 \(\mathbb R^2\) 中
+\(m_2^*([0,1]\times\{0\})=0\)；\(m_2^*(\mathbb R\times\{0\})=0\)，但
+\(m_2^*(\mathbb R\times(0,1))=\infty\)。这些结论分别来自退化区间、坐标超平面与定理
+2.1.9。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.6
+零外测度与典型例子]{2.1.6
+零外测度与典型例子}\label{ux96f6ux5916ux6d4bux5ea6ux4e0eux5178ux578bux4f8bux5b50}
+
+\Needspace{10\baselineskip}\textbf{命题 2.1.10（任意小费用判别与零集扰动）}　\(m^*(N)=0\)
+当且仅当对每个 \(\varepsilon>0\)，\(N\) 有总费用小于 \(\varepsilon\)
+的可数开区间覆盖。若 \(m^*(A\mathbin{\triangle}B)=0\)，则
+\(m^*(A)=m^*(B)\)，允许两端同时为无穷。
+
+\Needspace{3\baselineskip}\textbf{证明：} 前一项由定义及命题 2.1.1 得到。后一项利用
+\(A\subseteq B\cup(A\mathbin{\triangle}B)\) 及交换 \(A,B\)
+后的包含关系，得到
+
+\begin{equation*}
+m^*(A)\le m^*(B)+0,\qquad m^*(B)\le m^*(A)+0.
+\tag{2.1.15}
+\end{equation*}
+
+不作减法，故无穷情形也有效。特别地，添加或删除零集不会改变任意集合的外测度。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.3（稠密的零集）}　\(\mathbb Q^n\)
+可数，所以外测度为零，但在 \(\mathbb R^n\) 中稠密。更直接地，列为
+\(\{q_j\}\)，用以 \(q_j\) 为中心、体积为 \(\varepsilon2^{-j-1}\)
+的开方体覆盖，总费用为
+\(\varepsilon/2\)。因此``到处都有点''与``需要多少覆盖费用''是两回事。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.4（不可数的零集）}　第一章构造的 Cantor 三分集
+\(C\)，在第 \(k\) 级被 \(2^k\) 个长度为 \(3^{-k}\) 的闭区间覆盖。由定理
+2.1.7 及有限次可加性，
+
+\begin{equation*}
+0\le m_1^*(C)\le2^k3^{-k}=(2/3)^k\longrightarrow0.
+\tag{2.1.16}
+\end{equation*}
+
+所以 \(m_1^*(C)=0\)，尽管第一章已经证明 \(C\)
+不可数。此处不需要用``整体长度减去被删区间的长度''计算，因而不依赖可测集的可数可加性。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.5（正外测度而无内点；补充例）}　令
+\(E=[0,1]\setminus\mathbb Q\)。它与 \([0,1]\) 的对称差为可数集，故
+\(m_1^*(E)=1\)。但每个实开区间都含有理数，所以 \(E\)
+没有内点。正外测度不保证包含区间。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.6（有界不是有限外测度的必要条件；补充例）}　令
+\(E=\bigcup_{k\ge1}(k,k+2^{-k})\)。它无界，但
+\(1/2\le m_1^*(E)\le\sum_{k\ge1}2^{-k}=1\)：下界只用第一个区间，上界只用次可加性。准确值将在练习中求出；此处不预先假定这些区间的外测度可以相加。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.7
+覆盖族的等价形式]{2.1.7
+覆盖族的等价形式}\label{ux8986ux76d6ux65cfux7684ux7b49ux4ef7ux5f62ux5f0f}
+
+\textbf{命题
+2.1.11（开闭、半开与有理端点覆盖）}　（2.1.2）中的覆盖区间可全部改成有界闭区间，或统一的半开区间
+\(\prod_i(a_i,b_i]\)；也可限制为有理端点的有界开区间。所得下确界均等于
+\(m_n^*\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 记闭区间版本为
+\(c^*\)。把开区间覆盖中的每项换成闭包，不改变费用，故
+\(c^*(E)\le m^*(E)\)。反向，每个有界闭区间 \(K_j\)
+都可略微向外扩大为开区间 \(U_j\)，使
+\(v(U_j)<v(K_j)+\varepsilon2^{-j}\)，包括退化区间。这由（2.1.10）中的体积极限保证。若
+\(c^*(E)<\infty\)，先选费用小于 \(c^*(E)+\varepsilon\)
+的闭覆盖，再扩大，得 \(m^*(E)\le c^*(E)+2\varepsilon\)；令
+\(\varepsilon\downarrow0\)。若 \(c^*(E)=\infty\)，已有的不等式即强迫
+\(m^*(E)=\infty\)。
+
+对半开版本，开区间 \(\prod_i(a_i,b_i)\) 包含于同费用的
+\(\prod_i(a_i,b_i]\)；每个半开区间又可同样略微扩大成开区间。重复上面的两次比较即可。
+
+对有理端点版本，限制候选覆盖给出的下确界不小于
+\(m^*\)。另一方面，实数中有理数稠密，可把每个开区间略向外扩大为有理端点开区间，使第
+\(j\) 项体积增加小于
+\(\varepsilon2^{-j}\)。近最优覆盖加误差分配给出反向不等式；无穷情形由前一比较直接处理。
+
+与教材的构造对应：一维半开区间有限不交并的长度是各段长度之和。用这些有限并覆盖与用半开区间覆盖的下确界相同，因为可把每个有限并拆成其有限个组成区间，总费用不变，二重族仍可数。因此本讲的一维定义与教材定义
+2.1.2 在 §2.3 的长度情形完全一致。
+
+\Needspace{10\baselineskip}\textbf{引理 2.1.12（任意细的开方体覆盖）}　给定
+\(\delta>0\)，将（2.1.2）中的覆盖限制为直径小于 \(\delta\)
+的有界开方体，所得下确界仍等于
+\(m_n^*\)。还可同时要求这些方体的端点为有理数。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+切开一个开区间时，分割面不能遗漏；用稍微扩大的网格方体覆盖它们，再把新增费用控制到任意小。
+
+\Needspace{3\baselineskip}\textbf{证明：} 先处理一个开区间 \(Q=\prod_i(a_i,b_i)\)，记边长
+\(\ell_i=b_i-a_i\)。取有理网格边长 \(h>0\)，考察网格闭方体
+\(\prod_i[k_ih,(k_i+1)h]\)。所有与 \(\overline Q\)
+相交的这些方体组成有限覆盖，数量 \(M\) 满足
+
+\begin{equation*}
+Mh^n\le\prod_i(\ell_i+2h)\longrightarrow\prod_i\ell_i=v(Q)
+\quad(h\downarrow0).
+\tag{2.1.17}
+\end{equation*}
+
+这里一条长度为 \(\ell_i\) 的闭线段至多与 \(\ell_i/h+2\)
+个网格段相交，乘起来得所述估计。给定额外费用
+\(\eta>0\)，可选足够小的有理 \(h\)，使右端小于 \(v(Q)+\eta/2\)，且
+\(\sqrt n\,h<\delta/2\)。再把这有限个闭方体分别向外扩张同一个足够小的有理长度
+\(t>0\)。所得开方体覆盖 \(Q\)，端点有理，直径
+\(\sqrt n(h+2t)<\delta\)，而总费用 \(M(h+2t)^n<v(Q)+\eta\)。
+
+现在令受限下确界为 \(m^*_{\delta,\mathrm{cube}}\)，显然
+\(m^*\le m^*_{\delta,\mathrm{cube}}\)。若
+\(m^*(E)<\infty\)，先选费用小于 \(m^*(E)+\varepsilon\) 的开区间覆盖
+\((Q_j)\)，再把每个 \(Q_j\) 按刚才方法换成有限个细开方体，额外费用小于
+\(\varepsilon2^{-j}\)。合并后仍可数，故
+
+\begin{equation*}
+m^*_{\delta,\mathrm{cube}}(E)\le m^*(E)+2\varepsilon.
+\tag{2.1.18}
+\end{equation*}
+
+令 \(\varepsilon\downarrow0\) 得相等。若
+\(m^*(E)=\infty\)，另一方向的不等式已经给出结论。
+
+这里是\textbf{每个固定 \(\delta>0\) 都已相等}，不必再令
+\(\delta\downarrow0\)。这与其他几何外测度构造中的尺度极限应予区别。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.8
+平移不变性与距离可加性]{2.1.8
+平移不变性与距离可加性}\label{ux5e73ux79fbux4e0dux53d8ux6027ux4e0eux8dddux79bbux53efux52a0ux6027}
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.13（平移不变性）}　对 \(h\in\mathbb R^n\) 和任意
+\(E\subseteq\mathbb R^n\)，
+
+\begin{equation*}
+m_n^*(E+h)=m_n^*(E),\qquad E+h=\{x+h:x\in E\}.
+\tag{2.1.19}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \((Q_j)\) 覆盖 \(E\)，则 \((Q_j+h)\) 覆盖
+\(E+h\)，并且平移不改变边长，故 \(v(Q_j+h)=v(Q_j)\)。于是
+\(m^*(E+h)\le\sum_jv(Q_j)\)。对所有覆盖取下确界得
+\(m^*(E+h)\le m^*(E)\)。用 \(-h\)
+平移回去得到反向不等式。这是费用保持不变的覆盖族双射，有限与无穷外测度统一成立。
+
+对非空集合 \(A,B\)，记 \(d(A,B)=\inf\{|a-b|:a\in A,b\in B\}\)，其中
+\(|\cdot|\) 是欧氏范数。
+
+\Needspace{10\baselineskip}\textbf{定理 2.1.14（正距离分离集合的可加性）}　若 \(A,B\ne\varnothing\)
+且 \(d(A,B)>0\)，则
+
+\begin{equation*}
+m_n^*(A\cup B)=m_n^*(A)+m_n^*(B).
+\tag{2.1.20}
+\end{equation*}
+
+任一集合为空时此式也成立。这一性质称为距离可加性或隔离可加性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 次可加性已给出``\(\le\)''。令
+\(d=d(A,B)>0\)，取任意直径小于 \(d\) 的开方体覆盖 \((Q_j)\)。一个
+\(Q_j\) 不可能同时遇到 \(A\) 和 \(B\)：否则存在
+\(a\in A\cap Q_j\)、\(b\in B\cap Q_j\)，导致
+\(|a-b|<d\)，与距离的下界矛盾。
+
+将遇到 \(A\) 的下标记为 \(J_A\)，遇到 \(B\) 的下标记为
+\(J_B\)，则二者不交，且对应子族分别覆盖 \(A,B\)。故
+
+\begin{equation*}
+m^*(A)+m^*(B)
+\le\sum_{j\in J_A}v(Q_j)+\sum_{j\in J_B}v(Q_j)
+\le\sum_jv(Q_j).
+\tag{2.1.21}
+\end{equation*}
+
+在所有直径小于 \(d\) 的开方体覆盖上取下确界，由引理 2.1.12
+得``\(\ge\)''。全部不等式在扩展非负实数中成立；若一端为无穷，同样不需相减。空集情形用
+\(m^*(\varnothing)=0\) 直接验证。
+
+\Needspace{10\baselineskip}\textbf{推论 2.1.15（有限个分离集）}　若 \(E_1,\ldots,E_N\)
+中任意两个非空集合之间的距离为正，则
+
+\begin{equation*}
+m^*\left(\bigcup_{j=1}^NE_j\right)=\sum_{j=1}^Nm^*(E_j).
+\tag{2.1.22}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 去掉空集。\(E_N\) 到前 \(N-1\)
+个集合的并的距离，等于有限个正数 \(d(E_N,E_j)\) 的最小值，仍为正。对
+\(N\) 归纳并应用定理 2.1.14
+即可。可数个集合时不能直接取所有距离的最小值；练习中用有限部分和处理。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.9
+易混结论与反例]{2.1.9
+易混结论与反例}\label{ux6613ux6df7ux7ed3ux8bbaux4e0eux53cdux4f8b}
+
+\Needspace{6\baselineskip}\textbf{例 2.1.7（次可加不等于任意相加；补充例）}　取 \(A=B=[0,1]\)，则
+\(m_1^*(A\cup B)=1<2=m_1^*(A)+m_1^*(B)\)。这说明（2.1.5）可能严格，但因两集重叠，\textbf{它不是``不交集合仍不能相加''的反例}。
+
+外测度公理本身也不保证不交可加。例如在 \(X=\{a,b\}\) 上定义
+\(\nu(\varnothing)=0\)，所有非空集的 \(\nu\) 值为
+\(1\)。它单调；一族集合的并若非空，至少有一个非空项，故并的值 \(1\)
+不超过各项值之和，所以满足可数次可加性。然而
+\(\nu(\{a,b\})=1<2=\nu(\{a\})+\nu(\{b\})\)。这是抽象外测度的反例，不是
+Lebesgue 外测度的实例。Lebesgue
+外测度在任意不交集合上的可加性障碍，需要后续不可测集理论说明，本节不提前援引。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.8（正距离是充分条件；补充例）}　\(A=(0,1)\)、\(B=(1,2)\)
+不交而距离为零。它们的并与 \((0,2)\)
+只差一个点，故由零集扰动及区间公式仍有
+\(m^*(A\cup B)=2=m^*(A)+m^*(B)\)。所以距离为零并不意味着可加性必然失败。
+
+\Needspace{6\baselineskip}\textbf{例 2.1.9（闭包会改变外测度；补充例）}　令
+\(E=\mathbb Q\cap[0,1]\)，则 \(m_1^*(E)=0\)，但
+\(\overline E=[0,1]\)，其外测度为
+\(1\)。由此不能将任意集合换成闭包再求外测度，也不能从 \(E_k\uparrow E\)
+就在未经证明时调用``外测度连续性''。本节对区间使用的夹逼，始终是显式体积的极限。
+
+一般开集逼近的精细形式、可测集的可数可加性以及单调集列的测度连续性，将在
+§2.2---§2.3
+建立。本节已得到全部框架要求的外测度性质，但不把外测度直接当作定义在所有子集上的测度。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.1.10
+精选练习与方法回看]{2.1.10
+精选练习与方法回看}\label{ux7cbeux9009ux7ec3ux4e60ux4e0eux65b9ux6cd5ux56deux770b}
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.1}\label{ux95eeux9898-2.1.1}
+
+补充练习：对
+\(D=\mathbb Q\cap[0,1]\)，证明可数开区间覆盖的费用下确界为零，而有限开区间覆盖的费用下确界为
+\(1\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 可数覆盖的结论来自推论 2.1.4。若
+\(D\subseteq\bigcup_{j=1}^N(a_j,b_j)\)，对包含关系取闭包，利用有限并与闭包可交换，得
+\([0,1]=\overline D\subseteq\bigcup_{j=1}^N[a_j,b_j]\)。再把这些闭区间分别向外扩大
+\(t>0\)，得到 \([0,1]\) 的有限开覆盖。由引理 2.1.5，
+
+\begin{equation*}
+1\le\sum_{j=1}^N(b_j-a_j+2t).
+\tag{2.1.23}
+\end{equation*}
+
+令 \(t\downarrow0\) 得任意有限覆盖费用至少为 \(1\)；用 \((-t,1+t)\)
+覆盖则给出下确界至多为 \(1\)。这里显示了允许可数覆盖的实质作用。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.2}\label{ux95eeux9898-2.1.2}
+
+教材例 2.3.2（第 129---130 页）的外测度部分：设
+\(m^*(A),m^*(B)<\infty\)，证明
+\(|m^*(A)-m^*(B)|\le m^*(A\mathbin{\triangle}B)\)。若
+\(m^*(A\mathbin{\triangle}B)=m^*(B\mathbin{\triangle}C)=0\)，证明
+\(m^*(A\mathbin{\triangle}C)=0\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 由 \(A\subseteq B\cup(A\mathbin{\triangle}B)\) 得
+\(m^*(A)\le m^*(B)+m^*(A\mathbin{\triangle}B)\)。若右端差集外测度为无穷，所求不等式自动成立；否则作有限数的减法，并交换
+\(A,B\)，得到绝对值估计。后一项用
+\(A\mathbin{\triangle}C\subseteq(A\mathbin{\triangle}B)\cup(B\mathbin{\triangle}C)\)
+及次可加性。对称差外测度为零时两集合外测度相同，不需要它们有限；可直接用命题
+2.1.10。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.3}\label{ux95eeux9898-2.1.3}
+
+补充练习：若 \(E_k\) 中任意两个非空集合之间的距离均为正，证明
+\(m^*(\bigcup_{k\ge1}E_k)=\sum_{k\ge1}m^*(E_k)\)。不要求所有两两距离具有统一正下界。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对每个
+\(N\)，有限个非空集合间的正距离有正的最小值，由推论 2.1.15 及单调性，
+
+\begin{equation*}
+m^*\left(\bigcup_{k\ge1}E_k\right)\ge\sum_{k=1}^Nm^*(E_k).
+\tag{2.1.24}
+\end{equation*}
+
+取非负级数部分和的上确界，得``\(\ge\)''；反向用可数次可加性。此处没有把有限并的外测度极限误认作一般测度连续性。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.4}\label{ux95eeux9898-2.1.4}
+
+补充练习：求 \(E=\bigcup_{k\ge1}(k,k+2^{-k})\)
+的外测度；再给出一个无界、不可数而外测度为零的实点集。
+
+\Needspace{3\baselineskip}\textbf{解：} 任意两个所列区间之间距离为正，问题 2.1.3 给出
+\(m_1^*(E)=\sum_{k\ge1}2^{-k}=1\)。若 \(C\) 为 Cantor 三分集，取
+\(N=\bigcup_{k\ge1}(C+2k)\)。平移不变性及次可加性给出
+\(m_1^*(N)=0\)；它包含不可数的 \(C+2\)，又包含无界点列
+\(2k\)，故满足要求。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.5}\label{ux95eeux9898-2.1.5}
+
+补充练习：设 \(E_k\subseteq\mathbb R^n\) 且
+\(\sum_km^*(E_k)<\infty\)。证明属于无穷多个 \(E_k\)
+的点组成一个零外测度集。
+
+\Needspace{3\baselineskip}\textbf{证明：} 该集合是 \(L=\bigcap_{N\ge1}\bigcup_{k\ge N}E_k\)。每个
+\(N\) 都有
+
+\begin{equation*}
+0\le m^*(L)\le m^*\left(\bigcup_{k\ge N}E_k\right)
+\le\sum_{k\ge N}m^*(E_k)\longrightarrow0.
+\tag{2.1.25}
+\end{equation*}
+
+所以
+\(m^*(L)=0\)。这里只取数值级数的尾和极限，不需要集合可测或任何独立性假设。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.6}\label{ux95eeux9898-2.1.6}
+
+补充练习：设 \(f:[a,b]\to\mathbb R\) 连续，证明其图像
+\(\Gamma_f=\{(x,f(x)):a\le x\le b\}\) 的二维外测度为零。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(a=b\) 时图像为单点。设
+\(a<b\)。由紧区间上的一致连续性，对任意 \(\eta>0\)，存在
+\(\delta>0\)，使 \(|x-y|<\delta\) 时 \(|f(x)-f(y)|<\eta\)。将 \([a,b]\)
+有限分割为长度小于 \(\delta\) 的闭段 \(I_j\)，在每段内取
+\(\xi_j\)。图像包含于闭矩形 \(I_j\times[f(\xi_j)-\eta,f(\xi_j)+\eta]\)
+的并。由矩形体积公式和有限次可加性，
+
+\begin{equation*}
+m_2^*(\Gamma_f)\le\sum_j2\eta\,|I_j|=2\eta(b-a).
+\tag{2.1.26}
+\end{equation*}
+
+令 \(\eta\downarrow0\)
+得证。相邻闭段重叠端点不影响上界，也不需要先证明图像可测。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.7}\label{ux95eeux9898-2.1.7}
+
+补充练习：给定 \(\varepsilon>0\)，构造 \([0,1]\)
+中闭、无内点而外测度至少为 \(1-\varepsilon\)
+的集合。此题只要求下界，不使用可测性。
+
+\Needspace{3\baselineskip}\textbf{解：} 将 \(\mathbb Q\cap[0,1]\) 列为 \(\{q_j\}\)，取以 \(q_j\)
+为中心的开区间 \(I_j\)，使 \(|I_j|=\varepsilon2^{-j-1}\)。令
+\(U=\bigcup_jI_j\)，\(F=[0,1]\setminus U\)。\(F\)
+是闭集，且不含有理数，故无内点。由 \([0,1]\subseteq F\cup U\)，
+
+\begin{equation*}
+1\le m_1^*(F)+m_1^*(U)\le m_1^*(F)+\varepsilon/2.
+\tag{2.1.27}
+\end{equation*}
+
+所以 \(m_1^*(F)\ge1-\varepsilon/2\ge1-\varepsilon\)。当
+\(0<\varepsilon<1\)
+时，它是正外测度的疏朗闭集，说明疏朗与零外测度不同；例 2.1.3
+则说明零外测度也不保证疏朗。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.8}\label{ux95eeux9898-2.1.8}
+
+补充练习：给定 \(0<t<1\)，在 \((0,1)\)
+中取以全部有理数为中心的开区间，其总长度小于 \(t\)，记其并与 \((0,1)\)
+的交为 \(G\)。证明 \(G\) 稠密于 \((0,1)\)，而
+\(m_1^*(G)<t\)。若一个开集稠密，能否从稠密性推出它具有整个区间的外测度？
+
+\Needspace{3\baselineskip}\textbf{解：} 所有有理点均在 \(G\) 中，因此每个非空子区间都与 \(G\)
+相交，得相对稠密性。次可加性给出 \(m_1^*(G)\)
+不超过所选区间的总长度，故小于
+\(t\)。另一方面，\(m_1^*((0,1))=1\)，所以不能从稠密性推出外测度相等。这也解释了为什么不能用``覆盖集稠密''代替``覆盖每一个点''。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.9}\label{ux95eeux9898-2.1.9}
+
+补充练习：若 \(N\subseteq\mathbb R\) 为零外测度集，证明
+\(N\times\mathbb R\subseteq\mathbb R^2\)
+为零外测度集。不要使用乘积测度或 Fubini 定理。
+
+\Needspace{3\baselineskip}\textbf{证明：} 固定整数 \(k\ge1\)。对任意
+\(\varepsilon>0\)，选有界开区间 \(I_j\) 覆盖 \(N\)，且
+\(\sum_j|I_j|<\varepsilon/(2k+2)\)。开矩形 \(I_j\times(-k-1,k+1)\) 覆盖
+\(N\times[-k,k]\)，总面积小于 \(\varepsilon\)。故每个 \(N\times[-k,k]\)
+的二维外测度为零。再用 \(N\times\mathbb R=\bigcup_{k\ge1}N\times[-k,k]\)
+和次可加性得证。先截断无界方向再覆盖，避免把无限长条的费用写成
+\(0\cdot\infty\)。
+
+\Needspace{8\baselineskip}\subsection{问题 2.1.10}\label{ux95eeux9898-2.1.10}
+
+补充练习：说明以下距离可加性的``证明''错在哪里，并修正：任取覆盖
+\(A\cup B\) 的区间族，把每个区间按它遇到 \(A\) 或 \(B\)
+分到两组，分别估计费用。
+
+\Needspace{3\baselineskip}\textbf{解：} 原覆盖的一个区间可能同时遇到 \(A\) 和
+\(B\)，把它同时放入两组会把费用计算两次；只放入一组则另一组未必覆盖对应集合。正确修正是先用引理
+2.1.12 把覆盖限制为直径小于 \(d(A,B)\)
+的开方体族。此时一个方体不能同时遇到两集，两组下标才确实不交，才能使用（2.1.21）。若仅假设
+\(A\cap B=\varnothing\)
+而距离为零，则不存在可统一使用的正直径阈值，不能沿用这个证明。
+
+回看本节，求上界要主动构造便宜覆盖，求下界则要控制每一种覆盖。区间体积公式的下界依靠``紧性选有限覆盖，再用有限网格''；距离可加性的下界依靠``细覆盖使一块不能跨越两集''。遇到可数操作时先分配可求和误差，遇到无界集合时先检查能否分成可数个有界片，遇到无穷值时尽量使用包含关系和不等式。下一节将用分割等式选择适当的集合类，使这些外估计进一步成为可数可加的测度。
+
+\end{document}

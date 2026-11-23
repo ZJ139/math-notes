@@ -4,7 +4,7 @@ from pathlib import Path
 import re, subprocess, shutil, argparse
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3','1.4','1.5'])
+parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3','1.4','1.5','2.1'])
 section=parser.parse_args().section
 chapter,part=map(int,section.split('.'))
 source=(ROOT/f'content/notes/real-functions-v1/ch{chapter:02d}-s{part}.md').read_text()
@@ -74,6 +74,11 @@ if section=='1.5':
  intro=r'本节对应《实变函数知识框架》1.5，依据徐森林、薛春华《实变函数论》\S1.4（印刷第 61—65 页）、\S1.5（第 67—80 页）与\S1.6（第 81—85 页），以相对连续性、距离函数延拓和闭球套为主线，附精选练习及完整解答。'
  template=re.sub(r'本节对应[^\n]+',lambda _:intro,template)
  latex=re.sub(r'\\textbf\{(例 1\.5\.\d+[^}]*)\}',r'\\Needspace{6\\baselineskip}\\textbf{\1}',latex)
+if section=='2.1':
+ template=template.replace('1.1 集合及其运算',title).replace('实变函数-v1 · 1.1','实变函数-v1 · 2.1').replace('第一章 集合与点集','第二章 Lebesgue 测度')
+ intro=r'本节对应《实变函数知识框架》2.1，依据徐森林、薛春华《实变函数论》\S2.1（印刷第 102—103 页）与\S2.3（第 123—129 页），从区间覆盖直接构造外测度，展开多维体积、细覆盖与距离可加性的证明，附精选练习及完整解答。'
+ template=re.sub(r'本节对应[^\n]+',lambda _:intro,template)
+ latex=re.sub(r'\\textbf\{(例 2\.1\.\d+[^}]*)\}',r'\\Needspace{6\\baselineskip}\\textbf{\1}',latex)
 # Keep body headings unchanged; TOC entries alone use the section sign.
 latex=re.sub(r'\\section\{('+re.escape(section)+r'\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
 latex=latex.replace('Fσ',r'\texorpdfstring{$F_\sigma$}{Fσ}').replace('Gδ',r'\texorpdfstring{$G_\delta$}{Gδ}')
