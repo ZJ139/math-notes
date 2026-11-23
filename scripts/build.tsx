@@ -15,6 +15,7 @@ import config from '../site.config.json';
 import {RealFunctionsDirectory,realFunctionsUrl,realFunctionsTitle} from '../src/RealFunctionsDirectory';
 import {RealFunctionsV1Directory,realFunctionsV1Url,realFunctionsV1Title} from '../src/RealFunctionsV1Directory';
 import {UstcAnalysisDirectory,ustcAnalysisUrl,ustcAnalysisTitle} from '../src/UstcAnalysisDirectory';
+import {PendingMathCourse,pendingMathCourses,pendingMathCourseDescription} from '../src/PendingMathCourses';
 import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
@@ -101,6 +102,7 @@ await page(realFunctionsUrl.slice(1),realFunctionsTitle,<RealFunctionsDirectory 
 await page(realFunctionsV1Url.slice(1),realFunctionsV1Title,<RealFunctionsV1Directory items={items}/>);
 await page(complexFunctionsUrl.slice(1),complexFunctionsTitle,<ComplexFunctionsDirectory items={items}/>);
 await page(ustcAnalysisUrl.slice(1),ustcAnalysisTitle,<UstcAnalysisDirectory items={items}/>);
+for(const course of pendingMathCourses)await page(course.url.slice(1),course.title,<PendingMathCourse title={course.title}/>,false,pendingMathCourseDescription);
 for(const [section,title]of Object.entries(sections))await page(section+'/',title,<Collection section={section as Section} items={items.filter(e=>e.section===section)}/>);
 for(const collection of populatedCollections(items)){
   const route=collectionRoute(collection.id),target=collectionDestination(items,collection.id);
