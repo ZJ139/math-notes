@@ -13,7 +13,7 @@ test('exported screen weight preserves TeX glyphs, spacing, bleed and rule geome
     const geometry=(svg:string)=>[...svg.matchAll(/\b(?:d|x|y|width|height|viewBox|transform)="([^"]*)"/g)].map(m=>m[0]);
     assert.deepEqual(geometry(exported),geometry(original));
     assert.doesNotMatch(exported,/<clipPath|<filter|drop-shadow/);
-    assert.match(exported,/@media screen\{\.math-screen-glyph\{stroke:currentColor;stroke-width:0\.18/);
+    assert.match(exported,/@media screen\{\.math-screen-glyph\{stroke:currentColor;stroke-width:0\.04/);
     assert.match(exported,/<path class="math-screen-glyph"/);
     assert.match(exported,/color(?:="|:)#1f1e1d/);
     // Rules outside glyph definitions (e.g. fractions) retain their TeX width.
