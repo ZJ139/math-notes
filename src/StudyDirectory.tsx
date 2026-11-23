@@ -11,6 +11,7 @@ import {problemLinks} from './problemLinks';
 import {realFunctionsTitle,realFunctionsUrl} from './RealFunctionsDirectory';
 import {realFunctionsV1Title,realFunctionsV1Url} from './RealFunctionsV1Directory';
 import {ustcAnalysisTitle,ustcAnalysisUrl} from './UstcAnalysisDirectory';
+import {pendingMathCourses} from './PendingMathCourses';
 
 export const examTranslationUrl = `/english/${examTranslation.id}/`;
 const englishDirectories: Readonly<Partial<Record<string, string>>> = {
@@ -29,6 +30,7 @@ export function MathNavigation({section}:{section?:string}) {
     <a href={realFunctionsUrl}>{realFunctionsTitle}</a>
     <a href={realFunctionsV1Url}>{realFunctionsV1Title}</a>
     <a href={complexFunctionsUrl}>{complexFunctionsTitle}</a>
+    {pendingMathCourses.map(course=><a key={course.url} href={course.url}>{course.title}</a>)}
     {mathSections.map(key=><a key={key} href={`/${key}/`} aria-current={section===key?'page':undefined}>{key==='problems'?'题库':sections[key]}</a>)}
   </nav>;
 }
@@ -39,7 +41,7 @@ export function StudyDirectory({items}:{items:PublicEntry[]}) {
     <div className="study-grid">
       <section className="study-room" aria-labelledby="math-heading">
         <div className="room-heading"><span className="room-number" aria-hidden="true">01</span><h2 id="math-heading"><a href="/math/">数学</a></h2></div>
-        <nav className="directory-links" aria-label="数学入口"><a href={ustcAnalysisUrl}><span>{ustcAnalysisTitle}</span></a><a href={realFunctionsUrl}><span>{realFunctionsTitle}</span></a><a href={realFunctionsV1Url}><span>{realFunctionsV1Title}</span></a><a href={complexFunctionsUrl}><span>{complexFunctionsTitle}</span></a>{mathSections.map(key=><a key={key} href={`/${key}/`}><span>{key==='problems'?'题库':sections[key]}</span></a>)}</nav>
+        <nav className="directory-links" aria-label="数学入口"><a href={ustcAnalysisUrl}><span>{ustcAnalysisTitle}</span></a><a href={realFunctionsUrl}><span>{realFunctionsTitle}</span></a><a href={realFunctionsV1Url}><span>{realFunctionsV1Title}</span></a><a href={complexFunctionsUrl}><span>{complexFunctionsTitle}</span></a>{pendingMathCourses.map(course=><a key={course.url} href={course.url}><span>{course.title}</span></a>)}{mathSections.map(key=><a key={key} href={`/${key}/`}><span>{key==='problems'?'题库':sections[key]}</span></a>)}</nav>
       </section>
       <section className="study-room" aria-labelledby="problems-heading">
         <div className="room-heading"><span className="room-number" aria-hidden="true">02</span><h2 id="problems-heading"><a href="/problems/">题库与作答</a></h2></div>
