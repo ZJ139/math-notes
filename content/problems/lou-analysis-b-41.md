@@ -12,7 +12,7 @@ updated_at: "2026-11-23"
 
 第四十一批接续 B281，收录下册 10.4.B 第 4—9 题与 10.5.B 第 1 题。原题见题册 PDF 第 32—33 页（印刷第 30—31 页），并与完整教材第 249、274 页逐项核对。七题均无星号。B284 保留并辨析原书数列指数的不一致；B285 已核实 $\psi=(\log\Gamma)'$ 的定义；B286 覆盖教材递推扩充后的全部实定义域；B287 补齐所引用的例 9.4.7 及其两个结论。
 
-[上一批 B275—B281](/problems/e6503f7c7939cbf34595fdd1/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B289—B295](/problems/b4a16b6f4b1d292220be481a/) · [上一批 B275—B281](/problems/e6503f7c7939cbf34595fdd1/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 

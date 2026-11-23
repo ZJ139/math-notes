@@ -6,7 +6,7 @@ category: "lou-analysis"
 tags: ["楼红卫", "下册", "A组", "B组", "习题"]
 attachment: "problems/楼分析习题-v2.pdf"
 created_at: "2026-10-25"
-updated_at: "2026-11-21"
+updated_at: "2026-11-23"
 ---
 
 收录《数学分析》下册第 8—12 章：积分、函数列与函数项级数、反常积分与含参变量积分、曲线积分与曲面积分、Fourier 级数。
@@ -50,6 +50,8 @@ updated_at: "2026-11-21"
 
 - [第四十一批 B282—B288：10.4.B 第 4—9 题及 10.5.B 第 1 题](/problems/4befc8c3dd054a194653ad14/)。七题完整解答；包括无穷区间积分和、离散 Hardy–Hilbert 不等式、ψ 特殊值、Γ 解析性、例 9.4.7 的积分表示与精确渐近，以及全导数型变分反例。明确原题数列指数的不一致。
 
-下册当前 **108 道已作答、3 道暂跳过**，两册合计 **283 道已作答、5 道暂跳过**。上册 B116、B148 及下册 B180、B247、B261 待核。第八章 41 道已作答。第九章已收录完毕，34 道已作答、1 道暂跳过。第十章已收录完毕：10.1.B 第 1—14 题、10.2.B 第 1—2 题、10.3.B 第 1—8 题、10.4.B 第 1—9 题与 10.5.B 第 1 题，共 33 道已作答、1 道暂跳过。下一题为 **B289＝11.1.B 第 1 题**，见[原题 PDF 第 34 页（印刷第 32 页）](/files/problems/楼分析习题-v2.pdf#page=34)。
+- [第四十二批 B289—B295：11.1—11.4 各节 B 组第 1 题与 11.5.B 第 1—3 题](/problems/b4a16b6f4b1d292220be481a/)。七题完整解答；弧长积分性质、球面 Poisson 公式、复积分模估计、有向曲面积分定义、椭球通量、行列式零边界扰动与循环常数。补足退化情形、余子式恒等式及奇点处理。
 
-[第十章题解索引](/problems/collections/lou-analysis/chapters/10/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
+下册当前 **115 道已作答、3 道暂跳过**，两册合计 **290 道已作答、5 道暂跳过**。上册 B116、B148 及下册 B180、B247、B261 待核。第八章 41 道已作答。第九章已收录完毕，34 道已作答、1 道暂跳过。第十章已收录完毕：10.1.B 第 1—14 题、10.2.B 第 1—2 题、10.3.B 第 1—8 题、10.4.B 第 1—9 题与 10.5.B 第 1 题，共 33 道已作答、1 道暂跳过。第十一章当前完成七题：11.1—11.4 各节 B 组第 1 题及 11.5.B 第 1—3 题。下一题为 **B296＝11.5.B 第 4 题**，见[原题 PDF 第 38 页（印刷第 36 页）](/files/problems/楼分析习题-v2.pdf#page=38)。
+
+[第十一章题解索引](/problems/collections/lou-analysis/chapters/11/) · [第十章题解索引](/problems/collections/lou-analysis/chapters/10/) · [第九章题解索引](/problems/collections/lou-analysis/chapters/9/) · [第八章题解索引](/problems/collections/lou-analysis/chapters/8/) · [B 组解答总目录](/problems/collections/lou-analysis/) · [上册资料页](/problems/41e85e430c9d7f84a0863658/)
