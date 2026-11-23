@@ -12,6 +12,6 @@ export function colorMathSvg(svg:string,color:string):string {
   // Match only pure black; preserve paths, metrics, opacity and special colors.
   const black=String.raw`(?:#000(?:000)?|black|rgb\(\s*0%?\s*,\s*0%?\s*,\s*0%?\s*\))`;
   return svg
-    .replace(new RegExp(`(\\b(?:fill|stroke)=["'])${black}(["'])`,'gi'),`$1${color}$2`)
-    .replace(new RegExp(`(\\b(?:fill|stroke):\\s*)${black}(?=\\s*[;"'])`,'gi'),`$1${color}`);
+    .replace(new RegExp(`(\\b(?:fill|stroke|color)=["'])${black}(["'])`,'gi'),`$1${color}$2`)
+    .replace(new RegExp(`(\\b(?:fill|stroke|color):\\s*)${black}(?=\\s*[;"'])`,'gi'),`$1${color}`);
 }
