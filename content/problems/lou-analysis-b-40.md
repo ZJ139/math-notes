@@ -12,7 +12,7 @@ updated_at: "2026-11-21"
 
 第四十批接续 B274，逐项核对下册题册 PDF 第 31—32 页（印刷第 29—30 页），收录 10.3.B 第 5—8 题与 10.4.B 第 1—3 题。七题均无星号、无另附提示。B275 原题等式左侧有闭包符号；B276 包含最佳常数与等号条件；B277 包含两种参数范围；B278 明确要求使用对偶关系。
 
-[上一批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B282—B288](/problems/4befc8c3dd054a194653ad14/) · [上一批 B268—B274](/problems/e1a5de9d7c2acd69fcf10aad/) · [第十章索引](/problems/collections/lou-analysis/chapters/10/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 
