@@ -1,0 +1,1600 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf,BoldItalicFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Script=CustomDefault,Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8\baselineskip}{1.0\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=2em,labelsep=0.5em,itemsep=3pt,parsep=0pt,topsep=6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{needspace}
+\newenvironment{statementblock}{\par\Needspace{9\baselineskip}\noindent}{\par\nopagebreak[4]}
+\newenvironment{proofblock}{\par\Needspace{4\baselineskip}\noindent}{\par}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数学手记}
+\fancyhead[R]{\small 复变函数 · 第九章}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,bookmarksnumbered=true,linktoc=all]{hyperref}
+\usepackage{bookmark}
+\bookmarksetup{depth=2}
+\hypersetup{pdftitle={复变函数讲义：第九章},pdfauthor={Vincent Arqain},pdfsubject={多复变数全纯函数与全纯映射}}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\interdisplaylinepenalty=10000
+\raggedbottom
+
+\usepackage{tabularx,booktabs,array}
+\renewcommand{\thesection}{\S{}9.\arabic{section}}
+\emergencystretch=2em
+
+\makeatletter
+\let\chapterNineSectionToc\l@section
+\renewcommand{\l@section}[2]{\begingroup
+  \let\chapterNineNumberline\numberline
+  \renewcommand{\numberline}[1]{\hb@xt@3.6em{##1\hfil}}
+  \chapterNineSectionToc{#1}{#2}\endgroup}
+\makeatother
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{float}
+\floatplacement{figure}{H}
+\renewcommand{\figurename}{图}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.72\textheight0.72\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\providecommand{\pandocbounded}[1]{#1}
+\setcounter{tocdepth}{2}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries 复变函数讲义\par}
+\vspace{8pt}{\large 第九章\quad 多复变数全纯函数与全纯映射\par}
+\vspace{6pt}{\small 依史济怀、刘太顺《复变函数》\quad 教材第 253—278 页\par}
+\end{center}\vspace{8pt}
+本章含6节讲义及全部 24 道习题原题。定义、定理和性质沿用教材的记号与编号；证明补足必要条件、退化情形与关键推导。覆盖 36 个教材编号条目，补证不预设连续性的 Hartogs 定理，严谨处理 Laurent 系数、坐标超平面与延拓范围。由复线性微分、Cartan 刚性及球自同构构造证明 Poincaré 定理；数学公式采用 CM bea，中文与版式沿用既定模板。原题疑义和修正独立列出，附可点击目录、定理索引及相邻导航。习题不附解答，原题中的疑义另列校勘。
+\begingroup\setlength{\parskip}{0pt}\hypertarget{chapter9-contents}{}\tableofcontents\endgroup\clearpage
+\Needspace{12\baselineskip}
+\section{多复变数全纯函数的定义}
+\hypertarget{chapter9-part-1}{}
+\noindent{\small \hyperlink{chapter9-part-2}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 253---258
+页。本章先建立局部幂级数与积分表示，再用展开式研究延拓和映射的刚性。全书前八章的单变量
+Cauchy
+理论及第八章的次平均不等式是本节的前置工具；本节不预先调用尚未证明的多维积分公式或多维
+Weierstrass 定理。
+
+\subsection*{定理索引}\label{ch09-s1-heading-1}
+
+\hyperref[ch09-s1-heading-3]{命题 9.1.1} · \hyperref[ch09-s1-heading-4]{定义 9.1.2} ·
+\hyperref[ch09-s1-heading-5]{定理 9.1.3} · \hyperref[ch09-s1-heading-6]{定理 9.1.4} ·
+\hyperref[ch09-s1-heading-7]{定理 9.1.5} · \hyperref[ch09-s1-heading-8]{定理 9.1.6}
+
+\subsection*{空间、域与多重指标}\label{ch09-s1-heading-2}
+
+\(\mathbb C^n\)
+的加法和数乘逐坐标定义，\(|z|=(\sum_{j=1}^n|z_j|^2)^{1/2}\)。域指连通开集。对
+\(a\in\mathbb C^n\) 和 \(r_j>0\)，记
+
+\[
+\begin{aligned}
+P(a,r)&=\{z:|z_j-a_j|<r_j,\ 1\le j\le n\},\\
+B(a,R)&=\{z:|z-a|<R\},\\
+U^n&=P(0,(1,\ldots,1)),\qquad B_n=B(0,1).
+\end{aligned}
+\]
+
+多重指标 \(\alpha=(\alpha_1,\ldots,\alpha_n)\in\mathbb N_0^n\) 满足
+\(|\alpha|=\sum\alpha_j\)、\(\alpha!=\prod\alpha_j!\)、\(z^\alpha=\prod z_j^{\alpha_j}\)、\(D^\alpha=\partial_{z_1}^{\alpha_1}\cdots\partial_{z_n}^{\alpha_n}\)。\(G\Subset\Omega\)
+指 \(\overline G\) 是 \(\Omega\) 的紧子集。
+
+\Needspace{8\baselineskip}
+\subsection{命题 9.1.1：多重幂级数的 Abel 型估计}\label{ch09-s1-heading-3}
+
+教材命题的原假设为：\(\sum_{\alpha\ge0}c_\alpha z^\alpha\)
+在各坐标非零的点 \(b\) 收敛；结论是在每个 \(0\le r_j<|b_j|\)
+的闭多圆柱上绝对一致收敛。此命题需要``收敛''足以保证项
+\(c_\alpha b^\alpha\)
+一致有界。以下采用这个明确的条件；绝对收敛、无条件收敛或矩形部分和全体有界均足够。
+
+证明：若 \(|c_\alpha b^\alpha|\le M\)，则在 \(|z_j|\le r_j\) 上
+
+\[
+\sum_{\alpha\ge0}|c_\alpha z^\alpha|
+\le M\sum_{\alpha\ge0}\prod_{j=1}^n\left(\frac{r_j}{|b_j|}\right)^{\alpha_j}
+=M\prod_{j=1}^n\left(1-\frac{r_j}{|b_j|}\right)^{-1}<\infty.
+\]
+
+右端与 \(z\)
+无关，故由一致收敛判别法得到结论。若矩形部分和均有界，每一项是 \(2^n\)
+个相邻矩形部分和的带符号和，因此项也一致有界。
+
+校注：教材先以所有边长同时趋于无穷的矩形极限定义多重级数收敛，这种较弱定义本身不够。取
+\(n=2\)，\(c_{0,k}=k!\)、\(c_{1,k}=-k!\)，其他系数为零。在
+\(b=(1,1)\)，当第一指标的截断至少为 \(1\) 时，全部矩形部分和为零；但
+\(c_{0,k}b_2^k=k!\) 无界，且在任意 \(0<z_1,z_2<1\)
+处相应级数不能绝对收敛。本章所用幂级数均指局部绝对收敛的展开，不依赖这一弱收敛推断。
+
+在更小的闭多圆柱中，各阶形式导数仍绝对一致收敛：求导产生的有限次多项式因子
+\(\alpha_j^m\) 可由略大的半径吸收，因为
+\(\sum_{k\ge0}k^m q^k<\infty\)（\(0<q<1\)）。由单变量逐项求导，所有混合导数均存在、连续且可交换。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.1.2：全纯函数}\label{ch09-s1-heading-4}
+
+若对每个 \(a\in\Omega\)，存在多圆柱 \(P(a,r)\subset\Omega\)，使
+
+\[
+f(z)=\sum_{\alpha\ge0}c_\alpha(z-a)^\alpha
+\qquad (z\in P(a,r))
+\]
+
+局部绝对收敛，则称 \(f\) 在 \(\Omega\) 全纯，记
+\(f\in H(\Omega)\)。由逐项求导，
+
+\[
+c_\alpha=\frac{D^\alpha f(a)}{\alpha!}.
+\]
+
+全纯函数属于 \(C^\infty\)，固定其余变量后对每个变量全纯，并满足
+\(\partial f/\partial\overline z_j=0\)。反过来，若已知 \(f\in C^1\)
+且满足这些方程，则各一维切片由单变量 Cauchy--Riemann
+判据全纯，再应用下面的 Hartogs
+定理。只写形式偏导等式而不说明正则性，不能代替``分别全纯''。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.1.3：Hartogs 分别全纯定理}\label{ch09-s1-heading-5}
+
+设
+\(f:\Omega\to\mathbb C\)，固定任意其余坐标后，每个一维切片上的函数均全纯，则
+\(f\in H(\Omega)\)。切片可能不连通，此处是在它的各个开连通分支上全纯；不预设
+\(f\) 联合连续或局部有界。
+
+证明的困难正是从逐切片控制得到联合控制。下面给出所需的三个环节，再作维数归纳。
+
+\textbf{局部有界的情形。} 若分别全纯的 \(f\)
+在一个多圆柱上有界，在内缩的多圆柱上，对各坐标使用一维 Cauchy
+导数估计。逐次只改变一个坐标，沿线段积分，得到
+
+\[
+|f(z)-f(w)|\le C\sum_{j=1}^n|z_j-w_j|.
+\]
+
+这里每个坐标导数的界由同一个函数界与到外圆周的距离给出。因而 \(f\)
+联合连续。现在逐变量使用一维 Cauchy
+公式；被积函数在紧环面上连续，可交换积分。把每个 \(1/(\zeta_j-z_j)\)
+展为几何级数，在更小的闭多圆柱上一致积分，得到绝对收敛的联合幂级数。因此``分别全纯且局部有界''蕴含全纯。这一论证只用了单变量积分理论。
+
+\textbf{次平均函数列的紧集估计。} 设 \(v_k\ge0\)
+连续，在参数域的每个坐标圆盘上满足次平均不等式，且在紧集上一致有上界。如果逐点
+\(\limsup_k v_k\le C\)，则对每个紧集 \(K\) 及 \(\varepsilon>0\)，最终有
+\(\sup_Kv_k\le C+\varepsilon\)。
+
+证明：在 \(K\) 周围取固定小半径
+\(r\)，使所有相应闭多圆柱仍在参数域内。逐坐标积分次平均不等式，得
+\(v_k(a)\le A_k(a)\)，这里 \(A_k\) 是 \(v_k\) 在以 \(a\)
+为中心的实圆盘乘积上的面积平均。非负且一致有界，故反向 Fatou 不等式给出
+\(\limsup_k A_k(a)\le C\)。此外，\(|A_k(a)-A_k(b)|\)
+不超过共同上界乘以两个平移积分域的对称差体积，再除以固定总体积；该量随
+\(|a-b|\to0\) 一致趋零。对 \(K\) 取有限网格，先在有限个网格点控制
+\(A_k\)，再用这一共同连续模传到整个 \(K\)，即得结论。反向 Fatou
+来自对共同上界减去 \(v_k\) 使用通常的 Fatou 引理。
+
+若 \(c\) 全纯，则 \(|c|^p\) 对任意 \(p>0\)
+满足这里的条件：逐切片用第八章已证的次调和性，恒为零时直接成立。因此这一估计可用于
+\(|c_k|^{1/k}\)，无须假定系数无零点。
+
+\textbf{由分别全纯得到一条联合全纯的带。} 对维数归纳；\(n=1\) 已知。假设
+\(n-1\) 维结论成立。在目标点周围取比所需区域略大的乘积域，缩放后记内层为
+\(P'\times\Delta\)，其中 \(P'\subset\mathbb C^{n-1}\)
+是多圆柱，\(\Delta\) 是单位圆盘，且 \(\overline{P'}\) 仍在外层之内。固定
+\(w\) 时，归纳假设保证 \(z'\mapsto f(z',w)\) 联合全纯。
+
+在 \(\Delta\) 内任取闭圆盘 \(Q\)，令
+
+\[
+E_m=\{w\in Q:|f(z',w)|\le m\text{ 对所有 }z'\in\overline{P'}\}.
+\]
+
+每个 \(E_m\) 是闭集，因为每个固定 \(z'\) 的切片连续。固定 \(w\)
+时，\(f(\cdot,w)\) 在 \(\overline{P'}\) 连续有界，所以
+\(Q=\bigcup_{m\ge1}E_m\)。Baire 定理给出某个 \(E_m\)
+有相对内点，故存在小开圆盘 \(D\subset\Delta\)，使 \(f\) 在
+\(P'\times D\) 一致有界，从而联合全纯。这里用到的 Baire
+结论可由套闭圆盘证明：若各闭集均无内点，依次选半径趋零且避开第 \(m\)
+个闭集的嵌套闭圆盘；完备性给出一个避开全部 \(E_m\)
+的公共点，与覆盖矛盾。
+
+用圆盘自同构把 \(D\) 中一点移到 \(0\)。替换后的 \(w\) 定义域仍是
+\(\Delta\)，且 \(f\) 在 \(P'\times\{|w|<\delta\}\)
+联合全纯。在这条带上作 \(w\) 的 Taylor 展开，
+
+\[
+f(z',w)=\sum_{k=0}^\infty c_k(z')w^k.
+\]
+
+\(c_k\) 在 \(P'\) 全纯，因为它是带内全纯函数的 \(w\) 导数在 \(w=0\)
+的限制。固定 \(z'\)，原来的 \(w\) 切片在整个 \(\Delta\) 全纯，因此
+
+\[
+\limsup_{k\to\infty}|c_k(z')|^{1/k}\le1.
+\]
+
+另一方面，在每个 \(K\Subset P'\) 上，于小圆周 \(|w|=t<\delta\) 使用一维
+Cauchy 估计，得 \(|c_k(z')|\le M_Kt^{-k}\)。所以 \(v_k=|c_k|^{1/k}\)
+在参数紧集上一致有界。应用刚证的次平均函数列估计，得到对任意
+\(\varepsilon>0\)，最终
+
+\[
+\sup_{z'\in K}|c_k(z')|\le(1+\varepsilon)^k.
+\]
+
+给定 \(r<1\)，选 \(\varepsilon\) 使
+\(r(1+\varepsilon)<1\)，便知上述级数在 \(K\times\{|w|\le r\}\)
+绝对一致收敛。其和连续且分别全纯：各单变量使用已知的一维 Weierstrass
+定理即可。由局部有界情形，它联合全纯；固定 \(z'\) 后的一维 Taylor
+唯一性又说明它等于原来的 \(f\)。这覆盖
+\(P'\times\Delta\)，尤其覆盖原先任取的目标点，归纳完成。
+
+上述证明把``Baire
+给出一条带''和``系数增长率把带扩展至整圆盘''分开，避免把分别连续误作联合连续。证明路线可参照
+R. Mascolo 的
+\href{https://rendiconti.dmi.units.it/volumi/39/24.pdf}{Variations on
+Hartogs and Henkin--Tumanov
+Theorems}，本讲义将局部有界情形、紧集估计和一般维数归纳逐项展开。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.1.4：恒等原理}\label{ch09-s1-heading-6}
+
+设 \(f\in H(\Omega)\)。若 \(f\) 在某个非空开集上恒为零，则
+\(f\equiv0\)。
+
+证明：令
+\(K=\{a:D^\alpha f(a)=0\text{ 对全部 }\alpha\}\)。各阶导数连续，故 \(K\)
+相对闭；初始开集包含于 \(K\)，故它非空。若 \(a\in K\)，在 \(a\)
+附近的幂级数全部系数为零，所以 \(f\) 在某个邻域恒零，该邻域又包含于
+\(K\)。因此 \(K\) 也相对开。由 \(\Omega\) 连通，\(K=\Omega\)。
+
+与单复变的区别是：零点有域内聚点不再足够。例如 \(f(z_1,z_2)=z_1z_2\) 在
+\(U^2\) 全纯，且
+\(f(0,1/k)=0\)，但它并不恒零。非空开集、连通性和同一域上的全纯性均不能省略。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.1.5：标量开映射定理}\label{ch09-s1-heading-7}
+
+域 \(\Omega\) 上的非常数全纯函数 \(f:\Omega\to\mathbb C\)
+把开集映为开集。
+
+证明：任取开集 \(E\subset\Omega\) 与 \(a\in E\)，在 \(a\) 周围取凸小邻域
+\(Q\subset E\)。由恒等原理，存在 \(b\in Q\) 使 \(f(b)\ne f(a)\)。集合
+\(D=\{\lambda\in\mathbb C:a+\lambda(b-a)\in Q\}\) 是包含 \(0,1\)
+的凸平面域。把 \(f\) 的局部幂级数代入仿射直线，知
+\(g(\lambda)=f(a+\lambda(b-a))\) 在 \(D\)
+全纯且非常数。一维开映射定理给出 \(f(a)=g(0)\) 的一个邻域包含于
+\(g(D)\subset f(E)\)。因 \(a\) 任意，结论成立。
+
+此处结论针对标量函数。向量映射 \(F(z_1,z_2)=(z_1,0)\)
+虽非常数且全纯，却不把开集映为 \(\mathbb C^2\) 中的开集；第 9.4
+节将用可逆导数控制局部映射。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.1.6：最大模原理}\label{ch09-s1-heading-8}
+
+非常数 \(f\in H(\Omega)\)
+的模不能在内点取得局部最大值，因而也不能取得全域最大值。
+
+证明：若 \(|f|\) 在 \(a\) 的某邻域不超过
+\(|f(a)|\)，则该邻域的像包含于闭圆盘 \(|w|\le|f(a)|\)，并包含圆周点
+\(f(a)\)。开映射定理却要求 \(f(a)\) 是像的内点，矛盾；当 \(f(a)=0\)
+时，邻域内 \(f=0\)，由恒等原理得全域为零，也与非常数矛盾。
+
+因此局部幂级数仍保留恒等、开映射和最大模原理，但``零点离散''已经失效；后面将由
+Hartogs 延拓严格证明零点不可能孤立。
+
+\Needspace{12\baselineskip}
+\section{多圆柱的 Cauchy 积分公式}
+\hypertarget{chapter9-part-2}{}
+\noindent{\small \hyperlink{chapter9-part-1}{上一节}\quad \hyperlink{chapter9-part-3}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 258---262
+页。积分公式的作用是把内点的导数与固定紧集上的函数值联系起来。与单复变相比，积分所在的边界及其维数发生了变化。
+
+\subsection*{定理索引}\label{ch09-s2-heading-1}
+
+\hyperref[ch09-s2-heading-2]{定理 9.2.1} · \hyperref[ch09-s2-heading-3]{定理 9.2.2} ·
+\hyperref[ch09-s2-heading-4]{定理 9.2.3} · \hyperref[ch09-s2-heading-5]{定理 9.2.4} ·
+\hyperref[ch09-s2-heading-6]{补充}
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.2.1：多圆柱积分公式}\label{ch09-s2-heading-2}
+
+设 \(f\in H(\Omega)\)，\(\overline{P(a,r)}\subset\Omega\)。记
+
+\[
+\partial_0P=\{\zeta:|\zeta_j-a_j|=r_j,\ 1\le j\le n\}.
+\]
+
+各圆周取正向。对 \(z\in P(a,r)\)，有
+
+\[
+f(z)=\frac1{(2\pi i)^n}
+\int_{|\zeta_1-a_1|=r_1}\!\cdots\!\int_{|\zeta_n-a_n|=r_n}
+\frac{f(\zeta_1,\ldots,\zeta_n)}{\prod_{j=1}^n(\zeta_j-z_j)}
+\,d\zeta_n\cdots d\zeta_1.
+\tag{9.2.1}
+\]
+
+证明：先固定 \(z_2,\ldots,z_n\)，对第一变量用一维公式，表示
+\(f(z)\)。在所得积分中固定 \(\zeta_1\)，对第二变量用同一公式；继续到第
+\(n\) 个变量。由于闭多圆柱有一个包含于 \(\Omega\)
+的邻域，所有这些切片及圆周均在全纯定义域内；被积函数在紧环面上连续，分母又不为零，故
+Fubini 定理保证各次积分可以交换，得到 (9.2.1)。
+
+若只知开多圆柱
+\(P(a,r)\subset\Omega\)，不能直接把未知边值放入积分；应先取
+\(0<\rho_j<r_j\)，对 \(\overline{P(a,\rho)}\) 使用公式。另一种充分条件是
+\(f\in H(P)\cap C(\overline P)\)，这时由内缩半径趋向外半径和一致连续性得到边界版本。
+
+多圆柱的整个拓扑边界由至少一个坐标在其圆周上的点构成，通常有实维数
+\(2n-1\)。这里的 \(\partial_0P\) 是全部坐标同时在圆周上的 \(n\)
+维环面，称为特征边界。公式积分于特征边界，并非整个拓扑边界；\(n=1\)
+时二者才相同。
+
+在 \(\overline{P(a,\rho)}\)、\(\rho_j<r_j\)
+上，各核的几何展开绝对一致，因而
+
+\[
+\begin{aligned}
+\frac1{\zeta_j-z_j}
+&=\sum_{k=0}^\infty\frac{(z_j-a_j)^k}{(\zeta_j-a_j)^{k+1}},\\
+f(z)&=\sum_{\alpha\ge0}c_\alpha(z-a)^\alpha,\\
+c_\alpha&=\frac1{(2\pi i)^n}\int_{\partial_0P}
+\frac{f(\zeta)\,d\zeta_1\cdots d\zeta_n}
+{\prod_j(\zeta_j-a_j)^{\alpha_j+1}}.
+\end{aligned}
+\]
+
+最后一行的积分以迭代积分理解，顺序采用 (9.2.1)
+的约定。它同时给出系数唯一性与混合导数积分式
+
+\[
+D^\alpha f(a)=\frac{\alpha!}{(2\pi i)^n}\int_{\partial_0P}
+\frac{f(\zeta)\,d\zeta_1\cdots d\zeta_n}
+{\prod_j(\zeta_j-a_j)^{\alpha_j+1}}.
+\tag{9.2.3}
+\]
+
+校注：教材 (9.2.3) 左端取值于 \(a\)，相应分母也应取
+\(\zeta_j-a_j\)；若分母写 \(\zeta_j-z_j\)，左端须改为
+\(D^\alpha f(z)\)。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.2.2：Cauchy 不等式}\label{ch09-s2-heading-3}
+
+在上述条件下，令 \(M=\max_{\partial_0P}|f|\)，则
+
+\[
+|D^\alpha f(a)|\le\frac{\alpha!M}{r^\alpha}.
+\]
+
+证明：在 (9.2.3) 中取绝对值。分母绝对值为
+\(\prod r_j^{\alpha_j+1}\)，各圆周长度的乘积为
+\((2\pi)^n\prod r_j\)。约去后即得不等式。特别地，\(|c_\alpha|\le Mr^{-\alpha}\)，所以任意内缩闭多圆柱上的绝对收敛可直接由乘积几何级数控制。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.2.3：紧集上的导数控制}\label{ch09-s2-heading-4}
+
+若 \(K\) 为紧集，\(K\subset G\Subset\Omega\) 且 \(G\) 开，则对每个
+\(\alpha\)，存在只依赖于 \(K,G,\alpha\) 的常数 \(C\)，使
+
+\[
+\sup_K|D^\alpha f|\le C\sup_G|f|\qquad(f\in H(\Omega)).
+\]
+
+证明：取 \(d=\operatorname{dist}(K,\mathbb C^n\setminus G)>0\)，令
+\(r=d/(2\sqrt n)\)。对每个 \(a\in K\)，若 \(|z_j-a_j|\le r\)，则
+\(|z-a|\le\sqrt n\,r=d/2<d\)，所以
+\(\overline{P(a,(r,\ldots,r))}\subset G\)。使用定理 9.2.2，得到
+
+\[
+|D^\alpha f(a)|\le\alpha!r^{-|\alpha|}\sup_G|f|.
+\]
+
+取 \(C=\alpha!(2\sqrt n/d)^{|\alpha|}\) 即可。教材直接以欧氏距离 \(d\)
+作为各坐标半径，未计入多圆柱角点到中心的距离；改用上述内缩半径后论证成立。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.2.4：Weierstrass 定理}\label{ch09-s2-heading-5}
+
+若 \(f_k\in H(\Omega)\) 在每个紧子集上一致收敛于 \(f\)，则
+\(f\in H(\Omega)\)，且对每个 \(\alpha\)，\(D^\alpha f_k\to D^\alpha f\)
+在每个紧子集上一致收敛。
+
+证明：固定 \(\overline{P(a,r)}\subset\Omega\)，在它的特征边界上
+\(f_k\to f\) 一致。对 \(f_k\) 使用
+(9.2.1)，在积分中取极限，便得同一个公式对 \(f\)
+成立。这个极限合法，因为对每个更小的闭多圆柱，核有共同有界上界。再把核作几何展开，即得
+\(f\) 的联合幂级数，故 \(f\) 全纯。
+
+任取 \(K\Subset\Omega\)，选开集 \(G\) 满足
+\(K\subset G\Subset\Omega\)。对已经全纯的 \(f_k-f\) 使用定理 9.2.3，得到
+
+\[
+\sup_K|D^\alpha f_k-D^\alpha f|
+\le C\sup_{\overline G}|f_k-f|\longrightarrow0.
+\]
+
+因此极限与任意有限阶混合求导都可交换；关键是紧集一致收敛，单纯逐点收敛不足以支持上述操作。
+
+\subsection*{补充：特征边界与最大模}\label{ch09-s2-heading-6}
+
+若 \(f\in H(P)\cap C(\overline P)\)，则
+
+\[
+\max_{\overline P}|f|=\max_{\partial_0P}|f|.
+\]
+
+证明：对 \(0<t<1\)，\(f_t(z)=f(a+t(z-a))\)
+在闭多圆柱的一个邻域全纯。固定其余坐标，对第一变量用一维最大模原理，把第一坐标移到圆周而不减小函数模；依次处理全部坐标，得到
+\(|f_t(z)|\le\max_{\partial_0P}|f_t|\)。由闭多圆柱上的一致连续性，\(f_t\to f\)
+一致；令 \(t\uparrow1\)
+即得。这个论证也说明连续到闭域这一假设怎样允许处理边界切片。
+
+由 Cauchy 不等式还可立即证明多维 Liouville 定理：若
+\(f\in H(\mathbb C^n)\) 有界，在任意中心取各半径均为 \(R\)，令
+\(R\to\infty\)，便得全部一阶偏导为零，所以 \(f\) 常数。
+
+下一节将在环形乘积域上重复积分与展开的过程。区别在于每个变量都可能产生负幂，而坐标超平面上的全纯性将消去这些负幂。
+
+\Needspace{12\baselineskip}
+\section{全纯函数在 Reinhardt 域上的展开式}
+\hypertarget{chapter9-part-3}{}
+\noindent{\small \hyperlink{chapter9-part-2}{上一节}\quad \hyperlink{chapter9-part-4}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 262---267 页。分别全纯定理解决的是正则性；本节的 Hartogs
+现象解决的是延拓范围。两者相关，但不是同一条定理。
+
+\subsection*{定理索引}\label{ch09-s3-heading-1}
+
+\hyperref[ch09-s3-heading-2]{定义 9.3.1} · \hyperref[ch09-s3-heading-3]{定理 9.3.2} ·
+\hyperref[ch09-s3-heading-4]{定理 9.3.3} · \hyperref[ch09-s3-heading-5]{定理 9.3.4} ·
+\hyperref[ch09-s3-heading-5]{定理 9.3.5} · \hyperref[ch09-s3-heading-6]{定理 9.3.6} ·
+\hyperref[ch09-s3-heading-7]{例 9.3.7} · \hyperref[ch09-s3-heading-8]{定理 9.3.8} ·
+\hyperref[ch09-s3-heading-9]{定义 9.3.9} · \hyperref[ch09-s3-heading-10]{定理 9.3.10}
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.3.1：Reinhardt 域}\label{ch09-s3-heading-2}
+
+若域 \(\Omega\subset\mathbb C^n\) 满足
+
+\[
+z\in\Omega\ \Longrightarrow\
+(e^{i\theta_1}z_1,\ldots,e^{i\theta_n}z_n)\in\Omega
+\qquad(\theta_j\in\mathbb R),
+\]
+
+则称 \(\Omega\) 为 Reinhardt
+域。它允许各坐标独立旋转；球、多圆柱与同心球壳都是例子。独立旋转保证经过一点的整个坐标环面包含于域内，因而适合逐变量取
+Laurent 系数。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.2：Laurent 展开}\label{ch09-s3-heading-3}
+
+每个 \(f\in H(\Omega)\) 在 Reinhardt 域上具有唯一的 Laurent 展开
+
+\[
+f(z)=\sum_{\alpha\in\mathbb Z^n}a_\alpha z^\alpha,
+\]
+
+在每个紧子集上绝对一致收敛。若 \(\Omega\)
+与某个坐标超平面相交，含该坐标负幂的系数全部为零；这些零项不参与求和，因此不在坐标为零处解释
+\(0\) 的负次幂。
+
+证明：先在 \(\Omega^*=\Omega\cap(\mathbb C\setminus\{0\})^n\) 中取点
+\(w\)。其坐标旋转轨道是紧集，故存在
+\(0<p_j<|w_j|<q_j\)，使闭的环形乘积域 \(\{p_j\le|z_j|\le q_j\}\) 包含于
+\(\Omega\)。逐变量使用一维 Laurent 公式，得到局部展开及系数
+
+\[
+a_\alpha=\frac1{(2\pi i)^n}\int_{|\zeta_1|=\rho_1}\!\cdots\!\int_{|\zeta_n|=\rho_n}
+\frac{f(\zeta)}{\prod_j\zeta_j^{\alpha_j+1}}
+\,d\zeta_n\cdots d\zeta_1,
+\qquad p_j<\rho_j<q_j.
+\]
+
+说明收敛细节：按各 \(\alpha_j\) 的正负把指标分为 \(2^n\)
+类。在较小闭乘积圆环 \(u_j\le|z_j|\le v_j\) 中，选
+\(p_j<p'_j<u_j\le v_j<q'_j<q_j\)。\(\alpha_j\ge0\) 时用积分半径
+\(q'_j\)，\(\alpha_j<0\) 时用 \(p'_j\)。系数估计把各类级数分别控制为比值
+\(v_j/q'_j<1\) 或 \(p'_j/u_j<1\) 的乘积几何级数，所以全部绝对一致收敛。
+
+在任何固定环面上，对展开乘以 \(e^{-i\beta\cdot\theta}\)
+并对所有角变量积分，除 \(\alpha=\beta\)
+外全部项消失。因此系数唯一。在两个局部乘积圆环相交处，唯一性使它们的系数相同。
+
+还须说明这种局部一致能传遍全域。\(\Omega^*\)
+连通：用有限串相交的小球连接 \(\Omega\)
+中的一条路径，在小球中轻微扰动折线即可避开有限个坐标超平面。具体地，两端点均不在这些超平面时，可选第三点，使连接它与两端点的线段都不碰超平面；对每个坐标，被禁止的第三点坐标只落在平面中的有限条射线上，这些集合无内点。沿有限小球链作此选择，即得
+\(\Omega^*\) 中的路径。因此系数在 \(\Omega^*\) 上为同一组常数。
+
+最后处理坐标为零的点 \(b\in\Omega\)。由开性和旋转不变性，在 \(b\)
+附近可取一个乘积域：为零的坐标取以 \(0\)
+为中心的小圆盘，非零坐标取小圆环。对圆盘变量用 Taylor 展开，对圆环变量用
+Laurent
+展开，同样得到绝对一致收敛的局部级数。在全部坐标非零的交集上，其系数与前面的
+\(a_\alpha\) 一致；圆盘坐标不出现负幂。这既证明级数在 \(b\)
+附近仍成立，也证明涉及这些坐标的负幂系数为零。对紧集取有限个这样的局部闭邻域，便得全域的紧集绝对一致收敛。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.3：负幂消失}\label{ch09-s3-heading-4}
+
+若对每个 \(j\)，Reinhardt 域 \(\Omega\) 都与 \(\{z_j=0\}\) 相交，则每个
+\(f\in H(\Omega)\) 都有幂级数展开
+
+\[
+f(z)=\sum_{\alpha\ge0}a_\alpha z^\alpha,
+\]
+
+并在紧子集上绝对一致收敛。各坐标的零点可以是不同的点，不要求原点已经属于
+\(\Omega\)。
+
+证明：固定 \(j\)，取
+\(b\in\Omega\)、\(b_j=0\)，并把其他坐标轻微扰动为非零。由上一定理的局部圆盘乘圆环构造，所有
+\(\alpha_j<0\) 的系数都为零。也可直接在系数积分中先对 \(\zeta_j\)
+积分：此时 \(\zeta_j^{-\alpha_j-1}\) 是非负整数次幂，与 \(f\)
+的乘积在圆盘全纯，积分为零。对全部 \(j\) 逐一应用即得结论。
+
+这一积分论证比直接写``\(b^\alpha=\infty\)''严格：复数级数中没有把未定义的负幂当作某个发散项的运算。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.4 与 9.3.5：球与多圆柱上的幂级数}\label{ch09-s3-heading-5}
+
+每个 \(f\in H(B_n)\)、每个
+\(f\in H(U^n)\)，都能在各自全域展开为关于原点的幂级数，并在紧子集上绝对一致收敛。
+
+证明：这两个域都是 Reinhardt 域，且都包含原点，所以满足定理 9.3.3
+的所有条件，直接应用即得。平移、缩放后的球和多圆柱有对应的中心展开。
+
+按总次数分组，可写成齐次展开
+
+\[
+f(z)=\sum_{k=0}^\infty P_k(z),\qquad
+P_k(z)=\sum_{|\alpha|=k}a_\alpha z^\alpha.
+\]
+
+例如二维时，\(P_0=a_{00}\)、\(P_1=a_{10}z_1+a_{01}z_2\)、\(P_2=a_{20}z_1^2+a_{11}z_1z_2+a_{02}z_2^2\)。每层只有有限项，绝对收敛保证分组合法，且
+\(P_k(\lambda z)=\lambda^kP_k(z)\)。第 9.5
+节将用圆周积分抽取这些齐次项。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.6：向完全包延拓}\label{ch09-s3-heading-6}
+
+在定理 9.3.3 的条件下，令
+
+\[
+\Omega'=\{(t_1z_1,\ldots,t_nz_n):z\in\Omega,\ 0\le t_j\le1\}.
+\]
+
+则 \(\Omega'\) 是包含 \(\Omega\) 的域，每个 \(f\in H(\Omega)\)
+均唯一延拓为 \(\Omega'\) 上的全纯函数。
+
+证明：给定 \(w\in\Omega'\)，有某个 \(z\in\Omega\) 使
+\(|w_j|\le|z_j|\)。利用开性，可把 \(z\) 轻微扰动为
+\(b\in\Omega\)，使每个 \(|b_j|>|z_j|\)，且所有 \(b_j\ne0\)。Reinhardt
+不变性保证 \(P(0,(|b_1|,\ldots,|b_n|))\subset\Omega'\)，所以 \(w\)
+是内点。\(\Omega'\)
+还对径向收缩封闭、包含原点，故道路连通；因而它确为域。
+
+由定理 9.3.3，\(f=\sum a_\alpha z^\alpha\) 在 \(\Omega\) 成立。在上述
+\(b\) 处收敛给出项的一致有界，命题 9.1.1 的几何估计保证同一幂级数在
+\(w\) 的某个闭邻域绝对一致收敛。令其和为 \(F\)，便得整个 \(\Omega'\)
+上的全纯函数，且 \(F|_\Omega=f\)。唯一性来自 \(\Omega'\)
+连通及恒等原理。
+
+选择严格更大的 \(|b_j|\) 很重要：原定义只给出弱不等式，不能直接把命题
+9.1.1 的严格内缩条件用在等号处。
+
+\Needspace{8\baselineskip}
+\subsection{例 9.3.7：球壳的 Hartogs 延拓}\label{ch09-s3-heading-7}
+
+若 \(n\ge2\)、\(0<r<R\)，则球壳 \(\Omega=\{z:r<|z|<R\}\)
+上的每个全纯函数均唯一延拓到 \(B(0,R)\)。
+
+证明：球壳是连通 Reinhardt 域。当 \(n\ge2\) 时，对每个
+\(j\)，可把非零坐标放在另一个位置，得到 \(z_j=0\) 且 \(r<|z|<R\)
+的点。其完全包正是 \(B(0,R)\)：任取 \(|w|<R\)，若 \(w\ne0\)，可选
+\(\lambda\ge1\) 使 \(r<|\lambda w|<R\)，从而 \(w\) 被球壳中的
+\(\lambda w\) 逐坐标支配；\(w=0\) 也显然属于完全包。应用定理 9.3.6。
+
+同理，\(B(0,R)\setminus\{0\}\) 上的全纯函数能延拓过原点。\(n=1\) 时
+\(1/z\)
+给出反例，且圆环不与坐标零超平面相交，因此上述前提失效。这里证明的是球壳及穿孔球的延拓；不把它未经证明地推广成任意紧洞的全局延拓定理。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.8：零点不能孤立}\label{ch09-s3-heading-8}
+
+若 \(n\ge2\)、\(f\in H(\Omega)\)，则 \(f\) 在域内没有孤立零点。
+
+证明：若 \(a\) 是孤立零点，取小球
+\(B(a,\varepsilon)\subset\Omega\)，使球中除 \(a\) 外 \(f\)
+均不为零。于是 \(g=1/f\) 在穿孔球全纯，由例 9.3.7 延拓为整小球上的
+\(G\)。全纯函数 \(fG-1\) 在穿孔球上为零，由恒等原理在整小球上为零；但在
+\(a\) 处其值为 \(-1\)，矛盾。
+
+因此不能由``一维切片中零点孤立''推断联合零集离散。反例 \(f(z)=z_1\)
+的零集是整个复超平面。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.3.9：全纯域}\label{ch09-s3-heading-9}
+
+若不存在真包含 \(\Omega\) 的域
+\(\widetilde\Omega\subset\mathbb C^n\)，使 \(\Omega\)
+上每个全纯函数都能延拓到 \(\widetilde\Omega\)，则称 \(\Omega\)
+为全纯域。本章使用教材的这一共同延拓定义；不以尚未讨论的伪凸性或 Levi
+问题替代它。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.3.10：凸域是全纯域}\label{ch09-s3-heading-10}
+
+每个复欧氏空间中的凸域都是全纯域。
+
+证明：\(\Omega=\mathbb C^n\) 时没有更大的域，结论显然。否则任取
+\(\xi\in\partial\Omega\)，有限维凸集的支撑超平面定理给出非零实线性泛函
+\(\ell\)，使 \(\ell(z-\xi)<0\) 对 \(z\in\Omega\) 成立。写
+\(z_j=x_j+iy_j\)，可将它写成
+
+\[
+\ell(z-\xi)=\operatorname{Re}L(z),\qquad
+L(z)=\sum_{j=1}^nc_j(z_j-\xi_j).
+\]
+
+支撑定理是实凸几何工具：可在闭凸集外取趋向 \(\xi\)
+的点，对它们作最近点投影，把``最近点到外点''的向量单位化后取收敛子列；由平方距离的单侧导数得到支撑不等式。因
+\(\Omega\) 开且泛函非零，域内不等式严格。
+
+因此 \(L\) 在 \(\Omega\)
+无零点，\(1/L\in H(\Omega)\)。它不能作为原函数的全纯延拓越过
+\(\xi\)：若在包含 \(\xi\) 的连通小球上有延拓 \(F\)，则 \(LF=1\)
+由恒等原理从相交的原域传到该球，而 \(L(\xi)=0\)，矛盾。
+
+为排除任意真超域 \(\widetilde\Omega\)，从 \(\Omega\) 内一点沿
+\(\widetilde\Omega\) 中的路径走到
+\(\widetilde\Omega\setminus\Omega\)，取首次离开 \(\Omega\) 的点
+\(\xi\in\partial\Omega\cap\widetilde\Omega\)。为该点构造上述 \(L\)。若
+\(1/L\) 能延拓为 \(\widetilde\Omega\) 上的 \(F\)，则恒等原理使 \(LF=1\)
+在全部 \(\widetilde\Omega\) 成立，在 \(\xi\)
+处再次矛盾。因此没有使全部全纯函数共同延拓的真超域。
+
+同一论证在 \(n=1\) 中对任意平面域使用
+\(L(z)=z-\xi\)，说明所有平面域都是全纯域。逆命题不成立：圆环就是非凸的平面全纯域。多变量的域的几何开始直接限制函数的延拓范围，这是后续映射理论的背景。
+
+\Needspace{12\baselineskip}
+\section{全纯映射的导数}
+\hypertarget{chapter9-part-4}{}
+\noindent{\small \hyperlink{chapter9-part-3}{上一节}\quad \hyperlink{chapter9-part-5}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 267---270
+页。标量函数的开映射定理不能直接推广到任意向量映射；可逆的复线性微分才给出局部坐标变换。本节导数矩阵作用于列向量增量，采用
+\(F'(z)h\) 的约定。
+
+\subsection*{定理索引}\label{ch09-s4-heading-1}
+
+\hyperref[ch09-s4-heading-2]{条目 9.4.1} · \hyperref[ch09-s4-heading-3]{定义 9.4.2} ·
+\hyperref[ch09-s4-heading-4]{定理 9.4.3} · \hyperref[ch09-s4-heading-5]{命题 9.4.4} ·
+\hyperref[ch09-s4-heading-6]{补充}
+
+\Needspace{8\baselineskip}
+\subsection{教材条目 9.4.1：全纯映射}\label{ch09-s4-heading-2}
+
+若 \(f_1,\ldots,f_n\in H(\Omega)\)，称
+\(F=(f_1,\ldots,f_n):\Omega\to\mathbb C^n\) 为全纯映射。更一般的值域
+\(\mathbb C^m\) 同样逐分量定义。教材把这一编号排作``定理
+9.4.1''，内容实际上是定义；这里保留编号并说明性质，不把它计作需要另证的命题。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.4.2：复线性微分}\label{ch09-s4-heading-3}
+
+若存在复线性算子 \(A:\mathbb C^n\to\mathbb C^n\)，使
+
+\[
+F(z+h)=F(z)+Ah+o(|h|),\qquad h\to0,
+\]
+
+则称 \(F\) 在 \(z\) 处复可微，记
+\(F'(z)=A\)。这里是对所有方向同时成立的余项估计，强于只要求各坐标偏导存在。
+
+导数唯一：若 \(A,B\) 均满足定义，对固定向量 \(v\) 取 \(h=tv\)，除以
+\(t\) 并令实数 \(t\to0\)，得 \((A-B)v=0\)，故 \(A=B\)。当 \(A\)
+只要求实线性时，这是实 Fréchet 微分；\(z\mapsto\overline z\)
+实可微，却不是复可微。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.4.3：导数就是复 Jacobian 矩阵}\label{ch09-s4-heading-4}
+
+全纯映射在每一点复可微，且
+
+\[
+F'(z)=\left(\frac{\partial f_j}{\partial z_k}(z)\right)_{j,k=1}^n.
+\]
+
+证明：在 \(z\)
+周围对每个分量作绝对收敛的幂级数，把常数项和一次项分离。余项为
+\(\sum_{|\alpha|\ge2}c_{j,\alpha}h^\alpha\)。取小的固定 \(r>0\)
+使展开在稍大的多圆柱收敛；当 \(|h|\le r\) 时，绝对收敛的系数估计给出余项
+\(O(|h|^2)\)。例如在半径 \(2r\) 的多圆柱上有
+\(|c_{j,\alpha}|\le M(2r)^{-|\alpha|}\)，按总次数求和即可。有限个分量组合后仍为
+\(O(|h|^2)=o(|h|)\)，一次项矩阵正是所示 Jacobian。
+
+反过来，若 \(F\)
+在域内每一点复可微，则固定其余坐标，各分量的一维复导数存在，故分别全纯。由
+Hartogs 定理，各分量联合全纯。这个反向结论不要求事先假设导数连续。
+
+\Needspace{8\baselineskip}
+\subsection{命题 9.4.4：复合与链式法则}\label{ch09-s4-heading-5}
+
+若 \(F:\Omega_1\to\Omega_2\)、\(G:\Omega_2\to\mathbb C^n\) 全纯，则
+\(G\circ F\) 全纯，且
+
+\[
+(G\circ F)'(z)=G'(F(z))F'(z).
+\]
+
+证明：记
+\(w=F(z)\)、\(A=F'(z)\)、\(B=G'(w)\)。由复微分定义，\(k=F(z+h)-F(z)=Ah+o(|h|)=O(|h|)\)，于是
+
+\[
+\begin{aligned}
+G(F(z+h))-G(F(z))
+&=Bk+o(|k|)\\
+&=BAh+o(|h|).
+\end{aligned}
+\]
+
+这说明复合在每点复可微，由定理 9.4.3
+的反向结论，全纯性与链式法则同时成立。矩阵乘法的顺序由先作用
+\(F'\)、再作用 \(G'\) 决定，不能交换。
+
+若 \(G=F^{-1}\) 是全纯逆映射，则对恒等映射求导给出
+
+\[
+G'(F(z))F'(z)=I_n,
+\]
+
+所以双全纯映射的导数处处可逆。这是 Cartan 定理中正规化导数的依据。
+
+\subsection*{补充：实 Jacobian 与局部逆映射}\label{ch09-s4-heading-6}
+
+令 \(A=F'(z)=B+iC\)，把实坐标按 \((x_1,\ldots,x_n,y_1,\ldots,y_n)\)
+排列，Cauchy--Riemann 方程给出
+
+\[
+D_{\mathbb R}F=
+\begin{pmatrix}B&-C\\C&B\end{pmatrix},\qquad
+\det D_{\mathbb R}F=|\det A|^2.
+\]
+
+证明第二式：在复化的实坐标中作可逆变换
+\((h,k)\mapsto(h+ik,h-ik)\)，上面的实块矩阵变成块对角矩阵
+\(\operatorname{diag}(A,\overline A)\)；相似矩阵行列式相同，故等于
+\(\det A\det\overline A\)。这也说明非退化全纯映射保持实定向。
+
+若 \(F'(a)\) 可逆，实逆函数定理给出 \(a,F(a)\) 的小邻域 \(V,W\) 以及
+\(C^1\) 逆映射
+\(G:W\to V\)。这里使用的是通常的有限维实逆函数定理，不假设任何尚待证明的多维全纯逆定理。对
+\(F\circ G=\operatorname{id}\) 使用实链式法则，得 \(D_{\mathbb R}G(w)\)
+是 \(D_{\mathbb R}F(G(w))\) 的逆；复线性同构的逆仍复线性。于是 \(G\)
+每点复可微，由定理 9.4.3 的反向结论，\(G\) 全纯，且
+
+\[
+G'(w)=\bigl(F'(G(w))\bigr)^{-1}.
+\]
+
+可逆导数给出局部结论，不能自动推出全域单射。例如
+\(F(z_1,z_2)=(e^{z_1},z_2)\) 导数处处可逆，但有周期；而
+\(F(z_1,z_2)=(z_1,0)\) 的导数退化，像不含开集。
+
+\subsection*{进入 Cartan 定理前的两个构造}\label{ch09-s4-heading-7}
+
+在 \(\mathbb C^2\) 上取
+
+\[
+S(z_1,z_2)=(z_1,z_2+z_1^2).
+\]
+
+其逆为
+\((w_1,w_2)\mapsto(w_1,w_2-w_1^2)\)，故是非线性双全纯自同构；它固定原点且导数为
+\(I_2\)。可见仅有函数值与一阶导数的正规化，并不能在无界域上强迫映射为恒等。
+
+另设 \(\Omega=\{|z_1z_2|<1\}\)，\(h\in H(U)\) 处处不为零，令
+
+\[
+F_h(z_1,z_2)=\left(z_1h(z_1z_2),\frac{z_2}{h(z_1z_2)}\right).
+\]
+
+两分量的乘积仍为 \(z_1z_2\)，所以映射保持 \(\Omega\)，且
+\(F_{1/h}\circ F_h=F_h\circ F_{1/h}=\operatorname{id}\)。若
+\(h(0)=1\)，一次项为 \((z_1,z_2)\)，故 \(F_h'(0)=I_2\)。取 \(h(t)=e^t\)
+就得到无界圆型域上的非线性例子。下一节将说明有界性为什么排除这类构造。
+
+\Needspace{12\baselineskip}
+\section{Cartan 定理}
+\hypertarget{chapter9-part-5}{}
+\noindent{\small \hyperlink{chapter9-part-4}{上一节}\quad \hyperlink{chapter9-part-6}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 270---273
+页。本节的刚性来自两种控制：迭代使首个非线性项按次数增长，有界域却使这些系数一致有界；旋转对称再把一般正规化双全纯映射化成唯一性定理可处理的对象。
+
+\subsection*{定理索引}\label{ch09-s5-heading-1}
+
+\hyperref[ch09-s5-heading-2]{定理 9.5.1} · \hyperref[ch09-s5-heading-3]{定义 9.5.2} ·
+\hyperref[ch09-s5-heading-4]{定义 9.5.3} · \hyperref[ch09-s5-heading-5]{定理 9.5.4} ·
+\hyperref[ch09-s5-heading-6]{定义 9.5.5} · \hyperref[ch09-s5-heading-7]{定理 9.5.6}
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.5.1：Cartan 唯一性定理}\label{ch09-s5-heading-2}
+
+设 \(\Omega\subset\mathbb C^n\)
+是包含原点的有界域，\(F:\Omega\to\Omega\) 全纯，且
+\(F(0)=0\)、\(F'(0)=I_n\)，则 \(F(z)=z\) 对所有 \(z\in\Omega\)
+成立。不要求 \(F\) 预先为单射或满射。
+
+证明：取 \(r>0\)、\(R<\infty\)，使
+\(B(0,r)\subset\Omega\subset B(0,R)\)。注意不要求
+\(R<1\)。在原点附近作向量值齐次展开
+
+\[
+F(z)=z+\sum_{k=2}^\infty F_k(z).
+\]
+
+若所有 \(F_k=0\)，局部即为恒等，由恒等原理逐分量延至全域。否则取最小的
+\(m\ge2\) 使 \(F_m\ne0\)，则
+
+\[
+F(z)=z+F_m(z)+O(|z|^{m+1}).
+\]
+
+用 \(F^{\circ q}\) 表示 \(q\) 次复合，而非数值乘方。归纳得到
+
+\[
+F^{\circ q}(z)=z+qF_m(z)+O(|z|^{m+1}).
+\tag{9.5.A}
+\]
+
+确实，把右端代入 \(F\) 时，\(F_m(z+O(|z|^m))=F_m(z)+O(|z|^{2m-1})\)，而
+\(2m-1\ge m+1\)；其余高次项仍不影响 \(m\)
+次齐次项。因此每复合一次，恰增加一个 \(F_m\)。余项常数可依赖
+\(q\)，证明并不要求它对 \(q\) 一致。
+
+取 \(F_m\) 某个分量中非零系数 \(c\)，对应多重指标
+\(\alpha\)、\(|\alpha|=m\)。选固定闭多圆柱
+\(\overline{P(0,(\rho,\ldots,\rho))}\subset\Omega\)。因为每个迭代仍把
+\(\Omega\) 映入 \(\Omega\)，其各分量的模都不超过 \(R\)。由 Cauchy
+系数估计，(9.5.A) 中的系数满足
+
+\[
+q|c|\le R\rho^{-m}\qquad(q=1,2,\ldots).
+\]
+
+令 \(q\to\infty\)，得
+\(c=0\)，矛盾。所以不存在非零高次项，\(F=\operatorname{id}\)。
+
+也可按教材用圆周 Fourier 投影抽出 \(m\) 次项：对固定小 \(z\)，
+
+\[
+qF_m(z)=\frac1{2\pi}\int_0^{2\pi}
+F^{\circ q}(e^{i\theta}z)e^{-im\theta}\,d\theta.
+\]
+
+局部齐次级数在圆周上一致收敛，故正交性可逐项积分；右端模不超过
+\(R\)，再次迫使
+\(F_m=0\)。这个版本与系数估计相互核验，二者均只在原点的小球使用圆周，不假设整个
+\(\Omega\) 旋转不变。
+
+有界性恰用于给全部迭代一个共同上界。上一节的剪切映射 \(S\) 在
+\(\mathbb C^2\) 上满足 \(S(0)=0,S'(0)=I_2\)
+却非恒等，说明该条件不能删除。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.5.2：圆型域}\label{ch09-s5-heading-3}
+
+若 \(z\in\Omega\) 蕴含 \(e^{i\theta}z\in\Omega\)（任意实数
+\(\theta\)），则称 \(\Omega\) 为圆型域。这里只允许全部坐标同时旋转，因此
+Reinhardt 域必圆型，逆向一般不成立。例如 \(\{|z_1+z_2|<1\}\)
+是连通圆型域，但不允许独立旋转两坐标。
+
+圆型不自动等于对实数 \(0\le t\le1\)
+收缩封闭；本节的证明只使用旋转，不额外假定域是平衡域或凸域。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.5.3：双全纯映射与自同构}\label{ch09-s5-heading-4}
+
+若全纯映射 \(F:\Omega_1\to\Omega_2\) 为双射，且逆映射 \(F^{-1}\)
+全纯，则称它为双全纯映射。\(\Omega\)
+到自身的双全纯映射称全纯自同构，全部此类映射组成群
+\(\operatorname{Aut}(\Omega)\)。复合、恒等和取逆保持这个集合，由链式法则与定义直接验证。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.5.4：圆型域上的线性化}\label{ch09-s5-heading-5}
+
+设 \(\Omega_1,\Omega_2\subset\mathbb C^n\) 是包含原点的圆型域，其中
+\(\Omega_1\) 有界。若 \(F:\Omega_1\to\Omega_2\) 双全纯且 \(F(0)=0\)，则
+\(F\) 是可逆复线性映射的限制。
+
+证明：记 \(G=F^{-1}\)。由链式法则 \(G'(0)F'(0)=I_n\)。对任意
+\(\theta\in\mathbb R\)，构造
+
+\[
+H_\theta(z)=G\bigl(e^{-i\theta}F(e^{i\theta}z)\bigr).
+\]
+
+内层旋转保持 \(\Omega_1\)，外层旋转保持 \(\Omega_2\)，所以 \(H_\theta\)
+确为 \(\Omega_1\) 到自身的全纯映射，并满足
+
+\[
+H_\theta(0)=0,\qquad
+H_\theta'(0)=G'(0)e^{-i\theta}F'(0)e^{i\theta}=I_n.
+\]
+
+定理 9.5.1 给出 \(H_\theta=\operatorname{id}\)。对两边作用 \(F\)，得到
+
+\[
+F(e^{i\theta}z)=e^{i\theta}F(z).
+\tag{9.5.4}
+\]
+
+在原点附近写 \(F(z)=\sum_{k\ge1}F_k(z)\)。代入上式，按齐次次数比较，得
+\((e^{ik\theta}-e^{i\theta})F_k(z)=0\) 对所有 \(\theta\) 成立。若
+\(k\ne1\)，可选使两个指数不等的 \(\theta\)，故 \(F_k=0\)。于是局部
+\(F(z)=F'(0)z\)，再由恒等原理延至整个 \(\Omega_1\)。导数的可逆性来自
+\(G'(0)F'(0)=I_n\)。
+
+此处只要求源域有界；目标域不必另列有界条件，因为最后线性等价已经推出它有界。``固定原点''也不能随意删除，下一节的球自同构提供不固定原点的非线性例子。
+
+无界圆型域中的反例可取 \(\Omega=\{|z_1z_2|<1\}\) 及
+\(F_{e^t}\)：上一节已逐项验证它双全纯、固定原点、导数为恒等，但非线性。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.5.5：可递域}\label{ch09-s5-heading-6}
+
+若对任意 \(a,b\in\Omega\)，存在 \(\varphi\in\operatorname{Aut}(\Omega)\)
+使 \(\varphi(a)=b\)，称 \(\Omega\)
+为可递域或齐性域。它描述自同构群对点的作用，而非任意两点之间存在线性映射。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.5.6：可递圆型域的线性等价}\label{ch09-s5-heading-7}
+
+设 \(\Omega_1,\Omega_2\) 是包含原点的圆型域，\(\Omega_1\)
+有界且可递。如果它们双全纯等价，则存在可逆复线性映射把 \(\Omega_1\) 映到
+\(\Omega_2\)。
+
+证明：设 \(F:\Omega_1\to\Omega_2\) 双全纯，令
+\(a=F^{-1}(0)\)。由可递性，取 \(\varphi\in\operatorname{Aut}(\Omega_1)\)
+使 \(\varphi(0)=a\)。则 \(L=F\circ\varphi\) 仍双全纯且 \(L(0)=0\)。定理
+9.5.4 说明 \(L\) 线性并把两域互相映到。
+
+注意结论是``存在一个线性等价''，不声称原来的 \(F\)
+线性。证明的作用是先移动基点，再调用圆型刚性；下一节将显式构造球上移动基点的自同构，并由此比较球和多圆柱。
+
+\Needspace{12\baselineskip}
+\section{球的全纯自同构和 Poincaré 定理}
+\hypertarget{chapter9-part-6}{}
+\noindent{\small \hyperlink{chapter9-part-5}{上一节}\quad \hyperlink{chapter9-part-7}{下一节}\quad \hyperlink{chapter9-part-7}{本章习题}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+对应教材第 273---278 页。先找固定原点的自同构，再构造交换 \(0\) 与任意
+\(a\)
+的自同构，两者复合便给出整个自同构群。最后将全纯等价化为线性等价，用边界几何排除球与多圆柱的等价。
+
+\subsection*{定理索引}\label{ch09-s6-heading-1}
+
+\hyperref[ch09-s6-heading-3]{定理 9.6.1} · \hyperref[ch09-s6-heading-4]{定理 9.6.2} ·
+\hyperref[ch09-s6-heading-5]{定理 9.6.3} · \hyperref[ch09-s6-heading-6]{定理 9.6.4} ·
+\hyperref[ch09-s6-heading-7]{定义 9.6.5} · \hyperref[ch09-s6-heading-8]{定理 9.6.6}
+
+\subsection*{记号与复共轭约定}\label{ch09-s6-heading-2}
+
+本节依教材把 \(z,a\) 写作行向量；\(z^{\mathsf T}\)
+为转置，\(z^*=\overline z^{\mathsf T}\) 为共轭转置。内积
+
+\[
+\langle z,w\rangle=zw^*=\sum_j z_j\overline w_j
+\]
+
+对第一变量线性。与 §9.4 的列增量 Jacobian 配合时，行向量右乘矩阵 \(A\)
+的导数矩阵是
+\(A^{\mathsf T}\)；下面同时用作用于增量的形式写导数，避免混淆转置与共轭。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.6.1：固定原点的自同构}\label{ch09-s6-heading-3}
+
+若 \(\varphi\in\operatorname{Aut}(B_n)\) 且
+\(\varphi(0)=0\)，则存在酉矩阵 \(U\)，使 \(\varphi(z)=zU\)。
+
+证明：\(B_n\) 是有界圆型域，由定理 9.5.4，\(\varphi(z)=zT\)，其中 \(T\)
+可逆。因 \(T\) 把单位球映入单位球，对任意向量 \(v\)，缩放 \(v\)
+并令缩放后的模趋于 \(1\)，得 \(|vT|\le|v|\)。对逆映射同理得
+\(|vT|\ge|v|\)，因此二者相等。由复极化恒等式，保持全部范数的复线性映射保持内积，所以
+\(TT^*=I_n\)，\(T\)
+酉。反过来，酉变换及其逆均线性全纯且保持球，确为自同构。
+
+\Needspace{20\baselineskip}
+\subsection{定理 9.6.2：交换原点与 a 的球自同构}\label{ch09-s6-heading-4}
+
+固定 \(a\in B_n\)，令
+
+\[
+s=\sqrt{1-|a|^2}>0,\qquad
+A=sI_n+\frac{a^*a}{1+s},\qquad
+\varphi_a(z)=\frac{a-zA}{1-\langle z,a\rangle}.
+\]
+
+则有：\(\varphi_a(0)=a\)、\(\varphi_a(a)=0\)；其导数满足
+
+\[
+\begin{aligned}
+D\varphi_a(0)[h]&=\langle h,a\rangle a-hA,\\
+D\varphi_a(a)[h]&=-\frac{hA}{s^2};
+\end{aligned}
+\]
+
+且对 \(z\in B_n\)，
+
+\[
+1-|\varphi_a(z)|^2
+=\frac{(1-|a|^2)(1-|z|^2)}{|1-\langle z,a\rangle|^2}.
+\tag{9.6.A}
+\]
+
+此外 \(\varphi_a\circ\varphi_a=\operatorname{id}\)，从而
+\(\varphi_a\in\operatorname{Aut}(B_n)\)。
+
+证明：构造动机是在复直线 \(\mathbb Ca\) 上保留圆盘的 Möbius
+变换，在正交方向加入恰当的收缩。若 \(a\ne0\)，记
+\(P_az=\langle z,a\rangle a/|a|^2\)、\(Q_a=I-P_a\)，则
+\(zA=P_az+sQ_az\)，所以
+
+\[
+\varphi_a(z)=\frac{a-P_az-sQ_az}{1-\langle z,a\rangle}.
+\]
+
+选择 \(s=\sqrt{1-|a|^2}\) 正是为了得到 (9.6.A)。矩阵形式在 \(a=0\)
+时也有定义，此时 \(A=I_n\)、\(\varphi_0(z)=-z\)，不需要除以 \(|a|^2\)。
+
+由 Cauchy--Schwarz
+不等式，\(|\langle z,a\rangle|\le|z||a|<1\)，故分母在球内不为零，映射全纯。令
+\(B=a^*a\)，则 \(B^*=B\)、\(B^2=|a|^2B=(1-s^2)B\)，直接计算得
+
+\[
+A^*=A,\qquad aA=a,\qquad Aa^*=a^*,\qquad
+A^2=s^2I_n+a^*a.
+\tag{9.6.B}
+\]
+
+例如 \(A^2\) 中 \(B\) 的系数为 \(2s/(1+s)+(1-s^2)/(1+s)^2=1\)。因此
+\(\varphi_a(0)=a\)，而 \(a-aA=0\)，给出 \(\varphi_a(a)=0\)。
+
+在 \(0\) 处展开分母的倒数，得
+
+\[
+\varphi_a(h)=a+\langle h,a\rangle a-hA+O(|h|^2).
+\]
+
+在 \(a\) 处，分子为 \(-hA\)，分母为 \(s^2-\langle h,a\rangle\)，所以
+
+\[
+\varphi_a(a+h)=-\frac{hA}{s^2}+O(|h|^2).
+\]
+
+这证明导数公式。按 §9.4 的列增量 Jacobian 约定，它们分别写作
+
+\[
+\varphi_a'(0)=a^{\mathsf T}\overline a-A^{\mathsf T},\qquad
+\varphi_a'(a)=-A^{\mathsf T}/s^2.
+\]
+
+范数公式可与更强的双点核恒等式一起验证。由 (9.6.B)，展开分子得
+
+\[
+\begin{aligned}
+&(1-za^*)(1-aw^*)-(a-zA)(a^*-Aw^*)\\
+&\hspace{1em}=s^2+z(a^*a-A^2)w^*
+=s^2(1-zw^*).
+\end{aligned}
+\]
+
+因此
+
+\[
+1-\langle\varphi_a(z),\varphi_a(w)\rangle
+=\frac{s^2(1-\langle z,w\rangle)}
+{(1-\langle z,a\rangle)(1-\langle a,w\rangle)}.
+\tag{9.6.C}
+\]
+
+令 \(w=z\) 即得 (9.6.A)，其右端严格为正，故
+\(\varphi_a(B_n)\subset B_n\)。
+
+最后直接证明对合，不把所需的满射性当作前提。令 \(d=1-za^*\)，用 (9.6.B)
+计算
+
+\[
+\begin{aligned}
+1-\varphi_a(z)a^*&=\frac{s^2}{d},\\
+a-\varphi_a(z)A
+&=\frac{ad-a+zA^2}{d}
+=\frac{s^2z}{d}.
+\end{aligned}
+\]
+
+两式相除即得
+\(\varphi_a(\varphi_a(z))=z\)。因此它是双射，逆就是自身且全纯，全部性质证毕。教材证明中``\(\varphi_a(0)=0\)''应为``\(\varphi_a(0)=a\)''，该笔误不影响上述构造。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.6.3：全部自同构的分类}\label{ch09-s6-heading-5}
+
+设 \(\psi\in\operatorname{Aut}(B_n)\)，令
+\(a=\psi^{-1}(0)\)，则存在唯一酉矩阵 \(U\)，使
+
+\[
+\psi(z)=\varphi_a(z)U.
+\]
+
+证明：\(f=\psi\circ\varphi_a\) 是自同构，且 \(f(0)=\psi(a)=0\)。由定理
+9.6.1，\(f(z)=zU\)。复合 \(\varphi_a\)
+并使用它的对合性，即得所示表达式。若两个 \(U\) 给出同一映射，由
+\(\varphi_a\)
+满射，两个线性映射在整个球上相同，故矩阵相同。反过来，任意这样的
+\(\varphi_a\) 与酉变换的复合均为球自同构。
+
+所以每个自同构都有一个明确的``移动基点''部分和一个酉部分。把 (9.6.C)
+的两边再作酉变换，内积不变，得到全部自同构的双点核公式。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.6.4：球是可递域}\label{ch09-s6-heading-6}
+
+证明：任取 \(a,b\in B_n\)，\(\varphi_b\circ\varphi_a\) 是球自同构，且将
+\(a\) 先映到 \(0\)、再映到
+\(b\)。这就是可递性的定义。无需假定两个对合交换，它们的复合顺序已由目标点决定。
+
+\Needspace{8\baselineskip}
+\subsection{定义 9.6.5：全纯等价}\label{ch09-s6-heading-7}
+
+两个域之间存在双全纯映射时，称它们全纯等价。它比拓扑同胚或实微分同胚更强；导数必须处处是可逆复线性映射，且全域存在全纯逆。
+
+\Needspace{8\baselineskip}
+\subsection{定理 9.6.6：Poincaré 定理}\label{ch09-s6-heading-8}
+
+当 \(n\ge2\) 时，单位球 \(B_n\) 与单位多圆柱 \(U^n\) 不全纯等价。\(n=1\)
+时二者就是同一个圆盘，必须排除。
+
+证明：假设双全纯等价存在。\(B_n\) 是有界可递圆型域，\(U^n\)
+是含原点的圆型域，故定理 9.5.6 给出可逆复线性映射 \(L\)，使
+\(L(B_n)=U^n\)。线性同构与其逆连续，因此还将闭球、球面分别映到闭多圆柱及其边界。
+
+取 \(0<t<1\)，多圆柱边界中的两点
+\(p=(1,t,0,\ldots,0)\)、\(q=(1,-t,0,\ldots,0)\) 的中点仍在边界。于是
+\(u=L^{-1}p\)、\(v=L^{-1}q\) 是不同的单位向量，且 \((u+v)/2\)
+也应在单位球面。但
+
+\[
+\left|\frac{u+v}{2}\right|^2
+=1-\frac{|u-v|^2}{4}<1,
+\]
+
+矛盾。这把``椭球不可能是多圆柱''具体化为线性映射保持严格凸性，而多圆柱的边界含非平凡线段。
+
+单复变中，真单连通平面域由 Riemann
+映射定理归于一个圆盘；多复变中，球与多圆柱已经给出不能全纯等价的两类简单域。因此``单连通且有界''不再决定全纯等价类型。
+
+\subsection*{全章联系与使用顺序}\label{ch09-s6-heading-9}
+
+局部幂级数给出正则性与恒等原理；特征边界积分给出紧集上的系数控制。Reinhardt
+展开把坐标超平面上的全纯性转化成负幂消失，进而产生延拓。复线性微分和链式法则允许正规化映射；Cartan
+定理把有界性与旋转对称转化为刚性。球自同构的显式构造提供移动基点的能力，最终把全纯等价问题降为可直接检验的线性几何问题。
+
+原题页保留全部 24
+道习题和提示，另列多重收敛、常数、指标、梯度及转置约定的校注。习题不是本章已证定理的前提。
+
+\clearpage\section*{第九章习题}\phantomsection\addcontentsline{toc}{section}{第九章习题}
+\hypertarget{chapter9-part-7}{}
+\noindent{\small \hyperlink{chapter9-part-6}{上一节}\quad \hyperlink{chapter9-contents}{本章目录}}\par
+依教材印刷第 258、261---262、266---267、269---270、273、277---278
+页整理，六组题数为 4、4、3、4、3、6，共 24
+道。题干保留原条件、原公式、全部小问和提示；原文疑误另列于文末，不静默改题。常规习题不附解答，校注中的反例及推导用于确定题目是否成立。
+
+本页沿教材采用行向量 \(z\)，\(z^{\mathsf T}\)
+表示转置，\(\overline z^{\mathsf T}\) 表示共轭转置；\(B_n\)
+为单位球，\(U^n\) 为单位多圆柱，\(U\) 为单位圆盘。
+
+\subsection*{习题索引}\label{ch09-practice-heading-1}
+
+\hyperref[ch09-practice-heading-2]{习题 9.1} · \hyperref[ch09-practice-heading-3]{习题 9.2} ·
+\hyperref[ch09-practice-heading-4]{习题 9.3} · \hyperref[ch09-practice-heading-5]{习题 9.4} ·
+\hyperref[ch09-practice-heading-6]{习题 9.5} · \hyperref[ch09-practice-heading-7]{习题 9.6} ·
+\hyperref[ch09-practice-heading-8]{原题校注}
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.1}\label{ch09-practice-heading-2}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(f\in H(\Omega)\)。如果存在 \(a\in\Omega\)，使得
+\((D^\alpha f)(a)=0\) 对所有多重指标
+\(\alpha=(\alpha_1,\ldots,\alpha_n)\) 成立，证明在 \(\Omega\) 上
+\(f(z)\equiv0\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(f_1,\ldots,f_m\in H(\Omega)\)。如果 \(\sum_{j=1}^m|f_j(z)|^2\)
+在 \(\Omega\) 上为一常数，证明 \(f_1,\ldots,f_m\) 都是常数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(f,g\in H(\Omega)\)。如果 \(f(z)g(z)\equiv0\) 在 \(\Omega\)
+上成立，证明 \(f\) 或 \(g\) 必在 \(\Omega\) 上恒等于零。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 证明定理 9.1.6。
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.2}\label{ch09-practice-heading-3}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(P(a,r)\) 是一个多圆柱。试利用多圆柱上的 Cauchy
+积分公式证明：若 \(f\in C(\overline{P(a,r)})\cap H(P(a,r))\)，则 \(f\)
+的最大模必在 \(\partial_0P\) 上取到。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(\overline{P(a,r)}\subset\Omega\)。如果
+\(f\in H(\Omega)\)，那么对任意多重指标
+\(\alpha=(\alpha_1,\ldots,\alpha_n)\)，有
+
+\[
+|(D^\alpha f)(a)|\le
+\frac{\alpha!(\alpha_1+2)\cdots(\alpha_n+2)}{(2n)^n r^{\alpha+2}}
+\|f\|_{L^1(P(a,r))},
+\]
+
+这里
+
+\[
+\|f\|_{L^1(P(a,r))}=\int_{P(a,r)}|f(z)|\,dm(z),
+\]
+
+\(dm(z)\) 是 \(\mathbb R^{2n}\) 中的测度。（分母 \((2n)^n\)
+依原文保留，校注说明。）
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(f\) 是 \(\mathbb C^n\) 上的有界全纯函数，证明 \(f\)
+必为常数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(\Omega\) 是 \(\mathbb C^n\) 中的域，\(\{f_k\}\) 是
+\(\Omega\) 上一列处处不为零的全纯函数。如果 \(\{f_k\}\) 在 \(\Omega\)
+上内闭一致收敛于 \(f\)，那么 \(f\) 在 \(\Omega\)
+中或者恒等于零，或者处处不等于零。
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.3}\label{ch09-practice-heading-4}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 记 \(A(B_n)=H(B_n)\cap C(\overline{B_n})\)，\(n>1\)。
+
+(1) 设 \(f\in A(B_n)\)，如果 \(f\) 在 \(\partial B_n\)
+上处处不为零，证明 \(f\) 在 \(B_n\) 中也处处不为零；
+
+(2) 设 \(f\in A(B_n)\)，证明 \(f(\overline{B_n})=f(\partial B_n)\)；
+
+(3) 举例说明，上述结论在 \(n=1\) 时不成立。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(f\in A(B_n)\)，\(n>1\)。如果 \(|f|\) 在球面
+\(\partial B_n\) 上恒等于常数 \(c\)，那么 \(f\) 在 \(B_n\)
+中也恒等于常数 \(c\)。举例说明 \(n=1\)
+时结论不成立。（末句结论按原文保留，校注区分函数值与模。）
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(0<\alpha,\beta<1\)，记
+
+\[
+\begin{aligned}
+G_1&=\{(z,w)\in\mathbb C^2:|z|<1,\ \beta<|w|<1\},\\
+G_2&=\{(z,w)\in\mathbb C^2:|z|<\alpha,\ |w|<1\},
+\end{aligned}
+\]
+
+令 \(G=G_1\cup G_2\)。证明：\(H(G)\)
+中的每一个函数都能全纯开拓到双圆柱域
+
+\[
+U^2=\{(z,w)\in\mathbb C^2:|z|<1,\ |w|<1\}.
+\]
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.4}\label{ch09-practice-heading-5}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 设 \(f\) 是 \(\mathbb C\) 上的一个整函数，满足
+\(f(0)=f'(0)=1\)。令 \(F(z_1,z_2)=(z_1,z_2+f(z_1))\)，\(I_2\) 为 \(2\)
+阶单位方阵。证明：
+
+\[
+F(0)=0,\qquad F'(0)=I_2.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(\Omega=\{z=(z_1,z_2)\in\mathbb C^2:|z_1z_2|<1\}\)，任取
+\(H:U\to\mathbb C\) 为 \(U\) 中处处不为零的全纯函数，这里 \(U\)
+表示单位圆盘。令
+
+\[
+F_h(z_1,z_2)=\left(z_1h(z_1z_2),\frac{z_2}{h(z_1z_2)}\right).
+\]
+
+证明：
+
+(1) \(F_h(0)=0\)；
+
+(2) \((F_h)^{-1}=F_{1/h}\)；
+
+(3) 如果 \(h(0)=1\)，那么 \(F_h'(0)=I_2\)。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(F:\Omega\to\mathbb C^n\) 是全纯映射。设
+\(F=(f_1,\ldots,f_n)\)，\(f_j=u_j+iv_j\)，\(j=1,\ldots,n\)。记
+
+\[
+\begin{aligned}
+(JF)(z)&=\det F'(z),\\
+(J_{\mathbb R}F)(z)&=
+\det\begin{pmatrix}
+\dfrac{\partial(u_1,\ldots,u_n)}{\partial(x_1,\ldots,x_n)}&
+\dfrac{\partial(u_1,\ldots,u_n)}{\partial(y_1,\ldots,y_n)}\\[6pt]
+\dfrac{\partial(v_1,\ldots,v_n)}{\partial(x_1,\ldots,x_n)}&
+\dfrac{\partial(v_1,\ldots,v_n)}{\partial(y_1,\ldots,y_n)}
+\end{pmatrix}.
+\end{aligned}
+\]
+
+前者称为 \(F\) 的复 Jacobian，后者称为 \(F\) 的实 Jacobian。证明：
+
+\[
+(J_{\mathbb R}F)(z)=|(JF)(z)|^2.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(\Omega\) 是 \(\mathbb C^n\)
+中的域，\(F:\Omega\to\mathbb C^n\) 是全纯映射。如果存在
+\(a\in\Omega\)，使得 \(F'(a)\) 可逆，那么一定存在 \(a\) 和 \(F(a)\)
+的邻域 \(V\) 和 \(W\)，使得 \(F\) 一一地把 \(V\) 映为 \(W\)，而且 \(F\)
+的逆映射 \(G:W\to V\) 是全纯的，等式
+
+\[
+G'(w)=\bigl(F'(z)\bigr)^{-1}
+\]
+
+对 \(z\in V\) 成立。
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.5}\label{ch09-practice-heading-6}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 由习题 9.4 中的第 1、2 两题说明，定理 9.5.1 和定理 9.5.4
+中域 \(\Omega\) 和 \(\Omega_1\) 有界的条件是不能去掉的。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(F=(f_1,f_2):U^2\to B_2\) 是双全纯映射。
+
+(1) 证明：对于任意 \(\{z_k\}\subset U\)（\(U\)
+是单位圆盘），\(|z_k|\to1\)，必有子列 \(\{z_{k_v}\}\)，使得
+
+\[
+\lim_{v\to\infty}F(z_{k_v},w)=\varphi(w),
+\]
+
+其中，\(\varphi\) 是常数映射，即 \(\varphi(w)=(c_1,c_2)\)；
+
+(2) 由此证明 \(F\) 不存在，即不存在把 \(U^2\) 一一地映为 \(B_2\)
+的双全纯映射。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 设 \(f\in\operatorname{Aut}(U^n)\)，\(U^n\) 是单位多圆柱。
+
+(1) 如果 \(f(0)=0\)，那么一定存在实数 \(\theta_1,\ldots,\theta_n\)
+和置换 \(\tau:\{1,\ldots,n\}\to\{1,\ldots,n\}\)，使得
+
+\[
+f(z)=(e^{i\theta_1}z_{\tau(1)},\ldots,e^{i\theta_n}z_{\tau(n)});
+\]
+
+(2) 如果 \(f(a)=0\)，\(a\ne0\)，那么一定存在实数
+\(\theta_1,\ldots,\theta_n\) 和置换 \(\tau\)，使得
+
+\[
+f(z)=\left(
+e^{i\theta_1}\frac{z_{\tau(1)}-a_1}{1-\overline a_1z_{\tau(1)}},\ldots,
+e^{i\theta_n}\frac{z_{\tau(n)}-a_n}{1-\overline a_nz_{\tau(n)}}
+\right).
+\]
+
+\Needspace{8\baselineskip}
+\subsection{习题 9.6}\label{ch09-practice-heading-7}
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{1.} 对于任意 \(z,w\in B_n\)，证明：
+
+\[
+|\varphi_z(w)|=|\varphi_w(z)|.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{2.} 设 \(a,z,w\in B_n\)，证明：
+
+\[
+|\varphi_{\varphi_a(w)}(z)|=|\varphi_w(\varphi_a(z))|.
+\]
+
+（提示：考虑映射
+\(\varphi_{\varphi_a(w)}\circ\varphi_a\circ\varphi_w\)。）
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{3.} 定义
+\(E(a,r)=\varphi_a(B(0,r))=\{z:|\varphi_a(z)|<r\}\)。证明：对任意
+\(a,z\in B_n\)，\(0<r<1\)，有
+
+\[
+\varphi_a(E(z,r))=E(\varphi_a(z),r).
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{4.} 设 \(F\in H(B_n)\)，\(F=f\circ\varphi_z\)。证明：
+
+(1) \((\nabla F)(0)=(\nabla f)(z)\varphi_z'(0)\)，这里
+
+\[
+(\nabla f)(z)=\left(\frac{\partial f(z)}{\partial z_1},\ldots,\frac{\partial f(z)}{\partial z_n}\right);
+\]
+
+(2) \(|(\nabla F)(0)|^2=(1-|z|^2)[|(\nabla F)(z)|^2-|(Rf)(z)|^2]\)，这里
+\((Rf)(z)=\sum_{j=1}^nz_j\dfrac{\partial f(z)}{\partial z_j}\) 是 \(f\)
+的径向导数。
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{5.} 设 \(\psi\in\operatorname{Aut}(B_n)\)，如果
+\(\psi(a)=0\)，那么对任意 \(z,w\in\overline{B_n}\)，有等式
+
+\[
+1-\psi(z)\overline{\psi(w)}^{\mathsf T}
+=\frac{(1-|a|^2)(1-z\overline w^{\mathsf T})}
+{(1-\overline a z^{\mathsf T})(1-a\overline w^{\mathsf T})}.
+\]
+
+\par\Needspace{5\baselineskip}
+\noindent\textbf{6.} 设 \(\psi\in\operatorname{Aut}(B_n)\)。如果 \(\psi\) 在
+\(\partial B_n\) 上有三个不同的不动点，证明 \(\psi\) 在 \(B_n\)
+中至少有一个不动点。
+
+（提示：设 \(\xi_1,\xi_2,\xi_3\) 是 \(\psi\) 在 \(\partial B_n\)
+上的三个不动点，令 \(z_0=\tfrac12(\xi_1+\xi_2)\)，先证明
+
+\[
+\varphi_a(z_0)=\tfrac12\bigl(\varphi_a(\xi_1)+\varphi_a(\xi_2)\bigr),
+\]
+
+这里 \(a=\psi^{-1}(0)\)，然后再证明 \(\psi(z_0)=z_0\)。）
+
+\Needspace{8\baselineskip}
+\subsection{原题校注与适用条件}\label{ch09-practice-heading-8}
+
+\textbf{关于正文命题 9.1.1。} 多重级数的矩形极限不保证项一致有界。§9.1
+保留原命题的条件说明，并给出 \(c_{0,k}=k!\)、\(c_{1,k}=-k!\)
+的反例；实际使用时要求绝对收敛或明确的项有界条件。不能从弱矩形收敛直接推出局部绝对收敛。
+
+\textbf{关于习题 9.2.2。} 底本分母确为 \((2n)^n\)，不是
+\((2\pi)^n\)。在通常的欧氏 Lebesgue 测度下，适用于全部维数的正确估计是
+
+\[
+|D^\alpha f(a)|\le
+\frac{\alpha!\prod_j(\alpha_j+2)}{(2\pi)^n\prod_j r_j^{\alpha_j+2}}
+\|f\|_{L^1(P(a,r))}.
+\]
+
+这里 \(r^{\alpha+2}\) 指 \(\prod_jr_j^{\alpha_j+2}\)。从半径
+\(\rho_j<r_j\) 的 Cauchy 导数公式取绝对值得
+
+\[
+|D^\alpha f(a)|\prod_j\rho_j^{\alpha_j}
+\le\frac{\alpha!}{(2\pi)^n}
+\int_{[0,2\pi]^n}|f(a+(\rho_je^{i\theta_j})_j)|\,d\theta.
+\]
+
+两边再乘 \(\prod_j\rho_j\)，对各 \(\rho_j\) 从 \(0\) 到 \(r_j\)
+积分，用极坐标换元即得校正式。原式在 \(n=4\)、\(\alpha=0\)、各
+\(r_j=1\)、\(f\equiv1\) 时会给出
+\(1\le(\pi/4)^4<1\)，故不能作为全维数结论使用。
+
+\textbf{关于习题 9.3.2。} 原文从边界 \(|f|=c\) 推出
+\(f\equiv c\)，丢失了常数的相位。应为 \(f\equiv C\) 且
+\(|C|=c\)；\(f\equiv ic\)（\(c>0\)）已反驳原来的精确函数值结论。若
+\(c=0\)，最大模原理使 \(f=0\)；若 \(c>0\)，由第 1 题知 \(f\) 无零点，对
+\(f\) 和 \(1/f\) 分别用最大模原理，得域内 \(|f|=c\)，再由开映射定理得
+\(f\) 常数。\(n=1\) 的反例是 \(f(z)=z\)，而不是相位不同的常函数。
+
+\textbf{关于习题 9.4.1。}
+按原条件直接计算，\(F(0)=(0,1)\)，\(F'(0)=\begin{pmatrix}1&0\\1&1\end{pmatrix}\)，两项所求结论均不成立。若意在为
+Cartan 定理提供反例，可把条件改为 \(f(0)=f'(0)=0\) 且 \(f\) 非零，例如
+\(f(z)=z^2\)。正文采用这个已经独立验证的剪切映射；原题仍完整保留。习题
+9.5.1 引用此题时也应使用校正版本。
+
+\textbf{关于习题 9.4.2。} 原文先以大写 \(H\) 引入函数，公式中改用小写
+\(h\)；它们应指同一函数。题目的逆映射和导数结论成立，前提是 \(h\)
+处处不为零。正文已证明乘积不变性及逆公式。
+
+\textbf{关于习题 9.4.4。} 求导公式中的变量应满足 \(w=F(z)\)，不能把
+\(w,z\) 当作独立取值。局部逆不等于全域逆。
+
+\textbf{关于习题 9.5.3(2)。} 置换后的坐标必须减去相同位置的 \(a\)
+坐标，正确公式为
+
+\[
+f_j(z)=e^{i\theta_j}
+\frac{z_{\tau(j)}-a_{\tau(j)}}{1-\overline{a_{\tau(j)}}z_{\tau(j)}}.
+\]
+
+这来自先逐坐标用圆盘自同构把 \(a\) 送到 \(0\)，再作第 (1)
+问的置换旋转。若仍写 \(a_j\)，对非平凡置换和不相等的坐标，一般连
+\(f(a)=0\) 都不能满足。
+
+\textbf{关于习题 9.6.4。} 题干须理解为 \(f\in H(B_n)\)，\(F\) 是固定基点
+\(z\) 后的函数 \(F(\zeta)=f(\varphi_z(\zeta))\)。第 (2) 问右端的
+\(\nabla F(z)\) 应为 \(\nabla f(z)\)。令
+\(s^2=1-|z|^2\)，\(g=\nabla f(z)\) 为行梯度；由 §9.6
+的列增量导数，\(\nabla F(0)=g\varphi_z'(0)\)。转置后的导数矩阵满足
+
+\[
+\varphi_z'(0)\varphi_z'(0)^*
+=s^2(I_n-z^{\mathsf T}\overline z),
+\]
+
+所以正确恒等式为
+
+\[
+|\nabla F(0)|^2=(1-|z|^2)\bigl(|\nabla f(z)|^2-|Rf(z)|^2\bigr).
+\]
+
+矩阵式可由 \(A^{\mathsf T}=sI+z^{\mathsf T}\overline z/(1+s)\)
+展开平方直接得到。原式在一维 \(f(\zeta)=\zeta\)、\(z=1/2\) 时左端为
+\(9/16\)，右端却为 \(55/48\)，确实不成立。
+
+\textbf{关于习题 9.6.5、9.6.6 的边界。} §9.6
+的分类公式分母在闭球上也不为零，因为
+\(|a|<1\)，所以每个球自同构自动延到闭球的邻域；边界值与不动点因而有明确含义。第
+6 题提示中的中点等式不是一般 Möbius
+映射保持中点，而依赖三个不动点：把双点核公式用于三对不同的不动点，令
+\(d_j=1-\langle\xi_j,a\rangle\)，即得
+\(d_j\overline{d_k}=1-|a|^2\)（\(j\ne k\)），从而
+\(d_1=d_2=d_3\)。分母相同才允许分式映射在这条弦上保持中点。中点属于开球，因为两端点不同。此处不得只靠``分式线性''四字略过关键条件。
+
+\textbf{关于 Poincaré 定理。} \(n>1\) 是必要条件；\(n=1\) 时
+\(B_1=U\)。定理比较双全纯等价，不否认两个域在实拓扑或实微分意义下存在其他等价。
+
+
+\end{document}
