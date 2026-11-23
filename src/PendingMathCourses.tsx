@@ -3,6 +3,7 @@ import React from 'react';
 export const pendingMathCourses = [
   {title: '抽象代数', url: '/math/abstract-algebra/'},
   {title: '微分几何', url: '/math/differential-geometry/'},
+  {title: '数值分析', url: '/math/numerical-analysis/'},
 ] as const;
 
 export const pendingMathCourseDescription = '栏目已创建，等待上传参考教材后搭建内容。';
