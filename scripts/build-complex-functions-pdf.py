@@ -6,7 +6,7 @@ from pathlib import Path
 import argparse, re, subprocess
 
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--chapter',type=int,choices=[1,2,3,4,5,6,7,8],default=1)
+parser.add_argument('--chapter',type=int,choices=[1,2,3,4,5,6,7,8,9],default=1)
 chapter=parser.parse_args().chapter
 R=Path(__file__).resolve().parents[1]
 source=R/'content/notes/complex-functions'
@@ -19,6 +19,7 @@ settings={
  6:('第六章','全纯开拓','194—209',3,28),
  7:('第七章','共形映射','210—234',4,25),
  8:('第八章','调和函数与次调和函数','235—252',4,43),
+ 9:('第九章','多复变数全纯函数与全纯映射','253—278',6,24),
 }
 name,topic,pages,sections,exercises=settings[chapter]
 pre=(R/'print/real-functions-chapter-1.tex').read_text().split(r'\begin{document}')[0]
@@ -28,6 +29,19 @@ if chapter in (7,8):
  pre=pre.replace(r'\usepackage[no-math]{fontspec}',r'\usepackage{assets/tex/cm-bea}')
 pre=pre.replace('实变函数论 · 第一章',f'复变函数 · {name}').replace('实变函数讲义：第一章',f'复变函数讲义：{name}').replace('集合运算、集合的势、集类',topic)
 pre=pre.replace(r'\renewcommand{\thesection}{1.\arabic{section}}',rf'\renewcommand{{\thesection}}{{{chapter}.\arabic{{section}}}}')
+if chapter==9:
+ pre=pre.replace(r'\usepackage[no-math]{fontspec}',r'\usepackage{assets/tex/cm-bea}')
+ pre=pre.replace(r'\renewcommand{\thesection}{9.\arabic{section}}',r'\renewcommand{\thesection}{\S{}9.\arabic{section}}')
+ pre=pre.replace(r'{\thesection.}',r'{\thesection}')
+ pre+=r'''
+\makeatletter
+\let\chapterNineSectionToc\l@section
+\renewcommand{\l@section}[2]{\begingroup
+  \let\chapterNineNumberline\numberline
+  \renewcommand{\numberline}[1]{\hb@xt@3.6em{##1\hfil}}
+  \chapterNineSectionToc{#1}{#2}\endgroup}
+\makeatother
+'''
 pre+=r'''
 \usepackage{graphicx}
 \usepackage{longtable}
@@ -64,8 +78,10 @@ elif chapter==6:
  pre+='覆盖 19 个教材编号条目，补足可求长曲线的连续拼接、单叶反射的同侧条件、圆环分类及路径同伦证明。Picard 小定理复用已证的导数估计，使证明依赖在前六章内闭合；保留九幅教材配图、逐节索引与原题校注。'
 elif chapter==7:
  pre+='覆盖 19 个教材编号条目，由正规族与导数极值证明 Riemann 映射定理，补足 Jordan 边界对应、角点展开、无限端及积分分支的证明。保留教材必要配图与原题提示，另列原题校注。'
-else:
+elif chapter==8:
  pre+='覆盖 19 个教材编号条目，完整证明平均值性质、圆盘和半平面边值问题及次调和函数的基本性质。补齐一般上半连续情形的圆周平均证明，明确复积分收敛与负无穷值的处理；原题错误及必要条件独立校注。'
+else:
+ pre+='覆盖 36 个教材编号条目，补证不预设连续性的 Hartogs 定理，严谨处理 Laurent 系数、坐标超平面与延拓范围。由复线性微分、Cartan 刚性及球自同构构造证明 Poincaré 定理；数学公式采用 CM bea，中文与版式沿用既定模板。原题疑义和修正独立列出，附可点击目录、定理索引及相邻导航。'
 pre+=('习题不附常规解答，原题中的疑义另列校勘。\n' if chapter==8 else '习题不附解答，原题中的疑义另列校勘。\n')
 pre+=(r'\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup\clearpage' if chapter>=6 else r'\tableofcontents\clearpage')+'\n'
 pieces=[]
@@ -91,8 +107,8 @@ for i in range(1,sections+2):
  # fancy_lists would silently renumber them when two share a paragraph.
  latex=subprocess.run(['pandoc','-f','markdown+tex_math_dollars+raw_tex-fancy_lists-implicit_figures','-t','latex','--no-highlight'],input=body,text=True,capture_output=True,check=True).stdout
  latex=latex.replace(r'\includegraphics{',r'\noindent\includegraphics{')
- if chapter==8:
-  latex=re.sub(r'\\qquad\\text\{\((8\.[^)]*)\)\}',lambda m:r'\tag{'+m[1]+'}',latex)
+ if chapter>=8:
+  latex=re.sub(r'\\qquad\\text\{\(('+str(chapter)+r'\.[^)]*)\)\}',lambda m:r'\tag{'+m[1]+'}',latex)
  if chapter>=7:
   # Keep the main contents to textbook entries and exercises; inline indices
   # retain their own clickable targets without repeating them in the contents.
@@ -100,8 +116,8 @@ for i in range(1,sections+2):
           '正规化、映射半径与条件校注','边界条件的适用范围','公式的使用顺序与全章联系']
   for extra in extras:
    latex=latex.replace(r'\subsection{'+extra+'}',r'\subsection*{'+extra+'}')
- if chapter==8:
-  latex=re.sub(r'\\subsection\{([^}]+)\}',lambda m: m[0] if re.match(r'(?:定理|定义|命题) 8\.|习题 8\.|原题校注',m[1]) else r'\subsection*{'+m[1]+'}',latex)
+ if chapter>=8:
+  latex=re.sub(r'\\subsection\{([^}]+)\}',lambda m: m[0] if re.match(r'(?:定理|定义|命题|例|教材条目) '+str(chapter)+r'\.|习题 '+str(chapter)+r'\.|原题校注',m[1]) else r'\subsection*{'+m[1]+'}',latex)
  # Pandoc is run separately for each document: namespace local targets to avoid
  # duplicate destinations such as the five headings titled 定理索引.
  if chapter>=2:
@@ -115,8 +131,19 @@ for i in range(1,sections+2):
   heading='\\section{'+title.split('　',1)[1]+'}\n'
  else:
   heading=rf'\clearpage\section*{{{name}习题}}\phantomsection\addcontentsline{{toc}}{{section}}{{{name}习题}}'+'\n'
+ if chapter==9:
+  if not practice:heading=r'\Needspace{12\baselineskip}'+'\n'+heading
+  heading+=rf'\hypertarget{{chapter9-part-{i}}}{{}}'+'\n'
+  nav=[]
+  if i>1:nav.append(rf'\hyperlink{{chapter9-part-{i-1}}}{{上一节}}')
+  if i<sections+1:nav.append(rf'\hyperlink{{chapter9-part-{i+1}}}{{下一节}}')
+  if not practice:nav.append(rf'\hyperlink{{chapter9-part-{sections+1}}}{{本章习题}}')
+  nav.append(r'\hyperlink{chapter9-contents}{本章目录}')
+  heading+='\\noindent{\\small '+'\\quad '.join(nav)+'}\\par\n'
  needed=9 if chapter==3 and practice else (8 if chapter>=6 else 5)
  latex=latex.replace(r'\subsection{',rf'\Needspace{{{needed}\baselineskip}}'+'\n'+r'\subsection{')
+ if chapter==9:
+  latex=latex.replace(r'\Needspace{8\baselineskip}'+'\n'+r'\subsection{定理 9.6.2',r'\Needspace{20\baselineskip}'+'\n'+r'\subsection{定理 9.6.2')
  if practice:
   latex=re.sub(r'\\textbf\{(\d+)\.\}',lambda m:r'\par\Needspace{5\baselineskip}'+'\n'+r'\noindent\textbf{'+m[1]+'.}',latex)
  pieces.append(heading+latex)
@@ -127,6 +154,8 @@ appendix=''
 marker=r'\clearpage\section*{校审记录}'
 if chapter==4 and tex.exists() and marker in tex.read_text():
  appendix=marker+tex.read_text().split(marker,1)[1].split(r'\end{document}',1)[0]
+if chapter==9:
+ pre=pre.replace(r'\tableofcontents',r'\hypertarget{chapter9-contents}{}\tableofcontents')
 tex.write_text(pre+'\n'.join(pieces)+'\n'+appendix+'\n\\end{document}\n')
 out=R/f'tmp/complex-pdf-ch{chapter}';out.mkdir(parents=True,exist_ok=True)
 for _ in range(3):

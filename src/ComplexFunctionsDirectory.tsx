@@ -20,6 +20,7 @@ export const complexChapters: Chapter[] = [
 
 export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
   const notes = new Map(items.filter(e=>e.sourcePath.startsWith('notes/complex-functions/')).map(e=>[e.sourcePath,e]));
+  const lectureCount = [...notes.keys()].filter(p=>/ch\d{2}-s\d+\.md$/.test(p)).length;
   return <article className="wrap article-shell">
     <div className="breadcrumb"><a href="/">首页</a><span>/</span><a href="/math/">数学</a></div>
     <div className="reading-page">
@@ -27,6 +28,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
       <div className="prose">
         <p>沿教材九章、四十八节建立讲义。以理解结构、重建证明和独立解决综合题为目标；沿用教材符号，保留定义、定理、性质、推论，定理和性质均给出证明。习题按原节次、原题号归入各章，只列原题；本书没有独立的章末复习题。页码均为上传教材的印刷页。</p>
         <p>全书以 Cauchy 的积分理论、Weierstrass 的级数理论和 Riemann 的几何理论为主线，同时保留教材的一维非齐次 Cauchy–Riemann 方程、次调和函数和多复变内容。各节说明关键构造、适用条件及与前后内容的联系。</p>
+        <p>当前已编 {lectureCount} / 48 节讲义，各章附原题页与可下载 PDF。</p>
         <nav className="lecture-toc-shortcuts" aria-label="全书章节">{complexChapters.map((c,i)=><a key={c.title} href={'#chapter-'+(i+1)}>第 {i+1} 章</a>)}</nav>
         {complexChapters.map((c,i)=>{
           const n=i+1,prefix='notes/complex-functions/ch'+String(n).padStart(2,'0');
@@ -43,6 +45,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
               return '- '+(note?'['+label+']('+entryUrl(note)+'/)' : label)+'（第 '+page+' 页）';
             }).join('\n')}/>
             {practice&&<p><a href={entryUrl(practice)+'/'}>{practice.title}</a>{pdf&&<> · <a href={'/files/'+pdf} download>下载第 {n} 章讲义与习题 PDF</a></>}</p>}
+            {n===9&&count>0&&<p>第九章含六节讲义、36 个教材编号条目与 24 道原题，附可点击定理索引、章节导航及 CM bea 公式 PDF。补证 Hartogs 分别全纯定理，严格处理 Reinhardt 展开与延拓条件；通过 Cartan 刚性与球自同构构造完成 Poincaré 定理，原题疑义另列校注。</p>}
             {n===8&&count>0&&<p>第八章含四节讲义、19 个教材编号条目与 43 道原题，附定理索引、相邻导航和 PDF。完整串联平均值、Poisson 积分、Dirichlet 唯一性与次调和函数；补齐一般上半连续情形的证明，独立列出原题反例和条件校注。</p>}
             {n===7&&count>0&&<p>第七章含四节讲义、19 个教材编号条目和 25 道原题，附可点击定理索引、章节导航及 PDF。完整串联正规族、Riemann 映射、Jordan 边界对应与 Schwarz–Christoffel 公式；逐项说明退化极限、无穷远端、积分分支及原题疑义。</p>}
             {n===6&&count>0&&<p>第六章含三节讲义、19 个教材编号条目、28 道原题及九幅教材图，附逐节索引、导航和 PDF。补全可求长曲线拼接、单叶反射的同侧条件、圆环分类与单值性证明；Picard 小定理的两种证明在已发布前六章内闭合。</p>}
