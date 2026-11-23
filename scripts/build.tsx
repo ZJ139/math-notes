@@ -20,6 +20,7 @@ import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
 import {copyCMBeaMathAssets} from '../src/cmBeaMath';
 import {mathTextColor,colorMathSvg} from '../src/mathColor';
+import {screenMathSvg,mathAppearanceVersion} from '../src/mathAppearance';
 import {availableProblemYears,ProblemYearPage} from '../src/ProblemYears';
 import {populatedCollections,collectionRoute,collectionDestination} from '../src/ProblemCollections';
 import {finalExamEntries,cohortRoute,cohortDestination} from '../src/FinalExamDirectory';
@@ -37,8 +38,9 @@ const site=new URL(config.siteUrl);
 if(site.protocol!=='https:'||!site.pathname.endsWith('/'))throw new Error('siteUrl 必须是 HTTPS 且以 / 结尾');
 const base=site.pathname.replace(/\/$/,'');
 const mathInk=mathTextColor(await readFile(path.join(root,'public/reading.css'),'utf8'));
-// Color-versioned asset URLs prevent browsers retaining the old black SVGs.
-const mathDirectory=`math/${mathInk.slice(1)}`;
+// Version the exported appearance as well as ink. Reusing the TeX cache must
+// never cause a browser to reuse an older, thinner formula after publication.
+const mathDirectory=`math/${mathInk.slice(1)}-${mathAppearanceVersion}`;
 // New HTML must never run an older cached search/filter script after deployment.
 // The shared module has no imports; prepend its declarations to keep one classic,
 // fingerprinted browser script and preserve the existing progressive enhancement.
@@ -142,7 +144,7 @@ const mathOutput=path.join(output,mathDirectory);
 copyCMBeaMathAssets(mathOutput);
 for(const file of await readdir(mathOutput)){
   const target=path.join(mathOutput,file);
-  await writeFile(target,colorMathSvg(await readFile(target,'utf8'),mathInk));
+  await writeFile(target,colorMathSvg(screenMathSvg(await readFile(target,'utf8')),mathInk));
 }
 const xml=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 await writeFile(path.join(output,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(url=>`<url><loc>${xml(url)}</loc></url>`).join('\n')+'\n</urlset>\n');

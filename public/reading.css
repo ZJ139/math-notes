@@ -190,7 +190,7 @@ h1,h2{font-family:var(--heading-serif)}
 @media screen{
   body{-webkit-text-stroke:.22px currentColor}
   h1,h2,h3,strong,b,.brand,.katex{-webkit-text-stroke:0}
-  /* Native CM outlines and TeX spacing stay clear at every zoom level. */
+  /* Screen weight lives inside each SVG; blur would close TeX's clear gaps. */
   .prose .latex-svg{filter:none}
   .article-header .entry-meta{font-size:max(16px,.83em)}
 }
