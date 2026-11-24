@@ -1,0 +1,32 @@
+[
+  {
+    "file": "print/curve-surface-appendix/sections/curve.tex",
+    "sha256": "514cc8e086c4581cde07bd3e3bd14b16d7c79551ff059412ea737d7a968b9514",
+    "byte_identical": true
+  },
+  {
+    "file": "print/curve-surface-appendix/sections/improper-problems.tex",
+    "sha256": "2c5da5019fdb5f9c0da61a9f415e48fcfef410ff76a87061fb53a48c58b90839",
+    "byte_identical": true
+  },
+  {
+    "file": "print/curve-surface-appendix/sections/infinite.tex",
+    "sha256": "76ebd6728dce5f1e3057a7872c45d2d3f73048c0eeba851f7c3090c7bc5b82fa",
+    "byte_identical": true
+  },
+  {
+    "file": "print/curve-surface-appendix/sections/related.tex",
+    "sha256": "39818030aaefbf4f1843b2d9d1490222f085212beef273ec0b03e54a83f54aeb",
+    "byte_identical": true
+  },
+  {
+    "file": "print/curve-surface-appendix/sections/singular.tex",
+    "sha256": "055ea21294985ddd57a2e1afc9bf8a5575a9d4107b3563c6a1558e19ba68f5ed",
+    "byte_identical": true
+  },
+  {
+    "file": "print/curve-surface-appendix/sections/surface.tex",
+    "sha256": "cc063d107bf792102c910745401c281842fc11edb2c84e08505b454b802697e7",
+    "byte_identical": true
+  }
+]

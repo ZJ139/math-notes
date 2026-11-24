@@ -1,0 +1,71 @@
+{
+  "sections": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11"
+  ],
+  "main_examples": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "F1",
+    "F2",
+    "F3",
+    "F4"
+  ],
+  "figures": [
+    "arc-tangent",
+    "surface-patch",
+    "mobius",
+    "cone-spiral",
+    "great-circle",
+    "cycloid",
+    "stokes-disk",
+    "annulus-orientation",
+    "paraboloid-projection",
+    "tetrahedron",
+    "cap-orientation",
+    "punctured-flux"
+  ],
+  "appendix_examples": 58,
+  "appendix_source_byte_preservation": true,
+  "pdfs": [
+    {
+      "file": "content/notes/curve-surface-integrals-cm-bea.pdf",
+      "pages": 35,
+      "bookmarks": 69,
+      "links": 190,
+      "sha256": "0114295655e7ae0c839683dfac7bc904392971e44fd06bad12f910ec6f5f1c78",
+      "size_bytes": 907558,
+      "all_fonts_embedded": true,
+      "no_overfull_or_missing_glyphs": true
+    },
+    {
+      "file": "content/notes/curve-surface-appendix-starred-cm-bea.pdf",
+      "pages": 48,
+      "bookmarks": 103,
+      "links": 254,
+      "sha256": "b8c9f17a4c05d420d29f13551420f2dfd47af2b7f56f55840b5e8bd5a03916e8",
+      "size_bytes": 488014,
+      "all_fonts_embedded": true,
+      "no_overfull_or_missing_glyphs": true
+    }
+  ]
+}

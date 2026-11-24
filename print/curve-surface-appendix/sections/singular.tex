@@ -1,0 +1,104 @@
+\clearpage
+\section{反常积分：瑕积分}
+\src{原书 §6.2，pp.309（下半页）—312（上半页）}
+\entry{定义 6.2.1}{端点瑕积分}{p.309}
+设 $f$ 定义于 $(a,b]$，$a$ 为瑕点，原书以 $\lim_{x\to a^+}f(x)=+\infty$ 的端点型情形说明。若内部任意闭区间上可积，则定义
+\[
+\int_a^bf(x)\dd x=\lim_{\varepsilon\to0^+}\int_{a+\varepsilon}^bf(x)\dd x.
+\]
+极限有限时称为收敛。右端点为瑕点的情形类似。作换元 $y=1/(x-a)$，有
+\[
+\int_a^bf(x)\dd x=\int_{1/(b-a)}^\infty\frac{f(a+1/y)}{y^2}\dd y.
+\]
+因此，瑕积分可转为无穷区间广义积分，相应判别法同样成立。
+
+\entry{定理 6.2.1}{Cauchy 准则}{p.310}
+设 $f$ 定义于 $(a,b]$，$a$ 为唯一瑕点。$\int_a^bf$ 收敛的充要条件是：任意 $\varepsilon>0$，存在 $\delta>0$，使 $0<\delta',\delta''<\delta$ 时
+\[
+\left|\int_{a+\delta'}^{a+\delta''}f(x)\dd x\right|<\varepsilon.
+\]
+
+\entry{定理 6.2.2}{绝对收敛蕴含收敛}{p.310}
+在上述条件下，若 $\int_a^b|f|$ 收敛，则 $\int_a^bf$ 收敛。
+
+\entry{定理 6.2.3}{比较判别法}{p.310}
+设 $a$ 为唯一瑕点，充分靠近 $a$ 的 $x>a$ 满足 $0\le f(x)\le g(x)$。则：
+
+（1）$\int_a^bg$ 收敛蕴含 $\int_a^bf$ 收敛。
+
+（2）$\int_a^bf$ 发散蕴含 $\int_a^bg$ 发散。
+
+\entry{定理 6.2.4}{比较极限判别法}{p.310}
+设 $f,g$ 在 $(a,b]$ 上非负连续，$a$ 为唯一瑕点，$\lim_{x\to a^+}f(x)/g(x)=k$。
+
+当 $0<k<\infty$ 时，两积分同敛散；当 $k=0$ 且 $\int_a^bg$ 收敛时，$\int_a^bf$ 收敛；当 $k=\infty$ 且 $\int_a^bg$ 发散时，$\int_a^bf$ 发散。
+
+\entry{例 6.2.1}{椭圆积分的收敛性}{pp.310—311}
+研究 $\int_0^1\dd x/\sqrt{(1-x^2)(1-k^2x^2)}$ 的敛散性，其中 $0<k<1$。
+\sol $x=1$ 为瑕点，且
+\[
+\lim_{x\to1^-}\frac{1/\sqrt{(1-x^2)(1-k^2x^2)}}{1/\sqrt{1-x}}
+=\frac1{\sqrt{2(1-k^2)}}.
+\]
+因 $\int_0^1\dd x/\sqrt{1-x}$ 收敛，由比较极限判别法知原积分收敛。
+
+\entry{例 6.2.2}{对数型瑕积分}{p.311}
+研究 $\int_0^1\ln x/(1-x^2)\dd x$ 的敛散性。
+\sol 看似 $x=0,1$ 都是瑕点，但 $\lim_{x\to1}\ln x/(1-x^2)=-1/2$，故 $1$ 为可去瑕点。充分小的 $x$ 满足 $1-x^2\ge1/2$，则
+\[
+\left|\frac{\ln x}{1-x^2}\right|\le2|\ln x|.
+\]
+而
+\[
+\int_0^1|\ln x|\dd x=-\int_0^1\ln x\dd x
+=-[x\ln x]_0^1+\int_0^1\dd x=1
+\]
+收敛，故原积分收敛。
+
+\entry{例 6.2.3}{同时含瑕点与无穷上限}{p.311}
+研究 $\int_0^\infty x^\alpha\arctan x/(2+x^\beta)\dd x$ 的敛散性，其中 $\beta\ge0$。
+\sol $\alpha<0$ 时 $x=0$ 为瑕点，又有无穷上限，故拆为 $\int_0^1+\int_1^\infty$。当 $x\to0^+$ 时，原书写为
+\[
+\frac{x^\alpha\arctan x}{2+x^\beta}\sim\frac12x^{\alpha+1}.
+\]
+因此 $\alpha+1>-1$，即 $\alpha>-2$ 时首段收敛。当 $x\to\infty$ 时，原书写为
+\[
+\frac{x^\alpha\arctan x}{2+x^\beta}\sim\frac{\pi/2}{x^{\beta-\alpha}}.
+\]
+因此 $\beta-\alpha>1$ 时尾段收敛。综上，原积分当且仅当 $\alpha>-2$ 且 $\beta>1+\alpha$ 时收敛。
+\ednote{题设允许 $\beta=0$，此时分母恒为 $3$，上述两个渐近常数应为 $1/3$ 和 $\pi/6$，但幂指数及最终收敛范围不变。原解所列常数仅适用于 $\beta>0$。}
+
+\entry{例 6.2.4}{对数积分的递推与极限}{pp.311—312}
+设 $n$ 为正整数，$I_n=\int_0^1\ln x/(1+x)^{n+1}\dd x$，求递推关系及 $\lim_{n\to\infty}nI_n/\ln n$。
+\sol 分部积分得
+\[
+I_n=\frac1n\int_0^1\frac1x\left[\frac1{(1+x)^n}-1\right]\dd x,
+\qquad I_1=-\ln2.
+\]
+又
+\begin{align*}
+I_{n+1}&=\frac1{n+1}\int_0^1\frac1x\left[\frac{1+x-x}{(1+x)^{n+1}}-1\right]\dd x\\
+&=\frac n{n+1}I_n-\frac1{n+1}\int_0^1\frac1{(1+x)^{n+1}}\dd x\\
+&=\frac n{n+1}I_n-\frac1{n(n+1)}(1-2^{-n}).
+\end{align*}
+由 Stolz 定理，
+\begin{align*}
+\lim_{n\to\infty}\frac{nI_n}{\ln n}
+&=\lim_{n\to\infty}\frac{(n+1)I_{n+1}-nI_n}{\ln(n+1)-\ln n}\\
+&=\lim_{n\to\infty}\frac{(1/n)(2^{-n}-1)}{\ln(1+1/n)}
+=\lim_{n\to\infty}(2^{-n}-1)=-1.
+\end{align*}
+
+\entry{注 6.2.1}{例 6.2.4 的另一解法}{p.312}
+注意 $x>0$、$n\ge3$ 时，
+\[
+\left|\frac{\ln x}{\ln n}\left(1+\frac xn\right)^{-(n+1)}\chi_{[0,n]}(x)\right|
+\le|\ln x|\chi_{[0,1]}(x)+\frac1{1+x^2}.
+\]
+于是换元可得
+\begin{align*}
+\lim_{n\to\infty}\frac{nI_n}{\ln n}
+&=\lim_{n\to\infty}\int_0^n\frac{\ln x-\ln n}{\ln n}\left(1+\frac xn\right)^{-(n+1)}\dd x\\
+&=-\lim_{n\to\infty}\int_0^n\left(1+\frac xn\right)^{-(n+1)}\dd x=-1.
+\end{align*}
+\ednote{原书此处略去了支配收敛论证，本稿按原述保留。}

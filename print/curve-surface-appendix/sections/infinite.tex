@@ -1,0 +1,311 @@
+\clearpage
+\section{反常积分：无穷区间上的积分}
+\src{原书 §6.1，pp.298—309（上半页）}
+\entry{定义 6.1.1}{无穷区间积分及收敛类型}{p.298}
+设 $f$ 定义在 $[a,+\infty)$ 上，在任意有限区间 $[a,A]$ 上可积。如果 $\varphi(A)=\int_a^Af(x)\dd x$ 在 $A\to+\infty$ 时有有限极限，则定义
+\[
+\int_a^\infty f(x)\dd x=\lim_{A\to+\infty}\int_a^Af(x)\dd x=\lim_{A\to+\infty}\varphi(A),
+\]
+称积分存在或收敛，否则称不存在或发散。若 $\int_a^\infty f$ 收敛而 $\int_a^\infty|f|$ 发散，称为条件收敛；若 $\int_a^\infty|f|$ 收敛，称为绝对收敛。类似地，
+\[
+\int_{-\infty}^af(x)\dd x=\lim_{c\to-\infty}\int_c^af(x)\dd x.
+\]
+整轴积分定义为
+\[
+\int_{-\infty}^\infty f(x)\dd x=\int_{-\infty}^af(x)\dd x+\int_a^\infty f(x)\dd x,
+\]
+须左右两项分别收敛；分点 $a$ 任意，通常取 $0$。
+
+\entry{定理 6.1.1}{类 Newton--Leibniz 公式}{p.299}
+设 $f$ 在 $[a,+\infty)$ 上的无穷积分收敛，且有原函数 $F$，则
+\[
+\int_a^\infty f(x)\dd x=F(+\infty)-F(a).
+\]
+在 $(-\infty,a]$ 上时，积分为 $F(a)-F(-\infty)$；在全轴上时，为 $F(+\infty)-F(-\infty)$。
+
+\entry{命题 6.1.2}{线性}{p.299}
+若 $f,g$ 在 $[a,\infty)$ 上的无穷积分收敛，则对任意 $c_1,c_2$，
+\[
+\int_a^\infty(c_1f+c_2g)\dd x=c_1\int_a^\infty f\dd x+c_2\int_a^\infty g\dd x.
+\]
+
+\entry{命题 6.1.3}{换元公式}{p.299}
+设 $f$ 的积分收敛，$\varphi$ 为 $[\alpha,\beta)$（$\beta$ 可为 $+\infty$）上连续可微且严格单调递增的函数，满足 $\varphi(\alpha)=a$、$\lim_{t\to\beta^-}\varphi(t)=\infty$，则
+\[
+\int_a^\infty f(x)\dd x=\int_\alpha^\beta f(\varphi(t))\varphi'(t)\dd t.
+\]
+
+\entry{命题 6.1.4}{分部积分公式}{p.299}
+设 $u,v$ 在 $[a,\infty)$ 上连续可微，且 $\lim_{x\to\infty}u(x)v(x)$ 存在。若 $uv'$、$u'v$ 中一个的无穷积分收敛，则另一个也收敛，且
+\[
+\int_a^\infty uv'\dd x=[uv]_a^\infty-\int_a^\infty u'v\dd x.
+\]
+\textbf{注 6.1.1}\quad 广义分部积分公式在形式上与常义积分相同，既可计算已知收敛的积分，也可用于证明收敛。
+
+\entry{定理 6.1.5}{Cauchy 准则}{p.299}
+设 $f$ 在任意有限区间 $[a,b]$ 上可积。$\int_a^\infty f$ 收敛的充要条件是：任意 $\varepsilon>0$，存在 $B>a$，使 $b_1,b_2>B$ 时
+\[
+|F(b_2)-F(b_1)|=\left|\int_{b_1}^{b_2}f(x)\dd x\right|<\varepsilon.
+\]
+
+\entry{定理 6.1.6}{非负函数积分的有界性判据}{p.300}
+设 $f\ge0$，且在任意有限子区间上可积。$\int_a^\infty f$ 收敛的充要条件是：存在 $M>0$，使任意 $b>a$ 均有 $\int_a^bf(x)\dd x<M$，即积分上限函数 $F(b)$ 有界。
+
+\entry{定理 6.1.7}{绝对收敛蕴含收敛}{p.300}
+设 $f$ 在任意有限子区间上可积。如果 $\int_a^\infty|f|$ 收敛，则 $\int_a^\infty f$ 收敛。
+
+\entry{定理 6.1.8}{比较判别法}{p.300}
+设 $f,g$ 定义于 $[a,\infty)$，在各有限子区间上可积，充分大的 $x$ 满足 $0\le f(x)\le g(x)$。若 $\int_a^\infty g$ 收敛，则 $\int_a^\infty f$ 收敛。
+
+\entry{定理 6.1.9}{Cauchy 判别法}{p.300}
+若 $f$ 在 $[1,\infty)$ 上非负且单调递减，则 $\int_1^\infty f(x)\dd x$ 与 $\sum_{n=1}^\infty f(n)$ 同敛散。
+
+\entry{定理 6.1.10}{比较极限判别法}{p.300}
+设 $f,g\ge0$，在各有限子区间上可积，且 $\lim_{x\to\infty}f(x)/g(x)=k$。
+
+当 $0<k<\infty$ 时，两积分同敛散；当 $k=0$ 时，$\int_a^\infty g$ 收敛蕴含 $\int_a^\infty f$ 收敛；当 $k=\infty$ 时，$\int_a^\infty g$ 发散蕴含 $\int_a^\infty f$ 发散。
+
+\entry{定理 6.1.11}{Dirichlet 判别法}{p.300}
+若 $F(b)=\int_a^bf(x)\dd x$ 作为 $b$ 的函数在 $(a,\infty)$ 上有界，$g$ 在 $(a,\infty)$ 上单调且趋于零，则 $\int_a^\infty fg\dd x$ 收敛。
+
+\entry{定理 6.1.12}{Abel 判别法}{p.301}
+若 $\int_a^\infty f$ 收敛，$g$ 在 $[a,\infty)$ 上单调有界，则 $\int_a^\infty fg\dd x$ 收敛。
+
+\entry{例 6.1.1}{收敛积分与函数趋零}{pp.301—302}
+（1）若 $f$ 在 $[0,\infty)$ 上连续且 $\int_0^\infty f$ 收敛，则存在正数列 $x_n\to\infty$，使 $f(x_n)\to0$。
+
+（2）若 $f$ 还一致连续，则 $\lim_{x\to\infty}f(x)=0$。
+\prooftext （1）对每个正整数 $n$，由积分中值定理存在 $x_n\in(n,n+1)$，使
+\[
+\int_n^{n+1}f(x)\dd x=f(x_n).
+\]
+因为积分收敛，
+\[
+\lim_{n\to\infty}\int_n^{n+1}f
+=\lim_{n\to\infty}\left(\int_0^{n+1}f-\int_0^nf\right)=0.
+\]
+（2）反证。若 $f$ 不趋于零，则存在 $\varepsilon>0$ 和严格递增的 $x_n\to\infty$，使 $|f(x_n)|\ge\varepsilon$；不妨设 $f(x_n)\ge\varepsilon$。由一致连续性，存在 $\delta>0$，使 $|x-y|\le\delta$ 时 $|f(x)-f(y)|<\varepsilon/2$。当 $x_n\le x\le x_n+\delta$ 时，
+\[
+f(x)=f(x_n)+f(x)-f(x_n)\ge f(x_n)-|f(x)-f(x_n)|\ge\frac\varepsilon2.
+\]
+故 $\int_{x_n}^{x_n+\delta}f\ge\delta\varepsilon/2$。但收敛积分在这些尾区间上的积分应趋于零，矛盾。
+
+\entry{例 6.1.2}{Young 不等式与收敛性}{p.302}
+设 $0<\alpha\le1$、$\beta>0$、$\alpha+\beta>1$，$f$ 为 $[1,\infty)$ 上正函数，且 $\int_1^\infty f$ 收敛。证明 $\int_1^\infty(f(x))^\alpha/x^\beta\dd x$ 收敛。
+\prooftext $\alpha=1$ 时由比较判别法即得。设 $\alpha<1$，由 Young 不等式，
+\[
+(f(x))^\alpha\left(\frac1{x^{\beta/(1-\alpha)}}\right)^{1-\alpha}
+\le\alpha f(x)+\frac{1-\alpha}{x^{\beta/(1-\alpha)}}.
+\]
+因 $\alpha+\beta>1$，故 $\beta/(1-\alpha)>1$，右端幂函数的无穷积分收敛，由此得证。
+
+\entry{例 6.1.3}{仅一次幂可积的正函数}{pp.302—303}
+证明存在 $[0,\infty)$ 上的正函数 $f$，使 $\int_0^\infty f$ 收敛，但对任意正数 $p\ne1$，$\int_0^\infty f^p$ 发散。
+\prooftext $p<1$ 时令 $\beta=p$；$p>1$ 时令 $\beta=2-p$，原书称“总有 $0<\beta<1$”。取 $0<a_n<1/2$，使 $\sum a_n=a<\infty$ 而 $\sum a_n^\beta=\infty$，例如
+\[
+a_n=\frac1{n(\ln(n+4))^2}.
+\]
+当 $x\in[n-1,n)$ 时定义
+\[
+f(x)=\begin{cases}
+a_n,&n-1\le x<n-a_n^2,\\
+1/a_n,&n-a_n^2\le x<n.
+\end{cases}
+\]
+则 $\int_{n-1}^nf=a_n(1-a_n^2)+a_n<2a_n$，因此 $\int_0^\infty f$ 收敛。又
+\[
+\int_{n-1}^nf^p=a_n^p(1-a_n^2)+a_n^{2-p}
+>\frac12a_n^p+a_n^{2-p}>\frac12a_n^\beta,
+\]
+所以积分发散。
+\ednote{原书“总有 $0<\beta<1$”的说法在 $p>1$ 一侧仅对 $1<p<2$ 成立。$p\ge2$ 时，可由高峰项 $a_n^{2-p}$ 不趋于零直接判定发散。这是原证的范围疏漏，不改变题面结论；本注的补充不冒充原解。}
+
+\entry{例 6.1.4}{指数衰减控制任意幂}{p.303}
+证明对任意实数 $\alpha$，$\int_1^\infty x^\alpha e^{-x}\dd x$ 收敛。
+\prooftext 因 $\lim_{x\to\infty}x^\alpha e^{-x/2}=0$，充分大的 $x$ 满足
+\[
+x^\alpha e^{-x}=x^\alpha e^{-x/2}e^{-x/2}<e^{-x/2}.
+\]
+后者的积分收敛，由比较判别法得证。
+
+\entry{例 6.1.5}{比较极限法的应用}{p.303}
+证明 $\int_1^\infty\dfrac{x^2}{\sqrt{x+1}(x^4+x+1)}\dd x$ 收敛。
+\prooftext 当 $x\to\infty$ 时，
+\[
+\frac{x^2}{\sqrt{x+1}(x^4+x+1)}\sim\frac1{x^{5/2}}.
+\]
+右端幂函数的积分收敛，由比较极限判别法得证。
+
+\entry{例 6.1.6}{导数绝对可积给出的点态估计}{pp.303—304}
+设 $f$ 在 $[0,\infty)$ 上连续可微，$\int_0^\infty f(t)\dd t$ 与 $\int_0^\infty|f'(t)|\dd t$ 均收敛。证明
+\[
+|f(x)|\le\int_x^\infty|f'(t)|\dd t.
+\]
+\prooftext 因 $\int_0^\infty|f'|$ 收敛，由 Cauchy 准则，任意 $\varepsilon>0$，存在 $A>0$，使 $y>x>A$ 时 $\int_x^y|f'|<\varepsilon$。由 Newton--Leibniz 公式，
+\[
+|f(y)-f(x)|=\left|\int_x^yf'(t)\dd t\right|\le\int_x^y|f'(t)|\dd t<\varepsilon.
+\]
+由 Cauchy 准则，$\lim_{x\to\infty}f(x)=c$ 存在。若 $c\ne0$，不妨设 $c>0$，则充分大的 $t>A$ 满足 $f(t)>c/2$，从而
+\[
+\int_A^xf(t)\dd t\ge\frac c2(x-A)\to\infty,
+\]
+与 $\int_0^\infty f$ 收敛矛盾，故 $c=0$。在 $|f(y)-f(x)|\le\int_x^y|f'|$ 中令 $y\to\infty$，即得所证。
+
+\entry{例 6.1.7}{积分不等式及最佳系数}{pp.304—305}
+设 $f$ 为 $[0,\infty)$ 上正连续函数，$\int_0^\infty1/f(x)\dd x$ 收敛，$F(x)=\int_0^xf(t)\dd t$。证明
+\[
+\int_0^\infty\frac{x}{F(x)}\dd x<2\int_0^\infty\frac1{f(x)}\dd x,
+\]
+且系数 $2$ 最佳。
+\prooftext 当 $x>0$ 时，由 Cauchy 积分不等式，
+\[
+\frac{x^2}{2}=\int_0^xt\dd t
+=\int_0^x\sqrt{f(t)}\frac{t}{\sqrt{f(t)}}\dd t
+\le\left(\int_0^xf\right)^{1/2}\left(\int_0^x\frac{t^2}{f(t)}\dd t\right)^{1/2}.
+\]
+所以 $x/F(x)\le(4/x^3)\int_0^xt^2/f(t)\dd t$。等号仅在 $f(t)=ct$ 时成立，但此时 $\int_0^\infty1/f$ 发散，故原书写作严格不等式
+\[
+\frac{x}{F(x)}<\frac4{x^3}\int_0^x\frac{t^2}{f(t)}\dd t.
+\]
+两端对 $x$ 从 $0$ 到 $\infty$ 积分，得
+\begin{align*}
+\int_0^\infty\frac{x}{F(x)}\dd x
+&<4\int_0^\infty\left[\frac1{x^3}\int_0^x\frac{t^2}{f(t)}\dd t\right]\dd x\\
+&=4\int_0^\infty\left[\int_t^\infty\frac{t^2}{x^3f(t)}\dd x\right]\dd t
+=2\int_0^\infty\frac1{f(t)}\dd t.
+\end{align*}
+为证最优性，取 $f_p(x)=(x+a)^p$，$a=p-1>0$，则
+\[
+\int_0^\infty\frac1{f_p(x)}\dd x=\frac1{(p-1)a^{p-1}},\qquad
+F(x)=\frac{(x+a)^{p+1}-a^{p+1}}{p+1}.
+\]
+因此
+\[
+\int_0^\infty\frac{x}{F(x)}\dd x
+=(p+1)\int_0^\infty\frac{x}{(x+a)^{p+1}-a^{p+1}}\dd x.
+\]
+原书称不难证明，对 $x>0$、$p\ge1$，有
+\[
+\frac{x}{(x+a)^{p+1}-a^{p+1}}\ge\frac1{p(x+2a)^p}.
+\]
+由此
+\begin{align*}
+\int_0^\infty\frac{x}{F(x)}\dd x
+&\ge\frac{p+1}{p}\int_0^\infty\frac1{(x+2a)^p}\dd x\\
+&=\frac{(p+1)/p}{(p-1)(2a)^{p-1}}
+=\frac{p+1}{p\,2^{p-1}}\int_0^\infty\frac1{f_p(x)}\dd x.
+\end{align*}
+当 $p\to1^+$ 时，$(p+1)/(p\,2^{p-1})\to2$，故系数最佳。
+
+\entry{注 6.1.1（原编号）}{Hölder 推广}{pp.305—306}
+由 Hölder 不等式可得更一般结果：设 $\alpha>0$，$f$ 为正连续函数，$\int_0^\infty1/(f(x))^\alpha\dd x$ 收敛，$F(x)=\int_0^xf(t)\dd t$，则
+\[
+\int_0^\infty\left(\frac{x}{F(x)}\right)^\alpha\dd x
+<\left(\frac{1+\alpha}{\alpha}\right)^\alpha\int_0^\infty\frac1{(f(x))^\alpha}\dd x,
+\]
+且系数 $((1+\alpha)/\alpha)^\alpha$ 最佳。
+\ednote{原书此注与 p.299 的“注 6.1.1”重号，本稿保留原编号并以出处区分。}
+
+\entry{例 6.1.8}{Dirichlet 积分}{pp.306—307}
+求 $\int_0^\infty(\sin x)/x\dd x$。
+\sol 将恒等式
+\[
+\frac12+\cos x+\cos2x+\cdots+\cos nx
+=\frac{\sin((n+1/2)x)}{2\sin(x/2)}
+\]
+在 $[0,\pi]$ 上积分，得
+\begin{equation}
+\int_0^\pi\frac{\sin((n+1/2)x)}{2\sin(x/2)}\dd x=\frac\pi2.\tag{6.1.1}
+\end{equation}
+令
+\[
+\varphi(x)=\frac1x-\frac1{2\sin(x/2)}
+=\frac{2\sin(x/2)-x}{2x\sin(x/2)},\quad0<x\le\pi.
+\]
+由 $\lim_{x\to0}\varphi(x)=0$，补充 $\varphi(0)=0$ 后连续。由 Riemann--Lebesgue 引理，
+\[
+\lim_{k\to\infty}\int_0^\pi\varphi(x)\sin(kx)\dd x=0.
+\]
+取 $k=n+1/2$，结合式（6.1.1），得
+\[
+\lim_{n\to\infty}\int_0^\pi\frac{\sin((n+1/2)x)}x\dd x=\frac\pi2.
+\]
+换元 $u=(n+1/2)x$，即有
+\[
+\lim_{n\to\infty}\int_0^{(n+1/2)\pi}\frac{\sin u}u\dd u=\frac\pi2,
+\qquad\int_0^\infty\frac{\sin x}x\dd x=\frac\pi2.
+\]
+\ednote{收敛性由 Dirichlet 判别法保证；此句为编校交叉提示。}
+
+\entry{例 6.1.9}{连乘分母的积分}{p.307}
+求 $\int_1^\infty\dd x/[x(x+1)\cdots(x+n)]$，其中 $n$ 为正整数。
+\sol 部分分式分解为
+\[
+\frac1{x(x+1)\cdots(x+n)}=\frac{a_0}x+\frac{a_1}{x+1}+\cdots+\frac{a_n}{x+n}.
+\]
+两端乘 $x+k$ 再令 $x=-k$，得 $a_k=((-1)^k/n!)\binom nk$，$k=0,\ldots,n$。原函数为
+$F(x)=\sum_{k=0}^na_k\ln(x+k)$。因
+\[
+\sum_{k=0}^na_k=\frac1{n!}\sum_{k=0}^n(-1)^k\binom nk=0,
+\]
+故
+\[
+F(x)=\sum_{k=0}^na_k[\ln(x+k)-\ln x]=\sum_{k=0}^na_k\ln(1+k/x),\quad F(+\infty)=0.
+\]
+所求积分为
+\[
+F(+\infty)-F(1)=\sum_{k=0}^n\frac{(-1)^{k+1}}{n!}\binom nk\ln(1+k).
+\]
+
+\entry{例 6.1.10}{含幂变换的极限}{pp.307—308}
+设 $a>1$，$f$ 在 $[1,\infty)$ 上连续，$\lim_{x\to\infty}xf(x)$ 存在且有限。证明 $\int_1^\infty f(x)/x\dd x$ 收敛，且
+\[
+\lim_{n\to\infty}n\int_1^af(x^n)\dd x=\int_1^\infty\frac{f(x)}x\dd x.
+\]
+\prooftext 存在 $M>0$，使 $|xf(x)|\le M$（$x\ge1$），从而 $|f(x)/x|\le M/x^2$，故积分绝对收敛。令 $t=x^n$，有
+\[
+n\int_1^af(x^n)\dd x=\int_1^{a^n}\frac{f(t)}t\,t^{1/n}\dd t.
+\]
+由于 $\int_1^{a^n}f(t)/t\dd t\to\int_1^\infty f(x)/x\dd x$，只须证明
+\begin{equation}
+\lim_{n\to\infty}\int_1^{a^n}\frac{f(t)}t(t^{1/n}-1)\dd t=0.\tag{6.1.2}
+\end{equation}
+任意 $\varepsilon>0$，取 $A>1$，使 $M(a-1)/A<\varepsilon$；再取 $N$，使 $n>N$ 时 $a^n>A$，且 $M(A-1)(A^{1/n}-1)<\varepsilon$。此时将绝对值分为 $[1,A]$ 与 $[A,a^n]$ 两段，得
+\[
+\left|\int_1^{a^n}\frac{f(t)}t(t^{1/n}-1)\dd t\right|
+\le M(A-1)(A^{1/n}-1)+\frac{M(a-1)}A<2\varepsilon.
+\]
+由此得证。
+
+\entry{例 6.1.11}{正导数函数的不等式}{pp.308—309（上半页）}
+设 $f$ 在 $\mathbb R$ 上三阶连续可微，$f$ 及各阶导数恒正，且 $f'''\le f$。证明对任意 $x$ 有
+\[
+\text{（i）}\quad\frac12(f''(x))^2+\int_{-\infty}^x(f'(t))^2\dd t\le f(x)f'(x);
+\]
+\[
+\text{（ii）}\quad f'(x)<\left(\frac43\right)^{1/3}f(x).
+\]
+\prooftext （i）$f,f',f''$ 严格递增，$\lim_{x\to-\infty}f(x)$ 存在。由微分中值定理，存在 $\theta_x\in(x,x+1)$，使
+\[
+f(x+1)-f(x)=f'(\theta_x)>f'(x)>0.
+\]
+因此 $\lim_{x\to-\infty}f'(x)=0$。同理 $\lim_{x\to-\infty}f''(x)=0$。由 $f'''\le f$，得
+\[
+f''f'''+(f')^2\le ff''+(f')^2.
+\]
+在 $(-\infty,x]$ 上积分，便得（i）。
+
+（ii）由 $f''$ 递增，
+\[
+\int_{-\infty}^x(f')^2\dd t
+\ge\frac1{f''(x)}\int_{-\infty}^x(f')^2f''\dd t
+=\frac{(f'(x))^3}{3f''(x)}.
+\]
+所以 $\frac12(f'')^2+(f')^3/(3f'')\le ff'$。将左端拆分，由均值不等式，原书写为
+\begin{align*}
+\frac14(f'')^2+\frac14(f'')^2+\frac{(f')^3}{3f''}
+&\ge3\left[\frac14(f'')^2\cdot\frac14(f'')^2\cdot\frac{(f')^3}{3f''}\right]^{1/3}\\
+&=\left(\frac34\right)^{2/3}f'f''.
+\end{align*}
+于是 $f''\le(4/3)^{2/3}f$。两端乘 $f'$，在 $(-\infty,x]$ 上积分，可得（ii）。
+\ednote{原书最后一步仅概述“积分得结论”，此处保留该篇幅；严格不等号及无穷端常数的论证未在原解中展开。}
