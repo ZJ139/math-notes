@@ -1,0 +1,287 @@
+\clearpage
+\section{反常积分相关真题}
+\src{原书 §6.5，pp.331—340}
+本节七题均与反常积分收敛或不等式相关，全部收入；不扩展 §6.3 纯含参变量积分理论及 §6.4 Euler 积分。
+
+\entry{例 6.5.1}{第二届全国决赛题}{pp.331—332}
+设 $0<f<1$，$\int_0^\infty f$ 与 $\int_0^\infty xf$ 均收敛。证明
+\[
+\int_0^\infty xf(x)\dd x>\frac12\left(\int_0^\infty f(x)\dd x\right)^2.
+\]
+\par\textbf{原证明·方法一}\quad 记 $a=\int_0^\infty f$，则
+\begin{align*}
+\int_a^\infty xf&>a\int_a^\infty f=a\left(a-\int_0^af\right)
+=a\int_0^a(1-f)\\
+&>\int_0^ax(1-f)=\frac{a^2}{2}-\int_0^axf.
+\end{align*}
+故 $\int_0^\infty xf>a^2/2=\frac12(\int_0^\infty f)^2$。
+
+\textbf{注 6.5.1}\quad 关键是选取特殊的 $a=\int_0^\infty f$，借助积分变上、下限之间的关系，估计尾积分的下界。
+
+\par\textbf{原证明·方法二}\quad 化为第一象限二重积分。设 $D$ 为第一象限，按对角线分为 $D_1=\{(s,t):0<t<s\}$、$D_2=\{(s,t):t>s>0\}$，二者关于对角线对称，则
+\begin{align*}
+\left(\int_0^\infty f\right)^2
+&=\iint_Df(s)f(t)\dd s\dd t=2\iint_{D_1}f(s)f(t)\dd s\dd t\\
+&=2\int_0^\infty\left[\int_0^sf(s)f(t)\dd t\right]\dd s\\
+&=2\int_0^\infty\left(\int_0^sf(t)\dd t\right)f(s)\dd s
+<2\int_0^\infty sf(s)\dd s,
+\end{align*}
+由此得证。
+
+\textbf{注 6.5.2}\quad 当 $f$ 连续时，也可研究
+\[
+g(t)=\int_0^txf(x)\dd x-\frac12\left(\int_0^tf(x)\dd x\right)^2.
+\]
+其导数为正，所以在 $t>0$ 时严格递增，从而得出结论。
+
+\entry{例 6.5.2}{第五届全国决赛题}{pp.332—333（上半页）}
+设 $f$ 在 $[0,\infty)$ 上非负可导，$f(0)=0$，$f'\le1/2$，且 $\int_0^\infty f$ 收敛。证明：任意 $\alpha\ge1$，$\int_0^\infty f^\alpha$ 也收敛，且
+\[
+\int_0^\infty f^\alpha\le\left(\int_0^\infty f\right)^\beta,
+\qquad\beta=\frac{\alpha+1}{2}.
+\]
+\prooftext $\alpha=1$ 时为显然的等式；以下设 $\alpha>1$，故 $\beta>1$。令
+\[
+g(t)=\left(\int_0^tf\right)^\beta-\int_0^tf^\alpha,
+\quad g'(t)=f(t)\left[\beta\left(\int_0^tf\right)^{\beta-1}-f^{\alpha-1}(t)\right].
+\]
+考虑
+\[
+h(t)=\beta^{1/(\beta-1)}\int_0^tf-f^2(t),\quad t\ge0,
+\]
+则 $h'(t)=f(t)[\beta^{1/(\beta-1)}-2f'(t)]\ge0$。由 $h(0)=0$，得 $h\ge0$，从而
+\[
+\beta\left(\int_0^tf\right)^{\beta-1}\ge f^{\alpha-1}(t).
+\]
+所以 $g'\ge0$。又 $g(0)=0$，故 $g\ge0$，即 $\int_0^tf^\alpha\le(\int_0^tf)^\beta$。令 $t\to\infty$，得证。
+\ednote{原书未单列 $\alpha=1$；此处将该端点显然情形单独说明，以避免后式出现 $1/(\beta-1)$ 的除零。}
+
+\entry{例 6.5.3}{第三届全国初赛题}{pp.333—335（上半页）}
+设 $F$ 为 $[0,\infty)$ 上单调递减函数，$\lim_{x\to\infty}F(x)=0$，且
+\[
+\lim_{n\to\infty}\int_0^\infty F(t)\sin(t/n)\dd t=0.
+\]
+证明：
+\[
+\text{（i）}\quad\lim_{x\to\infty}xF(x)=0;\qquad
+\text{（ii）}\quad\lim_{x\to0}\int_0^\infty F(t)\sin(xt)\dd t=0.
+\]
+\prooftext （i）由 Dirichlet 判别法，对每个 $x\ne0$ 积分均收敛，记
+\[
+f(x)=\int_0^\infty F(t)\sin(xt)\dd t.
+\]
+由单调性，
+\begin{align*}
+\int_{2k\pi}^{(2k+2)\pi}F(nt)\sin t\dd t
+&=\int_0^{2\pi}F(nt+2kn\pi)\sin t\dd t\\
+&=\int_0^\pi[F(nt+2kn\pi)-F(nt+n\pi+2kn\pi)]\sin t\dd t\ge0.
+\end{align*}
+因此
+\begin{align*}
+f(1/n)&=\int_0^\infty F(t)\sin(t/n)\dd t=\int_0^\infty nF(nt)\sin t\dd t\\
+&=\sum_{k=0}^\infty\int_{2k\pi}^{(2k+2)\pi}nF(nt)\sin t\dd t\\
+&\ge\int_0^{2\pi}nF(nt)\sin t\dd t
+=\int_0^\pi n[F(nt)-F(nt+n\pi)]\sin t\dd t\\
+&\ge\int_0^{\pi/2}n[F(nt)-F(nt+n\pi)]\sin t\dd t\\
+&\ge n[F(n\pi/2)-F(n\pi)]\int_0^{\pi/2}\sin t\dd t\\
+&=n[F(n\pi/2)-F(n\pi)].
+\end{align*}
+由 $f(1/n)\to0$，得 $n[F(n\pi/2)-F(n\pi)]\to0$。把 $n$ 换为 $2^{n+1}$，得
+\[
+2^{n+1}[F(2^n\pi)-F(2^{n+1}\pi)]\to0.
+\]
+由 Stolz 定理，
+\begin{align*}
+\lim_{n\to\infty}\frac{F(2^n\pi)}{1/2^n}
+&=\lim_{n\to\infty}\frac{F(2^n\pi)-F(2^{n+1}\pi)}{1/2^n-1/2^{n+1}}\\
+&=\lim_{n\to\infty}2^{n+1}[F(2^n\pi)-F(2^{n+1}\pi)]=0.
+\end{align*}
+故 $2^n\pi F(2^n\pi)\to0$。对任意 $x\ge\pi$，取
+$n=\lfloor\ln(x/\pi)/\ln2\rfloor$，则 $2^n\pi\le x<2^{n+1}\pi$，且
+\[
+0\le xF(x)\le2^{n+1}\pi F(2^n\pi)\to0,
+\]
+得到（i）。
+
+（ii）由（i）可设 $uF(u)\le M$。对 $x>0$，令 $a=1/x$。由上述分段推导，
+\begin{align*}
+0&\le\int_{2k\pi}^{(2k+2)\pi}F(at)\sin t\dd t\\
+&=\int_0^\pi[F(at+2ak\pi)-F(at+a\pi+2ak\pi)]\sin t\dd t\\
+&\le\int_0^\pi[F(at+2ak\pi)-F(at+2a\pi+2ak\pi)]\sin t\dd t.
+\end{align*}
+于是求和得
+\[
+0\le f(x)=a\int_0^\infty F(at)\sin t\dd t
+\le a\int_0^\pi F(at)\sin t\dd t\le\int_0^\pi atF(at)\dd t.
+\]
+任意 $\varepsilon>0$，存在 $N$，使 $u>N$ 时 $uF(u)<\varepsilon$。取 $0<x<\varepsilon/N$，则 $t\in[\varepsilon,\pi]$ 时 $at>N$，故 $atF(at)<\varepsilon$。于是
+\begin{align*}
+\int_0^\pi atF(at)\dd t
+&=\int_\varepsilon^\pi atF(at)\dd t+\int_0^\varepsilon atF(at)\dd t\\
+&\le\int_\varepsilon^\pi\varepsilon\dd t+\int_0^\varepsilon M\dd t
+<\pi\varepsilon+M\varepsilon.
+\end{align*}
+所以 $x\to0^+$ 时 $f(x)\to0$，由此得出结论。
+\ednote{原书相关定义和极限中的虚变量符号已规范；末段原写 $x<1/N$，此处改为 $x<\varepsilon/N$ 以保证所用估计。双侧极限可由 $f$ 的奇性补足，此句为编校补充。}
+
+\entry{例 6.5.4}{第三届全国决赛题}{pp.335—337（上半页）}
+设 $F,G$ 为 $[0,\infty)$ 上非负单调递减函数，且
+$\lim_{x\to\infty}x(F(x)+G(x))=0$。
+
+（i）证明对任意 $\varepsilon>0$，有 $\lim_{x\to\infty}\int_\varepsilon^\infty xF(xt)\cos t\dd t=0$。
+
+（ii）若进一步有 $\lim_{n\to\infty}\int_0^\infty(F(t)-G(t))\cos(t/n)\dd t=0$，其中 $n$ 为自然数，证明
+\[
+\lim_{x\to0}\int_0^\infty(F(t)-G(t))\cos(xt)\dd t=0.
+\]
+\prooftext （i）当 $x>0$ 时，换元 $u=xt$，得
+\[
+\int_0^\infty xF(xt)\cos t\dd t=\int_0^\infty F(u)\cos(u/x)\dd u.
+\]
+$F$ 非负单调，且条件保证 $F\to0$；又
+$|\int_0^A\cos(u/x)\dd u|=|x\sin(A/x)|\le x$，由 Dirichlet 判别法知积分收敛。
+对 $A>\varepsilon$，由第二积分中值定理，存在 $\delta\in[x\varepsilon,xA]$，使
+\begin{align*}
+\int_\varepsilon^A xF(xt)\cos t\dd t
+&=\int_{x\varepsilon}^{xA}F(u)\cos(u/x)\dd u\\
+&=F(x\varepsilon)\int_{x\varepsilon}^{\delta}\cos(u/x)\dd u\\
+&=F(x\varepsilon)x[\sin(\delta/x)-\sin\varepsilon].
+\end{align*}
+故其绝对值不超过 $(2/\varepsilon)(x\varepsilon)F(x\varepsilon)$。令 $A\to\infty$ 仍有此界，再令 $x\to\infty$，得
+\begin{equation}
+\lim_{x\to\infty}\int_\varepsilon^\infty xF(xt)\cos t\dd t=0.\tag{6.5.1}
+\end{equation}
+对 $G$ 同理，有
+\begin{equation}
+\lim_{x\to\infty}\int_\varepsilon^\infty xG(xt)\cos t\dd t=0.\tag{6.5.2}
+\end{equation}
+（ii）将进一步假设记为
+\begin{equation}
+\lim_{n\to\infty}\int_0^\infty(F(t)-G(t))\cos(t/n)\dd t=0.\tag{6.5.3}
+\end{equation}
+为简写，令 $H=F-G$。只须证明
+\begin{equation}
+I(x)=\int_0^\infty H(t)\cos(t/x)\dd t\longrightarrow0\quad(x\to\infty).\tag{6.5.4}
+\end{equation}
+对 $x>0$，取 $n=\lfloor x\rfloor$，则 $x\to\infty$ 时 $n\to\infty$、$1-n/x\to0$。完整拆式为
+\begin{equation}
+\begin{aligned}
+I(x)={}&\int_0^nH(t)[\cos(t/x)-\cos(t/n)]\dd t\\
+&+\int_{n/x}^\infty xH(xt)\cos t\dd t-\int_1^\infty nH(nt)\cos t\dd t\\
+&+\int_0^\infty H(t)\cos(t/n)\dd t\\
+={}&\int_0^nH(t)[\cos(t/x)-\cos(t/n)]\dd t\\
+&+\int_{n/x}^1xH(xt)\cos t\dd t+\int_1^\infty xH(xt)\cos t\dd t\\
+&-\int_1^\infty nH(nt)\cos t\dd t+\int_0^\infty H(t)\cos(t/n)\dd t.
+\end{aligned}\tag{6.5.5}
+\end{equation}
+由条件，存在 $M>0$，使 $t(F(t)+G(t))\le M$。故第一项绝对值
+\[
+\le\int_0^n(F(t)+G(t))\frac{t}{nx}\dd t\le\frac Mx;
+\]
+第二项绝对值
+\[
+\le\int_{n/x}^1\frac{tx(F(xt)+G(xt))}{t}\dd t
+\le\left(1-\frac nx\right)\frac M{n/x}\le\frac Mn.
+\]
+其余三项由（i）及题设均趋于零，得式（6.5.4），故结论成立。
+\ednote{原书（ii）极限假设中一处将 $n$ 的极限虚变量误写为 $x$，此处统一为 $n\to\infty$；第二积分中值定理中的 $\delta$ 所在区间按积分端点明确。}
+
+\entry{例 6.5.5}{第二届全国初赛题}{pp.337—338}
+设 $\varphi$ 在 $(0,\infty)$ 上严格递减连续，$\lim_{t\to0^+}\varphi(t)=\infty$，且 $\int_0^\infty\varphi(t)\dd t=a<\infty$。$\psi$ 为 $\varphi$ 的反函数。证明
+\[
+\int_0^\infty\psi(t)\dd t=a,\qquad
+\int_0^\infty\varphi^2+\int_0^\infty\psi^2\ge\frac{a^{3/2}}2.
+\]
+\prooftext $a$ 是第一象限内图像 $x=\varphi(t)$ 下方的面积，亦为图像左侧的面积；由反函数性质，$\int_0^\infty\psi=a$。
+不妨设 $a=1$；否则缩放为
+\[
+\varphi_1(t)=\frac{\varphi(\sqrt a\,t)}{\sqrt a},\qquad
+\psi_1(t)=\frac{\psi(\sqrt a\,t)}{\sqrt a},
+\]
+则 $\int_0^\infty\varphi_1=1$。现在只须证明
+\begin{equation}
+\int_0^\infty\varphi^2+\int_0^\infty\psi^2\ge\frac12.\tag{6.5.6}
+\end{equation}
+可设两个平方积分均收敛，否则显然。任取 $p>0$，因 $\varphi$ 严格递减，在 $(0,p)$ 上有 $\varphi>\varphi(p)$，且
+\[
+p\varphi(p)<\int_0^p\varphi<1.
+\]
+图像下尾部的面积给出
+\[
+\int_p^\infty\varphi=\int_0^{\varphi(p)}\psi-p\varphi(p),\qquad
+\int_0^p\varphi=1+p\varphi(p)-\int_0^{\varphi(p)}\psi.
+\]
+取 $p$ 为 $\varphi$ 的不动点，亦为 $\psi$ 的不动点，$0<p<1$。于是
+\[
+\int_0^p\varphi+\int_0^p\psi=1+p^2,\qquad
+\int_p^\infty\varphi+\int_p^\infty\psi=1-p^2.
+\]
+令 $q=(1+p^2)/(2p)$，展开平方得
+\[
+\int_0^p\varphi^2+\int_0^p\psi^2
+=\frac{(1+p^2)^2}{2p}+\int_0^p(\varphi-q)^2+\int_0^p(\psi-q)^2.
+\]
+当 $p>0$ 时，$(1+p^2)^2/(2p)$ 在 $p=1/\sqrt3$ 处取得最小值 $8\sqrt3/9>1/2$。故式（6.5.6）成立，恢复尺度即得题面结论。
+\begin{center}\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[xscale=1.4,yscale=.85]
+\fill[gray!15](0,0)rectangle(1,1.5);
+\fill[navy!8] plot[domain=1:3.5,samples=60](\x,{1.5/(\x*\x)})--(3.5,0)--(1,0)--cycle;
+\draw[->](0,0)--(3.9,0)node[right]{$t$};\draw[->](0,0)--(0,4.2)node[above]{$x$};
+\draw[thick,domain=.61:3.5,samples=80]plot(\x,{1.5/(\x*\x)});
+\draw[dashed](1,0)--(1,1.5)--(0,1.5);\fill(1,1.5)circle(1.5pt)node[above right]{$(p,\varphi(p))$};
+\node[below]at(1,0){$p$};\node[left]at(0,1.5){$\varphi(p)$};\node[right]at(.65,3.7){$x=\varphi(t)$};\node at(1.8,.22){$D$};\node[below left]at(0,0){$O$};
+\end{tikzpicture}\par{\small 图 6.5.1\quad 反函数与面积的示意（重绘，非精确函数曲线）}
+\end{minipage}\end{center}
+\textbf{注 6.5.3}\quad 实际上，上述证明给出归一化 $a=1$ 下更好的不等式
+\begin{equation}
+\int_0^\infty\varphi^2+\int_0^\infty\psi^2>\frac{8\sqrt3}{9}.\tag{6.5.7}
+\end{equation}
+原书称此常数仍非最佳，进一步研究的最佳常数在 $1.82649$ 与 $1.88885$ 之间。
+\ednote{本注按原书历史说明保留，常数针对归一尺度 $a=1$；未独立验证上述数值，也不称其为当前最佳结果。}
+
+\entry{例 6.5.6}{第四届全国初赛题}{pp.338—339（上半页）}
+设 $f$ 在 $[0,\infty)$ 上连续可导，$f(0)>0$，$f'\ge0$。若 $\int_0^\infty\dd x/(f(x)+f'(x))$ 收敛，证明 $\int_0^\infty\dd x/f(x)$ 收敛。
+\prooftext 对 $A>0$，有
+\begin{align*}
+0\le\int_0^A\frac1f-\int_0^A\frac1{f+f'}
+&=\int_0^A\frac{f'}{f(f+f')}\le\int_0^A\frac{f'}{f^2}\\
+&=\int_0^A\left(-\frac1f\right)'=\frac1{f(0)}-\frac1{f(A)}<\frac1{f(0)}.
+\end{align*}
+所以
+\[
+\int_0^A\frac1f<\int_0^\infty\frac1{f+f'}+\frac1{f(0)}.
+\]
+由非负函数积分的有界性判据，原积分收敛。
+\ednote{原书差值前印作 $0<$；当 $f$ 初段为常值时可取零，此处按 $f'\ge0$ 规范为非严格非负号。}
+
+\entry{例 6.5.7}{第七届全国初赛题}{pp.339—340}
+设 $f$ 为 $[0,\infty)$ 上有界连续函数，$h$ 在 $[0,\infty)$ 上连续，且 $\int_0^\infty|h(t)|\dd t=a<1$。构造
+\[
+g_0(x)=f(x),\quad g_n(x)=f(x)+\int_0^xh(t)g_{n-1}(t)\dd t,\quad n=1,2,\ldots.
+\]
+证明 $\{g_n\}$ 收敛于连续函数 $g$，并求 $g$。
+\prooftext 记 $M=\sup_{x\ge0}|f(x)|$，则 $|g_0|\le M$。若
+$|g_{n-1}|\le(1+a+\cdots+a^{n-1})M$，则由递推式，
+\begin{align*}
+|g_n(x)|&\le|f(x)|+\int_0^x|h(t)||g_{n-1}(t)|\dd t\\
+&\le M+\int_0^x|h(t)|(1+a+\cdots+a^{n-1})M\dd t\\
+&\le M+a(1+a+\cdots+a^{n-1})M=(1+a+\cdots+a^n)M,\quad\forall x\ge0.
+\end{align*}
+因此 $|g_n|\le(1-a^{n+1})M/(1-a)$。再由递推式，
+\[
+g_n-g_{n-1}=\int_0^xh(t)[g_{n-1}(t)-g_{n-2}(t)]\dd t,
+\]
+故
+\begin{align*}
+\sup|g_n-g_{n-1}|&\le a\sup|g_{n-1}-g_{n-2}|\\
+&\le a^{n-1}\sup|g_1-g_0|\le a^nM.
+\end{align*}
+因为 $a\in[0,1)$，函数项级数 $\sum_{n=1}^\infty(g_n-g_{n-1})$ 在 $[0,\infty)$ 上一致收敛。因此 $g_n$ 一致收敛，极限 $g$ 连续。在递推式中令 $n\to\infty$，得
+\[
+g(x)=f(x)+\int_0^xh(t)g(t)\dd t.
+\]
+解此积分方程，得到
+\[
+g(x)=f(x)+e^{H(x)}\int_0^xe^{-H(t)}h(t)f(t)\dd t,
+\qquad H(x)=\int_0^xh(t)\dd t,\quad x\ge0.
+\]

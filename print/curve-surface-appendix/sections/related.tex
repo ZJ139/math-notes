@@ -1,0 +1,51 @@
+\clearpage
+\section{相关真题：曲线积分与曲面积分}
+\src{§5.4，pp.296—297}
+本节为筛选摘录。原书例 5.4.1—5.4.14 为纯 Riemann 积分、函数与积分不等式等（包括例 5.4.11 的纯二重积分），均不收入；此处仅收例 5.4.15、5.4.16。
+
+\entry{例 5.4.15}{第九届全国决赛题}{pp.296—297}
+求第二型曲线积分
+\[
+I=\int_\Gamma e^{\sin x}(\cos x\cos y\dd x-\sin y\dd y)+\cos z\dd z,
+\]
+其中 $\Gamma:x=\pi\sin(t/2)$、$y=t-\sin t$、$z=\sin2t$，$0\le t\le\pi$。
+\sol 记 $P=e^{\sin x}\cos x\cos y$、$Q=-e^{\sin x}\sin y$、$R=\cos z$，则 $P,Q,R$ 在 $\mathbb R^3$ 上连续可微，且
+\[
+\rot(P,Q,R)=(R_y-Q_z,P_z-R_x,Q_x-P_y)=(0,0,0),
+\]
+故积分仅与端点有关。$\Gamma$ 的端点为 $(0,0,0)$、$(\pi,\pi,0)$，因此
+\begin{align*}
+I&=\int_{(0,0,0)}^{(\pi,\pi,0)}P\dd x+Q\dd y+R\dd z\\
+&=\int_{(0,0,0)}^{(\pi,0,0)}P\dd x+Q\dd y+R\dd z
++\int_{(\pi,0,0)}^{(\pi,\pi,0)}P\dd x+Q\dd y+R\dd z\\
+&=\int_0^\pi e^{\sin x}\cos x\dd x+\int_0^\pi(-\sin y)\dd y=0-2=-2.
+\end{align*}
+\ednote{原解 $P$ 漏 $\cos x$、$Q$ 漏负号及折线路径首项符号已依题面和方向校正；不改变原解法及末答。}
+
+\entry{例 5.4.16}{第八届全国决赛题}{p.297}
+求
+\[
+I=\iint_S\frac{ax\dd y\dd z+(z+a)^2\dd x\dd y}{\sqrt{x^2+y^2+z^2}},
+\]
+其中 $a>0$ 为常数，$S:z=-\sqrt{a^2-x^2-y^2}$，取向上侧。
+\sol 在 $S$ 上 $x^2+y^2+z^2=a^2$，所以
+\[
+I=\frac1a\iint_S[ax\dd y\dd z+(z+a)^2\dd x\dd y].
+\]
+补底 $D:\{x^2+y^2\le a^2,z=0\}$，取向上侧，则 $S^{-1}\cup D$ 为闭下半球体 $B$ 的表面，取向外侧。由 Gauss 公式，
+\begin{align*}
+&\oiint_{S^{-1}\cup D}[ax\dd y\dd z+(z+a)^2\dd x\dd y]\\
+&\quad=\iiint_B(3a+2z)\dd V\\
+&\quad=3a\cdot\frac{2\pi a^3}{3}
++2\int_0^{2\pi}\int_{\pi/2}^\pi\int_0^a(r\cos\theta)r^2\sin\theta\dd r\dd\theta\dd\varphi\\
+&\quad=2\pi a^4-\frac{\pi a^4}{2}=\frac{3\pi a^4}{2}.
+\end{align*}
+所以
+\begin{align*}
+\iint_S[ax\dd y\dd z+(z+a)^2\dd x\dd y]
+&=-\frac{3\pi a^4}{2}+\iint_D[ax\dd y\dd z+(z+a)^2\dd x\dd y]\\
+&=-\frac{3\pi a^4}{2}+\iint_Da^2\dd x\dd y\\
+&=-\frac{3\pi a^4}{2}+\pi a^4=-\frac{\pi a^4}{2}.
+\end{align*}
+故 $I=-\pi a^3/2$。
+\ednote{原书补面 $D$ 仅写 $x^2+y^2=a^2$；此处依 Gauss 公式的应用，明确为 $z=0$ 上的闭圆盘。}

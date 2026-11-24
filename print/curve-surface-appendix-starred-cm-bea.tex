@@ -1,0 +1,74 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0.5\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc,graphicx}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 曲线积分与曲面积分}\fancyhead[R]{\small\hyperlink{lecture-toc}{目录}}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdfauthor={Vincent Arqain},pdftitle={曲线积分与曲面积分}}
+\renewcommand{\contentsname}{目录}\setcounter{tocdepth}{2}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=1000
+\raggedbottom\emergencystretch=2em
+\setlength{\LTpre}{6pt}\setlength{\LTpost}{6pt}
+\newcommand{\fig}[2]{\begin{center}\includegraphics[width=0.76\linewidth,height=0.34\textheight,keepaspectratio]{print/curve-surface-figures/#1.pdf}\par\small #2\end{center}}
+
+\input{ot1cmss.fd}
+\DeclareFontShape{OT1}{cmss}{b}{n}{<->ssub*cmss/bx/n}{}
+\DeclareFontShape{OT1}{cmss}{b}{it}{<->ssub*cmss/bx/n}{}
+\DeclareFontShape{OT1}{cmss}{bx}{it}{<->ssub*cmss/bx/n}{}
+\usepackage{bm,xcolor,tikz,etoolbox,xstring}
+\usetikzlibrary{arrows.meta,decorations.markings}
+\definecolor{navy}{RGB}{31,30,29}\definecolor{ink}{RGB}{31,30,29}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\vct}[1]{\bm{#1}}\newcommand{\rr}{\vct r}\newcommand{\FF}{\vct F}\newcommand{\nn}{\vct n}\newcommand{\ttau}{\vct\tau}
+\DeclareMathOperator{\grad}{grad}\DeclareMathOperator{\diver}{div}\DeclareMathOperator{\rot}{rot}\DeclareMathOperator{\curl}{curl}\DeclareMathOperator{\arcosh}{arcosh}
+\makeatletter
+\newcommand{\oiint}{\mathop{\mathpalette\closed@double\relax}\nolimits}
+\newcommand{\closed@double}[2]{\ooalign{$\m@th#1\iint$\cr\hidewidth\raisebox{0.02ex}{$\m@th#1\circ$}\hidewidth\cr}}
+\makeatother
+\newcommand{\src}[1]{\par{\footnotesize 出处：原书 #1。纸书页码；原 PDF 页码加 11。}\par}
+\newcommand{\entry}[3]{\IfBeginWith{#1}{例}{\def\entrytitle{*#1}}{\def\entrytitle{#1}}\Needspace{6\baselineskip}\subsection*{\entrytitle\quad #2}\phantomsection\addcontentsline{toc}{subsection}{\entrytitle\quad #2}\src{#3}}
+\newcommand{\ednote}[1]{\par{\small\textbf{编校注}\quad #1}\par}
+\newcommand{\sol}{\par\textbf{原解}\quad}\newcommand{\prooftext}{\par\textbf{原证明}\quad}
+\setlist[itemize]{leftmargin=1.4em,label={},itemsep=3pt,topsep=3pt,parsep=1pt}
+\setlist[enumerate]{leftmargin=2.5em,label=(\roman*),itemsep=3pt,topsep=3pt}
+\setcounter{secnumdepth}{1}\renewcommand{\thesection}{§A.\arabic{section}}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{3.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{0em}}
+\makeatother
+\pretocmd{\section}{\Needspace{7\baselineskip}}{}{}
+\hypersetup{pdftitle={曲线积分与曲面积分讲义：58 道带星号原例题阅读附录}}
+\begin{document}
+\begin{center}{\LARGE\bfseries 曲线积分与曲面积分讲义\par}\vspace{7pt}
+{\large 独立阅读附录：58 道带星号原例题\par}\end{center}
+本册根据用户上传的《多元积分计算》PDF 及其对应源码编排。58 道例题全部保留，题目前加“*”；原题号、计算过程、原证明、图形和编校注保持原样。原资料中的定义、定理和反常积分内容同时保留，以便独立阅读。本册不纳入讲义正文 §1—§11，也不计入正文的 16 道科大精选例题。
+
+原资料出处：佘志坤主编，全国大学生数学竞赛命题组编，《全国大学生数学竞赛解析教程（数学专业类）（上册）——数学分析》，科学出版社，2024。纸书页码见各条出处。
+
+原文件中“原解存疑”等编校说明继续保留，尤其 *例 5.2.12；保留原解不表示这些条目已被重新确认正确。全册中文采用 Fandol 宋体，数学公式统一为 CM bea。
+\hypertarget{lecture-toc}{}\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup\clearpage
+\input{print/curve-surface-appendix/sections/curve}
+\input{print/curve-surface-appendix/sections/surface}
+\input{print/curve-surface-appendix/sections/related}
+\input{print/curve-surface-appendix/sections/infinite}
+\input{print/curve-surface-appendix/sections/singular}
+\input{print/curve-surface-appendix/sections/improper-problems}
+\end{document}
