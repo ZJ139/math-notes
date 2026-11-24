@@ -1,0 +1,605 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 2.2}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：2.2 可测集},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 2.2 可测集\par}
+\vspace{5pt}{第二章 Lebesgue 测度\par}
+\end{center}
+本节对应《实变函数知识框架》2.2，依据徐森林、薛春华《实变函数论》定义 2.1.3、定理 2.1.4—2.1.5（印刷第 106—110 页）与定理 2.1.1（第 99—101 页），从分割条件建立可测集与测度，完整展开证明、反例及八道精选习题解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.1 Carathéodory
+条件与测试集]{2.2.1 Carathéodory
+条件与测试集}\label{carathuxe9odory-ux6761ux4ef6ux4e0eux6d4bux8bd5ux96c6}
+
+固定正整数 \(n\)，以 \(m^*=m_n^*\) 表示上一节构造的 Lebesgue
+外测度，所有补集均相对于 \(\mathbb R^n\)。非负级数和与等式允许取
+\(+\infty\)，但不作 \(\infty-\infty\)。
+
+\textbf{定义（Lebesgue 可测集）}　若 \(E\subseteq\mathbb R^n\)
+对每个测试集 \(T\subseteq\mathbb R^n\) 都满足
+
+\begin{equation*}
+m^*(T)=m^*(T\cap E)+m^*(T\setminus E),
+\tag{2.2.1}
+\end{equation*}
+
+就称 \(E\) 为 Lebesgue 可测集，简称可测集。全体可测集记为
+\(\mathcal L_n\)，维数固定时写成 \(\mathcal L\)。式（2.2.1）称为
+Carathéodory 条件。
+
+测试集 \(T\) \textbf{不要求可测}。把它换成``任意可测的
+\(T\)''，在此处会使定义循环。只取 \(T=E\)
+也没有检验作用，因为此时（2.2.1）对每个集合都恒成立。可测性问的是：\(E\)
+能否正确切分所有其他集合，而不只是能否切分自身。
+
+\Needspace{10\baselineskip}\textbf{命题 2.2.1（只需证明一个方向）}　要证明 \(E\)
+可测，只需对所有满足 \(m^*(T)<\infty\) 的 \(T\) 证明
+
+\begin{equation*}
+m^*(T\cap E)+m^*(T\setminus E)\le m^*(T).
+\tag{2.2.2}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 由 \(T=(T\cap E)\cup(T\setminus E)\)
+及次可加性，反向不等式总成立。若
+\(m^*(T)=\infty\)，该反向不等式已经迫使右侧两项之和为无穷，故（2.2.1）自动成立。因此只需处理有限外测度测试集，并证明（2.2.2）。
+
+这个简化只限制测试集的\textbf{外测度}，并不把测试集限制为可测集，也不把
+\(E\) 限制为有限测度集。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.2
+有限分割与有限集合运算]{2.2.2
+有限分割与有限集合运算}\label{ux6709ux9650ux5206ux5272ux4e0eux6709ux9650ux96c6ux5408ux8fd0ux7b97}
+
+\textbf{命题
+2.2.2（代数封闭性）}　\(\varnothing,\mathbb R^n\in\mathcal L\)。若
+\(A,B\in\mathcal L\)，则
+\(A^c,A\cup B,A\cap B,A\setminus B,A\mathbin{\triangle}B\) 都可测。
+
+\Needspace{3\baselineskip}\textbf{证明：} 空集的分割等式为
+\(m^*(T)=0+m^*(T)\)；交换（2.2.1）右侧两项可知 \(A\) 可测当且仅当
+\(A^c\) 可测，故全空间也可测。
+
+先用 \(A\) 分割 \(T\)，再用 \(B\) 分割剩余的 \(T\setminus A\)，得到
+
+\begin{equation*}
+\begin{aligned}
+m^*(T)
+&=m^*(T\cap A)+m^*((T\setminus A)\cap B)
+  +m^*(T\setminus(A\cup B))\\
+&\ge m^*(T\cap(A\cup B))+m^*(T\setminus(A\cup B)).
+\end{aligned}
+\tag{2.2.3}
+\end{equation*}
+
+第二行使用前两块的次可加性；它们的并正是 \(T\cap(A\cup B)\)。由命题
+2.2.1，\(A\cup B\) 可测。再由
+\(A\cap B=(A^c\cup B^c)^c\)、\(A\setminus B=A\cap B^c\) 和
+\(A\mathbin{\triangle}B=(A\setminus B)\cup(B\setminus A)\) 得其余结论。
+
+\Needspace{10\baselineskip}\textbf{命题 2.2.3（有限分割恒等式）}　设 \(E_1,\ldots,E_N\)
+是两两不交的可测集，\(S_N=\bigcup_{j=1}^N E_j\)。则任意 \(T\) 满足
+
+\begin{equation*}
+m^*(T)=\sum_{j=1}^N m^*(T\cap E_j)+m^*(T\setminus S_N).
+\tag{2.2.4}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} \(N=1\) 即定义。若式子对 \(N-1\) 成立，用 \(E_N\)
+分割余集 \(T\setminus S_{N-1}\)。不交性保证
+\((T\setminus S_{N-1})\cap E_N=T\cap E_N\)，而新余集是
+\(T\setminus S_N\)。代回即得归纳结论。整个过程只对非负项作加法，允许无穷值。
+
+这里``每块可测''与``各块不交''作用不同：前者保证每次切分精确，后者使切出的块恰好等于
+\(T\cap E_j\)，不需要再扣除前面已切走的部分。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.3
+从有限分割到可数分割]{2.2.3
+从有限分割到可数分割}\label{ux4eceux6709ux9650ux5206ux5272ux5230ux53efux6570ux5206ux5272}
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.4（可测集构成 \(\sigma\)-代数）}　\(\mathcal L\)
+包含空集，对补集与可数并封闭，因而也对可数交封闭。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+不能先写``令有限并趋向可数并，外测度也趋向极限''，因为测度连续性尚未证明。正确做法是保留有限分割等式，把余项统一压低为同一个固定余集，然后只对非负数的部分和取极限。
+
+\Needspace{3\baselineskip}\textbf{证明：} 补集和有限并已经处理。先设 \(E_j\in\mathcal L\)
+两两不交，令 \(S=\bigcup_{j\ge1}E_j\)。对任意 \(T\)，由（2.2.4）及
+\(T\setminus S\subseteq T\setminus S_N\)，对每个 \(N\) 都有
+
+\begin{equation*}
+m^*(T)\ge\sum_{j=1}^N m^*(T\cap E_j)+m^*(T\setminus S).
+\tag{2.2.5}
+\end{equation*}
+
+若
+\(m^*(T)=\infty\)，分割条件自动成立。否则上式各项有限，部分和有界且递增；对
+\(N\) 取上确界，再用可数次可加性，得到
+
+\begin{equation*}
+\begin{aligned}
+m^*(T)
+&\ge\sum_{j=1}^{\infty}m^*(T\cap E_j)+m^*(T\setminus S)\\
+&\ge m^*(T\cap S)+m^*(T\setminus S).
+\end{aligned}
+\tag{2.2.6}
+\end{equation*}
+
+由命题 2.2.1，\(S\)
+可测。注意第二行方向是``\(\ge\)''：各片外测度的和不小于并集的外测度。
+
+一般的可数族 \(A_j\in\mathcal L\) 可以依次去掉先前已经出现的部分，令
+
+\begin{equation*}
+E_1=A_1,\qquad E_j=A_j\setminus\bigcup_{i<j}A_i\quad(j\ge2).
+\tag{2.2.7}
+\end{equation*}
+
+有限运算封闭性保证各 \(E_j\) 可测；它们两两不交。一个点属于某个 \(A_j\)
+时，取它首次出现的下标，就知它属于相应
+\(E_j\)，故两族的并相同。因此一般可数并也可测。最后用 De Morgan
+公式，将可数交写成补集的可数并之补，得可数交封闭性。
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.5（可数分割公式）}　若 \(E_j\in\mathcal L\)
+两两不交，\(S=\bigcup_jE_j\)，则对任意集合 \(T\)，
+
+\begin{equation*}
+m^*(T)=\sum_{j=1}^{\infty}m^*(T\cap E_j)+m^*(T\setminus S).
+\tag{2.2.8}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} （2.2.5）对所有 \(N\)
+成立，故对部分和取上确界得到``\(\ge\)''；\(m^*(T)=\infty\)
+时这个方向也成立。另一方面，\(T\) 恰好由各 \(T\cap E_j\) 与余集
+\(T\setminus S\)
+覆盖，可数次可加性给出``\(\le\)''。两个方向在扩展非负实数中均有效。
+
+式（2.2.8）比``可测集的可数可加性''更强：被切分的 \(T\)
+甚至可以不可测。保证精确分割的是切分工具 \(E_j\) 的可测性。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.4 Lebesgue
+测度与基本运算]{2.2.4 Lebesgue
+测度与基本运算}\label{lebesgue-ux6d4bux5ea6ux4e0eux57faux672cux8fd0ux7b97}
+
+\textbf{定义（Lebesgue 测度）}　在 \(\mathcal L_n\) 上定义
+\(m_n(E)=m_n^*(E)\)。维数固定时写为 \(m\)。此后 \(m(E)\)
+的写法只用于已经知道可测的 \(E\)；任意集合仍写 \(m^*(E)\)。
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.6（可数可加性）}　\(m(\varnothing)=0\)。若
+\(E_j\in\mathcal L\) 两两不交，则
+
+\begin{equation*}
+m\left(\bigcup_{j=1}^{\infty}E_j\right)=\sum_{j=1}^{\infty}m(E_j).
+\tag{2.2.9}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 空集结论由外测度继承。定理 2.2.4
+保证并集可测，在（2.2.8）中取 \(T=S\)，余集为空，即得（2.2.9）。因此
+\((\mathbb R^n,\mathcal L_n,m_n)\)
+是测度空间。有限可加性由补上空集项得到。
+
+\textbf{命题
+2.2.7（序、差与并）}　对可测集，单调性与可数次可加性仍成立。若
+\(A\subseteq B\)，则
+
+\begin{equation*}
+m(B)=m(A)+m(B\setminus A).
+\tag{2.2.10}
+\end{equation*}
+
+\Needspace{6\baselineskip}当 \(m(A)<\infty\) 时，可写成 \(m(B\setminus A)=m(B)-m(A)\)，右端允许为
+\(\infty\)。对任意可测的 \(A,B\)，还有不涉及减法的容斥恒等式
+
+\begin{equation*}
+m(A\cup B)+m(A\cap B)=m(A)+m(B).
+\tag{2.2.11}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 序性质和次可加性从 \(m^*\) 直接继承；相关并集由定理
+2.2.4 保证可测。将 \(B\) 分为 \(A\) 与 \(B\setminus A\)
+得（2.2.10）。有限数可以从等式两端减去；若 \(m(B)=\infty\) 而
+\(m(A)<\infty\)，该式迫使差集测度为无穷，结论仍成立。
+
+对（2.2.11），把 \(A\cup B\) 分成
+\(A\setminus B\)、\(A\cap B\)、\(B\setminus A\)
+三块。左右两边均等于这三块的测度之和再加一次
+\(m(A\cap B)\)。非负扩展数的结合律与交换律保证等式成立，无需有限性。若想改写为带减号的通常形式，则必须另行确保没有无穷减无穷。
+
+可测集不必有有限测度。例如后面将得到 \(\mathbb R^n\)
+可测且测度无穷；``可测''不是``能算出一个有限数字''的同义词。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.5
+区间为什么可测]{2.2.5
+区间为什么可测}\label{ux533aux95f4ux4e3aux4ec0ux4e48ux53efux6d4b}
+
+本节只建立随后计算所需的区间可测性。对一般开集、闭集、Borel
+集的系统讨论与正则逼近，仍留在 §2.3。
+
+\Needspace{10\baselineskip}\textbf{引理 2.2.8（零外测度保证可测）}　若 \(m^*(N)=0\)，则
+\(N\in\mathcal L\) 且 \(m(N)=0\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对任意 \(T\)，单调性给出 \(m^*(T\cap N)=0\) 与
+\(m^*(T\setminus N)\le m^*(T)\)。故（2.2.2）成立，由命题 2.2.1 得证。
+
+\textbf{定理
+2.2.9（区间可测且测度等于体积）}　所有坐标区间都可测。对于有界区间，测度等于各边长之积，与各端点取开或闭无关；退化区间测度为零。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+沿闭长方体边界切开时，两侧的距离可能为零。先把外侧推远一点，恢复正距离可加性，再用体积趋于零的薄层控制遗漏。这里需要的是显式的长方体体积估计，不是尚未建立的测度连续性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 先取非退化闭长方体 \(Q=\prod_{i=1}^n[a_i,b_i]\)，边长
+\(\ell_i=b_i-a_i>0\)。对 \(h>0\)，记 \(Q_h=\prod_i[a_i-h,b_i+h]\)。集合
+\(Q_h\setminus Q\) 被 \(2n\) 个薄长方体覆盖：第 \(i\) 个方向分别取
+\([a_i-h,a_i]\) 或 \([b_i,b_i+h]\)，其余方向取
+\([a_j-h,b_j+h]\)。由上一节体积公式及次可加性，
+
+\begin{equation*}
+m^*(Q_h\setminus Q)\le c(h),\qquad
+c(h)=2h\sum_{i=1}^n\prod_{j\ne i}(\ell_j+2h)\longrightarrow0.
+\tag{2.2.12}
+\end{equation*}
+
+\(n=1\) 时空乘积按 \(1\) 计算。固定 \(m^*(T)<\infty\)，令
+\(A=T\cap Q\)、\(D_h=T\setminus Q_h\)。若两集均非空，它们的距离至少为
+\(h\)：\(D_h\) 中每个点至少有一坐标落在扩大的对应线段之外。因此由 §2.1
+的距离可加性和单调性，
+\(m^*(A)+m^*(D_h)=m^*(A\cup D_h)\le m^*(T)\)；一集为空时同样成立。又因
+\(T\setminus Q\subseteq D_h\cup(Q_h\setminus Q)\)，有
+
+\begin{equation*}
+\begin{aligned}
+m^*(T\cap Q)+m^*(T\setminus Q)
+&\le m^*(A)+m^*(D_h)+c(h)\\
+&\le m^*(T)+c(h).
+\end{aligned}
+\tag{2.2.13}
+\end{equation*}
+
+令 \(h\downarrow0\)，由命题 2.2.1，\(Q\) 可测。其测度即外测度，因而等于
+§2.1 已证明的体积。
+
+有界退化区间外测度为零，由引理 2.2.8
+可测。非退化有界区间无论怎样选择端点，与其闭长方体的差都包含于有限个退化端面。该差外测度为零，故可测；再用差集封闭性，原区间也可测，体积公式仍由
+§2.1 得到。若区间无界，将其写为与 \([-k,k]^n\)
+的交的可数并，每一项都是有界区间，再用可数并封闭性。
+
+无界区间的测度也等于其外测度：若有零宽方向，则包含于一个坐标超平面，测度为零；若各方向宽度均为正且至少一个方向无界，则在它内部取该方向越来越长、其他方向固定正宽的闭长方体，单调性迫使其测度为无穷。这里分情况处理，不能把零宽与无穷宽直接相乘。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.6
+单调集列的测度连续性]{2.2.6
+单调集列的测度连续性}\label{ux5355ux8c03ux96c6ux5217ux7684ux6d4bux5ea6ux8fdeux7eedux6027}
+
+记 \(E_k\uparrow E\) 表示 \(E_k\subseteq E_{k+1}\) 且
+\(E=\bigcup_kE_k\)；\(E_k\downarrow E\) 表示 \(E_{k+1}\subseteq E_k\) 且
+\(E=\bigcap_kE_k\)。
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.10（从下连续）}　若 \(E_k\in\mathcal L\) 且
+\(E_k\uparrow E\)，则
+
+\begin{equation*}
+m(E)=\lim_{k\to\infty}m(E_k)=\sup_km(E_k).
+\tag{2.2.14}
+\end{equation*}
+
+不要求任何 \(E_k\) 有限测度。
+
+\Needspace{3\baselineskip}\textbf{证明：} 令
+\(D_1=E_1\)，\(D_k=E_k\setminus E_{k-1}\)（\(k\ge2\)）。这些差层可测且两两不交，\(E_k=\bigcup_{j\le k}D_j\)，\(E=\bigcup_{j\ge1}D_j\)。所以
+
+\begin{equation*}
+m(E_k)=\sum_{j=1}^k m(D_j)\uparrow\sum_{j=1}^{\infty}m(D_j)=m(E).
+\tag{2.2.15}
+\end{equation*}
+
+这正是非负级数部分和的极限。极限为无穷也没有额外困难。
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.11（从上连续）}　若 \(E_k\in\mathcal L\) 且
+\(E_k\downarrow E\)，并且存在 \(k_0\) 使 \(m(E_{k_0})<\infty\)，则
+
+\begin{equation*}
+m(E)=\lim_{k\to\infty}m(E_k)=\inf_km(E_k).
+\tag{2.2.16}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 去掉有限个初项不改变交集与极限，故只考虑
+\(k\ge k_0\)。此时
+\(F_k=E_{k_0}\setminus E_k\uparrow E_{k_0}\setminus E\)。由从下连续性与有限测度差集公式，
+
+\begin{equation*}
+\begin{aligned}
+m(E_{k_0})-m(E)
+&=m(E_{k_0}\setminus E)\\
+&=\lim_{k\to\infty}m(F_k)
+=m(E_{k_0})-\lim_{k\to\infty}m(E_k).
+\end{aligned}
+\tag{2.2.17}
+\end{equation*}
+
+各被减数和减数都有限，可以消去
+\(m(E_{k_0})\)，得（2.2.16）。有限性正是用在这次消去上。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.1（有限测度条件不能普遍删除；补充例）}　在 \(\mathbb R\)
+中取 \(E_k=[k,\infty)\)。由区间可测性，\(E_k\) 可测且
+\(m(E_k)=\infty\)，但 \(E_k\downarrow\varnothing\)，故
+\(m(\bigcap_kE_k)=0\ne\lim_km(E_k)\)。
+
+即使交集非空而有正测度，仍会失败：取 \(F_k=[0,1]\cup[k+1,\infty)\)，则
+\(F_k\downarrow[0,1]\)，而各项测度仍为无穷。反过来，有限测度条件并非每个具体等式成立的必要条件：常值列
+\(E_k=\mathbb R\)
+也满足从上连续的等式。定理的含义是，它是保证所有下降列成立的一个不可普遍删去的条件。
+
+\Needspace{10\baselineskip}\textbf{推论 2.2.12（单调逼近的误差）}　若 \(E_k\uparrow E\) 且
+\(m(E)<\infty\)，则 \(m(E\setminus E_k)\to0\)；若 \(E_k\downarrow E\)
+且某项测度有限，则 \(m(E_k\setminus E)\to0\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 第一种情形用 \(m(E\setminus E_k)=m(E)-m(E_k)\)
+与（2.2.14）。第二种情形去掉有限个初项后，各项与 \(E\) 都有限测度，再用
+\(m(E_k\setminus E)=m(E_k)-m(E)\) 与（2.2.16）。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.7
+零测集与完备性]{2.2.7
+零测集与完备性}\label{ux96f6ux6d4bux96c6ux4e0eux5b8cux5907ux6027}
+
+\textbf{定义（零测集与完备测度）}　可测且测度为零的集合称为零测集。若一个测度空间中每个零测集的任意子集仍然可测，则称该测度完备。此处的``完备''是关于可测集类，不是度量空间中
+Cauchy 列的完备性。
+
+\Needspace{10\baselineskip}\textbf{定理 2.2.13（Lebesgue 测度完备）}　对
+\(N\subseteq\mathbb R^n\)，\(m^*(N)=0\) 当且仅当 \(N\)
+为零测集。零测集的任意子集是零测集，可数个零测集的并仍为零测集。因此
+\(m_n\) 是完备测度。
+
+\Needspace{3\baselineskip}\textbf{证明：} 正向是引理 2.2.8，反向来自 \(m=m^*\)。若
+\(A\subseteq N\) 且 \(m(N)=0\)，则 \(0\le m^*(A)\le m^*(N)=0\)，再用引理
+2.2.8，得 \(A\) 可测且测度零。若 \(N_j\) 均为零测集，则
+\(m^*(\bigcup_jN_j)\le\sum_jm^*(N_j)=0\)，同一引理给出并集的可测性与零测度。完备性正是子集结论。
+
+\Needspace{10\baselineskip}\textbf{命题 2.2.14（零测扰动）}　若 \(E\) 可测且
+\(m^*(E\mathbin{\triangle}F)=0\)，则 \(F\) 可测且 \(m(F)=m(E)\)，不要求
+\(m(E)<\infty\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(E\setminus F\) 与 \(F\setminus E\)
+都是零外测度集，故都可测。由
+\(F=(E\setminus(E\setminus F))\cup(F\setminus E)\)，\(F\) 可测。又由
+\(F\subseteq E\cup(F\setminus E)\) 得 \(m(F)\le m(E)\)；交换 \(E,F\)
+得反向不等式。这个证明只使用加零和比较，不作无穷减法。
+
+因此``在零测集上任意更改一个可测集合的归属关系''不会破坏可测性，也不会改变测度。它并不意味着``在任何小测度集合上任意更改''都安全；这里的关键是测度恰为零。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.8
+例题与条件辨析]{2.2.8
+例题与条件辨析}\label{ux4f8bux9898ux4e0eux6761ux4ef6ux8fa8ux6790}
+
+以下均为补充例题。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.2（不可数集合及其任意子集也可以零测）}　设 \(C\) 是
+Cantor 三分集，\(A\subseteq C\)。由 §2.1 的第 \(k\)
+级区间覆盖，\(m^*(C)\le(2/3)^k\) 对每个 \(k\) 成立，故
+\(m^*(C)=0\)。定理 2.2.13 给出 \(A\) 可测且 \(m(A)=0\)。由于
+\([0,1]\setminus A\) 与 \([0,1]\) 的对称差为 \(A\)，后者可测且测度为
+\(1\)。这里无须知道 \(A\) 是开集、闭集或 Borel 集。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.3（稠密性与测度不相同）}　\(D=\mathbb Q\cap[0,1]\)
+是可数零测集，而 \([0,1]\setminus D\) 可测且测度为 \(1\)。两者都稠密于
+\([0,1]\)：任意非空开子区间含有有理数和无理数。于是同样的稠密性可伴随完全不同的测度；也不能由
+\(m(D)=0\) 推出 \(m(\overline D)=0\)。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.4（无界而有限测度）}　令
+\(E=\bigcup_{k\ge1}[k,k+2^{-k}]\)。各闭区间可测且两两不交，故
+\(m(E)=\sum_{k\ge1}2^{-k}=1\)。若 \(S_N\) 是前 \(N\) 个区间的并，则
+\(m(E\setminus S_N)=\sum_{k>N}2^{-k}=2^{-N}\)。这同时展示可数可加性和从下连续的定量误差。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.5（逐项有限也不够）}　取
+\(E_k=[k,k+1]\)。每个点至多落在其中两个区间里，所以
+\(\liminf E_k=\limsup E_k=\varnothing\)，即集合列逐点趋于空集。然而
+\(m(E_k)=1\)。因此一般集合列的测度极限，不能仅由集合极限和
+\(\sup_km(E_k)<\infty\) 推出。本例不是下降列；定理 2.2.11
+还需要单调性。其任意尾并包含一个无界半直线，测度无穷，说明``逐项一致有界''与``装在一个共同的有限测度集里''差别很大。
+
+\Needspace{6\baselineskip}\textbf{例 2.2.6（抽象外测度未必让所有集合可测）}　设
+\(X=\{a,b\}\)，\(\nu^*(\varnothing)=0\)，每个非空集的外测度为
+\(1\)。它非负、单调；可数族的并若非空，至少一个成员非空，故也满足可数次可加性。取
+\(T=X\)、\(E=\{a\}\)，则
+\(\nu^*(T)=1<2=\nu^*(T\cap E)+\nu^*(T\setminus E)\)，故 \(E\)
+不满足分割条件。同理 \(\{b\}\) 不可测，仅 \(\varnothing,X\)
+可测。这个例子是抽象外测度的模型，不能冒充 Lebesgue 不可测集；后者在
+§2.5 构造。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.2.9
+精选习题与方法回看]{2.2.9
+精选习题与方法回看}\label{ux7cbeux9009ux4e60ux9898ux4e0eux65b9ux6cd5ux56deux770b}
+
+下列题目按本节依赖关系编排；第 4 题对应教材定理 2.1.1
+的集合极限部分，其余均为补充练习。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.1}\label{ux95eeux9898-2.2.1}
+
+设 \(A\) 可测，\(A\subseteq T\)，且 \(m^*(T)=m(A)<\infty\)。证明 \(T\)
+可测且 \(m(T\setminus A)=0\)。说明证明为何使用有限性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 用可测集 \(A\) 分割测试集 \(T\)，得
+\(m^*(T)=m(A)+m^*(T\setminus A)\)。两端的共同数有限，故可消去，得到
+\(m^*(T\setminus A)=0\)。引理 2.2.8 保证差集可测，于是
+\(T=A\cup(T\setminus A)\) 可测。若两端都为无穷，则等式
+\(\infty=\infty+m^*(T\setminus A)\) 不能确定余项；例如
+\(A=(-\infty,0]\)、\(T=\mathbb R\) 同有无穷测度，差集却有无穷测度。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.2}\label{ux95eeux9898-2.2.2}
+
+设 \(E\subseteq\mathbb R^n\)。证明 \(E\) 可测当且仅当每个
+\(E\cap[-k,k]^n\) 都可测。若 \(E\) 可测，证明
+\(m(E)=\lim_km(E\cap[-k,k]^n)\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 正向由区间可测性及有限交封闭性。反向利用
+\(E=\bigcup_{k\ge1}(E\cap[-k,k]^n)\) 与可数并封闭性。最后这列交集递增至
+\(E\)，从下连续性给出测度等式，允许极限为无穷。这是先局部化、再用可数并复原的基本方法。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.3}\label{ux95eeux9898-2.2.3}
+
+设 \(E\) 可测且 \(m(E)<\infty\)，\(\{A_\alpha:\alpha\in I\}\) 是 \(E\)
+中两两不交的可测子集族，并且每个 \(m(A_\alpha)>0\)。证明 \(I\)
+至多可数。不得预先对不可数族使用可加性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 对 \(r\ge1\)，令
+\(I_r=\{\alpha:m(A_\alpha)\ge1/r\}\)。从 \(I_r\) 任取 \(N\)
+个不同下标，由有限可加性与单调性，\(N/r\le m(E)\)。所以 \(I_r\)
+的元素数不超过
+\(\lfloor r m(E)\rfloor\)，否则可以选出更多下标造成矛盾。每个正数
+\(m(A_\alpha)\) 都不小于某个 \(1/r\)，故 \(I=\bigcup_{r\ge1}I_r\)
+至多可数。论证只涉及有限并，没有假设不可数并可测。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.4}\label{ux95eeux9898-2.2.4}
+
+对可测集列 \(E_k\)，记 \(L=\liminf_kE_k=\bigcup_N\bigcap_{k\ge N}E_k\)、
+\(U=\limsup_kE_k=\bigcap_N\bigcup_{k\ge N}E_k\)。证明
+
+\begin{equation*}
+m(L)\le\liminf_km(E_k).
+\tag{2.2.18}
+\end{equation*}
+
+若存在 \(N_0\) 使 \(m(\bigcup_{k\ge N_0}E_k)<\infty\)，再证明
+
+\begin{equation*}
+\limsup_km(E_k)\le m(U).
+\tag{2.2.19}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} \(L,U\) 由可数并交得到，均可测。令
+\(F_N=\bigcap_{k\ge N}E_k\)，则 \(F_N\uparrow L\)，而
+\(m(F_N)\le\inf_{k\ge N}m(E_k)\)。从下连续并取极限，得到（2.2.18）。
+
+令 \(G_N=\bigcup_{k\ge N}E_k\)，则 \(G_N\downarrow U\)，而
+\(m(G_N)\ge\sup_{k\ge N}m(E_k)\)。给定的有限尾并条件允许使用从上连续，取极限得（2.2.19）。若
+\(L=U\) 且满足该有限条件，夹逼即得 \(m(E_k)\to m(L)\)。例 2.2.5
+说明：仅知各项测度不超过
+\(1\)，仍不足以代替有限尾并条件。本题全程没有借用积分的 Fatou 引理。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.5}\label{ux95eeux9898-2.2.5}
+
+设所有 \(E_k\) 包含于同一个有限测度可测集 \(D\)，且
+\(\liminf E_k=\limsup E_k=E\)。证明
+\(m(E_k\mathbin{\triangle}E)\to0\)，并由此证明 \(m(E_k)\to m(E)\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(E\) 可测且包含于 \(D\)。令
+\(A_k=E_k\mathbin{\triangle}E\)，\(H_N=\bigcup_{k\ge N}A_k\)。集合极限存在表示每个点的归属最终稳定，所以每个点仅属于有限多个
+\(A_k\)，从而 \(H_N\downarrow\varnothing\)。因
+\(H_N\subseteq D\)，从上连续给出 \(m(H_N)\to0\)，而
+\(m(A_N)\le m(H_N)\)，得第一项。
+
+所有涉及的测度均有限。由 \(E_k\subseteq E\cup A_k\) 及
+\(E\subseteq E_k\cup A_k\)，得到
+
+\begin{equation*}
+|m(E_k)-m(E)|\le m(E_k\mathbin{\triangle}E)\longrightarrow0.
+\tag{2.2.20}
+\end{equation*}
+
+有限共同容器控制了整个尾并，因而排除了测度向无穷远处逃逸的例子。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.6}\label{ux95eeux9898-2.2.6}
+
+设 \(E,E_k\) 可测，且
+\(\sum_{k\ge1}m(E_k\mathbin{\triangle}E)<\infty\)。证明除去一个零测集后，每个点在
+\(E_k\) 中的归属最终与它在 \(E\) 中的归属一致。
+
+\Needspace{3\baselineskip}\textbf{证明：} 记
+\(A_k=E_k\mathbin{\triangle}E\)，\(N=\limsup A_k\)。对任意 \(r\)，
+
+\begin{equation*}
+0\le m(N)\le m\left(\bigcup_{k\ge r}A_k\right)
+\le\sum_{k\ge r}m(A_k)\longrightarrow0.
+\tag{2.2.21}
+\end{equation*}
+
+因此 \(N\) 为零测集。若 \(x\notin N\)，则存在 \(r=r(x)\)，使
+\(x\notin A_k\) 对所有 \(k\ge r\) 成立，这正是所求的归属稳定。这里把
+§2.1 的尾和估计应用于对称差；不要求独立性，也不要求 \(m(E)\)
+有限。相应的``几乎处处''语言将在第三章系统使用。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.7}\label{ux95eeux9898-2.2.7}
+
+设 \(E\subseteq\mathbb R^n\) 可测，\(0<m(E)<\infty\)。证明对每个
+\(a\in(0,m(E))\)，存在实数 \(t\)，使
+\(m(E\cap\{x:x_1\le t\})=a\)。不得使用 Fubini 定理或正则性。
+
+\Needspace{3\baselineskip}\textbf{想法：} 用一张垂直于第一坐标轴的超平面扫过
+\(E\)。有限总测度保证两侧极限，超平面零测保证扫过时不会发生跳跃。
+
+\Needspace{3\baselineskip}\textbf{证明：} 半空间是可数个有界区间的并，故可测。令
+\(f(t)=m(E\cap\{x:x_1\le t\})\)，则 \(f\) 单调且 \(0\le f(t)\le m(E)\)。
+当 \(t_j\uparrow t\) 且 \(t_j<t\) 时，相应交集递增至
+\(E\cap\{x:x_1<t\}\)，从下连续给出左极限。该集合与
+\(E\cap\{x:x_1\le t\}\) 只差一个坐标超平面的子集；由 §2.1
+超平面零外测度及定理 2.2.13，两者测度相等，故左极限为 \(f(t)\)。
+
+当 \(t_j\downarrow t\) 且 \(t_j>t\) 时，相应交集递减至
+\(E\cap\{x:x_1\le t\}\)，且均包含于有限测度的 \(E\)；从上连续给出右极限
+\(f(t)\)。所以 \(f\) 连续。
+
+\Needspace{6\baselineskip}再分别对 \(t=k\to\infty\) 和 \(t=-k\to-\infty\) 使用从下、从上连续，得
+
+\begin{equation*}
+\lim_{t\to-\infty}f(t)=0,\qquad
+\lim_{t\to\infty}f(t)=m(E).
+\tag{2.2.22}
+\end{equation*}
+
+对给定的 \(a\)，可选有限的 \(u<v\) 使 \(f(u)<a<f(v)\)，再用闭区间
+\([u,v]\) 上连续函数的介值定理得到所求 \(t\)。
+
+\Needspace{8\baselineskip}\subsection{问题 2.2.8}\label{ux95eeux9898-2.2.8}
+
+在 \(\mathbb N\) 的有限集与余有限集组成的代数 \(\mathcal A\) 上，定义
+\(\mu(A)=0\)（\(A\) 有限），\(\mu(A)=1\)（\(A\)
+余有限）。证明它有限可加而非可数可加，并指出从下连续性如何失败。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(\mathbb N\)
+无限，故一个集合不会同时有限和余有限，定义无歧义；有限集与余有限集的补、有限并仍属这两类，故
+\(\mathcal A\)
+确为代数。对有限个两两不交的成员，至多一个余有限，因为两个余有限集的交仍余有限，不可能为空。若全都有限，并也有限，测度都为零；若恰有一个余有限，其余项有限，并为余有限，两侧都为
+\(1\)。因此有限可加。
+
+但是各单点 \(\{k\}\) 都有测度零，且它们的并 \(\mathbb N\in\mathcal A\)
+的测度为
+\(1\)，故可数可加性失败。相应地，\(\{1,\ldots,k\}\uparrow\mathbb N\)，各项测度恒为零，极限集测度为
+\(1\)。这个抽象例子说明，有限可加性不能替代定理
+2.2.6，也不能支撑差层证明中的无穷求和。
+
+回看本节，最关键的推理顺序是：分割条件先给有限运算封闭性；固定余集的下界再给可数并封闭性；可数分割随后给可数可加性；差层与有限容器分别给从下、从上连续性。零外测度集可测则直接来自定义，并进一步保证完备性。区间可测性的薄层证明只使用上一节的距离可加性和体积估计。下一节将从这些已经建立的结论出发，研究
+Borel 集以及一般可测集的开闭逼近与结构。
+
+\end{document}
