@@ -1,0 +1,594 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 2.3}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：2.3 可测集的结构},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 2.3 可测集的结构\par}
+\vspace{5pt}{第二章 Lebesgue 测度\par}
+\end{center}
+本节对应《实变函数知识框架》2.3，依据徐森林、薛春华《实变函数论》第 127—133 页的 Borel 集、正则逼近与等测包结论，补充多维证明、紧集逼近及第 145—147 页精选习题的完整解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.1 Borel
+集为什么可测]{2.3.1 Borel
+集为什么可测}\label{borel-ux96c6ux4e3aux4ec0ux4e48ux53efux6d4b}
+
+固定 \(n\ge1\)。记 \(m^*\) 为 \(\mathbb R^n\) 上的 Lebesgue
+外测度，\(\mathcal L\) 为 Lebesgue
+可测集类，\(m=m^*|_{\mathcal L}\)；补集相对于
+\(\mathbb R^n\)。本节只使用 §2.1 的覆盖定义、区间体积，以及 §2.2
+的区间可测性、可数可加性、单调连续性与完备性。
+
+回顾：\(\mathcal B_n=\sigma(\{G:G\text{ 开}\})\) 是包含全部开集的最小
+\(\sigma\)-代数；可数个闭集的并称为 \(F_\sigma\) 集，可数个开集的交称为
+\(G_\delta\) 集。
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.1（Borel
+可测性）}　\(\mathcal B_n\subseteq\mathcal L\)。特别地，开集、闭集、\(F_\sigma\)
+集与 \(G_\delta\) 集均可测。
+
+\Needspace{3\baselineskip}\textbf{证明：} 所有端点为有理数的有界开长方体构成可数族。若 \(G\)
+开、\(x\in G\)，先取球 \(B(x,r)\subseteq G\)，再逐坐标选取有理端点
+\(a_i<x_i<b_i\)，使各边长足够小，便有
+\(x\in\prod_i(a_i,b_i)\subseteq B(x,r)\)。因此 \(G\)
+是上述可数族中包含于 \(G\) 的成员之并。每个开长方体由上一节可测，故
+\(G\) 可测。
+
+\(\mathcal L\) 是 \(\sigma\)-代数且包含全部开集，由最小性得
+\(\mathcal B_n\subseteq\mathcal L\)。闭集是开集之补，其余两类由可数并交得到。空开集取空并，亦包括在内。
+
+这里需要的是\textbf{可数}基。任意开集确实也是无数个小球的并，但可测集类不保证对任意并封闭，不能用这个说法代替证明。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.2
+从覆盖到开集外逼近]{2.3.2
+从覆盖到开集外逼近}\label{ux4eceux8986ux76d6ux5230ux5f00ux96c6ux5916ux903cux8fd1}
+
+\Needspace{10\baselineskip}\textbf{引理 2.3.2（任意集合的开集外包公式）}　对任意
+\(A\subseteq\mathbb R^n\)，
+
+\begin{equation*}
+m^*(A)=\inf\{m(G):A\subseteq G,\ G\text{ 开}\}.
+\tag{2.3.1}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{想法：}
+外测度给的是一列长方体及其总费用。逐个向外略微扩大，并把第 \(j\)
+个长方体增加的费用限制在可求和的误差预算内，才得到一个费用仍接近原集合的开集。
+
+\Needspace{3\baselineskip}\textbf{证明：} 单调性给出
+\(m^*(A)\le m(G)\)，从而给出（2.3.1）的一个方向。若
+\(m^*(A)=\infty\)，所有这样的 \(G\) 都有无穷测度，等式已成立。
+
+设 \(m^*(A)<\infty\)，给定 \(\varepsilon>0\)。由覆盖定义，存在有界长方体
+\(I_j\) 覆盖 \(A\)，使 \(\sum_j|I_j|<m^*(A)+\varepsilon/2\)。设 \(I_j\)
+的各方向端点为 \(a_{ji},b_{ji}\)。将其扩大为
+\(J_j=\prod_{i=1}^n(a_{ji}-\delta_j,b_{ji}+\delta_j)\)。因为
+\(\prod_i(b_{ji}-a_{ji}+2\delta)\to|I_j|\)，可逐个选取
+\(\delta_j>0\)，使
+\(|J_j|-|I_j|<\varepsilon2^{-j-1}\)。端点原来是否包括、是否有零宽方向，均不妨碍此构造。于是
+\(G=\bigcup_jJ_j\) 开，包含 \(A\)，且
+
+\begin{equation*}
+\begin{aligned}
+m(G)&\le\sum_{j=1}^{\infty}|J_j|\\
+&<\sum_{j=1}^{\infty}|I_j|+\frac{\varepsilon}{2}
+<m^*(A)+\varepsilon.
+\end{aligned}
+\tag{2.3.2}
+\end{equation*}
+
+取下确界，再令 \(\varepsilon\downarrow0\)，即得结论。\(A=\varnothing\)
+时也可直接取 \(G=\varnothing\)。
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.3（开集的小差集逼近）}　若 \(E\in\mathcal L\)，则对每个
+\(\varepsilon>0\)，存在开集 \(G\supseteq E\)，使
+
+\begin{equation*}
+m(G\setminus E)<\varepsilon.
+\tag{2.3.3}
+\end{equation*}
+
+这里不要求 \(E\) 有界，也不要求 \(m(E)<\infty\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(m(E)<\infty\)，由引理取开集 \(G\supseteq E\)，使
+\(m(G)<m(E)+\varepsilon<\infty\)。两集均可测，所以可数可加性给出
+\(m(G)=m(E)+m(G\setminus E)\)。减去有限数
+\(m(E)\)，即得（2.3.3）。这说明从``总测度接近''到``差集很小''使用了
+\(E\) 的可测性和有限性。
+
+对一般 \(E\)，令 \(Q_k=[-k,k]^n\)、\(E_k=E\cap Q_k\)。每个 \(E_k\)
+可测且测度有限，故有开集 \(G_k\supseteq E_k\)，满足
+\(m(G_k\setminus E_k)<\varepsilon2^{-k-1}\)。取 \(G=\bigcup_kG_k\)，则
+\(G\supseteq\bigcup_kE_k=E\)，并且
+
+\begin{equation*}
+G\setminus E\subseteq\bigcup_{k=1}^{\infty}(G_k\setminus E_k),
+\qquad m(G\setminus E)\le\sum_{k=1}^{\infty}m(G_k\setminus E_k)
+\le\frac{\varepsilon}{2}<\varepsilon.
+\tag{2.3.4}
+\end{equation*}
+
+因此无限测度情形也成立。截断片可以重叠；这里只使用次可加性，不需要把它们分成互不相交的层。尤其不能对无限测度的
+\(E\) 直接写 \(m(G\setminus E)=m(G)-m(E)\)。
+
+\Needspace{16\baselineskip}
+\section[\S{}2.3.3
+取补与闭集内逼近]{2.3.3
+取补与闭集内逼近}\label{ux53d6ux8865ux4e0eux95edux96c6ux5185ux903cux8fd1}
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.4（闭集的小差集逼近）}　若 \(E\in\mathcal L\)，则对每个
+\(\varepsilon>0\)，存在闭集 \(F\subseteq E\)，使
+
+\begin{equation*}
+m(E\setminus F)<\varepsilon.
+\tag{2.3.5}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} \(E^c\) 可测。对 \(E^c\) 使用定理 2.3.3，取开集
+\(U\supseteq E^c\)，使 \(m(U\setminus E^c)<\varepsilon\)。令
+\(F=U^c\)，则 \(F\) 闭且 \(F\subseteq E\)，而
+
+\begin{equation*}
+E\setminus F=E\cap U=U\setminus E^c.
+\tag{2.3.6}
+\end{equation*}
+
+所求估计随即成立。取补交换了``外''和``内''，却保留了同一个误差集；证明没有把
+\(m(E^c)\) 从 \(m(\mathbb R^n)\) 中减去。
+
+即使 \(m(E)<\infty\)，其补集一般仍有无穷测度。所以必须先证明定理 2.3.3
+的一般版本，才能这样取补；仅证明有限测度外逼近后立即对 \(E^c\)
+使用，是一个常见的逻辑缺口。
+
+\Needspace{10\baselineskip}\textbf{推论 2.3.5（开闭夹逼）}　可测集 \(E\) 对每个 \(\varepsilon>0\)
+都有闭集 \(F\)、开集 \(G\) 满足
+
+\begin{equation*}
+F\subseteq E\subseteq G,\qquad m(G\setminus F)<\varepsilon.
+\tag{2.3.7}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 两侧各分配误差 \(\varepsilon/2\)。由于
+\(G\setminus F=(G\setminus E)\mathbin{\dot\cup}(E\setminus F)\)，可加性给出结论。符号
+\(\dot\cup\) 表示不交并。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.4
+紧集逼近与测度正则性]{2.3.4
+紧集逼近与测度正则性}\label{ux7d27ux96c6ux903cux8fd1ux4e0eux6d4bux5ea6ux6b63ux5219ux6027}
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.6（有限测度集的紧集逼近）}　若 \(E\) 可测且
+\(m(E)<\infty\)，则对每个 \(\varepsilon>0\)，存在紧集
+\(K\subseteq E\)，使 \(m(E\setminus K)<\varepsilon\)。还可同时取开集
+\(G\supseteq E\)，使 \(m(G\setminus K)<\varepsilon\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 因 \(E\cap Q_k\uparrow E\) 且
+\(m(E)<\infty\)，上一节的从下连续性给出
+\(m(E\setminus Q_k)=m(E)-m(E\cap Q_k)\to0\)。选 \(k\) 使该项小于
+\(\varepsilon/2\)，再取闭集 \(F\subseteq E\)，使
+\(m(E\setminus F)<\varepsilon/2\)。则 \(K=F\cap Q_k\) 闭且有界，由
+Heine--Borel 定理为紧集，并且
+
+\begin{equation*}
+E\setminus K\subseteq(E\setminus F)\cup(E\setminus Q_k),
+\qquad m(E\setminus K)<\varepsilon.
+\tag{2.3.8}
+\end{equation*}
+
+要得到最后一句，将已证的紧集内逼近和开集外逼近各取误差
+\(\varepsilon/2\)，再将两个不交差集合并。
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.7（内外正则性）}　对每个 \(E\in\mathcal L\)，包括
+\(m(E)=\infty\) 的情形，
+
+\begin{equation*}
+m(E)=\inf_{G\supseteq E,\ G\text{ 开}}m(G)
+=\sup_{K\subseteq E,\ K\text{ 紧}}m(K).
+\tag{2.3.9}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 第一个等号由引理 2.3.2。内侧上确界总不超过 \(m(E)\)。若
+\(m(E)<\infty\)，定理 2.3.6 给出 \(m(K)>m(E)-\varepsilon\)，令
+\(\varepsilon\downarrow0\) 即可。
+
+若 \(m(E)=\infty\)，则 \(m(E\cap Q_k)\uparrow\infty\)。给定任意
+\(M>0\)，可取 \(k\) 使 \(m(E\cap Q_k)>M+1\)，再在这个有限测度集内取紧集
+\(K\)，使 \(m((E\cap Q_k)\setminus K)<1\)，于是
+\(m(K)>M\)。因此上确界为无穷。
+
+无限测度时，（2.3.9）的内正则性是``能取到任意大的紧集测度''，\textbf{不是}``能使整个余集测度任意小''。因为每个紧集
+\(K\) 都有界，故 \(m(K)<\infty\)；若 \(m(E)=\infty\) 且
+\(K\subseteq E\)，则
+\(m(E\setminus K)=\infty\)。开闭夹逼对无限测度集仍成立，紧开夹逼的小误差版本则需要有限总测度。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.5 \texorpdfstring{$F_\sigma$}{Fσ} 与 \texorpdfstring{$G_\delta$}{Gδ}
+的零测差夹逼]{2.3.5 \texorpdfstring{$F_\sigma$}{Fσ} 与 \texorpdfstring{$G_\delta$}{Gδ}
+的零测差夹逼}\label{fux3c3-ux4e0e-gux3b4-ux7684ux96f6ux6d4bux5deeux5939ux903c}
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.8（可测集的结构定理）}　对任意
+\(E\subseteq\mathbb R^n\)，下列条件等价，均不要求有限外测度：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(E\) 可测。
+\item
+  每个 \(\varepsilon>0\) 都有开集 \(G\supseteq E\)，使
+  \(m^*(G\setminus E)<\varepsilon\)。
+\item
+  每个 \(\varepsilon>0\) 都有闭集 \(F\subseteq E\)，使
+  \(m^*(E\setminus F)<\varepsilon\)。
+\item
+  有 \(G_\delta\) 集 \(H\supseteq E\)，使 \(m^*(H\setminus E)=0\)。
+\item
+  有 \(F_\sigma\) 集 \(F\subseteq E\)，使 \(m^*(E\setminus F)=0\)。
+\item
+  有 \(F_\sigma\) 集 \(F\) 和 \(G_\delta\) 集 \(H\)，使
+  \(F\subseteq E\subseteq H\) 且 \(m(H\setminus F)=0\)。
+\end{enumerate}
+
+\Needspace{3\baselineskip}\textbf{证明：} \(1\Rightarrow2,3\) 已由定理 2.3.3---2.3.4 得到。若条件
+2 成立，对误差 \(2^{-j}\) 选开集 \(G_j\)，令 \(H=\bigcap_jG_j\)。则
+\(H\) 为包含 \(E\) 的 \(G_\delta\) 集，且对每个 \(j\)，
+
+\begin{equation*}
+0\le m^*(H\setminus E)\le m^*(G_j\setminus E)<2^{-j}.
+\tag{2.3.10}
+\end{equation*}
+
+所以条件 4 成立。若条件 3 成立，取闭集 \(F_j\subseteq E\) 使
+\(m^*(E\setminus F_j)<2^{-j}\)，令 \(F=\bigcup_jF_j\)，同理由
+\(E\setminus F\subseteq E\setminus F_j\) 得条件
+5。这里仅由单调性压小固定差集，不需要引用外测度的从上连续性。
+
+若条件 4 成立，\(H\) 为 Borel 集从而可测，\(H\setminus E\)
+外测度零从而可测，故 \(E=H\setminus(H\setminus E)\) 可测。条件 5 同样由
+\(E=F\cup(E\setminus F)\) 推出可测。
+
+从条件 1 同时构造上述 \(F,H\)，有
+\(H\setminus F=(H\setminus E)\cup(E\setminus F)\)，两项均零测，得到条件
+6。反之，若条件 6 成立，则 \(E\setminus F\subseteq H\setminus F\)
+外测度零；由完备性及 \(E=F\cup(E\setminus F)\) 得条件
+1。于是所有条件等价。
+
+条件 2---5 用 \(m^*\)，因为反向证明开始时尚未知道 \(E\) 可测。条件 6
+可直接写 \(m\)，因为 \(F,H\) 都是 Borel 集，其差已经可测。
+
+\Needspace{10\baselineskip}\textbf{推论 2.3.9（Borel 代表与完备化）}　每个可测集都可以写成一个
+\(F_\sigma\) 集与一个零测集之并，也可以写成一个 \(G_\delta\)
+集去掉一个零测集。Lebesgue 可测集类正是 Borel 测度的完备化。
+
+\Needspace{3\baselineskip}\textbf{证明：} 定理给出
+
+\begin{equation*}
+E=F\cup N_1=H\setminus N_2,\qquad
+N_1=E\setminus F,\quad N_2=H\setminus E,
+\qquad m(N_1)=m(N_2)=0.
+\tag{2.3.11}
+\end{equation*}
+
+更精确地，\(E\mathbin{\triangle}F=N_1\subseteq Z:=H\setminus F\)，而
+\(Z\) 是 Borel 零测集。因此每个 Lebesgue 可测集都由 Borel 集在一个 Borel
+零测集内更改得到。反过来，若 \(B,Z\) 为 Borel 集，\(m(Z)=0\) 且
+\(E\mathbin{\triangle}B\subseteq Z\)，完备性使这个对称差可测且零测，再由零测扰动结论，\(E\)
+可测。两类恰好相同。
+
+本结论不声称每个可测集本身是 \(F_\sigma\)、\(G_\delta\) 或 Borel
+集；它说的是可以找到相差零测集的简单代表。有关非 Borel
+可测集的存在性，将在 §2.5 处理。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.6
+等测包及其适用边界]{2.3.6
+等测包及其适用边界}\label{ux7b49ux6d4bux5305ux53caux5176ux9002ux7528ux8fb9ux754c}
+
+\textbf{定义（等测包）}　若 \(A\subseteq H\)、\(H\in\mathcal L\) 且
+\(m(H)=m^*(A)\)，称 \(H\) 为 \(A\) 的等测包。这里 \(A\) 不预设可测。
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.10（等测包存在）}　任意 \(A\subseteq\mathbb R^n\)
+都有一个 \(G_\delta\) 等测包。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(m^*(A)<\infty\)，由引理 2.3.2 取开集
+\(G_j\supseteq A\)，使 \(m(G_j)<m^*(A)+1/j\)，并令
+\(H=\bigcap_jG_j\)。则
+
+\begin{equation*}
+m^*(A)\le m(H)\le m(G_j)<m^*(A)+1/j
+\quad(j\ge1),
+\tag{2.3.12}
+\end{equation*}
+
+令 \(j\to\infty\) 得等测。若 \(m^*(A)=\infty\)，直接取
+\(H=\mathbb R^n\)；它是开集，亦可视为重复同一开集的可数交。
+
+\Needspace{10\baselineskip}\textbf{命题 2.3.11（何时等测推出零测差）}　设 \(H\) 是 \(A\)
+的等测包。若 \(m^*(A)<\infty\)，则
+
+\begin{equation*}
+A\in\mathcal L\quad\Longleftrightarrow\quad m^*(H\setminus A)=0.
+\tag{2.3.13}
+\end{equation*}
+
+无论是否有限，右侧均能推出左侧；有限性只用于左侧推出右侧。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若差集外测度零，则它可测，\(A=H\setminus(H\setminus A)\)
+可测。反过来，若 \(A\) 可测且 \(m^*(A)<\infty\)，可加性给出
+\(m(H)=m(A)+m(H\setminus A)\)，又
+\(m(H)=m(A)<\infty\)，所以差集测度为零。
+
+若未证明 \(A\) 可测，就不能以 \(m(H)=m^*(A)\) 为由写
+\(m^*(H\setminus A)=m(H)-m^*(A)\)。任意集合都有等测包，而``小差集开逼近''能够刻画可测性；这两个结论的强度不同。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.7
+有限方体并逼近]{2.3.7
+有限方体并逼近}\label{ux6709ux9650ux65b9ux4f53ux5e76ux903cux8fd1}
+
+\Needspace{10\baselineskip}\textbf{定理 2.3.12（有限测度集的简单几何逼近）}　若 \(E\) 可测且
+\(m(E)<\infty\)，则对每个
+\(\varepsilon>0\)，存在有限个有理端点的有界开长方体之并 \(P\)，使
+
+\begin{equation*}
+m(E\mathbin{\triangle}P)<\varepsilon.
+\tag{2.3.14}
+\end{equation*}
+
+不要求 \(P\subseteq E\) 或 \(E\subseteq P\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 由定理 2.3.6 取紧集 \(K\) 和开集 \(G\)，使
+\(K\subseteq E\subseteq G\)，\(m(G\setminus K)<\varepsilon\)。对每个
+\(x\in K\) 取有理端点开长方体 \(J_x\)，满足
+\(x\in J_x\subseteq G\)。紧性给出有限子覆盖，令其并为 \(P\)。则
+\(K\subseteq P\subseteq G\)，所以
+\(E\mathbin{\triangle}P\subseteq G\setminus K\)，得到（2.3.14）。\(K\)
+为空时可取空并 \(P=\varnothing\)。
+
+证明先把需要覆盖的核心缩成紧集，再取有限子覆盖。直接从 \(E\)
+的可数覆盖取前若干项，通常不能继续覆盖全部
+\(E\)；而对称差逼近本来就不要求保留这种包含关系。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.8 例题与反例]{2.3.8 例题与反例}\label{ux4f8bux9898ux4e0eux53cdux4f8b}
+
+\Needspace{6\baselineskip}\textbf{例 2.3.1（无限等测不等于零测差；教材反例 2.3.3）}　在实轴上取
+\(E=(-\infty,0)\)、\(H=(-\infty,1)\)。两者都是开集，且
+\(m(E)=m(H)=\infty\)，但 \(H\setminus E=[0,1)\)，测度为
+\(1\)。因此即使两集均可测，无限情形也不能由等测推出零测差。
+
+\textbf{例
+2.3.2（闭包不能代替闭集内逼近；补充例）}　\(D=\mathbb Q\cap[0,1]\)
+可测且零测，闭包却是 \([0,1]\)，测度为
+\(1\)。另一方面，\(E=[0,1]\setminus\mathbb Q\) 的内部为空，测度却为
+\(1\)。所以一般不能取 \(F=\overline E\) 或
+\(G=E^\circ\)；这不仅误差未必小，包含方向也与所求方向相反。
+
+\Needspace{6\baselineskip}\textbf{例 2.3.3（稠密开集可以很小；补充例）}　枚举
+\(\mathbb Q=\{q_j:j\ge1\}\)，给定 \(\eta>0\)，令
+
+\begin{equation*}
+G=\bigcup_{j=1}^{\infty}
+(q_j-\eta2^{-j-2},q_j+\eta2^{-j-2}).
+\tag{2.3.15}
+\end{equation*}
+
+它开且含有全部有理数，因而稠密；次可加性给出 \(m(G)\le\eta/2<\eta\)。取
+\(0<\eta<1\)，则 \(F=[0,1]\setminus G\) 闭且有界，测度至少为
+\(1-\eta/2>0\)，却没有内点。可测集内的紧集不必含有任何小区间。
+
+\Needspace{6\baselineskip}\textbf{例 2.3.4（外包公式不保证取到最小开集；补充例）}　对于
+\(A=\mathbb Q\)，\(m^*(A)=0\)。引理说明包含 \(A\)
+的开集测度下确界为零。但任何这样的开集都非空，因而含有一个正长度区间，测度严格为正。所以这个下确界不由任何开集取得。将误差趋于零的开集取交则得到零测的
+\(G_\delta\) 包。
+
+\Needspace{6\baselineskip}\textbf{例 2.3.5（无界与无限测度须区分；补充例）}　取
+\(E=\bigcup_{j\ge1}[j,j+2^{-j}]\)。它无界但 \(m(E)=1\)。前 \(N\)
+个闭区间的并 \(K_N\) 为紧集，且
+\(m(E\setminus K_N)=2^{-N}\to0\)。故紧集小误差逼近不要求 \(E\)
+有界。相反，\(E=\mathbb R\) 时每个紧集 \(K\)
+的余集测度都是无穷，但紧集测度的上确界仍为无穷。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.3.9
+精选习题与完整解答]{2.3.9
+精选习题与完整解答}\label{ux7cbeux9009ux4e60ux9898ux4e0eux5b8cux6574ux89e3ux7b54}
+
+以下保留教材原题出处；问题编号采用本讲编号。涉及无限测度的加强部分均明确标出。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.1}\label{ux95eeux9898-2.3.1}
+
+（教材习题 2.3 第 5(1) 题，第 145 页）证明：\(E\subseteq\mathbb R^n\)
+可测，当且仅当每个 \(\varepsilon>0\) 都有开集
+\(G_1\supseteq E\)、\(G_2\supseteq E^c\)，使
+\(m(G_1\cap G_2)<\varepsilon\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(E\) 可测，分别对 \(E,E^c\) 取误差小于
+\(\varepsilon/2\) 的开集外逼近。将 \(G_1\cap G_2\) 按是否属于 \(E\)
+分成两块：属于 \(E\) 的部分包含于 \(G_2\setminus E^c\)，不属于 \(E\)
+的部分包含于 \(G_1\setminus E\)，故交集测度小于 \(\varepsilon\)。
+
+反之，由 \(E^c\subseteq G_2\) 得
+\(G_1\setminus E\subseteq G_1\cap G_2\)，因而
+\(m^*(G_1\setminus E)<\varepsilon\)。结构定理的开逼近判据立即给出 \(E\)
+可测。反向不预设差集可测。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.2}\label{ux95eeux9898-2.3.2}
+
+（教材习题 2.3 第 5(2) 题，第 145 页）设 \(m^*(E)<\infty\) 且
+\(m^*(E)=\sup\{m(F):F\subseteq E,\ F\text{ 闭}\}\)，证明 \(E\)
+可测。说明删去有限性后结论为何不能由同一条件推出。
+
+\Needspace{3\baselineskip}\textbf{证明：} 给定 \(\varepsilon>0\)，可取闭集 \(F\subseteq E\)，使
+\(m(F)>m^*(E)-\varepsilon\)。用可测集 \(F\) 分割任意测试集 \(E\)，得到
+\(m^*(E)=m(F)+m^*(E\setminus F)\)。这里使用的是 Carathéodory
+条件，未假设 \(E\) 可测。由于 \(m^*(E)<\infty\)，可以相减，得
+\(m^*(E\setminus F)<\varepsilon\)。由闭逼近判据，\(E\) 可测。
+
+无限时该上确界条件只要求 \(E\)
+含有任意大测度的闭集，不能控制其余部分。若 \(V\subseteq[0,1]\)
+是不可测集，则 \(E=(-\infty,0)\cup V\)
+含有任意长的闭区间，满足等式的两侧均为无穷；若 \(E\)
+可测，\(E\cap[0,1]=V\) 也可测，矛盾。本段是条件反例：不可测集的存在将在
+§2.5 证明，本节不将该存在性用于任何定理的证明。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.3}\label{ux95eeux9898-2.3.3}
+
+（教材习题 2.3 第 8(1) 题，第 145 页）设 \(A\subseteq H\)，\(H\)
+可测。证明 \(H\) 是 \(A\) 的等测包，当且仅当 \(H\setminus A\)
+不含正测度可测子集，其中正向假设 \(m^*(A)<\infty\)。说明无限情形。
+
+\Needspace{3\baselineskip}\textbf{证明：} 设 \(m(H)=m^*(A)<\infty\)，且可测集
+\(B\subseteq H\setminus A\)。因 \(A\subseteq H\setminus B\)，
+\(m(H)=m^*(A)\le m(H\setminus B)=m(H)-m(B)\)，故 \(m(B)=0\)。
+
+反向在无限情形也成立。取 \(A\) 的可测等测包 \(D\)，令 \(C=H\cap D\)。由
+\(A\subseteq C\subseteq D\) 得 \(m(C)=m^*(A)\)。又 \(H\setminus C\)
+是包含于 \(H\setminus A\) 的可测集，故为零测集。于是
+\(m(H)=m(C)+0=m^*(A)\)。
+
+无限情形正向不成立：例 2.3.1 的 \(H\setminus E=[0,1)\)
+本身就是正测度可测集。这也表明``等测包''和``差集中没有可测的正测度部分''在无限情形不能混为一谈。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.4}\label{ux95eeux9898-2.3.4}
+
+（教材习题 2.3 第 8(2) 题，第 145 页，并补充无限情形）证明任意
+\(A\subseteq\mathbb R^n\) 都存在 \(G_\delta\) 集
+\(H\supseteq A\)，使对每个可测集 \(B\)，
+
+\begin{equation*}
+m^*(A\cap B)=m(H\cap B).
+\tag{2.3.16}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 先设 \(m^*(A)<\infty\)，取定理 2.3.10 给出的
+\(G_\delta\) 等测包 \(H\)。用 \(B\) 分割 \(A\)，同时分割 \(H\)，得
+
+\begin{equation*}
+\begin{aligned}
+m^*(A)&=m^*(A\cap B)+m^*(A\setminus B),\\
+m(H)&=m(H\cap B)+m(H\setminus B).
+\end{aligned}
+\tag{2.3.17}
+\end{equation*}
+
+两行总量相等且有限；第一行每项不超过第二行对应项。因此两项差额均为零，得（2.3.16）。
+
+一般情形令
+\(Q_0=\varnothing\)、\(Q_j=[-j,j]^n\)、\(S_j=Q_j\setminus Q_{j-1}\)。这些
+\(S_j\) 可测、两两不交、测度有限且并为全空间。分别为 \(A_j=A\cap S_j\)
+取具有已证性质的 \(G_\delta\) 包 \(H_j\)，令
+\(D=\bigcup_j(H_j\cap S_j)\)，则 \(D\) 为 Borel 集且包含
+\(A\)。上一节对任意测试集的可数分割公式给出
+
+\begin{equation*}
+m(D\cap B)=\sum_jm(H_j\cap S_j\cap B)
+=\sum_jm^*(A\cap S_j\cap B)=m^*(A\cap B).
+\tag{2.3.18}
+\end{equation*}
+
+但可数个 \(G_\delta\) 集的并未必仍是 \(G_\delta\)
+集，不能在此停止。对可测集 \(D\) 应用结构定理，取 \(G_\delta\) 集
+\(H\supseteq D\)，使 \(m(H\setminus D)=0\)。则
+\(m(H\cap B)=m(D\cap B)\)，得到所求。这里构造了一个有更强局部性质的包；并非无限测度情形的每个等测包都具有该性质。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.5}\label{ux95eeux9898-2.3.5}
+
+（教材习题 2.3 第 11 题，第 146 页）设 \(E\subseteq\mathbb R\)
+可测，存在 \(0<q<1\)，使每个有界开区间 \(I=(a,b)\) 中的 \(E\cap I\)
+都可用可数个开区间覆盖，覆盖长度总和小于 \(q(b-a)\)。证明 \(m(E)=0\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 假设 \(m(E)>0\)。由紧集内正则性，存在紧集
+\(K\subseteq E\)，使 \(0<m(K)<\infty\)。开集外逼近允许选择有界开集
+\(G\supseteq K\)，满足
+\(m(G)<m(K)/q\)：先取测度小于该数的开包，再与一个包含 \(K\)
+的有界开区间相交。
+
+\Needspace{10\baselineskip}把 \(G\) 写成两两不交的构成区间 \(I_j\) 之并。题设及外测度定义给出
+\(m(E\cap I_j)\le q|I_j|\)。因此
+
+\begin{equation*}
+m(K)\le m(E\cap G)=\sum_jm(E\cap I_j)
+\le q\sum_j|I_j|=q\,m(G)<m(K),
+\tag{2.3.19}
+\end{equation*}
+
+矛盾。关键是把局部固定比例的损失放进一个几乎不多占空间的开包，而非调用尚未学习的密度定理。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.6}\label{ux95eeux9898-2.3.6}
+
+（教材习题 2.3 第 12(1) 题，第 146 页）证明不存在可测集
+\(E\subseteq[0,1]\)，使每个 \(0\le a<b\le1\) 都满足
+\(m(E\cap(a,b))=(b-a)/2\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 取 \((a,b)=(0,1)\)，端点零测，得
+\(m(E)=1/2\)。更一般地，对任意实数 \(a<b\)，将 \((a,b)\) 与 \((0,1)\)
+相交，并忽略至多两个端点，仍得 \(m(E\cap(a,b))\le(b-a)/2\)。
+
+对任意有界区间 \(I\)，由外测度覆盖定义，可用开区间覆盖
+\(E\cap I\)，使总长小于 \(m(E\cap I)+|I|/4\le3|I|/4\)。问题 2.3.5 取
+\(q=3/4\)，推出 \(m(E)=0\)，与 \(m(E)=1/2\) 矛盾。若题设只写
+\(0<a<b<1\)，先用从下连续性让端点趋向 \(0,1\)，结论相同。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.7}\label{ux95eeux9898-2.3.7}
+
+（教材习题 2.3 第 16 题，第 146---147 页）设可测集
+\(A_k\subseteq E\subseteq B_k\)，且 \(m(B_k\setminus A_k)\to0\)。证明
+\(E\) 可测。
+
+\Needspace{3\baselineskip}\textbf{证明：} 令 \(F=\bigcup_kA_k\)、\(H=\bigcap_kB_k\)。两者可测且
+\(F\subseteq E\subseteq H\)。对每个 \(k\)，有
+\(H\setminus F\subseteq B_k\setminus A_k\)，故
+\(m(H\setminus F)=0\)。于是 \(E\setminus F\)
+是零测集的子集，由完备性可测，\(E=F\cup(E\setminus F)\) 可测。
+
+这项判据不要求 \(A_k,B_k\)
+单调，也不要求它们各自的测度有限。真正趋于零的是夹层的测度。
+
+\Needspace{8\baselineskip}\subsection{问题 2.3.8}\label{ux95eeux9898-2.3.8}
+
+（教材习题 2.3 第 17、18 题，第 147 页）说明引理 2.3.2
+的开集不能统一换成闭集；再构造一个开集 \(G\subseteq\mathbb R\)，使
+\(m(G)\ne m(\overline G)\)。
+
+\Needspace{3\baselineskip}\textbf{解：} 取 \(A=\mathbb Q\cap[0,1]\)。它外测度零，但包含 \(A\)
+的任何闭集都包含 \(\overline A=[0,1]\)，所以这些闭集测度的下确界为
+\(1\)，并非 \(m^*(A)\)。
+
+再取例 2.3.3 中 \(\eta=1\) 的开集 \(G\)。它稠密于 \(\mathbb R\)，所以
+\(\overline G=\mathbb R\)，而
+\(m(G)\le1/2<\infty=m(\overline G)\)。若希望两边测度均有限，则取
+\(U=G\cap(0,1)\)：它在 \((0,1)\) 稠密，故 \(\overline U=[0,1]\)，但
+\(m(U)\le1/2<1=m(\overline U)\)。
+
+本节证明的依赖次序是：区间可测性与可数基给出 Borel
+可测性；覆盖放大给任意集合的开包公式；有限测度相减及有界截断给一般可测集的小差集开逼近；取补给闭逼近；有限测度尾部控制与
+Heine--Borel
+定理给紧集逼近；最后可数并交与完备性把``小误差''提升为``零测差结构''。等测包公式适用于任意集合，不能单独充当可测性判据。
+
+\end{document}
