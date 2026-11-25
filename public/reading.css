@@ -650,3 +650,12 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
 .prose .toc-list .toc-list{margin-inline-start:1.25em}
 .prose .toc-list a{display:inline-block;max-width:100%;min-height:44px;padding-block:.2em;line-height:1.6;text-indent:0}
 @media print{.prose .toc-list a{min-height:0;padding-block:0}.prose .toc-list li{margin-block:.3em}}
+
+/* This lecture follows the supplied S layout and explicitly selects CM ams. */
+.prose[data-math-font="cm-ams"] blockquote { margin:1.25em 0; padding:.8em 1em; border:1px solid #10136b; border-radius:4px; background:#f7f7fc; color:inherit; }
+.prose[data-math-font="cm-ams"] blockquote > p:first-child { margin:-.8em -1em .8em; padding:.35em 1em; background:#10136b; color:white; border-radius:3px 3px 0 0; }
+.prose[data-math-font="cm-ams"] blockquote > p:first-child strong { color:inherit; }
+.prose[data-math-font="cm-ams"] blockquote > :last-child { margin-bottom:0; }
+.prose[data-math-font="cm-ams"] h2,
+.prose[data-math-font="cm-ams"] h3 { color:#10136b; }
+.prose[data-math-font="cm-ams"] .article-figure { width:100%; max-width:850px; }

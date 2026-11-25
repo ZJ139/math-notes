@@ -55,7 +55,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: .latex-cache
-          key: latex-${{ runner.os }}-${{ hashFiles('src/latexMath.ts', 'src/cmBeaMath.ts', 'assets/tex/cm-bea.sty', 'assets/fonts/fandol/*.otf', 'content/**/*.md') }}
+          key: latex-${{ runner.os }}-${{ hashFiles('src/latexMath.ts', 'src/cmBeaMath.ts', 'src/cmAmsMath.ts', 'assets/tex/cm-bea.sty', 'assets/fonts/fandol/*.otf', 'content/**/*.md') }}
           restore-keys: latex-${{ runner.os }}-
       - name: Install pinned dependencies
         run: npm ci
