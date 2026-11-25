@@ -1,0 +1,673 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm,headheight=14pt,headsep=8.5mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.12}
+\setlength{\parindent}{2em}\setlength{\parskip}{3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{0.8\baselineskip}
+\usepackage{needspace,enumitem,longtable,booktabs,array,calc}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small 数学手记}\fancyhead[R]{\small 实变函数-v1 · 2.4}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[hidelinks,unicode,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：2.4 测度的变换性质},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\predisplaypenalty=10000\interdisplaylinepenalty=10000
+\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}
+{\Large\bfseries 实变函数-v1\par}
+\vspace{7pt}{\large 2.4 测度的变换性质\par}
+\vspace{5pt}{第二章 Lebesgue 测度\par}
+\end{center}
+本节对应《实变函数知识框架》2.4，依据徐森林、薛春华《实变函数论》第 138—139 页的平移不变性与多维测度，以及第 145—147 页相关习题，补充非奇异线性变换的两条完整证明、测度逼近与退化情形，附十道习题完整解答。
+\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.1
+从覆盖变换到可测性]{2.4.1
+从覆盖变换到可测性}\label{ux4eceux8986ux76d6ux53d8ux6362ux5230ux53efux6d4bux6027}
+
+固定 \(n\ge1\)，以 \(m_n^*\)、\(m_n\) 表示 \(\mathbb R^n\) 中的 Lebesgue
+外测度与测度，同维讨论时省略下标。\(AE=\{Ax:x\in E\}\)，\(E+b=\{x+b:x\in E\}\)；\(A^{-1}F\)
+在 \(A\) 可逆时表示逆变换的像，也就是原像。
+
+\Needspace{10\baselineskip}\textbf{引理 2.4.1（把分割判据随双射搬运）}　设
+\(T:\mathbb R^n\to\mathbb R^n\) 为双射，存在 \(0<c<\infty\)，使任意集合
+\(S\) 都满足
+
+\begin{equation*}
+m^*(TS)=c\,m^*(S).
+\tag{2.4.1}
+\end{equation*}
+
+则 \(E\) 可测当且仅当 \(TE\) 可测；可测时 \(m(TE)=c\,m(E)\)。
+
+\Needspace{3\baselineskip}\textbf{证明：} 若 \(E\) 可测，对任意测试集 \(H\)，把 Carathéodory
+等式用于 \(T^{-1}H\)，再乘以 \(c\)。双射保证
+\(T(T^{-1}H\cap E)=H\cap TE\)、\(T(T^{-1}H\setminus E)=H\setminus TE\)，故
+
+\begin{equation*}
+\begin{aligned}
+m^*(H)&=c\,m^*(T^{-1}H)\\
+&=m^*(H\cap TE)+m^*(H\setminus TE).
+\end{aligned}
+\tag{2.4.2}
+\end{equation*}
+
+所以 \(TE\) 可测。对 \(T^{-1}\) 使用同一论证得到逆向；此时伸缩因子为
+\(c^{-1}\)。最后将外测度限制在可测集上。整个证明在扩展非负实数中进行，没有无穷相减。
+
+这给出一个可复用的次序：\textbf{先对任意集合证明外测度公式，再由分割判据证明可测性}。只证明区间的体积公式，还不能直接把结论用于任意可测集。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.2
+平移、反射与坐标伸缩]{2.4.2
+平移、反射与坐标伸缩}\label{ux5e73ux79fbux53cdux5c04ux4e0eux5750ux6807ux4f38ux7f29}
+
+\textbf{定理
+2.4.2（保持坐标长方体的变换）}　平移、坐标置换、某些坐标的反号均保持外测度和可测性。更一般地，若
+\(D=\operatorname{diag}(a_1,\ldots,a_n)\)，所有 \(a_i\ne0\)，则对任意
+\(S\subseteq\mathbb R^n\)，
+
+\begin{equation*}
+m^*(DS+b)=\left(\prod_{i=1}^n|a_i|\right)m^*(S).
+\tag{2.4.3}
+\end{equation*}
+
+相应变换双向保持可测性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 取覆盖
+\(S\subseteq\bigcup_jI_j\)。变换后仍为坐标长方体覆盖；平移、置换、反号不改各边长的乘积，\(D\)
+则把该乘积乘以 \(c=\prod_i|a_i|\)。所以
+\(m^*(DS+b)\le c\sum_j|I_j|\)。对覆盖费用取下确界，得一个方向。再对逆变换
+\(y\mapsto D^{-1}(y-b)\) 使用同样估计，得
+\(m^*(S)\le c^{-1}m^*(DS+b)\)。故等式成立。端点的开闭变化不影响体积；若需恢复半开约定，边界是零测集。最后应用引理
+2.4.1。
+
+特别地，关于点 \(b\) 的中心反射为 \(x\mapsto2b-x\)，保持测度；对
+\(a\ne0\)，
+
+\begin{equation*}
+m(aE+b)=|a|^n m(E).
+\tag{2.4.4}
+\end{equation*}
+
+这里还未证明任意旋转或斜超平面反射；它们通常不把坐标长方体变成坐标长方体，不能直接套用本段覆盖费用计算。它们将在
+§2.4.4---§2.4.5 一并得到。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.3
+零测集与线性像的可测性]{2.4.3
+零测集与线性像的可测性}\label{ux96f6ux6d4bux96c6ux4e0eux7ebfux6027ux50cfux7684ux53efux6d4bux6027}
+
+\Needspace{10\baselineskip}\textbf{引理 2.4.3（粗覆盖估计）}　设 \(f:\mathbb R^n\to\mathbb R^n\)
+满足 \(|f(x)-f(y)|\le L|x-y|\)，其中 \(L>0\)。则任意 \(S\) 满足
+
+\begin{equation*}
+m_n^*(f(S))\le C_{n,L}m_n^*(S),\qquad C_{n,L}=(2\sqrt n\,L)^n.
+\tag{2.4.5}
+\end{equation*}
+
+特别地，零测集的像仍为零测集。\(L=0\)
+时像为空集或单点，直接零测，无须使用（2.4.5）。
+
+\Needspace{3\baselineskip}\textbf{证明：}
+外测度定义中的长方体覆盖可以换成轴平行立方体覆盖，而不改变下确界。事实上，边长为
+\(\ell_1,\ldots,\ell_n\) 的有界长方体被边长 \(h\)
+的网格立方体覆盖时，总体积不超过 \(\prod_i(\ell_i+2h)\)；令
+\(h\downarrow0\)，可使多付的费用任意小。对可数个覆盖长方体分别分配
+\(\varepsilon2^{-j}\) 的误差即可；零宽方向也包括在内。
+
+边长为 \(\ell\) 的立方体 \(Q\) 直径为 \(\sqrt n\ell\)。固定
+\(x_Q\in Q\)，\(f(Q)\) 包含在以 \(f(x_Q)\) 为中心、边长
+\(2\sqrt n L\ell\) 的立方体内，其体积为
+\(C_{n,L}|Q|\)。对立方体覆盖求和、取下确界，即得（2.4.5）。若原外测度无穷，估计自动成立；若为零，取费用任意小的覆盖可直接得到像的外测度为零。
+
+此处只要一个有限常数，不追求最优常数。用尚待证明的行列式公式去证明零集保持性，会使后续可测性论证循环。
+
+\Needspace{10\baselineskip}\textbf{命题 2.4.4（同维 Lipschitz 像可测）}　若
+\(E\subseteq\mathbb R^n\) 可测，\(f:\mathbb R^n\to\mathbb R^n\) 为
+Lipschitz 映射，则 \(f(E)\) 可测。特别地，任意线性变换 \(A\)
+都把可测集送到可测集；\(A\) 可逆时双向保持可测性。
+
+\Needspace{3\baselineskip}\textbf{证明：} 由 §2.3 的结构定理，有 \(F_\sigma\) 集
+\(F\subseteq E\)，使 \(N=E\setminus F\) 为零测集。每个闭集与
+\([-k,k]^n\) 相交为紧集，故 \(F\)
+可写成可数个紧集之并：\(F=\bigcup_jK_j\)。连续性使 \(f(K_j)\) 紧，故
+\(f(F)\) 为 Borel 集；引理 2.4.3 使 \(f(N)\)
+为零测集。由完备性，\(f(E)=f(F)\cup f(N)\) 可测。
+
+线性映射满足 Lipschitz 估计。若 \(A\) 可逆，其逆也满足该估计，把结论用于
+\(A^{-1}\) 即得逆向。这里没有假设一般连续映射把 Borel 集的像送到 Borel
+集；证明实际用的是紧集像紧。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.4
+剪切变换与基本矩阵分解]{2.4.4
+剪切变换与基本矩阵分解}\label{ux526aux5207ux53d8ux6362ux4e0eux57faux672cux77e9ux9635ux5206ux89e3}
+
+\Needspace{10\baselineskip}\textbf{引理 2.4.5（剪切保持体积）}　设
+\(n\ge2\)、\(i\ne j\)，剪切变换为
+
+\begin{equation*}
+S_t(x_1,\ldots,x_n)=(x_1,\ldots,x_i+t x_j,\ldots,x_n).
+\tag{2.4.6}
+\end{equation*}
+
+则任意集合 \(H\) 满足
+\(m^*(S_tH)=m^*(H)\)；因而剪切双向保持可测性和测度。
+
+\Needspace{3\baselineskip}\textbf{想法：}
+``每一层只是平移''具有直观意义，但若把层的体积直接积分，就调用了尚未建立的
+Fubini
+定理。改用有限条带，把每条带内的平移变化压到任意小，便能只靠长方体体积完成证明。
+
+\Needspace{3\baselineskip}\textbf{证明：} 由坐标置换，只须处理 \(i=1,j=2\)。先取闭长方体
+\(I=\prod_{k=1}^n[a_k,b_k]\)，各边长 \(\ell_k>0\)。将第二坐标等分成
+\(N\) 个闭区间 \(J_\nu\)，每段长 \(\delta=\ell_2/N\)。在 \(J_\nu\)
+上，\(tx_2\) 的最大、最小值分别记作 \(v_\nu,u_\nu\)，于是
+\(v_\nu-u_\nu=|t|\delta\)。
+
+第 \(\nu\) 条带的像包含在外长方体
+\([a_1+u_\nu,b_1+v_\nu]\times J_\nu\times\prod_{k=3}^n[a_k,b_k]\) 内；当
+\(|t|\delta<\ell_1\) 时，它又包含内长方体
+\([a_1+v_\nu,b_1+u_\nu]\times J_\nu\times\prod_{k=3}^n[a_k,b_k]\)。前一包含关系取第一坐标全部可能值，后一关系取所有
+\(x_2\in J_\nu\) 对应区间的公共部分。
+
+这些内长方体只可能在第二坐标的端面上重叠，重叠为零测集。\(S_tI\)
+紧，故可测。以 \(R=\prod_{k=3}^n\ell_k\)（\(n=2\) 时
+\(R=1\)），有限可加性与次可加性给出
+
+\begin{equation*}
+\begin{aligned}
+N(\ell_1-|t|\delta)\delta R
+&\le m(S_tI)\le N(\ell_1+|t|\delta)\delta R,\\
+|I|-\frac{|t|\ell_2^2R}{N}
+&\le m(S_tI)\le |I|+\frac{|t|\ell_2^2R}{N}.
+\end{aligned}
+\tag{2.4.7}
+\end{equation*}
+
+令 \(N\to\infty\)，得 \(m(S_tI)=|I|\)。某边长为零时，\(I\)
+零测，像由引理 2.4.3
+仍零测；半开、开长方体与其闭包之差也是零测集，像的体积因而相同。
+
+对任意覆盖 \(H\subseteq\bigcup_kI_k\)，已有
+\(m^*(S_tH)\le\sum_km(S_tI_k)=\sum_k|I_k|\)，故
+\(m^*(S_tH)\le m^*(H)\)。逆变换为 \(S_{-t}\)，给出反向不等式。应用引理
+2.4.1 完成证明。
+
+\Needspace{10\baselineskip}\textbf{定理 2.4.6（非奇异线性变换公式）}　若
+\(A\in\mathbb R^{n\times n}\) 可逆，则对任意集合 \(S\)，
+
+\begin{equation*}
+m_n^*(AS)=|\det A|m_n^*(S).
+\tag{2.4.8}
+\end{equation*}
+
+并且 \(E\) 可测当且仅当 \(AE\) 可测；可测时
+
+\begin{equation*}
+\boxed{m_n(AE)=|\det A|m_n(E).}
+\tag{2.4.9}
+\end{equation*}
+
+\Needspace{8\baselineskip}\textbf{证明：}
+高斯消元把可逆矩阵化为单位矩阵，使用的行变换只有交换两行、某一行乘非零数、某行加另一行的倍数。反向排列这些基本矩阵的逆，得到
+\(A=E_k\cdots E_1\)。它们作为坐标变换依次为坐标交换、单坐标伸缩、剪切；由定理
+2.4.2 和引理 2.4.5，其外测度因子依次为
+\(1,|a|,1\)，正是相应行列式的绝对值。因此
+
+\begin{equation*}
+\begin{aligned}
+m^*(AS)&=\prod_{j=1}^k|\det E_j|\,m^*(S)\\
+&=|\det(E_k\cdots E_1)|\,m^*(S).
+\end{aligned}
+\tag{2.4.10}
+\end{equation*}
+
+所有因子均为有限正数，所以公式同时适用于零测度、有限正测度及无穷测度。再由引理
+2.4.1 得可测性与（2.4.9）。
+
+\textbf{为什么取绝对值？}
+交换两坐标或反射一个坐标会改变取向，使行列式变号，却不改变无向体积。测度始终非负；单坐标乘
+\(a<0\) 的几何效果是反射后按 \(|a|\) 伸缩。因此保留下来的体积因子是
+\(|\det A|\)。它不是为了修补负数临时添加的符号，而是在每一种基本变换中已经出现。
+
+\Needspace{10\baselineskip}\textbf{推论 2.4.7（仿射与相似变换）}　可逆仿射变换 \(T(x)=Ax+b\) 满足
+\(m(TE)=|\det A|m(E)\)。若 \(Q^{\mathsf T}Q=I\)，则
+\(|\det Q|=1\)，故正交变换保持测度。特别地，旋转和关于任意仿射超平面的反射均保持测度。相似变换
+
+\begin{equation*}
+T(x)=b+\lambda Qx,\qquad \lambda>0,
+\qquad m(TE)=\lambda^n m(E)
+\tag{2.4.11}
+\end{equation*}
+
+双向保持可测性。超平面 \(u\cdot x=a\)（\(|u|=1\)）的反射为
+\(x\mapsto x-2(u\cdot x-a)u\)，其线性部分 \(I-2uu^{\mathsf T}\)
+正交。\(\lambda=0\) 为常值退化情形，不属于可逆相似变换。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.5
+几何体积与正交伸缩证明]{2.4.5
+几何体积与正交伸缩证明}\label{ux51e0ux4f55ux4f53ux79efux4e0eux6b63ux4ea4ux4f38ux7f29ux8bc1ux660e}
+
+本段给出不依赖剪切引理的另一条证明。关键不是预先假定``旋转保体积''，而是从平移不变性推出：任意可逆线性变换对全部可测集都乘同一个常数，再用球确定正交变换的常数。
+
+\Needspace{10\baselineskip}\textbf{引理 2.4.8（平移不变性确定测度的比例）}　若 \(A\) 可逆，定义
+\(\mu(E)=m(AE)\)。仅使用 §2.4.2---§2.4.3 的结论，就有一个
+\(0<c(A)<\infty\)，使所有 Lebesgue 可测集满足
+
+\begin{equation*}
+\mu(E)=c(A)m(E),\qquad c(A)=m(A[0,1)^n).
+\tag{2.4.12}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 命题 2.4.4 保证 \(AE\) 可测，单射性保证不交像仍不交，故
+\(\mu\) 可数可加。\(A(E+x)=AE+Ax\) 及平移不变性说明 \(\mu\)
+平移不变；有界集的像有界，因此 \(\mu\) 局部有限。\(A[0,1)^n\)
+有界且含非空开集，故 \(0<c(A)<\infty\)。
+
+将 \([0,1)^n\) 分成 \(2^{kn}\) 个互为平移的半开小立方体，得每个边长
+\(2^{-k}\) 的半开立方体的 \(\mu\) 值为 \(c(A)2^{-kn}\)。
+
+任意开集 \(G\) 可分解成可数个互不相交的这种二进立方体：只用边长不超过
+\(1\) 的标准二进网格，选取闭包包含于 \(G\) 的极大半开立方体。每个
+\(x\in G\) 都落在某个足够细且闭包包含于 \(G\)
+的网格立方体中；向上追溯至边长
+\(1\)，或至上一层不再满足条件，便得到极大者。二进立方体相交时必有包含关系，所以极大者互不相交。由可数可加性，\(\mu(G)=c(A)m(G)\)，允许两侧无穷。
+
+\Needspace{10\baselineskip}最后，\(A\) 是同胚。对可测集 \(E\)，§2.3 的开集外正则性给出
+
+\begin{equation*}
+\begin{aligned}
+\mu(E)&=\inf_{U\supseteq AE,\ U\text{ 开}}m(U)\\
+&=\inf_{G\supseteq E,\ G\text{ 开}}\mu(G)
+=c(A)\inf_{G\supseteq E,\ G\text{ 开}}m(G)
+=c(A)m(E).
+\end{aligned}
+\tag{2.4.13}
+\end{equation*}
+
+第二个等号使用 \(U=AG\)
+在两类开包之间的双射。它同时处理有限与无限测度，无需援引抽象测度的唯一延拓定理。
+
+\Needspace{10\baselineskip}\textbf{定理 2.4.6 的第二证：} 若 \(Q\) 正交，单位开球 \(B\) 满足
+\(QB=B\)，且
+\(0<m(B)<\infty\)；这里正性与有限性可由球内、球外的坐标立方体得到。因此引理
+2.4.8 给出 \(m(B)=c(Q)m(B)\)，从而
+\(c(Q)=1\)。这就在未用剪切结论的情况下建立了旋转与反射不变性。
+
+对一般可逆 \(A\)，实对称正定矩阵 \(A^{\mathsf T}A\) 可正交对角化。设
+\(V^{\mathsf T}A^{\mathsf T}AV=D^2\)，其中 \(V\)
+正交、\(D=\operatorname{diag}(\sigma_1,\ldots,\sigma_n)\)、\(\sigma_i>0\)。置
+\(U=AVD^{-1}\)，则 \(U^{\mathsf T}U=I\)，所以
+\(A=UDV^{\mathsf T}\)。先作正交变换（允许反射），再沿互相垂直的方向伸缩，再作正交变换，得到
+
+\begin{equation*}
+\begin{aligned}
+m(AE)&=m(DV^{\mathsf T}E)
+=\left(\prod_{i=1}^n\sigma_i\right)m(E),\\
+\prod_{i=1}^n\sigma_i
+&=\sqrt{\det(A^{\mathsf T}A)}=|\det A|.
+\end{aligned}
+\tag{2.4.14}
+\end{equation*}
+
+这独立证明了可测集公式。对任意集合 \(S\)，再用开包公式和同胚性，便得
+\(m^*(AS)=\inf_{G\supseteq S,\ G\text{ 开}}m(AG)=|\det A|m^*(S)\)。
+
+\textbf{几何解释：} 单位立方体的像是由 \(A\)
+的列向量张成的平行多面体；其体积为 \(|\det A|\)。若将这些列向量作
+Gram--Schmidt 正交化，得到非负高度 \(h_1,\ldots,h_n\)，则 \(A=QR\) 中
+\(R\) 的对角元为这些高度，故
+\(|\det A|=\prod_i h_i\)。这就是逐层``底乘高''的体积。正交伸缩证明说明它与坐标选择无关；仅把这个几何直觉写成一句``显然''不能代替任意可测集上的证明。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.6
+从简单几何体到可测集]{2.4.6
+从简单几何体到可测集}\label{ux4eceux7b80ux5355ux51e0ux4f55ux4f53ux5230ux53efux6d4bux96c6}
+
+\Needspace{10\baselineskip}\textbf{命题 2.4.9（有限方体并逼近的推广原则）}　设 \(A\)
+可逆，并已用独立的几何论证知道：对每个坐标长方体
+\(I\)，\(m(AI)=d|I|\)，其中 \(0<d<\infty\)。则对所有可测集
+\(E\)，\(m(AE)=d\,m(E)\)。
+
+\Needspace{3\baselineskip}\textbf{证明：}
+有限个长方体可按全部端点作共同细分，成为内部不交的小长方体；边界与其线性像均为零测集。所以对有限长方体并
+\(P\)，有限可加性给出 \(m(AP)=d\,m(P)\)。
+
+若 \(m(E)<\infty\)，由 §2.3 的有限方体并逼近，取 \(P_k\) 使
+\(m(E\triangle P_k)\to0\)。因为 \(A\) 单射，
+\(AE\triangle AP_k=A(E\triangle P_k)\)。以引理 2.4.3 的某个有限常数
+\(C_A\)，有
+
+\begin{equation*}
+\begin{aligned}
+m(AE\triangle AP_k)&\le C_A m(E\triangle P_k),\\
+|m(AE)-d\,m(E)|
+&\le |m(AE)-m(AP_k)|+d|m(P_k)-m(E)|\\
+&\le(C_A+d)m(E\triangle P_k)\longrightarrow0.
+\end{aligned}
+\tag{2.4.15}
+\end{equation*}
+
+各测度均有限：\(m(AE)\le C_A m(E)\)，而 \(P_k\) 有界。若
+\(m(E)=\infty\)，对 \(E_k=E\cap[-k,k]^n\)
+使用已证结果。\(E_k\uparrow E\)、\(AE_k\uparrow AE\)，由测度从下连续性完成推广。
+
+三种思路的分工由此清楚：基本矩阵分解直接计算每一步的因子；正交伸缩揭示体积及行列式绝对值的几何来源；测度逼近负责把简单几何体上的公式可靠地推广到复杂可测集。第三条原则本身不计算
+\(d\)，不能把待证的平行多面体体积公式偷偷当成已知。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.7
+奇异变换与维数退化]{2.4.7
+奇异变换与维数退化}\label{ux5947ux5f02ux53d8ux6362ux4e0eux7ef4ux6570ux9000ux5316}
+
+\Needspace{10\baselineskip}\textbf{定理 2.4.10（降秩后的环境测度）}　设
+\(A:\mathbb R^n\to\mathbb R^d\)
+为线性映射，\(\operatorname{rank}A=r<d\)。则对任意集合
+\(S\subseteq\mathbb R^n\)，像 \(AS\) 都是 \(\mathbb R^d\) 中的 Lebesgue
+零测集，尤其可测。
+
+\Needspace{3\baselineskip}\textbf{证明：} \(AS\subseteq\operatorname{im}A\)，后者是 \(r\)
+维线性子空间。选取正交坐标，将它转成
+\(\mathbb R^r\times\{0\}^{d-r}\)。对每个 \(M>0\)，其中的有界部分包含于
+\([-M,M]^r\times[-\varepsilon,\varepsilon]^{d-r}\)，该长方体体积为
+\((2M)^r(2\varepsilon)^{d-r}\to0\)。所以有界部分零测，可数并得到整个子空间零测。正交变换保持
+\(d\) 维测度，故原子空间也零测；再用完备性。\(r=0\)
+时子空间只有原点，同样成立。
+
+特别地，奇异方阵对任意 \(S\subseteq\mathbb R^n\) 都满足
+\(m_n(AS)=0\)，并不要求 \(S\) 可测。对有限测度可测集可以写
+\(m_n(AE)=|\det A|m_n(E)=0\)；当 \(m_n(E)=\infty\) 时，应直接写
+\(m_n(AE)=0\)，不要把未声明约定的 \(0\cdot\infty\)
+当作实数运算。即使另行约定 \(0\cdot\infty=0\)，也仍须先证明像零测。
+
+\Needspace{10\baselineskip}\textbf{命题 2.4.11（升维嵌入的内蕴体积）}　若
+\(A:\mathbb R^n\to\mathbb R^d\)、\(n<d\)，且
+\(\operatorname{rank}A=n\)，则所有像的环境 \(d\) 维测度为零。但在
+\(L=\operatorname{im}A\) 中，\(E\) 在 \(\mathbb R^n\) 可测当且仅当
+\(AE\) 内蕴可测。对每个这样的可测集 \(E\)，采用任意正交标架定义的内蕴
+\(n\) 维 Lebesgue 测度 \(m_L\) 满足
+
+\begin{equation*}
+m_L(AE)=\sqrt{\det(A^{\mathsf T}A)}\,m_n(E).
+\tag{2.4.16}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{证明：} 取列向量为 \(L\) 的一组标准正交基的 \(d\times n\) 矩阵
+\(U\)，定义
+\(m_L(F)=m_n(U^{\mathsf T}F)\)；可测性也用这些坐标定义。换一组正交基只相差一个
+\(n\) 维正交变换，由正交不变性可知定义无关。写 \(A=UB\)，其中
+\(B=U^{\mathsf T}A\) 为可逆方阵，且
+\(A^{\mathsf T}A=B^{\mathsf T}B\)。应用（2.4.9）即得
+\(m_L(AE)=|\det B|m_n(E)=\sqrt{\det(A^{\mathsf T}A)}m_n(E)\)。相应的内蕴可测性由
+\(B\) 的可逆性保证。
+
+\textbf{降维投影的边界。} 当 \(d<n\) 且 \(\operatorname{rank}A=d\)
+时，像不再落在目标空间的真子空间中，上述零测结论不适用。例如投影
+\(\pi:\mathbb R^{d+1}\to\mathbb R^d\) 把零测紧集 \([0,1]^d\times\{0\}\)
+映成测度为 \(1\) 的立方体。因此不存在统一有限常数 \(C\)，使所有集合满足
+\(m_d^*(\pi E)\le C m_{d+1}^*(E)\)。
+
+甚至不能只凭原集 Lebesgue 可测断言投影可测：若 \(V\subseteq[0,1]\)
+不可测，则 \(V\times\{0\}\)
+是平面零测集的子集，故在平面可测，而其横轴投影是
+\(V\)。这是一条条件反例；\(V\) 的存在与构造在 §2.5
+建立，本节不以它作为任何证明的前提。任意满秩降维线性映射通过源、目标的可逆线性换坐标可化为坐标投影，因此具有同一障碍。紧集的像仍紧，故``原集紧''是保证此类像可测的一个充分条件。
+
+若 \(0<r<\min(n,d)\)，像的环境 \(d\) 维测度虽总为零，作为 \(r\)
+维像空间中的集合却仍可能出现投影的上述问题。\textbf{说明测度的维数，是退化情形中不可省略的条件。}
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.8
+例题、反例与条件辨析]{2.4.8
+例题、反例与条件辨析}\label{ux4f8bux9898ux53cdux4f8bux4e0eux6761ux4ef6ux8fa8ux6790}
+
+\Needspace{6\baselineskip}\textbf{例 2.4.1（先找逆像，再算行列式）}　求
+\(E=\{(x,y):0\le2x+y\le1,\ 0\le x-y\le2\}\) 的面积。
+
+\Needspace{3\baselineskip}\textbf{解：} 令 \(T(x,y)=(2x+y,x-y)\)，其矩阵行列式为
+\(-3\)。\(T(E)=[0,1]\times[0,2]\)，故 \(E\) 是闭集，且
+\(2=m_2(T(E))=3m_2(E)\)，所以
+\(m_2(E)=2/3\)。负号表示取向改变；忘记绝对值会得到不可能的负面积，忘记用逆变换则会误乘
+\(3\)。
+
+\Needspace{6\baselineskip}\textbf{例 2.4.2（外接框远大于真实面积）}　剪切 \(S_t(x,y)=(x+ty,y)\)
+将单位正方形变成平行四边形，面积仍为
+\(1\)；它的最小轴平行外接矩形面积却为
+\(1+|t|\)。因此只用一个粗外接框不能证明保面积，必须细分，使条带之间多余的覆盖总量趋于零。
+
+\Needspace{6\baselineskip}\textbf{例 2.4.3（椭球体积）}　设 \(H\) 为 \(n\)
+阶实对称正定矩阵，\(E=\{x:(x-b)^{\mathsf T}H(x-b)<1\}\)。记
+\(\kappa_n=m_n(B(0,1))\)，则
+
+\begin{equation*}
+m_n(E)=\frac{\kappa_n}{\sqrt{\det H}}.
+\tag{2.4.17}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{解：} 正交对角化给出可逆正定平方根
+\(H^{1/2}\)；\(x\mapsto H^{1/2}(x-b)\) 把 \(E\) 双射到单位球。其行列式为
+\(\sqrt{\det H}>0\)，故直接用仿射公式。无需在本节计算
+\(\kappa_n\)，也无需换元积分。
+
+\Needspace{6\baselineskip}\textbf{例 2.4.4（同一图形的两种维数）}　\(A(t)=(t,2t,2t)\) 把 \([0,1]\)
+映成空间线段，其三维测度为零；在所在直线上，其一维长度为
+\(\sqrt{1^2+2^2+2^2}=3\)。环境零测不等于长度为零。
+
+\Needspace{6\baselineskip}\textbf{例 2.4.5（连续同胚未必保持零测集）}　先补充本例所需的 Cantor
+函数构造。令 \(c_0(x)=x\)（\(0\le x\le1\)），递推定义
+
+\begin{equation*}
+c_{k+1}(x)=\begin{cases}
+\frac12c_k(3x),&0\le x\le\frac13,\\
+\frac12,&\frac13\le x\le\frac23,\\
+\frac12+\frac12c_k(3x-2),&\frac23\le x\le1.
+\end{cases}
+\end{equation*}
+
+由归纳法，每个 \(c_k\) 连续、单调不减，且两端值为
+\(0,1\)；分段端点值一致。又
+\(\|c_{k+1}-c_k\|_\infty\le2^{-k}\|c_1-c_0\|_\infty\)，故由几何级数估计，\(c_k\)
+一致收敛到连续单调函数 \(c\)。在 Cantor 构造第 \(j\)
+代删去的每个中间区间上，递推定义使 \(c_k\) 从 \(k\ge j\)
+起就取同一常数，故 \(c\)
+在每个余区间上常值。这就给出了本例所需的全部性质。
+
+令 \(C\) 为三分 Cantor 集，\(h(x)=(x+c(x))/2\)，\(0\le x\le1\)。\(h\)
+连续严格递增，且两端值为 \(0,1\)，故为同胚。\(c\)
+在每个余区间上常值，\(h\) 将这些区间的长度各缩为一半；余区间原来的总长为
+\(1\)，故像的总长为 \(1/2\)。于是 \(h(C)\) 为紧集且
+\(m_1(h(C))=1-1/2=1/2\)，而
+\(m_1(C)=0\)。这说明``同胚''本身不保证零测保持性；线性映射的 Lipschitz
+控制是实质条件。本例不涉及不可测集构造。
+
+\textbf{例
+2.4.6（体积保持不等于形状保持）}　\(A=\operatorname{diag}(2,1/2)\) 满足
+\(\det A=1\)，保持平面上一切可测集的面积，却把单位正方形变成边长 \(2\)
+与 \(1/2\) 的矩形，因而不是等距变换。相反，相似比为 \(2\)
+的平面相似变换会把面积乘以 \(4\)。
+
+\Needspace{7\baselineskip}
+\section[\S{}2.4.9
+精选习题与完整解答]{2.4.9
+精选习题与完整解答}\label{ux7cbeux9009ux4e60ux9898ux4e0eux5b8cux6574ux89e3ux7b54}
+
+前两题分别取自教材习题 2.3 第 21、6 题。第三题取第 15
+题的双射版本，明确写出所需条件；其余为围绕本节核心问题编写的补充题。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.1}\label{ux95eeux9898-2.4.1}
+
+证明平面旋转
+\(R_\theta(x,y)=(x\cos\theta-y\sin\theta,x\sin\theta+y\cos\theta)\) 保持
+Lebesgue 可测性和测度。（教材习题 2.3 第 21 题，第 147 页。）
+
+\Needspace{3\baselineskip}\textbf{解：} 其矩阵 \(Q\) 满足 \(Q^{\mathsf T}Q=I\)，且
+\(\det Q=\cos^2\theta+\sin^2\theta=1\)。由定理 2.4.6，\(R_\theta E\)
+可测且 \(m_2(R_\theta E)=m_2(E)\)。若希望避免基本矩阵分解，则直接用引理
+2.4.8：\(R_\theta\) 将单位圆盘映成自身，迫使共同测度因子等于
+\(1\)。这两种论证都不把``旋转保面积''预先当成结论使用。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.2}\label{ux95eeux9898-2.4.2}
+
+设
+\(E=\{(x,y)\in[0,1]^2:|\sin x|<1/2,\ \cos(x+y)\text{ 为无理数}\}\)，证明
+\(m_2(E)=\pi/6\)。（教材习题 2.3 第 6 题，第 145 页。）
+
+\Needspace{3\baselineskip}\textbf{解：} 在 \([0,1]\) 上，\(\sin x\)
+严格递增且非负，所以第一个条件等价于 \(0\le x<\pi/6\)。又
+\(x+y\in[0,2]\subset[0,\pi]\)，\(\cos\) 在此区间严格递减；对每个有理数
+\(q\)，方程 \(\cos(x+y)=q\) 至多给出一条直线
+\(x+y=\alpha_q\)。每条直线是平面中的一维仿射子空间，由定理 2.4.10
+与平移不变性为零测集。可数条直线之并仍零测。因此 \(E\) 从长方形
+\([0,\pi/6)\times[0,1]\) 中删去一个零测 Borel 集得到，故可测，面积为
+\(\pi/6\)。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.3}\label{ux95eeux9898-2.4.3}
+
+设 \(T:\mathbb R^n\to\mathbb R^n\) 为双射，并保持任意集合的外测度。证明
+\(T\) 双向保持 Lebesgue 可测性。（教材习题 2.3 第 15 题的双射版本，第
+146 页。）
+
+\Needspace{3\baselineskip}\textbf{解：} 设 \(E\) 可测，对任意 \(H\)，有
+
+\begin{equation*}
+\begin{aligned}
+m^*(H)&=m^*(T^{-1}H)\\
+&=m^*(T^{-1}H\cap E)+m^*(T^{-1}H\setminus E)\\
+&=m^*(H\cap TE)+m^*(H\setminus TE).
+\end{aligned}
+\end{equation*}
+
+故 \(TE\) 可测。将 \(H=TS\) 代入外测度不变性，可见 \(T^{-1}\)
+同样保持外测度，逆向遂成立。这里不要求 \(T\)
+连续；需要的是双射所保证的集合恒等式，而不是仅检查
+\(m^*(T\mathbb R^n)=m^*(\mathbb R^n)\)。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.4}\label{ux95eeux9898-2.4.4}
+
+设 \(A\) 可逆。证明 \(A\) 保持所有 Lebesgue 可测集的测度，当且仅当
+\(|\det A|=1\)。能否只检查一个集合？
+
+\Needspace{3\baselineskip}\textbf{解：} 充分性由（2.4.9）立即得到。必要性只须取 \(E=[0,1]^n\)，则
+\(1=m(AE)=|\det A|\)。更一般地，只要某个可测集 \(E\) 满足
+\(0<m(E)<\infty\) 且 \(m(AE)=m(E)\)，就可消去这个有限正数得到
+\(|\det A|=1\)。只检查零测集或无穷测度集不够：\(A=2I\)
+对这两类集合仍满足 \(m(AE)=m(E)\)，但 \(|\det A|=2^n\)。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.5}\label{ux95eeux9898-2.4.5}
+
+设 \(A\) 可逆，\(E,F\) 可测。证明对称差的测度满足
+\(m(AE\triangle AF)=|\det A|m(E\triangle F)\)，并说明有限方体逼近如何随变换传递。
+
+\Needspace{3\baselineskip}\textbf{解：} 单射性给出
+\(AE\triangle AF=A(E\triangle F)\)，故应用变换公式即得结论。如果
+\(m(E\triangle P_k)\to0\)，则
+\(m(AE\triangle AP_k)=|\det A|m(E\triangle P_k)\to0\)。各 \(AP_k\)
+为有限个平行多面体之并。由此可见，逼近所需控制的是对称差，不是点集处处包含关系；在未建立精确变换公式时，命题
+2.4.9 用粗覆盖估计承担同一作用。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.6}\label{ux95eeux9898-2.4.6}
+
+设 \(E\subseteq\mathbb R^n\) 可测且 \(m(E)<\infty\)。证明
+
+\begin{equation*}
+\lim_{h\to0}m((E+h)\triangle E)=0.
+\tag{2.4.18}
+\end{equation*}
+
+\Needspace{3\baselineskip}\textbf{解：} 对闭长方体 \(I=\prod_i[a_i,b_i]\)，设
+\(\ell_i=b_i-a_i\)。其与平移像的交仍为长方体，故
+
+\begin{equation*}
+m((I+h)\triangle I)=2\left(\prod_i\ell_i-\prod_i\max(\ell_i-|h_i|,0)\right)\longrightarrow0.
+\end{equation*}
+
+若 \(P=\bigcup_{j=1}^NI_j\)，则
+\((P+h)\triangle P\subseteq\bigcup_j((I_j+h)\triangle I_j)\)，所以有限方体并也满足结论。给定
+\(\varepsilon>0\)，由 §2.3 取 \(P\) 使
+\(m(E\triangle P)<\varepsilon\)。对称差三角包含关系与平移不变性给出
+
+\begin{equation*}
+m((E+h)\triangle E)\le2\varepsilon+m((P+h)\triangle P).
+\end{equation*}
+
+先令 \(h\to0\)，再令
+\(\varepsilon\downarrow0\)。有限测度条件不能随便删去：对平面半空间
+\(E=\{(x,y):x>0\}\)，任意 \(h=(t,0)\)、\(t\ne0\)
+都使对称差成为无限长的正宽条带，测度为无穷。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.7}\label{ux95eeux9898-2.4.7}
+
+设 \(E\subseteq\mathbb R^n\) 可测且 \(0<m(E)<\infty\)。证明差集 \(E-E\)
+包含原点的一个邻域。
+
+\Needspace{3\baselineskip}\textbf{解：} 由问题 2.4.6，存在 \(\delta>0\)，当 \(|h|<\delta\)
+时，\(m(E\triangle(E+h))<m(E)\)。于是
+
+\begin{equation*}
+m(E\cap(E+h))=m(E)-m(E\setminus(E+h))>0.
+\end{equation*}
+
+取 \(x\in E\cap(E+h)\)，有 \(x=y+h\)、\(x,y\in E\)，所以
+\(h=x-y\in E-E\)。故 \(B(0,\delta)\subseteq E-E\)。这就是 Steinhaus
+性质；证明只用有限方体逼近和平移不变性，不用积分、卷积或密度定理。若仅知
+\(m(E)>0\) 而可能无穷，可先取 \(E\cap[-k,k]^n\)
+的有限正测部分，同样得到结论。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.8}\label{ux95eeux9898-2.4.8}
+
+分别求映射 \(T(x,y)=(x+y,2x+2y)\)
+对单位正方形的像的平面测度和所在直线上的长度；说明为什么不能给该像使用非零面积伸缩因子。
+
+\Needspace{3\baselineskip}\textbf{解：} \(x+y\) 遍历 \([0,2]\)，所以像为
+\(\{(s,2s):0\le s\le2\}\)。矩阵秩为
+\(1\)，像的平面测度为零；直线上的内蕴长度为
+\(2\sqrt5\)。这里两个源变量被合并成一个参数，映射不单射。二维面积已经退化为零，而长度记录的是一维几何量，不能混用。
+
+\Needspace{8\baselineskip}\Needspace{19\baselineskip}\subsection{问题 2.4.9}\label{ux95eeux9898-2.4.9}
+
+设 \(n<d\)，\(f:\mathbb R^n\to\mathbb R^d\) 为 Lipschitz 映射。证明
+\(f(\mathbb R^n)\) 的 \(d\)
+维测度为零，并说明为何本题不包括空间填充曲线。
+
+\Needspace{3\baselineskip}\textbf{解：} 固定 \(M>0\)，把 \([-M,M]^n\) 分成 \(N^n\) 个边长 \(2M/N\)
+的小立方体。每个像的直径不超过 \(L\sqrt n\,2M/N\)，故可用一个边长不超过
+\(4LM\sqrt n/N\) 的 \(d\) 维立方体覆盖。总费用不超过
+
+\begin{equation*}
+N^n\left(\frac{4LM\sqrt n}{N}\right)^d
+=(4LM\sqrt n)^dN^{n-d}\longrightarrow0.
+\end{equation*}
+
+所以每个 \(f([-M,M]^n)\) 零测；对正整数 \(M\) 取可数并即可。\(L=0\)
+时像为单点，直接成立。空间填充曲线可连续，但不满足这里的 Lipschitz
+条件；仅有连续性不足以保证像的维数不增。
+
+\Needspace{8\baselineskip}\subsection{问题 2.4.10}\label{ux95eeux9898-2.4.10}
+
+设 \(A:\mathbb R^n\to\mathbb R^d\) 线性。仅根据
+\(\operatorname{rank}A\)，何时能断言每一个集合的像在目标空间中都是零测集？
+
+\Needspace{3\baselineskip}\textbf{解：} 充要条件为 \(\operatorname{rank}A<d\)。充分性是定理
+2.4.10。若秩为 \(d\)，则 \(A\) 满射，取 \(S=\mathbb R^n\) 就有
+\(AS=\mathbb R^d\)，不是零测集；也可从每个标准基向量选一个原像，得到线性右逆
+\(B\)，此时 \(S=B[0,1]^d\) 为紧集而 \(AS=[0,1]^d\)，目标测度为
+\(1\)。因此``矩阵不是方阵''或``源空间维数较大''都不能单独代替秩条件。
+
+本节的证明链到此闭合：覆盖控制零集，条带细分控制剪切，基本矩阵计算行列式；另一条链由平移不变性、开集分解和单位球确定正交变换的体积因子。下一节再讨论为什么并非所有点集都可测。
+
+\end{document}
