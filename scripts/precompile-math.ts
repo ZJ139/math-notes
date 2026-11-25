@@ -10,9 +10,10 @@ import remarkMath from 'remark-math';
 import remarkStackedFractions from '../src/stackedFractions';
 import katex from 'katex';
 import {loadEntries} from '../src/content';
+import {precompileCMAmsMath} from '../src/cmAmsMath';
 import {precompileCMBeaMath} from '../src/cmBeaMath';
 
-type Formula = [tex:string, display:boolean];
+type Formula = [tex:string, display:boolean, font?:'cm-bea'|'cm-ams'];
 const root=fileURLToPath(new URL('..',import.meta.url));
 if(process.argv[2]==='--worker'){
   const [file,indexText,totalText]=process.argv.slice(3);
@@ -26,16 +27,19 @@ if(process.argv[2]==='--worker'){
     assigned.push(formulas[i]);
   }
   for(let i=0;i<assigned.length;i+=128){
-    precompileCMBeaMath(assigned.slice(i,i+128));
+    const batch=assigned.slice(i,i+128);
+    precompileCMBeaMath(batch.filter(f=>f[2]!=='cm-ams').map(f=>[f[0],f[1]]));
+    precompileCMAmsMath(batch.filter(f=>f[2]==='cm-ams').map(f=>[f[0],f[1]]));
     console.log(`Math worker ${index+1}/${total}: ${Math.min(i+128,assigned.length)}/${assigned.length} formulas prepared`);
   }
 }else{
   const formulas=new Map<string,Formula>();
+  let selectedFont:'cm-bea'|'cm-ams'='cm-bea';
   function collectMath(){
     return(tree:any)=>{
       function visit(node:any){
         if(node.type==='math'||node.type==='inlineMath'){
-          const formula:Formula=[node.value,node.type==='math'];
+          const formula:Formula=[node.value,node.type==='math',selectedFont];
           formulas.set(JSON.stringify(formula),formula);
         }
         for(const child of node.children||[])visit(child);
@@ -45,6 +49,7 @@ if(process.argv[2]==='--worker'){
   }
   // Use the same Markdown math parser as the site; fenced code is not math.
   for(const entry of await loadEntries(path.join(root,'content'))){
+    selectedFont=entry.mathFont||'cm-bea';
     renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,remarkStackedFractions,collectMath],children:entry.body}));
   }
   await mkdir(path.join(root,'.latex-cache'),{recursive:true});

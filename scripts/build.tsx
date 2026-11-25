@@ -19,6 +19,7 @@ import {PendingMathCourse,pendingMathCourses,pendingMathCourseDescription} from 
 import {louChapters,louChapterUrl,LouChapterPage} from '../src/LouAnalysisDirectory';
 import {loadStorage} from '../src/storage';
 import {releaseEntries} from '../src/releases';
+import {copyCMAmsMathAssets} from '../src/cmAmsMath';
 import {copyCMBeaMathAssets} from '../src/cmBeaMath';
 import {mathTextColor,colorMathSvg} from '../src/mathColor';
 import {screenMathSvg,mathAppearanceVersion} from '../src/mathAppearance';
@@ -144,6 +145,7 @@ for(const e of items){
 }
 const mathOutput=path.join(output,mathDirectory);
 copyCMBeaMathAssets(mathOutput);
+copyCMAmsMathAssets(mathOutput);
 for(const file of await readdir(mathOutput)){
   const target=path.join(mathOutput,file);
   await writeFile(target,colorMathSvg(screenMathSvg(await readFile(target,'utf8')),mathInk));
