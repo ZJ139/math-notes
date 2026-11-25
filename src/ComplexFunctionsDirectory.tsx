@@ -26,7 +26,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
     <div className="reading-page">
       <header className="article-header"><h1>{complexFunctionsTitle}</h1><p>史济怀、刘太顺《复变函数》</p></header>
       <div className="prose">
-        <p>沿教材九章、四十八节建立讲义。以理解结构、重建证明和独立解决综合题为目标；沿用教材符号，保留定义、定理、性质、推论，定理和性质均给出证明。习题按原节次、原题号归入各章，只列原题；本书没有独立的章末复习题。页码均为上传教材的印刷页。</p>
+        <p>沿教材九章、四十八节建立讲义。以理解结构、重建证明和独立解决综合题为目标；沿用教材符号，保留定义、定理、性质、推论，定理和性质均给出证明。习题按原节次、原题号归入各章，原题页独立保留，已完成的详解从对应讲义进入；本书没有独立的章末复习题。页码均为上传教材的印刷页。</p>
         <p>全书以 Cauchy 的积分理论、Weierstrass 的级数理论和 Riemann 的几何理论为主线，同时保留教材的一维非齐次 Cauchy–Riemann 方程、次调和函数和多复变内容。各节说明关键构造、适用条件及与前后内容的联系。</p>
         <p>当前已编 {lectureCount} / 48 节讲义，各章附原题页与可下载 PDF。</p>
         <nav className="lecture-toc-shortcuts" aria-label="全书章节">{complexChapters.map((c,i)=><a key={c.title} href={'#chapter-'+(i+1)}>第 {i+1} 章</a>)}</nav>
@@ -48,6 +48,7 @@ export function ComplexFunctionsDirectory({items}:{items:PublicEntry[]}) {
             {n===9&&count>0&&<p>第九章含六节讲义、36 个教材编号条目与 24 道原题，附可点击定理索引、章节导航及 CM bea 公式 PDF。补证 Hartogs 分别全纯定理，严格处理 Reinhardt 展开与延拓条件；通过 Cartan 刚性与球自同构构造完成 Poincaré 定理，原题疑义另列校注。</p>}
             {n===8&&count>0&&<p>第八章含四节讲义、19 个教材编号条目与 43 道原题，附定理索引、相邻导航和 PDF。完整串联平均值、Poisson 积分、Dirichlet 唯一性与次调和函数；补齐一般上半连续情形的证明，独立列出原题反例和条件校注。</p>}
             {n===7&&count>0&&<p>第七章含四节讲义、19 个教材编号条目和 25 道原题，附可点击定理索引、章节导航及 PDF。完整串联正规族、Riemann 映射、Jordan 边界对应与 Schwarz–Christoffel 公式；逐项说明退化极限、无穷远端、积分分支及原题疑义。</p>}
+            {n===7&&count>0&&<p><a href={entryUrl(notes.get(prefix+'-s1.md')!)+'/#习题-71-详解'}>§7.1 正规族七题详解</a>已附于本节讲义及第七章 PDF，含 Vitali 定理、半平面值函数族与平方积分控制。其余三节的 18 道原题详解继续编写。</p>}
             {n===6&&count>0&&<p>第六章含三节讲义、19 个教材编号条目、28 道原题及九幅教材图，附逐节索引、导航和 PDF。补全可求长曲线拼接、单叶反射的同侧条件、圆环分类与单值性证明；Picard 小定理的两种证明在已发布前六章内闭合。</p>}
             {n===5&&count>0&&<p>第五章含七节讲义、54 个教材编号条目与 58 道原题，另含 31 个积分小题及教材围道图。补证 Picard 大定理，明确主值、分支、一般域与单连通域的区别，以及按围道分组的收敛顺序；附逐节索引和 PDF。</p>}
             {n===4&&count>0&&<p>第四章含五节讲义、47 个教材编号条目和 91 道原题，附定理索引、逐节导航及 PDF。由局部一致收敛建立 Taylor 理论、零点计数和 Schwarz–Pick 估计；全部定理与性质附证明，原题疑义独立校注。</p>}

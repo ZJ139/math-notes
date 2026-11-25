@@ -77,12 +77,15 @@ elif chapter==5:
 elif chapter==6:
  pre+='覆盖 19 个教材编号条目，补足可求长曲线的连续拼接、单叶反射的同侧条件、圆环分类及路径同伦证明。Picard 小定理复用已证的导数估计，使证明依赖在前六章内闭合；保留九幅教材配图、逐节索引与原题校注。'
 elif chapter==7:
- pre+='覆盖 19 个教材编号条目，由正规族与导数极值证明 Riemann 映射定理，补足 Jordan 边界对应、角点展开、无限端及积分分支的证明。保留教材必要配图与原题提示，另列原题校注。'
+ pre+='覆盖 19 个教材编号条目，补足 Jordan 边界对应、角点展开、无穷远端和积分分支的证明，保留教材配图及提示。'
 elif chapter==8:
  pre+='覆盖 19 个教材编号条目，完整证明平均值性质、圆盘和半平面边值问题及次调和函数的基本性质。补齐一般上半连续情形的圆周平均证明，明确复积分收敛与负无穷值的处理；原题错误及必要条件独立校注。'
 else:
  pre+='覆盖 36 个教材编号条目，补证不预设连续性的 Hartogs 定理，严谨处理 Laurent 系数、坐标超平面与延拓范围。由复线性微分、Cartan 刚性及球自同构构造证明 Poincaré 定理；数学公式采用 CM bea，中文与版式沿用既定模板。原题疑义和修正独立列出，附可点击目录、定理索引及相邻导航。'
-pre+=('习题不附常规解答，原题中的疑义另列校勘。\n' if chapter==8 else '习题不附解答，原题中的疑义另列校勘。\n')
+if chapter==7:
+ pre+='§7.1 附七题详解，其余 18 题尚待作答；章末保留全部原题及独立校注。\n'
+else:
+ pre+=('习题不附常规解答，原题中的疑义另列校勘。\n' if chapter==8 else '习题不附解答，原题中的疑义另列校勘。\n')
 pre+=(r'\begingroup\setlength{\parskip}{0pt}\tableofcontents\endgroup\clearpage' if chapter>=6 else r'\tableofcontents\clearpage')+'\n'
 pieces=[]
 for i in range(1,sections+2):
@@ -113,7 +116,8 @@ for i in range(1,sections+2):
   # Keep the main contents to textbook entries and exercises; inline indices
   # retain their own clickable targets without repeating them in the contents.
   extras=['定理索引','习题索引','与下一节的联系：极值为什么可以达到',
-          '正规化、映射半径与条件校注','边界条件的适用范围','公式的使用顺序与全章联系']
+          '正规化、映射半径与条件校注','边界条件的适用范围','公式的使用顺序与全章联系',
+          '补充性质：唯一子列极限与整列收敛','习题 7.1 详解']
   for extra in extras:
    latex=latex.replace(r'\subsection{'+extra+'}',r'\subsection*{'+extra+'}')
  if chapter>=8:
@@ -127,6 +131,12 @@ for i in range(1,sections+2):
    return p.stem+'-'+(value.replace('.','') if chapter>=3 else value)
   latex=re.sub(r'\\(hypertarget|hyperlink|label|ref)\{([^}]+)\}',lambda m:'\\'+m[1]+'{'+local_id(m[2])+'}',latex)
   latex=re.sub(r'\\hyperref\[([^]]+)\]',lambda m:r'\hyperref['+local_id(m[1])+']',latex)
+ if chapter==7:
+  # Exercise/solution backlinks stay inside the downloaded chapter PDF.
+  latex=latex.replace(r'\href{/notes/c1c904c5ff49348c6bbb8b2f/\#习题-71}',
+                      r'\hyperref[ch07-practice-heading-2]')
+  latex=latex.replace(r'\href{/notes/7d3ba7b233a5e5f2a5a61cbf/\#习题-71-详解}',
+                      r'\hyperref[ch07-s1-heading-9]')
  if not practice:
   heading='\\section{'+title.split('　',1)[1]+'}\n'
  else:

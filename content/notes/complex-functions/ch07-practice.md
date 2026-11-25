@@ -5,7 +5,7 @@ subject: "复变函数"
 category: "complex-functions/chapter-7"
 tags: ["复变函数", "第七章", "共形映射"]
 created_at: "2026-11-21"
-updated_at: "2026-11-21"
+updated_at: "2026-11-26"
 attachment: "notes/complex-functions/complex-functions-chapter-7.pdf"
 ---
 
@@ -16,6 +16,8 @@ attachment: "notes/complex-functions/complex-functions-chapter-7.pdf"
 [习题 7.1](#习题-71) · [习题 7.2](#习题-72) · [习题 7.3](#习题-73) · [习题 7.4](#习题-74) · [原题校注](#原题校注)
 
 ## 习题 7.1
+
+[本节七题详解](/notes/7d3ba7b233a5e5f2a5a61cbf/#习题-71-详解)
 
 **1.** 设 $\{f_n\}$ 是域 $D$ 上的全纯函数列，并且在 $D$ 上内闭一致有界。证明：若 $\lim_{n\to\infty}f_n(z)$ 在 $D$ 上处处存在，则 $\{f_n\}$ 在 $D$ 上内闭一致收敛。
 
