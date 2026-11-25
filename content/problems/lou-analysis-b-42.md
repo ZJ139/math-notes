@@ -12,7 +12,7 @@ updated_at: "2026-11-23"
 
 第四十二批接续 B288，收录下册 11.1.B、11.2.B、11.3.B、11.4.B 各第 1 题及 11.5.B 第 1—3 题。已逐页核对原题册 PDF 第 34—38 页（印刷第 32—36 页），七题均无星号，也无另附题图。B289、B292 为开放性问题，给出明确的适用条件及完整论证；B290 单列零参数情形；B294 不假设矩阵可逆；B295 保留原题的无穷远条件。
 
-[上一批 B282—B288](/problems/4befc8c3dd054a194653ad14/) · [第十一章索引](/problems/collections/lou-analysis/chapters/11/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
+[下一批 B296—B302](/problems/fc3fd711670bf3b3606e6b81/) · [上一批 B282—B288](/problems/4befc8c3dd054a194653ad14/) · [第十一章索引](/problems/collections/lou-analysis/chapters/11/) · [B 组总目录](/problems/collections/lou-analysis/) · [下册资料页](/problems/149ff60b32b01ff69feab8a4/)
 
 ## 题号导航
 

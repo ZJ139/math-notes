@@ -516,10 +516,10 @@ if ((await fs.stat('content/problems/lou-analysis-b-36.md').catch(() => null))?.
   for (const url of [previousRoute, chapterRoute, directoryRoute, lowerRoute]) {
     if (!html.includes(url)) throw new Error('第三十六批缺少返回链接：' + url);
   }
-  if (![directory, upper].every(page => page.includes('290 道已作答 · 5 道暂跳过'))
+  if (![directory, upper].every(page => page.includes('297 道已作答 · 5 道暂跳过'))
       || !chapter.includes('5 节 · 34 道已作答 · 1 道暂跳过')
       || !chapter.includes('本章当前收录至习题 9.5.B 第 5 题')
-      || !lower.includes('115 道已作答、3 道暂跳过') || !lower.includes('B296＝11.5.B 第 4 题')
+      || !lower.includes('122 道已作答、3 道暂跳过') || !lower.includes('B303＝12.2.B 第 1 题')
       || !html.includes('B116、B148、B180、B247') || !previous.includes('243 道已作答'))
     throw new Error('第三十六批计数、待核名单或前后批次进度不符');
   const mapping = [[247,'9.4',11,23], [248,'9.4',12,23], [249,'9.4',13,23],
@@ -557,13 +557,13 @@ if ((await fs.stat('content/problems/lou-analysis-b-37.md').catch(() => null))?.
   for (const url of [previousRoute, ...chapterRoutes, directoryRoute, lowerRoute]) {
     if (!html.includes(url)) throw new Error('第三十七批缺少返回链接：' + url);
   }
-  if (!directory.includes('11 章 · 290 道已作答 · 5 道暂跳过')
+  if (!directory.includes('12 章 · 297 道已作答 · 5 道暂跳过')
       || !ninth.includes('5 节 · 34 道已作答 · 1 道暂跳过')
       || !tenth.includes('第十章 反常积分与含参变量积分')
       || !tenth.includes('5 节 · 33 道已作答 · 1 道暂跳过')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247')
-      || !lower.includes('B296＝11.5.B 第 4 题') || !previous.includes('249 道已作答'))
+      || !lower.includes('B303＝12.2.B 第 1 题') || !previous.includes('249 道已作答'))
     throw new Error('第三十七批计数、待核名单或前后批次进度不符');
   for (let number = 254; number <= 260; number++) {
     const original = number === 254 ? 5 : number - 254;
@@ -597,13 +597,13 @@ if ((await fs.stat('content/problems/lou-analysis-b-38.md').catch(() => null))?.
     if (!page.includes(route)) throw new Error('第三十八批缺少入口');
   for (const url of urls.slice(1, 5))
     if (!html.includes(url)) throw new Error('第三十八批缺少返回链接：' + url);
-  if (!directory.includes('290 道已作答 · 5 道暂跳过')
+  if (!directory.includes('297 道已作答 · 5 道暂跳过')
       || !chapter.includes('33 道已作答 · 1 道暂跳过')
       || !chapter.includes('本章当前收录至习题 10.5.B 第 1 题')
       || !chapter.includes('原书第 7 题 · 暂跳过')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247、B261')
-      || !lower.includes('B296＝11.5.B 第 4 题')
+      || !lower.includes('B303＝12.2.B 第 1 题')
       || !previous.includes('256 道已作答'))
     throw new Error('第三十八批当前计数、待核状态或历史进度错误');
   for (let number = 261; number <= 267; number++) {
@@ -637,13 +637,13 @@ if ((await fs.stat('content/problems/lou-analysis-b-39.md').catch(() => null))?.
     if (!page.includes(route)) throw new Error('第三十九批缺少入口');
   for (const url of urls.slice(1, 5))
     if (!html.includes(url)) throw new Error('第三十九批缺少返回链接：' + url);
-  if (!directory.includes('290 道已作答 · 5 道暂跳过')
+  if (!directory.includes('297 道已作答 · 5 道暂跳过')
       || !chapter.includes('5 节 · 33 道已作答 · 1 道暂跳过')
       || !chapter.includes('本章当前收录至习题 10.5.B 第 1 题')
       || !chapter.includes('原书第 7 题 · 暂跳过')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247、B261')
-      || !lower.includes('B296＝11.5.B 第 4 题') || !previous.includes('262 道已作答'))
+      || !lower.includes('B303＝12.2.B 第 1 题') || !previous.includes('262 道已作答'))
     throw new Error('第三十九批当前计数、待核状态或历史进度错误');
   const mapping = [[268,'10.1',14,28],[269,'10.2',1,29],[270,'10.2',2,29],
     [271,'10.3',1,31],[272,'10.3',2,31],[273,'10.3',3,31],[274,'10.3',4,31]];
@@ -676,13 +676,13 @@ if ((await fs.stat('content/problems/lou-analysis-b-40.md').catch(() => null))?.
     if (!page.includes(route)) throw new Error('第四十批缺少入口');
   for (const url of urls.slice(1, 5))
     if (!html.includes(url)) throw new Error('第四十批缺少返回链接：' + url);
-  if (!directory.includes('290 道已作答 · 5 道暂跳过')
+  if (!directory.includes('297 道已作答 · 5 道暂跳过')
       || !chapter.includes('5 节 · 33 道已作答 · 1 道暂跳过')
       || !chapter.includes('本章当前收录至习题 10.5.B 第 1 题')
       || !chapter.includes('原书第 7 题 · 暂跳过')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247、B261')
-      || !lower.includes('B296＝11.5.B 第 4 题') || !previous.includes('269 道已作答'))
+      || !lower.includes('B303＝12.2.B 第 1 题') || !previous.includes('269 道已作答'))
     throw new Error('第四十批当前计数、待核状态或历史进度错误');
   const mapping = [[275,'10.3',5,31],[276,'10.3',6,31],[277,'10.3',7,31],
     [278,'10.3',8,31],[279,'10.4',1,32],[280,'10.4',2,32],[281,'10.4',3,32]];
@@ -715,13 +715,13 @@ if ((await fs.stat('content/problems/lou-analysis-b-41.md').catch(() => null))?.
     if (!page.includes(route)) throw new Error('第四十一批缺少入口');
   for (const url of urls.slice(1, 5))
     if (!html.includes(url)) throw new Error('第四十一批缺少返回链接：' + url);
-  if (!directory.includes('290 道已作答 · 5 道暂跳过')
+  if (!directory.includes('297 道已作答 · 5 道暂跳过')
       || !chapter.includes('5 节 · 33 道已作答 · 1 道暂跳过')
       || !chapter.includes('本章当前收录至习题 10.5.B 第 1 题')
       || !chapter.includes('原书第 7 题 · 暂跳过')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247、B261')
-      || !lower.includes('B296＝11.5.B 第 4 题') || !previous.includes('276 道已作答'))
+      || !lower.includes('B303＝12.2.B 第 1 题') || !previous.includes('276 道已作答'))
     throw new Error('第四十一批当前计数、待核状态或历史进度错误');
   const mapping = [[282,'10.4',4,32],[283,'10.4',5,32],[284,'10.4',6,32],
     [285,'10.4',7,33],[286,'10.4',8,33],[287,'10.4',9,33],[288,'10.5',1,33]];
@@ -756,12 +756,12 @@ if ((await fs.stat('content/problems/lou-analysis-b-42.md').catch(() => null))?.
     if (!page.includes(route)) throw new Error('第四十二批缺少入口');
   for (const url of urls.slice(1, 5))
     if (!html.includes(url)) throw new Error('第四十二批缺少返回链接：' + url);
-  if (!directory.includes('290 道已作答 · 5 道暂跳过')
-      || !chapter.includes('5 节 · 7 道已作答')
-      || !chapter.includes('本章当前收录至习题 11.5.B 第 3 题')
-      || !lower.includes('115 道已作答、3 道暂跳过')
+  if (!directory.includes('297 道已作答 · 5 道暂跳过')
+      || !chapter.includes('7 节 · 12 道已作答')
+      || !chapter.includes('本章当前收录至习题 11.7.B 第 1 题')
+      || !lower.includes('122 道已作答、3 道暂跳过')
       || !html.includes('B116、B148、B180、B247、B261')
-      || !lower.includes('B296＝11.5.B 第 4 题') || !previous.includes('283 道已作答'))
+      || !lower.includes('B303＝12.2.B 第 1 题') || !previous.includes('283 道已作答'))
     throw new Error('第四十二批当前计数、待核状态或历史进度错误');
   const mapping = [[289,'11.1',1,34],[290,'11.2',1,35],[291,'11.3',1,35],
     [292,'11.4',1,36],[293,'11.5',1,37],[294,'11.5',2,37],[295,'11.5',3,38]];
@@ -777,6 +777,46 @@ if ((await fs.stat('content/problems/lou-analysis-b-42.md').catch(() => null))?.
   if (!html.includes('/files/problems/lou-analysis-b-42-cm-bea.pdf') || !html.includes('B296＝11.5.B 第 4 题'))
     throw new Error('第四十二批 PDF 附件或下一题错误');
   console.log(`Verified Lou analysis B289–B295: ${inline} inline and ${display} display formulas; seven answered; 290 answered in total, five pending.`);
+}
+
+if ((await fs.stat('content/problems/lou-analysis-b-43.md').catch(() => null))?.isFile()) {
+  const route = '/problems/fc3fd711670bf3b3606e6b81/';
+  const urls = [route, '/problems/b4a16b6f4b1d292220be481a/',
+    '/problems/collections/lou-analysis/chapters/11/', '/problems/collections/lou-analysis/chapters/12/',
+    '/problems/collections/lou-analysis/', '/problems/149ff60b32b01ff69feab8a4/', '/problems/41e85e430c9d7f84a0863658/'];
+  const [html, previous, chapter11, chapter12, directory, lower, upper] = await Promise.all(
+    urls.map(url => fs.readFile(path.join(root, url, 'index.html'), 'utf8')));
+  const source = await fs.readFile('content/problems/lou-analysis-b-43.md', 'utf8');
+  const inline = (source.match(/(?<!\$)\$(?!\$)/g) || []).length / 2;
+  const display = (source.match(/^\s*\$\$\s*$/gm) || []).length / 2;
+  if ((html.match(/class="latex-svg"/g) || []).length !== inline + display
+      || (html.match(/class="katex-display"/g) || []).length !== display || html.includes('katex-error'))
+    throw new Error('第四十三批公式渲染不完整');
+  for (const page of [previous, chapter11, chapter12, directory, lower, upper])
+    if (!page.includes(route)) throw new Error('第四十三批缺少入口');
+  if (!directory.includes('12 章 · 297 道已作答 · 5 道暂跳过')
+      || !chapter11.includes('7 节 · 12 道已作答') || !chapter12.includes('1 节 · 2 道已作答')
+      || !lower.includes('122 道已作答、3 道暂跳过') || !previous.includes('290 道已作答')
+      || !html.includes('B116、B148、B180、B247、B261'))
+    throw new Error('第四十三批当前或历史进度错误');
+  const mapping = [[296,'11.5',4,38],[297,'11.6',1,38],[298,'11.6',2,38],
+    [299,'11.6',3,39],[300,'11.7',1,39],[301,'12.1',1,40],[302,'12.1',2,41]];
+  for (const [number, section, original, page] of mapping) {
+    const part = source.split(`## 问题 B${number}\n`)[1]?.split(/^## /m)[0] || '';
+    const chapter = section.startsWith('11.') ? chapter11 : chapter12;
+    if (!part.includes(`习题 ${section}.B 第 ${original} 题`)
+        || !part.includes(`楼分析习题-v2.pdf#page=${page}`)
+        || !/\*\*(?:解|证明(?:一|二)?[^*]*)\*\*/.test(part)
+        || !html.includes(`id="问题-b${number}"`) || !chapter.includes(`${route}#问题-b${number}`)
+        || part.includes('**作答状态：** 暂跳过'))
+      throw new Error(`第四十三批题面映射、证明或状态错误：B${number}`);
+  }
+  const tags = [...source.matchAll(/\\qquad\\text\{\((\d+)\)\}/g)].map(m => Number(m[1]));
+  if (tags.length !== 37 || tags.some((tag, index) => tag !== index + 1))
+    throw new Error('第四十三批公式编号不连续');
+  if (!html.includes('/files/problems/lou-analysis-b-43-cm-bea.pdf') || !html.includes('B303＝12.2.B 第 1 题'))
+    throw new Error('第四十三批 PDF 附件或下一题错误');
+  console.log(`Verified Lou analysis B296–B302: ${inline} inline and ${display} display formulas; seven answered; 297 answered in total, five pending.`);
 }
 
 if ((await fs.stat('content/problems/lou-analysis-b-03.md').catch(()=>null))?.isFile()) {

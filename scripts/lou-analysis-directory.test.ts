@@ -9,11 +9,11 @@ const entries=loadEntries(fileURLToPath(new URL('../content/',import.meta.url)))
 
 test('Lou chapter directory includes each solution once and merges sections across batches',async()=>{
   const items=await entries,problems=louProblems(items);
-  assert.equal(problems.length,295);
-  assert.equal(new Set(problems.map(p=>p.code)).size,295);
-  assert.equal(problems.filter(p=>!p.skipped).length,290);
+  assert.equal(problems.length,302);
+  assert.equal(new Set(problems.map(p=>p.code)).size,302);
+  assert.equal(problems.filter(p=>!p.skipped).length,297);
   assert.deepEqual(problems.filter(p=>p.skipped).map(p=>[p.code,p.section,p.original]),[['B116','5.5',1],['B148','6.4',1],['B180','8.2',2],['B247','9.4',11],['B261','10.1',7]]);
-  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,19],[5,10],[6,49],[7,11],[8,42],[9,35],[10,34],[11,7]]);
+  assert.deepEqual(louChapters(items).map(c=>[c.number,c.problems.length]),[[1,21],[2,44],[3,23],[4,19],[5,10],[6,49],[7,11],[8,42],[9,35],[10,34],[11,12],[12,2]]);
   const topology=problems.filter(p=>p.section==='2.3');
   assert.deepEqual(topology.map(p=>p.original),[1,2,3,4,5,6]);
   assert.equal(new Set(topology.map(p=>p.entry.id)).size,2);
@@ -134,14 +134,18 @@ test('Lou chapter directory includes each solution once and merges sections acro
     ...Array.from({length:4},(_,i)=>[`B${289+i}`,`11.${i+1}`,1,false,false]),
     ...Array.from({length:3},(_,i)=>[`B${293+i}`,'11.5',i+1,false,false]),
   ]);
+  assert.deepEqual(problems.filter(p=>p.number>=296&&p.number<=302).map(p=>[p.code,p.section,p.original,p.starred,p.skipped]),[
+    ['B296','11.5',4,false,false],...Array.from({length:3},(_,i)=>[`B${297+i}`,'11.6',i+1,false,false]),
+    ['B300','11.7',1,false,false],['B301','12.1',1,false,false],['B302','12.1',2,false,false],
+  ]);
   for(const p of problems)assert.ok(p.entry.body.includes(`## 问题 ${p.code}\n`));
   assert.throws(()=>louProblems([...items,problems[0].entry]),/题号重复/);
 });
 test('a temporarily skipped Lou problem keeps its original position without inflating solved totals',async()=>{
   const items=await entries;
   const directory=renderToStaticMarkup(createElement(LouAnalysisDirectory,{items}));
-  assert.match(directory,/290 道已作答 · 5 道暂跳过/);
-  assert.doesNotMatch(directory,/295 道已作答/);
+  assert.match(directory,/297 道已作答 · 5 道暂跳过/);
+  assert.doesNotMatch(directory,/302 道已作答/);
   const chapter=renderToStaticMarkup(createElement(LouChapterPage,{items,chapter:5}));
   assert.match(chapter,/9 道已作答 · 1 道暂跳过/);
   assert.match(chapter,/1 道已作答 · 1 道暂跳过/);
@@ -172,7 +176,8 @@ test('Lou chapter pages provide section anchors and direct links to existing pro
     if(c.number===8){assert.match(html,/第八章 积分/);assert.match(html,/本章当前收录至习题 8\.9\.B 第 1 题/);assert.match(html,/41 道已作答 · 1 道暂跳过/);assert.match(html,/原书第 2 题 · 暂跳过/);}
     if(c.number===9){assert.match(html,/第九章 函数列与函数项级数/);assert.match(html,/本章当前收录至习题 9\.5\.B 第 5 题/);assert.match(html,/34 道已作答 · 1 道暂跳过/);}
     if(c.number===10){assert.match(html,/第十章 反常积分与含参变量积分/);assert.match(html,/本章当前收录至习题 10\.5\.B 第 1 题/);assert.match(html,/33 道已作答 · 1 道暂跳过/);}
-    if(c.number===11){assert.match(html,/第十一章 曲线积分与曲面积分/);assert.match(html,/本章当前收录至习题 11\.5\.B 第 3 题/);assert.match(html,/5 节 · 7 道已作答/);}
+    if(c.number===11){assert.match(html,/第十一章 曲线积分与曲面积分/);assert.match(html,/本章当前收录至习题 11\.7\.B 第 1 题/);assert.match(html,/7 节 · 12 道已作答/);}
+    if(c.number===12){assert.match(html,/第十二章 Fourier 级数/);assert.match(html,/本章当前收录至习题 12\.1\.B 第 2 题/);assert.match(html,/1 节 · 2 道已作答/);}
     assert.match(html,/aria-current="page"/);
   }
 });
