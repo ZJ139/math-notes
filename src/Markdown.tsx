@@ -3,6 +3,7 @@ import quadricsFigureSizes from './quadricsFigureSizes.json';
 import complexFunctionsFigureSizes from './complexFunctionsFigureSizes.json';
 import ReactMarkdown, {type Components} from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkStackedFractions from './stackedFractions';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import remarkHeadingIds from './headingIds';
@@ -52,7 +53,7 @@ export default function Markdown({body, readingAnswers = false, exerciseSheet = 
     {structured && <nav className="reading-section-nav" aria-label="阅读解答章节">
       {readingSections.map(([id, number, label]) => <a key={id} href={`#${id}`}><span>{number}</span>{label}</a>)}
     </nav>}
-    <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels, remarkTableOfContents,
+    <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels, remarkTableOfContents, remarkStackedFractions,
       ...(structured ? [remarkReadingAnswerLayout] : [])]}
       rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], rehypeCMBeaMath, rehypeMathTypography]}
       components={exerciseSheet ? exerciseComponents : components}>{body}</ReactMarkdown>
