@@ -7,6 +7,7 @@ import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkStackedFractions from '../src/stackedFractions';
 import katex from 'katex';
 import {loadEntries} from '../src/content';
 import {precompileCMBeaMath} from '../src/cmBeaMath';
@@ -44,7 +45,7 @@ if(process.argv[2]==='--worker'){
   }
   // Use the same Markdown math parser as the site; fenced code is not math.
   for(const entry of await loadEntries(path.join(root,'content'))){
-    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,collectMath],children:entry.body}));
+    renderToStaticMarkup(createElement(ReactMarkdown,{skipHtml:true,remarkPlugins:[remarkMath,remarkStackedFractions,collectMath],children:entry.body}));
   }
   await mkdir(path.join(root,'.latex-cache'),{recursive:true});
   const work=await mkdtemp(path.join(root,'.latex-cache/precompile-'));
