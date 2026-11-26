@@ -1,0 +1,767 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\renewcommand{\bfdefault}{bx}
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.10}
+\setlength{\parindent}{2em}\setlength{\parskip}{4pt}
+\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
+\setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage[unicode,hidelinks,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：3.2 可测函数列的收敛},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\predisplaypenalty=5000
+\allowdisplaybreaks[1]\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}{\LARGE\bfseries 实变函数-v1\par}\vspace{7pt}
+{\Large\bfseries 3.2 可测函数列的收敛\par}\vspace{6pt}
+{第三章\quad 可测函数\par}\end{center}
+\textbf{主线：}从误差集与尾并出发，以可求和的测度分配构造统一大集；完整展开四种收敛方式之间的关系、Riesz 子列构造与依测度 Cauchy 完备性。
+
+本节对应《实变函数知识框架》\S3.2，依据徐森林、薛春华《实变函数论》印刷第185—199页的收敛部分及第207—208页练习题。保留教材定理编号，附全部十二题详解；第12题明确一般测度空间的可测性条件。Lusin定理留给\S3.3。本节不使用积分理论。中文为Fandol宋体，数学为CM bea。
+\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup
+\newpage
+\Needspace{10\baselineskip}\section[\S{}3.2.1
+定义、量词与可测代表]{3.2.1
+定义、量词与可测代表}\label{ux5b9aux4e49ux91cfux8bcdux4e0eux53efux6d4bux4ee3ux8868}
+
+固定测度空间 \((X,\mathcal A,\mu)\) 和可测集 \(E\)，所有集合都限制在
+\(E\) 内。除另有说明，\(f_n,f\)
+均为有限实值可测函数。几乎处处有限的可测函数可在其无穷值层上补零；处理一个函数列时，须把这些零集取可数并，使用同一个例外集。处处收敛与一致收敛依赖实际点值，不能借此擅自改变原问题。
+
+\begin{sboxenv}{navy}{定义（处处、几乎处处与一致收敛）}
+处处收敛指对每个 \(x\in E\) 都有
+\(f_n(x)\to f(x)\)。几乎处处收敛指存在可测零集
+\(Z\subset E\)，使上述收敛对所有 \(x\in E\setminus Z\) 成立，记作
+\(f_n\to f\) a.e.。一致收敛指对每个 \(\varepsilon>0\)，存在 \(N\)，使
+\(n\ge N\)、\(x\in E\) 时均有 \(|f_n(x)-f(x)|<\varepsilon\)。
+
+\end{sboxenv}
+
+处处收敛的指标允许依赖于点；一致收敛的一个指标控制全部点。因此一致收敛推出处处收敛，后者推出几乎处处收敛。教材定义
+3.2.2
+的一般表述允许例外集只是可测零集的子集，不能在非完备空间中默认该子集可测。
+
+\begin{sboxenv}{navy}{定义（近一致收敛与依测度收敛）}
+对任意 \(\delta>0\)，若存在可测 \(F\subset E\)，使
+\(\mu(E\setminus F)<\delta\)，且 \(f_n\) 在 \(F\) 上一致收敛于
+\(f\)，称为近一致收敛。
+
+记 \(D_n(\varepsilon)=\{x\in E:|f_n(x)-f(x)|>\varepsilon\}\)。若对每个
+\(\varepsilon>0\) 都有
+\(\mu(D_n(\varepsilon))\to0\)，称为依测度收敛，记作
+\(f_n\xrightarrow{\mu}f\)；教材定义 3.2.3 也称它为度量收敛。
+
+\end{sboxenv}
+
+一致收敛中把 \(<\) 换成 \(\le\)
+不改变定义，因为可以先用更小的精度。依测度收敛中也可把 \(>\) 换成
+\(\ge\)：
+
+\begin{equation*}
+\{|f_n-f|>\varepsilon\}\subseteq\{|f_n-f|\ge\varepsilon\}
+\subseteq\{|f_n-f|>\tfrac{\varepsilon}{2}\}.
+\end{equation*}
+
+\begin{sboxenv}{navy}{性质（近一致收敛的两个直接推论，教材定理 3.2.8 的一般方向）}
+在任意测度空间上，一致收敛推出近一致收敛；近一致收敛同时推出几乎处处收敛和依测度收敛。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 一致收敛时取 \(F=E\)。若近一致收敛，对每个 \(j\ge1\)
+取一致收敛集 \(F_j\)，使 \(\mu(E\setminus F_j)<2^{-j}\)。在
+\(\bigcup_jF_j\) 上处处收敛，而其补集的测度不超过任意
+\(2^{-j}\)，故为零。再固定 \(\varepsilon,\delta>0\)，选一个补集测度小于
+\(\delta\) 的一致收敛集 \(F\)。充分大的 \(n\) 使
+\(D_n(\varepsilon)\subseteq E\setminus F\)，故误差集测度小于
+\(\delta\)。这就证明依测度收敛。
+
+\begin{sboxenv}{navy}{定理 3.2.2、3.2.9（可测代表与完备性）}
+若可测 \(f_n\) 几乎处处收敛于有限函数 \(h\)，则存在可测 \(f=h\) a.e.，使
+\(f_n\to f\) a.e.。若测度空间完备，则 \(h\)
+本身可测；同样，与可测函数几乎处处相等的函数仍可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 取可测零集 \(Z\) 包含全部不收敛点。在 \(E\setminus Z\)
+上令 \(f=\lim_n f_n\)，在 \(Z\) 上令 \(f=0\)。可测极限与可测拼接保证
+\(f\) 可测。若空间完备，对任意 \(t\)，集合 \(\{h>t\}\) 与 \(\{f>t\}\)
+的对称差是 \(Z\) 的子集，故可测，得到 \(h\)
+可测。同一水平集论证适用于任意几乎处处修改；特别地，零测集上的任意有限函数可测。
+
+\begin{sboxenv}{inkgray}{例 1（非完备空间中的指定极限）}
+在 \(X=\{a,b\}\) 上取
+\(\mathcal A=\{\varnothing,X\}\)、\(\mu(X)=0\)。常零函数列几乎处处收敛于
+\(\mathbf1_{\{a\}}\)，但后者不可测：其大于 \(\frac12\)
+的水平集是不可测单点。常零函数是它的可测代表。
+
+\end{sboxenv}
+
+这不是 Lebesgue 测度的缺陷；Lebesgue
+测度已经完备。引入一般测度空间，是为了准确区分``指定的极限函数''和``其可测代表''。
+
+\Needspace{10\baselineskip}\section[\S{}3.2.2 尾部误差与 Lebesgue
+收敛定理]{3.2.2 尾部误差与 Lebesgue
+收敛定理}\label{ux5c3eux90e8ux8befux5deeux4e0e-lebesgue-ux6536ux655bux5b9aux7406}
+
+固定 \(\varepsilon>0\)，令
+
+\begin{equation*}
+T_N(\varepsilon)=\bigcup_{n\ge N}D_n(\varepsilon),\qquad
+\limsup_{n\to\infty}D_n(\varepsilon)=\bigcap_{N=1}^{\infty}T_N(\varepsilon).
+\tag{3.2.1}
+\end{equation*}
+
+\(T_N\) 收集从第 \(N\)
+项起至少超标一次的点，其交集收集无穷多次超标的点。不收敛点集恰为
+
+\begin{equation*}
+\{x:f_n(x)\not\to f(x)\}
+=\bigcup_{j=1}^{\infty}\bigcap_{N=1}^{\infty}T_N\!\left(\frac1j\right).
+\tag{3.2.2}
+\end{equation*}
+
+若误差不趋于零，存在正阈值被无穷多项超过，再取更小的 \(\frac1j\)
+即得右端；反向由定义直接成立。式 (3.2.2) 同时证明不收敛点集可测。
+
+\begin{sboxenv}{navy}{定理 3.2.4（本节的 Lebesgue 收敛定理）}
+若 \(\mu(E)<\infty\) 且 \(f_n\to f\) a.e.，则
+\(f_n\xrightarrow{\mu}f\)。若仅给定有限的几乎处处极限 \(h\)，可先取定理
+3.2.2 中的可测代表 \(f=h\) a.e.，再得到此结论。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{想法：}
+单项误差集不一定单调，换成尾并后就可以使用测度的上连续性。
+
+\Needspace{4\baselineskip}\textbf{证明：} 固定 \(\varepsilon>0\)。\(T_N(\varepsilon)\)
+递减，其交集由几乎处处收敛可知为零集。由于
+\(\mu(T_1(\varepsilon))\le\mu(E)<\infty\)，上连续性给出
+\(\mu(T_N(\varepsilon))\downarrow0\)。当 \(n\ge N\)
+时，\(D_n(\varepsilon)\subseteq T_N(\varepsilon)\)，因而其测度也趋于零。指定极限的情形由可测代表归结为此情形。
+
+\begin{sboxenv}{warm}{辨析（不能把有限性藏在证明中）}
+对每个精度，只要某个尾并具有有限测度，上述证明就能进行。仅知每一个单项误差集测度有限却不够。无限测度集上，几乎处处收敛仍推出每个有限测度子集上的依测度收敛，未必推出全域依测度收敛。这里没有积分，也没有使用控制收敛定理。
+
+\end{sboxenv}
+
+\Needspace{10\baselineskip}\section[\S{}3.2.3 Egorov
+定理与统一大集]{3.2.3 Egorov
+定理与统一大集}\label{egorov-ux5b9aux7406ux4e0eux7edfux4e00ux5927ux96c6}
+
+\begin{sboxenv}{navy}{定理 3.2.7、3.2.8（Egorov 定理）}
+在有限测度集 \(E\) 上，可测函数列几乎处处收敛于有限函数
+\(f\)，当且仅当它近一致收敛于 \(f\)。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{想法：} 每一个精度都能留下一个大集，但这些大集可能不同。给第
+\(j\) 个精度分配 \(\delta2^{-j-1}\)
+的测度损失，再取全部好集的交，就能同时照顾所有精度。
+
+\Needspace{4\baselineskip}\textbf{证明：} 反向已由 §3.2.1 的直接推论证明。正向取共同例外可测零集
+\(Z\)，令 \(E'=E\setminus Z\)。即使指定的 \(f\) 未必全域可测，它在
+\(E'\) 上也是可测函数列的逐点极限。下文误差集均限制在 \(E'\)。
+
+给定 \(\delta>0\)，对每个 \(j\ge1\)，由尾并递减及有限测度取 \(N_j\)，使
+
+\begin{equation*}
+\mu\!\left(\bigcup_{n\ge N_j}\{|f_n-f|>2^{-j}\}\right)
+<\delta2^{-j-1}.
+\end{equation*}
+
+可将 \(N_j\) 依次增大，使它严格递增。令
+
+\begin{equation*}
+F=E'\setminus\bigcup_{j=1}^{\infty}\bigcup_{n\ge N_j}\{|f_n-f|>2^{-j}\}.
+\tag{3.2.3}
+\end{equation*}
+
+由可数次可加性，\(\mu(E\setminus F)\le\frac\delta2<\delta\)。给定
+\(\varepsilon>0\)，取 \(j\) 使 \(2^{-j}<\varepsilon\)。对所有
+\(n\ge N_j\) 和所有 \(x\in F\)，同时有
+\(|f_n(x)-f(x)|\le2^{-j}<\varepsilon\)，故在同一个 \(F\) 上一致收敛。
+
+\begin{sboxenv}{warm}{辨析（大集依赖于允许损失，不能依赖于当前项）}
+近一致收敛的量词顺序是：先给 \(\delta\)，固定
+\(F\)；再给任意精度，选择相应指标。若每项各有一个小误差集，却没有控制这些集合的尾并，只能得到依测度收敛，打字机序列就是反例。Egorov
+定理也不保证删去一个零集就能一致收敛，见例 2。
+
+\end{sboxenv}
+
+\Needspace{10\baselineskip}\section[\S{}3.2.4 Riesz
+子列与子列判别]{3.2.4 Riesz
+子列与子列判别}\label{riesz-ux5b50ux5217ux4e0eux5b50ux5217ux5224ux522b}
+
+\begin{sboxenv}{navy}{定理 3.2.3（F. Riesz 子列定理及加强形式）}
+在任意测度空间上，若 \(f_n\xrightarrow{\mu}f\)，则存在子列近一致收敛于
+\(f\)，从而几乎处处收敛于 \(f\)。不要求全域有限测度、\(\sigma\)
+有限或完备。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{想法：} 依测度收敛不能控制原列所有尾项，但可以把第 \(j\)
+个选中项的坏集测度压到
+\(2^{-j}\)。坏集测度可求和，就能控制选中子列的整个尾部。
+
+\Needspace{4\baselineskip}\textbf{证明：} 递选严格递增的 \(n_j\)，使
+
+\begin{equation*}
+B_j=\{|f_{n_j}-f|>2^{-j}\},\qquad\mu(B_j)<2^{-j}.
+\end{equation*}
+
+令 \(H_k=\bigcup_{j\ge k}B_j\)。则
+
+\begin{equation*}
+\mu(H_k)\le\sum_{j=k}^{\infty}2^{-j}=2^{1-k}.
+\tag{3.2.4}
+\end{equation*}
+
+在 \(E\setminus H_k\) 上，对所有 \(j\ge k\) 都有
+\(|f_{n_j}-f|\le2^{-j}\)，故子列在此一致收敛。给定任意测度损失
+\(\delta\)，选 \(k\) 使 \(2^{1-k}<\delta\) 即得近一致收敛。也可直接令
+\(Z=\bigcap_kH_k\)；\(\mu(Z)\le2^{1-k}\) 对每个 \(k\) 成立，所以
+\(\mu(Z)=0\)。每个 \(x\notin Z\) 最终避开所有
+\(B_j\)，故子列在该点收敛。
+
+这个证明没有在无限测度集上滥用上连续性：零集结论来自显式的尾和估计。一般地，误差阈值可取任意
+\(a_j\downarrow0\)，坏集测度界可取任意可求和正数列 \(b_j\)。Riesz
+定理只需 \(a_j\to0\)；下一节的 Cauchy 构造还需增量阈值可求和。
+
+\begin{sboxenv}{navy}{定理 3.2.5（每个子列的判别）}
+当 \(\mu(E)<\infty\) 时，\(f_n\xrightarrow{\mu}f\)
+当且仅当每个子列都有一个几乎处处收敛于 \(f\) 的子子列。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 正向对任意子列应用 Riesz
+定理。反向若不依测度收敛，则存在 \(\varepsilon_0,\delta_0>0\) 和子列
+\(f_{n_k}\)，使 \(\mu(D_{n_k}(\varepsilon_0))\ge\delta_0\) 对每个 \(k\)
+成立。按假设再抽出几乎处处收敛于 \(f\) 的子子列，定理 3.2.4
+使其误差集测度趋零，矛盾。
+
+若把判据中的``几乎处处''改成``近一致''，则等价关系对任意测度空间成立：正向用加强的
+Riesz
+构造，反向在上述矛盾论证中用近一致推出依测度。不能把``每个子列''改成``存在一个子列''，见例
+5。
+
+\Needspace{10\baselineskip}\section[\S{}3.2.5 依测度 Cauchy
+列的完备性]{3.2.5 依测度 Cauchy
+列的完备性}\label{ux4f9dux6d4bux5ea6-cauchy-ux5217ux7684ux5b8cux5907ux6027}
+
+\begin{sboxenv}{navy}{定义 3.2.4、定理 3.2.1（依测度基本列）}
+若对每个 \(\varepsilon,\delta>0\)，存在 \(N\)，使所有 \(p,q\ge N\) 满足
+\begin{equation*}\mu(\{|f_p-f_q|>\varepsilon\})<\delta,\end{equation*} 则称 \((f_n)\) 为依测度
+Cauchy 列或依测度基本列。它等价于存在有限可测函数 \(f\)，使
+\(f_n\xrightarrow{\mu}f\)；此结论对任意测度空间成立。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 必要性由
+
+\begin{equation*}
+\{|f_p-f_q|>\varepsilon\}
+\subseteq\{|f_p-f|>\tfrac\varepsilon2\}\cup\{|f_q-f|>\tfrac\varepsilon2\}
+\tag{3.2.5}
+\end{equation*}
+
+得到，分别把右端两个测度控制在 \(\frac\delta2\) 内即可。
+
+反之，对每个 \(j\)，取基本列指标 \(M_j\)，使 \(p,q\ge M_j\) 时
+\(\mu(\{|f_p-f_q|>2^{-j}\})<2^{-j}\)。递选 \(n_j\ge M_j\) 且
+\(n_{j+1}>n_j\)。相邻的两个下标都不小于 \(M_j\)，因此令
+
+\begin{equation*}
+B_j=\{|f_{n_{j+1}}-f_{n_j}|>2^{-j}\},\qquad
+H_k=\bigcup_{j\ge k}B_j,
+\end{equation*}
+
+仍有式 (3.2.4) 的尾和估计。在 \(E\setminus H_k\) 上，对 \(p>q\ge k\)，
+
+\begin{equation*}
+\begin{aligned}
+|f_{n_p}-f_{n_q}|
+&\le\sum_{j=q}^{p-1}|f_{n_{j+1}}-f_{n_j}|\\
+&\le\sum_{j=q}^{p-1}2^{-j}\le2^{1-q}.
+\end{aligned}
+\tag{3.2.6}
+\end{equation*}
+
+令 \(Z=\bigcap_kH_k\)，则 \(\mu(Z)=0\)。每个 \(x\notin Z\) 属于某个
+\(E\setminus H_k\)，式 (3.2.6) 说明 \((f_{n_j}(x))\) 是实数 Cauchy
+列，故有有限极限。在 \(E\setminus Z\) 上取此极限，在 \(Z\)
+上补零，得到有限可测函数 \(f\)。对 \(x\in E\setminus H_k\)，在式 (3.2.6)
+中令 \(p\to\infty\)、取 \(q=k\)，得到
+
+\begin{equation*}
+|f-f_{n_k}|\le2^{1-k},\qquad \mu(H_k)\le2^{1-k}.
+\tag{3.2.7}
+\end{equation*}
+
+给定 \(\varepsilon,\delta>0\)，\(k\) 足够大时
+\(2^{1-k}<\min(\varepsilon,\delta)\)，所以
+\(\{|f-f_{n_k}|>\varepsilon\}\subseteq H_k\)，子列依测度收敛于 \(f\)。
+
+最后回到整列。取基本列对应于 \(\frac\varepsilon2,\frac\delta2\) 的指标
+\(M\)，再固定一个 \(n_k\ge M\)，使
+\(\mu(\{|f_{n_k}-f|>\frac\varepsilon2\})<\frac\delta2\)。对所有
+\(n\ge M\)，
+
+\begin{equation*}
+\begin{aligned}
+\mu(\{|f_n-f|>\varepsilon\})
+&\le\mu(\{|f_n-f_{n_k}|>\tfrac\varepsilon2\})\\
+&\quad+\mu(\{|f_{n_k}-f|>\tfrac\varepsilon2\})<\delta.
+\end{aligned}
+\tag{3.2.8}
+\end{equation*}
+
+故整列依测度收敛。这最后一段正是教材引理
+3.2.1：依测度基本列有一个依测度收敛子列，就使整列收敛到同一极限。
+
+\begin{sboxenv}{warm}{辨析（两次可求和估计各负其责）}
+\(\sum_j\mu(B_j)<\infty\)
+保证几乎每点只经历有限次坏增量；\(\sum_j2^{-j}<\infty\)
+保证好增量能累加，得到实数 Cauchy
+性。仅有相邻增量趋零不够，调和级数的部分和就是反例。一般阈值可改成任意可求和正数列，其尾和替代式
+(3.2.6) 的 \(2^{1-q}\)。
+
+\end{sboxenv}
+
+\begin{sboxenv}{navy}{定理 3.2.6 的唯一性部分与推论 3.2.1}
+同一列的两个依测度极限几乎处处相等。教材还允许指定有限极限 \(h\)
+尚不可测，但要求每个 \(|f_n-h|\) 可测；此时仍存在有限可测极限 \(f=h\)
+a.e.。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 若 \(f,g\) 均为可测极限，对每个 \(t>0\)，
+
+\begin{equation*}
+\{|f-g|>2t\}\subseteq\{|f-f_n|>t\}\cup\{|f_n-g|>t\}.
+\end{equation*}
+
+右端测度趋零，故左端为零集。取 \(t=\frac1j\) 再作可数并，得到 \(f=g\)
+a.e.。
+
+对教材的指定极限 \(h\)，式 (3.2.5) 仍说明 \((f_n)\)
+为依测度基本列，由已证定理构造可测极限 \(f\)。对每个 \(t>0\)，集合
+\(\{|f-h|>2t\}\) 包含在可测集
+
+\begin{equation*}
+Z_t=\bigcap_{n=1}^{\infty}
+\left(\{|f-f_n|>t\}\cup\{|f_n-h|>t\}\right)
+\end{equation*}
+
+中。\(Z_t\) 的测度被交中任一项的测度控制，故为零。于是
+\(\{f\ne h\}\subseteq\bigcup_{j\ge1}Z_{1/j}\)，这证明几乎处处相等，而没有对未经确认可测的集合直接取测度。
+
+\Needspace{10\baselineskip}\section[\S{}3.2.6
+极限运算与连续代入]{3.2.6
+极限运算与连续代入}\label{ux6781ux9650ux8fd0ux7b97ux4e0eux8fdeux7eedux4ee3ux5165}
+
+\begin{sboxenv}{navy}{定理 3.2.6（代数运算）}
+设
+\(f_n\xrightarrow{\mu}f\)、\(g_n\xrightarrow{\mu}g\)。任意测度空间上，有限线性组合与绝对值保持依测度收敛。若
+\(\mu(E)<\infty\)，乘积也保持；商还要求各 \(g_n\) 和 \(g\)
+几乎处处非零，并在可测零集上统一补定义。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 加法由两项误差的三角不等式及各取一半阈值得到。非零常数
+\(c\) 的数乘将误差阈值改成 \(\frac\varepsilon{|c|}\)，\(c=0\)
+时显然。绝对值满足
+\(\bigl||f_n|-|f|\bigr|\le|f_n-f|\)，故相应误差集包含于原误差集。
+
+对于乘积，从任一子列先抽出第一坐标几乎处处收敛的子子列，再从中抽出第二坐标几乎处处收敛的更深子列。第一坐标的收敛保留，删去两个例外零集的并后，两个坐标同时收敛，故乘积逐点收敛。由有限测度的子列判别，整列乘积依测度收敛。商的证明还需删去
+\(g\) 和所有 \(g_n\)
+的零集，在留下的点上应用实数商极限定理；删去的可数并仍为零集。
+
+同一论证给出连续代入：有限测度集上，若
+\(f_n^{(i)}\xrightarrow{\mu}f^{(i)}\)，\(1\le i\le r\)，且
+\(\Phi:\mathbb R^r\to\mathbb R\) 连续，则
+\(\Phi(f_n^{(1)},\ldots,f_n^{(r)})\xrightarrow{\mu}\Phi(f^{(1)},\ldots,f^{(r)})\)。从任一子列对有限个坐标依次抽取，得到所有坐标在同一满测集上收敛，再用连续性和子列判别即可。
+
+\textbf{有限性还可直接看见。} 对固定有限可测乘子 \(h\)，有
+
+\begin{equation*}
+\{|(f_n-f)h|>\varepsilon\}
+\subseteq\{|h|>K\}\cup\{|f_n-f|>\tfrac\varepsilon K\},\qquad K>0.
+\tag{3.2.9}
+\end{equation*}
+
+有限测度使 \(\mu(\{|h|>K\})\to0\)。先取 \(K\) 使第一项小，再取 \(n\)
+使第二项小，就能控制乘法。无限测度下高值尾集未必变小；不能无条件沿用这个证明。
+
+\Needspace{10\baselineskip}\section[\S{}3.2.7
+收敛关系图与典型反例]{3.2.7
+收敛关系图与典型反例}\label{ux6536ux655bux5173ux7cfbux56feux4e0eux5178ux578bux53cdux4f8b}
+
+下图所有箭头均指\textbf{整列、同一极限}；无条件箭头对任意测度空间成立。反向箭头上注明有限测度条件。
+
+\begin{equation*}
+\begin{array}{ccc}
+\text{一致收敛}&\Longrightarrow&\text{处处收敛}\\
+\Downarrow&&\Downarrow\\
+\text{近一致收敛}&\underset{\mu(E)<\infty}{\overset{\Longrightarrow}{\Longleftarrow}}&\text{几乎处处收敛}\\
+\Downarrow&&\\
+\text{依测度收敛}&&
+\end{array}
+\end{equation*}
+
+Riesz 定理另给``依测度收敛 \(\Longrightarrow\)
+\textbf{存在子列}近一致收敛''，不能把这条子列结论画成原列的反向箭头。四种收敛方式的全部两两关系如下；``否''表示一般不成立，并在后面给出反例。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+假设的收敛方式
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+一致
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+近一致
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+几乎处处
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+依测度
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+一致 & --- & 是 & 是 & 是 \\
+近一致 & 否，例 2 & --- & 是 & 是 \\
+几乎处处 & 否，例 2 & 有限测度时是；一般否，例 4 & --- &
+有限测度时是；一般否，例 4 \\
+依测度 & 否，例 3 & 否，例 3 & 否，例 3 & --- \\
+\end{longtable}
+
+\begin{sboxenv}{inkgray}{例 2（近一致收敛不能升级为一致收敛）}
+在 \((0,1)\) 上取 \(f_n(x)=x^n\)，极限为零。它处处收敛，但
+\(\sup_{0<x<1}x^n=1\)，所以不一致收敛。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 给定 \(\delta>0\)，取 \(0<\eta<\min(1,\delta)\)，删去
+\((1-\eta,1)\)
+后，\(0\le f_n\le(1-\eta)^n\to0\)，因此近一致收敛。若只删去零集，每个
+\((1-\eta,1)\) 中仍有点留下，剩余集上每项的上确界仍为
+\(1\)，故``任意小损失''不能改成``零损失''。
+
+另外，在 \([0,1]\) 上取
+\((-1)^n\mathbf1_{\{0\}}\)。删去零点后全列恒为零，因而近一致、几乎处处及依测度收敛于零；但在零点振荡。这说明这些测度意义的收敛不能保证处处收敛。
+
+\begin{sboxenv}{inkgray}{例 3（打字机序列，教材例 3.2.3）}
+对 \(k\ge1\)、\(1\le j\le2^k\)，定义
+\begin{equation*}f_{2^k-2+j}=\mathbf1_{((j-1)2^{-k},\,j2^{-k}]}\quad\text{于 }(0,1].\end{equation*}
+这列函数依测度趋零，却处处不收敛。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 第 \(k\) 层的指标覆盖 \(2^k-1\) 到
+\(2^{k+1}-2\)，因此逐层枚举不重不漏。当 \(0<\varepsilon<1\)
+时，每项误差集测度为 \(2^{-k}\to0\)；\(\varepsilon\ge1\)
+时误差集为空。另一方面，每个固定点在每层恰取一次 \(1\)，又至少取一次
+\(0\)，因而上下极限分别为
+\(1,0\)。由于近一致收敛必推出几乎处处收敛，它也不近一致，更不一致收敛。
+
+\begin{sboxenv}{inkgray}{例 4（无限测度下的逃逸区间）}
+在 \((0,\infty)\) 上取 \(f_n=\mathbf1_{[n,n+1)}\)。它处处趋零，但对
+\(0<\varepsilon<1\)，误差集测度恒为
+\(1\)，所以不依测度收敛，也不近一致收敛。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 对每个固定 \(x\)，当 \(n>x\) 时
+\(f_n(x)=0\)，故处处收敛。各误差集虽有有限测度，尾并却是
+\([N,\infty)\)，测度无穷，不能使用上连续性。每个子列仍处处趋零，因而有限测度子列判别的反向在这里也失效。教材例
+3.2.2 的 \(\mathbf1_{(0,n]}\to1\) 则使每项误差集 \((n,\infty)\)
+的测度都无穷。
+
+\begin{sboxenv}{inkgray}{例 5（一个好子列不足以判断整列）}
+在 \([0,1]\)
+上令偶数项为零、奇数项为一。偶数子列一致趋零，原列却不依测度趋零，因为每个奇数项误差超过
+\(\frac12\) 的集合都是全区间。
+
+\end{sboxenv}
+
+\begin{sboxenv}{inkgray}{例 6（无限测度上连续代入的边界，教材例 3.2.4）}
+在 \((1,\infty)\) 上令 \(f(x)=k\) 于 \((k,k+1]\)，\(k\ge1\)，再令
+\(f_n=f+\frac1n\mathbf1_{(n,n+1]}\)。则 \(f_n\) 一致收敛于 \(f\)，但
+\(f_n^2\) 不依测度收敛于 \(f^2\)。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 原误差的全域上界为 \(\frac1n\to0\)。然而
+
+\begin{equation*}
+f_n^2-f^2=\left(2+\frac1{n^2}\right)\mathbf1_{(n,n+1]},
+\end{equation*}
+
+平方误差超过 \(2\) 的集合测度恒为
+\(1\)。原因是平方函数在无界值域上不一致连续；连续代入的有限测度证明不能直接推广。若外函数在全值域上一致连续，则任意测度空间上依测度收敛都可保持：给定输出精度，统一选取输入精度，相应输出误差集包含于输入误差集。
+
+\Needspace{10\baselineskip}\section[\S{}3.2.8
+教材练习题与完整解答]{3.2.8
+教材练习题与完整解答}\label{ux6559ux6750ux7ec3ux4e60ux9898ux4e0eux5b8cux6574ux89e3ux7b54}
+
+以下保留练习题 3.2 的全部十二个原题号，按原题意整理记号。第 5 题为 Borel
+代表的补充，第 12 题明确一般测度空间的可测性条件；均不调用 Lusin
+定理或积分收敛定理。
+
+\Needspace{9\baselineskip}\subsection{问题 1}\label{ux95eeux9898-1}
+
+设 \(\mu(E)<\infty\)，\(f\) 为 \(E\) 上几乎处处有限的可测函数。对每个
+\(\varepsilon>0\)，构造有界可测 \(g\)，使
+\(\mu(\{|f-g|>0\})<\varepsilon\)。
+
+\Needspace{4\baselineskip}\textbf{解：} \(A_j=\{|f|>j\}\)
+递减至无穷值层，后者为零集。由有限测度及上连续性，取 \(j\) 使
+\(\mu(A_j)<\varepsilon\)。令 \(g=f\) 于 \(E\setminus A_j\)，令 \(g=0\)
+于 \(A_j\)，则 \(g\) 可测且 \(|g|\le j\)，差异集包含于 \(A_j\)。
+
+\Needspace{9\baselineskip}\subsection{问题 2}\label{ux95eeux9898-2}
+
+设 \(f:\mathbb R\to\mathbb R\) Lebesgue 可测，且 \(f(x+1)=f(x)\)
+a.e.。构造可测 \(g:\mathbb R\to\mathbb R\)，使 \(g(x+1)=g(x)\)
+对每点成立，且 \(g=f\) a.e.。
+
+\Needspace{4\baselineskip}\textbf{解：} 令
+\(N=\{x:f(x+1)\ne f(x)\}\)，\(Z=\bigcup_{j\in\mathbb Z}(N+j)\)。平移不变性给出
+\(m(Z)=0\)。若 \(x\notin Z\)，整条整数平移轨道都避开
+\(N\)，可逐次使用原等式，得到 \(f(x)=f(x-\lfloor x\rfloor)\)。对所有
+\(x\) 定义
+
+\begin{equation*}g(x)=f(x-\lfloor x\rfloor).\end{equation*}
+
+小数部分不随整数平移改变，故 \(g\) 处处为 \(1\) 周期。在每个半开区间
+\([j,j+1)\) 上，\(g(x)=f(x-j)\) 可测，故可数拼接后仍可测；且在 \(Z\) 外
+\(g=f\)。
+
+\Needspace{9\baselineskip}\subsection{问题 3}\label{ux95eeux9898-3}
+
+对 \([a,b]\) 上可测实函数列 \((f_k)\)，构造正数列 \((a_k)\)，使
+\(a_kf_k\to0\) a.e.。
+
+\Needspace{4\baselineskip}\textbf{解：} 固定 \(k\)，由 \(f_k\) 有限及有限测度，选 \(M_k\ge1\)，使
+\(m(\{|f_k|>M_k\})<2^{-k}\)。令
+\(a_k=\frac{2^{-k}}{M_k}>0\)。坏集尾并的测度不超过
+\(2^{1-j}\)，故几乎每点最终避开全部坏集。在这样的点上，最终有
+\(|a_kf_k|\le2^{-k}\to0\)。若每项仅几乎处处有限，先删去全部无穷值层的可数并即可。
+
+\Needspace{9\baselineskip}\subsection{问题 4}\label{ux95eeux9898-4}
+
+设 \(G\subset\mathbb R^d\) 开，\(f:G\to\mathbb R\)。证明：\(f\)
+几乎处处连续，当且仅当对每个 \(t\in\mathbb R\)，\(\{f>t\}\) 和
+\(\{f<t\}\) 中几乎每点分别为相应集合的内点。
+
+\Needspace{4\baselineskip}\textbf{证明：} 若 \(f\) 在 \(x\) 连续且 \(f(x)>t\)，则某邻域内仍有
+\(f>t\)，故 \(x\)
+为内点；严格下水平集同理。因此各非内点集合都包含于间断点零集。
+
+反之，只对有理数 \(t\) 合并上下水平集的非内点例外，得到一个零集
+\(Z\)。给定 \(x\in G\setminus Z\) 及 \(\varepsilon>0\)，取有理数 \(p,q\)
+满足 \(f(x)-\varepsilon<p<f(x)<q<f(x)+\varepsilon\)。此时 \(x\) 同时为
+\(\{f>p\}\)、\(\{f<q\}\) 的内点；两邻域之交内有 \(p<f(y)<q\)，因而
+\(|f(y)-f(x)|<\varepsilon\)。故 \(f\) 在 \(x\)
+连续。可数阈值是把各自的例外统一成一个零集的关键。
+
+\Needspace{9\baselineskip}\subsection{问题 5}\label{ux95eeux9898-5}
+
+设 \(f\) 为 Lebesgue--Stieltjes 可测集 \(E\subset\mathbb R\)
+上的可测函数。证明存在全实线的 Borel 可测函数 \(h\)，使
+\(m_g(\{x\in E:f(x)\ne h(x)\})=0\)。
+
+\Needspace{4\baselineskip}\textbf{证明：} 先说明所用的 Borel 逼近事实。Lebesgue--Stieltjes
+外测度由可数个区间覆盖构造；这些区间是 Borel
+集，且有界区间的测度有限。对有界可测集 \(A\)，按外测度定义，对每个 \(r\)
+取可数区间并 \(G_r\supseteq A\)，使 \(m_g(G_r)<m_g(A)+2^{-r}\)。于是
+Borel 集 \(B=\bigcap_rG_r\) 包含 \(A\)，且 \(m_g(B\setminus A)=0\)。一般
+\(A\) 用半开单位区间分块，对每块作此构造后取可数并，仍得 Borel 集
+\(B\supseteq A\)，差集为零集。再对零集 \(B\setminus A\) 以测度小于
+\(2^{-r}\) 的可数区间并覆盖，取交即得包含它的 Borel 零集
+\(Z\)。因此每个可测集与某个 Borel 集的对称差包含于 Borel
+零集；这里仅用测度的构造，没有使用积分。
+
+将 \(f\) 在 \(E\) 外补零得 \(u\)。对每个有理数 \(q\)，取 Borel 集
+\(B_q\) 和 Borel 零集 \(Z_q\)，使
+\(B_q\mathbin\triangle\{u>q\}\subseteq Z_q\)。令
+
+\begin{equation*}v(x)=\sup\{q\in\mathbb Q:x\in B_q\},\qquad\sup\varnothing=-\infty.\end{equation*}
+
+因为 \(\{v>t\}=\bigcup_{q>t,\,q\in\mathbb Q}B_q\)，\(v\) 广义 Borel
+可测。在 \(\bigcup_qZ_q\) 外，取上确界的有理数集合恰为
+\(\{q:q<u(x)\}\)，故 \(v=u\)。若原函数有限，将 \(v\) 的两个 Borel
+无穷值层改为零即得有限 Borel 函数 \(h\)；若原题按广义值解释，则直接取
+\(h=v\)。
+
+\Needspace{9\baselineskip}\subsection{问题 6}\label{ux95eeux9898-6}
+
+任意族 Lebesgue 可测函数的逐点上确界是否一定可测？
+
+\Needspace{4\baselineskip}\textbf{解：} 否。取不可测集 \(V\subset[0,1]\)，对每个 \(a\in V\) 令
+\(f_a=\mathbf1_{\{a\}}\)。每个单点闭，故各 \(f_a\) 甚至 Borel 可测，但
+\(\sup_{a\in V}f_a=\mathbf1_V\) 不可测。对任意维数可在 \(\mathbb R^d\)
+中同样选取不可测集。可数族则可测，因为其严格上水平集是可数个可测集的并。
+
+\Needspace{9\baselineskip}\subsection{问题 7}\label{ux95eeux9898-7}
+
+设 \(m(E)<\infty\)。证明 \(f_k\to0\) a.e. 当且仅当对任意
+\(\varepsilon>0\)，
+
+\begin{equation*}m\!\left(\left\{\sup_{k\ge j}|f_k|\ge\varepsilon\right\}\right)\longrightarrow0\quad(j\to\infty).\end{equation*}
+
+\Needspace{4\baselineskip}\textbf{证明：} 令 \(s_j=\sup_{k\ge j}|f_k|\)，则 \(s_j\) 可测且递减至
+\(s=\limsup_k|f_k|\)。对固定 \(\varepsilon>0\)，集合
+\(\{s_j\ge\varepsilon\}\) 递减至
+\(\{s\ge\varepsilon\}\)。上连续性使其测度趋于
+\(m(\{s\ge\varepsilon\})\)。所以原条件等价于全部 \(\{s\ge\frac1r\}\)
+为零集，等价于 \(s=0\) a.e.，也就等价于 \(f_k\to0\) a.e.。这里保留原题的
+\(\ge\)；尾部上确界未必由某一项达到，不能擅自把该集合换成所有
+\(\{|f_k|\ge\varepsilon\}\) 的并。
+
+\Needspace{9\baselineskip}\subsection{问题 8}\label{ux95eeux9898-8}
+
+设 \([a,b]\) 上几乎处处有限的可测函数列满足 \(f_k\to f\) a.e.。求可测集
+\(E_n\)，使 \(m([a,b]\setminus\bigcup_nE_n)=0\)，且 \(f_k\) 在每个
+\(E_n\) 上一致收敛于 \(f\)。
+
+\Needspace{4\baselineskip}\textbf{证明：} 先删去共同的无穷值零集。在留下的有限测度集上，对每个
+\(n\) 用 Egorov 定理，取 \(E_n\) 使
+\(m([a,b]\setminus E_n)<2^{-n}\)，且在 \(E_n\)
+上一致收敛。并集的补集包含于每个单独的补集，测度为零。若希望 \(E_n\)
+递增，可替换成
+\(\bigcup_{j\le n}E_j\)；给定精度，对这有限多个集合的一致收敛指标取最大值即可。
+
+\Needspace{9\baselineskip}\subsection{问题 9}\label{ux95eeux9898-9}
+
+设 \([0,1]\) 上几乎处处有限的可测函数列 \(f_n\to0\) a.e.。构造数列
+\((t_n)\)，使 \(\sum_n|t_n|=\infty\)，而 \(\sum_n|t_nf_n(x)|<\infty\)
+a.e.。
+
+\Needspace{4\baselineskip}\textbf{解：} 由有限测度下的 Lebesgue
+收敛定理，\(f_n\xrightarrow{m}0\)。选严格递增 \(n_j\)，使
+\(m(\{|f_{n_j}|>2^{-j}\})<2^{-j}\)。令 \(t_{n_j}=1\)，其他项
+\(t_n=0\)，则 \(\sum_n|t_n|=\infty\)。坏集尾和估计保证几乎每点最终有
+\(|f_{n_j}(x)|\le2^{-j}\)。再删去共同无穷值零集，级数只有有限个有限的首项及一个被几何级数控制的尾项，故绝对收敛。所有运算都在这个共同满测集上进行，不需定义
+\(0\cdot\infty\)。
+
+\Needspace{15\baselineskip}\subsection{问题 10}\label{ux95eeux9898-10}
+
+设 \(m(E)<\infty\)，\(f_k,f\) 几乎处处有限且可测。证明
+\(f_k\xrightarrow{m}f\) 当且仅当
+
+\begin{equation*}d_k=\inf_{\alpha>0}\left\{\alpha+m(\{|f_k-f|>\alpha\})\right\}\longrightarrow0.\end{equation*}
+
+\Needspace{4\baselineskip}\textbf{证明：} 先取共同有限代表。若依测度收敛，对每个固定
+\(\alpha>0\)，\(0\le\limsup_k d_k\le\alpha\)，再令
+\(\alpha\downarrow0\)，得 \(d_k\to0\)。反之，按下确界定义选择
+\(\alpha_k>0\)，使括号内的量小于 \(d_k+\frac1k\)。两项非负，故
+\(\alpha_k\to0\)，相应误差集测度也趋零。固定 \(\varepsilon>0\)，充分大时
+\(\alpha_k<\varepsilon\)，从而
+\(\{|f_k-f|>\varepsilon\}\subseteq\{|f_k-f|>\alpha_k\}\)，得到所需收敛。无需假定下确界达到。
+
+\Needspace{9\baselineskip}\subsection{问题 11}\label{ux95eeux9898-11}
+
+在实线的 Lebesgue 测度下，对每个固定 \(n\)，有
+\(f_k^{(n)}\xrightarrow{m}f^{(n)}\)（\(k\to\infty\)），且
+\(f^{(n)}\xrightarrow{m}f\)（\(n\to\infty\)）。从双指标族中选取一列依测度收敛于
+\(f\)。
+
+\Needspace{4\baselineskip}\textbf{解：} 对第 \(n\) 行选择 \(k(n)>k(n-1)\)，使
+\(m(\{|f_{k(n)}^{(n)}-f^{(n)}|>\frac1n\})<\frac1n\)。给定
+\(\varepsilon>0\)，当 \(\frac1n<\frac\varepsilon2\) 时，
+
+\begin{equation*}
+\begin{aligned}
+m(\{|f_{k(n)}^{(n)}-f|>\varepsilon\})
+&\le m(\{|f_{k(n)}^{(n)}-f^{(n)}|>\tfrac\varepsilon2\})\\
+&\quad+m(\{|f^{(n)}-f|>\tfrac\varepsilon2\})\\
+&\le\frac1n+m(\{|f^{(n)}-f|>\tfrac\varepsilon2\})\longrightarrow0.
+\end{aligned}
+\end{equation*}
+
+第一项控制行内误差，第二项控制各行极限的误差。实线测度无限，直接估计误差集就够了。
+
+\Needspace{9\baselineskip}\subsection{问题 12}\label{ux95eeux9898-12}
+
+设 \(\mu(E)<\infty\)，\(f_k\xrightarrow{\mu}f\)，\(f\)
+为有限实函数，\(\alpha>0\)。证明
+\(|f_k|^\alpha\xrightarrow{\mu}|f|^\alpha\)；并对可测实函数 \(h\) 证明
+\(|f_k-h|^\alpha\xrightarrow{\mu}|f-h|^\alpha\)。在一般测度空间中，应按下述辨析补足可测性条件。
+
+\Needspace{4\baselineskip}\textbf{证明：} 先以 \(f\) 的有限可测代表表述结论。函数
+\(u\mapsto|u|^\alpha\)
+在全实线上连续，包括零点；由有限测度上的连续代入，第一式成立。对第二式，因为
+\(|(f_k-h)-(f-h)|=|f_k-f|\)，故
+\(f_k-h\xrightarrow{\mu}f-h\)，再应用第一式即可。对原指定的
+\(f\)，在空间完备时上述结论同样成立；若空间不完备，也可另行要求变换后的误差函数可测。
+
+\begin{sboxenv}{warm}{题意辨析（教材定义允许不可测的指定极限）}
+教材定义 3.2.3 只要求 \(|f_k-f|\) 可测，不保证 \(f\)
+可测，也不保证变换后的误差可测。沿用例 1 的两点零测度空间，令
+\(f_k\equiv1\)，\(f(a)=0,f(b)=2\)。则 \(|f_k-f|\equiv1\) 可测且
+\(f_k\xrightarrow{\mu}f\)。取 \(\alpha=2\)，变换后的绝对误差在两点分别为
+\(1,3\)，其大于 \(2\)
+的水平集是不可测单点，故不能按教材定义断言变换后依测度收敛。取 \(h=0\)
+给出第二式的同一障碍。因此，采用可测代表、要求原极限可测或假设空间完备，都是明确的修正；不能省略这一条件。
+
+\end{sboxenv}
+
+\clearpage\section[\S{}3.2.9
+教材对应与方法回顾]{3.2.9
+教材对应与方法回顾}\label{ux6559ux6750ux5bf9ux5e94ux4e0eux65b9ux6cd5ux56deux987e}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+教材条目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本节位置与处理
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+定义 3.2.1---3.2.4 &
+§3.2.1、§3.2.5；固定可测定义域，明确有限代表与量词 \\
+引理 3.2.1、定理 3.2.1、推论 3.2.1 & §3.2.5；完整证明 Cauchy
+完备性、整列回收及可测代表 \\
+定理 3.2.2、3.2.9 & §3.2.1；几乎处处极限与完备性 \\
+定理 3.2.3、3.2.5 & §3.2.4；Riesz
+与每个子列判别，并说明近一致加强形式 \\
+定理 3.2.4 & §3.2.2；框架中的 Lebesgue 收敛定理 \\
+定理 3.2.6 & §3.2.5、§3.2.6；唯一性、代表、线性运算、绝对值、积与商 \\
+定理 3.2.7---3.2.8 & §3.2.1、§3.2.3；统一大集构造及一般方向 \\
+例 3.2.1---3.2.4 & 例
+1、3、4、6；非完备例简化为两点模型，其余保留核心构造 \\
+练习题 3.2，第 1---12 题 & §3.2.8；全部解答，第 12 题单列条件修正 \\
+\end{longtable}
+
+遇到收敛问题，先写出误差集并判断控制的是单项还是尾部。需要一个固定大集时，把可数种精度的损失安排成可求和数列；需要构造极限时，再把相邻增量的大小也安排成可求和数列。所有引用上连续性的地方，都检查某个初始集或尾集是否有限测度。
+
+下一节 §3.3《可测函数的构造》将在本节的 Egorov
+定理与第二章正则性基础上证明 Lusin 定理，讨论连续函数逼近和 Borel
+可测函数。它属于函数结构问题，不与本节的收敛方式混在一起。
+
+\end{document}
