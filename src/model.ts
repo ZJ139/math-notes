@@ -7,7 +7,7 @@ export const englishStudyCategories = [
   {id:'exams',label:'往年考研真题'}, {id:'reading-answers',label:'真题阅读解答'},
   {id:'writing',label:'作文'}, {id:'translation',label:'文章与直译'}, examTranslation,
   {id:'sentences',label:'长难句'}, {id:'sentence-patterns',label:'不同句式'}, {id:'core-vocabulary',label:'核心单词'},
-  {id:'vocabulary',label:'熟词僻义'}, {id:'reading-types',label:'阅读技巧'}, {id:'reading-practice',label:'阅读训练',directory:true},
+  {id:'vocabulary',label:'熟词僻义'}, {id:'reading-types',label:'阅读技巧'}, {id:'reading-practice',label:'阅读训练',directory:true}, {id:'daily-reading',label:'每日一文',directory:true},
 ] as const;
 export const sentencePatternCategories = [
   {id:'sentence-patterns/complex',label:'长难句句式',description:'归纳从句、非谓语、倒装与复杂结构的拆解方法。'},
