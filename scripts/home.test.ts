@@ -55,10 +55,21 @@ test('home exposes three fixed study areas and the English study destinations wi
   const areas=[...home.matchAll(/<h2 id="(math|problems|english)-heading">/g)].map(m=>m[1]);
   assert.deepEqual(areas,['math','problems','english']);
   for(const href of ['/math/','/notes/','/problems/','/papers/','/essays/'])assert.ok(home.includes(`href="${href}"`));
-  assert.equal(englishStudyCategories.length,11);
+  assert.deepEqual(englishStudyCategories.map(category=>category.id),[
+    'exams','reading-answers','writing','translation','exam-translation',
+    'sentences','sentence-patterns','core-vocabulary','vocabulary',
+    'reading-types','reading-practice','daily-reading',
+  ]);
   for(const category of englishStudyCategories){
     assert.ok(home.includes(`href="${'directory' in category?`/english/${category.id}/`:category.id==='writing'?'/english/writing/':category.id==='reading-answers'?'/english/reading-answers/':'/english/?category='+category.id}"`));
     assert.ok(home.includes(category.label));
+  }
+  const english=renderToStaticMarkup(createElement(Collection,{items:[],section:'english'}));
+  for(const html of [home,english]){
+    const dailyLink=html.match(/<a href="\/english\/daily-reading\/"[^>]*>([\s\S]*?)<\/a>/);
+    assert.ok(dailyLink,'每日一文入口必须直接打开独立目录');
+    assert.match(dailyLink[1].replace(/<[^>]*>/g,''),/每日一文$/);
+    assert.doesNotMatch(html,/href="\/english\/\?category=daily-reading"/);
   }
   const html=renderToStaticMarkup(createElement(Layout,{title:'数学',path:'/notes/',children:null}));
   const nav=html.match(/<nav aria-label="主导航">([\s\S]*?)<\/nav>/)![1];
