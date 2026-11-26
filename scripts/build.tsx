@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadEntries} from '../src/content';
-import {sections,examTranslation,compareRecentEntries,type Section} from '../src/model';
+import {sections,examTranslation,compareRecentEntries,entryUrl,type Section} from '../src/model';
 import {Layout,Home,Collection,ProblemLibrary,Article,Manage,About,ExamTranslationIndex,MathOverview,WritingLibrary} from '../src/components';
 import {examTranslationUrl} from '../src/StudyDirectory';
 import {ReadingPracticeIndex,ReadingPracticePage,readingExercises,exerciseUrl,readingPracticeUrl} from '../src/ReadingPractice';
@@ -122,6 +122,9 @@ for(const group of sentenceGroups(items)){
   for(const text of group.texts.filter(text=>text.entries.length))await page(`english/sentences/years/${group.year}/text-${text.text}/`,`${group.year} 年 Text ${text.text} 长难句`,<SentenceYearPage items={items} year={group.year} text={text.text}/>);
 }
 await page('english/writing/','作文',<WritingLibrary items={items}/>);
+const dailyReadings=items.filter(e=>e.section==='english'&&e.category==='daily-reading').sort((a,b)=>b.created_at.localeCompare(a.created_at)||a.id.localeCompare(b.id));
+const pacificDate=new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'America/Los_Angeles'});
+await page('english/daily-reading/','每日一文',<section className="wrap collection-page"><header className="page-heading"><div className="breadcrumb"><a href="/">首页</a><span>/</span><a href="/english/">英语</a><span>/</span><span>每日一文</span></div><h1>每日一文</h1><p>每日美国太平洋时间上午九点更新。精选期刊与杂志文章，四至五段，约 4500 词汇量水平，附篇章逻辑解读与核心单词汇总。</p></header><p className="result-count">{dailyReadings.length} 篇 · 按美国太平洋日期倒序</p>{dailyReadings.length?<div className="entry-list">{dailyReadings.map(e=><article key={e.id} className="entry-row"><div className="entry-meta"><time dateTime={e.created_at}>{pacificDate.format(new Date(e.created_at))}</time>{e.subject&&<span>{e.subject}</span>}</div><h2><a href={entryUrl(e)+'/'}>{e.title}</a></h2>{e.description&&<p>{e.description}</p>}</article>)}</div>:<div className="empty-state"><h2>每日阅读即将开始</h2><p>首篇发布后将在此处归档。</p></div>}</section>);
 await page(examTranslationUrl.slice(1),examTranslation.label,<ExamTranslationIndex items={items}/>);
 await page(readingPracticeUrl.slice(1),'阅读训练',<ReadingPracticeIndex/>);
 for(const exercise of readingExercises)await page(exerciseUrl(exercise).slice(1),exercise.title+' · 阅读训练',<ReadingPracticePage exercise={exercise}/>);

@@ -17,6 +17,7 @@ export const examTranslationUrl = `/english/${examTranslation.id}/`;
 const englishDirectories: Readonly<Partial<Record<string, string>>> = {
   [examTranslation.id]: examTranslationUrl,
   'reading-practice': readingPracticeUrl,
+  'daily-reading': '/english/daily-reading/',
   'reading-answers': readingAnswersIndexUrl,
   writing: writingIndexUrl,
 };
