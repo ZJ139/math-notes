@@ -1,0 +1,659 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\renewcommand{\bfdefault}{bx}
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.10}
+\setlength{\parindent}{2em}\setlength{\parskip}{4pt}
+\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
+\setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage[unicode,hidelinks,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：3.1 可测函数的定义与性质},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\predisplaypenalty=5000
+\allowdisplaybreaks[1]\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}{\LARGE\bfseries 实变函数-v1\par}\vspace{7pt}
+{\Large\bfseries 3.1 可测函数的定义与性质\par}\vspace{6pt}
+{第三章\quad 可测函数\par}\end{center}
+\textbf{主线：}以水平集为入口，将函数运算变成可数集合运算，以简单函数的有限分层连接测度与积分。既说明构造背后的想法，也逐项检查无穷值、复合及零测集修改的适用条件。
+\begin{center}
+\begin{tikzpicture}[node distance=5mm and 5mm,box/.style={draw=navy!65,fill=navy!3,rounded corners=1pt,minimum width=34mm,minimum height=10mm,align=center,font=\small},>=Stealth]
+\node[box](a){水平集与原像};\node[box,right=of a](b){运算与可数极限};\node[box,right=of b](c){简单函数逼近};\node[box,right=of c,fill=teal!5](d){Borel 代表};
+\draw[->](a)--(b);\draw[->](b)--(c);\draw[->](c)--(d);
+\end{tikzpicture}\end{center}
+本节对应《实变函数知识框架》\S3.1，依据徐森林、薛春华《实变函数论》印刷第174—184页与第185页定义3.2.2。含教材本节全部十五题详解；第15题明确单调方向的必要条件。下文结论重新编号。中文为Fandol宋体，数学为CM bea。
+\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup
+\newpage
+\Needspace{10\baselineskip}\section[\S{}3.1.1
+广义实值函数与可测性]{3.1.1
+广义实值函数与可测性}\label{ux5e7fux4e49ux5b9eux503cux51fdux6570ux4e0eux53efux6d4bux6027}
+
+记
+\(\overline{\mathbb R}=\mathbb R\cup\{-\infty,+\infty\}\)，按通常大小关系排序。广义实值函数允许取无穷值；``有限实值''指每点取有限值，``有界''要求存在统一常数控制全域，二者不同。以下固定
+Lebesgue 可测集 \(E\subseteq\mathbb R^d\)，所有水平集均限制在 \(E\)
+内，简写为 \(\{f>a\}=\{x\in E:f(x)>a\}\)。补集也相对于 \(E\)。
+
+\begin{sboxenv}{navy}{定义 3.1.1（可测函数）}
+函数 \(f:E\to\overline{\mathbb R}\) 称为 Lebesgue 可测函数，如果每个实数
+\(a\) 都使 \(\{f>a\}\) 可测。若只讨论 Borel 可测性，则定义域取 Borel
+集，要求这些水平集都是 Borel 集。
+
+\end{sboxenv}
+
+教材先在一般可测空间上讨论有限实值函数，再推广到广义实值函数。本讲以
+Lebesgue 情形为主；凡只用可数并、可数交和补的论证，同样适用于任意
+\(\sigma\)-代数。教材采用
+\(\sigma\)-环的定义时，不能默认全集属于集类；本讲已固定可测定义域
+\(E\)，因而相对补运算合法。
+
+无穷值是取值而非普通实数。\(+\infty+(-\infty)\)、\(\infty-\infty\)、\(0\cdot\infty\)、\(\frac{0}{0}\)、\(\frac{\infty}{\infty}\)
+没有通常实数意义。后续积分理论可能约定
+\(0\cdot\infty=0\)，本节除明确声明外不作此约定。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.2
+等价判据与限制拼接]{3.1.2
+等价判据与限制拼接}\label{ux7b49ux4ef7ux5224ux636eux4e0eux9650ux5236ux62fcux63a5}
+
+\begin{sboxenv}{navy}{定理 3.1.2（水平集与 Borel 原像判据）}
+对 \(f:E\to\overline{\mathbb R}\)，以下条件等价：所有 \(\{f>a\}\)
+可测；所有 \(\{f\ge a\}\) 可测；所有 \(\{f<a\}\) 可测；所有
+\(\{f\le a\}\) 可测。检验参数只需取有理数。它们又等价于：每个
+\(\overline{\mathbb R}\) 中的 Borel 集 \(B\) 都有可测原像
+\(f^{-1}(B)\)。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{想法：}
+用有理阈值从一侧逼近任意阈值，将开、闭水平集互换；再把``原像可测''的目标集组成一个
+\(\sigma\)-代数。
+
+\Needspace{4\baselineskip}\textbf{证明：} 可数集合运算给出
+
+\begin{equation*}
+\begin{aligned}
+\{f\ge a\}&=\bigcap_{n=1}^{\infty}\{f>a-2^{-n}\},\\
+\{f>a\}&=\bigcup_{n=1}^{\infty}\{f\ge a+2^{-n}\},\\
+\{f\le a\}&=E\setminus\{f>a\},\qquad
+\{f<a\}=E\setminus\{f\ge a\}.
+\end{aligned}
+\tag{3.1.1}
+\end{equation*}
+
+这证明四种判据等价。若只知有理数 \(q\) 的严格上水平集可测，则
+\(\{f>a\}=\bigcup_{q\in\mathbb Q,\,q>a}\{f>q\}\)；其他三种有理判据也可先作有理阈值的可数逼近再取补。
+
+令
+\(\mathcal D=\{B\subseteq\overline{\mathbb R}:f^{-1}(B)\text{ 可测}\}\)。由原像保持补、并、交，\(\mathcal D\)
+是 \(\sigma\)-代数。半直线 \((a,+\infty]\) 生成 \(\overline{\mathbb R}\)
+的 Borel
+\(\sigma\)-代数：有限端点的开区间可用半直线与可数交表示，含无穷端点的开邻域亦然，所有开集为有理端点基本邻域的可数并。因此可测性蕴含
+Borel 原像判据，逆命题取 \(B=(a,+\infty]\) 即得。
+
+特别地，
+
+\begin{equation*}
+\{f=+\infty\}=\bigcap_{n=1}^{\infty}\{f>n\},\qquad
+\{f=-\infty\}=\bigcap_{n=1}^{\infty}\{f<-n\}
+\tag{3.1.2}
+\end{equation*}
+
+可测，有限值部分的定义域也可测。固定
+\(c\in\mathbb R\)，\(\{f=c\}=\{f\ge c\}\cap\{f\le c\}\) 可测。
+
+\begin{sboxenv}{warm}{辨析：只检验有限区间会漏掉无穷值}
+设 \(A\subseteq E\) 不可测，令 \(f=+\infty\) 于 \(A\)、\(f=-\infty\) 于
+\(E\setminus A\)。所有有限区间的原像都为空，然而 \(\{f>0\}=A\)
+不可测。广义实值情形使用有限区间判据时，还须控制无穷值层。
+
+\end{sboxenv}
+
+\begin{sboxenv}{navy}{命题 3.1.3（限制、拼接与特征函数）}
+可测函数限制在可测子集上仍可测。若 \(E=\bigcup_{j\ge1}E_j\)，各 \(E_j\)
+可测，且同一函数 \(f\) 在每个 \(E_j\) 上可测，则 \(f\) 在 \(E\)
+上可测。对 \(A\subseteq E\)，\(\mathbf1_A\) 可测当且仅当 \(A\) 可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 限制后的上水平集为
+\(E_j\cap\{f>a\}\)；拼接后的上水平集为
+\(\bigcup_j\{x\in E_j:f(x)>a\}\)。若分别给定函数，须先保证重叠处取值一致，或在两两不交的可测分块上定义。特征函数的水平集只能是
+\(E,A,\varnothing\)，反向取阈值 \(\frac12\) 即得。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.3
+连续复合与代数运算]{3.1.3
+连续复合与代数运算}\label{ux8fdeux7eedux590dux5408ux4e0eux4ee3ux6570ux8fd0ux7b97}
+
+\begin{sboxenv}{navy}{定理 3.1.4（Borel 复合与连续多元运算）}
+若 \(f:E\to\overline{\mathbb R}\)
+可测，\(h:\overline{\mathbb R}\to\overline{\mathbb R}\) 为 Borel
+可测函数，则 \(h\circ f\) 可测。若 \(f_1,\ldots,f_k\)
+为有限实值可测函数，\(\Phi:\mathbb R^k\to\mathbb R\) 连续，则
+\(\Phi(f_1,\ldots,f_k)\) 可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 对任意 \(a\in\mathbb R\)，
+\(\{h(f)>a\}=f^{-1}(h^{-1}((a,+\infty]))\)，内层集合是 Borel 集，定理
+3.1.2 给出结论。
+
+令 \(F=(f_1,\ldots,f_k)\)。有理端点开方体 \(Q=\prod_i(a_i,b_i)\)
+的原像是
+\(\bigcap_i\{a_i<f_i<b_i\}\)。每个欧氏开集是可数个这类方体的并，故 \(F\)
+的开集原像可测。\(\Phi^{-1}((a,\infty))\) 为开集，所以 \(\{\Phi(F)>a\}\)
+可测。这个论证也适用于定义在开子集上的连续函数，只要 \(F\)
+的值域包含于该子集。
+
+\begin{sboxenv}{navy}{推论 3.1.5（有限实值函数的运算）}
+若 \(f,g\) 有限且可测，则
+\(\alpha f+\beta g\)、\(fg\)、\(|f|\)、\(\max(f,g)\)、\(\min(f,g)\)、\(f^+=\max(f,0)\)、\(f^-=\max(-f,0)\)
+均可测。在 \(\{g\ne0\}\) 上，\(\frac{f}{g}\)
+可测；在零点集任意赋一个固定有限值后仍可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 这些表达式对应连续的有限维运算；除法在
+\(\{(u,v):v\ne0\}\)
+上连续，分母零点集可测，再用拼接结论。作为不依赖多元语言的检验，和的关键恒等式是
+
+\begin{equation*}
+\{f+g>a\}=\bigcup_{q\in\mathbb Q}\bigl(\{f>q\}\cap\{g>a-q\}\bigr).
+\tag{3.1.3}
+\end{equation*}
+
+若左侧成立，则在 \(a-g(x)<q<f(x)\)
+间选有理数；若右侧成立，两不等式相加即得左侧。这里的``有理''保证并集可数。
+
+\begin{sboxenv}{navy}{命题 3.1.6（广义实值运算的适用范围）}
+对广义实值可测函数，取负、绝对值、最大值、最小值及正负部分仍可测。和、积、商在各自有定义的点组成的可测集合上可测；若在未定义点集赋一个固定值，所得扩充也可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：}
+取负由下水平集判据，最大、最小由两个水平集的并、交得到，其余随之成立。把
+\(E\) 按 \(f,g\) 分别取有限值、\(+\infty\)、\(-\infty\)
+分成九块；有限值块再按正、零、负分割，仍是有限个可测集。在双方有限且运算有意义的块上，用推论
+3.1.5；在其余有定义的块上，和、积取固定的无穷值，有限数除以无穷按通常扩充实数约定取零，无穷除以非零有限数取带符号无穷。未定义情形恰为相反无穷相加、零乘无穷、分母为零或双方无穷相除等块的并，故也是可测集。逐块拼接即证。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.4
+可数确界与函数列极限]{3.1.4
+可数确界与函数列极限}\label{ux53efux6570ux786eux754cux4e0eux51fdux6570ux5217ux6781ux9650}
+
+\begin{sboxenv}{navy}{定理 3.1.7（可数确界与极限）}
+若 \(f_n:E\to\overline{\mathbb R}\) 均可测，则
+\(\sup_n f_n\)、\(\inf_n f_n\)、\(\limsup_n f_n\)、\(\liminf_n f_n\)
+均可测。若逐点极限存在，极限函数可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 设 \(u=\sup_n f_n\)，则
+
+\begin{equation*}
+\{u>a\}=\bigcup_{n\ge1}\{f_n>a\},\qquad
+\inf_n f_n=-\sup_n(-f_n).
+\tag{3.1.4}
+\end{equation*}
+
+严格不等号不可随意改成大于等于，例如 \(f_n=1-\frac1n\) 的上确界为
+\(1\)，但无一项达到 \(1\)。再由
+
+\begin{equation*}
+\limsup_{n\to\infty}f_n=\inf_{N\ge1}\sup_{n\ge N}f_n,\qquad
+\liminf_{n\to\infty}f_n=\sup_{N\ge1}\inf_{n\ge N}f_n
+\tag{3.1.5}
+\end{equation*}
+
+依次使用可数确界结论即可。极限存在时它等于上下极限，故可测。
+
+有限实值可测函数列的有限收敛点集也是可测集。用实数完备性，其表达式为
+
+\begin{equation*}
+C=\bigcap_{k=1}^{\infty}\bigcup_{N=1}^{\infty}
+\bigcap_{m,n\ge N}\{|f_m-f_n|<2^{-k}\}.
+\tag{3.1.6}
+\end{equation*}
+
+每层都是可数运算。限制于 \(C\) 后取极限，再在 \(E\setminus C\)
+赋零，得到全域可测函数。这也是处理``极限只在部分点存在''的标准做法。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.5
+几乎处处与零集修改]{3.1.5
+几乎处处与零集修改}\label{ux51e0ux4e4eux5904ux5904ux4e0eux96f6ux96c6ux4feeux6539}
+
+\begin{sboxenv}{navy}{定义 3.1.8（几乎处处）}
+若某性质在 \(E\) 中的失败点全包含于一个零测集，则称它在 \(E\)
+上几乎处处成立，记作 a.e.。特别地，\(f=g\) a.e.
+表示两函数只可能在一个零测集上不同。
+
+\end{sboxenv}
+
+这里的例外集可以非空，甚至稠密或不可数；零测性与基数、稠密性是不同概念。
+
+\begin{sboxenv}{navy}{定理 3.1.9（完备性与可测代表）}
+在 Lebesgue 测度下，若 \(f\) 可测且 \(g=f\) a.e.，则 \(g\)
+可测。若可测函数列 \(f_n\) 几乎处处收敛于已在 \(E\) 上定义的 \(f\)，则
+\(f\) 可测。几乎处处有限的可测函数可以在零测集上改成处处有限的可测函数。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 设 \(N\) 零测且 \(f=g\) 于 \(E\setminus N\)。对任意
+\(a\)，
+
+\begin{equation*}
+\{g>a\}=(\{f>a\}\setminus N)\cup(\{g>a\}\cap N).
+\tag{3.1.7}
+\end{equation*}
+
+第二项是零测集的子集，因 Lebesgue 测度完备而可测，故 \(g\)
+可测。对于几乎处处极限，令 \(u=\limsup_n f_n\)，它可测且 \(u=f\)
+a.e.，应用前一结论。最后 \(\{|f|=\infty\}\)
+可测且零测，在该集改为零即可。
+
+可数个几乎处处性质能够同时成立：把各自零测例外集合并，仍为零测集。不可数个则不能这样处理；例如对每个
+\(t\in[0,1]\)，性质``\(x\ne t\)''几乎处处成立，但没有一点同时满足所有这些性质。
+
+完备性确实必要。取 Cantor 零集中的非 Borel 子集 \(A\)，则
+\(\mathbf1_A=0\) 几乎处处，却不是 Borel 可测函数。故在未完备的 Borel
+测度空间中，任意零集修改未必保持可测性。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.6
+简单函数逼近]{3.1.6
+简单函数逼近}\label{ux7b80ux5355ux51fdux6570ux903cux8fd1}
+
+\begin{sboxenv}{navy}{定义 3.1.10（简单函数）}
+取有限多个实值且可测的函数称为简单函数。它可写成
+\(s=\sum_{j=1}^r a_j\mathbf1_{A_j}\)，其中 \(A_j\)
+是两两不交的可测集，覆盖定义域，\(a_j\) 为不同实数。
+
+\end{sboxenv}
+
+若简单函数已知可测，各层 \(A_j=\{s=a_j\}\)
+可测；反过来有限个可测层的分段常数函数由拼接可测。简单函数的层集不必是区间，因而不等同于通常的阶梯函数。我们要求它有限值，故它必有界。
+
+\begin{sboxenv}{navy}{定理 3.1.11（非负函数的单调简单逼近）}
+若 \(f:E\to[0,+\infty]\) 可测，则存在非负简单函数 \(s_n\)，使
+\(0\le s_n\uparrow f\) 逐点成立。可取 \begin{equation*}
+s_n=\sum_{j=0}^{n2^n-1}\frac{j}{2^n}
+\mathbf1_{\{j2^{-n}\le f<(j+1)2^{-n}\}}
++n\mathbf1_{\{f\ge n\}}.
+\tag{3.1.8}
+\end{equation*}
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{想法：} 先把值域截在高度 \(n\)，再以长度 \(2^{-n}\)
+的网格向下取整。截断使取值有限，加密二进制网格保证单调。
+
+\Needspace{4\baselineskip}\textbf{证明：} 各层可测，层数有限，所以 \(s_n\) 是非负简单函数，且
+\(s_n\le f\)。若
+\(f(x)<n\)，二进制网格加密时，\(2^{-(n+1)}\lfloor2^{n+1}f(x)\rfloor\ge2^{-n}\lfloor2^nf(x)\rfloor\)。若
+\(f(x)\ge n\)，则第 \(n+1\) 级的截断高度与向下取整值都不小于整数
+\(n=s_n(x)\)。所以 \(s_{n+1}\ge s_n\)。
+
+当 \(f(x)<\infty\) 时，对所有 \(n>f(x)\) 有
+
+\begin{equation*}
+0\le f(x)-s_n(x)<2^{-n};
+\qquad f(x)=+\infty\text{ 时 }s_n(x)=n\to+\infty.
+\tag{3.1.9}
+\end{equation*}
+
+因此 \(s_n\uparrow f\)。这里在无穷点使用的是截断定义，不对
+\(\lfloor+\infty\rfloor\) 作实数运算。
+
+\begin{sboxenv}{navy}{推论 3.1.12（一般逼近与一致逼近）}
+每个广义实值可测函数都是有限值简单函数的逐点极限；反之简单函数的逐点极限可测。有限实值函数能被简单函数一致逼近，当且仅当它可测且有界。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 分别对 \(f^+,f^-\) 作（3.1.8）的逼近 \(u_n,v_n\)，令
+\(t_n=u_n-v_n\)。两者取值有限，故 \(t_n\)
+是简单函数。在每一点，正负部分至少一个为零；若 \(f\) 有限，则差趋于
+\(f\)；若 \(f=+\infty\)，则 \(t_n=n\)；若 \(f=-\infty\)，则
+\(t_n=-n\)。这避免了无穷减无穷。逆命题由定理 3.1.7。
+
+若 \(|f|\le M\)，取
+\(t_n(x)=2^{-n}\lfloor2^nf(x)\rfloor\)，它只取有限多个值且层集可测，并有
+\(0\le f-t_n<2^{-n}\) 全域成立，故一致收敛。反过来，一致极限可测；取一项
+\(t_N\) 使 \(|f-t_N|<1\) 全域成立，\(t_N\) 有界便推出 \(f\) 有界。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.7 Borel
+代表与复合的边界]{3.1.7 Borel
+代表与复合的边界}\label{borel-ux4ee3ux8868ux4e0eux590dux5408ux7684ux8fb9ux754c}
+
+\begin{sboxenv}{navy}{定理 3.1.13（Lebesgue 可测函数的 Borel 代表）}
+若 \(f:E\to\overline{\mathbb R}\) 为 Lebesgue 可测函数，则存在定义在
+\(\mathbb R^d\) 上的 Borel 可测函数 \(h\)，使 \(h=f\) a.e. 于 \(E\)。若
+\(f\) 处处有限，可选 \(h\) 处处有限。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 由推论 3.1.12 选有限值简单函数 \(t_n\to f\)，写成
+\(t_n=\sum_{j=1}^{r_n}a_{n,j}\mathbf1_{A_{n,j}}\)。§2.3 的正则性给出
+Borel 集 \(B_{n,j}\)，使 \(m(A_{n,j}\mathbin\triangle B_{n,j})=0\)。令
+
+\begin{equation*}
+h_n=\sum_{j=1}^{r_n}a_{n,j}\mathbf1_{B_{n,j}},\qquad
+N=\bigcup_{n\ge1}\bigcup_{j=1}^{r_n}(A_{n,j}\mathbin\triangle B_{n,j}).
+\tag{3.1.10}
+\end{equation*}
+
+各 \(h_n\) 在全空间 Borel 可测，\(N\) 零测；在 \(E\setminus N\) 上，所有
+\(h_n=t_n\)。于是 \(h=\limsup_n h_n\) 是 Borel 可测函数，并在
+\(E\setminus N\) 上等于 \(f\)。
+
+若 \(f\) 有限，则在上述同一集合上 \(h\) 有限。把 \(h\)
+的两个无穷值层改为零，由 Borel 拼接得到处处有限的 Borel 函数，仍与 \(f\)
+几乎处处相等。此处不要求 \(E\) 本身为 Borel 集，也不把 \(\mathbf1_E\)
+错当作 Borel 函数。
+
+\begin{sboxenv}{warm}{辨析：Lebesgue 可测复合不能无条件传递}
+外层函数 Borel 可测足以保证复合可测；外层仅 Lebesgue
+可测则未必。即使内层连续，也不能直接从``目标集 Lebesgue
+可测''推得其原像可测。
+
+\end{sboxenv}
+
+\textbf{反例及证明：} 沿用 §2.5 的构造，令 \(C\) 为 Cantor 三分集，\(F\)
+为 Cantor 函数，\(H(x)=\frac{x+F(x)}2\)。\(H:[0,1]\to[0,1]\)
+是严格递增连续同胚，\(K=H(C)\) 的测度为 \(\frac12\)：\(C\)
+的互补区间总长为 \(1\)，\(F\) 在各互补区间上常值，所以它们的像区间总长为
+\(\frac12\)。
+
+在 \(K\) 内取不可测子集 \(A\)，令 \(B=H^{-1}(A)\subseteq C\)。因 \(C\)
+零测，\(B\) Lebesgue 可测。令 \(g=\mathbf1_B\)
+为全实轴上的可测函数，\(f=H^{-1}\) 为 \([0,1]\) 上的连续函数。则
+\(g(f(x))=\mathbf1_A(x)\) 不可测。故 Borel
+代表虽然几乎处处相等，也不能在任意复合中随便替换：内层原像可能把零测例外集变成正测度集，甚至把其子集拉成不可测集。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.8 例题与反例]{3.1.8 例题与反例}\label{ux4f8bux9898ux4e0eux53cdux4f8b}
+
+\begin{sboxenv}{inkgray}{例 3.1.1（连续与单调函数）}
+可测集上的相对连续实函数可测；区间上的单调实函数 Borel 可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 相对连续函数的开集原像是 \(E\cap U\)，\(U\)
+为欧氏开集，所以 Lebesgue
+可测。单调函数的严格上水平集是区间中的一个端段、全域或空集；端点是否包含不影响
+Borel 性。
+
+\begin{sboxenv}{inkgray}{例 3.1.2（可测性不限制不连续点的数量）}
+\(\mathbf1_{\mathbb Q}\) 是处处不连续的可测简单函数，且
+\(\mathbf1_{\mathbb Q}=0\) a.e.。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} \(\mathbb Q\) 可数故为 Borel
+零集，特征函数可测。任一邻域兼有有理数和无理数，函数值在 \(0,1\)
+间变化，故每点都不连续。
+
+\begin{sboxenv}{inkgray}{例 3.1.3（不可数上确界可失去可测性）}
+取不可测集 \(A\subseteq[0,1]\)，对每个 \(t\in A\) 令
+\(f_t=\mathbf1_{\{t\}}\)。各 \(f_t\) Borel 可测，但
+\(\sup_{t\in A}f_t=\mathbf1_A\) 不可测。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 单点集闭，故各函数可测；逐点检查上确界即得等式。定理 3.1.7
+中``可数''正是将水平集保持在 \(\sigma\)-代数中的关键。
+
+\begin{sboxenv}{inkgray}{例 3.1.4（逐点逼近不自动一致）}
+\(f(x)=\frac1x\) 在 \((0,1]\)
+上可测，每点有限，能被简单函数逐点逼近，却不能被简单函数一致逼近。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{解：} 连续性保证可测，推论 3.1.12 保证逐点逼近；若一致逼近，则
+\(f\) 有界，与 \(f(x)\to+\infty\) 当 \(x\downarrow0\) 矛盾。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.9
+教材练习题与完整解答]{3.1.9
+教材练习题与完整解答}\label{ux6559ux6750ux7ec3ux4e60ux9898ux4e0eux5b8cux6574ux89e3ux7b54}
+
+以下按教材练习题 3.1
+原题号排列。为便于独立阅读，对记号和叙述作等价整理；第 6
+题``极限允许无穷值''，第 15 题的单调方向另作明确辨析。
+
+\Needspace{9\baselineskip}\subsection{问题 1}\label{ux95eeux9898-1}
+
+设 \(f:E\to\mathbb R\)，\(E\) 可测。证明：\(f\) 可测当且仅当对每个有理数
+\(r\)，\(\{f\ge r\}\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 必要性由定理 3.1.2。反之，任意实数 \(a\) 满足
+\(\{f>a\}=\bigcup_{r\in\mathbb Q,\,r>a}\{f\ge r\}\)；若 \(f(x)>a\)，在
+\((a,f(x))\) 中选有理数即可证明反向包含。因此所有严格上水平集可测。
+
+\Needspace{9\baselineskip}\subsection{问题 2}\label{ux95eeux9898-2}
+
+设 \(f:[a,b]\to\mathbb R\)，对每个 \([\alpha,\beta]\subset(a,b)\)，\(f\)
+在该闭子区间上可测。证明 \(f\) 在 \([a,b]\) 上可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 若 \(a=b\)，单点上的函数可测。若 \(a<b\)，令
+\(E_n=[a+\frac{b-a}{n+2},b-\frac{b-a}{n+2}]\)，则
+\((a,b)=\bigcup_{n\ge1}E_n\)。由可数拼接，\(f\) 在 \((a,b)\)
+上可测；端点 \(\{a,b\}\) 是可测零集，再拼接即可。
+
+\Needspace{9\baselineskip}\subsection{问题 3}\label{ux95eeux9898-3}
+
+若 \(f:E\to\mathbb R\) 可测，证明每个等值层 \(\{f=a\}\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：}
+\(\{f=a\}=\{f\ge a\}\setminus\{f>a\}\)，两项均可测。也可写为
+\(\bigcap_{n\ge1}\{|f-a|<2^{-n}\}\)。
+
+\Needspace{9\baselineskip}\subsection{问题 4}\label{ux95eeux9898-4}
+
+对 \(x\in[0,1)\) 取不以无限个 \(9\) 结尾的十进制展开
+\(x=0.d_1d_2\cdots\)，令 \(f(x)=\max_{j\ge1}d_j(x)\)，并令
+\(f(1)=1\)。证明 \(f\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 对 \(x<1\)，
+
+\begin{equation*}
+d_j(x)=\lfloor10^jx\rfloor-10\lfloor10^{j-1}x\rfloor.
+\tag{3.1.11}
+\end{equation*}
+
+取整函数的水平集为区间，故 Borel 可测，因而各 \(d_j\)
+可测。数字只在有限集合 \(\{0,\ldots,9\}\) 中取值，所以 \(\sup_jd_j\)
+必为某位数字达到的最大值。由可数上确界结论，\(f\) 在 \([0,1)\)
+上可测；在单点 \(1\) 上赋值不影响可测性。排除无限尾 \(9\)
+恰使式（3.1.11）与约定展开一致。
+
+\Needspace{9\baselineskip}\subsection{问题 5}\label{ux95eeux9898-5}
+
+设 \(f:E\to\mathbb R\) 可测。证明任意开集、闭集、\(G_\delta\)
+集、\(F_\sigma\) 集及 Borel 集的原像均可测。
+
+\Needspace{4\baselineskip}\textbf{证明：}
+\(\mathcal D=\{B\subseteq\mathbb R:f^{-1}(B)\text{ 可测}\}\)
+是包含所有开半直线的 \(\sigma\)-代数，故包含全部 Borel
+集。题中前四类均为 Borel 集，因此一次包含证明覆盖所有情形。
+
+\Needspace{9\baselineskip}\subsection{问题 6}\label{ux95eeux9898-6}
+
+可测函数列 \(f_n\) 在 \(E\) 上逐点收敛于广义实值函数 \(f\)。证明
+\(\{f=\pm\infty\}\) 及每个 \(\{f\le c\}\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 由定理 3.1.7，\(f=\limsup_n f_n\)
+可测，再由（3.1.2）得到两个无穷值层。也可直接展开量词：
+
+\begin{equation*}
+\{f\le c\}=\bigcap_{k\ge1}\bigcup_{N\ge1}\bigcap_{n\ge N}\{f_n<c+2^{-k}\}.
+\tag{3.1.12}
+\end{equation*}
+
+若 \(f\le c\)，收敛保证每个严格上界最终成立；若右侧成立，取极限得
+\(f\le c+2^{-k}\) 对所有 \(k\) 成立，故
+\(f\le c\)。无穷值同样符合该论证。
+
+\Needspace{9\baselineskip}\subsection{问题 7}\label{ux95eeux9898-7}
+
+设 \(f:E\to\mathbb R\) 可测，\(h:\mathbb R\to\mathbb R\) Borel
+可测。证明 \(h\circ f\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 对每个实数
+\(a\)，\(\{h(f)>a\}=f^{-1}(\{y:h(y)>a\})\)，括号中的集合是 Borel
+集，应用问题 5 即得。
+
+\Needspace{9\baselineskip}\subsection{问题 8}\label{ux95eeux9898-8}
+
+若问题 7 中的 \(h\) 仅要求 Lebesgue 可测，结论是否成立？
+
+\Needspace{4\baselineskip}\textbf{解：} 不成立。取 §3.1.7 中的 \(H,C,K,A,B\)，令
+\(f=H^{-1}\)、\(h=\mathbf1_B\)，则 \(f\) 连续，\(h\) Lebesgue 可测，但
+\(h\circ f=\mathbf1_A\) 不可测。关键在于 \(f\) 的定义只保证 Borel
+集的原像可测，不保证所有 Lebesgue 集的原像可测。
+
+\Needspace{9\baselineskip}\subsection{问题 9}\label{ux95eeux9898-9}
+
+设实函数 \(f\) 的平方 \(f^2\) 可测，且 \(A=\{f>0\}\) 可测。证明 \(f\)
+可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} \(u=\sqrt{f^2}=|f|\) 可测，且
+\(f=u\mathbf1_A-u\mathbf1_{E\setminus A}\)，因此可测。单有 \(f^2\)
+可测不足：若 \(V\) 不可测，令 \(f=1\) 于 \(V\)、\(f=-1\) 于其余点，则
+\(f^2\equiv1\) 可测而 \(f\) 不可测。
+
+\Needspace{9\baselineskip}\subsection{问题 10}\label{ux95eeux9898-10}
+
+设 \(f\) 为全实轴上的 Lebesgue（或
+Borel）可测实函数，\(\alpha\in\mathbb R\)。证明 \(f(\alpha x)\)
+具有相同的可测性。
+
+\Needspace{4\baselineskip}\textbf{证明：} 若 \(\alpha=0\)，它是常函数。若
+\(\alpha\ne0\)，任一水平集为
+\(\{x:f(\alpha x)>a\}=\alpha^{-1}\{y:f(y)>a\}\)。线性同胚保持 Borel
+集，非零伸缩保持 Lebesgue 可测集，故两种结论分别成立。Lebesgue
+情形使用的是伸缩的测度性质，不能只引用连续复合。
+
+\Needspace{9\baselineskip}\subsection{问题 11}\label{ux95eeux9898-11}
+
+设 \(f\) 为全实轴上的 Lebesgue（或 Borel）可测实函数。证明
+\(f(x^2)\)、\(f(x^3)\) 及 \(f(\frac1x)\) 可测，其中最后一个函数在
+\(x=0\) 处规定为 \(0\)。
+
+\Needspace{4\baselineskip}\textbf{证明：} Borel 情形由连续映射的 Borel
+原像性质立即得到，倒数在两半轴上处理，再拼接零点。Lebesgue
+情形先作一个局部论证。若 \(\phi\) 在区间 \(I\) 上是同胚，且
+\(\phi^{-1}\) 局部 Lipschitz，则对值域内任意 Lebesgue 可测集 \(M\)，写
+\(M=B\cup N\)，其中 \(B\) 为 Borel 集、\(N\)
+为零测集的子集。\(\phi^{-1}(B)\) 为相对 Borel 集，\(\phi^{-1}(N)\)
+零测：用可数个使逆映射 Lipschitz 的紧子区间覆盖值域，同维 Lipschitz
+映射保持零测性。于是 \(\phi^{-1}(M)\) 可测。
+
+对平方映射，在正、负半轴分别取逆
+\(\pm\sqrt y\)；对立方映射，避开零点取逆
+\(\sqrt[3]y\)；对倒数映射，在两半轴上取逆
+\(\frac1y\)。这些逆映射在避开零的紧区间上导数有界，因中值定理而
+Lipschitz。用区间 \([\frac1n,n]\) 及 \([-n,-\frac1n]\)
+覆盖相应半轴，局部结论适用，再添加单点零即可。此题的正确性依赖这些特定映射的性质，并不否定问题
+8。
+
+\Needspace{9\baselineskip}\subsection{问题 12}\label{ux95eeux9898-12}
+
+（1）证明闭区间上的连续函数、单调函数和阶梯函数均 Borel 可测。（2）证明
+\(\mathbb R^d\) 的 Lebesgue 可测集上的相对连续实函数 Lebesgue 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：}
+连续函数的开集原像为相对开集；单调函数的上水平集为端段，均为 Borel
+集。阶梯函数在有限个区间及端点上分段常值，由有限拼接可测。对（2），相对开集形如
+\(E\cap U\)，其中 \(U\) 为开集，两者都 Lebesgue
+可测，故所有开集原像可测。
+
+\Needspace{9\baselineskip}\subsection{问题 13}\label{ux95eeux9898-13}
+
+设 \(f\) 在 \([a,b]\) 上可导，端点导数按相应单侧导数理解。证明 \(f'\)
+可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 可导蕴含连续。对 \(x\in(a,b)\)，令
+\(h_n(x)=\min\{\frac1n,\frac{b-x}{2}\}>0\)，并定义
+
+\begin{equation*}
+q_n(x)=\frac{f(x+h_n(x))-f(x)}{h_n(x)}.
+\tag{3.1.13}
+\end{equation*}
+
+各 \(h_n\) 连续且正，\(x+h_n(x)\in(a,b)\)，故各 \(q_n\) 连续于
+\((a,b)\)。因 \(h_n(x)\to0\)，逐点有 \(q_n(x)\to f'(x)\)，所以 \(f'\)
+在开区间上 Borel 可测。两个端点的导数为固定实值，单点拼接后仍 Borel
+可测。本证明确保差商始终在定义域内。
+
+\Needspace{9\baselineskip}\subsection{问题 14}\label{ux95eeux9898-14}
+
+设 \(\Phi:\mathbb R^2\to\mathbb R\) 连续，\(g_1,g_2:[a,b]\to\mathbb R\)
+Lebesgue 可测。证明 \(\Phi(g_1,g_2)\) 可测。
+
+\Needspace{4\baselineskip}\textbf{证明：} 令 \(G=(g_1,g_2)\)。对有理端点矩形
+\(Q=(r_1,s_1)\times(r_2,s_2)\)，\(G^{-1}(Q)=\{r_1<g_1<s_1\}\cap\{r_2<g_2<s_2\}\)
+可测。任意平面开集为可数个这种矩形的并，所以 \(G\)
+的开集原像可测。再取开集 \(\Phi^{-1}((c,\infty))\)，即知
+\(\{\Phi(G)>c\}\) 可测。
+
+\Needspace{9\baselineskip}\subsection{问题 15}\label{ux95eeux9898-15}
+
+设 \(f,g\) 为 \((0,1)\) 上的 Lebesgue 可测实函数，且对每个
+\(t\in\mathbb R\) 都有
+
+\begin{equation*}
+m(\{f>t\})=m(\{g>t\}).
+\tag{3.1.14}
+\end{equation*}
+
+讨论它们单调且左连续时能否推出逐点相等。
+
+\begin{sboxenv}{warm}{题意辨析：必须固定相同的单调方向}
+教材写作``\(f,g\)
+都为单调且左连续的函数''。若允许一增一减，则结论不成立：\(f(x)=x\)、\(g(x)=1-x\)
+均连续、单调且具有相同上水平集测度，却不逐点相等。以下证明两者同为单调不减或同为单调不增时的结论。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 先设两者单调不减。若某个 \(x_0\) 满足
+\(f(x_0)<g(x_0)\)，选 \(f(x_0)<t<g(x_0)\)。单调性使 \(f(x)<t\) 于
+\(x\le x_0\)，从而 \(m(\{f>t\})\le1-x_0\)。由 \(g\) 的左连续性，存在
+\(0<\delta<x_0\)，使 \(g(x)>t\) 于
+\((x_0-\delta,x_0]\)；再由单调性，\(g(x)>t\) 于整个
+\((x_0-\delta,1)\)，故
+\(m(\{g>t\})\ge1-x_0+\delta\)，与（3.1.14）矛盾。交换 \(f,g\)
+排除反向不等式，得到逐点相等。
+
+若两者单调不增，仍设 \(f(x_0)<t<g(x_0)\)。由 \(g\) 的单调性，\(g(x)>t\)
+于 \((0,x_0]\)，故 \(m(\{g>t\})\ge x_0\)。由 \(f\)
+的左连续性及单调性，存在 \(\delta>0\) 使 \(f(x)<t\) 于
+\((x_0-\delta,1)\)，故
+\(m(\{f>t\})\le x_0-\delta\)，再次矛盾。交换两者即可。
+
+左连续性也不可省：令两函数在 \(x<\frac12\) 时为 \(0\)，在 \(x>\frac12\)
+时为 \(1\)，但分别在 \(\frac12\) 处取
+\(0\)、\(1\)。它们都单调不减且满足（3.1.14），却在该点不同。
+
+\Needspace{10\baselineskip}\section[\S{}3.1.10
+方法回顾与下一节]{3.1.10
+方法回顾与下一节}\label{ux65b9ux6cd5ux56deux987eux4e0eux4e0bux4e00ux8282}
+
+可测性证明的三个入口是：直接写水平集；把目标表达式写成 Borel
+或连续运算的复合；构造可测简单函数列并取极限。前两种适合局部代数运算，最后一种把一般函数送回有限分块，是下一章定义积分的起点。
+
+每次使用这些结论，都需核对四个条件：集合运算是否可数，广义实值运算是否有定义，复合的外层是否
+Borel
+可测，零测集修改所处的测度空间是否完备。有限值不等于有界；几乎处处不等于处处；逐点收敛不等于一致收敛。
+
+下一节 §3.2 将比较几乎处处、一致、近一致和依测度收敛，证明 Egorov
+定理、Riesz 子列定理及依测度 Cauchy 判据；本节不提前使用这些结论。
+
+\end{document}

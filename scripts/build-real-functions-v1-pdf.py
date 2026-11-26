@@ -4,8 +4,12 @@ from pathlib import Path
 import re, subprocess, shutil, argparse
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3','1.4','1.5','2.1','2.2','2.3','2.4','2.5'])
+parser.add_argument('section',nargs='?',default='1.1',choices=['1.1','1.2','1.3','1.4','1.5','2.1','2.2','2.3','2.4','2.5','3.1'])
 section=parser.parse_args().section
+if section=='3.1':
+ import runpy
+ runpy.run_path(str(ROOT/'scripts/build-real-functions-v1-s-pdf.py'),run_name='__main__')
+ raise SystemExit
 chapter,part=map(int,section.split('.'))
 source=(ROOT/f'content/notes/real-functions-v1/ch{chapter:02d}-s{part}.md').read_text()
 title=re.search(r'^title: "([^"]+)"',source,re.M).group(1)
