@@ -27,7 +27,7 @@ import {availableProblemYears,ProblemYearPage} from '../src/ProblemYears';
 import {populatedCollections,collectionRoute,collectionDestination} from '../src/ProblemCollections';
 import {finalExamEntries,cohortRoute,cohortDestination} from '../src/FinalExamDirectory';
 import {sentenceGroups,SentenceYearPage} from '../src/SentenceDirectory';
-import {readingGroups,ReadingIndexPage,ReadingYearPage} from '../src/ReadingDirectory';
+import {readingGroups,readingYearUrl,ReadingIndexPage,ReadingYearPage} from '../src/ReadingDirectory';
 
 import {readingAnswerGroups,readingAnswersIndexUrl,readingAnswersYearUrl,ReadingAnswersIndexPage,ReadingAnswersYearPage} from '../src/ReadingAnswersDirectory';
 
@@ -130,7 +130,13 @@ for(const exam of practiceExams)await page(`english/writing-practice/${exam.year
 await page(readingAnswersIndexUrl.slice(1),'真题阅读解答',<ReadingAnswersIndexPage items={items}/>);
 for(const group of readingAnswerGroups(items))await page(readingAnswersYearUrl(group.year).slice(1),`${group.year} 年真题阅读解答`,<ReadingAnswersYearPage items={items} year={group.year}/>);
 await page('english/translation/','阅读与直译',<ReadingIndexPage items={items}/>);
-for(const group of readingGroups(items))await page(`english/translation/years/${group.year}/`,`${group.year} 年阅读与直译`,<ReadingYearPage items={items} year={group.year}/>);
+for (const group of readingGroups(items)) {
+  const year = group.year;
+  await page(readingYearUrl(year).slice(1), `${year} 年阅读与直译`, <ReadingYearPage items={items} year={year}/>);
+  for (const {kind} of group.resources.filter(resource => resource.kind !== '阅读原文')) {
+    await page(readingYearUrl(year, kind).slice(1), `${year} 年${kind}`, <ReadingYearPage items={items} year={year} kind={kind}/>);
+  }
+}
 await page('search/','搜索书房',<Collection items={items}/>,true);
 await page('manage/','管理资料',<Manage items={items} storage={storage}/>,true);
 await page('about/','关于这间书房',<About/>);

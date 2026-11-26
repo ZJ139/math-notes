@@ -25,6 +25,16 @@ test('all twenty-nine years expose the original, translation and vocabulary PDFs
     for(const {entry,kind} of group.resources){
       const source=manifest.files.find((file:any)=>file.year===group.year&&file.kind===kind);
       assert.ok(source);assert.equal(entry.attachmentPath,source.path);
+      const modeUrl = readingYearUrl(group.year, kind);
+      assert.ok(html.includes(`href="${modeUrl}"`));
+      const reader = renderToStaticMarkup(createElement(ReadingYearPage,{items,year:group.year,kind}));
+      for (let text = 1; text <= 4; text++) {
+        assert.ok(reader.includes(`href="#text-${text}"`));
+        assert.ok(reader.includes(`id="text-${text}"`));
+      }
+      if (kind === '阅读原文') assert.equal((entry.body.match(/^## Text /gm) || []).length, 4);
+      if (kind === '阅读直译') assert.ok(reader.includes('<strong>直译</strong>'));
+      if (kind === '阅读单词') assert.equal((reader.match(/<table>/g) || []).length, 8);
       const data=await readFile(new URL('../content/'+source.path,import.meta.url));
       assert.equal(data.length,source.bytes);
       assert.equal(createHash('sha256').update(data).digest('hex'),source.sha256);
