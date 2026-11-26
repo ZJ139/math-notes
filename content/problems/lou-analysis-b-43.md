@@ -12,7 +12,7 @@ updated_at: "2026-11-25"
 
 第四十三批接续 B295，完成 11.5.B 第 4 题、11.6.B 第 1—3 题、11.7.B 第 1 题及 12.1.B 第 1—2 题。原题见下册题册 PDF 第 38—41 页（印刷第 36—39 页）；B300 所引定理已核对完整教材第 343—346 页。七题均无星号、无附图。证明保留必要的条件、估计及极限交换依据。
 
-[上一批 B289—B295](/problems/b4a16b6f4b1d292220be481a/) · [第十一章索引](/problems/collections/lou-analysis/chapters/11/) · [第十二章索引](/problems/collections/lou-analysis/chapters/12/) · [B 组总目录](/problems/collections/lou-analysis/)
+[上一批 B289—B295](/problems/b4a16b6f4b1d292220be481a/) · [下一批 B303—B309](/problems/d56adfe81ae76fbd7cfa394a/) · [第十一章索引](/problems/collections/lou-analysis/chapters/11/) · [第十二章索引](/problems/collections/lou-analysis/chapters/12/) · [B 组总目录](/problems/collections/lou-analysis/)
 
 ## 题号导航
 
