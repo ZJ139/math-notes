@@ -698,3 +698,31 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
   .prose[data-page-style="s"] .s-box-body{orphans:3;widows:3}
   .prose[data-page-style="s"] .toc-list a{min-height:0}
 }
+
+/* Reading archive: a year opens the text, with the other editions alongside it. */
+[data-reading-directory] .sentence-year-grid>a,
+.english-primary>a[data-filter="translation"],
+.reading-year-page :is(.problem-year-switcher a,.reading-resource-card),
+.reading-editions a,.reading-passages a,.reading-downloads>summary,.reading-year-page .year-picker>summary,
+:is(.reading-edition,.article-shell[data-category="translation"]) .table-scroll:focus-visible{border-radius:8px}
+[data-reading-directory] .sentence-year-grid>a:is(:hover,:active,:focus-visible,[data-link-selected]),
+.reading-year-page :is(.problem-year-switcher a,.reading-editions a,.reading-passages a):is(:hover,:focus-visible,:active,[aria-current=page],[data-link-selected]){
+  color:var(--link-focus);border-color:var(--link-focus);background:rgb(212 117 85 / 9%)
+}
+[data-reading-directory] .sentence-year-grid>a:is(:hover,:active,:focus-visible,[data-link-selected])>span{color:inherit}
+.reading-editions,.reading-passages{display:flex;flex-wrap:wrap;gap:8px}
+.reading-editions a,.reading-passages a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:5px 16px}
+.reading-editions a{border:1px solid var(--line);background:#fff}
+.reading-passages{margin-top:12px}
+.reading-passages a{font-size:17px;border:1px solid transparent}
+.reading-edition{max-width:42.6em}
+.reading-edition .prose{padding-top:0}
+:is(.reading-edition,.article-shell[data-category="translation"]) .prose>h2{text-align:left;scroll-margin-top:24px}
+:is(.reading-edition,.article-shell[data-category="translation"]) .prose>p{text-indent:0;line-height:1.6;margin-block:.65em}
+:is(.reading-edition,.article-shell[data-category="translation"]) .prose>p>strong:first-child{color:var(--link-focus)}
+.reading-downloads{margin-block:24px;border-block:1px solid var(--line);padding-block:10px}
+.reading-downloads>summary{width:fit-content;padding:8px 4px;min-height:44px;cursor:pointer}
+.reading-downloads>summary:focus-visible,.reading-year-page .year-picker>summary:focus-visible{outline:2px solid var(--link-focus);outline-offset:2px}
+.reading-downloads .reading-resource-grid{margin-block:12px}
+.reading-downloads .reading-resource-card{gap:8px;padding:16px 20px}
+.reading-downloads a{text-decoration:underline;text-underline-offset:.2em}
