@@ -6,7 +6,7 @@ import {parse} from 'yaml';
 import {sections,validCategory,type Entry,type Section} from './model';
 import {MAX_FILE_BYTES} from '../public/storage-policy.js';
 
-export type PublicEntry = Entry & {sourcePath:string; attachmentPath:string|null; attachmentUrl?:string; editUrl?:string; mathFont?:'cm-bea'|'cm-ams'; readingTopics?:string[]; problemIds?:string[]};
+export type PublicEntry = Entry & {sourcePath:string; attachmentPath:string|null; attachmentUrl?:string; editUrl?:string; mathFont?:'cm-bea'|'cm-ams'; pageStyle?:'s'; readingTopics?:string[]; problemIds?:string[]};
 const allowed = new Set(['.md','.txt','.pdf','.zip','.rar','.7z']);
 export function safeRelative(value:string) {
   if(!value || value.includes('\\') || value.includes('\0') || path.posix.isAbsolute(value) || value.split('/').some(p=>p==='..'||p==='.'||p.startsWith('.')) || /^[a-z]:/i.test(value)) throw new Error(`不安全的资料路径：${value}`);
@@ -70,6 +70,8 @@ export async function loadEntries(root:string):Promise<PublicEntry[]> {
     if(readingTopics.length&&(section!=='english'||category!=='reading-types'))throw new Error('reading_topics 仅用于英语 reading-types 总专题');
     const mathFont=str('math_font','cm-bea');
     if(mathFont && mathFont!=='cm-bea'&&mathFont!=='cm-ams')throw new Error(`${sourcePath} 的 math_font 未知：${mathFont}`);
+    const pageStyle=str('page_style');
+    if(pageStyle && pageStyle!=='s')throw new Error(`${sourcePath} 的 page_style 未知：${pageStyle}`);
     const source_url=str('source_url');
     if(source_url && !/^https?:\/\//i.test(source_url))throw new Error('来源链接必须以 https:// 或 http:// 开头');
     if(source_url)new URL(source_url);
@@ -81,7 +83,7 @@ export async function loadEntries(root:string):Promise<PublicEntry[]> {
     const attachmentPath=str('attachment')||(!['.md','.txt'].includes(ext)?sourcePath:null);
     const attachmentInfo=attachmentPath?await stat(path.join(root,attachmentPath)):null;
     if(attachmentInfo&&attachmentInfo.size>MAX_FILE_BYTES)throw new Error(`单个文件不能超过 500 MB：${attachmentPath}`);
-    entries.push({id:createHash('sha256').update(sourcePath).digest('hex').slice(0,24),owner_id:'',section:section as Section,category,mathFont:mathFont==='cm-bea'||mathFont==='cm-ams'?mathFont:undefined,readingTopics,problemIds,title:str('title',path.basename(sourcePath,path.extname(sourcePath))),description:str('description'),subject:str('subject'),tags:JSON.stringify(tags),body,source_url,status:'published',file_key:attachmentPath,file_name:attachmentPath?path.basename(attachmentPath):null,file_type:null,file_size:attachmentInfo?.size??null,version:1,created_at:date(meta.created_at,updated_at),updated_at,deleted_at:null,sourcePath,attachmentPath});
+    entries.push({id:createHash('sha256').update(sourcePath).digest('hex').slice(0,24),owner_id:'',section:section as Section,category,mathFont:mathFont==='cm-bea'||mathFont==='cm-ams'?mathFont:undefined,pageStyle:pageStyle==='s'?'s':undefined,readingTopics,problemIds,title:str('title',path.basename(sourcePath,path.extname(sourcePath))),description:str('description'),subject:str('subject'),tags:JSON.stringify(tags),body,source_url,status:'published',file_key:attachmentPath,file_name:attachmentPath?path.basename(attachmentPath):null,file_type:null,file_size:attachmentInfo?.size??null,version:1,created_at:date(meta.created_at,updated_at),updated_at,deleted_at:null,sourcePath,attachmentPath});
   }
   return entries.sort((a,b)=>b.updated_at.localeCompare(a.updated_at)||a.sourcePath.localeCompare(b.sourcePath));
 }
