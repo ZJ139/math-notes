@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
 \usepackage{amsmath,amssymb}
-\usepackage[no-math]{fontspec}
+\usepackage{assets/tex/cm-bea}
 \usepackage{xeCJK}
 \setmainfont{Latin Modern Roman}
 \setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
@@ -12,6 +12,7 @@
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
 \usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
 \tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
 \definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
@@ -29,13 +30,13 @@
 \begin{center}{\LARGE\bfseries 实变函数-v1\par}\vspace{7pt}
 {\Large\bfseries 3.3 可测函数的构造\par}\vspace{6pt}
 {第三章\quad 可测函数\par}\end{center}
-\textbf{主线：}用测度正则性把值域的分层换成彼此分离的紧集，用一致逼近得到 Lusin 定理，再用延拓和可求和的误差集构造连续函数列及 Borel 代表。
+\textbf{主线：}在简单函数的每个值层里取紧集，用 Egorov 定理使逼近在同一个闭集上一致，再用 Tietze 延拓把闭集上的原值保留到全空间的连续函数中。
 \begin{center}
 \begin{tikzpicture}[node distance=5mm and 5mm,box/.style={draw=navy!65,fill=navy!3,rounded corners=1pt,minimum width=34mm,minimum height=10mm,align=center,font=\small},>=Stealth]
 \node[box](a){简单函数分层};\node[box,right=of a](b){大闭集上连续};\node[box,right=of b](c){全空间延拓};\node[box,right=of c,fill=teal!5](d){Borel 代表};
 \draw[->](a)--(b);\draw[->](b)--(c);\draw[->](c)--(d);
 \end{tikzpicture}\end{center}
-本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—207页。沿用教材定理、推论与例题编号，附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。
+本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—208页。教材例3.2.5—3.2.10及相关原题保留原编号，另附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。
 \begingroup\small\setlength{\parskip}{0pt}\renewcommand{\addvspace}[1]{\vskip 2pt}\tableofcontents\endgroup
 
 \Needspace{10\baselineskip}\section[\S{}3.3.1
@@ -106,7 +107,7 @@ F=L\cap\bigcap_{j=1}^{\infty}K_j .
 \end{equation*}
 
 作为紧集 \(L\) 的闭子集，\(F\) 紧。由 \(m(E\setminus E_0)=0\)
-及可数次可加性，\(m(E\setminus F)\le\frac{\delta}{4}+\frac{\delta}{4}+\sum_{j\ge1}\delta 2^{-j-2}=\frac{3\delta}{4}<\delta\)。在
+及可数并的测度上界，\(m(E\setminus F)\le\frac{\delta}{4}+\frac{\delta}{4}+\sum_{j\ge1}\delta 2^{-j-2}=\frac{3\delta}{4}<\delta\)。在
 \(F\) 上，每个 \(s_j\) 连续，而 \(F\subset A\) 保证一致收敛。因此
 \(f|_F\) 连续。
 
@@ -129,32 +130,60 @@ F=L\cap\bigcap_{j=1}^{\infty}K_j .
 
 \end{sboxenv}
 
+\begin{sboxenv}{navy}{性质（Lusin 定理的逆命题）}
+设 \(E\) 为 Lebesgue 可测集，\(f:E\to\overline{\mathbb R}\)。若对每个
+\(\delta>0\) 都存在闭集 \(F\subset E\)，满足
+\(m(E\setminus F)<\delta\)，且 \(f|_F\) 是实值连续函数，则 \(f\)
+Lebesgue 可测并且几乎处处有限。此处允许 \(m(E)=\infty\)。
+
+\end{sboxenv}
+
+\Needspace{4\baselineskip}\textbf{证明：} 对每个 \(n\) 按 \(\delta=2^{-n}\) 取 \(F_n\)，令
+\(S=\bigcup_n F_n\)。余集 \(N=E\setminus S\) 可测，且对每个 \(n\) 都有
+\(m(N)\le m(E\setminus F_n)<2^{-n}\)，故 \(m(N)=0\)。所有无穷值点都落在
+\(N\) 内。对任意实数 \(t\)，由相对连续性可取开集 \(U_n\)，使
+\(F_n\cap\{f>t\}=F_n\cap U_n\)。于是 \begin{equation*}
+\{x\in E:f(x)>t\}=\bigcup_{n\ge1}(F_n\cap U_n)\ \cup\ \{x\in N:f(x)>t\}.
+\end{equation*} 前一项是 Borel 集，后一项由 Lebesgue
+测度的完备性可测。所有严格上水平集均可测，证明完毕。
+
+若把结论改为 Borel 可测，取 Cantor 零集 \(C\) 的非 Borel 子集
+\(A\)。用测度小于 \(\delta\) 的开集覆盖 \(C\)，则 \(\mathbf1_A\)
+在闭补集上恒为零，而 \(A=\{\mathbf1_A>\frac{1}{2}\}\) 不是 Borel
+集。有限值要求也有实质作用：若 \(f=+\infty\)
+的点集有正测度，每个实值函数的差异集都包含这一层。
+
 \clearpage\section[\S{}3.3.3
 连续延拓与紧支逼近]{3.3.3
 连续延拓与紧支逼近}\label{ux8fdeux7eedux5ef6ux62d3ux4e0eux7d27ux652fux903cux8fd1}
 
 \begin{sboxenv}{navy}{定理 3.2.11（全空间的连续替代）}
 在 Lusin 定理的条件下，对任意 \(\delta>0\)，存在
-\(h\in C(\mathbb R^d)\)，使 \(m(\{x\in E:h(x)\ne f(x)\})<\delta\)。若
-\(|f|\le M\)，可使全空间上 \(|h|\le M\)；若 \(|f|<M\)，可使全空间上
-\(|h|<M\)。
+\(h\in C(\mathbb R^d)\)，使 \(m(\{x\in E:h(x)\ne f(x)\})<\delta\)。给定
+\(M\ge0\)，若 \(|f|\le M\)，可使全空间上 \(|h|\le M\)。给定 \(M>0\)，若
+\(|f|<M\)，可使全空间上 \(|h|<M\)。
 
 \end{sboxenv}
 
-\Needspace{4\baselineskip}\textbf{证明：} 取定理 3.2.10 的闭集 \(F\)。由 §1.5 的实值 Tietze
-延拓定理，\(f|_F\) 有一个全空间连续延拓 \(h\)。在 \(F\)
-上两者完全一致，故
+\Needspace{4\baselineskip}\textbf{证明：} 由定理 3.2.10 选闭集 \(F\)。若 \(F=\varnothing\)，取
+\(h=0\) 即可。先设 \(|f|\le M\)。§1.5 定理 1.5.9 将 \(f|_F\) 延拓为
+\(H:\mathbb R^d\to[-M,M]\)。若在 \(F\) 上有严格界 \(|f|<M\)，取
+\(h(x)=\frac{H(x)}{1+\operatorname{dist}(x,F)}\)。在 \(F\)
+上分母等于一，在闭集外分母严格大于一，因此 \(h\)
+既保留原值又处处满足严格界。若只给定几乎处处的界，可先删去违背该界的零集，再从留下的可测集内取闭集
+\(F\)。
+
+一般情形中，\(f|_F\) 实值连续，却可能无界。按 §1.5 定理 1.5.10
+的构造，先用 \(\phi(t)=\frac{t}{1+|t|}\) 把实轴映到 \((-1,1)\)，对
+\(\phi\circ f|_F\) 作上述保持严格界的延拓，得
+\(v:\mathbb R^d\to(-1,1)\)。令
+\(h(x)=\frac{v(x)}{1-|v(x)|}\)，分母处处为正，故 \(h\) 连续且在 \(F\)
+上等于 \(f\)。所有情况下都有
 
 \begin{equation*}
-\{x\in E:h(x)\ne f(x)\}\subseteq E\setminus F .
+\{x\in E:h(x)\ne f(x)\}\subseteq E\setminus F,\qquad m(E\setminus F)<\delta .
 \tag{3.3.2}
 \end{equation*}
-
-若要求 \(|h|\le M\)，把延拓截断到 \([-M,M]\) 即可。严格界也能保留：当
-\(M>0\) 且 \(F\) 非空时，先取得闭界延拓 \(H\)，再令
-\(h(x)=\frac{H(x)}{1+\operatorname{dist}(x,F)}\)。在 \(F\) 上
-\(h=f\)，其余点分母大于 \(1\)，从而处处有 \(|h|<M\)。若 \(F\) 为空，取
-\(h=0\) 即可。
 
 \begin{sboxenv}{navy}{推论 3.2.2（紧支连续函数）}
 若 \(E\) 有界，定理 3.2.11 中可取
@@ -162,12 +191,12 @@ F=L\cap\bigcap_{j=1}^{\infty}K_j .
 
 \end{sboxenv}
 
-\Needspace{4\baselineskip}\textbf{证明：} 对有限测度的 \(E\)，前节已给出紧集 \(F\)。取 \(R>0\) 使
-\(F\subset B(0,R)\)。令 \(\psi(x)=\max(0,\min(1,R+1-|x|))\)，则
-\(0\le\psi\le1\)，\(\psi\) 在 \(F\) 上恒为 \(1\)，且在 \(|x|\ge R+1\)
-时为零。将定理中的延拓乘以 \(\psi\)，所得函数支集包含在闭球
-\(\overline B(0,R+1)\) 中，仍在 \(F\) 上等于
-\(f\)，也保持相应的界。有界可测集是有限测度集，教材表述随之得到。
+\Needspace{4\baselineskip}\textbf{证明：} 对有限测度的 \(E\)，定理 3.2.10 已给出紧集 \(F\)。取
+\(R>0\) 使 \(F\subset B(0,R)\)。令
+\(\psi(x)=\max(0,\min(1,R+1-|x|))\)，则 \(0\le\psi\le1\)，\(\psi\) 在
+\(F\) 上恒为 \(1\)，且在 \(|x|\ge R+1\) 时为零。将定理中的延拓乘以
+\(\psi\)，所得函数支集包含在闭球 \(\overline B(0,R+1)\) 中，仍在 \(F\)
+上等于 \(f\)，也保持相应的界。有界可测集是有限测度集，教材表述随之得到。
 
 \begin{sboxenv}{inkgray}{例 2（紧支条件的边界）}
 在 \(E=\mathbb R\) 上取 \(f\equiv1\)。任意 \(h\in C_c(\mathbb R)\)
@@ -210,6 +239,11 @@ m\!\left(\bigcap_{k\ge1}\bigcup_{j\ge k}D_j\right)
 
 \end{sboxenv}
 
+§3.1 定理 3.1.13
+已证明代表的存在性，做法是把简单函数的每个值层换成几乎处处相同的 Borel
+集。现在已有全空间连续的
+\(h_j\)，可以从它们本身读出一个代表，并明确它在哪些点取极限。
+
 \begin{sboxenv}{navy}{命题（由连续逼近构造处处有限的 Borel 代表）}
 若 \(f\) 在 Lebesgue 可测集 \(E\) 上可测且几乎处处有限，就存在处处有限的
 Borel 函数 \(g:\mathbb R^d\to\mathbb R\)，使 \(g=f\) 在 \(E\)
@@ -229,23 +263,14 @@ C=\bigcap_{r\ge1}\bigcup_{N\ge1}
 
 最内层的集合闭，所以 \(C\) 是全空间 Borel 集。令
 \(u_j=\mathbf1_C h_j\)，它们都是 Borel 函数。列 \(u_j\) 在 \(C\)
-上收敛，在 \(C\) 外恒为零，故处处有有限极限 \(g\)。为直接检验其 Borel
-性，对每个实数 \(t\) 写成
+上收敛，在 \(C\) 外恒为零，故处处有有限极限 \(g\)。由 §3.1
+的逐点极限定理对 Borel \(\sigma\)-代数的应用，\(g\) 为 Borel 函数。由
+(3.3.3)，在 \(E\) 中几乎每点都有 \(g=f\)。全空间上的收敛点集 \(C\)
+给出了拼接区域，即使 \(E\) 本身并非 Borel
+集也可这样构造。反过来，\(\{f>t\}\) 与 \(E\cap\{g>t\}\)
+的对称差包含在一个零测集内，完备性保证 \(f\) 可测。
 
-\begin{equation*}
-\{g>t\}=\bigcup_{r\ge1}\bigcup_{N\ge1}
-\bigcap_{j\ge N}\{u_j>t+\frac{1}{r}\}.
-\tag{3.3.5}
-\end{equation*}
-
-若 \(g>t\)，取 \(\frac{1}{r}<g-t\) 即得一侧包含；反向由最终严格不等式得
-\(g\ge t+\frac{1}{r}>t\)。由 (3.3.3)，在 \(E\) 中几乎每点都有
-\(g=f\)。这个构造在全空间判断 \(h_j\) 收敛，无须把可能非 Borel 的 \(E\)
-作为拼接区域。反过来，\(\{f>t\}\) 与 \(E\cap\{g>t\}\)
-的对称差包含在一个零测集内。Lebesgue
-测度完备，其零测集的任意子集都可测，故 \(f\) 可测。
-
-\begin{sboxenv}{inkgray}{例 3（代表可以不能逐点保留）}
+\begin{sboxenv}{inkgray}{例 3（Borel 代表可能改变点值）}
 由 §2.5，在零测 Cantor 集中存在非 Borel 子集 \(A\)。函数 \(\mathbf1_A\)
 为 Lebesgue 可测，零函数是它的 Borel 代表。若 Borel 函数在整个实线上与
 \(\mathbf1_A\) 逐点相等，则其大于 \(\frac{1}{2}\) 的水平集恰为非 Borel
@@ -302,6 +327,15 @@ f(x_0+h)-f(x_0)
 \(k\to\infty\)，故 \(f\) 在 \(x_0\)
 连续。对凸组合的系数，反复取中点得到所有二进有理数的凸性不等式；由已证连续性取极限，即得所有
 \(\lambda\in[0,1]\) 的凸性不等式。
+
+\textbf{教材注 3.2.3 与 3.2.4。} 可加函数若只知在一点 \(a\) 连续，由
+\(f(t)=f(a+t)-f(a)\) 即得它在零点连续，再用例 4
+的有理数逼近便得线性。在一般区间 \(I\)
+上，若中点凸实函数在每个闭子区间上有上界，例 5
+的倍增估计可用于每个内点，故它在区间内部连续。固定任意 \(x<y\) 属于
+\(I\)，对严格介于零和一之间的系数用二进有理数逼近，取极限时对应的点在
+\((x,y)\) 内，故凸性不等式对整个 \(I\)
+成立。若预先知道连续，直接对二进系数取极限即可。
 
 两个例子的可测性假设都能用同一构造检验。在含 \(1,\sqrt2\)
 的实数域对有理数域的 Hamel 基上，取 \(\sqrt2\) 的系数函数
@@ -366,7 +400,77 @@ Lebesgue 可测外函数 \(v\)，使 \(v\circ g\) 不可测。
 \clearpage\section[\S{}3.3.7 练习与解答]{3.3.7 练习与解答}\label{ux7ec3ux4e60ux4e0eux89e3ux7b54}
 
 教材练习题 3.2
-的十二题已在上一节按原题号给出。本节另列三道迁移练习，分别检验共同闭集、连续代表与有限测度条件。
+共十二题。下列四题直接用到本节的条件或构造，沿用教材原题号。全组题解见\href{https://zj139.github.io/math-notes/notes/3e0384d9521c7049c244a5ac/\#328-教材练习题与完整解答}{§3.2.8
+教材练习题与完整解答}。
+
+\Needspace{9\baselineskip}\subsection{教材练习 3.2 第 1
+题}\label{ux6559ux6750ux7ec3ux4e60-3.2-ux7b2c-1-ux9898}
+
+在测度空间中设 \(\mu(E)<\infty\)，\(f\) 在 \(E\)
+上可测且几乎处处有限。给定 \(\varepsilon>0\)，求有界可测函数 \(g\)，使
+\(\mu(\{x\in E:|f(x)-g(x)|>0\})<\varepsilon\)。
+
+\Needspace{4\baselineskip}\textbf{解：} 令 \(A_k=\{x\in E:|f(x)|>k\}\)。它们递减至无穷值层。因
+\(\mu(A_1)\le\mu(E)<\infty\)，上连续性给出 \(\mu(A_k)\to0\)。取 \(k\) 使
+\(\mu(A_k)<\varepsilon\)，在 \(A_k\) 上令 \(g=0\)，其余点令
+\(g=f\)。所得 \(g\) 可测，且 \(|g|\le k\)。在无限测度的实线上取
+\(f(x)=x\)，则每个有界 \(g\) 都在两条无穷长的尾部与 \(f\) 不同。此时定理
+3.2.11 仍适用，连续替代可以无界。
+
+\Needspace{9\baselineskip}\subsection{教材练习 3.2 第 4
+题}\label{ux6559ux6750ux7ec3ux4e60-3.2-ux7b2c-4-ux9898}
+
+设 \(G\subset\mathbb R^d\) 开，\(f:G\to\mathbb R\)。证明 \(f\) 在 \(G\)
+上几乎处处连续，当且仅当对每个实数 \(t\)，\(\{f>t\}\) 和 \(\{f<t\}\)
+中几乎每一点都是相应集合的内点。
+
+\Needspace{4\baselineskip}\textbf{证明：} 在连续点 \(x\)，若 \(f(x)>t\)，取误差
+\(\frac{1}{2}(f(x)-t)\) 即得包含 \(x\)
+的小球落在上水平集内。下水平集同理。反之，对每个有理数
+\(t\)，把两水平集中的非内点都收入一个零集，再取这些零集的可数并
+\(N\)。对 \(x\in G\setminus N\)，给定 \(\varepsilon>0\)，可取有理数
+\(p,q\) 使 \(f(x)-\varepsilon<p<f(x)<q<f(x)+\varepsilon\)。点 \(x\)
+同时是 \(\{f>p\}\) 和 \(\{f<q\}\) 的内点，两邻域的交中即有
+\(|f(y)-f(x)|<\varepsilon\)。这里邻域中的每个点都受控制。Lusin
+定理只控制闭集内的点，故 \(\mathbf1_{\mathbb Q}\) 满足 Lusin
+结论，却不满足本题的内点条件。
+
+\Needspace{9\baselineskip}\subsection{教材练习 3.2 第 5
+题}\label{ux6559ux6750ux7ec3ux4e60-3.2-ux7b2c-5-ux9898}
+
+设 \(f\) 是 \(\mathbb R\) 上 Lebesgue--Stieltjes 可测集 \(E\)
+上的可测函数。证明有全实线上的 Borel 函数 \(b\)，使
+\(m_g(\{x\in E:f(x)\ne b(x)\})=0\)。
+
+\Needspace{4\baselineskip}\textbf{证明：} 把 \(f\) 在 \(E\) 外补零得可测函数 \(u\)。§3.2 第 5
+题已由区间覆盖证明：对每个 \(m_g\) 可测集 \(A\)，有 Borel 集 \(B\) 和
+Borel 零集 \(Z\)，使
+\(A\mathbin\triangle B\subset Z\)。将此事实用于各有理数 \(q\) 的上水平集
+\(\{u>q\}\)，记所得集合为 \(B_q,Z_q\)。令
+\(b(x)=\sup\{q\in\mathbb Q:x\in B_q\}\)，空集上确界取 \(-\infty\)。因
+\(\{b>t\}=\bigcup_{q\in\mathbb Q,\,q>t}B_q\)，\(b\) 为广义实值 Borel
+函数。在零集 \(\bigcup_q Z_q\) 外，参与取上确界的恰是小于 \(u(x)\)
+的有理数，故 \(b=u\)。若 \(f\) 几乎处处有限，可将 \(b\)
+的两个无穷值层改为零。本题使用 \(m_g\) 自身的零集；(3.3.4) 则从 Lebesgue
+测度下的连续逼近得到代表。
+
+\Needspace{9\baselineskip}\subsection{教材练习 3.2 第 8
+题}\label{ux6559ux6750ux7ec3ux4e60-3.2-ux7b2c-8-ux9898}
+
+设 \([a,b]\) 上几乎处处有限的可测函数 \(f_k\) 几乎处处收敛于
+\(f\)（有限极限）。求可测集 \(E_n\)，使其并集有满测度，且 \(f_k\) 在每个
+\(E_n\) 上一致收敛于 \(f\)。
+
+\Needspace{4\baselineskip}\textbf{证明：} 删去不收敛点和各无穷值层所在的共同零集。对每个 \(n\)
+在剩下的有限测度集上用 Egorov 定理，得到可测集 \(H_n\)，其相对于
+\([a,b]\) 的补集测度小于 \(2^{-n}\)，且收敛在 \(H_n\) 上一致。取
+\(E_n=\bigcup_{j=1}^n H_j\)。给定精度，取前 \(n\)
+个一致收敛指标的最大值，便能同时控制 \(E_n\)
+上的误差。并集的补集测度对每个 \(n\) 都小于
+\(2^{-n}\)，所以为零。这里得到递增的好集；Lusin
+正向证明还要在好集内取紧核，才能使用连续延拓。
+
+\clearpage\section[\S{}3.3.8 迁移练习]{3.3.8 迁移练习}\label{ux8fc1ux79fbux7ec3ux4e60}
 
 \Needspace{9\baselineskip}\subsection{问题 1}\label{ux95eeux9898-1}
 
