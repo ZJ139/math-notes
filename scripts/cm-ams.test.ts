@@ -33,3 +33,10 @@ test('CM ams keeps Chinese labels and fullwidth punctuation in Fandol',()=>{
  const result=cmAmsMath(String.raw`\text{准线：} x=1`,true);
  assert.ok(result.fonts.some(f=>f.startsWith('FandolSong')));
 });
+
+test('the STIX article uses the embedded OpenType math font and its own cache', () => {
+  const source = String.raw`\left|\alpha-\frac{p}{q}\right|<\frac{1}{q^2}`;
+  const stix = cmAmsMath(source, true, 'stix-two');
+  assert.deepEqual(stix.fonts, ['STIXTwoMath-Regular']);
+  assert.notEqual(stix.id, cmAmsMath(source, true).id);
+});

@@ -132,12 +132,14 @@ test('batched equations retain independent fonts, exact bounds and baselines',as
   }finally{await rm(work,{recursive:true,force:true});}
 });
 
-test('CM bea remains the default except an explicit per-article CM ams choice',async()=>{
+test('CM bea remains the default except explicit per-article choices',async()=>{
   const entries=await loadEntries(new URL('../content',import.meta.url).pathname);
   const selected=entries.filter(e=>e.mathFont==='cm-bea');
   const amsPaths=['notes/conics-matrix-coordinate-transformations.md'];
   assert.deepEqual(entries.filter(e=>e.mathFont==='cm-ams').map(e=>e.sourcePath).sort(),amsPaths);
-  assert.equal(selected.length,entries.length-amsPaths.length);
+  const stix = entries.filter(entry => entry.mathFont === 'stix-two');
+  assert.deepEqual(stix.map(entry => entry.sourcePath), ['essays/elementary-diophantine-approximation.md']);
+  assert.equal(selected.length,entries.length-amsPaths.length-stix.length);
   const entry=selected.find(e=>e.sourcePath==='problems/lou-analysis-b-40.md')!;assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');
   const html=renderToStaticMarkup(createElement(LouBatchArticle,{entry}));
   assert.equal((html.match(/class="latex-svg"/g)||[]).length,269);
