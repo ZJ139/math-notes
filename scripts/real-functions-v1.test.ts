@@ -17,14 +17,14 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.deepEqual(realFunctionsV1Chapters.map(c=>c.sections.length),[5,5,3,5,4,5,4]);
   const html=renderToStaticMarkup(createElement(RealFunctionsV1Directory,{items}));
   assert.equal((html.match(/id="section-/g)||[]).length,31);
-  assert.equal((html.match(/待编写/g)||[]).length,18);
+  assert.equal((html.match(/待编写/g)||[]).length,17);
   assert.ok(html.includes(`href="${entryUrl(entry)}/"`));
   const nextEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s2.md')!;
   assert.ok(nextEntry);
   assert.equal(nextEntry.mathFont,'cm-bea');
   assert.equal(nextEntry.attachmentPath,'notes/real-functions-v1/real-functions-v1-1-2.pdf');
   assert.ok(html.includes(`href="${entryUrl(nextEntry)}/"`));
-  assert.ok(html.includes('href="#section-4-1"'));
+  assert.ok(html.includes('href="#section-4-2"'));
   assert.ok(html.includes('href="/math/real-functions/"'));
   const thirdEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s3.md')!;
   assert.ok(thirdEntry);
@@ -130,7 +130,20 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.match(structureArticle,/data-math-font="cm-bea"/);
   assert.doesNotMatch(structureArticle,/katex-error/);
   assert.ok(structureArticle.includes(`href="${entryUrl(twelfthEntry)}/"`));
-  assert.ok(structureArticle.includes('href="/math/real-functions-v1/#section-4-1"'));
+  const integral=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch04-s1.md')!;
+  assert.ok(integral);
+  assert.equal(integral.pageStyle,'s');
+  assert.equal(integral.mathFont,'cm-bea');
+  assert.equal(integral.attachmentPath,'notes/real-functions-v1/real-functions-v1-4-1.pdf');
+  assert.ok(html.includes(`href="${entryUrl(integral)}/"`));
+  assert.ok(structureArticle.includes(`href="${entryUrl(integral)}/"`));
+  const integralArticle=renderToStaticMarkup(createElement(Article,{entry:integral,items}));
+  assert.ok(integralArticle.includes(`href="${entryUrl(structure)}/"`));
+  assert.ok(integralArticle.includes('href="/math/real-functions-v1/#section-4-2"'));
+  assert.doesNotMatch(integralArticle,/katex-error/);
+  const integralIds=new Set([...integralArticle.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));
+  for(const [,href] of integralArticle.matchAll(/href="#([^"]+)"/g))
+    assert.ok(integralIds.has(decodeURIComponent(href)),`Missing local anchor: ${href}`);
   const structureIds=new Set([...structureArticle.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));
   for(const [,href]of structureArticle.matchAll(/href="#([^"]+)"/g))assert.ok(structureIds.has(decodeURIComponent(href)),`Missing local anchor: ${href}`);
   const twelfthIds=new Set([...twelfthArticle.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));

@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Build a chapter-three section in the requested S layout; use the section’s selected math fonts."""
+"""Build a real-functions-v1 section in the requested S layout; use the section’s selected math fonts."""
 from pathlib import Path
 import re,subprocess,shutil,sys
 R=Path(__file__).resolve().parents[1]
 section=sys.argv[1] if len(sys.argv)>1 else '3.1'
-if section not in ('3.1','3.2','3.3'):raise ValueError('Unsupported S section')
+if section not in ('3.1','3.2','3.3','4.1'):raise ValueError('Unsupported S section')
 slug=section.replace('.','-')
 O=R/f'outputs/real-v1-{slug}';O.mkdir(parents=True,exist_ok=True)
-raw=(R/f'content/notes/real-functions-v1/ch03-s{section[-1]}.md').read_text()
+chapter, number = section.split('.')
+raw=(R/f'content/notes/real-functions-v1/ch{int(chapter):02d}-s{number}.md').read_text()
 body=raw[raw.index(f'## {section}.1 '):].split('[返回实变函数-v1总目次]')[0]
-body=re.sub(r'\\qquad\\text\{\((3\.[123]\.\d+)\)\}',r'\\tag{\1}',body)
+body=re.sub(r'\\qquad\\text\{\((\d+\.\d+\.\d+)\)\}',r'\\tag{\1}',body)
 blocks=[]
 def block(m):
  b='\n'.join(re.sub(r'^> ?', '',line) for line in m[0].splitlines())
@@ -27,7 +28,7 @@ latex=convert(body)
 for tag,title,color,content in blocks:
  latex=re.sub(r'\b'+tag+r'\b',lambda m:'\\begin{sboxenv}{'+color+'}{'+convert(title).strip()+'}\n'+convert(content)+'\n\\end{sboxenv}',latex)
 latex=latex.replace(r'\subsubsection{',r'\Needspace{9\baselineskip}\Exercise{').replace(r'\subsection{',r'\Needspace{10\baselineskip}\section{').replace(r'\Exercise{',r'\subsection{')
-latex=re.sub(r'\\section\{(3\.[123]\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
+latex=re.sub(r'\\section\{(\d+\.\d+\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
 latex=re.sub(r'\\textbf\{(解：|证明：|想法：)\}',r'\\Needspace{4\\baselineskip}\\textbf{\1}',latex)
 pre=r'''\documentclass[11pt,a4paper]{article}
 \usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
@@ -89,6 +90,17 @@ if section=='3.3':
  pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—208页。教材例3.2.5—3.2.10及相关原题保留原编号，另附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。',pre)
  # Root-relative site links need an absolute destination in a standalone PDF.
  latex=latex.replace(r'\href{/notes/',r'\href{https://zj139.github.io/math-notes/notes/')
+if section=='4.1':
+ title='4.1 非负可测函数的积分'
+ pre=pre.replace('3.1 可测函数的定义与性质',title).replace(r'第三章\quad 可测函数',r'第四章\quad Lebesgue 积分')
+ intro=raw.split('---\n',2)[-1].split('## 本节目次')[0].strip().split('\n\n')
+ pre=re.sub(r'\\textbf\{主线：\}[^\n]+',lambda _:convert(intro[0])+r'\par\textbf{主线：}'+convert(intro[1].removeprefix('主线：')).strip(),pre)
+ pre=re.sub(r'本节对应[^\n]+',lambda _:convert(intro[2]).strip(),pre)
+ for old,new in [('水平集与原像','简单函数分层'),('运算与可数极限','简单下界上确界'),('简单函数逼近','Levi 递增极限'),('Borel 代表','级数与 Fatou')]:
+  pre=pre.replace(old,new)
+ latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}4\.1\.(?!1 ))',lambda _:r'\clearpage',latex)
+ pre=pre.replace('′',r'\ensuremath{{}^{\prime}}')
+ latex=latex.replace('′',r'\ensuremath{{}^{\prime}}')
 tex=R/f'print/real-functions-v1-{slug}.tex'
 tex.write_text(pre+latex+'\n\\end{document}\n')
 for i in range(3):
