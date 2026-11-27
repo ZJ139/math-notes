@@ -662,7 +662,7 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
 
 /* S lecture layout is an explicit document choice, independent of math fonts. */
 .article-shell[data-page-style="s"]{--s-navy:#10136b;--s-gray:#474747;--s-warm:#94662c}
-.article-shell[data-page-style="s"] .reading-page{background:#fff;padding:1.4em 1.6em 1.8em}
+.article-shell[data-page-style="s"] .reading-page{background:var(--paper);padding:1.4em 1.6em 1.8em}
 .article-shell[data-page-style="s"] .article-header{padding-top:0;text-align:center}
 .article-shell[data-page-style="s"] .article-header :is(.eyebrow,.entry-meta){justify-content:center}
 .article-shell[data-page-style="s"] .article-header h1{color:var(--heading-ink);margin-block:.45em .65em}

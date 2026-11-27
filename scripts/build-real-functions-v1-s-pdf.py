@@ -43,6 +43,7 @@ pre=r'''\documentclass[11pt,a4paper]{article}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
 \usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
 \tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
 \definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
@@ -79,14 +80,15 @@ if section=='3.2':
  pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.2，依据徐森林、薛春华《实变函数论》印刷第185—199页的收敛部分及第207—208页练习题。保留教材定理编号，附全部十二题详解；第12题明确一般测度空间的可测性条件。Lusin定理留给\S3.3。本节不使用积分理论。中文为Fandol宋体，数学为CM bea。',pre)
 if section=='3.3':
  pre=pre.replace(r'\newpage','').replace(r'\tableofcontents',r'\renewcommand{\addvspace}[1]{\vskip 2pt}\tableofcontents')
- latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}3\.3\.[2-7])',lambda _:r'\clearpage',latex)
- pre=pre.replace(r'\usepackage{assets/tex/cm-bea}',r'\usepackage[no-math]{fontspec}')
+ latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}3\.3\.[2-8])',lambda _:r'\clearpage',latex)
  pre=pre.replace('3.1 可测函数的定义与性质','3.3 可测函数的构造')
  lead=next(line.removeprefix('主线：') for line in raw.splitlines() if line.startswith('主线：'))
  pre=re.sub(r'\\textbf\{主线：\}[^\n]+',lambda _:r'\textbf{主线：}'+lead,pre)
  for old,new in [('水平集与原像','简单函数分层'),('运算与可数极限','大闭集上连续'),('简单函数逼近','全空间延拓')]:
   pre=pre.replace(old,new)
- pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—207页。沿用教材定理、推论与例题编号，附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。',pre)
+ pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—208页。教材例3.2.5—3.2.10及相关原题保留原编号，另附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。',pre)
+ # Root-relative site links need an absolute destination in a standalone PDF.
+ latex=latex.replace(r'\href{/notes/',r'\href{https://zj139.github.io/math-notes/notes/')
 tex=R/f'print/real-functions-v1-{slug}.tex'
 tex.write_text(pre+latex+'\n\\end{document}\n')
 for i in range(3):

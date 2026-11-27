@@ -121,13 +121,13 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.ok(twelfthArticle.includes(`href="${entryUrl(eleventhEntry)}/"`));
   const structure=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch03-s3.md')!;
   assert.ok(structure);
-  assert.equal(structure.mathFont,'cm-ams');
+  assert.equal(structure.mathFont,'cm-bea');
   assert.equal(structure.pageStyle,'s');
   assert.equal(structure.attachmentPath,'notes/real-functions-v1/real-functions-v1-3-3.pdf');
   assert.ok(html.includes(`href="${entryUrl(structure)}/"`));
   assert.ok(twelfthArticle.includes(`href="${entryUrl(structure)}/"`));
   const structureArticle=renderToStaticMarkup(createElement(Article,{entry:structure,items}));
-  assert.match(structureArticle,/data-math-font="cm-ams"/);
+  assert.match(structureArticle,/data-math-font="cm-bea"/);
   assert.doesNotMatch(structureArticle,/katex-error/);
   assert.ok(structureArticle.includes(`href="${entryUrl(twelfthEntry)}/"`));
   assert.ok(structureArticle.includes('href="/math/real-functions-v1/#section-4-1"'));
