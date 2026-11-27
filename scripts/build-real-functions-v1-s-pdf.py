@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Build a chapter-three section in the requested S layout; retain the shared CM bea math fonts."""
+"""Build a chapter-three section in the requested S layout; use the section’s selected math fonts."""
 from pathlib import Path
 import re,subprocess,shutil,sys
 R=Path(__file__).resolve().parents[1]
 section=sys.argv[1] if len(sys.argv)>1 else '3.1'
-if section not in ('3.1','3.2'):raise ValueError('Unsupported S section')
+if section not in ('3.1','3.2','3.3'):raise ValueError('Unsupported S section')
 slug=section.replace('.','-')
 O=R/f'outputs/real-v1-{slug}';O.mkdir(parents=True,exist_ok=True)
 raw=(R/f'content/notes/real-functions-v1/ch03-s{section[-1]}.md').read_text()
 body=raw[raw.index(f'## {section}.1 '):].split('[返回实变函数-v1总目次]')[0]
-body=re.sub(r'\\qquad\\text\{\((3\.[12]\.\d+)\)\}',r'\\tag{\1}',body)
+body=re.sub(r'\\qquad\\text\{\((3\.[123]\.\d+)\)\}',r'\\tag{\1}',body)
 blocks=[]
 def block(m):
  b='\n'.join(re.sub(r'^> ?', '',line) for line in m[0].splitlines())
@@ -27,7 +27,7 @@ latex=convert(body)
 for tag,title,color,content in blocks:
  latex=re.sub(r'\b'+tag+r'\b',lambda m:'\\begin{sboxenv}{'+color+'}{'+convert(title).strip()+'}\n'+convert(content)+'\n\\end{sboxenv}',latex)
 latex=latex.replace(r'\subsubsection{',r'\Needspace{9\baselineskip}\Exercise{').replace(r'\subsection{',r'\Needspace{10\baselineskip}\section{').replace(r'\Exercise{',r'\subsection{')
-latex=re.sub(r'\\section\{(3\.[12]\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
+latex=re.sub(r'\\section\{(3\.[123]\.\d+\s+[^}]+)\}',lambda m:r'\section[\S{}'+m[1]+']{'+m[1]+'}',latex)
 latex=re.sub(r'\\textbf\{(解：|证明：|想法：)\}',r'\\Needspace{4\\baselineskip}\\textbf{\1}',latex)
 pre=r'''\documentclass[11pt,a4paper]{article}
 \usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
@@ -77,6 +77,16 @@ if section=='3.2':
  pre=re.sub(r'\\textbf\{主线：\}[^\n]+',lambda _:r'\textbf{主线：}从误差集与尾并出发，以可求和的测度分配构造统一大集；完整展开四种收敛方式之间的关系、Riesz 子列构造与依测度 Cauchy 完备性。',pre)
  pre=re.sub(r'\\begin\{center\}\n\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}\\end\{center\}', '',pre,flags=re.S)
  pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.2，依据徐森林、薛春华《实变函数论》印刷第185—199页的收敛部分及第207—208页练习题。保留教材定理编号，附全部十二题详解；第12题明确一般测度空间的可测性条件。Lusin定理留给\S3.3。本节不使用积分理论。中文为Fandol宋体，数学为CM bea。',pre)
+if section=='3.3':
+ pre=pre.replace(r'\newpage','').replace(r'\tableofcontents',r'\renewcommand{\addvspace}[1]{\vskip 2pt}\tableofcontents')
+ latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}3\.3\.[2-7])',lambda _:r'\clearpage',latex)
+ pre=pre.replace(r'\usepackage{assets/tex/cm-bea}',r'\usepackage[no-math]{fontspec}')
+ pre=pre.replace('3.1 可测函数的定义与性质','3.3 可测函数的构造')
+ lead=next(line.removeprefix('主线：') for line in raw.splitlines() if line.startswith('主线：'))
+ pre=re.sub(r'\\textbf\{主线：\}[^\n]+',lambda _:r'\textbf{主线：}'+lead,pre)
+ for old,new in [('水平集与原像','简单函数分层'),('运算与可数极限','大闭集上连续'),('简单函数逼近','全空间延拓')]:
+  pre=pre.replace(old,new)
+ pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—207页。沿用教材定理、推论与例题编号，附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。',pre)
 tex=R/f'print/real-functions-v1-{slug}.tex'
 tex.write_text(pre+latex+'\n\\end{document}\n')
 for i in range(3):

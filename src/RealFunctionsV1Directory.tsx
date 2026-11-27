@@ -67,7 +67,7 @@ export function RealFunctionsV1Directory({items}:{items:PublicEntry[]}) {
     <div className="reading-page">
       <header className="article-header"><h1>{realFunctionsV1Title}</h1><p>以《实变函数知识框架》为目次 · 徐森林、薛春华《实变函数论》</p></header>
       <div className="prose">
-        <p>从集合与点集出发，依次学习测度、可测函数、积分、微分、函数空间与抽象测度。每次按目次推进一个编号小节；每节将定义、证明背后的想法、完整证明、教材精选例题及练习连成可独立阅读的讲义。数学公式采用 CM bea，中文正文与标题沿用 Fandol 宋体。</p>
+        <p>从集合与点集出发，依次学习测度、可测函数、积分、微分、函数空间与抽象测度。每次按目次推进一个编号小节；每节将定义、证明背后的想法、完整证明、教材精选例题及练习连成可独立阅读的讲义。中文正文与标题采用 Fandol 宋体。数学公式通常采用 CM bea，§3.3《可测函数的构造》采用 CM ams。</p>
         <p>当前完成 {completed.length} / {sections.length} 节。{next&&<>下一节：<a href={'#section-'+next.number.replace('.','-')}>§{next.number} {next.title}</a>。</>}</p>
         <p><a href="/math/real-functions/">对照原“实变函数”栏目</a>。v1 的编号以七章框架为准，教材原编号在各节正文中注明。</p>
         <h2>全书目次</h2>
