@@ -9,6 +9,8 @@ import {loadEntries} from '../src/content';
 import remarkStackedFractions,{stackedFractions as fractions} from '../src/stackedFractions';
 import {cmBeaMath,formulaSVGPaddingEm} from '../src/cmBeaMath';
 import Markdown from '../src/Markdown';
+import {readableFractions} from '../src/fractionSize';
+import {cmAmsMath} from '../src/cmAmsMath';
 
 test('division preserves functions, scripts, roots, factorials and derivatives',()=>{
   const cases=[
@@ -44,7 +46,7 @@ test('quotient spaces, field extensions and literal slash text retain their mean
 });
 
 test('MathML and the visible SVG use the same stacked fraction and true TeX depth',()=>{
-  const tex=String.raw`\frac{f'(x)}{\sqrt{1+x^2}}`;
+  const tex=String.raw`\dfrac{f'(x)}{\sqrt{1+x^2}}`;
   const html=renderToStaticMarkup(createElement(Markdown,{body:String.raw`若 $f'(x)/\sqrt{1+x^2}$，则成立。`}));
   const image=cmBeaMath(tex,false);
   assert.match(html,/<mfrac>/);
@@ -56,7 +58,7 @@ test('MathML and the visible SVG use the same stacked fraction and true TeX dept
 
 test('Markdown code, URLs and document headings are not fraction input',()=>{
   const html=renderToStaticMarkup(createElement(Markdown,{body:'## a/b\n\n`a/b` [链接](https://example.com/a/b)\n\n$x/2$'}));
-  assert.match(html,/<h2 id="ab">a\/b<\/h2>/);
+  assert.match(html,/<h2 id="ab"><span class="heading-label">a\/b<\/span><\/h2>/);
   assert.match(html,/<code>a\/b<\/code>/);
   assert.match(html,/href="https:\/\/example.com\/a\/b"/);
   assert.match(html,/<mfrac>/);
@@ -80,4 +82,26 @@ test('the entire published corpus normalizes to valid, stable TeX',async()=>{
     renderToStaticMarkup(createElement(ReactMarkdown,{remarkPlugins:[remarkMath,validate,remarkStackedFractions],children:entry.body}));
   }
   assert.ok(changed>3000,'The global renderer must cover existing course and exercise content');
+});
+
+test('body-sized fractions respect TeX scope and the surrounding operator style',()=>{
+  const tex=String.raw`\sum_{j=\frac12}^n\frac{f'(j)}{1+\frac1j}+\sqrt[\frac12]{\tfrac pq}`;
+  assert.equal(readableFractions(tex,false),
+    String.raw`\sum_{j=\frac12}^n\dfrac{f'(j)}{1+\frac1j}+\sqrt[\frac12]{\dfrac pq}`);
+  const matrix=String.raw`\frac12+\begin{pmatrix}\frac pq\end{pmatrix}`;
+  assert.equal(readableFractions(matrix,true),String.raw`\frac12+\begin{pmatrix}\dfrac pq\end{pmatrix}`);
+});
+
+test('inline p/q matches display glyphs and has four-sided bleed in both CM fonts',()=>{
+  for(const render of [cmAmsMath,cmBeaMath]){
+    const full=render(String.raw`\dfrac pq`,false);
+    const display=render(String.raw`\frac pq`,true);
+    assert.deepEqual([full.width,full.height,full.depth],[display.width,display.height,display.depth]);
+    assert.ok(full.width>render(String.raw`\frac pq`,false).width);
+    const html=renderToStaticMarkup(createElement(Markdown,{body:'正文 $\\frac pq$。',mathFont:render===cmAmsMath?'cm-ams':'cm-bea'}));
+    assert.ok(html.includes(`/math/${full.id}.svg`));
+    assert.ok(html.includes(`width:${full.width+2*formulaSVGPaddingEm}em`));
+    assert.ok(html.includes(`height:${full.height+full.depth+2*formulaSVGPaddingEm}em`));
+    assert.match(html,/<mstyle[^>]* displaystyle="true"[^>]*><mfrac>/);
+  }
 });

@@ -1,6 +1,7 @@
 import qiuLectureFigureSizes from './qiuLectureFigureSizes.json';
 import quadricsFigureSizes from './quadricsFigureSizes.json';
 import complexFunctionsFigureSizes from './complexFunctionsFigureSizes.json';
+import {createElement} from 'react';
 import ReactMarkdown, {type Components} from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkStackedFractions from './stackedFractions';
@@ -17,6 +18,10 @@ import rehypeMathTypography from './mathTypography';
 import rehypeSStyle from './sStyle';
 const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes,...complexFunctionsFigureSizes};
 const components: Components = {
+  ...Object.fromEntries((['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).map(tag => [
+    tag, ({node, children, ...props}: React.ComponentProps<'h2'> & {node?: unknown}) =>
+      createElement(tag, props, <span className="heading-label">{children}</span>),
+  ])),
   a: ({node, title, children, className, ...props}) => {
     const evidence = title === 'pink-evidence';
     const question = props.href?.match(/^#q(\d+)$/)?.[1];

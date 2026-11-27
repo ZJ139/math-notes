@@ -493,7 +493,22 @@ html:not(.fragment-navigation) .writing-year-row:target,.writing-year-row[data-f
 .reading-answers a.reading-marker{display:inline-flex;align-items:center;justify-content:center;min-height:32px;min-width:32px;padding:1px 7px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);font-size:16px;font-weight:400;line-height:1.4;text-indent:0;text-decoration:none;vertical-align:baseline;white-space:nowrap}
 .reading-answers a.reading-marker:hover,.reading-answers a.reading-marker:focus-visible{color:var(--selected);border-color:var(--selected);background:var(--selected-soft)}
 .reading-answers a.reading-evidence{scroll-margin-top:44px}
-html:not(.fragment-navigation) .reading-answers :is(h2,h3,a.reading-evidence):target,.reading-answers :is(h2,h3,a.reading-evidence)[data-fragment-target]{outline:2px solid var(--selected);outline-offset:5px;background:var(--selected-soft)}
+/* The fragment and keyboard focus stay on the semantic heading. Draw a
+   single ring around the label, even when the heading spans the full column. */
+.prose .heading-label{position:relative;display:inline-block;max-width:100%}
+@media screen{
+  .prose :is(h1,h2,h3,h4,h5,h6)[id]:focus{outline:none}
+  .prose :is([data-fragment-target],:focus-visible)>.heading-label,
+  html:not(.fragment-navigation) .prose :target>.heading-label{
+    color:var(--heading-ink)
+  }
+  .prose :is([data-fragment-target],:focus-visible)>.heading-label::after,
+  html:not(.fragment-navigation) .prose :target>.heading-label::after{
+    content:"";position:absolute;inset:-2px -4px;pointer-events:none;
+    border:2px solid var(--link-focus);border-radius:8px
+  }
+}
+html:not(.fragment-navigation) .reading-answers a.reading-evidence:target,.reading-answers a.reading-evidence[data-fragment-target]{outline:2px solid var(--selected);outline-offset:5px;background:var(--selected-soft)}
 html:not(.fragment-navigation) .reading-answers a.pink-evidence:target,.reading-answers a.pink-evidence[data-fragment-target]{background:rgb(212 117 85 / 38%);color:var(--ink)}
 .reading-answers :is(.reading-section-nav,.reading-question-links) a:hover{color:var(--selected)}
 @media(max-width:600px){

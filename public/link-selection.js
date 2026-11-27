@@ -126,7 +126,7 @@
   }, true);
   document.addEventListener('focusin', event => {
     const link = linkFrom(event.target);
-    if (link || keyboard) select(link);
+    if (link || keyboard || event.target.hasAttribute('data-fragment-target')) select(link);
   });
   document.addEventListener('focusout', () => {
     if (keyboard) queueMicrotask(() => select(linkFrom(document.activeElement)));

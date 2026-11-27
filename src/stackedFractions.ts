@@ -1,3 +1,5 @@
+import {readableFractions} from './fractionSize';
+
 // Normalize arithmetic division before both KaTeX/MathML and TeX/SVG rendering.
 // Work on TeX atoms rather than a regex: scripts, function arguments, roots and
 // balanced groups must stay attached to their numerator or denominator.
@@ -146,7 +148,7 @@ export default function remarkStackedFractions(){
   return(tree:MathNode)=>{
     function walk(node:MathNode){
       if(node.type==='math'||node.type==='inlineMath'){
-        const value=stackedFractions(node.value||'');
+        const value=readableFractions(stackedFractions(node.value||''),node.type==='math');
         node.value=value;
         // remark-math also stores the source in the prebuilt HAST code node.
         function updateSource(child:MathNode){

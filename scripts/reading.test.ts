@@ -63,7 +63,7 @@ test('reading guide loads in its parent category and every internal link resolve
   for(const target of targets)assert.ok(ids.includes(target),`Missing target: ${target}`);
   for(const topic of topics){
     assert.ok(targets.includes(topic),`Missing navigation: ${topic}`);
-    assert.match(html,new RegExp(`<h2 id="${topic}">${topic}</h2>`));
+    assert.match(html,new RegExp(`<h2 id="${topic}"><span class="heading-label">${topic}</span></h2>`));
   }
   // These terms occur in the body, rather than only the title/tags.
   for(const section of ['english',undefined] as const){
