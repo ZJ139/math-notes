@@ -4,10 +4,10 @@ description: "从鸽巢原理留下的符号问题出发，构造上下两侧的
 subject: "数论"
 tags: ["丢番图逼近", "鸽巢原理", "单侧逼近", "有理数逼近"]
 attachment: "essays/elementary-diophantine-approximation.pdf"
-math_font: "stix-two"
+math_font: "cm-ams"
 page_style: "s"
 created_at: "2026-11-27"
-updated_at: "2026-11-27"
+updated_at: "2026-11-28"
 ---
 
 已知 $5\sqrt 2$ 比整数 $7$ 大一点。能否只凭这个信息，找一个正整数倍的 $\sqrt 2$，使它比某个整数小一点？若还要求分母为 $q$ 的逼近分数与 $\sqrt 2$ 相差不到 $\frac{1}{q^2}$，同一个办法还管用吗？
