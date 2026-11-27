@@ -9,56 +9,64 @@ const cache=path.join(root,'.latex-cache');
 const beaStyle=readFileSync(path.join(root,'assets/tex/cm-bea.sty'));
 const fonts=path.join(root,'assets/fonts/fandol');
 const rendererVersion=createHash('sha256').update(readFileSync(fileURLToPath(import.meta.url))).update(beaStyle).update(readFileSync(path.join(fonts,'FandolSong-Regular.otf'))).update(readFileSync(path.join(fonts,'FandolSong-Bold.otf'))).digest('hex');
+const stixFile = 'STIXTwoMath-Regular.ttf';
+const stixPath = path.join(root, 'assets/fonts/stix-two-math', stixFile);
+const stixVersion = createHash('sha256').update(rendererVersion).update(readFileSync(stixPath)).digest('hex');
+type ArticleFont = 'cm-ams' | 'stix-two';
 const used=new Set<string>();
 // TeX reports advance widths, not ink bounds: an oblique f extends almost
 // 2pt past its 3pt advance. Keep that ink (and round-glyph overshoot) in the PDF.
 export const formulaSVGPaddingEm=0.3;
 interface MathImage {id:string;width:number;height:number;depth:number;fonts:string[]}
 
-function formulaId(tex:string,display:boolean):string {
+function formulaId(tex:string,display:boolean,font:ArticleFont):string {
   // Only mathematical input reaches TeX. Disable file access, shell escape,
   // macro definitions and engine primitives in addition to KaTeX validation.
   if(/\\(?:input|include|includegraphics|openin|openout|read|write|special|immediate|def|gdef|edef|xdef|let|futurelet|newcommand|renewcommand|providecommand|csname|catcode|usepackage|documentclass|loop|repeat|shipout|every\w*|directlua|pdf\w*|XeTeX\w*)(?![A-Za-z])/.test(tex)||/(?<!\\)\$|\^\^/.test(tex))throw new Error('公式只允许标准数学 LaTeX 命令');
-  return createHash('sha256').update(rendererVersion+'\0'+display+'\0'+tex).digest('hex');
+  return createHash('sha256').update((font==='stix-two'?stixVersion:rendererVersion)+'\0'+display+'\0'+tex).digest('hex');
 }
 
 type Formula = readonly [tex:string,display:boolean];
 
-export function cmAmsMath(tex:string,display:boolean):MathImage {
-  const id=formulaId(tex,display);
+export function cmAmsMath(tex:string,display:boolean,font:ArticleFont='cm-ams'):MathImage {
+  const id=formulaId(tex,display,font);
   const metadata=path.join(cache,id+'.json');
-  if(!existsSync(metadata)||!existsSync(path.join(cache,id+'.svg')))compileBatch([[tex,display]]);
+  if(!existsSync(metadata)||!existsSync(path.join(cache,id+'.svg')))compileBatch([[tex,display]],font);
   used.add(id);
   return JSON.parse(readFileSync(metadata,'utf8'));
 }
 
 // Amortize TeX startup across bounded batches, retaining one cropped page and
 // exact box metrics per formula. Only complete, validated results enter cache.
-export function precompileCMAmsMath(formulas:readonly Formula[]){
+export function precompileCMAmsMath(formulas:readonly Formula[],font:ArticleFont='cm-ams'){
   const missing=new Map<string,Formula>();
   for(const formula of formulas){
-    const id=formulaId(...formula);
+    const id=formulaId(...formula,font);
     if(!existsSync(path.join(cache,id+'.json'))||!existsSync(path.join(cache,id+'.svg')))missing.set(id,formula);
   }
   const pending=[...missing.values()];
   for(let i=0;i<pending.length;i+=64){
     const batch=pending.slice(i,i+64);
-    try{compileBatch(batch);}catch{
+    try{compileBatch(batch,font);}catch{
       // Report the precise offending equation using the single-formula path.
-      for(const [tex,display] of batch)cmAmsMath(tex,display);
+      for(const [tex,display] of batch)cmAmsMath(tex,display,font);
     }
   }
 }
 
-function compileBatch(formulas:readonly Formula[]){
+function compileBatch(formulas:readonly Formula[],font:ArticleFont){
   mkdirSync(cache,{recursive:true});
   const work=mkdtempSync(path.join(cache,'compile-'));
   try{
     // xdvipdfmx may resolve font paths to absolute names. Keep actual font
     // files inside its allowed temporary directory, rather than symlinking out.
     for(const name of ['FandolSong-Regular.otf','FandolSong-Bold.otf'])copyFileSync(path.join(fonts,name),path.join(work,name));
-    // Article + amsmath/amssymb default math; fontspec does not alter math.
-    writeFileSync(path.join(work,'cm-bea.sty'),beaStyle);
+    if (font === 'stix-two') copyFileSync(stixPath, path.join(work, stixFile));
+    const fontSetup = font === 'stix-two'
+      ? String.raw`\usepackage{amsmath,unicode-math}
+\setmathfont[Path=./]{${stixFile}}`
+      : String.raw`\usepackage{amsmath,amssymb}
+\usepackage[no-math]{fontspec}`;
     const pages=formulas.map(([tex,display])=>{
       const source=tex.replace(/[\u3000-\u303f\u3400-\u9fff\uff00-\uffef]+/g,s=>`\\text{\\fontencoding{TU}\\Fandol ${s}}`);
       return String.raw`\begin{FormulaPage}%
@@ -69,8 +77,7 @@ function compileBatch(formulas:readonly Formula[]){
     }).join('\n');
     // Suppress interword spaces around each box, including page boundaries.
     const document=String.raw`\documentclass[10pt,border=${formulaSVGPaddingEm*10}pt,multi=FormulaPage]{standalone}
-\usepackage{amsmath,amssymb}
-\usepackage[no-math]{fontspec}
+${fontSetup}
 \newfontfamily\Fandol{FandolSong-Regular.otf}[Path=./,BoldFont=FandolSong-Bold.otf]
 \newsavebox{\FormulaBox}
 \newenvironment{FormulaPage}{}{}
@@ -91,7 +98,7 @@ ${pages}
     if(metrics.length!==formulas.length)throw new Error('LaTeX 公式页数无效');
     for(let index=0;index<formulas.length;index++){
       const [tex,display]=formulas[index];
-      const id=formulaId(tex,display);
+      const id=formulaId(tex,display,font);
       const [width,height,depth]=metrics[index].split(',').map(parseFloat);
       if(![width,height,depth].every(n=>Number.isFinite(n)&&n>=0)||width===0||height+depth===0)throw new Error('LaTeX 公式尺寸无效');
       // Keep TeX's scale and origin; Cairo's default crop rounding would
@@ -119,7 +126,10 @@ export function copyCMAmsMathAssets(destination:string){
   for(const id of used)copyFileSync(path.join(cache,id+'.svg'),path.join(destination,id+'.svg'));
 }
 
-export default function rehypeCMAmsMath(){
+export default function rehypeCMAmsMath(){ return renderArticleMath('cm-ams'); }
+export function rehypeStixTwoMath(){ return renderArticleMath('stix-two'); }
+
+function renderArticleMath(font:ArticleFont){
   return(tree:any)=>{
     const text=(node:any):string=>node.type==='text'?node.value:(node.children||[]).map(text).join('');
     function walk(node:any,display=false){
@@ -130,7 +140,7 @@ export default function rehypeCMAmsMath(){
         let tex='';
         function find(n:any){if(n.tagName==='annotation'&&n.properties?.encoding==='application/x-tex')tex=text(n);else for(const child of n.children||[])find(child);}
         find(node);
-        const result=cmAmsMath(tex,display);
+        const result=cmAmsMath(tex,display,font);
         // Keep the accessible MathML, but render the visible formula with TeX.
         node.children=node.children.filter((n:any)=>n.properties?.className?.includes('katex-mathml'));
         // A scrollable inline-block exposes its bottom edge as its baseline.

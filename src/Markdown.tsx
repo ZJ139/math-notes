@@ -11,7 +11,8 @@ import remarkDocumentLabels from './documentLabels';
 import remarkTableOfContents from './tableOfContents';
 import remarkReadingAnswerLayout from './readingAnswerLayout';
 import rehypeCMBeaMath, {formulaSVGPaddingEm} from './cmBeaMath';
-import rehypeCMAmsMath from './cmAmsMath';
+import rehypeCMAmsMath, {rehypeStixTwoMath} from './cmAmsMath';
+import type {ArticleMathFont} from './content';
 import rehypeMathTypography from './mathTypography';
 import rehypeSStyle from './sStyle';
 const articleFigureSizes: Record<string,{width:number;height:number}> = {...qiuLectureFigureSizes,...quadricsFigureSizes,...complexFunctionsFigureSizes};
@@ -49,7 +50,7 @@ const readingSections = [
   ['reading-summary', '03', '全篇总结'],
 ];
 
-export default function Markdown({body, readingAnswers = false, exerciseSheet = false, mathFont = 'cm-bea', pageStyle}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean; mathFont?: 'cm-bea' | 'cm-ams'; pageStyle?: 's'}) {
+export default function Markdown({body, readingAnswers = false, exerciseSheet = false, mathFont = 'cm-bea', pageStyle}: {body: string; readingAnswers?: boolean; exerciseSheet?: boolean; mathFont?: ArticleMathFont; pageStyle?: 's'}) {
   const structured = readingAnswers && /^## 一、原文/m.test(body);
   return <div data-page-style={pageStyle} data-math-font={mathFont} style={{'--math-bleed':`${formulaSVGPaddingEm}em`} as React.CSSProperties} className={`prose${readingAnswers ? ' reading-answers' : ''}${exerciseSheet ? ' exercise-sheet' : ''}`}>
     {structured && <nav className="reading-section-nav" aria-label="阅读解答章节">
@@ -57,7 +58,7 @@ export default function Markdown({body, readingAnswers = false, exerciseSheet = 
     </nav>}
     <ReactMarkdown skipHtml remarkPlugins={[remarkMath, remarkGfm, remarkHeadingIds, remarkDocumentLabels, remarkTableOfContents, remarkStackedFractions,
       ...(structured ? [remarkReadingAnswerLayout] : [])]}
-      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], mathFont === 'cm-ams' ? rehypeCMAmsMath : rehypeCMBeaMath, rehypeMathTypography, ...(pageStyle === 's' ? [rehypeSStyle] : [])]}
+      rehypePlugins={[[rehypeKatex, {throwOnError: false, strict: 'ignore', trust: false}], { 'cm-ams': rehypeCMAmsMath, 'cm-bea': rehypeCMBeaMath, 'stix-two': rehypeStixTwoMath }[mathFont], rehypeMathTypography, ...(pageStyle === 's' ? [rehypeSStyle] : [])]}
       components={exerciseSheet ? exerciseComponents : components}>{body}</ReactMarkdown>
   </div>;
 }

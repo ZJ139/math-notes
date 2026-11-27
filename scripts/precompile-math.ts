@@ -9,11 +9,11 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkStackedFractions from '../src/stackedFractions';
 import katex from 'katex';
-import {loadEntries} from '../src/content';
+import {loadEntries, type ArticleMathFont} from '../src/content';
 import {precompileCMAmsMath} from '../src/cmAmsMath';
 import {precompileCMBeaMath} from '../src/cmBeaMath';
 
-type Formula = [tex:string, display:boolean, font?:'cm-bea'|'cm-ams'];
+type Formula = [tex:string, display:boolean, font:ArticleMathFont];
 const root=fileURLToPath(new URL('..',import.meta.url));
 if(process.argv[2]==='--worker'){
   const [file,indexText,totalText]=process.argv.slice(3);
@@ -28,13 +28,15 @@ if(process.argv[2]==='--worker'){
   }
   for(let i=0;i<assigned.length;i+=128){
     const batch=assigned.slice(i,i+128);
-    precompileCMBeaMath(batch.filter(f=>f[2]!=='cm-ams').map(f=>[f[0],f[1]]));
-    precompileCMAmsMath(batch.filter(f=>f[2]==='cm-ams').map(f=>[f[0],f[1]]));
+    precompileCMBeaMath(batch.filter(f=>f[2]==='cm-bea').map(f=>[f[0],f[1]]));
+    for (const font of ['cm-ams', 'stix-two'] as const) {
+      precompileCMAmsMath(batch.filter(f => f[2] === font).map(f => [f[0], f[1]]), font);
+    }
     console.log(`Math worker ${index+1}/${total}: ${Math.min(i+128,assigned.length)}/${assigned.length} formulas prepared`);
   }
 }else{
   const formulas=new Map<string,Formula>();
-  let selectedFont:'cm-bea'|'cm-ams'='cm-bea';
+  let selectedFont:ArticleMathFont='cm-bea';
   function collectMath(){
     return(tree:any)=>{
       function visit(node:any){
