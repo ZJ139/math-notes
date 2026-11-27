@@ -34,7 +34,7 @@ function page(initialHash = '', reducedMotion = false) {
     querySelector: () => null,
     getElementById: (id: string) => targets.get(id) ?? null,
     documentElement: {classList: new Set<string>()},
-    addEventListener: (_name: string, callback: (event: any) => void) => clicks.push(callback),
+    addEventListener: (name: string, callback: (event: any) => void) => { if (name === 'click') clicks.push(callback); },
   };
   const history = {
     state,

@@ -149,7 +149,7 @@ test('CM bea remains the default except explicit per-article choices',async()=>{
 
 test('Markdown without font metadata uses real CM bea glyphs and metrics',()=>{
   const tex=String.raw`x_{n_j}+\frac{1}{2}+\alpha`;
-  const formula=cmBeaMath(tex,false);
+  const formula=cmBeaMath(String.raw`x_{n_j}+\dfrac{1}{2}+\alpha`,false);
   assert.ok(formula.fonts.some(font=>font.startsWith('CMSSI')));
   const html=renderToStaticMarkup(createElement(Markdown,{body:`文字 $${tex}$，正文。`}));
   assert.match(html,/data-math-font="cm-bea"/);

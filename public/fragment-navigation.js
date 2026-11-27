@@ -14,7 +14,14 @@ document.documentElement.classList.add('fragment-navigation');
 markFragment();
 addEventListener('hashchange', () => markFragment());
 addEventListener('popstate', () => markFragment());
+// End the heading highlight when the reader moves on, including after a deep link.
+function leaveHeading(event) {
+  if (fragmentTarget?.firstElementChild?.classList.contains('heading-label') &&
+      !fragmentTarget.contains(event.target)) markFragment(null);
+}
+document.addEventListener('focusin', leaveHeading);
 document.addEventListener('click', event => {
+  leaveHeading(event);
   if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   const link = event.target.closest?.('a[href]');
   if (!link || link.hasAttribute('download') || (link.target && link.target.toLowerCase() !== '_self')) return;

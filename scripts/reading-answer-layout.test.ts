@@ -55,7 +55,7 @@ test('all questions link to their own original evidence and back, preserving old
       assert.ok(passage.includes(`id="evidence-q${q}"`), `${entry.title} Q${q}: original anchor`);
       assert.match(passage, new RegExp(`<a[^>]*href="#q${q}"[^>]*id="evidence-q${q}"[^>]*>`));
       assert.match(html, new RegExp(`<a[^>]*href="#evidence-q${q}"[^>]*>${i + 1}°</a>`));
-      assert.match(html, new RegExp(`<h3[^>]*id="q${q}"[^>]*>第 ${q} 题｜`));
+      assert.match(html, new RegExp(`<h3[^>]*id="q${q}"[^>]*><span class="heading-label">第 ${q} 题｜`));
       assert.match(html, new RegExp(`<section[^>]*id="question-q${q}"[^>]*>`));
       for (const match of html.matchAll(new RegExp(`<a[^>]*href="#(evidence-q${q}(?:-\\d+)?)"[^>]*>(P\\d+)</a>`, 'g'))) {
         assert.ok(passage.includes(`id="${match[1]}"`));
@@ -70,7 +70,7 @@ test('all questions link to their own original evidence and back, preserving old
 test('reading layout is scoped and does not enable raw HTML or break ordinary Markdown', () => {
   const body = '## Q21\n\n[reference](#q21)\n\n<script>alert(1)</script>';
   const html = renderToStaticMarkup(createElement(Markdown, {body}));
-  assert.match(html, /<h2 id="q21">Q21<\/h2>/);
+  assert.match(html, /<h2 id="q21"><span class="heading-label">Q21<\/span><\/h2>/);
   assert.ok(!html.includes('<script'));
   assert.ok(!html.includes('reading-section-nav'));
 });

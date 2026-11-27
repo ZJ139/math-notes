@@ -91,7 +91,7 @@ test('LaTeX compilation rejects executable input instead of publishing it',()=>{
 
 test('HTML exposes the TeX depth on each formula box for baseline layout',()=>{
   for(const tex of ['x','p','x_{n_j}',String.raw`\frac{1}{n}`,String.raw`\int_0^1 f(x)\,dx`]){
-    const math=cmBeaMath(tex,false);
+    const math=cmBeaMath(tex.replace('\\frac','\\dfrac'),false);
     const html=renderToStaticMarkup(createElement(Markdown,{body:`文字 $${tex}$ 正文。`}));
     const offset=html.match(/class="katex" style="--math-baseline:([^\"]+)"/);
     assert.ok(offset,`Missing outer baseline for ${tex}`);
