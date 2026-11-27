@@ -135,8 +135,9 @@ test('batched equations retain independent fonts, exact bounds and baselines',as
 test('CM bea remains the default except an explicit per-article CM ams choice',async()=>{
   const entries=await loadEntries(new URL('../content',import.meta.url).pathname);
   const selected=entries.filter(e=>e.mathFont==='cm-bea');
-  assert.deepEqual(entries.filter(e=>e.mathFont!=='cm-bea').map(e=>e.sourcePath),['notes/conics-matrix-coordinate-transformations.md']);
-  assert.equal(selected.length,entries.length-1);
+  const amsPaths=['notes/conics-matrix-coordinate-transformations.md','notes/real-functions-v1/ch03-s3.md'];
+  assert.deepEqual(entries.filter(e=>e.mathFont==='cm-ams').map(e=>e.sourcePath).sort(),amsPaths);
+  assert.equal(selected.length,entries.length-amsPaths.length);
   const entry=selected.find(e=>e.sourcePath==='problems/lou-analysis-b-40.md')!;assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');
   const html=renderToStaticMarkup(createElement(LouBatchArticle,{entry}));
   assert.equal((html.match(/class="latex-svg"/g)||[]).length,269);
