@@ -187,7 +187,7 @@ z
    </g>
    <g id="text_3">
     <!-- $\mathbf{r}_u\times\mathbf{r}_v$ -->
-    <g style="fill: #d47555" transform="translate(115.646268 71.827226) scale(0.14 -0.14)">
+    <g style="fill: #D97757" transform="translate(115.646268 71.827226) scale(0.14 -0.14)">
      <defs>
       <path id="Cmsy10-a3" d="M 941 184
 Q 941 234 972 275
@@ -610,13 +610,13 @@ L 143.335184 67.006681
    <g id="Line3DCollection_4">
     <path d="M 142.216817 81.049919
 L 141.943489 143.366331
-" clip-path="url(#p6429baf428)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p6429baf428)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 142.216817 81.049919
 L 142.233664 91.322853
-" clip-path="url(#p6429baf428)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p6429baf428)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 142.216817 81.049919
 L 142.103753 92.655529
-" clip-path="url(#p6429baf428)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p6429baf428)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
    </g>
    <g id="Line3DCollection_5">
     <path d="M 224.068732 156.902449
@@ -636,10 +636,10 @@ L 176.598274 -135.21328
 L 196.236179 -150.236286
 L 162.002599 -149.278002
 z
-" style="stroke: #d47555; stroke-opacity: 0.35; stroke-width: 1.4"/>
+" style="stroke: #D97757; stroke-opacity: 0.35; stroke-width: 1.4"/>
     </defs>
     <g clip-path="url(#p6429baf428)">
-     <use xlink:href="#mf18c0f6d56" x="0" y="277.848" style="fill: #d47555; fill-opacity: 0.35; stroke: #d47555; stroke-opacity: 0.35; stroke-width: 1.4"/>
+     <use xlink:href="#mf18c0f6d56" x="0" y="277.848" style="fill: #D97757; fill-opacity: 0.35; stroke: #D97757; stroke-opacity: 0.35; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="Line3DCollection_6">

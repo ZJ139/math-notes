@@ -135,7 +135,7 @@ test('batched equations retain independent fonts, exact bounds and baselines',as
 test('CM bea remains the default except explicit per-article choices',async()=>{
   const entries=await loadEntries(new URL('../content',import.meta.url).pathname);
   const selected=entries.filter(e=>e.mathFont==='cm-bea');
-  const amsPaths=['essays/elementary-diophantine-approximation.md','notes/conics-matrix-coordinate-transformations.md','notes/fourier-series.md'];
+  const amsPaths=['essays/elementary-diophantine-approximation.md','essays/weyl-equidistribution.md','notes/conics-matrix-coordinate-transformations.md','notes/fourier-series.md'];
   assert.deepEqual(entries.filter(e=>e.mathFont==='cm-ams').map(e=>e.sourcePath).sort(),amsPaths);
   assert.equal(selected.length,entries.length-amsPaths.length);
   const entry=selected.find(e=>e.sourcePath==='problems/lou-analysis-b-40.md')!;assert.equal(entry.attachmentPath,'problems/lou-analysis-b-40-cm-bea.pdf');

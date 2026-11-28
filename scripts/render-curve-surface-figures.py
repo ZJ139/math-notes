@@ -19,7 +19,7 @@ PDF = ROOT / 'print/curve-surface-figures'
 PREVIEW = Path(sys.argv[1]) if len(sys.argv)>1 else None
 for p in [WEB,PDF,PREVIEW]:
     if p: p.mkdir(parents=True,exist_ok=True)
-INK,ORANGE,BLUE,GRAY,PALE = '#343A40','#D47555','#3D6F83','#9AA1A7','#EFF4F5'
+INK,ORANGE,BLUE,GRAY,PALE = '#343A40','#D97757','#3D6F83','#9AA1A7','#EFF4F5'
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,
     'mathtext.fontset':'cm','axes.labelcolor':INK,'text.color':INK,
     'svg.fonttype':'path','svg.hashsalt':'curve-surface-integral-v1',

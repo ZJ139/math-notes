@@ -234,7 +234,7 @@ L 179.804111 80.048322
 L 180.490277 80.443997
 L 181.176443 80.841698
 L 181.862609 81.241339
-" clip-path="url(#pc3fb1b2660)" style="fill: none; stroke: #d47555; stroke-width: 3.6; stroke-linecap: square"/>
+" clip-path="url(#pc3fb1b2660)" style="fill: none; stroke: #D97757; stroke-width: 3.6; stroke-linecap: square"/>
    </g>
    <g id="patch_2">
     <path d="M 14.035611 124.121739
@@ -653,7 +653,7 @@ z
    </g>
    <g id="text_8">
     <!-- $\Delta s_i$ -->
-    <g style="fill: #d47555" transform="translate(144.50087 27.660522) scale(0.16 -0.16)">
+    <g style="fill: #D97757" transform="translate(144.50087 27.660522) scale(0.16 -0.16)">
      <defs>
       <path id="Cmr10-a2" d="M 347 0
 Q 294 0 294 50
@@ -773,15 +773,15 @@ z
    <g id="patch_4">
     <path d="M 289.076612 115.208581
 Q 316.578744 107.47486 342.143556 100.285922
-" style="fill: none; stroke: #d47555; stroke-width: 1.8; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 1.8; stroke-linecap: round"/>
     <path d="M 336.873085 99.274916
 L 342.143556 100.285922
 L 338.172469 103.895695
-" style="fill: none; stroke: #d47555; stroke-width: 1.8; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 1.8; stroke-linecap: round"/>
    </g>
    <g id="text_9">
     <!-- $\boldsymbol{\tau}$ -->
-    <g style="fill: #d47555" transform="translate(346.866299 91.655096) scale(0.17 -0.17)">
+    <g style="fill: #D97757" transform="translate(346.866299 91.655096) scale(0.17 -0.17)">
      <defs>
       <path id="STIXGeneral-BoldItalic-3c4" d="M 2912 2874
 L 2765 2234

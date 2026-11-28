@@ -99,18 +99,18 @@ L 231.09954 90.192445
 L 235.873068 86.724463
 L 240.350331 83.139845
 L 240.350331 83.139845
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 2.7; stroke-linecap: square"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 2.7; stroke-linecap: square"/>
    </g>
    <g id="Line3DCollection_1">
     <path d="M 161.905916 168.073108
 L 165.086744 180.457555
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 161.905916 168.073108
 L 162.372381 170.841238
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 161.905916 168.073108
 L 162.542924 169.60063
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
    </g>
    <g id="text_1">
     <!-- $x$ -->
@@ -353,7 +353,7 @@ z
    </g>
    <g id="text_5">
     <!-- $t=2\pi$ -->
-    <g style="fill: #d47555" transform="translate(242.339722 70.797749) scale(0.14 -0.14)">
+    <g style="fill: #D97757" transform="translate(242.339722 70.797749) scale(0.14 -0.14)">
      <defs>
       <path id="Cmmi10-74" d="M 397 519
 Q 397 613 416 697
@@ -787,13 +787,13 @@ L 204.768769 186.247854
    <g id="Line3DCollection_3">
     <path d="M 89.332513 130.8802
 L 93.885631 131.627304
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 89.332513 130.8802
 L 90.08805 131.890214
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 89.332513 130.8802
 L 90.170126 130.1313
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
    </g>
    <g id="Line3DCollection_4">
     <path d="M 246.017945 254.464816
@@ -820,13 +820,13 @@ L 152.234684 52.288535
    <g id="Line3DCollection_6">
     <path d="M 182.722166 114.317
 L 170.854001 117.953099
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 182.722166 114.317
 L 180.748057 115.857372
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
     <path d="M 182.722166 114.317
 L 180.566546 114.041365
-" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #d47555; stroke-width: 1.8"/>
+" clip-path="url(#p904b2e10f5)" style="fill: none; stroke: #D97757; stroke-width: 1.8"/>
    </g>
    <g id="Line3DCollection_7">
     <path d="M 150.985946 226.249456
