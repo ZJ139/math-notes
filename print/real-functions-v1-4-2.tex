@@ -1,0 +1,694 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\renewcommand{\bfdefault}{bx}
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.10}
+\setlength{\parindent}{2em}\setlength{\parskip}{4pt}
+\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
+\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
+\setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage[unicode,hidelinks,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：4.2 一般可测函数的积分},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\predisplaypenalty=5000
+\allowdisplaybreaks[1]\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}{\LARGE\bfseries 实变函数-v1\par}\vspace{7pt}
+{\Large\bfseries 4.2 一般可测函数的积分\par}\vspace{6pt}
+{第四章\quad Lebesgue 积分\par}\end{center}
+在 \((-1,1)\) 上，函数 \(\frac{1}{x}\)
+的左右两段大小相等、符号相反。若同时从原点两侧切去等长的小段，积分恒为零。为什么这不能定义它的
+Lebesgue 积分？障碍出现在相减之前：正、负两部分的非负积分都是无穷。
+\par\textbf{主线：}先求正负两部分各自的积分，借助绝对值控制误差。截去高值尾部便得到积分的绝对连续性；给误差配上共同可积的上界，就能从
+Fatou 的单侧不等式推出积分与极限交换。
+\begin{center}
+\begin{tikzpicture}[node distance=5mm and 5mm,box/.style={draw=navy!65,fill=navy!3,rounded corners=1pt,minimum width=34mm,minimum height=10mm,align=center,font=\small},>=Stealth]
+\node[box](a){正负部分};\node[box,right=of a](b){绝对可积};\node[box,right=of b](c){控制收敛};\node[box,right=of c,fill=teal!5](d){含参积分};
+\draw[->](a)--(b);\draw[->](b)--(c);\draw[->](c)--(d);
+\end{tikzpicture}\end{center}
+对应徐森林、薛春华《实变函数论》印刷第 218---244
+页。以下保留教材定义、定理和例题编号。末尾解答练习 3.3 与 3.4 中 §4.1
+尚未解答的全部 14 题。\(m\) 表示 Lebesgue 测度，未加说明时在测度空间
+\((X,\mathcal A,\mu)\) 的可测集 \(E\) 上积分。
+\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup
+\newpage
+\clearpage\section[\S{}4.2.1
+正负部分与绝对可积性]{4.2.1
+正负部分与绝对可积性}\label{ux6b63ux8d1fux90e8ux5206ux4e0eux7eddux5bf9ux53efux79efux6027}
+
+\begin{sboxenv}{navy}{定义 3.3.1″（一般可测函数的积分）}
+对广义实值可测函数 \(f\)，令 \(f^+=\max(f,0)\)，\(f^-=\max(-f,0)\)。若
+\(\int_E f^+\) 与 \(\int_E f^-\) 至少一个有限，则称 \(f\) 广义可积，定义
+
+\begin{equation*}
+\int_E f\,d\mu=\int_E f^+\,d\mu-\int_E f^-\,d\mu .\tag{4.2.1}
+\end{equation*}
+
+两项都有限时称 \(f\) 可积，记作 \(f\in L^1(E)\)。以下省略同一积分中的
+\(d\mu\)。
+
+\end{sboxenv}
+
+正、负部分可测，逐点至少一个为零，故 \(f=f^+-f^-\)，\(|f|=f^++f^-\)。在
+\((0,1)\) 上，\(\frac{1}{x}\) 的积分为 \(+\infty\)，属于广义可积情形。在
+\((-1,1)\) 上可令
+\(f(0)=0\)，同一个表达式的两个部分却都有无穷积分：例如每个
+\((2^{-k-1},2^{-k}]\) 的正部积分均为 \(\log 2\)。此时 (4.2.1)
+无定义，对称截断仅给出主值。
+
+\begin{sboxenv}{navy}{定理 3.3.12（绝对可积性与三角不等式）}
+\(f\in L^1(E)\) 当且仅当 \(\int_E|f|<\infty\)。此时
+\(\left|\int_E f\right|\le\int_E|f|\)。
+
+\end{sboxenv}
+
+\textbf{证明}　对 \(|f|=f^++f^-\) 用 §4.1
+的非负正线性。两个非负数之和有限，当且仅当各自有限；取差的绝对值至多等于其和。以下记
+\(\|f\|_1=\int_E|f|\)。
+
+\textbf{定理 3.3.13（六项基本性质）}　设所涉函数可测。若
+\(\mu(E)<\infty\) 且 \(|f|\le M<\infty\) 几乎处处，则
+\(\int_E|f|\le M\mu(E)<\infty\)。若 \(f\) 可积，则它几乎处处有限，因为
+\(N\mu\{|f|=\infty\}\le\|f\|_1\) 对所有 \(N>0\)
+成立。反向不成立，\((0,1)\) 上的 \(\frac{1}{x}\) 处处有限。
+
+若 \(|f|\le |g|\) 几乎处处且 \(g\)
+可积，则由非负积分的比较，\(\int_E|f|\le\int_E|g|<\infty\)。若 \(f\ge0\)
+几乎处处，则 \(f^-=0\) 几乎处处，故 \(\int_E f\ge0\)。对可积的
+\(f\le g\)，因 \(f^+\le g^+\) 且 \(f^-\ge g^-\)，相减即得
+\(\int_E f\le\int_E g\)。
+
+若 \(g=f\)
+几乎处处，则两者的正部、负部分别几乎处处相等，非负积分对可测零集上的修改不变，可积性和积分值均相同。取
+\(g=0\) 即得零函数情形；反之若 \(f\ge0\) 且积分为零，则每个
+\(\{f>\frac{1}{k}\}\) 都是零集，取可数并即得 \(f=0\)
+几乎处处。对变号函数，取 \(f(x)=x\) 于 \([-1,1]\)
+就可见最后的逆推需要符号条件。
+
+\clearpage\section[\S{}4.2.2
+线性、分割与截断]{4.2.2
+线性、分割与截断}\label{ux7ebfux6027ux5206ux5272ux4e0eux622aux65ad}
+
+\textbf{定理 3.3.14（线性）}　若 \(f,g\in L^1(E)\) 且
+\(\alpha,\beta\in\mathbb R\)，则 \(\alpha f+\beta g\) 可积，其积分等于
+\(\alpha\int_E f+\beta\int_E g\)。
+
+\textbf{证明}　取公共满测度集上的有限值代表。\(\alpha\ge0\)
+时正负部分分别乘 \(\alpha\)，而
+\((-f)^+=f^-\)、\((-f)^-=f^+\)，故任意实系数的齐次性成立。又
+\(|f+g|\le|f|+|g|\) 保证和可积。为对非负函数使用 §4.1
+的正线性，把差改写成等式
+
+\begin{equation*}
+(f+g)^++f^-+g^-=(f+g)^-+f^++g^+ .
+\end{equation*}
+
+两边每项积分都有限，积分后移项得到加法公式，结合齐次性即得结论。
+
+\begin{sboxenv}{navy}{定理 3.3.15（积分的绝对连续性）}
+若 \(f\in L^1(E)\)，则对每个 \(\varepsilon>0\)，存在
+\(\delta>0\)，对所有可测 \(A\subset E\)，只要 \(\mu(A)<\delta\)，就有
+\(\left|\int_A f\right|\le\int_A|f|<\varepsilon\)。
+
+\end{sboxenv}
+
+\textbf{证明}　有界部分在 \(A\)
+上的积分至多是高度乘测度；高值部分则要在选择 \(A\) 之前就控制好。令
+\(h=|f|\)。由 \(h\mathbf1_{\{h\le M\}}\uparrow h\) 几乎处处和
+\(\int_E h<\infty\)，有 \(\int_{\{h>M\}}h\to0\)。先取 \(M\ge1\)
+使该尾积分小于 \(\frac{\varepsilon}{2}\)，再取
+\(\delta=\frac{\varepsilon}{2M}\)。于是
+
+\begin{equation*}
+\int_A|f|\le M\mu(A)+\int_{\{h>M\}}h<\varepsilon .\tag{4.2.2}
+\end{equation*}
+
+\(M,\delta\) 只依赖于 \(f,\varepsilon\)。证明没有使用
+\(\mu(E)<\infty\)。若一族函数由同一个可积 \(F\) 控制，对 \(F\) 取出的
+\(\delta\) 就对整族适用。
+
+\textbf{定理 3.3.16、推论 3.3.1（对积分域的可加性）}　设 \(E\) 是可测集
+\(E_k\) 的不交并。对 \(|f|\) 用 §4.1 的可数可加性，有
+\(\int_E|f|=\sum_k\int_{E_k}|f|\)。故 \(f\)
+可积当且仅当它在各块可积且右端有限。此时分别对 \(f^+,f^-\)
+求和，再将两个有限和的极限相减，得
+
+\begin{equation*}
+\int_E f=\sum_{k=1}^{\infty}\int_{E_k}f,\qquad
+\sum_{k=1}^{\infty}\left|\int_{E_k}f\right|\le\int_E|f|.
+\end{equation*}
+
+取第三块起全为空集，就得两块情形的充要条件及加法公式。仅有每块可积不足以推出全域可积，例如把正半轴切成单位区间，取
+\(f=1\)。
+
+\clearpage\section[\S{}4.2.3
+怎样从局部积分辨认函数]{4.2.3
+怎样从局部积分辨认函数}\label{ux600eux6837ux4eceux5c40ux90e8ux79efux5206ux8fa8ux8ba4ux51fdux6570}
+
+\begin{sboxenv}{inkgray}{例 3.3.5（由区间积分辨认零函数）}
+设 \(f\in L^1([a,b])\) 且 \(\int_a^c f=0\) 对所有 \(c\in[a,b]\)
+成立。证明 \(f=0\) 几乎处处。
+
+\end{sboxenv}
+
+\textbf{解}　相减可知每个子区间上的积分为零。每个相对开集是至多可数个互不相交的区间之并，端点为零集，故由定理
+3.3.16，它的积分也为零。给定可测集 \(A\subset[a,b]\)，由 Lebesgue
+测度的外正则性取相对开集 \(G\supset A\)，使
+\(m(G\setminus A)<\delta\)。在 (4.2.2) 中按 \(\varepsilon\) 选
+\(\delta\)，便有
+\(|\int_A f|=|\int_{G\setminus A}f|<\varepsilon\)。故每个 \(A\)
+上积分都为零。分别取 \(\{f>0\}\) 和
+\(\{f<0\}\)，得正负两部的积分都为零，结论成立。这里开集逼近了符号集；符号集本身一般不是开集。
+
+\textbf{注 3.3.2}　若 \(f\) 为 Riemann 可积函数，在每个连续点
+\(c\)，变上限积分的导数等于 \(f(c)\)。原函数恒零便得 \(f(c)=0\)，再用
+Riemann 可积函数几乎处处连续也能得出结论。上述测度证明无需连续点。
+
+\textbf{例 3.3.7（由所有可测子集的积分辨认函数）}　若
+\(f\in L^1(\mathbb R^d)\)，且在每个可测集上的积分都为零，上段取正负集的论证直接给出
+\(f=0\) 几乎处处。更一般地，\(\int_A u\le\int_A v\) 对所有 \(A\)
+成立时，在 \(\{u>v\}\) 上积分 \(u-v\) 即得 \(u\le v\) 几乎处处，其中
+\(u,v\) 可积。
+
+\begin{sboxenv}{inkgray}{例 3.3.6（乘积检验的测度条件）}
+对半有限测度，若实值可测函数 \(f\) 满足 \(fg\in L^1(E)\) 对每个
+\(g\in L^1(E)\) 成立，则 \(f\)
+本性有界。半有限指每个无限测度的可测集都含有正的有限测度可测子集；Lebesgue
+测度具有此性质。
+
+\end{sboxenv}
+
+\textbf{解}　若 \(f\) 本性无界，对每个 \(j\ge1\) 从 \(\{|f|\ge 2^j\}\)
+中取可测 \(B_j\)，使 \(0<\mu(B_j)<\infty\)。不要求各 \(B_j\) 不交。令
+
+\begin{equation*}
+g=\sum_{j=1}^\infty \frac{2^{-j}}{\mu(B_j)}\mathbf1_{B_j}.
+\end{equation*}
+
+非负级数逐项积分给出 \(\int_E g=\sum 2^{-j}=1\)，而
+\(\int_E|f|g\ge\sum 2^{-j}2^j=\infty\)，矛盾。反之，若 \(|f|\le M\)
+几乎处处，显然 \(\|fg\|_1\le M\|g\|_1\)。
+
+\textbf{题意辨析}　教材将例 3.3.6 写在任意测度空间上。取
+\(X=\mathbb N\)，赋予空集测度零、每个非空集测度无穷，则唯一可积函数是零函数。\(f(n)=n\)
+通过全部乘积检验，却不本性有界。原证明在高值层中选择正的有限测度部分，正是需要测度条件之处。
+
+\clearpage\section[\S{}4.2.4
+平均收敛与单侧积分估计]{4.2.4
+平均收敛与单侧积分估计}\label{ux5e73ux5747ux6536ux655bux4e0eux5355ux4fa7ux79efux5206ux4f30ux8ba1}
+
+\textbf{定义 3.3.2、定理 3.3.17}　对 \(f_n,f\in L^1(E)\)，若
+\(\|f_n-f\|_1\to0\)，称 \(f_n\) 平均收敛于 \(f\)。任给 \(\eta>0\)，由
+
+\begin{equation*}
+\eta\,\mu\{|f_n-f|>\eta\}\le\int_E|f_n-f|
+\end{equation*}
+
+可知平均收敛蕴含依测度收敛。反过来，在 \((0,1)\) 上令
+\(f_n=n\mathbf1_{(0,\frac{1}{n})}\)。它逐点且依测度趋于零，积分却恒为一。将高度改为
+\(n^3\)、支集改为 \((\frac{1}{n+1},\frac{1}{n}]\)，误差积分甚至等于
+\(\frac{n^2}{n+1}\to\infty\)，即教材 3.3.17 的反例。
+
+\textbf{定理 3.4.2（变号可积函数列的 Levi 引理）}　若可积函数列 \(f_n\)
+几乎处处递增且 \(A=\sup_n\int_E f_n<\infty\)，则极限 \(f\)
+几乎处处有限且可积，并且
+\(\|f_n-f\|_1\to0\)。对递减列，相应条件是积分有有限下界。
+
+\textbf{证明}　在同一满测度集上取 \(h_n=f_n-f_1\ge0\)。它递增到
+\(h\)，由 §4.1 的 Levi 定理，\(\int_E h=A-\int_E f_1<\infty\)。所以
+\(h\) 几乎处处有限，\(f=f_1+h\) 可积，且
+\(\int_E|f-f_n|=\int_E h-\int_E h_n\to0\)。递减时对 \(-f_n\)
+使用已证结论。
+
+\textbf{定理 3.4.2\ensuremath{{}^{\prime}}、注 3.4.1}　非负项 \(u_k\) 若满足
+\(\sum_k\int_Eu_k<\infty\)，对其部分和使用
+3.4.2，即得级数几乎处处收敛、和可积、可逐项积分。反推 3.4.2 时，取
+\(u_k=f_{k+1}-f_k\)；非负项积分和为
+\(A-\int_E f_1\)，部分和望远镜相消即可还原 \(f_n\)。
+
+\begin{sboxenv}{navy}{定理 3.4.3（带可积单侧界的 Fatou 引理）}
+若 \(f_n\in L^1(E)\) 且 \(f_n\ge h\) 几乎处处，其中 \(h\in L^1(E)\)，则
+
+\begin{equation*}
+\int_E\liminf_n f_n\le\liminf_n\int_E f_n .
+\end{equation*}
+
+若右端有限，则下极限可积。若 \(f_n\le H\in L^1(E)\)，则
+\(\int_E\limsup f_n\ge\limsup\int_E f_n\)，右端大于 \(-\infty\)
+时上极限可积。
+
+\end{sboxenv}
+
+\textbf{证明}　\(g_n=f_n-h\ge0\)，故非负 Fatou 引理给出
+\(\int_E\liminf g_n\le\liminf\int_E g_n\)。加回有限数 \(\int_E h\)
+即得所需不等式；这里 \(\liminf f_n=h+\liminf g_n\) 的负部由 \(h^-\)
+控制，令 \(w=h+v\)、\(v=\liminf g_n\ge0\)，则 \(w^-\le h^-\)。在
+\(w^++h^-=w^-+h^++v\) 中用非负正线性并移去有限项，就得
+\(\int w=\int h+\int v\)，也涵盖 \(\int v=+\infty\)。右端有限时，非负的
+\(\liminf g_n\) 可积。上界情形对 \(-f_n\) 应用下界结论。
+
+\clearpage\section[\S{}4.2.5 从 Fatou
+引理到控制收敛]{4.2.5 从 Fatou
+引理到控制收敛}\label{ux4ece-fatou-ux5f15ux7406ux5230ux63a7ux5236ux6536ux655b}
+
+\begin{sboxenv}{navy}{定理 3.4.1\ensuremath{{}^{\prime}}、3.4.1（Lebesgue 控制收敛定理）}
+设 \(f_n,f\) 可测，存在非负 \(F\in L^1(E)\) 使每个 \(|f_n|\le F\)
+几乎处处。若 \(f_n\to f\) 几乎处处（3.4.1\ensuremath{{}^{\prime}}），或 \(f_n\to f\)
+依测度（3.4.1），则 \(f_n,f\) 均可积，且
+
+\begin{equation*}
+\int_E|f_n-f|\longrightarrow0,\qquad \int_E f_n\longrightarrow\int_E f .\tag{4.2.3}
+\end{equation*}
+
+\end{sboxenv}
+
+\textbf{证明}　先设几乎处处收敛。去掉可数个例外集的并及 \(F\)
+的无穷值集，便可逐点取极限得 \(|f|\le F\)。记 \(d_n=|f_n-f|\)，则
+\(0\le d_n\le2F\)。直接对 \(d_n\) 用 Fatou 只得到
+\(0\le\liminf\int_E d_n\)。要获得上界，改看非负的余量 \(2F-d_n\)，它趋于
+\(2F\)。于是
+
+\begin{equation*}
+\begin{aligned}
+\int_E 2F
+&\le\liminf_n\int_E(2F-d_n)\\
+&=\int_E 2F-\limsup_n\int_E d_n .
+\end{aligned}
+\end{equation*}
+
+\(\int_E2F\) 有限，可以相消，故 \(\limsup_n\int_Ed_n\le0\)。由三角不等式
+\(|\int_E f_n-\int_E f|\le\int_Ed_n\)，得到 (4.2.3)。
+
+若仅有依测度收敛，§3.2 的 Riesz 子列定理先给出一条几乎处处趋于 \(f\)
+的子列，故 \(|f|\le F\) 几乎处处。若 \(\|f_n-f\|_1\) 不趋于零，可取
+\(\varepsilon>0\) 及一条子列，使每一项的误差积分都至少为
+\(\varepsilon\)。这条子列仍依测度收敛，再抽几乎处处收敛的子列，刚证明的情形迫使其误差积分趋零，矛盾。整个论证不要求
+\(\mu(E)\) 有限。
+
+\textbf{定理 3.4.1″（有界收敛）}　若 \(\mu(E)<\infty\)，且同一有限常数
+\(K\) 控制全部 \(|f_n|\)，则两种收敛假设中的任何一个均推出 (4.2.3)。取
+\(F=K\mathbf1_E\)，其积分是 \(K\mu(E)<\infty\)，即可应用上一定理。
+
+\textbf{定理
+3.4.1‴（完备空间）}　在完备测度空间上，若极限只在零集外由已知可测列确定，可取一条几乎处处收敛子列（原列几乎处处收敛时取原列），以其上极限作可测代表。完备性保证它在零集上的任意修改仍可测，所以结论适用于给定的极限函数。在一般空间中使用可测代表，或者预先假设
+\(f\) 可测即可。
+
+\clearpage\section[\S{}4.2.6
+收敛定理的条件与反例]{4.2.6
+收敛定理的条件与反例}\label{ux6536ux655bux5b9aux7406ux7684ux6761ux4ef6ux4e0eux53cdux4f8b}
+
+\begin{sboxenv}{inkgray}{例 3.4.1（两个不同的失效情形）}
+在 \([0,\infty)\) 上取
+\(f_n=\mathbf1_{[0,n]}\)，则逐点极限为一。积分递增到无穷，极限不可积。在
+\((0,\infty)\) 上改取
+\(g_n(x)=\frac{n}{1+n^2x^2}\)，则逐点极限为零，而代换 \(u=nx\) 给出
+\(\int_0^\infty g_n\,dx=\int_0^\infty(1+u^2)^{-1}\,du=\frac{\pi}{2}\)。若存在共同可积控制，两个结论都将与
+(4.2.3) 矛盾。
+
+\end{sboxenv}
+
+\textbf{统一有界与无限测度}　在 \(\mathbb R\) 上，\(\mathbf1_{[n,n+1)}\)
+逐点趋零，积分恒为一，且阈值 \(\frac{1}{2}\)
+的误差集测度恒为一，故连依测度收敛也不成立。更强地，令
+\(v_n=n^{-1}\mathbf1_{(0,n)}\)。它一致趋零，因而依测度趋零，积分仍恒为一。后例把``收敛方式不够强''与``常数控制函数不可积''这两件事分开了。
+
+\textbf{依测度收敛与逐点收敛}　在 \([0,1)\) 上按层依次列出 \(2^k\)
+个半开二进区间的指示函数，每层覆盖整个区间一次。第 \(k\) 层每项的积分为
+\(2^{-k}\)，故整列平均收敛并依测度收敛于零。每个点在每层恰有一项取一，自第二层起也总有项取零，整列在任何点都不收敛。
+
+\textbf{例 3.4.2（Levi 引理中的有限上界）}　在 \((0,1]\) 上令
+\(f_n(x)=x^{-1}|\sin(\frac{1}{x})|\mathbf1_{[\frac{1}{n},1]}(x)\)。各项可积且递增，但极限积分为
+\(\int_1^\infty \frac{|\sin u|}{u}\,du\)。在 \([k\pi,(k+1)\pi]\)
+上，\(\frac{1}{u}\ge\frac{1}{(k+1)\pi}\)，而 \(|\sin u|\) 的积分为二。按
+\(k\ge1\)
+求和得无穷。非负递增积分等式仍成立，缺少有限上界损失的是极限的可积性。
+
+\textbf{例 3.4.3（Fatou 的两项条件）}　在 \((0,1)\) 上取
+\(f_n=1-(n+1)\mathbf1_{(0,\frac{1}{n+1}]}\)。逐点极限为一，各项积分却为零，故不能省略可积下界。另一方面，在
+\((2^{-k},2^{1-k}]\) 上赋值 \(\frac{2^k}{k}\)，仅保留前 \(n\)
+层，其余取零。所得 \(g_n\ge0\)
+递增，\(\int g_n=\sum_{k=1}^n \frac{1}{k}\)。这里有共同下界零，Fatou
+不等式仍成立，而 \(\liminf g_n\) 不可积。
+
+\textbf{注 3.4.2（证明之间的联系）}　非负 Levi 给出非负
+Fatou，再通过平移给出变号 Fatou；用余量 \(2F-d_n\)
+即得几乎处处版本的控制收敛。依测度版本可由子列法推出，也可由练习 3.4 第
+6 题直接估计。反向从依测度版得几乎处处版，可用绝对连续性做局部化：在
+\(\{F>a\}\) 上测度有限，几乎处处收敛蕴含依测度收敛；补集的误差至多为
+\(2\int_{\{F\le a\}}F\to0\)。从控制收敛回到非负 Levi 时，若
+\(\int f<\infty\) 可直接以 \(f\) 控制；若积分无穷，则按 §4.1
+对每个简单下界作严格缩放，再取上确界。
+
+\clearpage\section[\S{}4.2.7
+逐项积分与含参积分]{4.2.7
+逐项积分与含参积分}\label{ux9010ux9879ux79efux5206ux4e0eux542bux53c2ux79efux5206}
+
+\begin{sboxenv}{navy}{定理 3.4.4（变号级数逐项积分）}
+若 \(u_k\in L^1(E)\) 且 \(\sum_k\|u_k\|_1<\infty\)，则 \(\sum_k u_k\)
+几乎处处绝对收敛到可积函数 \(s\)。部分和 \(s_n\) 平均收敛于 \(s\)，并有
+\(\int_E s=\sum_k\int_Eu_k\)。
+
+\end{sboxenv}
+
+\textbf{证明}　将各项可能抵消的符号先去掉，令
+\(F=\sum_k|u_k|\)。非负逐项积分给出
+\(\int_E F=\sum_k\|u_k\|_1<\infty\)，故 \(F\)
+几乎处处有限。在该满测度集上级数绝对收敛，且 \(|s_n|\le F\)。由 (4.2.3)
+即得两项结论。还可直接控制截断误差：\(\|s-s_n\|_1\le\sum_{k>n}\|u_k\|_1\)。
+
+\textbf{定理 3.4.5（积分号下取极限）}　设实参数 \(t\) 趋于
+\(t_0\)，每个截面 \(u(\cdot,t)\) 可测。若对几乎所有 \(x\) 有
+\(u(x,t)\to v(x)\)，\(v\) 可测，且在 \(t_0\)
+的某去心邻域，\(|u(\cdot,t)|\le F\) 几乎处处，\(F\in L^1(E)\) 与 \(t\)
+无关，则 \(\int_Eu(x,t)\,d\mu\to\int_Ev\,d\mu\)。取
+\(v=u(\cdot,t_0)\)，即为积分关于参数的连续性。教材在矩形
+\([a,b]\times[\alpha,\beta]\) 上陈述此结论。
+
+\textbf{证明}　对任意
+\(t_n\to t_0\)、\(t_n\ne t_0\)，去掉这列参数对应的可数个例外集后，\(u(\cdot,t_n)\)
+由同一个 \(F\) 控制并几乎处处趋于 \(v\)。由 (4.2.3) 得积分收敛。每条趋于
+\(t_0\) 的序列均如此，故参数极限成立。端点采用单侧序列。
+
+\begin{sboxenv}{navy}{定理 3.4.6（积分号下求导）}
+设
+\(I(t)=\int_Eu(x,t)\,d\mu\)，各截面可测，\(u(\cdot,t_0)\in L^1(E)\)。对几乎所有
+\(x\)，\(u(x,\cdot)\) 在 \(t_0\) 可导。若所有充分小的非零 \(h\) 均有
+
+\begin{equation*}
+\left|\frac{u(x,t_0+h)-u(x,t_0)}{h}\right|\le G(x)\quad\text{a.e.},\qquad G\in L^1(E),
+\end{equation*}
+
+则 \(I'(t_0)=\int_E\partial_t u(x,t_0)\,d\mu\)。端点处取相应单侧导数。
+
+\end{sboxenv}
+
+\textbf{证明}　邻近截面的绝对值由 \(|u(\cdot,t_0)|+|h|G\)
+控制，积分有意义。沿任意
+\(h_n\to0\)，差商几乎处处趋于偏导数，其极限有可测代表；在不完备空间取此代表积分。对差商应用
+(4.2.3)，由积分线性识别左端为 \(I\)
+的差商，即得结论。实际估计时，若在一个共同满测度集上，参数邻域内处处可导且对所有参数都有
+\(|\partial_tu(x,t)|\le G(x)\)，中值定理立即给出上面的差商界。
+
+\clearpage\section[\S{}4.2.8
+怎样构造共同可积控制]{4.2.8
+怎样构造共同可积控制}\label{ux600eux6837ux6784ux9020ux5171ux540cux53efux79efux63a7ux5236}
+
+\begin{sboxenv}{inkgray}{例 1（邻域端点给出两个不同的上界）}
+对 \(t>0\)，令 \(I(t)=\int_0^1x^{t-1}\,dx\)。求 \(I'(t_0)\)，其中
+\(t_0>0\)。
+
+\end{sboxenv}
+
+\textbf{解}　取 \(a=\frac{t_0}{2}\)，只考察
+\(t\in[a,\frac{3t_0}{2}]\)。因 \(0<x<1\)，指数越小，\(x\)
+的幂越大。因此各截面和参数导数分别满足
+
+\begin{equation*}
+|x^{t-1}|\le x^{a-1},\qquad
+|x^{t-1}\log x|\le x^{a-1}|\log x| .
+\end{equation*}
+
+第一项积分为 \(\frac{1}{a}\)；第二项用 \(x=e^{-v}\) 化为
+\(\int_0^\infty ve^{-av}\,dv=\frac{1}{a^2}\)。同一个邻域内的差商遂由中值定理受第二项控制。又
+\(I(t)=\frac{1}{t}\)，故
+
+\begin{equation*}
+\int_0^1 x^{t_0-1}\log x\,dx=I'(t_0)=-\frac{1}{t_0^2}.
+\end{equation*}
+
+不能把邻域一直放大到 \(t=0\) 再取这个界，端点的 \(x^{-1}\)
+已经不可积。若积分区间经过 \(x=1\)，则 \(x<1\) 与 \(x>1\)
+时幂次的大小关系相反，练习 3.4 第 4 题正要分开处理这两段。
+
+\begin{sboxenv}{inkgray}{例 2（函数值受控，差商仍可失控）}
+在 \(0<x<1\)、\(-1<t<1\) 上令
+\(u(x,t)=\operatorname{sgn}(t)\mathbf1_{\{0<x<|t|\}}\)，取
+\(u(x,0)=0\)。则 \(|u|\le1\)，且对每个 \(x>0\)，只要 \(|t|<x\) 就有
+\(u(x,t)=0\)。故 \(\partial_tu(x,0)=0\)。另一方面 \(I(t)=t\)，所以
+\(I'(0)=1\)。
+
+\end{sboxenv}
+
+\textbf{解}　差商为
+\(|h|^{-1}\mathbf1_{(0,|h|)}\)，积分恒为一。若差商有共同可积控制，它的积分必趋于其逐点极限零的积分，与一矛盾。函数值的常数界可以证明
+\(I\) 在零点连续；求导需要另估差商。
+
+\textbf{级数也要控制部分和。}　在 \((0,1)\) 上取
+\(v_n=n\mathbf1_{(0,\frac{1}{n})}\)，令
+\(u_1=v_1\)，\(u_n=v_n-v_{n-1}\)（\(n\ge2\)）。部分和为
+\(v_n\)，逐点趋于零，但
+\(\sum_n\int u_n=1\)。这里每个级数项都可积，数项级数甚至只有首项的积分非零；单凭这些仍不能逐项积分。
+
+\clearpage\section[\S{}4.2.9 练习
+3.3　可积性与切割]{4.2.9 练习
+3.3　可积性与切割}\label{ux7ec3ux4e60-3.3-ux53efux79efux6027ux4e0eux5207ux5272}
+
+以下按教材原题号重述。练习 3.3 的其余 15 题和练习 3.4 的第 2、5、8 题见
+§4.1。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.6}\label{ux95eeux9898-3.3.6}
+
+设 \(f,g\in L^1(X)\)，证明 \(\sqrt{f^2+g^2}\) 可积。
+
+\textbf{解}　取有限值可测代表。平方、加法及非负平方根保持可测，而
+\(0\le\sqrt{f^2+g^2}\le|f|+|g|\)。右端积分为
+\(\|f\|_1+\|g\|_1<\infty\)，由比较判据得证。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.8}\label{ux95eeux9898-3.3.8}
+
+设 \(f\in L^1(\mathbb R)\)，\(f(0)=0\)，且 \(f'(0)\) 存在有限。证明
+\(\frac{f(x)}{x}\) 可积。
+
+\textbf{解}　零点处任取有限值。导数定义给出 \(\delta>0\)，使
+\(0<|x|<\delta\) 时有 \(|\frac{f(x)}{x}|\le |f'(0)|+1\)。补集上则有
+\(|\frac{f(x)}{x}|\le \frac{|f(x)|}{\delta}\)。前一段测度有限，后一段由已知可积函数控制，合得绝对积分至多为
+\(2\delta(|f'(0)|+1)+\frac{\|f\|_1}{\delta}\)。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.9}\label{ux95eeux9898-3.3.9}
+
+已知 \(\int_0^{2\pi}|f|\log(1+|f|)<\infty\)，证明
+\(f\in L^1([0,2\pi])\)。
+
+\textbf{解}　在通常的可测函数约定下，分成 \(|f|<1\) 与 \(|f|\ge1\)
+两部分。前者积分至多为 \(2\pi\)，后者有
+\(|f|\le \frac{|f|\log(1+|f|)}{\log 2}\)，所以 \(\int|f|<\infty\)。
+
+\textbf{题意辨析}　原题单独成句时没有明写 \(f\)
+可测。仅从被积函数可测，利用 \(y\mapsto y\log(1+y)\)
+在非负半轴上的连续逆，只能推出 \(|f|\) 可测。若 \(V\subset[0,2\pi]\)
+不可测，令 \(f=2\mathbf1_V-1\)，则已知积分为 \(2\pi\log 2\)，而 \(f\)
+不可测。因此原结论需要 \(f\) 可测，或例如预先知道它非负。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.10}\label{ux95eeux9898-3.3.10}
+
+设 \(f\in L^1(E)\)，\(E\subset\mathbb R^d\) 可测，且
+\(\int_E f=r>0\)。证明存在可测 \(A\subset E\) 使 \(\int_A f=\frac r3\)。
+
+\textbf{解}　令 \(J(t)=\int_E f(x)\mathbf1_{\{x_1<t\}}\,dx\)。若
+\(t_n\to t\)，指示函数在超平面 \(\{x_1=t\}\)
+外趋于相应极限。该超平面为零集，乘积由 \(|f|\) 控制，故 \(J\)
+连续。同理，当 \(t\to-\infty,+\infty\) 时分别得 \(J(t)\to0,r\)。可取
+\(s<t\) 使 \(J(s)<\frac r3<J(t)\)，由介值定理取 \(c\) 满足
+\(J(c)=\frac r3\)；所求即 \(A=E\cap\{x_1<c\}\)。\(f\)
+可变号，故这里仅用连续性。
+
+\clearpage\section[\S{}4.2.10 练习
+3.3　伸缩、对偶与测度之和]{4.2.10 练习
+3.3　伸缩、对偶与测度之和}\label{ux7ec3ux4e60-3.3-ux4f38ux7f29ux5bf9ux5076ux4e0eux6d4bux5ea6ux4e4bux548c}
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.12}\label{ux95eeux9898-3.3.12}
+
+设 \(f\in L^1(\mathbb R)\)，\(\alpha>0\)。证明 \(n^{-\alpha}f(nx)\to0\)
+几乎处处。
+
+\textbf{解}　固定 \(\eta>0\)，记 \(A_n=\{x:|f(nx)|>\eta n^\alpha\}\)。用
+Lebesgue 测度的伸缩性，再用水平集估计，得
+
+\begin{equation*}
+m(A_n)=\frac1n m\{|f|>\eta n^\alpha\}
+ \le\frac{\|f\|_1}{\eta n^{1+\alpha}} .
+\end{equation*}
+
+右端可求和。故
+\(m(\limsup_n A_n)\le\lim_{N\to\infty}\sum_{n\ge N}m(A_n)=0\)。依次令
+\(\eta=\frac{1}{j}\)
+并去掉可数个例外集，剩下的每个点最终满足每个阈值，极限即为零。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.14（A.
+Lebesgue）}\label{ux95eeux9898-3.3.14a.-lebesgue}
+
+设 \(1<p,q<\infty\)，\(\frac{1}{p}+\frac{1}{q}=1\)。\(f\) 在可测集
+\(E\subset\mathbb R^d\) 上可测；若每个满足 \(\int_E|h|^q<\infty\) 的可测
+\(h\) 都使 \(fh\) 可积，证明 \(\int_E|f|^p<\infty\)。
+
+\textbf{解}　自然的试验函数是 \(|f|^{p-1}\)，因为
+\((p-1)q=p\)，但它是否属于 \(L^q\) 恰是未知量。先取
+\(w_N=\min(|f|,N)\mathbf1_{E\cap[-N,N]^d}\)，记
+\(a_N=(\int_E w_N^p)^{\frac{1}{p}}\)。若
+\(\int_E|f|^p=\infty\)，则由单调收敛 \(a_N\uparrow\infty\)。选 \(N_j\)
+使 \(a_{N_j}\ge 2^{2j}\)，令
+
+\begin{equation*}
+h_j=\frac{w_{N_j}^{p-1}}{a_{N_j}^{p-1}},\qquad h=\sum_{j=1}^\infty 2^{-j}h_j .
+\end{equation*}
+
+由 \((p-1)q=p\) 得 \(\int h_j^q=1\)。因 \(y^q\) 凸，任一有限部分和的
+\(q\) 次方至多为
+\(\sum_{j=1}^k2^{-j}h_j^q\)（把剩余权重赋给零）。取递增极限并积分得
+\(\int h^q\le1\)。但 \(|f|\ge w_{N_j}\)，从而
+
+\begin{equation*}
+\int_E |f|h\ge 2^{-j}\int_E w_{N_j}h_j=2^{-j}a_{N_j}\ge 2^j
+\end{equation*}
+
+对每个 \(j\) 成立，与 \(fh\)
+可积矛盾。此构造同时处理无界函数和无界积分域。
+
+\Needspace{9\baselineskip}\subsection{问题 3.3.15}\label{ux95eeux9898-3.3.15}
+
+设 \(\mu_1(A)\le\mu_2(A)\) 对所有可测 \(A\) 成立。若
+\(f\in L^1(E,\mu_2)\)，证明它关于 \(\mu_1\) 及 \(\mu_1+\mu_2\)
+均可积，且关于和测度的积分等于两个积分之和。
+
+\textbf{解}　令 \(\nu=\mu_1+\mu_2\)。对任一非负简单函数
+\(s\)，按值层求和得
+\(\int_E s\,d\nu=\int_E s\,d\mu_1+\int_E s\,d\mu_2\)，并有
+\(\int_E s\,d\mu_1\le\int_E s\,d\mu_2\)。对任意非负可测函数取简单递增逼近，逐个测度用
+Levi 定理，两式仍成立。代入 \(|f|\)，得
+\(\int_E |f|\,d\nu\le2\int_E |f|\,d\mu_2<\infty\)，同时得到关于
+\(\mu_1\) 的可积性。最后分别代入
+\(f^+,f^-\)，将两条有限等式相减即得结论。
+
+\clearpage\section[\S{}4.2.11 练习
+3.4　辨认极限与含参连续性]{4.2.11 练习
+3.4　辨认极限与含参连续性}\label{ux7ec3ux4e60-3.4-ux8fa8ux8ba4ux6781ux9650ux4e0eux542bux53c2ux8fdeux7eedux6027}
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.1}\label{ux95eeux9898-3.4.1}
+
+设 \(f,f_k\in L^1(\mathbb R^d)\)。对每个 Lebesgue 可测集
+\(A\)，\(\int_A f_k\) 随 \(k\) 递增并趋于 \(\int_A f\)。证明
+\(f_k\to f\) 几乎处处。
+
+\textbf{解}　固定 \(k\)，在 \(\{f_k>f_{k+1}\}\) 上应用积分的次序关系，得
+\(f_k\le f_{k+1}\) 几乎处处。同理，因为 \(\int_A f_k\le\int_A f\) 对所有
+\(A\) 成立，在 \(\{f_k>f\}\) 上比较得 \(f_k\le f\)
+几乎处处。去掉可数并的零集，便有 \(f_1\le f_k\uparrow g\le f\)。此时
+\(f-f_k\ge0\)，逐点趋于 \(f-g\)。对全空间使用 Fatou 和题设，
+
+\begin{equation*}
+0\le\int_{\mathbb R^d}(f-g)\le\liminf_k\int_{\mathbb R^d}(f-f_k)=0 .
+\end{equation*}
+
+故 \(g=f\)
+几乎处处。条件作用于所有可测集，用在从积分的次序还原逐点次序的环节。
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.3}\label{ux95eeux9898-3.4.3}
+
+设实函数 \(f\) 定义在 \(\mathbb R^d\)。对每个 \(\varepsilon>0\)，存在
+\(g,h\in L^1(\mathbb R^d)\) 使 \(g\le f\le h\) 且
+\(\int(h-g)<\varepsilon\)。证明 \(f\) 可积。
+
+\textbf{解}　按 \(\varepsilon=2^{-n}\) 选
+\(g_n,h_n\)。由非负逐项积分，\(\int\sum_n(h_n-g_n)\le1\)，故
+\(h_n-g_n\to0\)
+几乎处处。在这个满测度集上，\(0\le f-g_n\le h_n-g_n\)，从而
+\(g_n\to f\)。因此 \(f\) 与可测函数 \(\limsup_n g_n\)
+几乎处处相等，Lebesgue 测度的完备性保证 \(f\) 自身可测。又
+\(g_1\le f\le h_1\) 蕴含 \(|f|\le|g_1|+|h_1|\)，故 \(f\) 可积。
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.4}\label{ux95eeux9898-3.4.4}
+
+设 \(s<t\)，\(x^sf(x)\) 和 \(x^tf(x)\) 在 \((0,\infty)\) 都可积。证明
+\(J(u)=\int_0^\infty x^uf(x)\,dx\) 在 \((s,t)\) 有限且连续。
+
+\textbf{解}　当 \(0<x\le1\) 时，\(x^u\le x^s\)；当 \(x>1\)
+时，\(x^u\le x^t\)。故对所有 \(u\in[s,t]\)，共同控制函数可以取成
+
+\begin{equation*}
+F(x)=|x^sf(x)|\mathbf1_{(0,1]}(x)+|x^tf(x)|\mathbf1_{(1,\infty)}(x).
+\end{equation*}
+
+它可积，因而 \(J(u)\) 有限。对任意 \(u_n\to u\)，在 \(f\) 有限的点上
+\(x^{u_n}f(x)\to x^uf(x)\)；应用 3.4.5
+即得连续性。这个控制还同时给出两端点的单侧连续性。
+
+\clearpage\section[\S{}4.2.12 练习
+3.4　误差估计与变化的控制函数]{4.2.12 练习
+3.4　误差估计与变化的控制函数}\label{ux7ec3ux4e60-3.4-ux8befux5deeux4f30ux8ba1ux4e0eux53d8ux5316ux7684ux63a7ux5236ux51fdux6570}
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.6}\label{ux95eeux9898-3.4.6}
+
+给出注 3.4.2 中由几乎处处版本 (4) 推出依测度版本 (5) 的另一证明。
+
+\textbf{解}　设 \(|f_n|\le F\in L^1(E)\) 且 \(f_n\to f\) 依测度。对
+\(a>0\)，集合 \(\{|f|>F+a\}\) 除去零集后包含于每个
+\(\{|f-f_n|>a\}\)，故测度为零。取 \(a=\frac{1}{j}\)，得 \(|f|\le F\)
+几乎处处。记 \(D_n=\{|f_n-f|>\eta\}\)，则
+
+\begin{equation*}
+\int_E|f_n-f|\le\int_E\min(\eta,2F)+2\int_{D_n}F .
+\end{equation*}
+
+当 \(\eta\downarrow0\) 时，第一项由 (4) 趋于零。先使它小于
+\(\frac{\varepsilon}{2}\)，再固定这个 \(\eta\)；因
+\(\mu(D_n)\to0\)，第二项由积分绝对连续性最终小于
+\(\frac{\varepsilon}{2}\)。故误差积分趋零。这个证明避免了对反证子列再次抽取子列。
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.7}\label{ux95eeux9898-3.4.7}
+
+在 Lebesgue 测度空间 \((\mathbb R^d,\mathcal L,m)\)
+上证明依测度版本的定理 3.4.1。
+
+\textbf{解}　将 \(E\) 上的函数零延拓到
+\(\mathbb R^d\)。由上一题的阈值比较得 \(|f|\le F\) 几乎处处。给定
+\(\varepsilon>0\)，按球 \(B_R=\{|x|<R\}\) 递增，取 \(R>0\) 使
+\(2\int_{B_R^c}F<\frac{\varepsilon}{3}\)。在球内，误差不超过 \(\eta\)
+的部分积分至多为 \(\eta m(B_R)\)，取 \(\eta>0\) 使其小于
+\(\frac{\varepsilon}{3}\)。余下部分至多为 \(2\int_{B_R\cap D_n} F\)，由
+\(m(D_n)\to0\) 和定理 3.3.15 最终亦小于
+\(\frac{\varepsilon}{3}\)。三部分相加得平均收敛，进而积分收敛。球外估计说明整个积分域可以具有无限测度。
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.9}\label{ux95eeux9898-3.4.9}
+
+设 \(E\subset\mathbb R\)，\(|f_k|\le g_k\)，各函数可测，且
+\(f_k\to f\)、\(g_k\to g\) 逐点。若
+\(\int_E g_k\to\int_Eg<\infty\)，证明 \(\int_E f_k\to\int_E f\)。
+
+\textbf{解}　\(g_k\ge0\)，从某项起其积分有限；考察这一尾列即可。极限满足
+\(|f|\le g\)。对 \(g_k+f_k\) 和 \(g_k-f_k\) 分别用非负 Fatou 引理，由
+\(\int g_k\) 的有限极限可得
+
+\begin{equation*}
+\begin{aligned}
+\int_Eg+\int_E f&\le\int_E g+\liminf_k\int_E f_k,\\
+\int_Eg-\int_E f&\le\int_E g-\limsup_k\int_E f_k .
+\end{aligned}
+\end{equation*}
+
+相减后，上、下极限都被夹在 \(\int_E f\) 处。这道题的控制函数随 \(k\)
+变化，它们积分的收敛恰好补回了比较所需的信息。
+
+\Needspace{9\baselineskip}\subsection{问题 3.4.10}\label{ux95eeux9898-3.4.10}
+
+在任意测度空间上，若 \(f_n\) 由可积函数 \(F\) 控制且几乎处处趋于可测
+\(f\)，证明 \(f_n\to f\) 依测度。
+
+\textbf{解}　几乎处处版本 (4.2.3) 给出 \(\int_E|f_n-f|\to0\)。任取
+\(\eta>0\)，由定理 3.3.17 有
+\(\mu\{|f_n-f|>\eta\}\le\eta^{-1}\int_E|f_n-f|\to0\)。此处没有有限测度条件；对每个阈值，控制来自误差的有限积分。
+
+\end{document}

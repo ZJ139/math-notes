@@ -4,7 +4,7 @@ from pathlib import Path
 import re,subprocess,shutil,sys
 R=Path(__file__).resolve().parents[1]
 section=sys.argv[1] if len(sys.argv)>1 else '3.1'
-if section not in ('3.1','3.2','3.3','4.1'):raise ValueError('Unsupported S section')
+if section not in ('3.1','3.2','3.3','4.1','4.2','4.3'):raise ValueError('Unsupported S section')
 slug=section.replace('.','-')
 O=R/f'outputs/real-v1-{slug}';O.mkdir(parents=True,exist_ok=True)
 chapter, number = section.split('.')
@@ -16,7 +16,7 @@ def block(m):
  b='\n'.join(re.sub(r'^> ?', '',line) for line in m[0].splitlines())
  title=re.match(r'\*\*(.+?)\*\*',b)[1]
  content=b[b.index('**',2)+2:].strip()
- color='inkgray' if title.startswith('例 ') else 'warm' if title.startswith(('辨析','题意')) else 'navy'
+ color='inkgray' if re.match(r'^例(?:\s|$)',title) else 'warm' if title.startswith(('辨析','题意')) else 'navy'
  tag=f'REALBOXPLACEHOLDER{len(blocks)}'
  blocks.append((tag,title,color,content))
  return '\n'+tag+'\n'
@@ -90,15 +90,23 @@ if section=='3.3':
  pre=re.sub(r'本节对应[^\n]+',lambda _:r'本节对应《实变函数知识框架》\S3.3 与徐森林、薛春华《实变函数论》印刷第199—208页。教材例3.2.5—3.2.10及相关原题保留原编号，另附三道迁移练习。记 $m$ 为 $\mathbb R^d$ 上的 Lebesgue 测度，$E$ 为 Lebesgue 可测集。',pre)
  # Root-relative site links need an absolute destination in a standalone PDF.
  latex=latex.replace(r'\href{/notes/',r'\href{https://zj139.github.io/math-notes/notes/')
-if section=='4.1':
- title='4.1 非负可测函数的积分'
+if chapter=='4':
+ title=re.search(r'^title: "(.+)"$',raw,re.M)[1]
  pre=pre.replace('3.1 可测函数的定义与性质',title).replace(r'第三章\quad 可测函数',r'第四章\quad Lebesgue 积分')
  intro=raw.split('---\n',2)[-1].split('## 本节目次')[0].strip().split('\n\n')
  pre=re.sub(r'\\textbf\{主线：\}[^\n]+',lambda _:convert(intro[0])+r'\par\textbf{主线：}'+convert(intro[1].removeprefix('主线：')).strip(),pre)
  pre=re.sub(r'本节对应[^\n]+',lambda _:convert(intro[2]).strip(),pre)
- for old,new in [('水平集与原像','简单函数分层'),('运算与可数极限','简单下界上确界'),('简单函数逼近','Levi 递增极限'),('Borel 代表','级数与 Fatou')]:
+ chapter_nodes={
+  '4.1': ('简单函数分层','简单下界上确界','Levi 递增极限','级数与 Fatou'),
+  '4.2': ('正负部分','绝对可积','控制收敛','含参积分'),
+  '4.3': ('简单函数分层','连续与阶梯逼近','平移连续性','高频积分'),
+ }
+ if section=='4.3':
+  pre=pre.replace('{FFFEFC}', '{FAF9F5}')
+ for old,new in zip(('水平集与原像','运算与可数极限','简单函数逼近','Borel 代表'),chapter_nodes[section]):
   pre=pre.replace(old,new)
- latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}4\.1\.(?!1 ))',lambda _:r'\clearpage',latex)
+ if section!='4.3':
+  latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}'+re.escape(section)+r'\.(?!1 ))',lambda _:r'\clearpage',latex)
  pre=pre.replace('′',r'\ensuremath{{}^{\prime}}')
  latex=latex.replace('′',r'\ensuremath{{}^{\prime}}')
 tex=R/f'print/real-functions-v1-{slug}.tex'
