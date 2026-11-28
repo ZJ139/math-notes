@@ -106,7 +106,7 @@ L 361.581867 149.146907
 L 361.890993 151.641338
 L 361.908291 152.053375
 L 361.908291 152.053375
-" clip-path="url(#p4dfc0bcc8a)" style="fill: none; stroke: #d47555; stroke-width: 2.6; stroke-linecap: square"/>
+" clip-path="url(#p4dfc0bcc8a)" style="fill: none; stroke: #D97757; stroke-width: 2.6; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <defs>
@@ -536,20 +536,20 @@ z
    <g id="patch_4">
     <path d="M 51.835345 114.386879
 Q 57.402845 107.063192 61.617107 101.519602
-" style="fill: none; stroke: #d47555; stroke-width: 2; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 2; stroke-linecap: round"/>
     <path d="M 56.801611 103.888356
 L 61.617107 101.519602
 L 60.622813 106.793251
-" style="fill: none; stroke: #d47555; stroke-width: 2; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 2; stroke-linecap: round"/>
    </g>
    <g id="patch_5">
     <path d="M 331.101084 98.90256
 Q 337.646386 105.36727 342.600785 110.260666
-" style="fill: none; stroke: #d47555; stroke-width: 2; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 2; stroke-linecap: round"/>
     <path d="M 340.872224 105.180107
 L 342.600785 110.260666
 L 337.499201 108.59518
-" style="fill: none; stroke: #d47555; stroke-width: 2; stroke-linecap: round"/>
+" style="fill: none; stroke: #D97757; stroke-width: 2; stroke-linecap: round"/>
    </g>
    <g id="text_6">
     <!-- $x=a(t-\sin t)$ -->

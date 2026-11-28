@@ -7,7 +7,7 @@
 .rt-index .button { flex: none; }
 .rt-passage p { margin: 0 0 1.1em; }
 .rt-paragraph { font-size: .78em; color: #536071; padding-right: .35em; }
-.rt-reviewed .rt-evidence { background: rgb(212 117 85 / 24%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.rt-reviewed .rt-evidence { background: rgb(217 119 87 / 24%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .rt-marker { font-weight: 700; vertical-align: super; font-size: .76em; padding: 0 .2em; }
 .rt-evidence,.rt-analysis { scroll-margin-top: 1.5rem; }
 .rt-form { border-top: 1px solid #cbd2d9; padding-top: 1.4rem; }
