@@ -9,13 +9,13 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\usepackage{xcolor,titlesec,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{0.7em}{}
 \titleformat{\subsection}{\large\bfseries\color{navy}}{\thesubsection}{0.7em}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -397,7 +397,7 @@ I_1y'^2+\frac{K_1}{I_1}=0,\qquad y'^2=-\frac{K_1}{I_1^2}.\tag{3.5}
 实圆的充要条件是 \(I_1^2=4I_2\) 且
 \(I_1I_3<0\)。``一点是一对共轭虚直线''是在复数域中分解二次式的说法，不能读成实平面中还有两条直线。
 
-\begin{sboxenv}{warm}{辨析：配方法与正交变换}
+\begin{sboxenv}{orange}{辨析：配方法与正交变换}
 一般配方法对应 \(\boldsymbol x=M\boldsymbol z+\boldsymbol h\)，得到
 \(A'=M^TAM\)。\(M\) 可逆便保持惯性，但若 \(M\)
 不正交，不能直接把新坐标中的长度当成原平面的长度。此时欧氏度量变为
@@ -688,7 +688,7 @@ a_{12}F_1+a_{22}F_2=0.\tag{5.2}
 
 \Needspace{8\baselineskip}\subsection{例 1：椭圆}\label{ux4f8b-1ux692dux5706}
 
-\begin{sboxenv}{inkgray}{例 1（原稿）}
+\begin{sboxenv}{orange}{例 1（原稿）}
 将 \(5x^2+4xy+8y^2-32x-56y+80=0\)
 化为标准形，求其焦点、主轴、准线、顶点、面积和参数方程。
 
@@ -756,7 +756,7 @@ x=2+\frac{6\cos t+2\sin t}{\sqrt5},\qquad y=3+\frac{-3\cos t+4\sin t}{\sqrt5},\q
 
 \Needspace{8\baselineskip}\subsection{例 2：抛物线}\label{ux4f8b-2ux629bux7269ux7ebf}
 
-\begin{sboxenv}{inkgray}{例 2（原稿）}
+\begin{sboxenv}{orange}{例 2（原稿）}
 求 \(x^2-2xy+y^2-4x-4y+8=0\) 的标准形及几何元素。
 
 \end{sboxenv}
@@ -790,7 +790,7 @@ x'=\frac{x+y-2}{\sqrt2},\qquad y'=\frac{-x+y}{\sqrt2},
 
 \Needspace{8\baselineskip}\subsection{例 3：双曲线}\label{ux4f8b-3ux53ccux66f2ux7ebf}
 
-\begin{sboxenv}{inkgray}{例 3（原稿）}
+\begin{sboxenv}{orange}{例 3（原稿）}
 求 \(7x^2+24xy+10x-24y-161=0\) 的标准形、焦点、主轴、准线与渐近线。
 
 \end{sboxenv}
@@ -846,7 +846,7 @@ F-\frac{I_3}{I_2}=7(x-1)^2+24(x-1)(y+1)=(x-1)(7x+24y+17).
 \Needspace{8\baselineskip}\subsection{例
 4：退化类型的参数分界}\label{ux4f8b-4ux9000ux5316ux7c7bux578bux7684ux53c2ux6570ux5206ux754c}
 
-\begin{sboxenv}{inkgray}{例 4（补充）}
+\begin{sboxenv}{orange}{例 4（补充）}
 对参数 \(\tau\in\mathbb R\)，分类
 \((x+y)^2-4(x+y)+\tau=0\)，并求其中心集合。
 
@@ -870,7 +870,7 @@ F-\frac{I_3}{I_2}=7(x-1)^2+24(x-1)(y+1)=(x-1)(7x+24y+17).
 \Needspace{8\baselineskip}\subsection{例
 5：第一列为零时的抛物线}\label{ux4f8b-5ux7b2cux4e00ux5217ux4e3aux96f6ux65f6ux7684ux629bux7269ux7ebf}
 
-\begin{sboxenv}{inkgray}{例 5（补充）}
+\begin{sboxenv}{orange}{例 5（补充）}
 求 \(y^2-4x+6y+5=0\) 的轴、顶点、焦点与准线。
 
 \end{sboxenv}
@@ -964,7 +964,7 @@ P_{F_+}-\frac19\widehat A=\frac19\begin{pmatrix}4&-2&-20\\-2&1&10\\-20&10&100\en
 
 \Needspace{12\baselineskip}\section{常见易错点与检查清单}\label{ux5e38ux89c1ux6613ux9519ux70b9ux4e0eux68c0ux67e5ux6e05ux5355}
 
-\begin{sboxenv}{warm}{检查清单}
+\begin{sboxenv}{orange}{检查清单}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist

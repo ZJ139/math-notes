@@ -10,14 +10,14 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor,titlesec,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\definecolor{navy}{HTML}{10136B}\definecolor{warm}{HTML}{94662C}
 \titleformat{\section}{\Large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -160,7 +160,7 @@ P_n(x)=\frac{1}{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n,\qquad
 
 \textbf{证明}　\((x^2-1)^n\) 在两端有 \(n\) 重零点，所以分部积分不留边界项。对 \(\deg q<n\)，\(q^{(n)}=0\)，故 \(\int_{-1}^1 P_nq=0\)。在 \(x=1\) 对 \((x-1)^n(x+1)^n\) 求 \(n\) 阶导数，只有全部求导作用在第一因子上的一项保留，给出 \(P_n(1)=1\)。首项系数为 \(k_n=2^{-n}\binom{2n}{n}\)。由奇偶性和定理 2.1，\(xP_n=A_nP_{n+1}+B_nP_{n-1}\)。比较首项得 \(A_n=\frac{k_n}{k_{n+1}}=\frac{n+1}{2n+1}\)，代入 \(x=1\) 得 \(B_n=\frac{n}{2n+1}\)。以 \(d_n=\|P_n\|^2\) 记范数平方，比较 \(\langle xP_{n-1},P_n\rangle\) 与 \(\langle P_{n-1},xP_n\rangle\) 得 \(d_n=\frac{(2n-1)d_{n-1}}{2n+1}\)。从 \(d_0=2\) 连乘便得结论。
 
-\begin{sboxenv}{inkgray}{例 1　用二次多项式逼近绝对值函数}
+\begin{sboxenv}{orange}{例 1　用二次多项式逼近绝对值函数}
 
 求 \(f(x)=|x|\) 在 \([-1,1]\) 上的最佳平方逼近 \(S_2 f\)，并计算最小平方误差。
 
@@ -212,7 +212,7 @@ S_2 f&=\frac12P_0+\frac58P_2=\frac{15x^2+3}{16},\\
 
 各分母的符号恰为 \((-1)^{n-j}\)，故各项均非负，只能全部为零。于是 \(d\) 有 \(n+1\) 个零点，必恒为零。这个论证也处理了某些极值点处两个多项式恰好相等的情形。
 
-\begin{sboxenv}{inkgray}{例 2　如何选择插值节点}
+\begin{sboxenv}{orange}{例 2　如何选择插值节点}
 
 对 \(f\in C^{n+1}[-1,1]\) 作 \(n\) 次插值。若只知道 \(\|f^{(n+1)}\|_\infty\le M\)，怎样选择 \(n+1\) 个节点，使经典余项给出的统一上界最小？
 
@@ -235,7 +235,7 @@ x_j=\cos\frac{(2j+1)\pi}{2(n+1)},\quad 0\le j\le n,\qquad
 
 \clearpage\lectureheading{§5 同题对照：把四次函数降阶}
 
-\begin{sboxenv}{inkgray}{例 3　在两种误差准则下逼近同一个函数}
+\begin{sboxenv}{orange}{例 3　在两种误差准则下逼近同一个函数}
 
 令 \(f(x)=x^4\)，\(-1\le x\le1\)。在 \(\mathcal P_3\) 中分别求使 \(\int_{-1}^1|f-q|^2\,dx\) 最小和使 \(\max_{[-1,1]}|f-q|\) 最小的多项式。
 
@@ -293,7 +293,7 @@ P_4(x)=\frac{35x^4-30x^2+3}{8},\qquad T_4(x)=8x^4-8x^2+1 .
 
 \textbf{证明}　零点从正弦分子读出。代换 \(x=\cos\theta\) 后，权与微分贡献 \(\sin^2\theta\,d\theta\)，恰好约去两个 \(U\) 的分母。因此内积变成 \(\int_0^\pi\sin((m+1)\theta)\sin((n+1)\theta)\,d\theta\)，积化和差即证。两个权的差别反映出构造中是余弦本身，还是带分母的正弦。
 
-\begin{sboxenv}{inkgray}{例 4　两端固定的离散振动链}
+\begin{sboxenv}{orange}{例 4　两端固定的离散振动链}
 
 取 \(N\) 个内部点，补边界 \(v_0=v_{N+1}=0\)。定义 \((Kv)_j=2v_j-v_{j-1}-v_{j+1}\)，\(1\le j\le N\)。求所有振动模态，即 \(K\) 的特征值与特征向量。
 
@@ -350,7 +350,7 @@ v_j^{(k)}=\sin\frac{jk\pi}{N+1},\qquad 1\le k,j\le N ,
 
 从显式系数还可读出微分方程。若 \(\ell_n=\sum a_jx^j\)，则 \((j+1)^2a_{j+1}=-(n-j)a_j\)（令 \(a_{n+1}=0\)）。逐次比较系数即得 \(x\ell_n''+(1-x)\ell_n'+n\ell_n=0\)。乘以 \(e^{-x}\) 可写成 \(-(xe^{-x}\ell_n')'=ne^{-x}\ell_n\)，其右端的权正与定义一致。
 
-\begin{sboxenv}{inkgray}{例 5　逼近一个衰减信号，并算出截断误差}
+\begin{sboxenv}{orange}{例 5　逼近一个衰减信号，并算出截断误差}
 
 在权 \(e^{-x}\) 下，用 \(\mathcal P_m\) 逼近 \(f(x)=e^{-x}\)。这里的权是衡量误差时给定的，\(f\) 则是待逼近的函数。
 
@@ -388,7 +388,7 @@ c_n=\int_0^\infty e^{-2x}\ell_n(x)\,dx
 
 \textbf{证明}　对 \(e^{-x^2}H_n\) 求导可得 \(H_{n+1}=2xH_n-H_n'\)，故 \(H_n\) 的首项系数为 \(2^n\)。由 Rodrigues 公式，\(\langle H_n,q\rangle_w=\int_{\mathbb R}e^{-x^2}q^{(n)}\,dx\)，两端边界项因高斯衰减消失。令 \(\deg q<n\) 得正交，令 \(q=H_n\) 即得范数。若 \(\deg q\le n-2\)，分部积分给出 \(\langle H_n',q\rangle_w=\langle H_n,2xq-q'\rangle_w=0\)。比较首项即有 \(H_n'=2nH_{n-1}\)。最后在 \(H_{n+1}=2xH_n-H_n'\) 两端求导，并用 \(H_{n+1}'=2(n+1)H_n\)，整理得到微分方程。
 
-\begin{sboxenv}{inkgray}{例 6　从多项式微分方程求振动能级}
+\begin{sboxenv}{orange}{例 6　从多项式微分方程求振动能级}
 
 对无量纲的一维谐振子方程 \(-\psi''+x^2\psi=\lambda\psi\)，构造一列平方可积、两两正交的解，并求它们的归一化常数。
 
@@ -442,7 +442,7 @@ c_n=\int_0^\infty e^{-2x}\ell_n(x)\,dx
 
 \textbf{证明}　取次数至多 \(2n-1\) 的 Hermite 插值多项式 \(J\)，使 \(J,J'\) 在各 \(z_i\) 匹配 \(f,f'\)。这是 \(2n\) 个独立条件，因为齐次解有 \(n\) 个二重零点，只能为零。对非节点 \(x\)，从 \(f-J\) 减去 \(c\pi_n^2\) 并在 \(x\) 配零，反复用 Rolle 定理得 \(f(x)-J(x)=\frac{f^{(2n)}(\eta_x)\pi_n(x)^2}{(2n)!}\)。由于对 \(J\) 求积精确，误差等于 \(\int (f-J)w\)。用导数最大、最小值夹住此积分，再用连续性得到中值。若导数非常数却取到界值，等号迫使连续的 \(f-J-c\pi_n^2\) 同号且积分为零，故恒为零，从而最高阶导数为常数，矛盾。故 \(\xi\) 可取在开区间内。这里的 Hermite 插值指同时匹配函数值与导数，节点仍由所给权决定。
 
-\begin{sboxenv}{inkgray}{例 7　两点 Gauss--Legendre 公式}
+\begin{sboxenv}{orange}{例 7　两点 Gauss--Legendre 公式}
 
 对 \(\int_{-1}^{1} f(x)\,dx\)，\(P_2\) 的零点是 \(\pm\frac{1}{\sqrt3}\)。由对称性权重相等，再用常数函数得两权均为 \(1\)。故次数不超过三的多项式都满足 \(\int_{-1}^1 f=f(-\frac{1}{\sqrt3})+f(\frac{1}{\sqrt3})\)。
 
@@ -454,7 +454,7 @@ c_n=\int_0^\infty e^{-2x}\ell_n(x)\,dx
 
 连续内积换成 \(\langle u,v\rangle_d=\sum_{i=1}^N w_i u(x_i)v(x_i)\)，其中 \(w_i>0\)，\(x_i\) 互异，正交投影的证明仍逐字成立。当 \(m<N\) 时，次数不超过 \(m\) 的非零多项式无法在全部 \(N\) 个节点消失，故该式在 \(\mathcal P_m\) 上是内积。到 \(m=N\)，节点多项式就有零范数，不能继续用它作分母。
 
-\begin{sboxenv}{inkgray}{例 8　在四个采样点上拟合三次数据}
+\begin{sboxenv}{orange}{例 8　在四个采样点上拟合三次数据}
 
 在 \(-2,-1,1,2\) 四点取等权，观测值为 \(y=x^3\)。求最佳二次拟合，并比较它与 \([-2,2]\) 等权连续拟合的差别。
 

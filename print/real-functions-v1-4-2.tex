@@ -10,14 +10,14 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor,titlesec,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -159,7 +159,7 @@ Fatou 的单侧不等式推出积分与极限交换。
 怎样从局部积分辨认函数]{4.2.3
 怎样从局部积分辨认函数}\label{ux600eux6837ux4eceux5c40ux90e8ux79efux5206ux8fa8ux8ba4ux51fdux6570}
 
-\begin{sboxenv}{inkgray}{例 3.3.5（由区间积分辨认零函数）}
+\begin{sboxenv}{orange}{例 3.3.5（由区间积分辨认零函数）}
 设 \(f\in L^1([a,b])\) 且 \(\int_a^c f=0\) 对所有 \(c\in[a,b]\)
 成立。证明 \(f=0\) 几乎处处。
 
@@ -184,7 +184,7 @@ Riemann 可积函数几乎处处连续也能得出结论。上述测度证明无
 成立时，在 \(\{u>v\}\) 上积分 \(u-v\) 即得 \(u\le v\) 几乎处处，其中
 \(u,v\) 可积。
 
-\begin{sboxenv}{inkgray}{例 3.3.6（乘积检验的测度条件）}
+\begin{sboxenv}{orange}{例 3.3.6（乘积检验的测度条件）}
 对半有限测度，若实值可测函数 \(f\) 满足 \(fg\in L^1(E)\) 对每个
 \(g\in L^1(E)\) 成立，则 \(f\)
 本性有界。半有限指每个无限测度的可测集都含有正的有限测度可测子集；Lebesgue
@@ -311,7 +311,7 @@ g=\sum_{j=1}^\infty \frac{2^{-j}}{\mu(B_j)}\mathbf1_{B_j}.
 收敛定理的条件与反例]{4.2.6
 收敛定理的条件与反例}\label{ux6536ux655bux5b9aux7406ux7684ux6761ux4ef6ux4e0eux53cdux4f8b}
 
-\begin{sboxenv}{inkgray}{例 3.4.1（两个不同的失效情形）}
+\begin{sboxenv}{orange}{例 3.4.1（两个不同的失效情形）}
 在 \([0,\infty)\) 上取
 \(f_n=\mathbf1_{[0,n]}\)，则逐点极限为一。积分递增到无穷，极限不可积。在
 \((0,\infty)\) 上改取
@@ -407,7 +407,7 @@ Fatou，再通过平移给出变号 Fatou；用余量 \(2F-d_n\)
 怎样构造共同可积控制]{4.2.8
 怎样构造共同可积控制}\label{ux600eux6837ux6784ux9020ux5171ux540cux53efux79efux63a7ux5236}
 
-\begin{sboxenv}{inkgray}{例 1（邻域端点给出两个不同的上界）}
+\begin{sboxenv}{orange}{例 1（邻域端点给出两个不同的上界）}
 对 \(t>0\)，令 \(I(t)=\int_0^1x^{t-1}\,dx\)。求 \(I'(t_0)\)，其中
 \(t_0>0\)。
 
@@ -434,7 +434,7 @@ Fatou，再通过平移给出变号 Fatou；用余量 \(2F-d_n\)
 已经不可积。若积分区间经过 \(x=1\)，则 \(x<1\) 与 \(x>1\)
 时幂次的大小关系相反，练习 3.4 第 4 题正要分开处理这两段。
 
-\begin{sboxenv}{inkgray}{例 2（函数值受控，差商仍可失控）}
+\begin{sboxenv}{orange}{例 2（函数值受控，差商仍可失控）}
 在 \(0<x<1\)、\(-1<t<1\) 上令
 \(u(x,t)=\operatorname{sgn}(t)\mathbf1_{\{0<x<|t|\}}\)，取
 \(u(x,0)=0\)。则 \(|u|\le1\)，且对每个 \(x>0\)，只要 \(|t|<x\) 就有

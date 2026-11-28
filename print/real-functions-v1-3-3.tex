@@ -10,14 +10,14 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor,titlesec,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -63,7 +63,7 @@
 的相对补集是其余紧集的有限并，故 \(K_i\) 在 \(K\) 中既开又闭。函数在每个
 \(K_i\) 上为常数，于是它在 \(K\) 上连续。空值层可以略去。
 
-\begin{sboxenv}{inkgray}{例 1（区间指示函数的连续替代）}
+\begin{sboxenv}{orange}{例 1（区间指示函数的连续替代）}
 给定 \(0<a<\frac{1}{2}\)，在 \((-\infty,0]\) 与 \([1,\infty)\)
 上取零，在 \([a,1-a]\) 上取一，其间两段线性连接，得连续函数
 \(h_a\)。它与 \(\mathbf1_{(0,1)}\) 不同的点恰在
@@ -120,7 +120,7 @@ F=L\cap\bigcap_{j=1}^{\infty}K_j .
 \(x\in F_j\)，一个小球能避开邻近的其余有限个 \(F_i\)；在这个球与 \(F\)
 的交中，\(f\) 就是连续的 \(f|_{F_j}\)。因此 \(f|_F\) 连续。
 
-\begin{sboxenv}{warm}{辨析（相对连续与原函数的连续点）}
+\begin{sboxenv}{orange}{辨析（相对连续与原函数的连续点）}
 \(\mathbf1_{\mathbb Q}\) 的每个邻域内都取到 \(0\) 和
 \(1\)，故没有连续点。枚举有理数，用总长小于 \(\delta\)
 的开区间覆盖它们，取开覆盖之并的闭补集 \(F\)，则
@@ -198,7 +198,7 @@ Lebesgue 可测并且几乎处处有限。此处允许 \(m(E)=\infty\)。
 \(\psi\)，所得函数支集包含在闭球 \(\overline B(0,R+1)\) 中，仍在 \(F\)
 上等于 \(f\)，也保持相应的界。有界可测集是有限测度集，教材表述随之得到。
 
-\begin{sboxenv}{inkgray}{例 2（紧支条件的边界）}
+\begin{sboxenv}{orange}{例 2（紧支条件的边界）}
 在 \(E=\mathbb R\) 上取 \(f\equiv1\)。任意 \(h\in C_c(\mathbb R)\)
 都在某个有界区间外恒为零，因而
 \(m(\{h\ne f\})=\infty\)。但全空间连续替代可直接取
@@ -270,7 +270,7 @@ C=\bigcap_{r\ge1}\bigcup_{N\ge1}
 集也可这样构造。反过来，\(\{f>t\}\) 与 \(E\cap\{g>t\}\)
 的对称差包含在一个零测集内，完备性保证 \(f\) 可测。
 
-\begin{sboxenv}{inkgray}{例 3（Borel 代表可能改变点值）}
+\begin{sboxenv}{orange}{例 3（Borel 代表可能改变点值）}
 由 §2.5，在零测 Cantor 集中存在非 Borel 子集 \(A\)。函数 \(\mathbf1_A\)
 为 Lebesgue 可测，零函数是它的 Borel 代表。若 Borel 函数在整个实线上与
 \(\mathbf1_A\) 逐点相等，则其大于 \(\frac{1}{2}\) 的水平集恰为非 Borel
@@ -282,7 +282,7 @@ C=\bigcap_{r\ge1}\bigcup_{N\ge1}
 可测性与函数方程]{3.3.5
 可测性与函数方程}\label{ux53efux6d4bux6027ux4e0eux51fdux6570ux65b9ux7a0b}
 
-\begin{sboxenv}{inkgray}{例 4（教材例 3.2.5，可测可加函数）}
+\begin{sboxenv}{orange}{例 4（教材例 3.2.5，可测可加函数）}
 设 \(f:\mathbb R\to\mathbb R\) 可测，且对所有 \(x,y\) 有
 \(f(x+y)=f(x)+f(y)\)。证明 \(f(x)=xf(1)\)。
 
@@ -297,7 +297,7 @@ C=\bigcap_{r\ge1}\bigcup_{N\ge1}
 \(f(0)=0\)，\(f(-x)=-f(x)\)，由整数倍公式得 \(f(q)=qf(1)\) 对所有有理数
 \(q\) 成立。用有理数逼近任意实数即可。
 
-\begin{sboxenv}{inkgray}{例 5（教材例 3.2.6，可测中点凸函数）}
+\begin{sboxenv}{orange}{例 5（教材例 3.2.6，可测中点凸函数）}
 设 \(f:I\to\mathbb R\) 在开区间 \(I\) 上可测，且
 \(2f(\frac{x+y}{2})\le f(x)+f(y)\)。证明 \(f\) 连续且凸。
 
@@ -364,7 +364,7 @@ f(x_0+h)-f(x_0)
 \((v\circ u)^{-1}(G)=u^{-1}(v^{-1}(G))\)，内层集合是 Borel
 集，结论即得。
 
-\begin{sboxenv}{inkgray}{例 6（教材例 3.2.9，内函数连续仍可能失败）}
+\begin{sboxenv}{orange}{例 6（教材例 3.2.9，内函数连续仍可能失败）}
 在 \([0,1]\) 上可以找到 Lipschitz 连续的内函数 \(g\) 和几乎处处为零的
 Lebesgue 可测外函数 \(v\)，使 \(v\circ g\) 不可测。
 

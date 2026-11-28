@@ -9,13 +9,13 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.12}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\usepackage{xcolor,titlesec,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{navy}{HTML}{10136B}
 \titleformat{\section}{\Large\bfseries\color{navy}}{§\thesection}{0.6em}{}
 \titleformat{\subsection}{\large\bfseries\color{navy}}{\thesubsection}{0.7em}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -26,7 +26,6 @@
 \widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\predisplaypenalty=5000
 \allowdisplaybreaks[1]\raggedbottom\emergencystretch=2em
 \setlength{\LTpre}{6pt}\setlength{\LTpost}{6pt}\renewcommand{\arraystretch}{1.18}
-
 \definecolor{paper}{HTML}{FFFEFC}\pagecolor{paper}
 \definecolor{bodyink}{HTML}{141413}\color{bodyink}
 \newcommand{\mysection}[1]{\clearpage\section{#1}}
@@ -39,7 +38,7 @@
 
 本讲以 \(2\pi\) 为基本周期。除复指数表示外，函数取实值。分段光滑指有有限个分点，各段能作为 \(C^1\) 函数延到闭区间；分点处的函数值允许另行指定。周期端点的左右极限一律按周期延拓理解。
 
-\begin{sboxenv}{teal}{按问题阅读}
+\begin{sboxenv}{orange}{按问题阅读}
 要判定一个点的级数和，可从 §3、§5 读到 §8、§9。要证明带最优常数的不等式，可从 §6、§7 跳到 §10—§13。热传导问题在 §14 回到最初的正弦分解。
 \end{sboxenv}
 \begingroup\small\setlength{\parskip}{0pt}\renewcommand{\numberline}[1]{\makebox[2.6em][l]{§#1}}\tableofcontents\endgroup
@@ -90,7 +89,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
  B_n=\frac{2}{l}\int_0^l g(x)\sin\frac{n\pi x}{l}\,dx .
 \]
 
-\begin{sboxenv}{inkgray}{例 1　同一函数的两种半区间展开}
+\begin{sboxenv}{orange}{例 1　同一函数的两种半区间展开}
 在 \(0<x<\pi\) 上分别作 \(g(x)=x\) 的正弦展开和余弦展开。它们在 \(x=\pi\) 取什么值？
 \end{sboxenv}
 
@@ -245,7 +244,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
 
 
 
-\begin{sboxenv}{inkgray}{例 2　同一个展开给出三个经典恒等式}
+\begin{sboxenv}{orange}{例 2　同一个展开给出三个经典恒等式}
 \[
 \sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}{6},\qquad
 \sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}=\frac{\pi^2}{12},\qquad
@@ -302,7 +301,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
 
 
 
-\begin{sboxenv}{inkgray}{例 3　方波的两种求和}
+\begin{sboxenv}{orange}{例 3　方波的两种求和}
 \[
 \sum_{j=0}^\infty\frac{(-1)^j}{2j+1}=\frac\pi4,\qquad
 \sum_{j=0}^\infty\frac1{(2j+1)^2}=\frac{\pi^2}{8}.
@@ -311,7 +310,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
 
 \textbf{证明}　在 §5 的方波展开中，取连续点 \(x=\pi/2\)。此时 \(q=1\) 且 \(\sin((2j+1)\pi/2)=(-1)^j\)，由定理 3.2 得第一式。原级数只条件收敛，沿频率原顺序取极限即可。再由 \(q^2=1\) 几乎处处及定理 6.2，得 \(2=(16/\pi^2)\sum_{j\ge0}(2j+1)^{-2}\)，给出第二式。这也可由 §8 的平方倒数和扣去偶数项核验。
 
-\begin{sboxenv}{inkgray}{例 4　参数怎样进入分母}
+\begin{sboxenv}{orange}{例 4　参数怎样进入分母}
 对 \(a>0\)，有
 
 \[
@@ -395,7 +394,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
 
 零均值时，改将 \(u\) 偶延拓到 \([-l,l]\)，其接缝自动连续，均值仍为零。周期结论给出 \(l^2/\pi^2\)；偶性只留下 \(C\cos(\pi x/l)\)。三种取等函数都能选为非零，故各常数均最优。
 
-\begin{sboxenv}{inkgray}{例 5　为什么只固定一端会损失四倍}
+\begin{sboxenv}{orange}{例 5　为什么只固定一端会损失四倍}
 对 \(u(x)=\sin(\pi x/(2l))\)，有 \(\int_0^l u^2=l/2\)，\(\int_0^l (u')^2=\pi^2/(8l)\)，比值恰为 \(4l^2/\pi^2\)。
 \end{sboxenv}
 
@@ -471,7 +470,7 @@ S_N f(x)&=\frac{a_0}{2}+\sum_{n=1}^{N}(a_n\cos(nx)+b_n\sin(nx)).
 
 
 
-\begin{sboxenv}{inkgray}{例 6　细棒如何散热}
+\begin{sboxenv}{orange}{例 6　细棒如何散热}
 设 \(a>0\)。在 \(0<x<l\) 解 \(u_t=a^2u_{xx}\)，两端温度为零，初温为 \(\varphi\in L^2(0,l)\)。初值先按均方意义理解。
 \end{sboxenv}
 

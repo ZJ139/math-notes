@@ -10,14 +10,14 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor,titlesec,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{sitepaper}{HTML}{FAF9F5}\pagecolor{sitepaper}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -79,7 +79,7 @@ s(x)=\operatorname{sgn}(u(x))\,\delta
 \(\delta\)，对常数 \(\delta\) 的积分也可能为无穷。先选定
 \(Q_R\)，误差才有共同的有限体积可以相乘。此处的简单函数允许值层边界十分复杂；下一节要逼近的正是这些边界。
 
-\begin{sboxenv}{inkgray}{例　可积奇点的截断误差}
+\begin{sboxenv}{orange}{例　可积奇点的截断误差}
 在 \((0,1)\) 上取 \(f(x)=\frac{1}{\sqrt{x}}\)，区间外取零。当 \(M\ge1\)
 时，高于 \(M\) 的部分恰落在 \((0,M^{-2})\) 上，其积分为
 \(\frac{2}{M}\)。把余下高度按 \(\delta\) 分层，增加的误差至多为
@@ -194,7 +194,7 @@ Levi 定理，再对可积函数的正负部分相减，即得积分不变性。
 使用控制收敛，会缺少逐点收敛或共同可积上界；式 (4.3.3)
 只对连续近似使用一致连续性。
 
-\begin{sboxenv}{inkgray}{例 3.5.1（集合与其平移的交叠）}
+\begin{sboxenv}{orange}{例 3.5.1（集合与其平移的交叠）}
 设 \(A\) 可测且 \(m(A)<\infty\)。当 \(h\to0\)
 时，\(m(A\cap(A+h))\to m(A)\)。这也适用于无界的有限测度集。
 
@@ -252,7 +252,7 @@ m(A\triangle(A+h))=2\bigl(m(A)-m(A\cap(A+h))\bigr).
 怎样检验一族振荡函数]{4.3.6
 怎样检验一族振荡函数}\label{ux600eux6837ux68c0ux9a8cux4e00ux65cfux632fux8361ux51fdux6570}
 
-\begin{sboxenv}{inkgray}{例 3.5.2（在区间上检验振荡）}
+\begin{sboxenv}{orange}{例 3.5.2（在区间上检验振荡）}
 设 \(g_n\) 在 \([a,b]\) 上可积，\(|g_n|\le M\) 几乎处处，且对每个
 \(c\in[a,b]\)，有 \(\int_a^c g_n\to0\)。则对每个 \(f\in L^1([a,b])\)，有
 \(\int_a^b f g_n\to0\)。
