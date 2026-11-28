@@ -17,14 +17,14 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.deepEqual(realFunctionsV1Chapters.map(c=>c.sections.length),[5,5,3,5,4,5,4]);
   const html=renderToStaticMarkup(createElement(RealFunctionsV1Directory,{items}));
   assert.equal((html.match(/id="section-/g)||[]).length,31);
-  assert.equal((html.match(/待编写/g)||[]).length,17);
+  assert.equal((html.match(/待编写/g)||[]).length,15);
   assert.ok(html.includes(`href="${entryUrl(entry)}/"`));
   const nextEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s2.md')!;
   assert.ok(nextEntry);
   assert.equal(nextEntry.mathFont,'cm-bea');
   assert.equal(nextEntry.attachmentPath,'notes/real-functions-v1/real-functions-v1-1-2.pdf');
   assert.ok(html.includes(`href="${entryUrl(nextEntry)}/"`));
-  assert.ok(html.includes('href="#section-4-2"'));
+  assert.ok(html.includes('href="#section-4-4"'));
   assert.ok(html.includes('href="/math/real-functions/"'));
   const thirdEntry=items.find(e=>e.sourcePath==='notes/real-functions-v1/ch01-s3.md')!;
   assert.ok(thirdEntry);
@@ -139,7 +139,25 @@ test('v1 keeps the 31-section framework, distinguishes pending sections, and pre
   assert.ok(structureArticle.includes(`href="${entryUrl(integral)}/"`));
   const integralArticle=renderToStaticMarkup(createElement(Article,{entry:integral,items}));
   assert.ok(integralArticle.includes(`href="${entryUrl(structure)}/"`));
-  assert.ok(integralArticle.includes('href="/math/real-functions-v1/#section-4-2"'));
+  let previous=integral, previousHtml=integralArticle;
+  for(const number of [2,3]){
+    const current=items.find(e=>e.sourcePath===`notes/real-functions-v1/ch04-s${number}.md`)!;
+    assert.equal(current.pageStyle,'s');
+    assert.equal(current.mathFont,'cm-bea');
+    assert.equal(current.attachmentPath,`notes/real-functions-v1/real-functions-v1-4-${number}.pdf`);
+    const url=entryUrl(current)+'/';
+    assert.ok(html.includes(`href="${url}"`));
+    assert.ok(previousHtml.includes(`href="${url}"`));
+    const article=renderToStaticMarkup(createElement(Article,{entry:current,items}));
+    assert.ok(article.includes(`href="${entryUrl(previous)}/"`));
+    assert.doesNotMatch(article,/katex-error/);
+    const ids=new Set([...article.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));
+    for(const [,href] of article.matchAll(/href="#([^"]+)"/g))
+      assert.ok(ids.has(decodeURIComponent(href)),`Missing local anchor: ${href}`);
+    previous=current;
+    previousHtml=article;
+  }
+  assert.ok(previousHtml.includes('href="/math/real-functions-v1/#section-4-4"'));
   assert.doesNotMatch(integralArticle,/katex-error/);
   const integralIds=new Set([...integralArticle.matchAll(/ id="([^"]+)"/g)].map(m=>m[1]));
   for(const [,href] of integralArticle.matchAll(/href="#([^"]+)"/g))
