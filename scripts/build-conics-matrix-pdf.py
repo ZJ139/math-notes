@@ -14,7 +14,7 @@ def block(m):
  b='\n'.join(re.sub(r'^> ?', '',line) for line in m[0].splitlines())
  title=re.match(r'\*\*(.+?)\*\*',b)[1]
  content=b[b.index('**',2)+2:].strip()
- color='inkgray' if title.startswith('例 ') else 'warm' if title.startswith(('辨析','检查')) else 'navy'
+ color='orange' if title.startswith('例 ') or title.startswith(('辨析','检查')) else 'navy'
  tag=f'CONICBOXPLACEHOLDER{len(blocks)}'
  blocks.append((tag,title,color,content))
  return '\n'+tag+'\n'
@@ -41,13 +41,13 @@ pre=r'''\documentclass[11pt,a4paper]{article}
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\usepackage{xcolor,titlesec,tikz,graphicx,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{0.7em}{}
 \titleformat{\subsection}{\large\bfseries\color{navy}}{\thesubsection}{0.7em}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}

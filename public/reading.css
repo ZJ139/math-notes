@@ -676,12 +676,11 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
 .prose[data-math-font="cm-ams"] .article-figure { width:100%; max-width:850px; }
 
 /* S lecture layout is an explicit document choice, independent of math fonts. */
-.article-shell[data-page-style="s"]{--s-navy:#10136b;--s-gray:#474747;--s-warm:var(--selected)}
 .article-shell[data-page-style="s"] .reading-page{background:var(--paper);padding:1.4em 1.6em 1.8em}
 .article-shell[data-page-style="s"] .article-header{padding-top:0;text-align:center}
 .article-shell[data-page-style="s"] .article-header :is(.eyebrow,.entry-meta){justify-content:center}
 .article-shell[data-page-style="s"] .article-header h1{color:var(--heading-ink);margin-block:.45em .65em}
-.prose[data-page-style="s"]{--s-navy:#10136b;--s-gray:#474747;--s-warm:var(--selected)}
+.prose[data-page-style="s"]{--s-navy:#10136b}
 .prose[data-page-style="s"] :is(h2,h3){color:var(--s-navy);text-align:left;line-height:1.4;scroll-margin-top:24px}
 .prose[data-page-style="s"] h2{margin:1.5em 0 .7em}
 .prose[data-page-style="s"] h3{font-size:1.08em;margin:1.25em 0 .6em}
@@ -689,12 +688,11 @@ a[data-link-selected] :where(span,strong,small,h1,h2,h3,h4,h5,h6){color:inherit}
 .prose[data-page-style="s"] .toc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2em 1.2em;border-block:1px solid #dcdde9;padding:.6em 0;margin:0 0 1.6em;font-size:.9em}
 .prose[data-page-style="s"] .toc-list li{min-width:0;margin:0}
 .prose[data-page-style="s"] .toc-list a{display:flex;align-items:center;min-height:44px;padding:.25em 0;line-height:1.5;text-decoration:none}
-.prose[data-page-style="s"] .s-box{--s-accent:var(--s-navy);--s-fill:#f8f8fc;border:1px solid var(--s-accent);border-radius:4px;background:var(--s-fill);margin:1.1em 0;color:var(--ink);min-width:0}
-.prose[data-page-style="s"] .s-box-example{--s-accent:var(--s-gray);--s-fill:#f9f9f9}
-.prose[data-page-style="s"] .s-box-caution{--s-accent:var(--s-warm);--s-fill:#fcfaf6}
-.prose[data-page-style="s"] .s-box-title{background:var(--s-accent);color:#fff;padding:.42em .85em;border-radius:3px 3px 0 0;line-height:1.5;font-weight:700;text-indent:0}
+.prose[data-page-style="s"] .s-box{--s-accent:var(--s-navy);--s-fill:#f8f8fc;--s-title-ink:#fff;border:1px solid var(--s-accent);border-radius:4px;background:var(--s-fill);margin:1.1em 0;color:var(--ink);min-width:0}
+.prose[data-page-style="s"] :is(.s-box-example,.s-box-caution){--s-accent:var(--selected);--s-fill:#fefbfa;--s-title-ink:var(--ink)}
+.prose[data-page-style="s"] .s-box-title{background:var(--s-accent);color:var(--s-title-ink);padding:.42em .85em;border-radius:3px 3px 0 0;line-height:1.5;font-weight:700;text-indent:0}
 .prose[data-page-style="s"] .s-box-title strong{color:inherit;-webkit-text-stroke:0}
-.prose[data-page-style="s"] .s-box-title .latex-svg{filter:brightness(0) invert(1)}
+.prose[data-page-style="s"] .s-box-theorem .s-box-title .latex-svg{filter:brightness(0) invert(1)}
 .prose[data-page-style="s"] .s-box-body{padding:.7em .85em;min-width:0}
 .prose[data-page-style="s"] .s-box-body>:first-child{margin-top:0}
 .prose[data-page-style="s"] .s-box-body>:last-child{margin-bottom:0}

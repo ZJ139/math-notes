@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/tex/s-style-boxes}[2026/11/29 S-style content boxes]
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\definecolor{sboxorange}{HTML}{D97757}
+\definecolor{sboxink}{HTML}{141413}
+\tcbset{
+  s box palette/.is choice,
+  s box palette/navy/.style={colframe=navy,colback=navy!3!white,colbacktitle=navy,coltitle=white},
+  s box palette/orange/.style={colframe=sboxorange,colback=sboxorange!3!white,colbacktitle=sboxorange,coltitle=sboxink},
+}
+\newtcolorbox{sboxenv}[2]{
+  enhanced,breakable,s box palette=#1,fonttitle=\bfseries,title={#2},
+  boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,
+  before skip=9pt,after skip=9pt,pad at break*=2mm,
+}

@@ -10,14 +10,14 @@
 \xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
 \usepackage{setspace}\setstretch{1.10}
 \setlength{\parindent}{2em}\setlength{\parskip}{4pt}
-\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
-\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xcolor,titlesec,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\usepackage{assets/tex/s-style-boxes}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{sitepaper}{HTML}{FFFEFC}\pagecolor{sitepaper}
-\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\definecolor{navy}{HTML}{10136B}\definecolor{teal}{HTML}{236B66}
 \titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
-\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
 \setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
 \setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
 \providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
@@ -103,7 +103,7 @@
 的对称差是 \(Z\) 的子集，故可测，得到 \(h\)
 可测。同一水平集论证适用于任意几乎处处修改；特别地，零测集上的任意有限函数可测。
 
-\begin{sboxenv}{inkgray}{例 1（非完备空间中的指定极限）}
+\begin{sboxenv}{orange}{例 1（非完备空间中的指定极限）}
 在 \(X=\{a,b\}\) 上取
 \(\mathcal A=\{\varnothing,X\}\)、\(\mu(X)=0\)。常零函数列几乎处处收敛于
 \(\mathbf1_{\{a\}}\)，但后者不可测：其大于 \(\frac12\)
@@ -154,7 +154,7 @@ T_N(\varepsilon)=\bigcup_{n\ge N}D_n(\varepsilon),\qquad
 \(\mu(T_N(\varepsilon))\downarrow0\)。当 \(n\ge N\)
 时，\(D_n(\varepsilon)\subseteq T_N(\varepsilon)\)，因而其测度也趋于零。指定极限的情形由可测代表归结为此情形。
 
-\begin{sboxenv}{warm}{辨析（不能把有限性藏在证明中）}
+\begin{sboxenv}{orange}{辨析（不能把有限性藏在证明中）}
 对每个精度，只要某个尾并具有有限测度，上述证明就能进行。仅知每一个单项误差集测度有限却不够。无限测度集上，几乎处处收敛仍推出每个有限测度子集上的依测度收敛，未必推出全域依测度收敛。这里没有积分，也没有使用控制收敛定理。
 
 \end{sboxenv}
@@ -196,7 +196,7 @@ F=E'\setminus\bigcup_{j=1}^{\infty}\bigcup_{n\ge N_j}\{|f_n-f|>2^{-j}\}.
 \(n\ge N_j\) 和所有 \(x\in F\)，同时有
 \(|f_n(x)-f(x)|\le2^{-j}<\varepsilon\)，故在同一个 \(F\) 上一致收敛。
 
-\begin{sboxenv}{warm}{辨析（大集依赖于允许损失，不能依赖于当前项）}
+\begin{sboxenv}{orange}{辨析（大集依赖于允许损失，不能依赖于当前项）}
 近一致收敛的量词顺序是：先给 \(\delta\)，固定
 \(F\)；再给任意精度，选择相应指标。若每项各有一个小误差集，却没有控制这些集合的尾并，只能得到依测度收敛，打字机序列就是反例。Egorov
 定理也不保证删去一个零集就能一致收敛，见例 2。
@@ -333,7 +333,7 @@ H_k=\bigcup_{j\ge k}B_j,
 故整列依测度收敛。这最后一段正是教材引理
 3.2.1：依测度基本列有一个依测度收敛子列，就使整列收敛到同一极限。
 
-\begin{sboxenv}{warm}{辨析（两次可求和估计各负其责）}
+\begin{sboxenv}{orange}{辨析（两次可求和估计各负其责）}
 \(\sum_j\mu(B_j)<\infty\)
 保证几乎每点只经历有限次坏增量；\(\sum_j2^{-j}<\infty\)
 保证好增量能累加，得到实数 Cauchy
@@ -455,7 +455,7 @@ Riesz 定理另给``依测度收敛 \(\Longrightarrow\)
 依测度 & 否，例 3 & 否，例 3 & 否，例 3 & --- \\
 \end{longtable}
 
-\begin{sboxenv}{inkgray}{例 2（近一致收敛不能升级为一致收敛）}
+\begin{sboxenv}{orange}{例 2（近一致收敛不能升级为一致收敛）}
 在 \((0,1)\) 上取 \(f_n(x)=x^n\)，极限为零。它处处收敛，但
 \(\sup_{0<x<1}x^n=1\)，所以不一致收敛。
 
@@ -470,7 +470,7 @@ Riesz 定理另给``依测度收敛 \(\Longrightarrow\)
 另外，在 \([0,1]\) 上取
 \((-1)^n\mathbf1_{\{0\}}\)。删去零点后全列恒为零，因而近一致、几乎处处及依测度收敛于零；但在零点振荡。这说明这些测度意义的收敛不能保证处处收敛。
 
-\begin{sboxenv}{inkgray}{例 3（打字机序列，教材例 3.2.3）}
+\begin{sboxenv}{orange}{例 3（打字机序列，教材例 3.2.3）}
 对 \(k\ge1\)、\(1\le j\le2^k\)，定义
 \begin{equation*}f_{2^k-2+j}=\mathbf1_{((j-1)2^{-k},\,j2^{-k}]}\quad\text{于 }(0,1].\end{equation*}
 这列函数依测度趋零，却处处不收敛。
@@ -484,7 +484,7 @@ Riesz 定理另给``依测度收敛 \(\Longrightarrow\)
 \(0\)，因而上下极限分别为
 \(1,0\)。由于近一致收敛必推出几乎处处收敛，它也不近一致，更不一致收敛。
 
-\begin{sboxenv}{inkgray}{例 4（无限测度下的逃逸区间）}
+\begin{sboxenv}{orange}{例 4（无限测度下的逃逸区间）}
 在 \((0,\infty)\) 上取 \(f_n=\mathbf1_{[n,n+1)}\)。它处处趋零，但对
 \(0<\varepsilon<1\)，误差集测度恒为
 \(1\)，所以不依测度收敛，也不近一致收敛。
@@ -497,14 +497,14 @@ Riesz 定理另给``依测度收敛 \(\Longrightarrow\)
 3.2.2 的 \(\mathbf1_{(0,n]}\to1\) 则使每项误差集 \((n,\infty)\)
 的测度都无穷。
 
-\begin{sboxenv}{inkgray}{例 5（一个好子列不足以判断整列）}
+\begin{sboxenv}{orange}{例 5（一个好子列不足以判断整列）}
 在 \([0,1]\)
 上令偶数项为零、奇数项为一。偶数子列一致趋零，原列却不依测度趋零，因为每个奇数项误差超过
 \(\frac12\) 的集合都是全区间。
 
 \end{sboxenv}
 
-\begin{sboxenv}{inkgray}{例 6（无限测度上连续代入的边界，教材例 3.2.4）}
+\begin{sboxenv}{orange}{例 6（无限测度上连续代入的边界，教材例 3.2.4）}
 在 \((1,\infty)\) 上令 \(f(x)=k\) 于 \((k,k+1]\)，\(k\ge1\)，再令
 \(f_n=f+\frac1n\mathbf1_{(n,n+1]}\)。则 \(f_n\) 一致收敛于 \(f\)，但
 \(f_n^2\) 不依测度收敛于 \(f^2\)。
@@ -716,7 +716,7 @@ m(\{|f_{k(n)}^{(n)}-f|>\varepsilon\})
 \(f_k-h\xrightarrow{\mu}f-h\)，再应用第一式即可。对原指定的
 \(f\)，在空间完备时上述结论同样成立；若空间不完备，也可另行要求变换后的误差函数可测。
 
-\begin{sboxenv}{warm}{题意辨析（教材定义允许不可测的指定极限）}
+\begin{sboxenv}{orange}{题意辨析（教材定义允许不可测的指定极限）}
 教材定义 3.2.3 只要求 \(|f_k-f|\) 可测，不保证 \(f\)
 可测，也不保证变换后的误差可测。沿用例 1 的两点零测度空间，令
 \(f_k\equiv1\)，\(f(a)=0,f(b)=2\)。则 \(|f_k-f|\equiv1\) 可测且
