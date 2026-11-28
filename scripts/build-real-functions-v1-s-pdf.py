@@ -4,7 +4,7 @@ from pathlib import Path
 import re,subprocess,shutil,sys
 R=Path(__file__).resolve().parents[1]
 section=sys.argv[1] if len(sys.argv)>1 else '3.1'
-if section not in ('3.1','3.2','3.3','4.1','4.2','4.3'):raise ValueError('Unsupported S section')
+if section not in ('3.1','3.2','3.3','4.1','4.2','4.3','4.4','4.5'):raise ValueError('Unsupported S section')
 slug=section.replace('.','-')
 O=R/f'outputs/real-v1-{slug}';O.mkdir(parents=True,exist_ok=True)
 chapter, number = section.split('.')
@@ -99,13 +99,17 @@ if chapter=='4':
  chapter_nodes={
   '4.1': ('简单函数分层','简单下界上确界','Levi 递增极限','级数与 Fatou'),
   '4.2': ('正负部分','绝对可积','控制收敛','含参积分'),
+  '4.4': ('区间与点振幅','Darboux 上下和','可积判据','反常积分'),
+  '4.5': ('截面测度','非负函数换序','绝对可积换序','分布函数与卷积'),
   '4.3': ('简单函数分层','连续与阶梯逼近','平移连续性','高频积分'),
  }
- if section=='4.3':
+ if section in ('4.3','4.4','4.5'):
   pre=pre.replace('{FFFEFC}', '{FAF9F5}')
  for old,new in zip(('水平集与原像','运算与可数极限','简单函数逼近','Borel 代表'),chapter_nodes[section]):
   pre=pre.replace(old,new)
- if section!='4.3':
+ if section=='4.5':
+  latex=latex.replace(r'\Needspace{10\baselineskip}\section[\S{}4.5.7', r'\clearpage\section[\S{}4.5.7')
+ if section in ('4.1','4.2'):
   latex=re.sub(r'\\Needspace\{10\\baselineskip\}(?=\\section\[\\S\{\}'+re.escape(section)+r'\.(?!1 ))',lambda _:r'\clearpage',latex)
  pre=pre.replace('′',r'\ensuremath{{}^{\prime}}')
  latex=latex.replace('′',r'\ensuremath{{}^{\prime}}')
