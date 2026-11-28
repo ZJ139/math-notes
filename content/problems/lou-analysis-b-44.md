@@ -12,7 +12,7 @@ updated_at: "2026-11-26"
 
 第四十四批接续 B302，完成习题 12.2.B 第 1—7 题。原题见下册题册 PDF 第 41—42 页（印刷第 39—40 页；原书第 372—373 页），已核对全部条件与小问；七题均无星号、无附图、无另列提示。全文采用周期 $2\pi$，卷积不另除以 $2\pi$；据此，近似恒等核的积分归一化为 $1$。
 
-[上一批 B296—B302](/problems/fc3fd711670bf3b3606e6b81/) · [第十二章索引](/problems/collections/lou-analysis/chapters/12/) · [B 组总目录](/problems/collections/lou-analysis/)
+[下一批 B310—B316](/problems/47f7713369374b8cd908a494/) · [上一批 B296—B302](/problems/fc3fd711670bf3b3606e6b81/) · [第十二章索引](/problems/collections/lou-analysis/chapters/12/) · [B 组总目录](/problems/collections/lou-analysis/)
 
 ## 题号导航
 

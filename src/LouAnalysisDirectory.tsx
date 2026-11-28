@@ -89,9 +89,10 @@ export function LouBatchArticle({entry}:{entry:PublicEntry}){
   const start=entry.body.indexOf('## 题号导航'),firstProblem=entry.body.search(/^## 问题 B\d+/m);
   const intro=entry.body.slice(0,start).replace(/^\*\*批次导航：\*\*.*\n/gm,'');
   const body=entry.body.slice(firstProblem).replaceAll('/problems/41e85e430c9d7f84a0863658/',louDirectoryUrl);
+  const summaryHeading = body.match(/^## ([\p{Script=Han}]*方法总结)\s*$/mu)?.[1];
   return <div className="lou-batch-article"><Markdown body={intro} mathFont={entry.mathFont}/>
     <nav className="lou-batch-toc" aria-labelledby="题号导航"><h2 id="题号导航">题号导航</h2>
       {sections(problems).map(g=><section key={g.section}><div className="lou-batch-section-heading"><h3>习题 {g.section}.B</h3><a href={louChapterUrl(g.problems[0].chapter)+'#'+sectionAnchor(g.section)}>本节全部题解</a></div><ul>{g.problems.map(p=><li key={p.code}><a href={'#'+p.anchor}>{p.code} · 原书第 {p.original}{p.starred?'*':''} 题 · {p.title}{p.skipped?' · 暂跳过':''}</a></li>)}</ul></section>)}
-      <a className="lou-summary-link" href="#七题方法总结">本批方法总结</a>
+      {summaryHeading && <a className="lou-summary-link" href={'#' + summaryHeading}>本批方法总结</a>}
     </nav><Markdown body={body} mathFont={entry.mathFont}/></div>;
 }
