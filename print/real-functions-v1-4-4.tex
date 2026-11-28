@@ -1,0 +1,513 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=23mm,right=23mm,top=22mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{assets/tex/cm-bea}
+\usepackage{xeCJK}
+\setmainfont{Latin Modern Roman}
+\setCJKmainfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf,ItalicFont=FandolSong-Regular.otf]
+\setCJKsansfont{FandolSong-Regular.otf}[Path=assets/fonts/fandol/,BoldFont=FandolSong-Bold.otf]
+\renewcommand{\bfdefault}{bx}
+\xeCJKsetup{PunctStyle=quanjiao,CheckSingle=true}
+\usepackage{setspace}\setstretch{1.10}
+\setlength{\parindent}{2em}\setlength{\parskip}{4pt}
+\usepackage{xcolor,titlesec,tcolorbox,tikz,enumitem,longtable,booktabs,array,calc,needspace}
+\tcbuselibrary{breakable,skins}\usetikzlibrary{arrows.meta,positioning}
+\definecolor{sitepaper}{HTML}{FAF9F5}\pagecolor{sitepaper}
+\definecolor{navy}{HTML}{10136B}\definecolor{inkgray}{HTML}{474747}\definecolor{warm}{HTML}{94662C}\definecolor{teal}{HTML}{236B66}
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{17pt}{9pt}\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\newtcolorbox{sboxenv}[2]{enhanced,breakable,colframe=#1,colback=#1!3!white,colbacktitle=#1,coltitle=white,fonttitle=\bfseries,title={#2},boxrule=0.45pt,arc=1.4pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=9pt,after skip=9pt,pad at break*=2mm}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,parsep=0pt,topsep=3pt}
+\setlist[itemize]{label={},leftmargin=1em,itemsep=3pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}}
+\usepackage[unicode,hidelinks,linktoc=all]{hyperref}\usepackage{bookmark}
+\hypersetup{pdftitle={实变函数-v1：4.4 与 Riemann 积分的关系},pdfauthor={Vincent Arqain}}
+\renewcommand{\contentsname}{本节目次}\setcounter{tocdepth}{1}\setcounter{secnumdepth}{0}
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\predisplaypenalty=5000
+\allowdisplaybreaks[1]\raggedbottom\emergencystretch=2em
+\begin{document}
+\begin{center}{\LARGE\bfseries 实变函数-v1\par}\vspace{7pt}
+{\Large\bfseries 4.4 与 Riemann 积分的关系\par}\vspace{6pt}
+{第四章\quad Lebesgue 积分\par}\end{center}
+在 \([0,1]\) 上，把零函数在有理点的值都改为
+\(1\)。有理数集测度为零，Lebesgue
+积分仍是零。但任意小区间都同时含有有理点和无理点，任何分割的 Riemann
+上和都是 \(1\)，下和都是
+\(0\)。为什么测度看不见的一次修改，能使上下和相差整整 \(1\)？
+\par\textbf{主线：}把每个小区间的振幅乘以区间长度，求和得到 Darboux
+上下和之差。网格加细后，这个差收敛到点振幅的积分。由此辨认闭区间上的可积性，再考察区间向奇点或无穷远延伸时，哪些结论仍成立。
+\begin{center}
+\begin{tikzpicture}[node distance=5mm and 5mm,box/.style={draw=navy!65,fill=navy!3,rounded corners=1pt,minimum width=34mm,minimum height=10mm,align=center,font=\small},>=Stealth]
+\node[box](a){区间与点振幅};\node[box,right=of a](b){Darboux 上下和};\node[box,right=of b](c){可积判据};\node[box,right=of c,fill=teal!5](d){反常积分};
+\draw[->](a)--(b);\draw[->](b)--(c);\draw[->](c)--(d);
+\end{tikzpicture}\end{center}
+对应徐森林、薛春华《实变函数论》印刷第 248---256 页。保留引理
+3.5.1、定理 3.5.5---3.5.7、注 3.5.1 及例 3.5.3---3.5.5 的编号。练习 3.5
+的第 1---3、7---11 题在本节解答，其余六题见 §4.3。记 \(m\) 为 Lebesgue
+测度，\((R)\)、\((L)\) 分别标明积分的意义。
+\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup
+\newpage
+\Needspace{10\baselineskip}\section[\S{}4.4.1
+从区间振幅到点振幅]{4.4.1
+从区间振幅到点振幅}\label{ux4eceux533aux95f4ux632fux5e45ux5230ux70b9ux632fux5e45}
+
+设 \(I=[a,b]\)，其中 \(a<b\)，\(f:I\to\mathbb R\) 有界。此处无需先假设
+\(f\) 可测。对非空集 \(J\subset I\)，定义其上振幅
+
+\begin{equation*}
+\Omega(f,J)=\sup_{y\in J}f(y)-\inf_{z\in J}f(z)
+=\sup_{y,z\in J}|f(y)-f(z)|.
+\end{equation*}
+
+对 \(x\in I\)，令 \(B_I(x,r)=I\cap(x-r,x+r)\)。当 \(r\)
+变小时，求上确界的集合缩小，振幅单调不增且非负。因此点振幅
+
+\begin{equation*}
+\omega_f(x)=\lim_{r\downarrow0}\Omega(f,B_I(x,r))
+=\inf_{r>0}\Omega(f,B_I(x,r))
+\tag{4.4.1}
+\end{equation*}
+
+处处存在。端点按相对邻域理解，故只检验区间内一侧。
+
+\textbf{点振幅为零等价于连续。} 若 \(f\) 在 \(x\) 连续，选取邻域使
+\(|f(y)-f(x)|<\dfrac{\varepsilon}{3}\)。其中任意两函数值之差都小于
+\(\dfrac{2\varepsilon}{3}\)，故 \(\omega_f(x)=0\)。反之，若
+\(\omega_f(x)=0\)，取一个振幅小于 \(\varepsilon\)
+的邻域，将其中一个点固定为
+\(x\)，便得连续性的定义。两点都在邻域中取值，所以即使只有中心点的值被改动，振幅也能记录这次跳变。
+
+\textbf{振幅可测。} 若 \(\omega_f(x)<t\)，取 \(r>0\) 使 \(B_I(x,r)\)
+上振幅小于 \(t\)。对 \(|y-x|<\dfrac r2\) 的 \(y\in I\)，有
+\(B_I(y,\dfrac r2)\subset B_I(x,r)\)，故 \(\omega_f(y)<t\)。这证明
+\(\{\omega_f<t\}\) 在 \(I\) 中开。于是 \(\omega_f\) 上半连续，各个
+\(D_t=\{\omega_f\ge t\}\) 为紧集，且
+
+\begin{equation*}
+D_f=\{x\in I:f\ \text{在此不连续}\}
+=\bigcup_{k=1}^{\infty}D_{\frac1k}.
+\tag{4.4.2}
+\end{equation*}
+
+特别地，即使原函数未给出可测性，其不连续点集也可测。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.2 Darboux
+上下积分之差]{4.4.2 Darboux
+上下积分之差}\label{darboux-ux4e0aux4e0bux79efux5206ux4e4bux5dee}
+
+给定分割 \(P\)，在每个闭小区间 \(J\) 上记
+\(M_J=\sup_J f\)、\(m_J=\inf_J f\)，记长度为 \(|J|\)。上和、下和分别是
+\(U(P)=\sum_J M_J|J|\)、\(L(P)=\sum_J m_J|J|\)。加分点只会降低上和、提高下和。取两分割的公共加细，可知任一下和都不超过任一上和，故有下积分
+\(\underline I_f=\sup_P L(P)\) 和上积分
+\(\overline I_f=\inf_P U(P)\)，且 \(\underline I_f\le\overline I_f\)。
+
+\begin{sboxenv}{navy}{引理 3.5.1（振幅积分公式）}
+对闭区间上的任意有界实函数，有
+
+\begin{equation*}
+(L)\int_a^b\omega_f(x)\,dx=\overline I_f-\underline I_f.
+\tag{4.4.3}
+\end{equation*}
+
+\end{sboxenv}
+
+\textbf{证明}　取逐次二等分的分割 \(P_n\)，网格宽
+\(h_n=(b-a)2^{-n}\)。在每个网格区间的内部，令
+\(u_n=M_J\)、\(l_n=m_J\)，计算确界时包括两端。在该级分点处另取
+\(u_n=l_n=f\)。它们都是可测的阶梯函数；有限个分点的取值对积分没有影响。子区间包含在父区间中，且始终
+\(l_n\le f\le u_n\)，故 \(l_n\) 递增，\(u_n\) 递减。
+
+记 \(E\) 为各级分点的并。若 \(x\notin E\)，包含 \(x\) 的唯一网格区间
+\(J_n\) 既含一个以 \(x\) 为中心的相对邻域，又包含于
+\(B_I(x,2h_n)\)。从而
+
+\begin{equation*}
+\omega_f(x)\le u_n(x)-l_n(x)=\Omega(f,J_n)
+\le\Omega(f,B_I(x,2h_n)).
+\end{equation*}
+
+两端趋向同一个值。分点处的阶梯函数差恒为零，那里真实的点振幅可以为正；\(E\)
+可数，故仍有几乎处处收敛。令 \(K=\sup_I f-\inf_I f\)，则
+\(0\le u_n-l_n\le K\)。区间长度有限，由 §4.2 的控制收敛定理，
+
+\begin{equation*}
+(L)\int_I\omega_f=\lim_{n\to\infty}(L)\int_I(u_n-l_n)
+=\lim_{n\to\infty}\bigl[U(P_n)-L(P_n)\bigr].
+\end{equation*}
+
+还须说明，二等分网格足以算出对一切分割所取的上、下积分。固定任意分割
+\(P\)，设其有 \(q\) 个内分点，将它们加入 \(P_n\) 得公共加细
+\(Q_n\)。只有内部含这些分点的网格区间会被切开，总长至多
+\(qh_n\)，每单位长度的上下估计至多改变 \(K\)。于是
+
+\begin{equation*}
+\begin{aligned}
+\overline I_f &\le U(P_n)\le U(Q_n)+Kqh_n\le U(P)+Kqh_n,\\
+\underline I_f &\ge L(P_n)\ge L(Q_n)-Kqh_n\ge L(P)-Kqh_n .
+\end{aligned}
+\end{equation*}
+
+先使 \(n\to\infty\)，再分别对 \(P\) 取下确界、上确界，即得
+\(U(P_n)\to\overline I_f\)、\(L(P_n)\to\underline I_f\)。代回便得
+(4.4.3)。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.3 Riemann 可积的 Lebesgue
+判据]{4.4.3 Riemann 可积的 Lebesgue
+判据}\label{riemann-ux53efux79efux7684-lebesgue-ux5224ux636e}
+
+\begin{sboxenv}{navy}{定理 3.5.5（Lebesgue 判据）}
+有界实函数 \(f\) 在 \(I\) 上 Riemann 可积，当且仅当 \(m(D_f)=0\)。
+
+\end{sboxenv}
+
+\textbf{证明}　Darboux 判据给出 Riemann 可积等价于
+\(\overline I_f=\underline I_f\)。由 (4.4.3)，后者等价于非负可测函数
+\(\omega_f\) 的积分为零。若积分为零，由 \(t\,m(D_t)\le\int_I\omega_f\)
+知每个 \(D_t\)（\(t>0\)）为零集，再用 (4.4.2)。反之，若 \(m(D_f)=0\)，则
+\(\omega_f\) 几乎处处为零，故其积分为零。
+
+\textbf{从零集直接选分割。} 设 \(m(D_f)=0\)，固定
+\(\eta,\delta>0\)。用总长小于 \(\delta\) 的开区间覆盖紧集
+\(D_\eta\)，取有限子覆盖，其并记为 \(G\)。在 \(I\setminus G\)
+的每一点，选取振幅小于 \(\eta\) 的相对开邻域。这些邻域与 \(G\cap I\)
+构成 \(I\) 的开覆盖。由紧性取有限子覆盖，再取其 Lebesgue 数
+\(\lambda>0\)。网格宽小于 \(\lambda\)
+时，每个闭小区间都落入一个覆盖成员。落入 \(G\)
+的小区间内部互不相交，总长小于 \(\delta\)；其余小区间的振幅小于
+\(\eta\)。故
+
+\begin{equation*}
+U(P)-L(P)\le K\delta+\eta(b-a).
+\tag{4.4.4}
+\end{equation*}
+
+先给定误差，再使右侧两项分别足够小即可。这也说明为什么使用紧的振幅层
+\(D_\eta\)：稠密零集本身未必能用总长很小的有限个开区间盖住。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.4
+积分的一致性与零集改值]{4.4.4
+积分的一致性与零集改值}\label{ux79efux5206ux7684ux4e00ux81f4ux6027ux4e0eux96f6ux96c6ux6539ux503c}
+
+\begin{sboxenv}{navy}{定理 3.5.6（有限闭区间上的一致性）}
+若 \(f\) 在 \([a,b]\) 上 Riemann 可积，则 \(f\) 为 Lebesgue 可测函数，且
+\(f\in L^1([a,b])\)，两种积分的值相等。
+
+\end{sboxenv}
+
+\textbf{证明}　沿用引理中的阶梯函数，令
+\(l=\lim l_n\)、\(u=\lim u_n\)。两者可测，且
+\(l\le f\le u\)。在各级分点之外，\(u-l=\omega_f\)；由判据，\(\omega_f=0\)
+几乎处处。所以 \(f=l\) 几乎处处。Lebesgue 测度完备，每个水平集
+\(\{f>c\}\) 与可测集 \(\{l>c\}\) 只相差一个零集的子集，故 \(f\) 可测。又
+\(f\) 有界且 \(I\) 有限长，故绝对可积。对每个 \(n\) 积分得
+
+\begin{equation*}
+L(P_n)\le (L)\int_I f\le U(P_n).
+\end{equation*}
+
+两端同趋于 \((R)\int_a^b f(x)\,dx\)，夹逼即得一致性。
+
+\textbf{Dirichlet 函数与 Thomae 函数。} 开篇的
+\(\mathbf1_{\mathbb Q\cap I}\) 几乎处处为零，点振幅却处处为
+\(1\)，故逆命题不成立。在同一个稠密零集上改值，也可能保留 Riemann
+可积性。在 \([0,1]\) 的既约有理点 \(\dfrac pq\) 取值
+\(\dfrac1q\)，在无理点取零，得到 Thomae 函数。给定
+\(\varepsilon>0\)，函数值大于等于 \(\varepsilon\)
+的有理点只有有限个。在无理点附近可避开它们，使振幅至多为
+\(\varepsilon\)；在有理点处，用无理点逼近可见不连续。其不连续点集恰为有理点，因而
+Riemann 可积，积分为零。决定可积性的是指定高度的振荡能影响多少点。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.5
+递增区域与反常积分]{4.4.5
+递增区域与反常积分}\label{ux9012ux589eux533aux57dfux4e0eux53cdux5e38ux79efux5206}
+
+\begin{sboxenv}{navy}{定理 3.5.7（递增区域上的积分）}
+设可测集 \(E_k\uparrow E\subset\mathbb R^d\)，\(f\) 在各 \(E_k\) 上
+Lebesgue 可积。则
+\(\int_E|f|=\lim_k\int_{E_k}|f|\)，允许为正无穷。此极限有限恰好等价于
+\(f\in L^1(E)\)，此时 \(\int_E f=\lim_k\int_{E_k}f\)。
+
+\end{sboxenv}
+
+\textbf{证明}　任意水平集在 \(E\) 上都是它在各 \(E_k\)
+上的限制的可数并，故 \(f\) 在 \(E\) 上可测。把 \(|f|\) 在 \(E_k\)
+上的限制于其外补零，所得非负函数递增到 \(|f|\)。由 Levi
+定理得到绝对值积分的等式。若极限有限，\(|f|\)
+本身就是共同的可积控制函数，对 \(f\mathbf1_{E_k}\to f\)
+使用控制收敛即得带符号的等式。若极限无穷，则由绝对可积性的定义，\(f\notin L^1(E)\)。
+
+\textbf{注 3.5.1（普通反常积分）}　设 \(f\) 在每个 \([a,T]\) 上 Riemann
+可积。由于绝对值映射满足 \(||u|-|v||\le|u-v|\)，\(|f|\) 也在各个截段上
+Riemann 可积。由定理 3.5.6 和 3.5.7，
+
+\begin{equation*}
+f\in L^1([a,\infty))
+\quad\Longleftrightarrow\quad
+\sup_{T>a}(R)\int_a^T |f(x)|\,dx<\infty .
+\tag{4.4.5}
+\end{equation*}
+
+右端就是反常积分绝对收敛。成立时，对任意 \(T>a\)，
+
+\begin{equation*}
+\left|(L)\int_{[a,\infty)}f-(R)\int_a^T f(x)\,dx\right|
+\le (L)\int_{(T,\infty)}|f|\ \longrightarrow\ 0 .
+\end{equation*}
+
+尾积分趋零可先在 \(T=a+n\) 上由定理得到，再用单调性推广到所有
+\(T\)。对有限端点的瑕积分，改用远离瑕点的截段即可。若区间两端均有问题，先在内部一点分开，两侧各自取极限。
+
+\begin{sboxenv}{warm}{辨析　条件收敛与主值}
+若截段上 \(\int f\) 有有限极限而 \(\int|f|\to\infty\)，由
+\(2f^\pm=|f|\pm f\) 知截段上的正、负部分积分都趋于无穷，Lebesgue
+意义下不能作差。若只取对称截断，还会出现另一种抵消。例如
+\(f(x)=\dfrac1x\) 在 \([-1,1]\)
+的对称主值为零，但左右两个瑕积分分别趋于负无穷与正无穷，普通反常积分不存在。
+
+\end{sboxenv}
+
+\Needspace{10\baselineskip}\section[\S{}4.4.6
+三个反例的计算]{4.4.6
+三个反例的计算}\label{ux4e09ux4e2aux53cdux4f8bux7684ux8ba1ux7b97}
+
+\begin{sboxenv}{inkgray}{例 3.5.3（正弦积分）}
+在 \(x>0\) 上令 \(f(x)=\dfrac{\sin x}{x}\)，在零点用极限值 \(1\)
+补全。求其反常积分，并讨论绝对可积性。
+
+\end{sboxenv}
+
+\textbf{解}　对 \(B>A>0\)，分部积分得
+
+\begin{equation*}
+\left|\int_A^B\frac{\sin x}{x}\,dx\right|
+\le \frac1A+\frac1B+\int_A^B\frac{dx}{x^2}=\frac2A .
+\end{equation*}
+
+Cauchy 准则给出无穷端收敛。绝对值情形，在 \([k\pi,(k+1)\pi]\) 上用
+\(\dfrac1{(k+1)\pi}\) 对 \(\dfrac1x\) 作下估计，得每段绝对积分至少
+\(\dfrac2{(k+1)\pi}\)（\(k\ge1\)）。求和发散，故
+\(f\notin L^1(0,\infty)\)。
+
+教材写出的反常积分值也可直接求出。设 \(t>0\)，令
+\(F(t)=\int_0^\infty e^{-tx}\dfrac{\sin x}{x}\,dx\)。在固定 \(t_0>0\)
+的半径 \(\dfrac{t_0}{2}\) 邻域，参数导数的绝对值至多为
+\(e^{-\frac{t_0x}{2}}\)，可在积分号下求导。计算指数函数的原函数并取虚部，得
+
+\begin{equation*}
+F'(t)=-\int_0^\infty e^{-tx}\sin x\,dx=-\frac1{1+t^2}.
+\end{equation*}
+
+由 \(|\sin x|\le x\) 得 \(|F(t)|\le\dfrac1t\)，故
+\(F(t)=\dfrac{\pi}{2}-\arctan t\)。令 \(t\downarrow0\)
+时，有限截段上可用控制收敛；尾部对 \(g(x)=\dfrac{e^{-tx}}x\)
+分部积分，由 \(g\)
+正且递减，\(\left|\int_A^B g(x)\sin x\,dx\right|\le 2g(A)\le\dfrac2A\)，对所有
+\(t\ge0\) 一致。先取大 \(A\) 再取小 \(t\)，遂得
+\((R)\int_0^\infty\dfrac{\sin x}{x}\,dx=\dfrac{\pi}{2}\)。
+
+\begin{sboxenv}{inkgray}{例 3.5.4（原点附近的交错台阶）}
+令 \(f(0)=0\)，并在 \((\dfrac1{n+1},\dfrac1n]\) 上取
+\(f(x)=(-1)^{n+1}n\)。讨论原点处的瑕积分与绝对可积性。
+
+\end{sboxenv}
+
+\textbf{解}　每个完整台阶给出的带符号面积为
+
+\begin{equation*}
+(-1)^{n+1}n\left(\frac1n-\frac1{n+1}\right)
+=\frac{(-1)^{n+1}}{n+1}.
+\end{equation*}
+
+若截断点落在第 \(N\) 个台阶内部，未算完整的那一段面积绝对值至多
+\(\dfrac1{N+1}\to0\)，所以任意截断的极限都等于交错级数之和
+\(1-\ln2\)。这里用了
+\(\sum_{k\ge1}\dfrac{(-1)^{k-1}}k=\ln2\)，可由有限几何和对 \([0,1]\)
+积分得到，其余项绝对值至多
+\(\dfrac1{N+1}\)。把各台阶的面积改取绝对值，所得
+\(\sum_{n\ge1}\dfrac1{n+1}\) 发散。故原点处的瑕积分仅条件收敛。
+
+\begin{sboxenv}{inkgray}{例 3.5.5（失去局部 Riemann 可积性）}
+在 \([1,\infty)\) 的有理点取 \(f(x)=\dfrac1{x^2}\)，无理点取
+\(f(x)=-\dfrac1{x^2}\)。考察两种积分。
+
+\end{sboxenv}
+
+\textbf{解}　因有理点集为零集，\(f\) 几乎处处等于 \(-\dfrac1{x^2}\)，故
+\(\int|f|=1\)、\(\int f=-1\)。但趋于任一有限点 \(x\)
+的有理序列、无理序列分别给出 \(\dfrac1{x^2}\) 与 \(-\dfrac1{x^2}\)
+两个不同的极限。于是任意
+\([1,T]\)（\(T>1\)）上的不连续点集都是整个区间，连截段的 Riemann
+积分都不存在。这说明 (4.4.5) 中的局部假设不可省略。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.7 练习 3.5 第 1---3
+题]{4.4.7 练习 3.5 第 1---3
+题}\label{ux7ec3ux4e60-3.5-ux7b2c-13-ux9898}
+
+\Needspace{9\baselineskip}\subsection{问题 1}\label{ux95eeux9898-1}
+
+求证 \((L)\int_0^1\dfrac{\ln x}{1-x}\,dx=-\dfrac{\pi^2}{6}\) 及
+\((L)\int_0^1\ln\dfrac{1+x}{1-x}\,dx=2\ln2\)。
+
+\textbf{解}　当 \(0<x<1\) 时，将 \(\dfrac1{1-x}\) 展成非负几何级数。乘以
+\(-\ln x\) 后各项仍非负，由 Levi 定理，
+
+\begin{equation*}
+\int_0^1\frac{-\ln x}{1-x}\,dx
+=\sum_{k=0}^{\infty}\int_0^1x^k(-\ln x)\,dx
+=\sum_{k=1}^{\infty}\frac1{k^2}.
+\end{equation*}
+
+最后一步对 \(x^k\) 积分再分部积分，用到
+\(x^{k+1}\ln x\to0\)。为求级数值，对 \((-\pi,\pi)\) 上的函数 \(h(t)=t\)
+用 Parseval 等式。奇性给出余弦系数全零，一次分部积分给出正弦系数
+\(b_k=\dfrac{2(-1)^{k+1}}k\)。于是
+\(\dfrac1\pi\int_{-\pi}^{\pi}t^2\,dt=4\sum_{k\ge1}\dfrac1{k^2}\)，得到
+\(\sum_{k\ge1}\dfrac1{k^2}=\dfrac{\pi^2}{6}\)。恢复负号即得第一式。
+
+第二式中 \(\ln(1+x)\) 有界，\(-\ln(1-x)\) 非负且可积。由
+\(u\ln u\to0\)（\(u\downarrow0\)）及原函数 \(u\ln u-u\)，有
+
+\begin{equation*}
+\int_0^1\ln(1+x)\,dx=2\ln2-1,\qquad
+\int_0^1\ln(1-x)\,dx=\int_0^1\ln u\,du=-1 .
+\end{equation*}
+
+两项都有限，相减即得结论。
+
+\Needspace{9\baselineskip}\subsection{问题 2}\label{ux95eeux9898-2}
+
+（1）设 \(f(0)=0\)，\(0<x\le1\) 时
+\(f(x)=\dfrac{\sin(\frac1x)}{x^\alpha}\)。求 \(f\) 在 \([0,1]\) 上
+Lebesgue 可积的全部 \(\alpha\in\mathbb R\)。
+
+\textbf{解}　换元
+\(t=\dfrac1x\)。先在紧截段上换元，再对非负函数扩大区间，得到
+
+\begin{equation*}
+\int_0^1 |f(x)|\,dx=\int_1^\infty |\sin t|\,t^{\alpha-2}\,dt.
+\end{equation*}
+
+若 \(\alpha<1\)，由 \(|\sin t|\le1\) 和幂积分判别即得收敛。若
+\(\alpha\ge1\)，在 \([k\pi,(k+1)\pi]\)（\(k\ge1\)）上，\(\dfrac tk\)
+介于 \(\pi\) 与 \(2\pi\)，故
+\(t^{\alpha-2}\ge c_\alpha k^{\alpha-2}\)，其中 \(c_\alpha>0\)。又每段
+\(|\sin t|\) 的积分为 \(2\)，而 \(\sum k^{\alpha-2}\) 发散。故恰在
+\(\alpha<1\) 时可积，临界值 \(\alpha=1\) 已经发散。
+
+（2）将定义域改为整条实轴，求使函数可积的正参数。教材在 \(x\ne0\)
+时仍写分母 \(x^\alpha\)。一般实数 \(\alpha\)
+在负半轴未必给出实幂。按实值函数取分母
+\(|x|^\alpha\)；若原来的实幂已有定义，其绝对值同为
+\(|x|^\alpha\)，以下判别也适用。
+
+\textbf{解}　此时绝对值为偶函数，零点两侧由（1）知需且只需
+\(\alpha<1\)。当 \(x\to+\infty\)，由 \(\sin(\dfrac1x)\sim\dfrac1x\) 知
+\(|f(x)|\sim x^{-(\alpha+1)}\)，故无穷远处在 \(\alpha>0\)
+时可积。合并两端，答案为 \(0<\alpha<1\)。
+
+\Needspace{9\baselineskip}\subsection{问题 3}\label{ux95eeux9898-3}
+
+（1）证明
+\(\lim_{n\to\infty}\int_0^\infty\dfrac{dx}{\left(1+\frac xn\right)^n\sqrt[n]{x}}=1\)。
+
+\textbf{解}　对每个 \(x>0\)，被积函数趋于 \(e^{-x}\)。对 \(n\ge2\)，当
+\(0<x<1\) 时，它至多为 \(\dfrac1{\sqrt{x}}\)。当 \(x\ge1\)
+时，由二项展开的前三项，
+
+\begin{equation*}
+\left(1+\frac xn\right)^n
+\ge 1+x+\frac{n-1}{2n}x^2
+\ge \left(1+\frac x2\right)^2 .
+\end{equation*}
+
+且 \(\dfrac1{\sqrt[n]{x}}\le1\)，故这部分至多为
+\((1+\dfrac x2)^{-2}\)。两个控制函数在各自区间均可积。由控制收敛得极限为
+\(\int_0^\infty e^{-x}\,dx=1\)。这里只须控制尾列；\(n=1\)
+时原积分在零点发散。
+
+（2）固定 \(p>0\)，证明
+\(\lim_{n\to\infty}\int_0^\infty\dfrac{\ln^p(x+n)}{n}e^{-x}\cos x\,dx=0\)。
+
+\textbf{解}　固定 \(x\ge0\) 时，\(\dfrac{\ln^p(x+n)}n\to0\)。为取得对
+\(n\) 一致的控制，取
+\(C_p=\sup_{u\ge1}\dfrac{(\ln u)^p}{\sqrt u}<\infty\)；有限性来自连续性和无穷远处的零极限。对
+\(n\ge1\) 有 \(x+n\le n(1+x)\)，故
+
+\begin{equation*}
+\left|\frac{\ln^p(x+n)}n e^{-x}\cos x\right|
+\le C_p\,\frac{\sqrt{x+n}}n e^{-x}
+\le C_p\sqrt{1+x}\,e^{-x}.
+\end{equation*}
+
+右端可积。再用控制收敛得到零极限。
+
+\Needspace{10\baselineskip}\section[\S{}4.4.8 练习 3.5 第 7---11
+题]{4.4.8 练习 3.5 第 7---11
+题}\label{ux7ec3ux4e60-3.5-ux7b2c-711-ux9898}
+
+\Needspace{9\baselineskip}\subsection{问题 7}\label{ux95eeux9898-7}
+
+设 \(F\) 是 \(I=[0,1]\) 中的闭零集。\(\mathbf1_F\) 是否 Riemann 可积？
+
+\textbf{解}　可积，且积分为零。在 \(I\setminus F\)
+的每一点，都有一个相对邻域与 \(F\) 不交，指示函数在其中恒为零。因此
+\(D_{\mathbf1_F}\subset F\) 为零集，判据给出 Riemann 可积。又
+\(\mathbf1_F\) 几乎处处为零，由定理
+3.5.6，两种积分都为零。闭性在这里保证零集之外的点有邻域可避开它；有理点集显示任意零集未必具有这个性质。
+
+\Needspace{9\baselineskip}\subsection{问题 8}\label{ux95eeux9898-8}
+
+对任意 \(E\subset I=[0,1]\)，证明 \(\mathbf1_E\) 在 \(I\) 上 Riemann
+可积等价于 \(m(\overline E\setminus E^\circ)=m(\partial E)=0\)。
+
+\textbf{证明}　闭包、内部与边界先在 \(I\) 的相对拓扑中取。在 \(E^\circ\)
+和 \((I\setminus E)^\circ\) 上，指示函数分别局部恒为 \(1\) 和 \(0\)。若
+\(x\in\partial E\)，其每个相对邻域都遇到 \(E\) 及其补集，故振幅为
+\(1\)。因此
+\(D_{\mathbf1_E}=\partial E=\overline E\setminus E^\circ\)，直接应用定理
+3.5.5
+即得。若采用实轴中的边界，至多相差两个端点，零测度条件相同。边界为零集时，\(E\)
+夹在其开内部与闭包之间，由完备性也知 \(E\) 可测，积分值为 \(m(E)\)。
+
+\Needspace{9\baselineskip}\subsection{问题 9}\label{ux95eeux9898-9}
+
+设 \(f,g\) 在 \([a,b]\) 上 Riemann 可积，并在稠密集 \(D\subset[a,b]\)
+上相等。证明它们的 Riemann 积分相等。
+
+\textbf{证明}　可用同一组标记点处理两个函数。对任意分割，在每个非退化小区间的内部取一点
+\(\xi_j\in D\)，则两函数的 Riemann
+和逐项相等。取网格宽趋零的一列分割，由两函数的可积性，两列和分别趋于各自的积分，故积分相等。从
+Lebesgue 判据看，\(f\) 与 \(g\) 的共同连续点构成满测度集，沿 \(D\)
+内的序列趋于任一共同连续点，两函数在那里也相等。稠密集本身的测度可以为零。
+
+\Needspace{9\baselineskip}\subsection{问题 10}\label{ux95eeux9898-10}
+
+设 \(f\) 在 \([a,b]\) 上有界，其不连续点集 \(D_f\)
+至多有可数个聚点。证明 \(f\) Riemann 可积。
+
+\textbf{证明}　将 \(D_f\)
+中的点分为聚点和孤立点，前一部分按假设至多可数。对每个孤立点
+\(x\)，存在有理端点开区间 \((r,s)\)，使
+\(D_f\cap(r,s)=\{x\}\)。固定一切有理端点开区间的枚举，取满足条件的首个区间赋给
+\(x\)，即得单射，因为同一区间不可能只含两个不同的单点。孤立点也至多可数。因此
+\(D_f\) 是零集，结论由定理 3.5.5 得到。
+
+\Needspace{9\baselineskip}\subsection{问题 11}\label{ux95eeux9898-11}
+
+设 \(f:\mathbb R\to\mathbb R\) 有界，每个 \(x\) 处的去心极限
+\(\lim_{h\to0}f(x+h)\) 均存在且有限。证明 \(f\) 在任何 \([a,b]\) 上
+Riemann 可积。
+
+\textbf{证明}　在 \(I=[a,b]\) 上考察闭层
+\(D_\varepsilon=\{\omega_f\ge\varepsilon\}\)。任取
+\(x\in I\)，记去心极限为 \(c\)。取 \(r>0\)，使 \(0<|y-x|<r\) 时
+\(|f(y)-c|<\dfrac{\varepsilon}{3}\)。若 \(z\in I\) 且
+\(0<|z-x|<r\)，可在 \(z\) 附近取一个既避开 \(x\)
+又落在该去心邻域的相对邻域。在其中任意两个函数值相差至多
+\(\dfrac{2\varepsilon}{3}\)，故 \(\omega_f(z)<\varepsilon\)。因此 \(x\)
+不是 \(D_\varepsilon\) 的聚点，即使 \(f(x)\ne c\)
+也如此。在紧区间里，每个无限集必有聚点，故 \(D_\varepsilon\) 有限。由
+(4.4.2)，\(D_f\) 至多可数，判据即给出结论。
+
+\end{document}
